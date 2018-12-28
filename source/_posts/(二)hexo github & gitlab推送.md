@@ -1,6 +1,6 @@
 ---
 title: (二)hexo github & gitlab推送
-date: 2018-12-29 00:00:00
+date: 2018-12-28 00:00:00
 tags: hexo
 preview_text: 真正自找麻煩的架設方法......
 categories: hexo
@@ -258,3 +258,10 @@ git push -u origin master
 
 [只是個打字的](https://blog.typeart.cc/Git%E5%9F%BA%E7%A4%8E%E8%A8%AD%E5%AE%9A/)
 
+
+
+延伸閱讀：
+
+[(一)架設hexo部落格](https://tsuiokuyo.netlify.com/posts/9702c5d)
+
+[(三)Hexo部屬至netlify](https://tsuiokuyo.netlify.com/posts/3b037b87)

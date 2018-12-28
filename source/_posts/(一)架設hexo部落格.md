@@ -8,8 +8,6 @@ preview_text: 拋棄前一個部落格，跑來這邊重新做一個@@
 
 ---
 
-
-
 安裝需求
 
 1. Git
@@ -104,3 +102,11 @@ Haroopad
 ![Haroopad](https://i.imgur.com/FHxFDtr.jpg)
 
 所見即所得，介面分為左右兩側，左側輸入語法的時右側畫面就會跟著改變，簡體中文，有時候我開啟會卡住。
+
+
+
+延伸閱讀：
+
+[(二)hexo github & gitlab推送](https://tsuiokuyo.netlify.com/posts/1ced115b)
+
+[(三)Hexo部屬至netlify](https://tsuiokuyo.netlify.com/posts/3b037b87)

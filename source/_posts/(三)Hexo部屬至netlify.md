@@ -5,18 +5,9 @@ tags: hexo
 categories: hexo
 preview: https://i.imgur.com/C6HzjIX.jpg
 preview_text: 有點沒必要的部分，只能算是小小的優化hexo
-
 ---
 
-
-
-
-
-
-
-
-
----
+這是最後一篇了吧
 
 登入netlify後
 
@@ -74,3 +65,10 @@ site settings ->Change site name
 
 ![P2](https://i.imgur.com/XVF9iVf.jpg)
 
+
+
+延伸閱讀：
+
+[(一)架設hexo部落格](https://tsuiokuyo.netlify.com/posts/9702c5d)
+
+[(二)hexo github & gitlab推送](https://tsuiokuyo.netlify.com/posts/1ced115b)
