@@ -1,14 +1,3 @@
----
-title:(二)hexo github & gitlab推送
-date:2018-12-29 00:00:00
-tags:
-  - hexo
-
-categories:hexo
-preview:https://i.imgur.com/Q9gk4TW.jpg
-
----
-
 
 
 # (二)hexo github & gitlab 推送
