@@ -4,7 +4,9 @@ date:2018-12-28 00:00:00
 tags:hexo
 
 categories:hexo
+abbrlink: re8c6a4
 preview:https://i.imgur.com/Q9gk4TW.jpg
+---
 
 ---
 拋棄前一個部落格 https://dragonmuc.github.io/
