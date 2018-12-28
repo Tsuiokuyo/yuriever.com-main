@@ -2,7 +2,10 @@
 title: (二)hexo github & gitlab推送
 date: 2018-12-29 00:00:00
 tags: hexo
+preview_text: 拋棄前一個部落格，跑來這邊重新做一個@@
 categories: hexo
+preview: https://i.imgur.com/Q9gk4TW.jpg
+
 
 ---
 
