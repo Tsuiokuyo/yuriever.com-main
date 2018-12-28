@@ -5,6 +5,7 @@ tags: hexo
 
 categories: hexo
 preview: https://i.imgur.com/Q9gk4TW.jpg
+preview_text:拋棄前一個部落格 https://dragonmuc.github.io/<br/>跑來這邊重新做一個@@
 ---
 
 # (二)hexo github & gitlab 推送
