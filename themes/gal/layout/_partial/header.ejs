@@ -9,12 +9,12 @@
             <a href="<%= config.url %>">
                 <% if(theme.use_logo === true) {
                 	if(/https?:\/\//.test(theme.logo_image)) { %>
-                <!-- 这里background直接使用logo_image(url) -->
+                <!-- 這裡background直接使用logo_image(url) -->
                 <style>
 
                 </style>
                     <% } else { %>
-                <!-- 这里background使用imgs/${logo_image}(路径文件名) -->
+                <!-- 這裡background使用imgs/${logo_image}(路徑檔案名) -->
                 <style>
                     #gal-header .navbar-brand {
                         width: 200px;
@@ -36,7 +36,7 @@
                         text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
                     }
                 </style>
-                <!-- 这里使用文字(navbar_text or config.title) -->
+                <!-- 這裡使用文字(navbar_text or config.title) -->
                 <div class="navbar-brand"><%= theme.navbar_text ? theme.navbar_text : config.title %></div>
                 <% } %>
             </a>

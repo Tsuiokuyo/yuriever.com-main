@@ -4,7 +4,7 @@
     <% if(theme.sidebar.recent_comments) { %>
     <%- partial('_widget/recent_comments') %>
     <% } %>
-    <!-- 要配置好leancloud才能开启此小工具 -->
+    <!-- 要配置好leancloud才能開啟此小工具 -->
     <% if(theme.sidebar.hot_posts && (theme.leancloud.appid && theme.leancloud.appkey)) { %>
     <%- partial('_widget/hot_posts') %>
     <% } %>
@@ -21,17 +21,17 @@
 
                 <% if(theme.sidebar.tags === true) { %>
                 <li>
-                    <a href="<%- url_for(path) %>#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="<%- url_for(path) %>#sidebar-tags" data-toggle="tab" id="tags-tab">熱門標籤</a>
                 </li>
                 <% } %>
                 <% if(theme.sidebar.friend_links === true) { %>
                 <li>
-                    <a href="<%- url_for(path) %>#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="<%- url_for(path) %>#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情連結</a>
                 </li>
                 <% } %>
                 <% if(theme.sidebar.links === true) { %>
                 <li>
-                    <a href="<%- url_for(path) %>#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="<%- url_for(path) %>#sidebar-links" data-toggle="tab" id="links-tab">個人連結</a>
                 </li>
                 <% } %>
             </ul>

@@ -1,78 +1,78 @@
-# use_logo如果为true, 需要在logo_image设置路径
+# use_logo如果為true, 需要在logo_image設置路徑
 use_logo: false
-logo_image:  # 使用路径, 填写文件名即可(比如, logo_image: logo.png 指向 source/imgs/logo.png)
-navbar_text: # 如果没有Logo, 则设置为false, 并且设置navbar_text(否则默认为站点标题, 最好进行设置)
+logo_image:  # 使用路徑, 填寫檔案名即可(比如, logo_image: logo.png 指向 source/imgs/logo.png)
+navbar_text: # 如果沒有Logo, 則設置為false, 並且設置navbar_text(否則預設為站點標題, 最好進行設置)
 
-# 必填, 设定小型设备展示背景图, 指向source/imgs, 比如xs_bg_image: bg.png -> source/imgs/bg.png
+# 必填, 設定小型設備展示背景圖, 指向source/imgs, 比如xs_bg_image: bg.png -> source/imgs/bg.png
 xs_bg_image: xsbg.gif
 
-# 必填, 个人头像, 如果是路径, 则指向source/imgs
+# 必填, 個人頭像, 如果是路徑, 則指向source/imgs
 # 也可以填http:// OR https:// url地址
 author_image: avatar.jpg
 
-# 程序员模式, 适合于用该程序的爱好写技术文章的人员, 默认不开启
-# 选择开启后将会改变article-excerpt, article-content等的显示
+# 程式設計師模式, 適合於用該程式的愛好寫技術文章的人員, 默認不開啟
+# 選擇開啟後將會改變article-excerpt, article-content等的顯示
 programmer_mode: false
 
-# 导航菜单
+# 導航菜單
 menu:
   # index
-  - title: 首页
-    # 参照font-awesome官网的icon, 取后面一段(比如用fa-star这个图标, 那么这里的icon就填star)
+  - title: 首頁
+    # 參照font-awesome官網的icon, 取後面一段(比如用fa-star這個圖示, 那麼這裡的icon就填star)
     icon: home
     url: /
   # archives
-  - title: 归档
+  - title: 歸檔
     icon: archive
     url: archives
   # categories
-  - title: 分类
+  - title: 分類
     icon: list
     url: categories
-    dropdown: 3 #dropdown为下拉菜单出现的项目最大数目(只限于tags和categorys)
-    # 如果不想显示下拉菜单, 则不要填写, 即dropdown:
-    # 具体效果可以看https://myau.moe
+    dropdown: 3 #dropdown為下拉菜單出現的項目最大數目(只限於tags和categorys)
+    # 如果不想顯示下拉菜單, 則不要填寫, 即dropdown:
+    # 具體效果可以看https://myau.moe
   # tags
-  - title: 标签
+  - title: 標籤
     icon: tags
     url: tags
     dropdown: 3
-  # about, 这个实际上是自定义page, 后面的自定义page参照about样式
-  - title: 关于我
+  # about, 這個實際上是自訂page, 後面的自訂page參照about樣式
+  - title: 關於我
     icon: user
     url: about
 
-# 每篇文章的preview默认图片
-# 必填项(除非你每篇文章的front-matter都设置了preview属性)
-# 填写: 可以放多张图, 将随机抽取作为默认的preview图片
-# 如果使用文件名则对应目录: source/imgs/preview, 比如 preview1.jpg -> source/imgs/preview/preview1.jpg
-# 如果用url则填写完整的url地址即可
+# 每篇文章的preview默認圖片
+# 必填項(除非你每篇文章的front-matter都設置了preview屬性)
+# 填寫: 可以放多張圖, 將隨機抽取作為預設的preview圖片
+# 如果使用檔案名則對應目錄: source/imgs/preview, 比如 preview1.jpg -> source/imgs/preview/preview1.jpg
+# 如果用url則填寫完整的url地址即可
 default_preview:
   - preview1.jpg
   - preview2.jpg
   - preview3.jpg
   - preview4.jpg
 
-# 侧边栏
+# 側邊欄
 sidebar:
-  recent_comments: true   # 最新评论, 默认关闭, 可能需要自己进行模板配置
-  hot_posts: true         # 最热文章, 如果配置了下面的文章统计就可以使用该侧边栏, 否则设置为false
-  recent_posts: true      # 最新文章, 默认开启
-  random_posts: true      # 随机文章, 默认开启
-  tags: true              # 热门标签, 默认开启
-  friend_links: true      # 友情链接, 默认开启
-  links: true             # 个人链接, 默认开启
+  recent_comments: true   # 最新評論, 默認關閉, 可能需要自己進行模板配置
+  hot_posts: true         # 最熱文章, 如果配置了下面的文章統計就可以使用該側邊欄, 否則設置為false
+  recent_posts: true      # 最新文章, 默認開啟
+  random_posts: true      # 隨機文章, 默認開啟
+  tags: true              # 熱門標籤, 默認開啟
+  friend_links: true      # 友情連結, 默認開啟
+  links: true             # 個人連結, 默認開啟
 
-# 友情链接配置, 要先开启上面的friend_links
+# 友情連結配置, 要先開啟上面的friend_links
 friend_links:
   - name: KDays Forum
     link: http://kdays.net/days/
-  - name: 绅士导航♂
+  - name: 紳士導航♂
     link: http://www.gal123.com/
-  - name: 萌导航
+  - name: 萌導航
     link: http://www.moe123.com/
 
-# 个人链接配置, 要先开启上面的links
+# 個人連結配置, 要先開啟上面的links
 links:
   - name: Github
     link: https://github.com/ZEROKISEKI/
@@ -83,70 +83,70 @@ links:
 
 
 # 是否使用公告
-# 公告是什么可以看https://myau.moe
-# 如果使用了公告, 那么公告内容需要自己去配置
-# 在主题下的layout/_partial/issue.ejs进行内容修改
-# 如果不用公告, 请设置此项为false
+# 公告是什麼可以看https://myau.moe
+# 如果使用了公告, 那麼公告內容需要自己去配置
+# 在主題下的layout/_partial/issue.ejs進行內容修改
+# 如果不用公告, 請設置此項為false
 use_issue: true
 
-# 背景图功能
-# 必填项
+# 背景圖功能
+# 必填項
 slide_background:
-  # 默认为false, 即采用路径图片
+  # 預設為false, 即採用路徑圖片
   use_url: false
-  # use_url: true情况下, 采用七牛外链空间的形式, 下面三个参数组合指向: http://ouo1ro65u.bkt.clouddn.com/background(1~10).png
-  # prefix: http://ouo1ro65u.bkt.clouddn.com/background   七牛对象存储空间外链主机地址和图片名称前缀
-  # ext: png          图片的后缀格式, 要求可供选择的图片都是统一后缀
-  # max_count: 10     可供选择的图片数量, 背景图会从这里随机抽取6张图
+  # use_url: true情況下, 採用七牛外鏈空間的形式, 下面三個參數組合指向: http://ouo1ro65u.bkt.clouddn.com/background(1~10).png
+  # prefix: http://ouo1ro65u.bkt.clouddn.com/background   七牛對象存儲空間外鏈主機地址和圖片名稱前綴
+  # ext: png          圖片的後綴格式, 要求可供選擇的圖片都是統一後綴
+  # max_count: 10     可供選擇的圖片數量, 背景圖會從這裡隨機抽取6張圖
 
-  # use_url: false情况下, 采用本地博客图片路径, 下面三个参数组合指向: source/imgs/slide/background(1~10).jpg
+  # use_url: false情況下, 採用本地部落格圖片路徑, 下面三個參數組合指向: source/imgs/slide/background(1~10).jpg
   prefix: slide/background
   ext: jpg
   max_count: 6
 
 
-# 是否开启欧尼酱功能
-open_oni: true
-# 欧尼酱功能设置, 前提为open_oni: true
+# 是否開啟歐尼醬功能
+open_oni: false
+# 歐尼醬功能設置, 前提為open_oni: true
 oni_setting:
-  # 限三项, 可以自己配置链接(一般是上面的menu或者自己的page)
-  - title: 归档
+  # 限三項, 可以自己配置連結(一般是上面的menu或者自己的page)
+  - title: 歸檔
     url: archives
-  - title: 关于
+  - title: 關於
     url: about
   - title: 留言板
     url: message
-# 欧尼酱选项图片(可以自己替换, 最好是100 * 100像素的图片)
-# 图片为默认的 source/imgs/oni/oni(1~6).jpg
-# 如果自己替换了不同后缀的图片, 需要在 source/css/_common.css中修改(直接ctrl + F搜oni)
+# 歐尼醬選項圖片(可以自己替換, 最好是100 * 100像素的圖片)
+# 圖片為默認的 source/imgs/oni/oni(1~6).jpg
+# 如果自己替換了不同後綴的圖片, 需要在 source/css/_common.css中修改(直接ctrl + F搜oni)
 
 
-# 输入特效activate-power-mode
+# 輸入特效activate-power-mode
 # https://github.com/disjukr/activate-power-mode
 power_mode:
   colorful: true
   shake: true
 
-# 文章统计, 目前只支持leancloud(可能到时添加不蒜子统计)
-# 获取appId和appKey方法直接百度 or google(或者看这篇http://crescentmoon.info/2014/12/11/popular-widget/)
-# 注意一旦生成新的文章就不要随便改名了
+# 文章統計, 目前只支持leancloud(可能到時添加不蒜子統計)
+# 獲取appId和appKey方法直接百度 or google(或者看這篇http://crescentmoon.info/2014/12/11/popular-widget/)
+# 注意一旦生成新的文章就不要隨便改名了
 leancloud:
   appid:  # your appId
   appkey: # your appKey
 
-# 评论系统, 目前只支持gitment(为了自定义样式)
-# 关于gitment如何配置看这篇 https://imsun.net/posts/gitment-introduction/
-# 如果不用的话要把下面的use_comment设置为false
+# 評論系統, 目前只支持gitment(為了自訂樣式)
+# 關於gitment如何配置看這篇 https://imsun.net/posts/gitment-introduction/
+# 如果不用的話要把下面的use_comment設置為false
 comment:
   gitment:
-      owner: # 必填项, 你的GitHub ID
-      repo: # 必填项  你的存储评论的repo
+      owner: # 必填項, 你的GitHub ID
+      repo: # 必填項  你的存儲評論的repo
       oauth:
-        client_id:  # 必填项
-        client_secret: # 必填项
+        client_id:  # 必填項
+        client_secret: # 必填項
         redirect_uri: # 可以填也可以不填
 
-# 是否使用评论系统
+# 是否使用評論系統
 use_comment: false
 
 node_sass:
