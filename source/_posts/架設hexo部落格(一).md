@@ -1,6 +1,18 @@
 ---
-abbrlink: '0'
+title: (一)架設hexo部落格
+tags:
+  - hexo
+categories: hexo
+date: 2018-05-22 00:00:00
+preview: https://i.imgur.com/Q9gk4TW.jpg
+
+拋棄前一個部落格 https://dragonmuc.github.io/
+跑來這邊重新做一個@@
 ---
+
+
+<!--more-->
+
 # 架設hexo部落格(一)
 
 安裝需求
