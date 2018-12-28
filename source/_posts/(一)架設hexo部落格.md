@@ -1,4 +1,5 @@
 ---
+
 title: (一)架設hexo部落格
 date: 2018-12-28 00:00:00
 tags: hexo
@@ -6,13 +7,9 @@ tags: hexo
 categories: hexo
 abbrlink:
 preview: https://i.imgur.com/Q9gk4TW.jpg
-preview_text:
----
+preview_text: 拋棄前一個部落格\ https://dragonmuc.github.io/<br/>跑來這邊重新做一個@@
 
 ---
-拋棄前一個部落格 https://dragonmuc.github.io/<br/>跑來這邊重新做一個@@
-
-<!--more-->
 
 # 架設hexo部落格(一)
 
