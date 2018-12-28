@@ -1,6 +1,6 @@
 ---
 title: (二)hexo github & gitlab推送
-date: 2018-12-28 00:00:00
+date: 2018-12-28 09:00:00
 tags: hexo
 preview_text: 真正自找麻煩的架設方法......
 categories: hexo
