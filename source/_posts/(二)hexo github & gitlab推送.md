@@ -2,16 +2,12 @@
 title: (二)hexo github & gitlab推送
 date: 2018-12-29 00:00:00
 tags: hexo
-preview_text: 拋棄前一個部落格，跑來這邊重新做一個@@
+preview_text: 真正自找麻煩的架設方法......
 categories: hexo
-preview: https://i.imgur.com/Q9gk4TW.jpg
+preview: https://i.imgur.com/rYpEXWC.jpg
 
 
 ---
-
-# (二)hexo github & gitlab 推送
-
-
 
 > **這篇文章的瑕疵很多，如果沒有必要，最好去找其他人的文章比較好，因為我的部屬方法根本是自找麻煩，我最終的目的是要在使用netlify部屬Hexo，老實說，就目前來說netlify給的服務我基本上都用不到，大概只用到CDN而已，就把架hexo弄得有點複雜...。**
 
