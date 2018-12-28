@@ -13,7 +13,7 @@ timezone: Asia/Taipei
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://tsuiokuyo.gitlab.io
+url: https://tsuiokuyo.netlify.com/
 root: /
 permalink:  posts/:abbrlink.html
 permalink_defaults:
