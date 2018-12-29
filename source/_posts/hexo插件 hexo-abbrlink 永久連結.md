@@ -1,6 +1,6 @@
 ---
 title: hexo插件 hexo-abbrlink永久連結
-date: 2018-12-29 00:00:00
+date: 2018-12-29 12:00:00
 tags: hexo, 插件
 categories: hexo
 preview: https://i.imgur.com/QV9MVC4.jpg
