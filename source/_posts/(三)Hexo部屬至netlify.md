@@ -45,7 +45,7 @@ site settings ->Change site name
 
 所以稍微測了netlify跟github的速度測試，
 
-整體來說netlify好像比較好。
+整體來說netlify好像比較好，而且網站部屬更新的速度比github速度還快。
 
 
 
