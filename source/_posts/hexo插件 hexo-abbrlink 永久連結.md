@@ -1,7 +1,7 @@
 ---
 title: hexo插件 hexo-abbrlink永久連結
 date: 2018-12-29 12:00:00
-tags: 
+tags:
 - hexo
 - 插件
 categories: hexo
