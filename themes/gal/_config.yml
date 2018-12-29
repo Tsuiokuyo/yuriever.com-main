@@ -12,7 +12,7 @@ xs_bg_image: xsbg.gif
 # 也可以填http:// OR https:// url地址
 author_image: avatar.jpg
 #網站ICON
-favicons:/favicons.png
+favicons: favicons.png
 
 # 程式設計師模式, 適合於用該程式的愛好寫技術文章的人員, 默認不開啟
 # 選擇開啟後將會改變article-excerpt, article-content等的顯示
