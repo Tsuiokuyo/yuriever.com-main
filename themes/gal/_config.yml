@@ -136,9 +136,9 @@ power_mode:
 # 獲取appId和appKey方法直接百度 or google(或者看這篇http://crescentmoon.info/2014/12/11/popular-widget/)
 # 注意一旦生成新的文章就不要隨便改名了
 leancloud:
-  appid: vej74E3cAEaN1Ni3C0cTzdk2-gzGzoHsz
+  appid: h9skyMx8X0Y3Ig5woBbxkHDg-9Nh9j0Va
   # your appId
-  appkey: w7KDzOxAjKtFuNsa27pyHlHL
+  appkey: 4nxlUeU9SeArO2IDB1glhupg
   # your appKey
 
 # 評論系統, 目前只支持gitment(為了自訂樣式)
