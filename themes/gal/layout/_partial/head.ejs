@@ -11,10 +11,6 @@
     <% if (page.tag) {
         title.unshift(`${__('tags')}: ${page.tag}`)
     } %>
-	<% } %>
-	<% if (theme.favicon){ %>
-    <link rel="icon" href="<%- theme.favicon %>">
-	<% } %>
     <% if (page.category) {
         title.unshift(`${__('categories')}: ${page.category}`)
     }%>
