@@ -1,8 +1,8 @@
 # use_logo如果為true, 需要在logo_image設置路徑
-use_logo: true
-logo_image: logo.png
+use_logo: false
+logo_image: 
 # 使用路徑, 填寫檔案名即可(比如, logo_image: logo.png 指向 source/imgs/logo.png)
-navbar_text: 一個人的回憶 
+navbar_text:  
 # 如果沒有Logo, 則設置為false, 並且設置navbar_text(否則預設為站點標題, 最好進行設置)
 
 # 必填, 設定小型設備展示背景圖, 指向source/imgs, 比如xs_bg_image: bg.png -> source/imgs/bg.png
@@ -11,6 +11,8 @@ xs_bg_image: xsbg.gif
 # 必填, 個人頭像, 如果是路徑, 則指向source/imgs
 # 也可以填http:// OR https:// url地址
 author_image: avatar.jpg
+#網站ICON
+favicons:/favicons.png
 
 # 程式設計師模式, 適合於用該程式的愛好寫技術文章的人員, 默認不開啟
 # 選擇開啟後將會改變article-excerpt, article-content等的顯示
