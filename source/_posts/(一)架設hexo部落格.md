@@ -1,11 +1,11 @@
 ---
 title: (一)架設hexo部落格
-date: 2018-12-28 00:00:00
 tags: hexo
 categories: hexo
-preview: https://i.imgur.com/Q9gk4TW.jpg
+preview: 'https://i.imgur.com/Q9gk4TW.jpg'
 preview_text: 拋棄前一個部落格，跑來這邊重新做一個@@
-
+abbrlink: 2cd8
+date: 2018-12-28 00:00:00
 ---
 
 安裝需求

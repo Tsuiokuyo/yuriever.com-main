@@ -1,12 +1,13 @@
 ---
 title: hexo插件 hexo-abbrlink永久連結
-date: 2018-12-29 12:00:00
 tags:
-- hexo
-- 插件
+  - hexo
+  - 插件
 categories: hexo
-preview: https://i.imgur.com/QV9MVC4.jpg
+preview: 'https://i.imgur.com/QV9MVC4.jpg'
 preview_text: 簡單的說就是網址美化
+abbrlink: ca1a
+date: 2018-12-29 12:00:00
 ---
 
 

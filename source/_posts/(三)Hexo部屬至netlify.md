@@ -1,10 +1,11 @@
 ---
 title: (三)Hexo部屬至netlify
-date: 2018-12-28 12:00:00
 tags: hexo
 categories: hexo
-preview: https://i.imgur.com/C6HzjIX.jpg
+preview: 'https://i.imgur.com/C6HzjIX.jpg'
 preview_text: 有點沒必要的部分，只能算是小小的優化hexo
+abbrlink: 9c3d
+date: 2018-12-28 12:00:00
 ---
 
 這是最後一篇了吧
