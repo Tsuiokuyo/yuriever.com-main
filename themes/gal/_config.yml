@@ -55,12 +55,12 @@ default_preview:
 
 # 側邊欄
 sidebar:
-  recent_comments: true   # 最新評論, 默認關閉, 可能需要自己進行模板配置
-  hot_posts: true         # 最熱文章, 如果配置了下面的文章統計就可以使用該側邊欄, 否則設置為false
+  recent_comments: false   # 最新評論, 默認關閉, 可能需要自己進行模板配置
+  hot_posts: false         # 最熱文章, 如果配置了下面的文章統計就可以使用該側邊欄, 否則設置為false
   recent_posts: true      # 最新文章, 默認開啟
   random_posts: true      # 隨機文章, 默認開啟
   tags: true              # 熱門標籤, 默認開啟
-  friend_links: true      # 友情連結, 默認開啟
+  friend_links: false      # 友情連結, 默認開啟
   links: true             # 個人連結, 默認開啟
 
 # 友情連結配置, 要先開啟上面的friend_links
@@ -74,12 +74,12 @@ friend_links:
 
 # 個人連結配置, 要先開啟上面的links
 links:
-  - name: Github
-    link: https://github.com/ZEROKISEKI/
-  - name: Coding
-    link: https://coding.net/u/SORA1
-  - name: 知乎
-    link: https://www.zhihu.com/people/aonosora/activities
+  - name: 曾經的部落格...
+    link: https://dragonmuc.github.io/
+  - name: Gitlab
+    link: https://gitlab.com/
+  - name: Netlify
+    link: https://www.netlify.com
 
 
 # 是否使用公告

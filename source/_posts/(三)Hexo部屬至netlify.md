@@ -17,25 +17,23 @@ New site from Git -> gitlab 選擇hexo的project
 
 ![netlify](https://i.imgur.com/1eXRqOv.jpg)
 
-建立好了後，網站就生成了
+建立好了後，網站就生成了，
 
-首先先改個網址名稱
+首先先改個網址名稱，
 
 site settings ->Change site name
 
 
 
-由於我沒有自己的domain所以不能使用自己的網址 只能使用tsuiokuyo.netlify.com
-
-
+由於我沒有自己的domain所以不能使用自己的網址 只能使用tsuiokuyo.netlify.com，
 
 再來是優化URLs、CSS、JS、Images等等。
 
 ![AO](https://i.imgur.com/BvlCkiP.jpg)
 
-再來往下
+再來往下，
 
-開啟預渲染 Prerendering
+開啟預渲染 Prerendering，
 
 雖然好像非必要。
 
@@ -43,7 +41,7 @@ site settings ->Change site name
 
 
 
-由於是剛架好的，差異應該不大，
+由於是剛架好的，雖然多了CDN加速，不過目前差異應該不大，
 
 所以稍微測了netlify跟github的速度測試，
 
@@ -64,6 +62,10 @@ site settings ->Change site name
 
 
 ![P2](https://i.imgur.com/XVF9iVf.jpg)
+
+
+
+也許這不是最好的配置，不過我是覺得自己滿意就行了。
 
 
 

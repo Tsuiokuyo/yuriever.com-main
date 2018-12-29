@@ -3,10 +3,10 @@
 <% } %>
 <div id="article-list">
      <%
-        // 如果要置顶文章, 就在front-matter上设置 top: true
-        // 一般置顶文章一篇就够了吧2333
-        // 关键还是置顶文章是从文章抽出来的, 如果某一分页段的置顶文章过多
-        // 可能会造成某一分页的文章数目较多, 不过问题应该不大
+        // 如果要置頂文章, 就在front-matter上設置 top: true
+        // 一般置頂文章一篇就夠了吧2333
+        // 關鍵還是置頂文章是從文章抽出來的, 如果某一分頁段的置頂文章過多
+        // 可能會造成某一分頁的文章數目較多, 不過問題應該不大
         if (page.prev === 0) {
             var topPosts = site.posts.filter(function (post) {
                 return typeof post.top !== 'undefined' && post.top === true

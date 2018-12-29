@@ -1,8 +1,8 @@
 <%- partial('_partial/head') %>
 <body>
-    <!-- 背景轮播图功能 -->
+    <!-- 背景輪播圖功能 -->
     <%- partial('_partial/slideshow.ejs') %>
-    <!-- 欧尼酱功能, 谁用谁知道 -->
+    <!-- 歐尼醬功能, 誰用誰知道 -->
     <% if(theme.open_oni === true) { %>
     <%- partial('_partial/oni.ejs') %>
     <% } %>
@@ -32,7 +32,7 @@
     hs.numberPosition = "caption";
     hs.align = "center";
     hs.transitions = ["expand", "crossfade"];
-    hs.lang.number = '共%2张图, 当前是第%1张';
+    hs.lang.number = '共%2張圖, 當前是第%1張';
     hs.addSlideshow({
       interval: 5000,
       repeat: true,
@@ -56,7 +56,7 @@
 <script>
 	POWERMODE.colorful = '<%= theme.power_mode.colorful %>';    // make power mode colorful
 	POWERMODE.shake = '<%= theme.power_mode.colorful %>';       // turn off shake
-	// TODO 这里根据具体情况修改
+	// TODO 這裡根據具體情況修改
 	document.body.addEventListener('input', POWERMODE);
 </script>
 <script>

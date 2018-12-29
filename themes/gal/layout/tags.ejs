@@ -3,22 +3,22 @@
         <i class="fa fa-home"></i>
         <a href="<%- config.url %>"><%= config.title %></a>
         >
-        <span>标签</span>
+        <span>標籤</span>
     </div>
-    <!-- 大型设备详细文章 -->
+    <!-- 大型設備詳細文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="<%- url_for('tags') %>">标签集合</a>
+                <a href="<%- url_for('tags') %>">標籤集合</a>
             </h1>
         </div>
     </div>
-    <!-- 小型设备详细文章 -->
+    <!-- 小型設備詳細文章 -->
     <div class="visible-xs">
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="<%- url_for('tags') %>">标签集合</a>
+                    <a href="<%- url_for('tags') %>">標籤集合</a>
                 </h4>
             </div>
         </center>
@@ -30,7 +30,7 @@
             <br>
             <% }) %>
             <% if (site.tags.length === 0) { %>
-            暂无标签
+            暫無標籤
             <% } %>
         </div>
     </div>
