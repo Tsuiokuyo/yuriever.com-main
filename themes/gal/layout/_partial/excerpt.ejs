@@ -23,6 +23,7 @@
                 <a href="<%- url_for(tag.path) %>"><%= tag.name %></a><%= index === item.tags.data.length - 1 ? '' : ', ' %>
                 <% }) %>
             </span>
+			<span class="post-count">|  <i class="fas fa-edit"></i>共{{ wordcount(post.content) }}字</span>
             <% } %>
             <% if(theme.leancloud.appid && theme.leancloud.appkey) { %>
             <span class="label label-gal">
