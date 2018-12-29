@@ -1,5 +1,5 @@
 # use_logo如果為true, 需要在logo_image設置路徑
-use_logo: false
+use_logo: true
 logo_image:  # 使用路徑, 填寫檔案名即可(比如, logo_image: logo.png 指向 source/imgs/logo.png)
 navbar_text: # 如果沒有Logo, 則設置為false, 並且設置navbar_text(否則預設為站點標題, 最好進行設置)
 
