@@ -24,6 +24,7 @@
                 <% }) %>
             </span>
             <% } %>
+			<span class="post-count"><%= wordcount(post.content) %></span>
             <% if(theme.leancloud.appid && theme.leancloud.appkey) { %>
             <span class="label label-gal">
                 <i class="fa fa-eye"></i>
