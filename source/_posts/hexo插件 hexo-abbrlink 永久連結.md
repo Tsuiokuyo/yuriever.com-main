@@ -1,6 +1,6 @@
 ---
 title: hexo插件 hexo-abbrlink永久連結
-tags:[hexo,插件]
+tags: [hexo,插件]
 categories: hexo
 preview_text: 簡單的說就是網址美化
 abbrlink: ca1a
