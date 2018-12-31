@@ -1,8 +1,7 @@
 ---
-title: hexo 內嵌影片及影片自適應網頁
+title: hexo內嵌影片及影片自適應網頁
 tags: [hexo,css,影片]
 categories: hexo
-abbrlink: 54d5
 date: 2019-12-31 12:00:00
 preview:
 preview_text:或許還有更輕鬆的方法?
