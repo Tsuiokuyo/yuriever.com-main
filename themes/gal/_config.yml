@@ -41,7 +41,7 @@ menu:
   - title: 標籤
     icon: tags
     url: tags
-    dropdown: 3
+    dropdown: 20
   # about, 這個實際上是自訂page, 後面的自訂page參照about樣式
   - title: 關於我
     icon: user
