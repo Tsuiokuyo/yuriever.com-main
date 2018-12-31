@@ -2,8 +2,7 @@
 title: hexo內嵌影片及影片自適應網頁
 tags: [hexo,css,影片]
 categories: hexo
-date: 2019-12-31 12:00:00
-preview:
+date: 2018-12-31 12:00:00
 preview_text:或許還有更輕鬆的方法?
 ---
 
