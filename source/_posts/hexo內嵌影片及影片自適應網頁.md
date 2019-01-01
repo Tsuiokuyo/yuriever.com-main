@@ -1,6 +1,6 @@
 ---
 title: hexo內嵌影片及影片自適應網頁
-tags:
+tags: [hexo,css,影片]
   - hexo
   - css
   - 影片
