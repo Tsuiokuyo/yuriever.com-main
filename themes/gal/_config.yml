@@ -33,7 +33,7 @@ menu:
   - title: 分類
     icon: list
     url: categories
-    dropdown: 3 
+    dropdown: 10 
     #dropdown為下拉菜單出現的項目最大數目(只限於tags和categorys)
     # 如果不想顯示下拉菜單, 則不要填寫, 即dropdown:
     # 具體效果可以看https://myau.moe
