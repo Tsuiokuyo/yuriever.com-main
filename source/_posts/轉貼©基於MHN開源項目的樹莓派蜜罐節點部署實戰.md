@@ -1,11 +1,14 @@
 ---
 title: 轉貼©基於MHN開源項目的樹莓派蜜罐節點部署實戰
-tags: [轉貼,樹莓派,網路安全]
+tags:
+  - 轉貼
+  - 樹莓派
+  - 網路安全
 categories: 轉貼
 preview_text: 轉貼文
+abbrlink: fa6e
 date: 2019-01-09 10:00:00
-preview: 
-
+preview:
 ---
 
 

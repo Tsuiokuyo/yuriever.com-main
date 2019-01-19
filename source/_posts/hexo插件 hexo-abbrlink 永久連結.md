@@ -46,8 +46,6 @@ hex表示十六進位
 
 使用git bash安裝 hexo-abbrlink
 
-使用git bash安裝 hexo-abbrlink
-
 `npm install hexo-abbrlink --save`
 
 

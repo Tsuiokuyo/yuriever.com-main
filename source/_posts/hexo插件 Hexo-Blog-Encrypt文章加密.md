@@ -1,13 +1,13 @@
 ---
 title: hexo插件 Hexo-blog-encrypt文章加密
-tags: [hexo,插件]
+tags:
+  - hexo
+  - 插件
 categories: hexo
 preview_text: 文章加密功能
+abbrlink: '153'
 date: 2019-01-19 10:00:00
-preview: 
-password: hexo
-abstract: 00000000
-message: 111111111
+preview:
 ---
 
 
@@ -48,6 +48,10 @@ message: Welcome to my blog, enter password to read.
 ---
 ```
 
-password: 是加密的密碼
-abstract: 是該部落格的摘要，會顯示在部落格的列表頁
-message: 這個是部落格查看時，密碼輸入框上面的描述性文字
+password: 加密的密碼
+abstract: 是該部落格的摘要，會顯示在部落格的列表頁，與description相同，可省略
+message: 密碼輸入框上面的描述文字
+
+
+
+至於其他的功能，由於我不需要就不寫了。
