@@ -35,7 +35,7 @@ encrypt:
     enable: true
 ```
 
-之後就直接在文章上增加對應的字段即可
+之後就直接在文章Front-matter上增加對應的字段即可
 
 ```
 ---
