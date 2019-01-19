@@ -2,6 +2,12 @@
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
 
+# Security
+##
+encrypt:
+    enable: true
+    
+
 # Site
 title: 於是我又重看一次
 subtitle: 僅僅是撰寫一些個人動畫回憶與心得

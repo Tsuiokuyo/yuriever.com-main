@@ -13,6 +13,8 @@ date: 2018-12-29 12:00:00
 
 
 
+## [hexo-abbrlink github](https://github.com/rozbo/hexo-abbrlink)
+
 當然，也可以使用另一個插件[hexo-uuid](https://github.com/chekun/hexo-uuid) ，不過我是覺得變成網址沒有 [hexo-abbrlink](https://github.com/rozbo/hexo-abbrlink)好看。
 
 **hexo-uuid**
