@@ -1,9 +1,6 @@
 ---
 title: hexo內嵌影片及影片自適應網頁
 tags: [hexo,css,影片]
-  - hexo
-  - css
-  - 影片
 categories: hexo
 preview_text: 或許還有更輕鬆的方法?
 abbrlink: 5a26
