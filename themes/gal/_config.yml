@@ -79,8 +79,8 @@ friend_links:
 
 # 個人連結配置, 要先開啟上面的links
 links:
-  - name: 曾經的部落格...
-    link: https://dragonmuc.github.io/
+  - name: 
+    link: 
   - name: Gitlab
     link: https://gitlab.com/
   - name: Netlify
