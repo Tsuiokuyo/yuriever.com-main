@@ -2,7 +2,7 @@
 title: 轉貼©讓Bittorrent走Tor代理時的風險問題及解決辦法
 tags:
   - 轉貼
-  - 網路安全
+  - 電腦安全
 categories: 轉貼
 preview_text: 轉貼文
 abbrlink: 87f4
