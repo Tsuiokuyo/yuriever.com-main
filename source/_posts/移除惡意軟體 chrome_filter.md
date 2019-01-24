@@ -17,17 +17,19 @@ preview:
 
 首先
 
-​	第一個使用windows defender完整掃描，甚麼都沒發現。
+​	chrome恢復為預設值，使用chomre內建的尋找並移除有害的軟體，跑一跑就當掉了......。
 
-​	第二個使用Malwarebytes自訂掃描包含rookit，甚麼都沒發現。
+​	第一個軟體使用windows defender完整掃描，甚麼都沒發現。
 
-​	第三個使用ESET Online Scanner掃描，甚麼都沒發現。
+​	第二個軟體使用Malwarebytes自訂掃描包含rookit，甚麼都沒發現。
 
-​	第四個使用malwarebytes adwcleaner掃，雖然有出現一些機碼，但chrome_filter還是沒成功砍掉。
+​	第三個軟體使用ESET Online Scanner掃描，甚麼都沒發現。
 
-​	第五個使用superantispyware掃描，這倒是刪除了我一堆cookies。
+​	第四個軟體使用malwarebytes adwcleaner掃，雖然有出現一些機碼，但chrome_filter還是沒成功砍掉。
 
-​	再來使用微軟的Malicious Software Removal Tool掃描，又是甚麼都沒發現......。
+​	第五個軟體使用superantispyware掃描，這倒是刪除了我一堆cookies。
+
+​	再來使用微軟的Malicious Software Removal Tool掃描，又是甚麼都沒發現。
 
 ​	最後爬文看到別人用roguekiller砍掉hao123後就抓來試試看，沒想到還真的幫我把chrome_filter給砍了。
 
