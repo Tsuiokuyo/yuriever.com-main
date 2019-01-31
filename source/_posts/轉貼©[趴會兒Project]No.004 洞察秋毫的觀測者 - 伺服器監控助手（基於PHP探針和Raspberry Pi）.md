@@ -1,10 +1,10 @@
 ---
-title: '轉貼©[趴會兒Project]No.004 洞察秋毫的觀測者 - 伺服器監控助手（基於PHP探針和Raspberry Pi）'
+title: '網站連結©[趴會兒Project]No.004 洞察秋毫的觀測者 - 伺服器監控助手（基於PHP探針和Raspberry Pi）'
 tags:
-  - 轉貼
+  - 網站連結
   - 樹莓派
-categories: 轉貼
-preview_text: 轉貼文(無授權聲明，故僅提供原文網址)
+categories: 網站連結
+preview_text: 無授權聲明，故僅提供原文網址
 abbrlink: '4693'
 date: 2019-01-20 10:00:00
 preview:
