@@ -1,12 +1,12 @@
 ---
 title: (建構中)Google試算表，懶人定存投資配息配權計算
-tags: [其他]
+tags:
+  - 其他
 categories: 其他
 preview_text: 自己要求太高，結果弄得好痛苦...
+abbrlink: '2888'
 date: 2019-01-31 10:00:00
-preview: 
-
-
+preview:
 ---
 
 
