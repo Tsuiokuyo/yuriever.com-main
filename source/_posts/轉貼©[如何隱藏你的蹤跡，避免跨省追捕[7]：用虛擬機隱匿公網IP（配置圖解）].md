@@ -379,3 +379,7 @@ DNS
 **版權聲明**
 本部落格所有的原創文章，作者皆保留版權。轉載必須包含本聲明，保持本文完整，並以超連結形式註明作者[編程隨想](mailto:program.think@gmail.com)和本文原始地址：
 <https://program-think.blogspot.com/2013/01/howto-cover-your-tracks-7.html>
+
+
+
+此文章轉載自：[编程随想的博客](https://program-think.blogspot.com/2013/01/howto-cover-your-tracks-7.html)

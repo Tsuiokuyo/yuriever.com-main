@@ -238,3 +238,7 @@ cron命令詳解：
 
 *轉載請註明出處 ：sosly 菜鳥筆記*
 <https://sosly.me/index.php/2017/07/11/mhndionaea/>
+
+
+
+此文章轉載自：[sosly 菜鸟笔记](https://sosly.me/index.php/2017/07/11/mhndionaea/)

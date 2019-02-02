@@ -10,11 +10,11 @@ date: 2019-01-13 10:00:00
 preview:
 ---
 
-找尋原因：跟我前面的文章有點相關的......，會用BT當然是為了抓東西，而這篇就提到單用Tor抓BT的風險，所以我才會想搞多重代理，而使用Whonix作業系統也是不錯，我記得當時也有安裝來玩，只不過當時的教學文有出現問題，結果蒐尋也找不到相關的原因，弄了兩三天才用安裝好，但是最後果然普通使用者都是習慣使用windows介面了。
+​	找尋原因跟我前面的文章有點相關的......，會用BT當然是為了抓東西，而這篇就提到單用Tor抓BT的風險，所以我才會想搞多重代理，而使用Whonix作業系統也是不錯，我記得當時也有安裝來玩，只不過當時的教學文有出現問題，結果蒐尋也找不到相關的原因，弄了兩三天才用安裝好，但是最後果然普通使用者都是習慣使用windows介面了。
 
-下文的超連結喙直接連到原文提供的地方
+下文的超連結會直接連到原文提供的地方
 
-下面文章本人已簡單繁化。
+下面文章本人已簡單繁化
 
 # 讓Bittorrent走Tor代理時的風險問題及解決辦法
 
@@ -174,5 +174,4 @@ Tor官方在這篇[博文](https://blog.torproject.org/blog/bittorrent-over-tor-
 
 
 
-本文轉貼自：[二翔子的博客](https://2xiangzi.blogspot.com/2015/09/bittorrent-over-tor-problem-and-solution.html)
-
+此文章轉載自：[二翔子的博客](https://2xiangzi.blogspot.com/2015/09/bittorrent-over-tor-problem-and-solution.html)

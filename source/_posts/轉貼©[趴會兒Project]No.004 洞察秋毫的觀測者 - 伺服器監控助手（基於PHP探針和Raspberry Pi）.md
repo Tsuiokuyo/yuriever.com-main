@@ -492,3 +492,7 @@ Python
 樹莓派真的好玩，我突然發現我對Linux的理解更深了，一些日常操作也不在話下了。
 
 樹莓派真好玩兒，您得來一個。
+
+
+
+此文章轉載自：[Steins;Lab](https://steinslab.io/archives/1164)
