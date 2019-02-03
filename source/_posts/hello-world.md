@@ -39,30 +39,3 @@ $ hexo deploy
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
 
-1
-
-{% asset_img 圖片27.jpg images %}
-
-
-
-1.1
-
-{% asset_img 圖片27.jpg images/新增資料夾 %}
-
-
-
-2
-
-![圖片27](圖片27.jpg)
-
-3.
-
-![圖片27.jpg](images/圖片27.jpg)
-
-4.
-
-![圖片27.jpg](/images/圖片27.jpg)
-
-5.
-
-![圖片27.jpg](images\圖片27.jpg)
