@@ -28,7 +28,7 @@ https://github.com/threatstream/mhn
 
 Posted on [2017年7月11日](https://sosly.me/index.php/2017/07/11/mhndionaea/)
 
-![tt](轉貼©基於MHN開源項目的樹莓派蜜罐節點部署實戰/tt.jpg)
+{% asset_img 0.jpg %}
 
 *本文曾於2015年11月發表在Freebuf，修正後更新到自己的新部落格。需要說明的是，本文使用的MHN開源項目的中心伺服器在安裝配置時需要連接一些國外的服務，如果安裝時出現類似提示通常是服務連接不上。因此建議購買境外VPS部署，或在配置伺服器時能夠通過代理訪問到相關的服務。如果是單純地想玩一下蜜罐，可以在虛擬機或者樹莓派上部署擁有獨立Web界面的Dionaea蜜罐進行嘗試。*
 
@@ -49,10 +49,10 @@ MHN簡介：
 \3. MHN中心伺服器匯總數據，展示；使得蜜罐終端可以靈活部署在內外網，只要網路能連接到MHN中心伺服器即可
 
 搭建好後，訪問3000埠，就會看到預設的世界地圖準備就緒（沒有數據來源的情況下空白狀態）：
-![1-1](https://sosly.me/blogpics/mhnmiguanpic/1-1.jpg)
+{% asset_img 1.jpg %}
 
 首先看MHN中心伺服器支持的蜜罐終端的類型（還是很豐富）:
-![1-2](https://sosly.me/blogpics/mhnmiguanpic/1-2.png)
+{% asset_img 2.png %}
 
 這裡我們選擇比較簡單的“Raspberry Pi-Dionaea”，就是樹莓派上的Dionaea蜜罐，Dionaea是個低交互蜜罐。
 Dionaea簡介：
@@ -82,21 +82,21 @@ Dionaea簡介：
 
 在Windows7下進行工具的下載和樹莓派SD卡的處理（這次用的是一個16GB的SD卡，用讀卡器連接到電腦上）
 用到的工具（前兩個）
-![2-1](https://sosly.me/blogpics/mhnmiguanpic/2-1.png)
+{% asset_img 3.png %}
 
 工具下載連結：
 [SDFromatter](https://www.sdcard.org/downloads/formatter_4/)
 [NOOBS_lite](http://downloads.raspberrypi.org/NOOBS_lite/images/)
 用“SDFromatter”軟體格式化SD卡，直接用Windows格式化應該也可以，注意一下磁碟格式，考慮到後面樹莓派裝的linux系統。
 把“NOOBS_lite”下載，解壓後如下圖，整個拷貝到SD卡中。
-![2-2](https://sosly.me/blogpics/mhnmiguanpic/2-2.png)
+{% asset_img 4.png %}
 
 **樹莓派聯網安裝所需操作系統**
 
 然後準備工作就做好了，可以把SD卡插到樹莓派中，給樹莓派連接上網線（保證樹莓派能夠穩定上網就行），啟動，就進入安裝界面，按照教學一步步操作就好了。
 注意：這個安裝其實是安裝的操作系統，邊下載邊安裝，很慢，我安裝的時候，整整等了12個小時才安好...（安裝的是Debian GNU/Linux system）
-![2-3](https://sosly.me/blogpics/mhnmiguanpic/2-3.png)
-![2-4](https://sosly.me/blogpics/mhnmiguanpic/2-4.png)
+{% asset_img 5.png %}
+{% asset_img 6.png %}
 
 然後就可以重啟進入樹莓派系統了。
 
@@ -138,13 +138,13 @@ putty的ssh可以，普通用戶接入，然後su，改成root用戶。
 **在樹莓派上安裝和部署Dionaea蜜罐，和中心伺服器進行連接**
 前提是樹莓派已經接入了區域網路，為了方便，可以在電腦上SSH連接樹莓派，root權限下通過執行命令安裝Dionaea。
 首先Web登錄遠程的MHN中心伺服器：
-![2-5](https://sosly.me/blogpics/mhnmiguanpic/2-5.png)
+{% asset_img 7.png %}
 
 複製這條命令執行即可，
 `wget "http://MHN伺服器的ip/api/script/?text=true&script_id=10" -O deploy.sh && sudo bash deploy.sh http://MHN伺服器的ip d5xofICf`
 
 等幾分鐘，蜜罐就部署好了，中心伺服器就能看到這個節點了。
-![2-6](https://sosly.me/blogpics/mhnmiguanpic/2-6.png)
+{% asset_img 8.png %}
 
 以後只要把這個樹莓派通電，連上網就可以自動工作了。服務會開機自啟動的。
 
@@ -152,7 +152,7 @@ putty的ssh可以，普通用戶接入，然後su，改成root用戶。
 **部署在區域網路的蜜罐如何檢測外網攻擊?**
 部署在區域網路內的樹莓派蜜罐，只能檢測到內網的掃描行為，你會發現那個攻擊地圖什麼也沒有，而且通常情況下，一般的單位被攻擊到內網的情況比較少。想部署在外網呢？很多人又沒這個條件，成本也高。
 所以，如果你的外網是ADSL或者電信寬頻，有獨立外網IP的話，可以透過在出口路由器設置埠映射的方式。
-![2-7](https://sosly.me/blogpics/mhnmiguanpic/2-7.png)
+{% asset_img 9.png %}
 
 埠映射出去，會給內網帶來一定的風險。但是Dionaea 被設計成低互動式蜜罐，它為攻擊者展示的所有攻擊弱點和攻擊對象都不是真正的產品系統，而是對各種系統及其提供的服務的模擬，網路配置適當的話，風險還是比較小的。
 這樣就能夠檢測外網攻擊了。
@@ -167,11 +167,11 @@ putty的ssh可以，普通用戶接入，然後su，改成root用戶。
 注意：為了避免奇葩的錯誤，請使用英文路徑，且路徑不要有空格。
 先自己先建立一個後綴為img的文件，例如miguan.img，要不然之後操作時會提示文件不存在。
 然後以管理員身份運行這個程式，必要時關閉防毒軟體。
-![2-8](https://sosly.me/blogpics/mhnmiguanpic/2-8.png)
+{% asset_img 10.png %}
 
 選中這個空的文件，然後用read命令，製作鏡像。
-![2-9](https://sosly.me/blogpics/mhnmiguanpic/2-9.png)
-![2-10](https://sosly.me/blogpics/mhnmiguanpic/2-10.png)
+{% asset_img 11.png %}
+{% asset_img 12.png %}
 
 **樹莓派Dionaea 蜜罐終端的穩定性問題?**
 試運行幾天後，我發現這個樹莓派Dionaea 蜜罐終端運行幾天後就捕捉不到攻擊行為了，重啟後就可以馬上恢復正常。或者是樹莓派蜜罐突然斷網，網路恢復後有時也會出現捕獲不到攻擊了。一個解決思路就是定時重啟。這樣可以持續穩定運行。說起來容易，折騰了一晚上才解決。
@@ -182,7 +182,7 @@ putty的ssh可以，普通用戶接入，然後su，改成root用戶。
 `00 08 * * * root reboot` 這個命令就可以正常執行了 每天8點重啟
 
 nano編輯器也不錯
-![2-11](https://sosly.me/blogpics/mhnmiguanpic/2-11.png)
+{% asset_img 13.png %}
 
 Ctrl + X 退出,然後Y保存
 改動後
@@ -196,17 +196,17 @@ cron命令詳解：
 ## 0x02 實驗效果
 
 部署在區域網路的樹莓派，一副撲克牌大小：
-![3-1](https://sosly.me/blogpics/mhnmiguanpic/3-1.jpg)
+{% asset_img 14.jpg %}
 
 攻擊地圖一夜裡收到的攻擊：
-![3-2](https://sosly.me/blogpics/mhnmiguanpic/3-2.jpg)
-![3-3](https://sosly.me/blogpics/mhnmiguanpic/3-3.jpg)
+{% asset_img 15.jpg %}
+{% asset_img 16.jpg %}
 
 說明：紅圈圈說明剛檢測到的攻擊源，紅點表示之前捕捉到的攻擊源。底下會顯示時間，攻擊源所在地，經緯度。
 看到我一個普通寬頻的ip每天都被那麼多人掃描，還是有種感知的即視感。
 登錄後可看到攻擊細節：IP、時間、掃描的埠、包類型等。
-![3-4](https://sosly.me/blogpics/mhnmiguanpic/3-4.jpg)
-![3-5](https://sosly.me/blogpics/mhnmiguanpic/3-5.jpg)
+{% asset_img 17.jpg %}
+{% asset_img 18.jpg %}
 
 攻擊細節記錄（大都是被掃描記錄）
 低互動式蜜罐的普遍弱點：
@@ -223,7 +223,7 @@ cron命令詳解：
 再次提醒：蜜罐是把雙刃劍，如果不能正確的使用，有可能遭受更多的攻擊，模擬服務的軟體存在問題，也會產生新的漏洞。
 **MHN中心伺服器的訂製開發**
 蜜罐終端傳回的畢竟是基礎數據，可以通過自己開發程式對基礎數據進行處理和分析，提取出關注的訊息，增加報警功能等。也可以把攻擊地圖改了，比如<http://map.norsecorp.com/>
-![4-1](https://sosly.me/blogpics/mhnmiguanpic/4-1.png)
+{% asset_img 19.png %}
 
 ## 0x04 繼續
 
