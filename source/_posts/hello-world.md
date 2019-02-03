@@ -39,3 +39,36 @@ $ hexo deploy
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
 
+1
+
+![神木](E:\Tsuiokuyo\source\_posts\hello-world\神木.jpg)2
+
+![神木](hello-world/神木.jpg)
+
+3.
+
+![神木](神木.jpg)
+
+4.
+
+![神木](/hello-world/神木.jpg)
+
+5.
+
+![神木](hello-world\神木.jpg)
+
+6.
+
+![神木](\hello-world\神木.jpg)
+
+7.
+
+{% asset_img 神木.jpg hello-world %}
+
+8.
+
+{% asset_path 新增資料夾 神木.jpg %}
+
+9.
+
+{% asset_path 神木.jpg 新增資料夾 %}
