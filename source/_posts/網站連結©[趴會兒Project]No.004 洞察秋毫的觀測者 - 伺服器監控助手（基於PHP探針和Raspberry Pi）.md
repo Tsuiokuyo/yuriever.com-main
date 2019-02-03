@@ -28,7 +28,7 @@ preview:
 
 關鍵字：PHP探針、伺服器監控、VPS監控、Python、樹莓派、Raspberry Pi、1602。
 
-![img](https://steinslab.io/wp-content/uploads/2017/02/DSC_0031-1024x576.jpg)
+{% asset_img 1.jpg %}
 
 
 
@@ -38,7 +38,7 @@ preview:
 
 項目編號004，分類為訊息/監控。
 
-![thumb](http://steinslab.xyz/wp-content/uploads/2016/08/thumb-1024x648.jpg)
+{% asset_img 2.jpg %}
 
 ## Contents
 
@@ -131,7 +131,7 @@ php探針對於經常購買VPS折騰的人肯定不陌生，簡單地老說就�
 
 我一個Digitalocean伺服器上掛的示範探針：  <http://sfo01.misaka.cc:888/tz.php>
 
-![img](https://steinslab.io/wp-content/uploads/2017/02/WPKQNNSTUC38A1V47TU-1024x826.png)
+{% asset_img 3.png %}
 
 因此，經常有人買各種廉價小記憶體的VPS，只能掛個探針，卻因此獲得巨大快感，並從bbs上交流。叫做以針會友。
 
@@ -285,7 +285,7 @@ Python
 
 16是指一行顯示16個字元，02表示2行。1602是一種非常常見的、在DIY和工業中廣泛使用的顯示期間。價格低，可以選用各種顏色的背光，字元顏色也是可選的。
 
-![img](https://steinslab.io/wp-content/uploads/2017/03/u29663121621931248118fm23gp0.jpg)
+{% asset_img 4.jpg %}
 
  
 
@@ -318,7 +318,7 @@ Python
 
 
 
-![img](https://steinslab.io/wp-content/uploads/2017/03/20161123172320207.png)
+{% asset_img 5.png %}
 
 該圖是型號3b的引腳定義圖。之前也是圖不對被坑了好久。注意在以下Python代碼中，介面號碼指的是**“GPIO”代號**。
 
@@ -400,7 +400,7 @@ Python
 
 ok，我找到正確的GPIO參照圖後，成功點亮。
 
-![img](https://steinslab.io/wp-content/uploads/2017/03/DSC_0010-1024x576.jpg)
+{% asset_img 6.jpg %}
 
  
 
@@ -452,7 +452,7 @@ Python
 
 運行，成功！
 
-![img](https://steinslab.io/wp-content/uploads/2017/03/DSC_0011-1024x576.jpg)
+{% asset_img 7.jpg %}
 
  
 
@@ -476,7 +476,9 @@ Python
 
 最終效果：
 
-![img](https://steinslab.io/wp-content/uploads/2017/02/DSC_0031-1024x576.jpg)![img](https://steinslab.io/wp-content/uploads/2017/02/DSC_0033-1024x576.jpg)
+{% asset_img 8.jpg %}
+
+{% asset_img 9.jpg %}
 
  
 
