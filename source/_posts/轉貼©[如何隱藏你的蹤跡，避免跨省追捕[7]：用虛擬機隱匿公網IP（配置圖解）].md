@@ -126,11 +126,11 @@ preview:
 
 　　首先到 Windows 控制面板的網路連接看一下，如果看到下圖，就這說明 VMware 已經幫你加入了2個虛擬網卡，這兩個網卡分別位於 NAT 虛擬子網和 Host-Only 虛擬子網。
 
-![不見圖 請翻牆](https://lh3.googleusercontent.com/I0BZO21bRYuinYFgRO87fB-ZY4Bac3L7orMMxn7m9m7y7ZfOvn4AazIltGFDj41JWAbrFZp5ah3TdbrwI_IPTEhWVEyg81iQp3BdKLhAGIv9KcZdy5TuuzlM6KM)
+![1](https://lh3.googleusercontent.com/I0BZO21bRYuinYFgRO87fB-ZY4Bac3L7orMMxn7m9m7y7ZfOvn4AazIltGFDj41JWAbrFZp5ah3TdbrwI_IPTEhWVEyg81iQp3BdKLhAGIv9KcZdy5TuuzlM6KM)
 
 　　然後，你到 VMware 主選單上點”Edit“菜單，然後再點”Virtual Network Editor“菜單，會出現虛擬子網的對話框，通過該對話框可以看到 VMware 創建的所有虛擬子網。你會看到好多個虛擬子網，咱只要關心其中兩個——分別 Type 為 Host-Only 和 Type 為 NAT 的。然後，把這兩個子網的”Subnet Address“分別記下來（千萬別把這兩個記混了），待會要用到。截圖如下
 
-![不見圖 請翻牆](https://lh6.googleusercontent.com/z-D7eOmA1xYjGQcdPZ9cSV7RSl8nGWbkls8-_fUc1fHghH7YqcI1jvZpzO77HnXw5btC9r6wByLjf_dvL96Kzlibe6XJHs6-JhcFQ39WhZBdhcrGCgk_07beKK0)
+![2](https://lh6.googleusercontent.com/z-D7eOmA1xYjGQcdPZ9cSV7RSl8nGWbkls8-_fUc1fHghH7YqcI1jvZpzO77HnXw5btC9r6wByLjf_dvL96Kzlibe6XJHs6-JhcFQ39WhZBdhcrGCgk_07beKK0)
 
 （請注意，上述截圖中列出的都是虛擬子網的網路地址，表示的是整個子網，所以最後一位是 0 ）
 
@@ -156,7 +156,7 @@ preview:
 
 　　其次，要進入“虛擬系統A”，到“控制面板”的“網路連接”裡，找到那塊網卡，右鍵菜單點“屬性”，再點“TCP/IP”的屬性，會出現如下截圖
 
-![不見圖 請翻牆](https://lh3.googleusercontent.com/bS3_NN5upSDaEuUgOTyDC38X1Q8N5Njyorp0CSatovD1CTq5y6lPkn0fOBQXUZqH6dwPAUYeeHj9pVqUVkmf6sIig18AfCRmVldSeMKoW2nVWwNdi7s0WO3EMcA)
+![3](https://lh3.googleusercontent.com/bS3_NN5upSDaEuUgOTyDC38X1Q8N5Njyorp0CSatovD1CTq5y6lPkn0fOBQXUZqH6dwPAUYeeHj9pVqUVkmf6sIig18AfCRmVldSeMKoW2nVWwNdi7s0WO3EMcA)
 
 IP 地址（這步一定要小心，別填錯了）
 
@@ -198,7 +198,7 @@ DNS
 
 　　俺以 IE 瀏覽器為例，截圖如下
 
-![不見圖 請翻牆](https://lh3.googleusercontent.com/ywn99XmncvnxcYN2hOcLND3IBzGMlA1sxqm9ovOmiv7tg3yqtsc3c5S1VwkddNOuCivOxCo0Agc04p4UBB6TZybIoU2tXdSOi1S_Yn7XrmCNTAfdcBjlACOHMDI)
+![4](https://lh3.googleusercontent.com/ywn99XmncvnxcYN2hOcLND3IBzGMlA1sxqm9ovOmiv7tg3yqtsc3c5S1VwkddNOuCivOxCo0Agc04p4UBB6TZybIoU2tXdSOi1S_Yn7XrmCNTAfdcBjlACOHMDI)
 
 
 
@@ -216,7 +216,7 @@ DNS
 
 　　其次，要進入“虛擬系統A”，到“控制面板”的“網路連接”裡，找到那塊網卡，點屬性，會出現如下截圖
 
-![不見圖 請翻牆](https://lh3.googleusercontent.com/bS3_NN5upSDaEuUgOTyDC38X1Q8N5Njyorp0CSatovD1CTq5y6lPkn0fOBQXUZqH6dwPAUYeeHj9pVqUVkmf6sIig18AfCRmVldSeMKoW2nVWwNdi7s0WO3EMcA)
+![5](https://lh3.googleusercontent.com/bS3_NN5upSDaEuUgOTyDC38X1Q8N5Njyorp0CSatovD1CTq5y6lPkn0fOBQXUZqH6dwPAUYeeHj9pVqUVkmf6sIig18AfCRmVldSeMKoW2nVWwNdi7s0WO3EMcA)
 
 IP 地址（這步一定要小心，別填錯了）
 
@@ -252,7 +252,7 @@ DNS
 
 進入“虛擬系統B”，到“控制面板”的“網路連接”裡，找到那塊網卡，右鍵菜單點“屬性”，再點“TCP/IP”的屬性，會出現如下截圖
 
-![不見圖 請翻牆](https://lh3.googleusercontent.com/hc60D2QGAJWQkllix3-vIwuIb7pbhsSS1rMLGhTtTAJbyatY-Kh8DzFx_dE2-MxIuraN-6b-SxtEO_JMB69wcrNR7GmV--cibnHFeyZ9v2nFBT1sMvDb3Or85JI)
+![6](https://lh3.googleusercontent.com/hc60D2QGAJWQkllix3-vIwuIb7pbhsSS1rMLGhTtTAJbyatY-Kh8DzFx_dE2-MxIuraN-6b-SxtEO_JMB69wcrNR7GmV--cibnHFeyZ9v2nFBT1sMvDb3Or85JI)
 
 IP 地址（這步一定要小心，別填錯了）
 
@@ -290,7 +290,7 @@ DNS
 
 網卡，右鍵菜單點“屬性”，再點“TCP/IP”的屬性，會出現如下截圖
 
-![不見圖 請翻牆](https://lh3.googleusercontent.com/bS3_NN5upSDaEuUgOTyDC38X1Q8N5Njyorp0CSatovD1CTq5y6lPkn0fOBQXUZqH6dwPAUYeeHj9pVqUVkmf6sIig18AfCRmVldSeMKoW2nVWwNdi7s0WO3EMcA)
+![7](https://lh3.googleusercontent.com/bS3_NN5upSDaEuUgOTyDC38X1Q8N5Njyorp0CSatovD1CTq5y6lPkn0fOBQXUZqH6dwPAUYeeHj9pVqUVkmf6sIig18AfCRmVldSeMKoW2nVWwNdi7s0WO3EMcA)
 
 IP 地址
 
@@ -332,7 +332,7 @@ DNS
 
 　　因為“虛擬系統B”（閘道器）有兩塊網卡，很多人填錯了，栽倒在這一步。俺以 IE 瀏覽器為例，截圖如下
 
-![不見圖 請翻牆](https://lh3.googleusercontent.com/E4_zkEEFoQwmHuHdp9JOps50_4GNu2yfL9mxUm8uQUE3nsbzVd6p3xNSCdGlQrgLhP1VMjVeg8hsPLQ8x8wEt-oIyJDBpA5KVZM3-6tVPuFsn6dyCTENbWAq0Y8)
+![8](https://lh3.googleusercontent.com/E4_zkEEFoQwmHuHdp9JOps50_4GNu2yfL9mxUm8uQUE3nsbzVd6p3xNSCdGlQrgLhP1VMjVeg8hsPLQ8x8wEt-oIyJDBpA5KVZM3-6tVPuFsn6dyCTENbWAq0Y8)
 
 ### ◇注意事項
 
