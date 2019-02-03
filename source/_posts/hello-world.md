@@ -41,7 +41,13 @@ More info: [Deployment](https://hexo.io/docs/deployment.html)
 
 1
 
-{% asset_img 圖片27.jpg hello-world %}
+{% asset_img 圖片27.jpg images %}
+
+
+
+1.1
+
+{% asset_img 圖片27.jpg images/新增資料夾 %}
 
 
 
@@ -51,12 +57,12 @@ More info: [Deployment](https://hexo.io/docs/deployment.html)
 
 3.
 
-![圖片27.jpg](hello-world/圖片27.jpg)
+![圖片27.jpg](images/圖片27.jpg)
 
 4.
 
-![圖片27.jpg](/hello-world/圖片27.jpg)
+![圖片27.jpg](/images/圖片27.jpg)
 
 5.
 
-![圖片27.jpg](hello-world\圖片27.jpg)
+![圖片27.jpg](images\圖片27.jpg)
