@@ -38,29 +38,3 @@ $ hexo deploy
 ```
 
 More info: [Deployment](https://hexo.io/docs/deployment.html)
-
-
-
-1
-
-![圖片 27](E:\Tsuiokuyo\source\_posts\images\圖片 27.jpg)
-
-
-
-2
-
-![圖片 27](圖片 27.jpg)
-
-
-
-3
-
-![圖片 27](images\圖片 27.jpg)
-
-4
-
-![圖片 27](images/圖片 27.jpg)
-
-5
-
-![圖片 27](/images/圖片 27.jpg)
