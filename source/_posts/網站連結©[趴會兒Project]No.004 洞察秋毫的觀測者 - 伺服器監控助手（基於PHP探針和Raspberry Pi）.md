@@ -5,11 +5,11 @@ tags:
   - 樹莓派
 categories: 網站連結
 preview_text: 無授權聲明，故僅提供原文網址
+password: nocopyright
+message: 'https://steinslab.io/archives/1164'
+abbrlink: f333
 date: 2019-01-20 10:00:00
 preview:
-password: nocopyright
-message: https://steinslab.io/archives/1164
-
 ---
 
 找尋原因：樹莓派扔著也是扔著，想拿來做PT機，搞這個還能順便看一下有沒有流量......。

@@ -28,7 +28,7 @@ https://github.com/threatstream/mhn
 
 Posted on [2017年7月11日](https://sosly.me/index.php/2017/07/11/mhndionaea/)
 
-![題圖](https://sosly.me/blogpics/mhnmiguanpic/tt.jpg)
+![tt](轉貼©基於MHN開源項目的樹莓派蜜罐節點部署實戰/tt.jpg)
 
 *本文曾於2015年11月發表在Freebuf，修正後更新到自己的新部落格。需要說明的是，本文使用的MHN開源項目的中心伺服器在安裝配置時需要連接一些國外的服務，如果安裝時出現類似提示通常是服務連接不上。因此建議購買境外VPS部署，或在配置伺服器時能夠通過代理訪問到相關的服務。如果是單純地想玩一下蜜罐，可以在虛擬機或者樹莓派上部署擁有獨立Web界面的Dionaea蜜罐進行嘗試。*
 
