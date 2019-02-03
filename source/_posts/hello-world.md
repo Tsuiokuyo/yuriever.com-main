@@ -43,7 +43,7 @@ More info: [Deployment](https://hexo.io/docs/deployment.html)
 
 1
 
-![圖片 27](E:\Tsuiokuyo\source\_posts\hello-world\圖片 27.jpg)
+![圖片 27](E:\Tsuiokuyo\source\_posts\images\圖片 27.jpg)
 
 
 
@@ -55,4 +55,12 @@ More info: [Deployment](https://hexo.io/docs/deployment.html)
 
 3
 
-![圖片 27](hello-world\圖片 27.jpg)
+![圖片 27](images\圖片 27.jpg)
+
+4
+
+![圖片 27](images/圖片 27.jpg)
+
+5
+
+![圖片 27](/images/圖片 27.jpg)
