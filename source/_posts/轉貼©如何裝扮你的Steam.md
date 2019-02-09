@@ -71,12 +71,11 @@ http://steamcommunity.com/profiles/76561198452885025
 
 
 我的淘寶店鋪（已停止營業） 
-
 Steam Artwork 的社群藝術作品
-
-作者： 艾莎
-
-我的淘寶店鋪： 艾莎的雜貨鋪 我的寶貝名稱： Steam展櫃美化 首頁美化 個人背景切割 靜態長展櫃設計製作上傳 進入店鋪的二維碼： https://steamuserimages-a.akamaihd.net/ugc/853850382737577705/13FC7DBC5ECCC379F2A68CE185D92AE10924F5EE/ 更多詳情見寶貝詳情。
+作者：艾莎
+我的淘寶店鋪：艾莎的雜貨鋪
+我的寶貝名稱：Steam展櫃美化 首頁美化 個人背景切割 靜態長展櫃設計製作上傳 
+進入店鋪的二維碼： https://steamuserimages-a.akamaihd.net/ugc/853850382737577705/13FC7DBC5ECCC379F2A68CE185D92AE10924F5EE/ 
 
 
 
