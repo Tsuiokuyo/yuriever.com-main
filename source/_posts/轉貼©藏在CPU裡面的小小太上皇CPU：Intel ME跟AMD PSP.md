@@ -3,6 +3,7 @@ title: 轉貼©藏在CPU裡面的小小太上皇CPU：Intel ME跟AMD PSP
 tags: [轉貼,電腦安全]
 categories: 轉貼
 preview_text: 轉貼文
+abbrlink: 21ad
 date: 2019-02-10 10:00:00
 preview: 
 
