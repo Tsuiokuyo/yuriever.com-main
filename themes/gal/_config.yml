@@ -46,6 +46,10 @@ menu:
   - title: 關於我
     icon: user
     url: about
+    
+  - title:  
+    icon: 
+    url: test
 
 # 每篇文章的preview默認圖片
 # 必填項(除非你每篇文章的front-matter都設置了preview屬性)
