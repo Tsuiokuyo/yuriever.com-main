@@ -79,12 +79,12 @@ friend_links:
 
 # 個人連結配置, 要先開啟上面的links
 links:
-  - name: 
-    link: 
-  - name: Gitlab
-    link: https://gitlab.com/
-  - name: Netlify
-    link: https://www.netlify.com
+  - name: 部屬於Github的本網站
+    link: https://tsuiokuyo.github.io/
+  - name: 部屬於netlify的本網站
+    link: https://tsuiokuyo.netlify.com/
+  - name: 曾經的網站(應該會跳回本網站才對)
+    link: https://dragonmuc.github.io
 
 
 # 是否使用公告
