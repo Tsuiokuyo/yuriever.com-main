@@ -169,7 +169,7 @@ Tor官方在這篇[博文](https://blog.torproject.org/blog/bittorrent-over-tor-
 
 # **版權聲明**
 
-[![知識共享許可協議](https://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png)](https://creativecommons.org/licenses/by-nc-sa/3.0/)
+{% asset_img 0.png %}
 本作品採用[知識共享署名-非商業性使用-相同方式共享 3.0 [未本地化版本許可協議]()](https://creativecommons.org/licenses/by-nc-sa/3.0/)進行許可。
 
 

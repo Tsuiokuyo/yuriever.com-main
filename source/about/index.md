@@ -18,3 +18,8 @@ date: 2019-01-19 00:49:39
 當然，若我的文章有侵權問題請聯繫我
 
 Gmail:tsuiokuyo@gmail.com
+
+
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e0df1af6-5693-4e95-b571-646710bffe5b/deploy-status)](https://app.netlify.com/sites/tsuiokuyo/deploys)
+
