@@ -102,7 +102,7 @@ hr {
 }
 .content .wrapper {
 	position: relative;
-	background: url("../images/log/release-bg.png") no-repeat right top;
+	background: url("../images/log/release-bg.png");
 	width: 1500px;
 	margin: 0 auto;
 
