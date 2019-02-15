@@ -96,13 +96,13 @@ hr {
 }
 .content {
 	padding: 50px 0;
-	min-height: 720px;
+	min-height: 1500px;
 	background: #3a3c48 url("../images/log/content-bg.png");
 	width: 100%;
 }
 .content .wrapper {
 	position: relative;
-	background: url("../images/log/release-bg.png");
+	background: url("../images/log/release-bg.png") no-repeat right top;
 	width: 1500px;
 	margin: 0 auto;
 
