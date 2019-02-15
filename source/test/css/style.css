@@ -8,7 +8,7 @@ html,body {
 }
 div,form,input,textarea,p,ul,li,dl,dt,dd,h1,table,h2 {
 	padding:0;
-	margin:0;
+	margin:0 auto;
 }
 li {
 	list-style-type:none;
