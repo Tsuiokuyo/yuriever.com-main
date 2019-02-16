@@ -1,6 +1,6 @@
 body {
 	margin:0;
-	font:12px Noto Sans CJK
+	font:14px Noto Sans CJK
 }
 html,body {
 	-webkit-text-size-adjust:none;
@@ -240,6 +240,9 @@ hr {
 	margin-left: 105px;
 	line-height: 24px;
 }
+.more {
+	color:#D6D5B7;
+}
 .content .main .year .list ul li .intro {
 	font-size: 18px;
 	line-height: 32px;
@@ -260,12 +263,10 @@ hr {
 	left:40px
 }
 
-hr.llkk {
-    border: 0;
-    height: 0; /* Firefox... */
-    box-shadow: 0 0 10px 1px black;
-}
-hr.style-five:after {  /* Not really supposed to work, but does */
-    content: "\00a0";  /* Prevent margin collapse */
-}
+hr.style-eight {
+    padding: 0;
+    border: none;
+    border-top: medium double #fce5ee;
+    color: #333;
+    text-align: center;
 }
