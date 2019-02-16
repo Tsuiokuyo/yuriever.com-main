@@ -49,7 +49,7 @@ menu:
     
   - title:  子網站建構中
     icon: bug
-    url: test
+    url: B
 
 # 每篇文章的preview默認圖片
 # 必填項(除非你每篇文章的front-matter都設置了preview屬性)
