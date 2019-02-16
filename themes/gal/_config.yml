@@ -47,8 +47,8 @@ menu:
     icon: user
     url: about
     
-  - title:  
-    icon: 
+  - title:  子網站建構中
+    icon: bug
     url: test
 
 # 每篇文章的preview默認圖片
