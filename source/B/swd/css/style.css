@@ -270,3 +270,10 @@ hr.style-eight {
     color: #333;
     text-align: center;
 }
+
+.Reference {
+	box-shadow: 3px 3px 12px black;
+	width:auto;
+	line-height:auto;
+	text-align:center;
+}
