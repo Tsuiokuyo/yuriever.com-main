@@ -276,4 +276,16 @@ hr.style-eight {
 	width:auto;
 	line-height:auto;
 	text-align:center;
+	color: #696969;
+}
+
+.swd {
+	float: left;
+	display: block;
+	width: 1000px;
+	margin-left: 105px;
+	line-height: 24px;
+	font-size: 18px;
+	line-height: 32px;
+	color: #e8cfaf;
 }
