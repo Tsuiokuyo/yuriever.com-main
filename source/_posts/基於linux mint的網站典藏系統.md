@@ -3,6 +3,7 @@ title: 基於linux mint的網站典藏系統
 tags: [其他]
 categories: 其他
 preview_text: 成就感0，我還是去用別人的算了......
+abbrlink: dac5
 date: 2019-03-02 10:00:00
 preview: 
 ---
