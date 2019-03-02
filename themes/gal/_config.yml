@@ -1,8 +1,8 @@
 # use_logo如果為true, 需要在logo_image設置路徑
 use_logo: false
-logo_image: 
+logo_image:
 # 使用路徑, 填寫檔案名即可(比如, logo_image: logo.png 指向 source/imgs/logo.png)
-navbar_text:  
+navbar_text:
 # 如果沒有Logo, 則設置為false, 並且設置navbar_text(否則預設為站點標題, 最好進行設置)
 
 # 必填, 設定小型設備展示背景圖, 指向source/imgs, 比如xs_bg_image: bg.png -> source/imgs/bg.png
@@ -33,7 +33,7 @@ menu:
   - title: 分類
     icon: list
     url: categories
-    dropdown: 10 
+    dropdown: 10
     #dropdown為下拉菜單出現的項目最大數目(只限於tags和categorys)
     # 如果不想顯示下拉菜單, 則不要填寫, 即dropdown:
     # 具體效果可以看https://myau.moe
@@ -46,7 +46,6 @@ menu:
   - title: 關於我
     icon: user
     url: about
-    
   - title:  子網站建構中
     icon: bug
     url: B
@@ -74,12 +73,12 @@ sidebar:
 
 # 友情連結配置, 要先開啟上面的friend_links
 friend_links:
-  - name: 
-    link: 
-  - name: 
-    link: 
-  - name: 
-    link: 
+  - name:
+    link:
+  - name:
+    link:
+  - name:
+    link:
 
 # 個人連結配置, 要先開啟上面的links
 links:
