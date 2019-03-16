@@ -1,0 +1,107 @@
+.wrap{
+  width:50%;
+  margin:0 auto;
+
+}
+header{
+  position: fixed;
+  z-index:99;
+  top:0px;
+  background:orange;
+  width: 500px;
+  height:30px;
+  line-height:30px;
+  width:49.3%;
+  border-style:solid;
+}
+body {
+  background-color: #E5F1F7;
+}
+
+.bg{
+  width: 50%;
+  float:left;
+  margin-left: 20px;
+}
+/* 顏色按鈕 */
+.blue,.green,.black,.white,.Navajo{
+  width: 40px;
+  height: 20px;
+  border:1px solid black;
+}
+.blue{
+  background:#F2F7FB;
+  cursor: pointer;
+}
+.green{
+  background:#C7EDCC;
+  cursor: pointer;
+}
+.black{
+  background:#3C3D3C;
+  cursor: pointer;
+}
+.white{
+  background:#dddddd;
+  cursor: pointer;
+}
+.Navajo{
+  background:#FFDEAD;
+  cursor: pointer;
+}
+/* 文字效果 */
+.font-size{
+  float:left;
+}
+.big,.normal,.small,.bold{
+  text-decoration:none;
+  cursor: pointer;
+}
+section{
+  background:#F2F7FB;
+  padding: 10px;
+}
+.story{
+  margin: 0 5px;
+  font-size:16px;
+  line-height:2.5;
+  padding-left:40px;
+  padding-right:40px;
+  padding-top:7px;
+}
+h1,h2,h3,h4{
+  padding-left:40px;
+  padding-right:40px;
+  padding-top:7px;
+  text-align:center;
+  line-height:10px}
+}
+.infobar {
+  text-align: right;
+}
+#infobar{
+  font-family: Consolas, monospace;
+  position: fixed;
+  bottom: 10px; right: 15px;
+  text-align: right;
+  z-index: 1;
+}
+#infobar>p {
+  margin: 0;
+}
+#infoswitch {
+  float: right;
+  background-color: transparent;
+  border: 0; padding: 10px;
+}
+
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
