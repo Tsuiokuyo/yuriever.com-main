@@ -1,0 +1,63 @@
+﻿.wrap{
+  width:100%;
+  margin:0 auto;
+}
+header{
+  position: fixed;
+  z-index:99;
+  top:0px;
+  background:orange;
+  width: 96%;
+  height:30px;
+  line-height:30px;
+}
+
+.bg{
+  width: 20%;
+  float:left;
+  margin-left: 20px;
+}
+/* 顏色按鈕 */
+.blue,.green,.black,.white,.Navajo{
+  width: 16%;
+  height: 20px;
+  border:1px solid black;
+}
+.blue{
+  background:#F2F7FB;
+  cursor: pointer;
+}
+.green{
+  background:#C7EDCC;
+  cursor: pointer;
+}
+.black{
+  background:#3C3D3C;
+  cursor: pointer;
+}
+.white{
+  background:#dddddd;
+  cursor: pointer;
+}
+.Navajo{
+  background:#FFDEAD;
+  cursor: pointer;
+}
+/* 文字效果 */
+.font-size{
+  float:left;
+}
+.big,.normal,.small{
+  width: 18%;
+  text-decoration:none;
+  cursor: pointer;
+}
+
+section{
+  padding: 1px;
+}
+h2,h4,.story{
+  margin: 0 5px;
+  font-size:16px;
+
+}
