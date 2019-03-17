@@ -46,7 +46,7 @@ menu:
   - title: 關於我
     icon: user
     url: about
-  - title:  子網站建構中
+  - title:  子目錄建構中
     icon: bug
     url: B
 

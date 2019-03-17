@@ -5,7 +5,7 @@ body {
     width: 960px;
     margin: 0 auto;
     font-family: 'pt sans', sans-serif;
-    background-image:url( ' image/bg1.jpg ' );
+    background-image:url( 'image/bg1.jpg' );
 }
 .content {
     position: relative; top: 0; left: 0;
