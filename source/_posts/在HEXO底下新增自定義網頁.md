@@ -1,13 +1,14 @@
 ---
 title: 在HEXO底下新增自定義網頁
-tags: [hexo]
+tags:
+  - hexo
 categories: hexo
 preview_text: 好像是三分鐘熱度
+abbrlink: f192
 date: 2019-02-21 10:00:00
-preview: 
-password: 
-message: 
-
+preview:
+password:
+message:
 ---
 
 其實這也只是上一篇文章[使Hexo不渲染html檔](https://tsuiokuyo.netlify.com/posts/d644)的延伸而已

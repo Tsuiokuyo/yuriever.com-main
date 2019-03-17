@@ -82,6 +82,8 @@ friend_links:
 
 # 個人連結配置, 要先開啟上面的links
 links:
+  - name: 子目錄(B)
+    link: https://tsuiokuyo.netlify.com/b/
   - name: 部屬於Github的本網站
     link: https://tsuiokuyo.github.io/
   - name: 部屬於netlify的本網站
