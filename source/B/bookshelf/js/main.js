@@ -231,12 +231,12 @@ function overlayVertPos() { // determines the vertical position for the summary 
         book011 = new Book('cover/011.jpg','日暮月<h1>2920，第一紀元末年</h1>卷十一','卡羅瓦克·唐威　著','日暮月，2日，2920年<p></p>泰爾阿芴，晨風<p></p>　　“有個人要見你，夜母。”衛兵說道，“是個考斯林部落成員，根據他提交的證明文件，此人是吉德昂帝國要塞屬地黑沼澤的祖克領主。”','<button class="nbutton" onclick="nbutton(11)">read more</button>');
         book012 = new Book('cover/012.jpg','夜星月<h1>2920，第一紀元末年</h1>卷十二','卡羅瓦克·唐威　著','夜星月，1日，2920年<p></p>石樹城，晨風<p></p>　　冬季早晨的太陽光穿過在窗子上的霜，阿瑪萊西亞睜開了他的眼睛。一位老醫師帶著微笑放了一張濕毛巾在她的頭上。在旁邊一張椅子上睡著的是維威克。醫師跑進了一旁的小房間端來一杯水。','<button class="nbutton" onclick="nbutton(12)">read more</button>');
         book013 = new Book('cover/013.jpg','火中舞<h1>卷一</h1>','瓦辛·賈斯　著','場景：賽瑞迪爾帝都<p></p>日期：3紀元397年霜落月7日<p></p>　　似乎皇宮中一直存在阿特里奧斯建築上古議會，一個由負責建造和公正帝國所有建築的職員以及地產代理人所組成的商行。從皇帝瑪格努斯的統治時代到現在，它已經在那裡屹立了250年，一個樸素莊重的大廳錯落於帝都中一個雖小卻高雅的廣場之上。','<button class="nbutton" onclick="nbutton(13)">read more</button>');
-        book014 = new Book('cover/014.jpg','書名','作者　著','內容','<button class="nbutton" onclick="nbutton(14)">read more</button>');
-        book015 = new Book('cover/015.jpg','書名','作者　著','內容','<button class="nbutton" onclick="nbutton(15)">read more</button>');
-        book016 = new Book('cover/016.jpg','書名','作者　著','內容','<button class="nbutton" onclick="nbutton(16)">read more</button>');
-        book017 = new Book('cover/017.jpg','書名','作者','內容','<button class="nbutton" onclick="nbutton(17)">read more</button>');
-        book018 = new Book('cover/018.jpg','書名','作者','內容','<button class="nbutton" onclick="nbutton(18)">read more</button>');
-        book019 = new Book('cover/019.jpg','書名','作者','內容','<button class="nbutton" onclick="nbutton(19)">read more</button>');
+        book014 = new Book('cover/014.jpg','火中舞<h1>卷二</h1>','瓦辛·賈斯　著　著','真是一個徹底的損失。就在幾分鐘之內，卡塞·拉特偷走或毀掉了商隊中幾乎所有值錢的東西。德庫姆斯·斯科提希望用於和波茲莫交易的那車木材起先著火了，而後翻入了山谷中。他的衣服和契約被撕成碎片，丟在了泥土和酒的混合物中。當團隊中所有朝聖者、商人和冒險家迎著朝陽收集自己的殘有物品時，他們都哀嘆和哭泣起來。','<button class="nbutton" onclick="nbutton(14)">read more</button>');
+        book015 = new Book('cover/015.jpg','火中舞<h1>卷三</h1>','瓦辛·賈斯　著　著','帕斯克大娘消失在了骯髒的洞穴中，那洞穴其實就是她的客棧。一會她拿著一片帶有賈魯斯那熟悉的潦草字跡的紙。德庫姆斯·斯科提拿起它對著透過葉縫的一縷陽光讀了起來。','<button class="nbutton" onclick="nbutton(15)">read more</button>');
+        book016 = new Book('cover/016.jpg','火中舞<h1>卷四</h1>','瓦辛·賈斯　著　著','十八個波茲莫和一個賽瑞迪爾帝國建築上古議會前任高級職員離開艾克西羅河，步履艱難地穿過叢林向古老的村莊文迪西出發。對於德庫姆斯·斯科提來說叢林是一個既可怕又陌生的地方。大量爬滿蟲子的樹，讓陽光明媚的早上變得漆黑一片。它們酷似緊握的爪子，好像在有意阻攔他們前進。甚至低矮植物的葉子也帶有惡意的顫動。更糟糕的是帶有這種焦慮情緒的不只有他一個人。他的同行者，逃過虎人襲擊的格雷諾斯和阿賽人，臉上都帶著不加掩飾的恐懼。','<button class="nbutton" onclick="nbutton(16)">read more</button>');
+        book017 = new Book('cover/017.jpg','火中舞<h1>卷五</h1>','瓦辛·賈斯　著','“肥皂！森林吃起來很香！向前走！傻子和笨牛！”','<button class="nbutton" onclick="nbutton(17)">read more</button>');
+        book018 = new Book('cover/018.jpg','火中舞<h1>卷六</h1>','瓦辛·賈斯　著','德庫姆斯·斯科提坐下來，聽著里奧迪斯·賈魯斯講話。他幾乎不敢相信自己從前在阿特里奧斯建築上古議會的同事變得多麼胖。周圍烤肉開胃的香氣消失了，普利薩拉大廈中所有其他聲音和工藝品都在斯科提眼前不見了，似乎除賈魯斯巨大的形體外什麼也不存在。斯科提不覺得自己容易激動，但當見到那個在霜降月用潦草的書信把他騙出帝都的人時，他感到一股潮水在胸中湧動。','<button class="nbutton" onclick="nbutton(18)">read more</button>');
+        book019 = new Book('cover/019.jpg','火中舞<h1>卷七</h1>','瓦辛·賈斯　著','場景：威木省席文納爾<p></p>　　日期：第3紀元日暮月 13日 <p></p>　　曾經試圖承包威木省重建工程的官僚和商人心懷嫉妒地參加這場宴會。他們以不加掩飾的憎恨眼光看著德庫姆斯·斯科提、里奧迪斯·賈魯斯和巴斯。這使得斯科提感到很不舒服，但賈魯斯喜歡這樣。當僕人端上一盤盤烤肉時，賈魯斯倒了一碗賈嘎為斯科提祝酒。','<button class="nbutton" onclick="nbutton(19)">read more</button>');
         book020 = new Book('cover/020.jpg','書名','作者','內容','<button class="nbutton" onclick="nbutton(20)">read more</button>');
         book021 = new Book('cover/021.jpg','書名','作者','內容','<button class="nbutton" onclick="nbutton(21)">read more</button>');
         book022 = new Book('cover/022.jpg','書名','作者','內容','<button class="nbutton" onclick="nbutton(22)">read more</button>');
