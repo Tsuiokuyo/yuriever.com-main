@@ -17,7 +17,7 @@ pages:
   - git config --global push.default simple
   - git add .
   - git commit -m "auto-deploy"
-  - git push --force --quiet --set-upstream https://9af212c2af751d3e16659a99227336d071145517@github.com/Tsuiokuyo/Tsuiokuyo.github.io.git master ## github仓库地址
+ ## - git push --force --quiet --set-upstream https://9af212c2af751d3e16659a99227336d071145517@github.com/Tsuiokuyo/Tsuiokuyo.github.io.git master ## github仓库地址
   artifacts:
     paths:
     - public
