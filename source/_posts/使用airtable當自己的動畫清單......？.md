@@ -1,5 +1,5 @@
 ---
-title: 使用airtable當資料庫......？
+title: 使用airtable當自己的動畫清單......？
 tags: [其他]
 categories: 其他
 preview_text: 總之，這篇就是純粹的廢話吧。
