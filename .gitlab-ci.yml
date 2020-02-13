@@ -10,6 +10,7 @@ pages:
   - npm install hexo-generator-feed --save
   - npm install
   - hexo g
+  - hexo d
   - cd ./public
   - git init
   - git config --global user.email "Tsuiokuyo@gmail.com" ## git配置
