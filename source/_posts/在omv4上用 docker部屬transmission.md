@@ -3,6 +3,7 @@ title: 在omv4上用docker GUI部屬transmission
 tags: [其他]
 categories: 其他,軟體
 preview_text: 單純紀錄，沒甚麼特別的
+abbrlink: 9400
 date: 2020-02-17 13:50:00
 preview:
 
