@@ -112,7 +112,7 @@ slide_background:
   # use_url: false情況下, 採用本地部落格圖片路徑, 下面三個參數組合指向: source/imgs/slide/background(1~10).jpg
   prefix: slide/background
   ext: jpg
-  max_count: 13
+  max_count: 7
 
 
 # 是否開啟歐尼醬功能
