@@ -9,15 +9,15 @@ pages:
   - npm install hexo-cli -g
   - npm install hexo-generator-feed --save
   - npm install
-  - hexo g
   - hexo d
+  - hexo g
   - cd ./public
   - git init
   - git config --global user.email "Tsuiokuyo@gmail.com" ## git配置
-  - git config --global user.name "Tsuiokuyo" ## git配置 
+  - git config --global user.name "Tsuiokuyo" ## git配置
   - git config --global push.default simple
-  - git add .
-  - git commit -m "auto-deploy"
+ ##- git add .
+ ##  - git commit -m "auto-deploy"
  ## - git push --force --quiet --set-upstream https://9af212c2af751d3e16659a99227336d071145517@github.com/Tsuiokuyo/Tsuiokuyo.github.io.git master ## github仓库地址
   artifacts:
     paths:
