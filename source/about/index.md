@@ -35,4 +35,4 @@ date: 2020-02-17 13:08:00
 
 話說，本人U2可發邀，有興趣經營的也歡迎聯絡我，其實只要能維持不被砍帳的程度就行了......
 
-Gmail:tsuiokuyo@gmail.com
+Gmail:<tsuiokuyo@gmail.com>
