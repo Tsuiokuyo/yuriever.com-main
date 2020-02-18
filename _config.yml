@@ -6,7 +6,7 @@
 ##
 encrypt:
     enable: true
-    
+
 
 # Site
 title: 於是我又重看一次
@@ -29,7 +29,7 @@ permalink_defaults:
 abbrlink:
   alg: crc16
   #support crc16(default) and crc32
-  rep: hex    
+  rep: hex
   #support dec(default) and hex
 
 # Directory
@@ -57,16 +57,16 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
   path: ''
-  per_page: 10
+  per_page: 5
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -95,7 +95,7 @@ deploy:
   type:git
   repo:https://gitlab.com/Tsuiokuyo/tsuiokuyo.gitlab.io
   branch:master
-  
+
 jsonContent:
   dateFormat: MM-DD
   pages:
