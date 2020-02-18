@@ -60,6 +60,10 @@ default_preview:
   - preview2.jpg
   - preview3.jpg
   - preview4.jpg
+  - preview5.jpg
+  - preview6.jpg
+  - preview7.jpg
+  - preview8.jpg
 
 # 側邊欄
 sidebar:
@@ -82,14 +86,8 @@ friend_links:
 
 # 個人連結配置, 要先開啟上面的links
 links:
-  - name: 子目錄(B)
-    link: https://tsuiokuyo.netlify.com/b/
-  - name: 部屬於Github的本網站
-    link: https://tsuiokuyo.github.io/
   - name: 部屬於netlify的本網站
     link: https://tsuiokuyo.netlify.com/
-  - name: 曾經的網站(應該會跳回本網站才對)
-    link: https://dragonmuc.github.io
 
 
 # 是否使用公告
