@@ -7,8 +7,11 @@
         <ul class="list-group list-group-flush"></ul>
           <form name="contact" method="POST" data-netlify="true">
         <div style="margin:0 auto;"">
-          暱稱 <input type="text" name="name" class="form-control" />
-          電子郵件 <input type="email" name="email" class="form-control" />
+          <span class="input-group-addon">暱稱：</span>
+           <input type="text" name="name" class="form-control" />
+
+<span class="input-group-addon">電子郵件：</span>
+           <input type="email" name="email" class="form-control" />
 
       <!--  <p>
           <label>Your Role: <select name="role[]" multiple>
@@ -16,7 +19,8 @@
             <option value="follower">Follower</option>
           </select></label>
         </p> -->
-        訊息: <textarea name="message" class="form-control"></textarea
+        <span class="input-group-addon">訊息：</span>
+         <textarea name="message" class="form-control"></textarea
 
         <p>
           <center><button type="submit" class="btn btn-info">送出</button></center>
