@@ -5,9 +5,9 @@ tags:
   - git
 categories: 其他
 preview_text: 幸好目前只有我在開發這支......
+abbrlink: d667
 date: 2020-02-18 10:21:00
 preview:
-
 ---
 
 如題，本來自以為tortoisegit能夠根據資料夾判斷我要用的帳號推送，恩......結果是我想多了，雖然他確實能夠根據資料夾來判斷，不過不確定是哪裡有問題。

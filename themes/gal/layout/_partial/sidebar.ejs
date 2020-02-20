@@ -4,6 +4,9 @@
     <% if(theme.sidebar.recent_comments) { %>
     <%- partial('_widget/recent_comments') %>
     <% } %>
+    <% if(theme.sidebar.getMail) { %>
+    <%- partial('_widget/getMail') %>
+    <% } %>
     <!-- 要配置好leancloud才能開啟此小工具 -->
     <% if(theme.sidebar.hot_posts && (theme.leancloud.appid && theme.leancloud.appkey)) { %>
     <%- partial('_widget/hot_posts') %>
