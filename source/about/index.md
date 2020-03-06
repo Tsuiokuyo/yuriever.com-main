@@ -1,3 +1,23 @@
+    <script>
+  let vueA = new Vue({
+    el: "#app",
+    data: {
+      anime: [],
+    },
+    mounted: function() {
+      this.anime = getData();
+    },
+    methods: {
+      filterTag(value, row) {
+        var checkTag = row.data.type.some(function(item, index, array) {
+          return item === value
+        });
+        return checkTag;
+      },
+    }, //end methods
+  }); //end vue
+</script>
+
 ---
 title: 關於我
 date: 2020-02-17 13:08:00
