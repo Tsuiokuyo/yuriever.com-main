@@ -27,15 +27,13 @@ date: 2020-02-17 13:08:00
 
 因為有這個時間我不如去看動畫！
 
-
-
 我是滿重視法律問題的，所以沒有明確說可以轉載的就直接貼網址而已
 
 當然，若我的文章有侵權問題請聯繫我
 
 話說，本人U2可發邀，有興趣經營的也歡迎聯絡我，其實只要能維持不被砍帳的程度就行了......
 
-Gmail:<tsuiokuyo@gmail.com>
+Gmail:<mailto:tsuiokuyo@gmail.com>
 
 <!--
   <div id="vueAnime">
@@ -83,6 +81,46 @@ Gmail:<tsuiokuyo@gmail.com>
       </div>
     </div>
   </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.3/polyfill.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="//cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
+    <script src="://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.0/locale/zh-TW.min.js"></script>
+    <link href="//cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
+    <script>
+    ELEMENT.locale(ELEMENT.lang.zhTW);
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
+     <script>
+         function getData() {
+      // Your web app's Firebase configuration
+      let firebaseConfig = {
+        apiKey: "AIzaSyC5veCoPDfBM7Vj4WOfI-xN0lLwiZUK_yo",
+        authDomain: "tsuiokuyo-8a31a.firebaseapp.com",
+        databaseURL: "https://tsuiokuyo-8a31a.firebaseio.com",
+        projectId: "tsuiokuyo-8a31a",
+        storageBucket: "tsuiokuyo-8a31a.appspot.com",
+        messagingSenderId: "546368251283",
+        appId: "1:546368251283:web:23253f9e609b874d897466",
+        measurementId: "G-DXFDWHTMQX"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      let db = firebase.firestore();
+      let ref = db.collection('動畫');
+      let object = [];
+      ref.get().then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          object.push({
+            id: doc.id,
+            data: doc.data()
+          })
+        });
+      });
+      return object;
+    }
+     </script>
 <script>
   let vueAnime = new Vue({
     el: "#vueAnime",
