@@ -36,3 +36,70 @@ date: 2020-02-17 13:08:00
 話說，本人U2可發邀，有興趣經營的也歡迎聯絡我，其實只要能維持不被砍帳的程度就行了......
 
 Gmail:<tsuiokuyo@gmail.com>
+
+<!--
+  <div id="vueAnime">
+    <div class="row">
+      <div class="col-md-12">
+        <template>
+          <el-table :data="anime" stripe border
+          height="250" style="width: 100%"
+           >
+            <el-table-column fixed prop="id" label="譯名">
+            </el-table-column>
+            <el-table-column prop="cover" label="IMDB">
+              <template slot-scope="scope">
+                <el-popover placement="right" title="" trigger="hover">
+                  <img lazy :src="scope.row.data.cover">
+                  <img slot="reference" :src="scope.row.data.cover" :alt="scope.row.data.cover" style="max-height: 100px;max-width: 150px">
+                </el-popover>
+              </template>
+            </el-table-column>
+            <el-table-column prop="nameJ" label="原文名">
+            </el-table-column>
+            <el-table-column prop="data.firstRank" label="前期感覺">
+              <template slot-scope="scope">
+                <el-rate v-model="scope.row.data.firstRank" disabled :max=6>
+                </el-rate>
+              </template>
+            </el-table-column>
+            <el-table-column prop="data.rank" label="喜愛程度">
+              <template slot-scope="scope">
+                <el-rate v-model="scope.row.data.rank" disabled :max=6>
+                </el-rate>
+              </template>
+            </el-table-column>
+            <el-table-column label="類型" :filters="[{ text: '女主角群', value: '女主角群' }, { text: '測試', value: '測試' }]" :filter-method="filterTag">
+              <template slot-scope="scope">
+                <el-tag v-for="item in scope.row.data.type" :key="item" :type="item" effect="plain">
+                  {{ item}}
+                </el-tag>
+              </template>
+            </el-table-column>
+            <el-table-column prop="data.memo" label="備註">
+            </el-table-column>
+          </el-table>
+        </template>
+      </div>
+    </div>
+  </div>
+<script>
+  let vueAnime = new Vue({
+    el: "#vueAnime",
+    data: {
+      anime: [],
+    },
+    mounted: function() {
+      this.anime = getData();
+    },
+    methods: {
+      filterTag(value, row) {
+        var checkTag = row.data.type.some(function(item, index, array) {
+          return item === value
+        });
+        return checkTag;
+      },
+    }, //end methods
+  }); //end vue
+</script>
+-->
