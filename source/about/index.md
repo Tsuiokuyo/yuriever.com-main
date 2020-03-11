@@ -37,14 +37,14 @@ Gmail:<mailto:tsuiokuyo@gmail.com>
 
 <!--
   <div id="vueAnime">
-    <div class="row">
+  <div class="row">
       <div class="col-md-12">
         <template>
-          <el-table :data="anime" stripe border
-          height="250" style="width: 100%"
-           >
-            <el-table-column fixed prop="id" label="譯名">
+          <el-table :data="anime" stripe border height="250" style="width: 100%" @header-click="selectType">
+
+            <el-table-column fixed prop="id" label="譯名" sortable>
             </el-table-column>
+
             <el-table-column prop="cover" label="IMDB">
               <template slot-scope="scope">
                 <el-popover placement="right" title="" trigger="hover">
@@ -53,29 +53,38 @@ Gmail:<mailto:tsuiokuyo@gmail.com>
                 </el-popover>
               </template>
             </el-table-column>
+
             <el-table-column prop="nameJ" label="原文名">
             </el-table-column>
-            <el-table-column prop="data.firstRank" label="前期感覺">
+
+            <el-table-column prop="data.firstRank" label="前期感覺" sortable>
               <template slot-scope="scope">
                 <el-rate v-model="scope.row.data.firstRank" disabled :max=6>
                 </el-rate>
               </template>
             </el-table-column>
-            <el-table-column prop="data.rank" label="喜愛程度">
+
+            <el-table-column prop="data.rank" label="喜愛程度" sortable>
               <template slot-scope="scope">
                 <el-rate v-model="scope.row.data.rank" disabled :max=6>
                 </el-rate>
               </template>
             </el-table-column>
-            <el-table-column label="類型" :filters="[{ text: '女主角群', value: '女主角群' }, { text: '測試', value: '測試' }]" :filter-method="filterTag">
+
+            <el-table-column label="類型" :filters="select" :filter-method="filterTag">
               <template slot-scope="scope">
                 <el-tag v-for="item in scope.row.data.type" :key="item" :type="item" effect="plain">
                   {{ item}}
                 </el-tag>
               </template>
             </el-table-column>
+
+            <el-table-column prop="data.episode" label="集數">
+            </el-table-column>
+
             <el-table-column prop="data.memo" label="備註">
             </el-table-column>
+
           </el-table>
         </template>
       </div>
@@ -126,16 +135,36 @@ Gmail:<mailto:tsuiokuyo@gmail.com>
     el: "#vueAnime",
     data: {
       anime: [],
+      selectData: [],
     },
     mounted: function() {
+      //取得資料
       this.anime = getData();
+
     },
     methods: {
+      //篩選
       filterTag(value, row) {
         var checkTag = row.data.type.some(function(item, index, array) {
           return item === value
         });
         return checkTag;
+      },
+
+      //篩選的選項
+      selectType(column, event) {
+        let vm = this;
+        if (vm.selectData.length == 0) {
+          let list = []
+          vm.anime.forEach(element => element.data.type !== undefined ? element.data.type.forEach(item => list.push(item)) : console.log("空"));
+          let result = Array.from(new Set(list));
+          this.selectData = result.map(element => {
+            return {
+              text: element,
+              value: element
+            }
+          })
+        };// end if
       },
     }, //end methods
   }); //end vue
