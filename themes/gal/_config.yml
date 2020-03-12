@@ -75,6 +75,7 @@ sidebar:
   friend_links: false      # 友情連結, 默認開啟
   links: true             # 個人連結, 默認開啟
   getMail: true         # 寄信, 默認開啟
+  getGitHub: true     #取得commit紀錄
 
 # 友情連結配置, 要先開啟上面的friend_links
 friend_links:

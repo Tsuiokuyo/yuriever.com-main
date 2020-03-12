@@ -1,0 +1,75 @@
+<aside id="sidebar-recent_comments">
+  <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
+
+    <div id="getGitHub">
+      <h1>目前提交</h1>
+      <p>vuejs/vue@master</p>
+      <ul>
+        <li class="gitLi" v-for="record in commits">
+          <!--<a :href="record.html_url" target="_blank" class="commit">{{ record.sha.slice(0, 7) }}</a> -  -->
+          <span class="message">{{ record.commit.message | truncate }}</span><br>
+          by <span class="gitAuthor"><a class="gitUrl" href="https://github.com/Tsuiokuyo" target="_blank">{{ record.commit.author.name }}</a></span>
+          <span class="gitDate">{{ record.commit.author.date | formatDate }}</span>
+
+        </li>
+      </ul>
+
+    </div>
+
+    <style>
+      #getGitHub {
+        font-family: 'Helvetica', Arial, sans-serif;
+      }
+
+      .gitUrl {
+        text-decoration: none;
+        color: gold;
+      }
+
+      .gitLi {
+        line-height: 1.5em;
+        margin-bottom: 20px;
+      }
+
+      .gitAuthor,
+      .gitDate {
+        font-weight: bold;
+      }
+    </style>
+
+    <script>
+      var apiURL = 'https://api.github.com/repos/tsuiokuyo/tsuiokuyo.netlify.com/commits?per_page=5&sha=master'
+
+      var getGitHub = new Vue({
+        el: '#getGitHub',
+        data: {
+          commits: null
+        },
+        created: function() {
+          this.fetchData()
+        },
+        filters: {
+          truncate: function(v) {
+            var newline = v.indexOf('\n')
+            return newline > 0 ? v.slice(0, newline) : v
+          },
+          formatDate: function(v) {
+            return v.substr(0, 10)
+          }
+        },
+
+        methods: {
+          fetchData: function() {
+            var xhr = new XMLHttpRequest()
+            var self = this
+            xhr.open('GET', apiURL)
+            xhr.onload = function() {
+              self.commits = JSON.parse(xhr.responseText)
+              console.log(self.commits[0].html_url)
+            }
+            xhr.send()
+          }
+        }
+      })
+    </script>
+</aside>
