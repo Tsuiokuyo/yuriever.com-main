@@ -90,8 +90,6 @@ Gmail:<mailto:tsuiokuyo@gmail.com>
       </div>
     </div>
   </div>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.3/polyfill.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="//cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
     <script src="://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.0/locale/zh-TW.min.js"></script>
     <link href="//cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
