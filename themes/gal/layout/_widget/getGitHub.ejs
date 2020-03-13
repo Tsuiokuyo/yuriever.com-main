@@ -7,16 +7,9 @@
       tsuiokuyo.netlify.com@PUSH
     </div>
     <div id="getGitHub">
-      <!-- <ul>
-        <li class="gitLi" v-for="record in commits">
-          <span class="message">{{ record.commit.message | truncate }}</span><br>
-          by <span class="gitAuthor"><a class="gitUrl" href="https://github.com/Tsuiokuyo" target="_blank">{{ record.commit.author.name }}</a></span>
-          <span class="gitDate">{{ record.commit.author.date | formatDate }}</span>
-        </li>
-      </ul> -->
-
+      <br />
       <el-timeline>
-        <el-timeline-item v-for="(record, index) in commits" :key="index" :timestamp="record.commit.author.date | formatDate">
+        <el-timeline-item v-for="(record, index) in commits" :key="index" type="primary" icon="el-icon-upload2" :timestamp="record.commit.author.date | formatDate">
           {{ record.commit.message | truncate }}
         </el-timeline-item>
       </el-timeline>
