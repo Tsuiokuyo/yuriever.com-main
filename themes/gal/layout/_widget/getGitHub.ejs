@@ -4,30 +4,26 @@
 
     <div class="panel-heading" style="text-align: center">
       <i class="fa fa-github"></i>
-      PUSH紀錄
+      tsuiokuyo.netlify.com@PUSH
     </div>
     <div id="getGitHub">
-      <ul>
+      <!-- <ul>
         <li class="gitLi" v-for="record in commits">
-          <!--<a :href="record.html_url" target="_blank" class="commit">{{ record.sha.slice(0, 7) }}</a> -  -->
           <span class="message">{{ record.commit.message | truncate }}</span><br>
           by <span class="gitAuthor"><a class="gitUrl" href="https://github.com/Tsuiokuyo" target="_blank">{{ record.commit.author.name }}</a></span>
           <span class="gitDate">{{ record.commit.author.date | formatDate }}</span>
         </li>
-      </ul>
+      </ul> -->
+
+      <el-timeline>
+        <el-timeline-item v-for="(record, index) in commits" :key="index" :timestamp="record.commit.author.date | formatDate">
+          {{ record.commit.message | truncate }}
+        </el-timeline-item>
+      </el-timeline>
 
     </div>
 
     <style>
-      #getGitHub {
-        font-family: 'Helvetica', Arial, sans-serif;
-      }
-
-      .gitUrl {
-        text-decoration: none;
-        color: gold;
-      }
-
       .gitLi {
         line-height: 1.5em;
         margin-bottom: 20px;
