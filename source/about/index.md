@@ -90,9 +90,6 @@ Gmail:<mailto:tsuiokuyo@gmail.com>
       </div>
     </div>
   </div>
-    <script src="//cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
-    <script src="://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.0/locale/zh-TW.min.js"></script>
-    <link href="//cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
     <script>
     ELEMENT.locale(ELEMENT.lang.zhTW);
     </script>
