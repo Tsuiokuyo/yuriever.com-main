@@ -90,6 +90,8 @@ friend_links:
 links:
   - name: 部屬於netlify的本網站
     link: https://tsuiokuyo.netlify.com/
+  - name: github
+    link: https://github.com/Tsuiokuyo/
 
 
 # 是否使用公告
