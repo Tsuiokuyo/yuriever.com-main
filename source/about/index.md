@@ -35,6 +35,35 @@ date: 2020-02-17 13:08:00
 
 Gmail:<mailto:tsuiokuyo@gmail.com>
 
+這年頭，個人播放器的設定，每次重灌之後，濾鏡全部都要重新弄真心痛苦阿！！
+### 黑暗時代
+* GOMPlayer & KMPlayer
+
+### 發現新大陸
+* PotPlayer
+* AMD Fluid Motion
+* BFRC
+* LAV Filters
+* xy-SubFilter
+* madVR
+    1. chroma upscaling:Super-XBR
+    2. image upscaling:Jinc + AR
+    3. image downscaling:Catmull-Rom + AR +SC
+
+### 封建時代
+* Potplayer
+* SVP4(blackmickey beta script)
+* LAV Filters
+* xy-SubFilter
+* madVR(
+    1. Image doubling:NNEDI3 64
+    2. chroma upscaling:NNEDI3 64
+    3. image upscaling:Jinc + AR
+    4. image downscaling:SSIM 1D 100%)
+
+### 城堡時代
+mpvPlayer(cczzhh配置)
+
 <!--
   <div id="vueAnime">
   <div class="row">
