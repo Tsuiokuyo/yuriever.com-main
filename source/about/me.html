@@ -92,37 +92,38 @@
         <button class="btn btn btn-warning" @click="lgin()" type="button">登入</button>
         </div>
         <hr />
-          <div class="input-group">
-            <H3>{{firebaseMsg}}</H3>
 
-                 <span class="input-group-addon">名稱：</span>
+            <H3>{{firebaseMsg}}</H3>
+  <div class="input-group">
+                名稱：
                  <input class="form-control" v-model="id" placeholder=" id">
 
-            	<span class="input-group-addon">封面：</span>
+            封面：
             	 <input class="form-control" v-model="aniData.cover" placeholder="cover">
-
-                 <span class="input-group-addon">集數：</span>
+<p></p>
+                集數：
                  <input class="form-control" v-model="aniData.episode" placeholder="episode">
 
-                 <span class="input-group-addon">第一：</span>
+                第一：
                  <input class="form-control" v-model="aniData.firstRank" placeholder="firstRank">
-
-                 <span class="input-group-addon">備註：</span>
+<p></p>
+                備註：
                  <input class="form-control" v-model="aniData.memo" placeholder="memo">
 
-                 <span class="input-group-addon">原名：</span>
+                 原名：
                  <input class="form-control" v-model="aniData.name" placeholder="name">
-
-                 <span class="input-group-addon">分數：</span>
+<p></p>
+                分數：
                  <input class="form-control" v-model="aniData.rank" placeholder="rank">
 
-                 <span class="input-group-addon">標籤：</span>
+                標籤：
                  <input class="form-control" v-model="aniData.type" placeholder="type">
-
+<p></p>
             <button class="btn btn-success" @click="addAnime()" type="button">送出</button>
             <button class="btn btn-danger" @click="clean()" type="button">清除</button>
-            <H3>{{firebaseMsg}}</H3>
-            </div>
+</div>
+<H3>{{firebaseMsg}}</H3>
+
       </div>
     </div>
   </div>

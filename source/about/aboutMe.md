@@ -2,7 +2,6 @@
 title: 還是關於我
 date: 9999-99-99
 ---
-<div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.3/polyfill.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
@@ -25,112 +24,8 @@ date: 9999-99-99
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
-</div>
 
-  <div id="app">
-    <div class="row">
-      <div class="col-md-12">
-        <template>
-          <el-table :data="anime" stripe border height="250" style="width: 100%" @header-click="selectType">
-
-            <el-table-column fixed prop="id" label="譯名" sortable>
-            </el-table-column>
-
-            <el-table-column prop="cover" label="IMDB">
-              <template slot-scope="scope">
-                <el-popover placement="right" title="" trigger="hover">
-                  <img lazy :src="scope.row.data.cover">
-                  <img slot="reference" :src="scope.row.data.cover" :alt="scope.row.data.cover"
-                    style="max-height: 100px;max-width: 150px">
-                </el-popover>
-              </template>
-            </el-table-column>
-
-            <el-table-column prop="nameJ" label="原文名">
-            </el-table-column>
-
-            <el-table-column prop="data.firstRank" label="前期感覺" sortable>
-              <template slot-scope="scope">
-                <el-rate v-model="scope.row.data.firstRank" disabled :max=6>
-                </el-rate>
-              </template>
-            </el-table-column>
-
-            <el-table-column prop="data.rank" label="喜愛程度" sortable>
-              <template slot-scope="scope">
-                <el-rate v-model="scope.row.data.rank" disabled :max=6>
-                </el-rate>
-              </template>
-            </el-table-column>
-
-            <el-table-column label="類型" :filters="selectData | selectType" :filter-method="filterTag">
-              <template slot-scope="scope">
-                <el-tag v-for="item in subString(scope.row.data.type)" :key="item" :type="item" effect="plain">
-                  {{ item}}
-                </el-tag>
-              </template>
-            </el-table-column>
-
-            <el-table-column prop="data.episode" label="集數">
-            </el-table-column>
-
-            <el-table-column prop="data.memo" label="備註">
-            </el-table-column>
-
-          </el-table>
-        </template>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-      <div class="input-group">
-        帳：<input class="form-control" v-model="mynae" placeholder="號"> 密：<input class="form-control" v-model="mypws" placeholder="碼">
-        <button class="btn btn btn-warning" @click="lgin()" type="button">登入</button>
-        </div>
-          <hr />
-          <div class="input-group">
-            <H3>{{firebaseMsg}}</H3>
-              <div class="input-group">
-                 <span class="input-group-addon">名稱：</span>
-                 <input class="form-control" v-model="id" placeholder=" id">
-             </div>
-              <div class="input-group">
-            	<span class="input-group-addon">封面：</span>
-            	 <input class="form-control" v-model="aniData.cover" placeholder="cover">
-                       </div>
-                   <div class="input-group">
-                 <span class="input-group-addon">集數：</span>
-                 <input class="form-control" v-model="aniData.episode" placeholder="episode">
-             </div>
-                           <div class="input-group">
-                 <span class="input-group-addon">第一：</span>
-                 <input class="form-control" v-model="aniData.firstRank" placeholder="firstRank">
-             </div>
-                           <div class="input-group">
-                 <span class="input-group-addon">備註：</span>
-                 <input class="form-control" v-model="aniData.memo" placeholder="memo">
-             </div>
-                           <div class="input-group">
-                 <span class="input-group-addon">原名：</span>
-                 <input class="form-control" v-model="aniData.name" placeholder="name">
-             </div>
-                           <div class="input-group">
-                 <span class="input-group-addon">分數：</span>
-                 <input class="form-control" v-model="aniData.rank" placeholder="rank">
-             </div>
-                          <div class="input-group">
-                 <span class="input-group-addon">標籤：</span>
-                 <input class="form-control" v-model="aniData.type" placeholder="type">
-             </div>
-            <button class="btn btn-success" @click="addAnime()" type="button">送出</button>
-            <button class="btn btn-danger" @click="clean()" type="button">清除</button>
-            <H3>{{firebaseMsg}}</H3>
-            </div>
-      </div>
-    </div>
-  </div>
-  <div>
-  <script>
+    <script>
   let vue = new Vue({
     el: "#app",
     data: {
@@ -263,4 +158,106 @@ date: 9999-99-99
     }, //end methods
   }); //end vue
 </script>
-</div>
+
+  <div id="app">
+    <div class="row">
+      <div class="col-md-12">
+        <template>
+          <el-table :data="anime" stripe border height="250" style="width: 100%" @header-click="selectType">
+
+            <el-table-column fixed prop="id" label="譯名" sortable>
+            </el-table-column>
+
+            <el-table-column prop="cover" label="IMDB">
+              <template slot-scope="scope">
+                <el-popover placement="right" title="" trigger="hover">
+                  <img lazy :src="scope.row.data.cover">
+                  <img slot="reference" :src="scope.row.data.cover" :alt="scope.row.data.cover"
+                    style="max-height: 100px;max-width: 150px">
+                </el-popover>
+              </template>
+            </el-table-column>
+
+            <el-table-column prop="nameJ" label="原文名">
+            </el-table-column>
+
+            <el-table-column prop="data.firstRank" label="前期感覺" sortable>
+              <template slot-scope="scope">
+                <el-rate v-model="scope.row.data.firstRank" disabled :max=6>
+                </el-rate>
+              </template>
+            </el-table-column>
+
+            <el-table-column prop="data.rank" label="喜愛程度" sortable>
+              <template slot-scope="scope">
+                <el-rate v-model="scope.row.data.rank" disabled :max=6>
+                </el-rate>
+              </template>
+            </el-table-column>
+
+            <el-table-column label="類型" :filters="selectData | selectType" :filter-method="filterTag">
+              <template slot-scope="scope">
+                <el-tag v-for="item in subString(scope.row.data.type)" :key="item" :type="item" effect="plain">
+                  {{ item}}
+                </el-tag>
+              </template>
+            </el-table-column>
+
+            <el-table-column prop="data.episode" label="集數">
+            </el-table-column>
+
+            <el-table-column prop="data.memo" label="備註">
+            </el-table-column>
+
+          </el-table>
+        </template>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      <div class="input-group">
+        帳：<input class="form-control" v-model="mynae" placeholder="號"> 密：<input class="form-control" v-model="mypws" placeholder="碼">
+        <button class="btn btn btn-warning" @click="lgin()" type="button">登入</button>
+        </div>
+          <hr />
+          <div class="input-group">
+            <H3>{{firebaseMsg}}</H3>
+              <div class="input-group">
+                 <span class="input-group-addon">名稱：</span>
+                 <input class="form-control" v-model="id" placeholder=" id">
+             </div>
+              <div class="input-group">
+            	<span class="input-group-addon">封面：</span>
+            	 <input class="form-control" v-model="aniData.cover" placeholder="cover">
+                       </div>
+                   <div class="input-group">
+                 <span class="input-group-addon">集數：</span>
+                 <input class="form-control" v-model="aniData.episode" placeholder="episode">
+             </div>
+                           <div class="input-group">
+                 <span class="input-group-addon">第一：</span>
+                 <input class="form-control" v-model="aniData.firstRank" placeholder="firstRank">
+             </div>
+                           <div class="input-group">
+                 <span class="input-group-addon">備註：</span>
+                 <input class="form-control" v-model="aniData.memo" placeholder="memo">
+             </div>
+                           <div class="input-group">
+                 <span class="input-group-addon">原名：</span>
+                 <input class="form-control" v-model="aniData.name" placeholder="name">
+             </div>
+                           <div class="input-group">
+                 <span class="input-group-addon">分數：</span>
+                 <input class="form-control" v-model="aniData.rank" placeholder="rank">
+             </div>
+                          <div class="input-group">
+                 <span class="input-group-addon">標籤：</span>
+                 <input class="form-control" v-model="aniData.type" placeholder="type">
+             </div>
+            <button class="btn btn-success" @click="addAnime()" type="button">送出</button>
+            <button class="btn btn-danger" @click="clean()" type="button">清除</button>
+            <H3>{{firebaseMsg}}</H3>
+            </div>
+      </div>
+    </div>
+  </div>
