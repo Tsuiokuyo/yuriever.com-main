@@ -2,7 +2,7 @@
 title: 還是關於我
 date: 9999-99-99
 ---
-
+<div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.3/polyfill.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
@@ -25,7 +25,7 @@ date: 9999-99-99
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
-
+</div>
 
   <div id="app">
     <div class="row">
@@ -129,8 +129,8 @@ date: 9999-99-99
       </div>
     </div>
   </div>
-
-<script>
+  <div>
+  <script>
   let vue = new Vue({
     el: "#app",
     data: {
@@ -263,3 +263,4 @@ date: 9999-99-99
     }, //end methods
   }); //end vue
 </script>
+</div>
