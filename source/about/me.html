@@ -94,38 +94,31 @@
         <hr />
           <div class="input-group">
             <H3>{{firebaseMsg}}</H3>
-              <div class="input-group">
+
                  <span class="input-group-addon">名稱：</span>
                  <input class="form-control" v-model="id" placeholder=" id">
-             </div>
-              <div class="input-group">
+
             	<span class="input-group-addon">封面：</span>
             	 <input class="form-control" v-model="aniData.cover" placeholder="cover">
-                       </div>
-                   <div class="input-group">
+
                  <span class="input-group-addon">集數：</span>
                  <input class="form-control" v-model="aniData.episode" placeholder="episode">
-             </div>
-                           <div class="input-group">
+
                  <span class="input-group-addon">第一：</span>
                  <input class="form-control" v-model="aniData.firstRank" placeholder="firstRank">
-             </div>
-                           <div class="input-group">
+
                  <span class="input-group-addon">備註：</span>
                  <input class="form-control" v-model="aniData.memo" placeholder="memo">
-             </div>
-                           <div class="input-group">
+
                  <span class="input-group-addon">原名：</span>
                  <input class="form-control" v-model="aniData.name" placeholder="name">
-             </div>
-                           <div class="input-group">
+
                  <span class="input-group-addon">分數：</span>
                  <input class="form-control" v-model="aniData.rank" placeholder="rank">
-             </div>
-                          <div class="input-group">
+
                  <span class="input-group-addon">標籤：</span>
                  <input class="form-control" v-model="aniData.type" placeholder="type">
-             </div>
+
             <button class="btn btn-success" @click="addAnime()" type="button">送出</button>
             <button class="btn btn-danger" @click="clean()" type="button">清除</button>
             <H3>{{firebaseMsg}}</H3>
