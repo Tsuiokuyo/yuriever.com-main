@@ -85,6 +85,7 @@
         </template>
       </div>
     </div>
+    <hr />
     <div class="row">
       <div class="col-md-12">
         <div class="input-group">
@@ -123,9 +124,9 @@
           <input class="form-control" v-model="aniData.rank" placeholder="rank">
 
           標籤：
-        </div>
-        <div class="input-group">
           <input class="form-control" v-model="aniData.type" placeholder="type">
+          </div>
+        <div class="input-group">
           <button class="btn btn-success" @click="addAnime()" type="button">送出</button>
           <button class="btn btn-danger" @click="clean()" type="button">清除</button>
         </div>
