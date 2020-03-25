@@ -3,12 +3,29 @@ title: 還是關於我
 date: 9999-99-99
 ---
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.3/polyfill.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
+  <link href="https://cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.0/locale/zh-TW.min.js"></script>
+
+  <script>
+    ELEMENT.locale(ELEMENT.lang.zhTW);
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase.js"></script>
 
   <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
+
 
   <div id="app">
     <div class="row">
@@ -70,9 +87,8 @@ date: 9999-99-99
         帳：<input class="form-control" v-model="mynae" placeholder="號"> 密：<input class="form-control" v-model="mypws" placeholder="碼">
         <button class="btn btn btn-warning" @click="lgin()" type="button">登入</button>
         </div>
-        <hr />
-          <form>
-          <div class="form-group">
+          <hr />
+          <div class="input-group">
             <H3>{{firebaseMsg}}</H3>
               <div class="input-group">
                  <span class="input-group-addon">名稱：</span>
@@ -110,7 +126,6 @@ date: 9999-99-99
             <button class="btn btn-danger" @click="clean()" type="button">清除</button>
             <H3>{{firebaseMsg}}</H3>
             </div>
-          </form>
       </div>
     </div>
   </div>
