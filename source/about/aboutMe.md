@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv=“X-UA-Compatible” content=“chrome=1″ />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Title</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.8.3/polyfill.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <script src="https://cdn.bootcss.com/element-ui/2.13.0/index.js"></script>
-  <link href="https://cdn.bootcss.com/element-ui/2.13.0/theme-chalk/index.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/element-ui/2.13.0/locale/zh-TW.min.js"></script>
-
-  <script>
-    ELEMENT.locale(ELEMENT.lang.zhTW);
-  </script>
-
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+---
+title: 還是關於我
+date: 9999-99-99
+---
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase.js"></script>
@@ -28,9 +10,6 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
 
-</head>
-
-<body>
   <div id="app">
     <div class="row">
       <div class="col-md-12">
@@ -269,4 +248,3 @@
     }, //end methods
   }); //end vue
 </script>
-</html>
