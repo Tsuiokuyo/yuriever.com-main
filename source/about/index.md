@@ -1,6 +1,6 @@
 ---
 title: 關於我
-date: 2020-02-17 13:08:00
+date: 2020-03-25 13:08:00
 ---
 
 ~~今年剛當完兵，正失業中~~~
@@ -35,6 +35,7 @@ date: 2020-02-17 13:08:00
 
 Gmail:<mailto:tsuiokuyo@gmail.com>
 
+
 這年頭，個人播放器的設定，每次重灌之後，濾鏡全部都要重新弄真心痛苦阿！！
 ### 黑暗時代
 * GOMPlayer & KMPlayer
@@ -62,7 +63,7 @@ Gmail:<mailto:tsuiokuyo@gmail.com>
     4. image downscaling:SSIM 1D 100%)
 
 ### 城堡時代
-mpvPlayer(cczzhh配置)
+* mpvPlayer(conf配置(cczzhh大大)+微調)
 
 <!--
   <div id="vueAnime">
