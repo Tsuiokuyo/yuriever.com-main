@@ -100,25 +100,27 @@
 
             封面：
             	 <input class="form-control" v-model="aniData.cover" placeholder="cover">
-<p></p>
+            	 </div>
+            	   <div class="input-group">
                 集數：
                  <input class="form-control" v-model="aniData.episode" placeholder="episode">
 
                 第一：
                  <input class="form-control" v-model="aniData.firstRank" placeholder="firstRank">
-<p></p>
+                 </div>
+                   <div class="input-group">
                 備註：
                  <input class="form-control" v-model="aniData.memo" placeholder="memo">
 
                  原名：
                  <input class="form-control" v-model="aniData.name" placeholder="name">
-<p></p>
+                 </div>
+                   <div class="input-group">
                 分數：
                  <input class="form-control" v-model="aniData.rank" placeholder="rank">
 
                 標籤：
                  <input class="form-control" v-model="aniData.type" placeholder="type">
-<p></p>
             <button class="btn btn-success" @click="addAnime()" type="button">送出</button>
             <button class="btn btn-danger" @click="clean()" type="button">清除</button>
 </div>
