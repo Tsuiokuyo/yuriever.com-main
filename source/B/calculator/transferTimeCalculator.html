@@ -28,7 +28,7 @@
       <el-header>
         <el-row>
           <el-col :span="24">
-            <div class="grid-content center-block titleStyle" style="font-size: 26pt; font-weight: bold;"> </div>
+            <div class="grid-content center-block titleStyle" style="font-size: 26pt; font-weight: bold;">網路傳輸時間計算</div>
           </el-col>
           <el-row>
       </el-header>
@@ -134,18 +134,25 @@
         <el-row>
           <el-col :span="24">
             <label>封包損耗(%)：</label>
-            <el-input-number v-model="lostPacket" :min="80" :max="100"></el-input-number>
+            <el-input-number v-model="lostPacket" :min="50" :max="100"></el-input-number>
             <el-popover placement="top-start" title="封包損耗" trigger="hover" content="傳輸時有Ethernet Header, IP Header, TCP Header,ATM Header等損耗，雖然是byte等級的佔用，
-            但我無法確認適不適用於目前的網路環境，預設95%">
-              <el-button slot="reference">預設95%說明</el-button>
+            但我無法確認適不適用於目前的網路環境，預設90%">
+              <el-button slot="reference">預設90%說明</el-button>
             </el-popover>
           </el-col>
         </el-row>
+        <el-divider><i class="fas fa-angle-double-left"></i>固定網路<i class="fas fa-angle-double-right"></i></el-divider>
         <el-row>
-          <el-col :span="4" v-for="button in buttonList">
+          <el-col :span="4" v-for="button in fixed">
             <el-button type="primary" plain v-on:click="setValue(button.down, button.up)" >{{button.type}}<br /> {{button.down}}／{{button.up}}</el-button>
           </el-col>
         </el-row>
+                <el-divider><i class="fas fa-angle-double-left"></i>無線網路(研究中)<i class="fas fa-angle-double-right"></i></el-divider>
+<!--         <el-row> -->
+<!--           <el-col :span="4" v-for="button in seed"> -->
+<!--             <el-button type="primary" plain v-on:click="setValue(button.down, button.up)" >{{button.type}}<br /> {{button.down}}／{{button.up}}</el-button> -->
+<!--           </el-col> -->
+<!--         </el-row> -->
         <el-main>
           <el-footer>
         <el-row>

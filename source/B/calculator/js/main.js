@@ -7,13 +7,21 @@
         upByte: 0, //頻寬
         upbit: 0, //速度
         volume: 'GB', //容量單位
-        lostPacket: 95,
+        lostPacket: 90,
         bpsType: 'Mbps',
         // storage: ['YB', 'ZB', 'EB', 'PB', 'TB', 'GB', 'MB', 'KB'],
         storage: ['PB', 'TB', 'GB', 'MB', 'KB'],
         bandwidth: ['Gbps', 'Mbps', 'Kbps'],
         starttime: '',
-        buttonList: [{type:'ADSL',down:100,up:40},{down:50,up:20}],
+        fixed: [{type:'固定網路',down:1000,up:600},{type:'固定網路',down:500,up:250},
+        	{type:'固定網路',down:300,up:100},{type:'固定網路',down:100,up:100},
+        	{type:'固定網路',down:100,up:40},{type:'固定網路',down:60,up:20},
+        	{type:'固定網路',down:35,up:6},{type:'固定網路',down:16,up:3},
+        	{type:'固定網路',down:8,up:0.64},{type:'固定網路',down:5,up:0.384},
+        	{type:'固定網路',down:2,up:0.064}
+        ],
+        seed: [{type:'',down:500,up:250}
+        ],
       },
       created: function () {
         let time = new Date();
