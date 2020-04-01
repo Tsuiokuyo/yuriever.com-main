@@ -40,7 +40,7 @@
             <el-table-column fixed prop="id" label="譯名" sortable>
             </el-table-column>
 
-            <el-table-column prop="cover" label="IMDB">
+            <el-table-column prop="cover" label="ANIDB">
               <template slot-scope="scope">
                 <el-popover placement="right" title="" trigger="hover">
                   <img lazy :src="scope.row.data.cover">
@@ -98,6 +98,10 @@
         <hr />
 
         <H3>{{firebaseMsg}}</H3>
+		<div class="input-group">
+		 年份：
+		<input class="form-control" v-model="aniData.year" placeholder="year">
+		</div>
         <div class="input-group">
           名稱：
           <input class="form-control" v-model="id" placeholder=" id">
@@ -148,6 +152,7 @@
         firebaseMsg: '',
         id: '',
         aniData: {
+		  year: '',
           cover: '',
           episode: '',
           firstRank: 1,
@@ -180,6 +185,7 @@
         //清除
         clean() {
           this.id = '';
+		  this.aniData.year= '';
           this.aniData.cover = '';
           this.aniData.episode = '';
           this.aniData.firstRank = 1;
