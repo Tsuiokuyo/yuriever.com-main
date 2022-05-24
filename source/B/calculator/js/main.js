@@ -144,15 +144,13 @@
         calcTime: function (secs) { //計算時間
           let day = Math.floor(secs / 86400);
           let hr = Math.floor((secs - (day * 86400)) / 3600);
-          let min = Math.floor((secs - (hr * 3600)) / 60);
-          let sec = parseInt(secs - (hr * 3600) - (min * 60));
-          // while (hr.length < 2) { hr = '0' + hr; }
-          // while (min.length < 2) { min = '0' + min; }
-          // while (sec.length < 2) { sec = '0' + min; }
-          if (day && day != Infinity) { day += '日'; }
-          if (hr) { hr += '小時'; }
-          if (min) { min += '分'; }
-          return day + hr + min + sec + '秒';
+          let min = Math.floor((secs - ((day * 86400)+(hr * 3600))) / 60);
+          let sec = parseInt(secs - ((day * 86400) +(hr * 3600) + (min * 60)));
+          if (day && day != Infinity) { day += '日'; }else{day = ''}
+          if (hr) { hr += '小時'; }else{hr = ''}
+          if (min) { min += '分'; }else{min = ''}
+		  let time = day + hr + min + sec + '秒'
+          return time;
         },
       },
     })
