@@ -20,7 +20,11 @@
         	{type:'固定網路',down:8,up:0.64},{type:'固定網路',down:5,up:0.384},
         	{type:'固定網路',down:2,up:0.064}
         ],
-        seed: [{type:'',down:500,up:250}
+        generation: [{type:'5G',down:500,up:250},{type:'4G',down:100,up:75},
+		{type:'3.9G',down:100,up:75},{type:'3.75G',down:14.4,up:5.8},
+		{type:'3.5G',down:3.6,up:0.384},{type:'3G',down:2,up:0.384},
+		{type:'2.75G',down:0.384,up:0.384},{type:'2.5G',down:0.115,up:0.115},
+		{type:'2G',down:0.064,up:250}
         ],
       },
       created: function () {
@@ -142,14 +146,16 @@
           return size;
         },
         calcTime: function (secs) { //計算時間
-          let day = Math.floor(secs / 86400);
-          let hr = Math.floor((secs - (day * 86400)) / 3600);
-          let min = Math.floor((secs - ((day * 86400)+(hr * 3600))) / 60);
-          let sec = parseInt(secs - ((day * 86400) +(hr * 3600) + (min * 60)));
+		  let year = Math.floor(secs / 31536000);
+          let day = Math.floor((secs - (year * 31536000)) / 86400);
+          let hr = Math.floor((secs - ((year * 31536000)+(day * 86400))) / 3600);
+          let min = Math.floor((secs - ((year * 31536000)+ (day * 86400)+(hr * 3600))) / 60);
+          let sec = parseInt(secs - ((year * 31536000)+(day * 86400) +(hr * 3600) + (min * 60)));
+		  if (year && year != Infinity) { year += '年'; }else{year = ''}
           if (day && day != Infinity) { day += '日'; }else{day = ''}
           if (hr) { hr += '小時'; }else{hr = ''}
           if (min) { min += '分'; }else{min = ''}
-		  let time = day + hr + min + sec + '秒'
+		  let time = year + day + hr + min + sec + '秒'
           return time;
         },
       },
