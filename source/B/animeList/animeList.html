@@ -56,11 +56,13 @@
 </el-card>
 	
 </div>
-	<div
-  class="g-recaptcha"
-  data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-  data-callback="onRecaptchaSuccess"
-></div>
+
+ <form action="?" method="POST">
+      <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+      <br/>
+      <input type="submit" value="Submit">
+    </form>
+
 	<el-alert :title="msg" :type="color">
 	</el-alert>
 	<div>
@@ -116,6 +118,11 @@
 	function 		onloadCallback(){
 		console.log("TESTRE")
 		}
+		
+			function 		onRecaptchaSuccess(){
+		console.log("OK")
+		}
+		
     let vue = new Vue({
         el: "#app",
         data() {
