@@ -57,7 +57,7 @@
 	
 </div>
 
- <form action="?" method="POST" v-if="verify">
+ <form action="?" method="POST" v-if="verify" style="float:center">
       <div class="g-recaptcha" data-sitekey="6Ld47WIgAAAAAMeNmW3XFkDiCYwTbvth7aldWJ7N"
 	   data-callback="onRecaptchaSuccess"
 	   ></div>
@@ -116,15 +116,15 @@
 </div>
 </div>
 <script>
-		function onloadCallback(){
-			if(vue.color !== 'info'){
+	function onloadCallback(){
+		if(vue.color !== 'info'){
 				vue.setMsg('WAIT');
-			}
 		}
-		function onRecaptchaSuccess(){
-			vue.getDB();
-			vue.verify = false;
-		}
+	}
+	function onRecaptchaSuccess(){
+		vue.getDB();
+		vue.verify = false;
+	}
 		
     let vue = new Vue({
         el: "#app",
@@ -167,8 +167,8 @@
 						vue.color = "warning";
 						break;
 					case 'WAIT': //等待驗證
-						vue.msg = "目前狀態：等待真人打勾後自動查詢，畢竟不想讓爬蟲直接爬爆額度";
-						vue.color = "warning";
+						vue.msg = "目前狀態：等待真人打勾後會自動查詢，畢竟不想讓爬蟲直接爬爆額度";
+						vue.color = "error";
 					break;
 					case 'TEST': //測試
 						this.msg = "目前狀態：測試中";
@@ -200,6 +200,13 @@
         },
     });
 	</script>
+	
+	<style>
+	@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap");
+		body{
+		  font-family: 'Noto Sans TC',sans-serif !important;
+		}
+	</style>
 	
 
 </div>
