@@ -6,8 +6,7 @@
   <meta name="description" content="一個私人的動畫紀錄清單">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <!--<title>tsuiokuyo的動畫紀錄清單</title> -->
-  <title>tsuiokuyo</title>
+  <title>tsuiokuyo的動畫紀錄清單</title>
 	<!-- import Vue -->
 	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 	<!-- import library -->
@@ -42,7 +41,7 @@
 <div>
 <el-card class="box-card">
   <div slot="header" class="clearfix">
-   <!-- <span><h2>tsuiokuyo的動畫紀錄清單  <el-avatar :size="80" style="float:right" src="https://d33wubrfki0l68.cloudfront.net/699fb7879fa75fcd29a86e8d6599878a9a0b077a/44369/imgs/avatar.jpg"></el-avatar></h2></span> -->
+    <span><h2>tsuiokuyo的動畫紀錄清單  <el-avatar :size="80" style="float:right" src="https://d33wubrfki0l68.cloudfront.net/699fb7879fa75fcd29a86e8d6599878a9a0b077a/44369/imgs/avatar.jpg"></el-avatar></h2></span>
   </div>
   <div>
     	使用Cloud Firestore*2當成資料庫，不過免費的額度一個每天只有五萬筆，而目前查一次就一千多筆了，所以......呵。 <br />
@@ -52,13 +51,13 @@
 	 <br />
 	
 	因為筆數太多，大多都是隨手打的，可能看過但漏掉了，或是其實打錯行，不過要等注意到了才能改了。 <br />
-	表格更新時間:2022/06/11<br />
+	0顆星等於還沒看，以下表格更新時間:2022/06/11<br />
   </div>
 </el-card>
 	
 </div>
 
- <form action="?" method="POST">
+ <form action="?" method="POST" v-if="verify">
       <div class="g-recaptcha" data-sitekey="6Ld47WIgAAAAAMeNmW3XFkDiCYwTbvth7aldWJ7N"
 	   data-callback="onRecaptchaSuccess"
 	   ></div>
@@ -124,12 +123,14 @@
 		}
 		function onRecaptchaSuccess(){
 			vue.getDB();
+			vue.verify = false;
 		}
 		
     let vue = new Vue({
         el: "#app",
         data() {
             return {
+				verify: true,
                 msg: '',
                 color: '',
                 loading: true,
