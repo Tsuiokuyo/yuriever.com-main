@@ -32,7 +32,8 @@
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
   
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+
+ <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -58,9 +59,11 @@
 </div>
 
  <form action="?" method="POST">
-      <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+      <div class="g-recaptcha" data-sitekey="6Ld47WIgAAAAAMeNmW3XFkDiCYwTbvth7aldWJ7N"
+	   data-callback="onRecaptchaSuccess"
+	   ></div>
       <br/>
-      <input type="submit" value="Submit">
+
     </form>
 
 	<el-alert :title="msg" :type="color">
