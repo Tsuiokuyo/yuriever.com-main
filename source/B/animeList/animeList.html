@@ -59,7 +59,7 @@
 </div>
 
  <form action="?" method="POST">
-      <div class="g-recaptcha" data-sitekey="6Ld47WIgAAAAAMeNmW3XFkDiCYwTbvth7aldWJ7N"
+      <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
 	   data-callback="onRecaptchaSuccess"
 	   ></div>
       <br/>
@@ -117,13 +117,9 @@
 </div>
 </div>
 <script>
-
-	function 		onloadCallback(){
-		console.log("TESTRE")
-		}
 		
-			function 		onRecaptchaSuccess(){
-		console.log("OK")
+		function onRecaptchaSuccess(){
+		vue.setMsg('B');
 		}
 		
     let vue = new Vue({
