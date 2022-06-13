@@ -141,7 +141,7 @@
                 setMsg(type) {
                     switch (type) {
                         case 'A': //第一個額度
-                            this.msg = "目前狀態：綠色是查詢正常的顏色";
+                            this.msg = "目前狀態：綠色是查詢正常的顏色！";
                             this.color = "success";
                             break;
                         case 'B': //第二個額度
@@ -149,7 +149,7 @@
                             vue.color = "warning";
                             break;
                         case 'WAIT': //等待驗證
-                            vue.msg = "目前狀態：等待真人打勾後會自動查詢，畢竟不想讓爬蟲直接爬爆額度";
+                            vue.msg = "目前狀態：等待手動打勾後會自動查詢我的清單，畢竟不想讓爬蟲直接爬爆免費額度QwQ";
                             vue.color = "error";
                             break;
                         case 'TEST': //測試
@@ -157,7 +157,7 @@
                             this.color = "info";
                             break;
                         case 'X': //爆炸
-                            vue.msg = "目前狀態：兩個資料庫的免費額度都爆了，你還是21小時之後再來吧";
+                            vue.msg = "目前狀態：兩個資料庫的免費額度都爆了，你還是21小時之後再來吧！";
                             vue.color = "error";
                             break;
                     }
