@@ -14,22 +14,13 @@
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
 
-    <!-- Load required Bootstrap and BootstrapVue CSS -->
-    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
-    <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
-
-    <!-- Load polyfills to support older browsers -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es2015%2CIntersectionObserver" crossorigin="anonymous"></script>
-
-    <!-- Load Vue followed by BootstrapVue -->
-    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
-
-    <!-- Load the following for BootstrapVueIcons support -->
-    <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback" async defer></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -61,6 +52,7 @@
                         <br /> 基本上我都看BD版，老番通常DVD版，所以新番不太可能會有紀錄，而BD通常TV版放送後約一年後才會壓制。 <br /> 而以下動畫分行的方式，以TVDB分類為基準，某些作品會被分進Season 0、OVA，所以下面也會查不到，例如亡國的阿基德等等。<br /> 有些只有劇場版也不會出現在下面，有空再去弄劇場版紀錄清單、裏番部分。 <br />
                         <br /> 因為筆數太多，大多都是隨手打的，可能看過但漏掉了，或是其實打錯行，不過要等注意到了才能改了。 <br /> 0顆星等於還沒看，以下表格更新時間:2022/06/13
                         <br />
+                        <b-badge variant="primary">Primary</b-badge>
                     </div>
 
                     <form action="?" method="POST" v-if="verify" style="float:center">
@@ -90,6 +82,9 @@
                         <el-table-column prop="progress" label="觀看進度" width="150">
                         </el-table-column>
                         <el-table-column prop="state" label="觀看狀態" width="180" sortable>
+                            <template slot-scope="scope">
+                         <span :class="stateClass(scope.row.state)">{{scope.row.state}}</span>
+                        </template>
                         </el-table-column>
                         <el-table-column prop="memo" label="廢話">
                         </el-table-column>
@@ -147,6 +142,55 @@
                 }
             },
             methods: {
+                classList: function(state) {
+                    switch (state) {
+                        case '已看完':
+                            return {
+                                badge: true,
+                                'text-bg-success': true
+                            }
+                        case '進行中':
+                            return {
+                                badge: true,
+                                'text-bg-primary': true
+                            }
+                        case '只看了漫畫':
+                            return {
+                                badge: true,
+                                'text-bg-warning': true
+                            }
+                        case '只玩了遊戲':
+                            return {
+                                badge: true,
+                                'text-bg-warning': true
+                            }
+                        case '只看了小說':
+                            return {
+                                badge: true,
+                                'text-bg-warning': true
+                            }
+                        case '有機會再重補':
+                            return {
+                                badge: true,
+                                'text-bg-danger': true
+                            }
+                        case '努力中':
+                            return {
+                                badge: true,
+                                'text-bg-primary': true
+                            }
+                        case '放置中':
+                            return {
+                                badge: true,
+                                'text-bg-secondary': true
+                            }
+                        case '棄坑':
+                            return {
+                                badge: true,
+                                'text-bg-dark': true
+                            }
+                    }
+                },
                 splitRip(ripText) {
                     let objs = [];
                     let rips = ripText.split(/\s+/);
