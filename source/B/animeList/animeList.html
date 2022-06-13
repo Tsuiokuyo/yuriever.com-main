@@ -52,7 +52,6 @@
                         <br /> 基本上我都看BD版，老番通常DVD版，所以新番不太可能會有紀錄，而BD通常TV版放送後約一年後才會壓制。 <br /> 而以下動畫分行的方式，以TVDB分類為基準，某些作品會被分進Season 0、OVA，所以下面也會查不到，例如亡國的阿基德等等。<br /> 有些只有劇場版也不會出現在下面，有空再去弄劇場版紀錄清單、裏番部分。 <br />
                         <br /> 因為筆數太多，大多都是隨手打的，可能看過但漏掉了，或是其實打錯行，不過要等注意到了才能改了。 <br /> 0顆星等於還沒看，以下表格更新時間:2022/06/13
                         <br />
-                        <b-badge variant="primary">Primary</b-badge>
                     </div>
 
                     <form action="?" method="POST" v-if="verify" style="float:center">
@@ -66,10 +65,10 @@
                 <el-alert :title="msg" :type="color">
                 </el-alert>
                 <div>
-                    <el-table :data="anime" v-loading="loading" height="600" style="width: 100%;font-size: 20px">
+                    <el-table :data="anime" v-loading="loading" height="700" style="width: 100%;font-size: 20px">
                         <el-table-column type="index" label="筆數" width="80">
                         </el-table-column>
-                        <el-table-column prop="year" label="動畫年份" width="110" sortable>
+                        <el-table-column prop="year" label="動畫年份" width="125" sortable>
                         </el-table-column>
                         <el-table-column prop="name" label="中文名稱" sortable>
                         </el-table-column>
@@ -98,8 +97,6 @@
                               {{ item.name }}
                             </el-tag>
                           </template>
-                        </el-table-column>
-                        <el-table-column prop="updateTime" label="本列修改時間">
                         </el-table-column>
                     </el-table>
                 </div>
