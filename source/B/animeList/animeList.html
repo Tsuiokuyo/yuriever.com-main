@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <!-- 引入组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/umd/locale/zh-TW.js"></script>
 
 
     <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase.js"></script>
@@ -28,7 +29,7 @@
         <el-container>
             <div class="banner">
             </div>
-			
+
             <el-header height="100">
                 <el-card class="box-card">
                     <div slot="header" class="clearfix">
@@ -66,14 +67,14 @@
                         </el-table-column>
                         <el-table-column prop="progress" label="觀看進度" width="150">
                         </el-table-column>
-                        <el-table-column prop="state" label="觀看狀態" width="180" sortable>
+                        <el-table-column prop="state" label="觀看狀態" width="180" :filters="stateFilters" :filter-method="filterState" sortable>
                             <template slot-scope="scope">
                          <span :class="stateClass(scope.row.state)">{{scope.row.state}}</span>
                         </template>
                         </el-table-column>
-                        <el-table-column prop="memo" label="廢話">
+                        <el-table-column prop="memo" label="我的廢話">
                         </el-table-column>
-                        <el-table-column prop="rip" label="壓制組/個人">
+                        <el-table-column prop="rip" label="壓制組/個人" :filters="stateRips" :filter-method="filterRip" sortable>
                             <template slot-scope="scope">
                               <el-tag
                               v-for="item in splitRip(scope.row.rip)"
@@ -100,7 +101,7 @@
             vue.getDB();
             vue.verify = false;
         }
-
+        ELEMENT.locale(ELEMENT.lang.zhTW);
         let vue = new Vue({
             el: "#app",
             data() {
@@ -110,6 +111,41 @@
                     color: '',
                     loading: true,
                     anime: [],
+                    stateFilters: [{
+                        text: '已看完',
+                        value: '已看完'
+                    }, {
+                        text: '有機會再重補',
+                        value: '有機會再重補'
+                    }, {
+                        text: '努力中',
+                        value: '努力中'
+                    }, {
+                        text: '進行中',
+                        value: '進行中'
+                    }, {
+                        text: '放置中',
+                        value: '放置中'
+                    }, {
+                        text: '棄坑',
+                        value: '棄坑'
+                    }],
+                    stateRips: [{
+                        text: 'mawen1250',
+                        value: 'mawen1250'
+                    }, {
+                        text: 'VCB-Studio',
+                        value: 'VCB-Studio'
+                    }, {
+                        text: 'ANK-Raws',
+                        value: 'ANK-Raws'
+                    }, {
+                        text: 'LittleBakas!',
+                        value: 'LittleBakas!'
+                    }, {
+                        text: '其他',
+                        value: '其他'
+                    }, ],
                 };
             },
             mounted: function() {
@@ -125,6 +161,17 @@
                 }
             },
             methods: {
+                filterRip(value, row) {
+                    let objs = this.splitRip(row.rip);
+                    if (value === '其他') {
+                        return objs.find(obj => obj.name !== 'VCB-Studio' && obj.name !== 'ANK-Raws' && obj.name !== 'mawen1250' && obj.name !== 'LittleBakas!')
+                    }
+                    let result = objs.filter(obj => obj.name === value)
+                    return result.length !== 0;
+                },
+                filterState(value, row) {
+                    return row.state === value;
+                },
                 stateClass: function(state) {
                     switch (state) {
                         case '已看完':
