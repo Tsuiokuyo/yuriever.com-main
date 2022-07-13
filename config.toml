@@ -1,0 +1,525 @@
+baseURL = "https://tsuiokuyo.netlify.com/"
+
+# 更改使用 Hugo 構建網站時使用的默認主題
+theme = "LoveIt"
+
+# 網站標題
+title = "於是我又重看一次"
+
+# 網站語言, 僅在這裡 CN 大寫 ["en", "zh-CN", "fr", "pl", ...]
+languageCode = "zh-TW"
+# 語言名稱 ["English", "簡體中文", "Français", "Polski", ...]
+languageName = "繁體中文"
+# 是否包括中日韓文字
+hasCJKLanguage = true
+
+# 默認每頁列表顯示的文章數目
+paginate = 12
+# Google分析代號 [UA-XXXXXXXX-X]
+googleAnalytics = "UA-134954724-1"
+# 版權描述，僅僅用於 SEO
+copyright = ""
+
+# 是否使用 robots.txt
+enableRobotsTXT = true
+# 是否使用 git 訊息
+enableGitInfo = false
+# 是否使用 emoji 代碼
+enableEmoji = true
+
+
+# 忽略一些構建錯誤
+ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
+
+# 作者配置
+[author]
+  name = "Tsuiokuyo"
+  email = "Tsuiokuyo@gmail.com"
+  link = ""
+
+# 菜單配置
+[menu]
+  [[menu.main]]
+    weight = 1
+    identifier = "posts"
+    # 你可以在名稱 (允許 HTML 格式) 之前添加其他訊息, 例如圖示
+    pre = ""
+    # 你可以在名稱 (允許 HTML 格式) 之後添加其他訊息, 例如圖示
+    post = ""
+    name = "文章"
+    url = "/posts/"
+    # 當你將滑鼠懸停在此菜單連結上時, 將顯示的標題
+    title = ""
+  [[menu.main]]
+    weight = 2
+    identifier = "tags"
+    pre = ""
+    post = ""
+    name = "標籤"
+    url = "/tags/"
+    title = ""
+  [[menu.main]]
+    weight = 3
+    identifier = "categories"
+    pre = ""
+    post = ""
+    name = "分類"
+    url = "/categories/"
+    title = ""
+
+[params]
+  # 網站默認主題樣式 ["auto", "light", "dark"]
+  defaultTheme = "auto"
+  # 公共 git 倉庫路徑，僅在 enableGitInfo 設為 true 時有效
+  gitRepo = ""
+  # LoveIt 新增 | 0.1.1 哪種哈希函數用來 SRI, 為空時表示不使用 SRI
+  # ["sha256", "sha384", "sha512", "md5"]
+  fingerprint = ""
+  # LoveIt 新增 | 0.2.0 日期格式
+  dateFormat = "2006-01-02"
+  # 網站標題, 用於 Open Graph 和 Twitter Cards
+  title = "於是我又重看一次"
+  # 網站描述, 用於 RSS, SEO, Open Graph 和 Twitter Cards
+  description = "人生無法重來，但是我可以紀錄與回憶，這個部落格拿來記錄用，不過人是懶惰的。"
+  # 網站圖片, 用於 Open Graph 和 Twitter Cards
+  images = ["/assets/favicons.png"]
+
+  # 頁面頭部導航欄配置
+  [params.header]
+    # 桌面端導航欄模式 ["fixed", "normal", "auto"]
+    desktopMode = "fixed"
+    # 行動端導航欄模式 ["fixed", "normal", "auto"]
+    mobileMode = "auto"
+    # LoveIt 新增 | 0.2.0 頁面頭部導航欄標題配置
+    [params.header.title]
+      # LOGO 的 URL
+      logo = "/assets/favicons.png"
+      # 標題名稱
+      name = "於是我又重看一次"
+      # 你可以在名稱 (允許 HTML 格式) 之前添加其他訊息, 例如圖示
+      pre = ""
+      # 你可以在名稱 (允許 HTML 格式) 之後添加其他訊息, 例如圖示
+      post = ""
+      # LoveIt 新增 | 0.2.5 是否為標題顯示打字機動畫
+      typeit = false
+
+  # 頁面底部訊息配置
+  [params.footer]
+    enable = true
+    # LoveIt 新增 | 0.2.0 自訂內容 (支持 HTML 格式)
+    custom = ''
+    # LoveIt 新增 | 0.2.0 是否顯示 Hugo 和主題訊息
+    hugo = true
+    # LoveIt 新增 | 0.2.0 是否顯示版權訊息
+    copyright = true
+    # LoveIt 新增 | 0.2.0 是否顯示作者
+    author = true
+    # 網站創立年份
+    since = 2018
+    # ICP 備案訊息，僅在中國使用 (支持 HTML 格式)
+    icp = ""
+    # 許可協議訊息 (支持 HTML 格式)
+    license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
+
+  # LoveIt 新增 | 0.2.0 Section (所有文章) 頁面配置
+  [params.section]
+    # section 頁面每頁顯示文章數量
+    paginate = 20
+    # 日期格式 (月和日)
+    dateFormat = "01-02"
+    # RSS 文章數目
+    rss = 10
+
+  # LoveIt 新增 | 0.2.0 List (目錄或標籤) 頁面配置
+  [params.list]
+    # list 頁面每頁顯示文章數量
+    paginate = 20
+    # 日期格式 (月和日)
+    dateFormat = "01-02"
+    # RSS 文章數目
+    rss = 10
+
+  # LoveIt 新增 | 0.2.0 應用圖示配置
+  [params.app]
+    # 當添加到 iOS 主螢幕或者 Android 啟動器時的標題, 覆蓋默認標題
+    title = "於是我又重看一次"
+    # 是否隱藏網站圖示資源連結
+    noFavicon = false
+    # 更現代的 SVG 網站圖示, 可替代舊的 .png 和 .ico 文件
+    svgFavicon = "/assets/favicons.png"
+    # Android 瀏覽器主題色
+    themeColor = "#ffffff"
+    # Safari 圖示顏色
+    iconColor = "#5bbad5"
+    # Windows v8-10磁貼顏色
+    tileColor = "#da532c"
+
+  # LoveIt 新增 | 0.2.0 搜索配置
+  [params.search]
+    enable = true
+    # 搜尋引擎的類型 ["lunr", "algolia"]
+    type = "lunr"
+    # 文章內容最長索引長度
+    contentLength = 4000
+    # 搜索框的占位提示語
+    placeholder = ""
+    # LoveIt 新增 | 0.2.1 最大結果數目
+    maxResultLength = 10
+    # LoveIt 新增 | 0.2.3 結果內容片段長度
+    snippetLength = 50
+    # LoveIt 新增 | 0.2.1 搜索結果中高亮部分的 HTML 標籤
+    highlightTag = "em"
+    # LoveIt 新增 | 0.2.4 是否在搜索索引中使用基於 baseURL 的絕對路徑
+    absoluteURL = false
+    [params.search.algolia]
+      index = ""
+      appID = ""
+      searchKey = ""
+
+  # 首頁配置
+  [params.home]
+    # LoveIt 新增 | 0.2.0 RSS 文章數目
+    rss = 10
+    # 首頁個人訊息
+    [params.home.profile]
+      enable = true
+      # Gravatar 信箱，用於優先在首頁顯示的頭像
+      gravatarEmail = ""
+      # 首頁顯示頭像的 URL
+      avatarURL = "/images/avatar.jpg"
+      # LoveIt 更改 | 0.2.7 首頁顯示的網站標題 (支持 HTML 格式)
+      title = "Tsuiokuyo"
+      # 首頁顯示的網站副標題 (允許 HTML 格式)
+      subtitle = "人生無法重來，但是我可以紀錄與回憶，此網站拿來記錄用，只是...人是非常懶惰的。<br>目前超龜速更新中，想弄成肥宅味濃厚的網站"
+      # 是否為副標題顯示打字機動畫
+      typeit = true
+      # 是否顯示社交帳號
+      social = false
+      # LoveIt 新增 | 0.2.0 免責聲明 (支持 HTML 格式)
+      disclaimer = ""
+    # 首頁文章列表
+    [params.home.posts]
+      enable = true
+      # 首頁每頁顯示文章數量
+      paginate = 6
+      # LoveIt 刪除 | 0.2.0 被 params.page 中的 hiddenFromHomePage 替代
+      # 當你沒有在文章前置參數中設置 "hiddenFromHomePage" 時的默認行為
+      defaultHiddenFromHomePage = false
+
+  # 作者的社交訊息設定
+  [params.social]
+    GitHub = ""
+    Linkedin = ""
+    Twitter = ""
+    Instagram = ""
+    Facebook = ""
+    Telegram = ""
+    Medium = ""
+    Gitlab = ""
+    Youtubelegacy = ""
+    Youtubecustom = ""
+    Youtubechannel = ""
+    Tumblr = ""
+    Quora = ""
+    Keybase = ""
+    Pinterest = ""
+    Reddit = ""
+    Codepen = ""
+    FreeCodeCamp = ""
+    Bitbucket = ""
+    Stackoverflow = ""
+    Weibo = ""
+    Odnoklassniki = ""
+    VK = ""
+    Flickr = ""
+    Xing = ""
+    Snapchat = ""
+    Soundcloud = ""
+    Spotify = ""
+    Bandcamp = ""
+    Paypal = ""
+    Fivehundredpx = ""
+    Mix = ""
+    Goodreads = ""
+    Lastfm = ""
+    Foursquare = ""
+    Hackernews = ""
+    Kickstarter = ""
+    Patreon = ""
+    Steam = ""
+    Twitch = ""
+    Strava = ""
+    Skype = ""
+    Whatsapp = ""
+    Zhihu = ""
+    Douban = ""
+    Angellist = ""
+    Slidershare = ""
+    Jsfiddle = ""
+    Deviantart = ""
+    Behance = ""
+    Dribbble = ""
+    Wordpress = ""
+    Vine = ""
+    Googlescholar = ""
+    Researchgate = ""
+    Mastodon = ""
+    Thingiverse = ""
+    Devto = ""
+    Gitea = ""
+    XMPP = ""
+    Matrix = ""
+    Bilibili = ""
+    Discord = ""
+    DiscordInvite = ""
+    Lichess = ""
+    ORCID = ""
+    Pleroma = ""
+    Kaggle = ""
+    MediaWiki= ""
+    Plume = ""
+    HackTheBox = ""
+    RootMe= ""
+    Phone = ""
+    Email = "xxxx@xxxx.com"
+    RSS = true # LoveIt 新增 | 0.2.0
+
+  # LoveIt 更改 | 0.2.0 文章頁面全局配置
+  [params.page]
+    # LoveIt 新增 | 0.2.0 是否在首頁隱藏一篇文章
+    hiddenFromHomePage = false
+    # LoveIt 新增 | 0.2.0 是否在搜尋結果中隱藏一篇文章
+    hiddenFromSearch = false
+    # LoveIt 新增 | 0.2.0 是否使用 twemoji
+    twemoji = false
+    # 是否使用 lightgallery
+    lightgallery = false
+    # LoveIt 新增 | 0.2.0 是否使用 ruby 擴展語法
+    ruby = true
+    # LoveIt 新增 | 0.2.0 是否使用 fraction 擴展語法
+    fraction = true
+    # LoveIt 新增 | 0.2.0 是否使用 fontawesome 擴展語法
+    fontawesome = true
+    # 是否在文章頁面顯示原始 Markdown 文件連結
+    linkToMarkdown = true
+    # LoveIt 新增 | 0.2.4 是否在 RSS 中顯示全文內容
+    rssFullText = false
+    # LoveIt 新增 | 0.2.0 目錄配置
+    [params.page.toc]
+      # 是否使用目錄
+      enable = true
+      # LoveIt 新增 | 0.2.9 是否保持使用文章前面的靜態目錄
+      keepStatic = true
+      # 是否使側邊目錄自動摺疊展開
+      auto = true
+    # LoveIt 新增 | 0.2.0 代碼配置
+    [params.page.code]
+      # 是否顯示代碼塊的複製按鈕
+      copy = true
+      # 默認展開顯示的代碼行數
+      maxShownLines = 50
+    # LoveIt 更改 | 0.2.0 KaTeX 數學公式
+    [params.page.math]
+      enable = true
+      # LoveIt 更改 | 0.2.11 默認行內定界符是 $ ... $ 和 \( ... \)
+      inlineLeftDelimiter = ""
+      inlineRightDelimiter = ""
+      # LoveIt 更改 | 0.2.11 默認塊定界符是 $$ ... $$, \[ ... \], \begin{equation} ... \end{equation} 和一些其它的函數
+      blockLeftDelimiter = ""
+      blockRightDelimiter = ""
+      # KaTeX 插件 copy_tex
+      copyTex = true
+      # KaTeX 插件 mhchem
+      mhchem = true
+    # LoveIt 新增 | 0.2.0 Mapbox GL JS 配置
+    [params.page.mapbox]
+      # Mapbox GL JS 的 access token
+      accessToken = ""
+      # 淺色主題的地圖樣式
+      lightStyle = "mapbox://styles/mapbox/light-v10?optimize=true"
+      # 深色主題的地圖樣式
+      darkStyle = "mapbox://styles/mapbox/dark-v10?optimize=true"
+      # 是否添加 NavigationControl
+      navigation = true
+      # 是否添加 GeolocateControl
+      geolocate = true
+      # 是否添加 ScaleControl
+      scale = true
+      # 是否添加 FullscreenControl
+      fullscreen = true
+    # LoveIt 更改 | 0.2.0 文章頁面的分享訊息設定
+    [params.page.share]
+      enable = true
+      Twitter = true
+      Facebook = true
+      Linkedin = false
+      Whatsapp = false
+      Pinterest = false
+      Tumblr = false
+      HackerNews = true
+      Reddit = false
+      VK = false
+      Buffer = false
+      Xing = false
+      Line = true
+      Instapaper = false
+      Pocket = false
+      Flipboard = false
+      Weibo = true
+      Blogger = false
+      Baidu = false
+      Odnoklassniki = false
+      Evernote = false
+      Skype = false
+      Trello = false
+      Mix = false
+    # LoveIt 更改 | 0.2.0 評論系統設置
+    [params.page.comment]
+      enable = false
+      # Disqus 評論系統設置
+      [params.page.comment.disqus]
+        # LoveIt 新增 | 0.1.1
+        enable = false
+        # Disqus 的 shortname，用來在文章中啟用 Disqus 評論系統
+        shortname = ""
+      # Gitalk 評論系統設置
+      [params.page.comment.gitalk]
+        # LoveIt 新增 | 0.1.1
+        enable = false
+        owner = ""
+        repo = ""
+        clientId = ""
+        clientSecret = ""
+      # Valine 評論系統設置
+      [params.page.comment.valine]
+        enable = false
+        appId = ""
+        appKey = ""
+        placeholder = ""
+        avatar = "mp"
+        meta= ""
+        pageSize = 10
+        # 為空時自動適配當前主題 i18n 配置
+        lang = ""
+        visitor = true
+        recordIP = true
+        highlight = true
+        enableQQ = false
+        serverURLs = ""
+        # LoveIt 新增 | 0.2.6 emoji 數據檔案名稱, 預設是 "google.yml"
+        # ["apple.yml", "google.yml", "facebook.yml", "twitter.yml"]
+        # 位於 "themes/LoveIt/assets/lib/valine/emoji/" 目錄
+        # 可以在你的項目下相同路徑存放你自己的數據文件:
+        # "assets/lib/valine/emoji/"
+        emoji = ""
+      # Facebook 評論系統設置
+      [params.page.comment.facebook]
+        enable = false
+        width = "100%"
+        numPosts = 10
+        appId = ""
+        # 為空時自動適配當前主題 i18n 配置
+        languageCode = "zh_CN"
+      # LoveIt 新增 | 0.2.0 Telegram Comments 評論系統設置
+      [params.page.comment.telegram]
+        enable = false
+        siteID = ""
+        limit = 5
+        height = ""
+        color = ""
+        colorful = true
+        dislikes = false
+        outlined = false
+      # LoveIt 新增 | 0.2.0 Commento 評論系統設置
+      [params.page.comment.commento]
+        enable = false
+      # LoveIt 新增 | 0.2.5 utterances 評論系統設置
+      [params.page.comment.utterances]
+        enable = false
+        # owner/repo
+        repo = ""
+        issueTerm = "pathname"
+        label = ""
+        lightTheme = "github-light"
+        darkTheme = "github-dark"
+      # giscus comment 評論系統設置 (https://giscus.app/zh-CN)
+      [params.page.comment.giscus]
+        # 你可以參考官方文件來使用下列配置
+        enable = false
+        repo = ""
+        repoId = ""
+        category = "Announcements"
+        categoryId = ""
+        # 為空時自動適配當前主題 i18n 配置
+        lang = ""
+        mapping = "pathname"
+        reactionsEnabled = "1"
+        emitMetadata = "0"
+        inputPosition = "bottom"
+        lazyLoading = false
+        lightTheme = "light"
+        darkTheme = "dark"
+    # LoveIt 新增 | 0.2.7 第三方庫配置
+    [params.page.library]
+      [params.page.library.css]
+        # someCSS = "some.css"
+        # 位於 "assets/"
+        # 或者
+        # someCSS = "https://cdn.example.com/some.css"
+      [params.page.library.js]
+        # someJavascript = "some.js"
+        # 位於 "assets/"
+        # 或者
+        # someJavascript = "https://cdn.example.com/some.js"
+    # LoveIt 更改 | 0.2.10 頁面 SEO 配置
+    [params.page.seo]
+      # 圖片 URL
+      images = []
+      # 出版者訊息
+      [params.page.seo.publisher]
+        name = ""
+        logoUrl = ""
+
+  # LoveIt 新增 | 0.2.5 TypeIt 配置
+  [params.typeit]
+    # 每一步的打字速度 (單位是毫秒)
+    speed = 100
+    # 游標的閃爍速度 (單位是毫秒)
+    cursorSpeed = 1000
+    # 游標的字元 (支持 HTML 格式)
+    cursorChar = "|"
+    # 打字結束之後游標的持續時間 (單位是毫秒, "-1" 代表無限大)
+    duration = -1
+
+  # 網站驗證代碼，用於 Google/Bing/Yandex/Pinterest/Baidu
+  [params.verification]
+    google = ""
+    bing = ""
+    yandex = ""
+    pinterest = ""
+    baidu = ""
+
+  # LoveIt 新增 | 0.2.10 網站 SEO 配置
+  [params.seo]
+    # 圖片 URL
+    image = ""
+    # 縮圖 URL
+    thumbnailUrl = ""
+
+  # LoveIt 新增 | 0.2.0 網站分析配置
+  [params.analytics]
+    enable = false
+	
+	[permalinks]
+  posts = "/posts/:slug"
+  
+   [params.reward]  # 文章打赏
+    enable = true
+    wechat = "/images/donate.jpg"           # 二维码
+  
+  # Display a message at the beginning of an article to warn the readers that it's content may be outdated.
+  # 在文章末尾显示提示信息，提醒读者文章内容可能过时。
+  [params.outdatedInfoWarning]
+    enable = true
+    hint = 90     # Display hint if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示提醒
+    warn = 180    # Display warning if the last modified time is more than these days ago.    # 如果文章最后更新于这天数之前，显示警告

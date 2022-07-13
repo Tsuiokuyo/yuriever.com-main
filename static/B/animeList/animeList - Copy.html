@@ -1,0 +1,2763 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="tsuiokuyo的動畫紀錄清單">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>tsuiokuyo的動畫紀錄清單</title>
+    <!-- import Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/umd/locale/zh-TW.js"></script>
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback" async defer></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="app">
+        <el-container>
+            <div class="banner">
+            </div>
+
+            <el-header height="100">
+                <el-card class="box-card">
+                    <div slot="header" class="clearfix">
+                        <span></el-avatar><h1>tsuiokuyo的動畫紀錄清單<el-avatar :size="80" style="float:right" src="https://d33wubrfki0l68.cloudfront.net/699fb7879fa75fcd29a86e8d6599878a9a0b077a/44369/imgs/avatar.jpg"></el-avatar></h1></span>
+                    </div>
+                    <div>
+                        版面建設中，使用Cloud Firestore*2當成資料庫，不過免費的額度一個每天只有五萬筆，而目前查一次就一千多筆了，所以......呵。 <br /> 表格包含待看及有印象看過的的動畫，應該涵蓋我認識的九成的作品了，畢竟忘了的東西也想不起來。
+                        <br /> 基本上我都看BD版，老番通常DVD版，所以新番不太可能會有紀錄，而BD通常TV版放送後約一年後才會壓制。 <br /> 而以下動畫分行的方式，以TVDB分類為基準，某些作品會被分進Season 0、OVA，所以下面也會查不到，例如亡國的阿基德等等。<br /> 有些只有劇場版也不會出現在下面，有空再去弄劇場版紀錄清單、裏番部分。 <br />
+                        <br /> 因為筆數太多，大多都是隨手打的，可能看過但漏掉了，或是其實打錯行，不過要等注意到了才能改了。 <br /> 0顆星等於還沒看，以下表格更新時間:2022/06/18
+                        <br />
+                    </div>
+                    <form action="?" method="POST" v-if="verify" style="float:center">
+                        <div class="g-recaptcha" data-sitekey="6Ld47WIgAAAAAMeNmW3XFkDiCYwTbvth7aldWJ7N" data-callback="onRecaptchaSuccess"></div>
+                        <br/>
+                    </form>
+                </el-card>
+            </el-header>
+
+            <el-main>
+                <el-alert :title="msg" :type="color">
+                </el-alert>
+                <div>
+                    <el-table :data="anime" v-loading="loading" height="700" style="width: 100%;font-size: 20px">
+                        <el-table-column type="index" label="筆數" width="80">
+                        </el-table-column>
+                        <el-table-column prop="year" label="動畫年份" width="125" sortable>
+                        </el-table-column>
+                        <el-table-column prop="name" label="中文名稱" sortable>
+                        </el-table-column>
+                        <el-table-column prop="rank" label="個人喜好" sortable>
+                            <template slot-scope="scope">
+                              <el-rate v-model="scope.row.rank" disabled :max=5>
+                              </el-rate>
+                            </template>
+                        </el-table-column>
+                        <el-table-column prop="progress" label="觀看進度" width="150">
+                        </el-table-column>
+                        <el-table-column prop="state" label="觀看狀態" width="180" :filters="stateFilters" :filter-method="filterState" sortable>
+                            <template slot-scope="scope">
+                         <span :class="stateClass(scope.row.state)">{{scope.row.state}}</span>
+                        </template>
+                        </el-table-column>
+                        <el-table-column prop="memo" label="我的廢話">
+                        </el-table-column>
+                        <el-table-column prop="rip" label="壓制組/個人" :filters="stateRips" :filter-method="filterRip" sortable>
+                            <template slot-scope="scope">
+                              <el-tag
+                              v-for="item in splitRip(scope.row.rip)"
+                              :key="item.name"
+                              :type="item.color"
+                              effect="plain">
+                              {{ item.name }}
+                            </el-tag>
+                          </template>
+                        </el-table-column>
+                    </el-table>
+                </div>
+            </el-main>
+        </el-container>
+    </div>
+    <script>
+        function onloadCallback() {
+            if (vue.color !== 'info') {
+                vue.setMsg('WAIT');
+            }
+        }
+
+        function onRecaptchaSuccess() {
+            vue.getDB();
+            vue.verify = false;
+        }
+        ELEMENT.locale(ELEMENT.lang.zhTW);
+        let vue = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    verify: true,
+                    msg: '',
+                    color: '',
+                    loading: false,
+                    anime: [{
+                        "year": 2007,
+                        "name": "天元突破 紅蓮螺巖",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "畫風不適應，要不是有妮亞",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2007,
+                        "name": "空之境界",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "不好講，畢竟當時是先看小說",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "青之花",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "百合番",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "軍火女王",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S2",
+                        "rip": "AI-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "浪漫追星社",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2019,
+                        "name": "這個勇者明明超TUEEE卻過度謹慎",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "虐，小說更虐",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2001,
+                        "name": "通靈王",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2005,
+                        "name": "黑貓",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "我很喜歡這位沙耶呢",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2006,
+                        "name": "監獄兔",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S3",
+                        "rip": "AI-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 1999,
+                        "name": "青山剛昌短篇集",
+                        "rank": 3,
+                        "progress": "",
+                        "state": "只看了漫畫",
+                        "chapter": "",
+                        "rip": "AI-Raws",
+                        "memo": "看完漫畫，感覺幾乎沒看動畫的必要",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2007,
+                        "name": "賭博默示錄",
+                        "rank": 4,
+                        "progress": "",
+                        "state": "只看了漫畫",
+                        "chapter": "",
+                        "rip": "AI-Raws",
+                        "memo": "看漫畫",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "鋼殼都市雷吉歐斯",
+                        "rank": 3,
+                        "progress": "",
+                        "state": "只看了漫畫",
+                        "chapter": "",
+                        "rip": "AI-Raws",
+                        "memo": "只有看過漫畫第一話的印象",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2007,
+                        "name": "魔人偵探腦嚙涅羅",
+                        "rank": 4,
+                        "progress": "",
+                        "state": "只看了漫畫",
+                        "chapter": "",
+                        "rip": "AI-Raws",
+                        "memo": "只看完漫畫而已",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2005,
+                        "name": "地獄少女",
+                        "rank": 4,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S4",
+                        "rip": "AI-Raws",
+                        "memo": "經典作品",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2001,
+                        "name": "神鵰俠侶",
+                        "rank": 3,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2004,
+                        "name": "Keroro軍曹",
+                        "rank": 3,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S7",
+                        "rip": "AI-Raws",
+                        "memo": "小時候斷斷續續地看，要補的話要先啃358話耶...",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2005,
+                        "name": "武器種族傳說",
+                        "rank": 3,
+                        "progress": "S01E02",
+                        "state": "努力中",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2004,
+                        "name": "神無月的巫女",
+                        "rank": 3,
+                        "progress": "S01E02",
+                        "state": "努力中",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "經典的百合番，但裡面的機器人讓我很難接受",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "GA 藝術科美術設計班",
+                        "rank": 2,
+                        "progress": "S01E01",
+                        "state": "努力中",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "努力中",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2006,
+                        "name": "斬魔大聖Demonbane",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "又是機器人，跟我想要的魔法發展不一樣啊",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2002,
+                        "name": "圓盤皇女",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S4",
+                        "rip": "AI-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 1995,
+                        "name": "新世紀福音戰士",
+                        "rank": 5,
+                        "progress": "剩下劇場版終",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "翠星上的加爾岡緹亞",
+                        "rank": 4,
+                        "progress": "剩下OVAx2",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "也是捨不得看完",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2006,
+                        "name": "歡迎加入NHK！",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "AI-Raws",
+                        "memo": "畫風不合胃口",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2002,
+                        "name": ".hack",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "AI-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 1975,
+                        "name": "一休和尚",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "AI-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 1998,
+                        "name": "頭文字D",
+                        "rank": 4,
+                        "progress": "",
+                        "state": "只看了漫畫",
+                        "chapter": "S6",
+                        "rip": "AI-Raws ANK-Raws",
+                        "memo": "漫畫倒是看完了啦",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2005,
+                        "name": "TSUBASA翼",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S2",
+                        "rip": "AI-Raws CASO",
+                        "memo": "最喜歡的作品，所以才會補CLAMP其他作品",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "女王之刃",
+                        "rank": 3,
+                        "progress": "S1完",
+                        "state": "放置中",
+                        "chapter": "S3",
+                        "rip": "Alkasa",
+                        "memo": "超級肉番，不過畫風不合胃口",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2003,
+                        "name": "一騎當千",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "Alkasa",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "電波女 & 青春男",
+                        "rank": 3,
+                        "progress": "S01E04",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANE",
+                        "memo": "後面沒印象，應該是沒看完",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "瑪莉亞狂熱",
+                        "rank": 3,
+                        "progress": "S2中途",
+                        "state": "放置中",
+                        "chapter": "S2",
+                        "rip": "ANE",
+                        "memo": "第二季大多沒印象，應該沒看完",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 1982,
+                        "name": "超時空要塞",
+                        "rank": 2,
+                        "progress": "S01E04",
+                        "state": "棄坑",
+                        "chapter": "S1",
+                        "rip": "ANISAB-BD",
+                        "memo": "畫風太硬，只補劇場版",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "+tic模型姊姊",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "泡麵番，但沒看過原作，沒甚麼感觸",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "11eyes -罪與罰與贖的少女-",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "我過幾年印象就幾乎全沒了的動畫...，因為劇情大多忘了，所以OVA就沒補了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2015,
+                        "name": "六花的勇者",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "雖然看之前已從小說劇透了，但要發展到後期還是需要前面良好的鋪陳呀",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "天使與龍的輪舞",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "不好講喜不喜歡，總之還是看完了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "天魔黑兔",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "ED不錯",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "文學少女",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "大概是目前小說含番外篇都入手的作品吧",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "打工吧！魔王大人",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "看完了，但沒印象了的作品",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "未來日記",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "生存遊戲社",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "電波不合",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2016,
+                        "name": "田中君總是如此慵懶",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "印象不深刻，但我大概是為了看女角而看完的",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "守護貓娘緋鞠",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "忘光了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2004,
+                        "name": "妖精的旋律",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "色情、暴力、血腥，不過這是指未修正版的，修正版的倒是沒看",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2018,
+                        "name": "妖精森林的小不點",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "放鬆用",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "我們仍未知道那天所看見的花名。",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "催淚番，但歐美評價似乎普普",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2016,
+                        "name": "兔龜",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "泡麵番",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "姐姐來了",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "泡麵番",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2015,
+                        "name": "幸腹塗鴉",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "溫馨美食番",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "空·之·音",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "肯普法",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "大概是各種反差的關係，記得以前挺喜歡這部的",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "花冠之淚",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "花舞少女",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "架向星空之橋",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2018,
+                        "name": "哥布林殺手",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "我小說看到後期倒是沒有前幾集的那種熱情了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "純白交響曲",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2018,
+                        "name": "酒鬼妹子",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "閃亂神樂",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S2",
+                        "rip": "ANK-Raws",
+                        "memo": "為了在遊戲更了解劇情，所以才特意去補動畫",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2017,
+                        "name": "側車搭檔",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "問題兒童都來自異世界？",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "爽番，只是小說第二部換主角後就暫時沒看了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "惡魔的謎語",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "結城友奈是勇者",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S3",
+                        "rip": "ANK-Raws",
+                        "memo": "開大招有副作用的佳作",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2015,
+                        "name": "亂步奇譚 Game of Laplace",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "當時，第五話讓我鬱悶超級久...",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "傳說的勇者的傳說",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "忘光了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2018,
+                        "name": "愛吃拉麵的小泉同學",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "放鬆用",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "戰場女武神",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "最早是先接觸PSP女武神3，因為主角不同，所以本傳有點適應不良",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "機動戰士鋼彈SEED DESTINY HD Remaster",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "機動戰士鋼彈SEED HD Remaster",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "織田信奈的野望",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "以前喜歡的原因已經忘了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2017,
+                        "name": "雛子的筆記",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "放鬆用",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2017,
+                        "name": "歡迎來到實力至上主義的教室",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "小說的發展沒有讓我很喜歡就是了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "A頻道",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "AKB0048",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S2",
+                        "rip": "ANK-Raws",
+                        "memo": "我是為了聽歌而接觸的",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2018,
+                        "name": "Anima Yell!",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2016,
+                        "name": "Anne Happy♪",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "CANAAN",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "每位角色都很有個性，讓我每集都很期待劇情的發展",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "Dragon Crisis ～龍之界點～",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "當初蠻喜歡的OP，但現在劇情已忘",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "MM一族",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "對結局非常有印象，我能確定有看完，中間的內容就...",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2007,
+                        "name": "Sola",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "不曉得是不是因為聲優的關係，當初也蠻喜歡這部",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "大小姐×執事！",
+                        "rank": 3,
+                        "progress": "",
+                        "state": "只看了小說",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "因為是先接觸小說，所以動畫就看不太下去了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2017,
+                        "name": "政宗君的復仇",
+                        "rank": 3,
+                        "progress": "",
+                        "state": "只看了漫畫",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "看過漫畫就只能等有心情才會去補動畫了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "偷窺孔",
+                        "rank": 3,
+                        "progress": "",
+                        "state": "只看了漫畫",
+                        "chapter": "OVA",
+                        "rip": "ANK-Raws",
+                        "memo": "看完漫畫，動畫也就沒興趣了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "黃昏乙女×失憶幽靈",
+                        "rank": 3,
+                        "progress": "",
+                        "state": "只看了漫畫",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "漫畫...大概也看一半而已",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "魔王勇者",
+                        "rank": 3,
+                        "progress": "",
+                        "state": "只看了漫畫",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "只看漫畫而已...",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "MAGI魔奇少年",
+                        "rank": 3,
+                        "progress": "",
+                        "state": "只看了漫畫",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "看漫畫後就對動畫沒甚麼大興趣了..",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "我女友與青梅竹馬的慘烈修羅場",
+                        "rank": 3,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "沒印象了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "神隱之狼",
+                        "rank": 3,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "記憶已缺失",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2015,
+                        "name": "聖劍使的禁咒詠唱",
+                        "rank": 3,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2015,
+                        "name": "落第騎士英雄譚",
+                        "rank": 3,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "當初動畫只是走馬看花，稱不上有看完",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "緣之空",
+                        "rank": 4,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "經典作品，但實際上劇情沒印象了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "學生會的一存",
+                        "rank": 3,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S2",
+                        "rip": "ANK-Raws",
+                        "memo": "已忘",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "B型H系",
+                        "rank": 3,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "年代久遠，已經毫無印象，只知道有看過，有沒有看完?好像沒有，有機會再補了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2007,
+                        "name": "ef - a fairy tale of the two.",
+                        "rank": 3,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S2",
+                        "rip": "ANK-Raws",
+                        "memo": "悠久之翼，以前看的時候完全不理解劇情",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "R-15",
+                        "rank": 3,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "年代久遠",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "異國迷宮的十字路口",
+                        "rank": 3,
+                        "progress": "S01E03",
+                        "state": "努力中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "稍稍令我乏味的日常生活",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "BLACK★ROCK SHOOTER",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "努力中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "未棄番但電波還沒對上，要看時又因為忘記劇情第一集看了三次了，然後再放置，而現在又出了續作...",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "人類衰退之後",
+                        "rank": 3,
+                        "progress": "S01E02",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "電波沒對上，但聽說電波有對的人覺得很好看",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "三坪房間的侵略者！？",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "電波沒對上",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "百花繚亂 SAMURAI GIRLS",
+                        "rank": 3,
+                        "progress": "S1完",
+                        "state": "放置中",
+                        "chapter": "S2",
+                        "rip": "ANK-Raws",
+                        "memo": "第一季劇情遺忘，只能先扔著了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "我的朋友很少",
+                        "rank": 3,
+                        "progress": "S01E11",
+                        "state": "放置中",
+                        "chapter": "S2",
+                        "rip": "ANK-Raws",
+                        "memo": "印象只到第一季11話，看來是不想看到完結，放到忘記了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2015,
+                        "name": "城下町的蒲公英",
+                        "rank": 2,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "對於這個世界觀的興趣不大",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "屍體派對 Tortured Souls",
+                        "rank": 4,
+                        "progress": "",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "動畫的話...應該是沒有看過的印象",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "核爆末世錄",
+                        "rank": 3,
+                        "progress": "S01E09",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "神不在的星期天",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2018,
+                        "name": "茜色少女",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2016,
+                        "name": "迷家",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "根據第一話每個人的個性，後續的走勢看起來我就不會喜歡",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "最後大魔王",
+                        "rank": 3,
+                        "progress": "S01E02",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "無賴勇者的鬼畜美學",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "肉番，興致缺缺",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "超級索尼子",
+                        "rank": 4,
+                        "progress": "S01E03",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "遺忘...",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2016,
+                        "name": "聖潔天使",
+                        "rank": 3,
+                        "progress": "S01E05",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "因為忘記了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2015,
+                        "name": "電波教師",
+                        "rank": 2,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "跟是否看過漫畫無關，單純是配音不太能接受",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "輕聲密語",
+                        "rank": 4,
+                        "progress": "S01E04",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "百合番，但也放到忘了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "嬌蠻貓娘大橫行！",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "貓願三角戀",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "沒甚麼印象了，後面大概沒看吧",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "BTOOOM!",
+                        "rank": 2,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "女主不合胃口，放置中",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "BUDDY COMPLEX",
+                        "rank": 4,
+                        "progress": "剩下兩部劇場版",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "當初為了玩機戰X而補，劇情也合胃口",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "C³ -魔幻三次方-",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "Campione 弒神者！",
+                        "rank": 2,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "當初記得好像沒有很對味，原因已忘",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2015,
+                        "name": "Classroom☆Crisis",
+                        "rank": 2,
+                        "progress": "S01E02",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "當時似乎沒心情看內鬥的作品吧，所以放置中",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2006,
+                        "name": "Code Geass 反叛的魯路修",
+                        "rank": 5,
+                        "progress": "剩下OVA",
+                        "state": "放置中",
+                        "chapter": "S2",
+                        "rip": "ANK-Raws",
+                        "memo": "本傳就不用說了，而外傳興致缺缺放置中",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2013,
+                        "name": "GJ部",
+                        "rank": 3,
+                        "progress": "S01E09",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "日常番當成放鬆用，只是電波不合只會久久看一次",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "Infinite Stratos",
+                        "rank": 2,
+                        "progress": "S01E06",
+                        "state": "放置中",
+                        "chapter": "S2",
+                        "rip": "ANK-Raws",
+                        "memo": "OP不錯，但是電波不合阿",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "RAIL WARS! -日本國有鐵道公安隊-",
+                        "rank": 3,
+                        "progress": "S01E08",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "我以為有看完，但好像沒看完的作品，因為後面劇情沒印象",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "TRINITY SEVEN 魔道書7使者",
+                        "rank": 3,
+                        "progress": "剩下劇場版",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "賣肉及主角威能，所以才能看完",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2008,
+                        "name": "乃木坂春香的秘密",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2007,
+                        "name": "向陽素描",
+                        "rank": 4,
+                        "progress": "S01E07",
+                        "state": "進行中",
+                        "chapter": "S4",
+                        "rip": "ANK-Raws",
+                        "memo": "作品順序被打亂，所以不快點看完的話可能會忘記伏筆QQ",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "偶像大師",
+                        "rank": 3,
+                        "progress": "S01E02",
+                        "state": "進行中",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2018,
+                        "name": "25歲的女高中生",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "30歲的健康教育",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "VCB-Studio",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2016,
+                        "name": "91天",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "一起一起這裡那裡",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2018,
+                        "name": "七美德",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "人生諮詢電視動畫「人生」",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2017,
+                        "name": "人渣的本願",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "刀語",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "ANK-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2019,
+                        "name": "一弦定音！",
+                        "rank": 0,
+                        "progress": "",
+                        "state": "",
+                        "chapter": "",
+                        "rip": "ANK-Raws EggPain-Raws AI-Raws",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2017,
+                        "name": "BanG Dream!",
+                        "rank": 4,
+                        "progress": "S02E02",
+                        "state": "進行中",
+                        "chapter": "S3",
+                        "rip": "ANK-Raws LoliHouse",
+                        "memo": "閃閃發亮的樂團，不過第二季改用全3D模組，消化不良中",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "ALDNOAH.ZERO",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S2",
+                        "rip": "ANK-Raws VCB-Studio",
+                        "memo": "除了結局，對...除了那個結局，總體來說是很不錯的爽番",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "FORTUNE ARTERIAL",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "ANK-Raws Yousei-raws",
+                        "memo": "赤之約束，算是我的看動畫的啟蒙作之一吧，以前很喜歡玩galgame的說，現在就還好了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "信蜂",
+                        "rank": 2,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S2",
+                        "rip": "Beatrice-Raws",
+                        "memo": "電波不合",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "食夢者瑪莉",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "CASO",
+                        "memo": "有一陣子很喜歡這種瞳孔特別的角色",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2000,
+                        "name": "純情房東俏房客",
+                        "rank": 3,
+                        "progress": "S01E09",
+                        "state": "進行中",
+                        "chapter": "S1",
+                        "rip": "Chyrka",
+                        "memo": "經典作品",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2000,
+                        "name": "笑園漫畫大王",
+                        "rank": 3,
+                        "progress": "S01E12",
+                        "state": "努力中",
+                        "chapter": "S1",
+                        "rip": "Chyrka Yurasyk",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2007,
+                        "name": "School Days",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "EggPain-Raws VCB-Studio",
+                        "memo": "哀傷",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2011,
+                        "name": "結界女王",
+                        "rank": 3,
+                        "progress": "S1完",
+                        "state": "放置中",
+                        "chapter": "S2",
+                        "rip": "EggPain-Raws VCB-Studio",
+                        "memo": "肉番，興趣不大",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2003,
+                        "name": "真月譚 月姬",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "Henshin",
+                        "memo": "日月潭貓姬，還是看漫畫跟遊戲就好了，雖然我遊戲其實也沒全破...",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2008,
+                        "name": "我家有個狐仙大人",
+                        "rank": 3,
+                        "progress": "S01E10",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "Henshin",
+                        "memo": "第10話已後好像就沒印象了，可能沒看完吧",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "聖劍鍛造師",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "HQR",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2007,
+                        "name": "PRISM ARK 邁向騎士之路",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "HQR",
+                        "memo": "當時喜歡看這類型的作品，只不過現在來看當然普普而已",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2010,
+                        "name": "半妖少女 綺麗譚",
+                        "rank": 4,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "HQR",
+                        "memo": "嘛，其實我單純是喜歡裡面的插入曲",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2005,
+                        "name": "聖魔之血",
+                        "rank": 3,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "HQR",
+                        "memo": "作者已經病逝...所以有興趣也沒後續了...",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "海物語〜有你相伴〜",
+                        "rank": 3,
+                        "progress": "S01E08",
+                        "state": "努力中",
+                        "chapter": "S1",
+                        "rip": "HQR",
+                        "memo": "不做死就不會死，有雷隊友真的會讓人想棄坑...",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2008,
+                        "name": "夕陽染紅的坡道",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "jsum",
+                        "memo": "算是我的看動畫的啟蒙作之一吧，所以其實劇情也都忘了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2007,
+                        "name": "交響情人夢",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S3",
+                        "rip": "jsum",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2003,
+                        "name": "初音島",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S2",
+                        "rip": "jsum",
+                        "memo": "第二季男主畫風驟變，花了好一大段時間才看完第二季",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 1995,
+                        "name": "新機動戰記GUNDAM W",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "jsum",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2005,
+                        "name": "魔法老師！",
+                        "rank": 4,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "jsum",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2015,
+                        "name": "OVERLORD",
+                        "rank": 5,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S3",
+                        "rip": "jsum",
+                        "memo": "動畫看完後一樣拚小說，只可惜因為世界觀太龐大，作者要讓它完結了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2006,
+                        "name": "死亡筆記本",
+                        "rank": 4,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "jsum",
+                        "memo": "以前看也只是斷斷續續的看",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2006,
+                        "name": "魔法老師！？",
+                        "rank": 4,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S1",
+                        "rip": "jsum",
+                        "memo": "雖然OP以及OAD白之翼有印象，但劇情沒啥印象",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2012,
+                        "name": "我的妹妹是「大阪大媽」",
+                        "rank": 3,
+                        "progress": "S01E02",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "jsum",
+                        "memo": "單純想聽大阪腔",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 1983,
+                        "name": "聖戰士丹拜因",
+                        "rank": 3,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "jsum",
+                        "memo": "畫風難啃，我只是想更融入機戰用而已",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 1993,
+                        "name": "機動戰士V鋼彈",
+                        "rank": 3,
+                        "progress": "S01E16",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "jsum",
+                        "memo": "畫風問題，慢慢啃...",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2006,
+                        "name": "暮蟬悲鳴時",
+                        "rank": 4,
+                        "progress": "-1",
+                        "state": "有機會再重補",
+                        "chapter": "S4",
+                        "rip": "jsum Yousei-raws",
+                        "memo": "經典作品，雖然劇情忘的七七八八了",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2014,
+                        "name": "狐仙的戀愛入門",
+                        "rank": 3,
+                        "progress": "End",
+                        "state": "已看完",
+                        "chapter": "S1",
+                        "rip": "Kagura",
+                        "memo": "",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, {
+                        "year": 2009,
+                        "name": "初戀限定。",
+                        "rank": 2,
+                        "progress": "S01E01",
+                        "state": "放置中",
+                        "chapter": "S1",
+                        "rip": "Kagura",
+                        "memo": "畫風關係，適應不良",
+                        "type": "",
+                        "db1": "",
+                        "db2": "",
+                        "db3": "",
+                        "updateTime": ""
+                    }, ],
+                    stateFilters: [{
+                        text: '已看完',
+                        value: '已看完'
+                    }, {
+                        text: '有機會再重補',
+                        value: '有機會再重補'
+                    }, {
+                        text: '努力中',
+                        value: '努力中'
+                    }, {
+                        text: '進行中',
+                        value: '進行中'
+                    }, {
+                        text: '放置中',
+                        value: '放置中'
+                    }, {
+                        text: '棄坑',
+                        value: '棄坑'
+                    }],
+                    stateRips: [{
+                        text: 'mawen1250',
+                        value: 'mawen1250'
+                    }, {
+                        text: 'VCB-Studio',
+                        value: 'VCB-Studio'
+                    }, {
+                        text: 'ANK-Raws',
+                        value: 'ANK-Raws'
+                    }, {
+                        text: 'LittleBakas!',
+                        value: 'LittleBakas!'
+                    }, {
+                        text: '其他',
+                        value: '其他'
+                    }, ],
+                };
+            },
+            mounted: function() {
+                //     this.setMsg('TEST'); 
+            },
+            watch: {
+                anime: function(oldVal, newVal) {
+                    if (oldVal.length != 0) {
+                        this.loading = true;
+                    } else {
+                        this.loading = true;
+                    }
+                }
+            },
+            methods: {
+                filterRip(value, row) {
+                    let objs = this.splitRip(row.rip);
+                    if (value === '其他') {
+                        return objs.find(obj => obj.name !== 'VCB-Studio' && obj.name !== 'ANK-Raws' && obj.name !== 'mawen1250' && obj.name !== 'LittleBakas!')
+                    }
+                    let result = objs.filter(obj => obj.name === value)
+                    return result.length !== 0;
+                },
+                filterState(value, row) {
+                    return row.state === value;
+                },
+                stateClass: function(state) {
+                    switch (state) {
+                        case '已看完':
+                            return {
+                                badge: true,
+                                'text-bg-success': true
+                            }
+                        case '進行中':
+                            return {
+                                badge: true,
+                                'text-bg-primary': true
+                            }
+                        case '只看了漫畫':
+                            return {
+                                badge: true,
+                                'text-bg-warning': true
+                            }
+                        case '只玩了遊戲':
+                            return {
+                                badge: true,
+                                'text-bg-warning': true
+                            }
+                        case '只看了小說':
+                            return {
+                                badge: true,
+                                'text-bg-warning': true
+                            }
+                        case '有機會再重補':
+                            return {
+                                badge: true,
+                                'text-bg-danger': true
+                            }
+                        case '努力中':
+                            return {
+                                badge: true,
+                                'text-bg-primary': true
+                            }
+                        case '放置中':
+                            return {
+                                badge: true,
+                                'text-bg-secondary': true
+                            }
+                        case '棄坑':
+                            return {
+                                badge: true,
+                                'text-bg-dark': true
+                            }
+                    }
+                },
+                splitRip(ripText) {
+                    let objs = [];
+                    let rips = ripText.split(/\s+/);
+                    rips.forEach(function(item) {
+                        let obj = {};
+                        switch (item) {
+                            case 'VCB-Studio':
+                            case 'ANK-Raws':
+                            case 'mawen1250':
+                            case 'LittleBakas!':
+                                obj.color = 'success'
+                                break;
+                            case 'AI-Raws':
+                            case 'Kagura':
+                            case 'philosophy-raws':
+                            case 'Henshin':
+                            case 'ANE':
+                            case 'THORA':
+                            case 'sergey_krs':
+                            case 'SweetSub':
+                            case 'LoliHouse':
+                                obj.color = ''
+                                break;
+                            case 'jsum':
+                            case 'Beatrice-Raws':
+                            case 'Yousei-Raws':
+                            case 'Reinforce':
+                            case 'Salender-Raws':
+                            case 'QTS':
+                                obj.color = 'warning'
+                                break;
+                            case 'Unknow':
+                                obj.color = 'info'
+                                break;
+                            default:
+                                obj.color = 'danger';
+                                break;
+                        }
+                        obj.name = item;
+                        objs.push(obj);
+                    });
+                    return objs
+                },
+                setMsg(type) {
+                    switch (type) {
+                        case 'A': //第一個額度
+                            this.msg = "目前狀態：綠色是查詢正常的顏色！";
+                            this.color = "success";
+                            break;
+                        case 'B': //第二個額度
+                            vue.msg = "目前狀態：第一個資料庫，今天的免費額度已經爆炸，那麼這第二個資料庫額度爆炸還會遠嗎？";
+                            vue.color = "warning";
+                            break;
+                        case 'WAIT': //等待驗證
+                            vue.msg = "目前狀態：等待手動打勾後會自動查詢我的清單，畢竟不想讓爬蟲直接佔免費額度QwQ";
+                            vue.color = "error";
+                            break;
+                        case 'TEST': //測試
+                            this.msg = "目前狀態：測試中!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+                            this.color = "info";
+                            break;
+                        case 'X': //爆炸
+                            vue.msg = "目前狀態：看來兩個資料庫的免費額度都爆了，你還是21小時之後再來吧！";
+                            vue.color = "error";
+                            break;
+                    }
+                },
+                getDB() {
+                    let object = [];
+                    var _0x26d557 = _0x4751;
+
+                    function _0x4751(_0x326ddb, _0x520e74) {
+                        var _0x32bf40 = _0x32bf();
+                        return _0x4751 = function(_0x4751b7, _0x211aca) {
+                            _0x4751b7 = _0x4751b7 - 0xa5;
+                            var _0x4f9db7 = _0x32bf40[_0x4751b7];
+                            return _0x4f9db7;
+                        }, _0x4751(_0x326ddb, _0x520e74);
+                    }
+
+                    function _0x32bf() {
+                        var _0x8ed541 = ['8051748hGcMfS', '76228MVulcE', '8005976jErkim', 'toString', 'split', '6\x207={l:\x22m-n\x22,o:\x222-3.p.4\x22,q:\x22r://2-3.s.4\x22,t:\x222-3\x22,u:\x222-3.v.4\x22,w:\x228\x22,x:\x221:8:y:z\x22,A:\x22G-B\x22};5.C(7),5.D();6\x209=5.E(),b=9.F(\x22H\x22);b.I().J(a=>{a.K(a=>{L.M({c:a.c,d:a.0().d,e:a.0().e,f:a.0().f,g:a.0().g,h:a.0().h,i:a.0().i,j:a.0().j,k:a.0().k})})});', 'data||tsuiokuyo|8a31a|com|firebase|let|firebaseConfig|546368251283|db||ref|id|year|name|rank|progress|state|memo|rip|updateTime|apiKey|AIzaSyC5veCoPDfBM7Vj4WOfI|xN0lLwiZUK_yo|authDomain|firebaseapp|databaseURL|https|firebaseio|projectId|storageBucket|appspot|messagingSenderId|appId|web|23253f9e609b874d897466|measurementId|DXFDWHTMQX|initializeApp|analytics|firestore|collection||animeList|get|then|forEach|object|push', 'replace', '2vaFaZs', '\x5cw+', '5103100gTQKOs', '502597FYSaSz', '87ErKyHq', '7686230wNrmLm', '5961662oCqBZO', '9zNGYzG'];
+                        _0x32bf = function() {
+                            return _0x8ed541;
+                        };
+                        return _0x32bf();
+                    }(function(_0x30e04f, _0x39d65f) {
+                        var _0x35a5ca = _0x4751,
+                            _0x1c3644 = _0x30e04f();
+                        while (!![]) {
+                            try {
+                                var _0x32f3d6 = parseInt(_0x35a5ca(0xa6)) / 0x1 * (-parseInt(_0x35a5ca(0xb3)) / 0x2) + -parseInt(_0x35a5ca(0xa7)) / 0x3 * (-parseInt(_0x35a5ca(0xac)) / 0x4) + parseInt(_0x35a5ca(0xa5)) / 0x5 + -parseInt(_0x35a5ca(0xab)) / 0x6 + parseInt(_0x35a5ca(0xa9)) / 0x7 + parseInt(_0x35a5ca(0xad)) / 0x8 + -parseInt(_0x35a5ca(0xaa)) / 0x9 * (parseInt(_0x35a5ca(0xa8)) / 0xa);
+                                if (_0x32f3d6 === _0x39d65f) break;
+                                else _0x1c3644['push'](_0x1c3644['shift']());
+                            } catch (_0x46aeac) {
+                                _0x1c3644['push'](_0x1c3644['shift']());
+                            }
+                        }
+                    }(_0x32bf, 0xc65dc), eval(function(_0x222d9e, _0x4779f1, _0x156343, _0x555c97, _0x119986, _0x9b04ad) {
+                        var _0x28a6f4 = _0x4751;
+                        _0x119986 = function(_0x9828e0) {
+                            var _0x2630b4 = _0x4751;
+                            return (_0x9828e0 < _0x4779f1 ? '' : _0x119986(parseInt(_0x9828e0 / _0x4779f1))) + ((_0x9828e0 = _0x9828e0 % _0x4779f1) > 0x23 ? String['fromCharCode'](_0x9828e0 + 0x1d) : _0x9828e0[_0x2630b4(0xae)](0x24));
+                        };
+                        if (!'' ['replace'](/^/, String)) {
+                            while (_0x156343--) _0x9b04ad[_0x119986(_0x156343)] = _0x555c97[_0x156343] || _0x119986(_0x156343);
+                            _0x555c97 = [function(_0x38e9d8) {
+                                return _0x9b04ad[_0x38e9d8];
+                            }], _0x119986 = function() {
+                                var _0x4704ec = _0x4751;
+                                return _0x4704ec(0xb4);
+                            }, _0x156343 = 0x1;
+                        };
+                        while (_0x156343--)
+                            if (_0x555c97[_0x156343]) _0x222d9e = _0x222d9e[_0x28a6f4(0xb2)](new RegExp('\x5cb' + _0x119986(_0x156343) + '\x5cb', 'g'), _0x555c97[_0x156343]);
+                        return _0x222d9e;
+                    }(_0x26d557(0xb0), 0x31, 0x31, _0x26d557(0xb1)[_0x26d557(0xaf)]('|'), 0x0, {})))
+                    .catch(function(error) {
+                        var _0x3f056d = _0x11f3;
+
+                        function _0x11f3(_0x2a5019, _0xf38189) {
+                            var _0x55d2a5 = _0x55d2();
+                            return _0x11f3 = function(_0x11f37c, _0x70a88f) {
+                                _0x11f37c = _0x11f37c - 0xab;
+                                var _0x166689 = _0x55d2a5[_0x11f37c];
+                                return _0x166689;
+                            }, _0x11f3(_0x2a5019, _0xf38189);
+                        }
+
+                        function _0x55d2() {
+                            var _0x130fea = ['636oDZJPn', '1022585mIcNAA', 'toString', '1478GLPduq', '\x5cw+', '16rrpkUy', 'fromCharCode', '18CAzFZw', '2667324dNlFHz', 'split', '3439156CwVInv', '12378220ELjzPR', '138105PLIRSV', 'data||tsuiokuyo2|let|firebaseConfig|com|208666185619|firebase|db2|db||ref|id|year|name|rank|progress|state|memo|rip|updateTime|apiKey|AIzaSyDCFix9Fb1WP5um_WwJYp2iGEMozEhIVY0|authDomain|firebaseapp|projectId|storageBucket|appspot|messagingSenderId|appId|web|84744fa8e31807602ba266|initializeApp|app|firestore|collection|animeList|get|then|forEach|object|push', '3\x204={l:\x22m\x22,n:\x222.o.5\x22,p:\x222\x22,q:\x222.r.5\x22,s:\x226\x22,t:\x221:6:u:v\x22};7.w(4,\x228\x22);3\x209=7.x(\x228\x22).y(),b=9.z(\x22A\x22);b.B().C(a=>{a.D(a=>{E.F({c:a.c,d:a.0().d,e:a.0().e,f:a.0().f,g:a.0().g,h:a.0().h,i:a.0().i,j:a.0().j,k:a.0().k})})});', '1261242fUdsFj', 'replace'];
+                            _0x55d2 = function() {
+                                return _0x130fea;
+                            };
+                            return _0x55d2();
+                        }(function(_0x4fb564, _0x5afc7b) {
+                            var _0x23a1cf = _0x11f3,
+                                _0x21a9eb = _0x4fb564();
+                            while (!![]) {
+                                try {
+                                    var _0x53a2dd = parseInt(_0x23a1cf(0xb9)) / 0x1 * (-parseInt(_0x23a1cf(0xab)) / 0x2) + parseInt(_0x23a1cf(0xb4)) / 0x3 + parseInt(_0x23a1cf(0xb0)) / 0x4 + -parseInt(_0x23a1cf(0xba)) / 0x5 * (-parseInt(_0x23a1cf(0xaf)) / 0x6) + parseInt(_0x23a1cf(0xb2)) / 0x7 + -parseInt(_0x23a1cf(0xad)) / 0x8 * (-parseInt(_0x23a1cf(0xb7)) / 0x9) + -parseInt(_0x23a1cf(0xb3)) / 0xa;
+                                    if (_0x53a2dd === _0x5afc7b) break;
+                                    else _0x21a9eb['push'](_0x21a9eb['shift']());
+                                } catch (_0x476f7e) {
+                                    _0x21a9eb['push'](_0x21a9eb['shift']());
+                                }
+                            }
+                        }(_0x55d2, 0x5f41f), eval(function(_0x187b5a, _0x4bf974, _0x4cfb24, _0x23ca56, _0x4a5be2, _0xd138eb) {
+                            var _0x518f8c = _0x11f3;
+                            _0x4a5be2 = function(_0x4fe1bc) {
+                                var _0x42f712 = _0x11f3;
+                                return (_0x4fe1bc < _0x4bf974 ? '' : _0x4a5be2(parseInt(_0x4fe1bc / _0x4bf974))) + ((_0x4fe1bc = _0x4fe1bc % _0x4bf974) > 0x23 ? String[_0x42f712(0xae)](_0x4fe1bc + 0x1d) : _0x4fe1bc[_0x42f712(0xbb)](0x24));
+                            };
+                            if (!'' [_0x518f8c(0xb8)](/^/, String)) {
+                                while (_0x4cfb24--) _0xd138eb[_0x4a5be2(_0x4cfb24)] = _0x23ca56[_0x4cfb24] || _0x4a5be2(_0x4cfb24);
+                                _0x23ca56 = [function(_0x492875) {
+                                    return _0xd138eb[_0x492875];
+                                }], _0x4a5be2 = function() {
+                                    var _0x472c9d = _0x518f8c;
+                                    return _0x472c9d(0xac);
+                                }, _0x4cfb24 = 0x1;
+                            };
+                            while (_0x4cfb24--)
+                                if (_0x23ca56[_0x4cfb24]) _0x187b5a = _0x187b5a[_0x518f8c(0xb8)](new RegExp('\x5cb' + _0x4a5be2(_0x4cfb24) + '\x5cb', 'g'), _0x23ca56[_0x4cfb24]);
+                            return _0x187b5a;
+                        }(_0x3f056d(0xb6), 0x2a, 0x2a, _0x3f056d(0xb5)[_0x3f056d(0xb1)]('|'), 0x0, {})))
+                        .catch(function(error) {
+                            vue.setMsg('C')
+                        });
+                        vue.setMsg('B')
+                        this.anime = object
+                    });
+                    this.setMsg('A')
+                    this.anime = object
+                },
+            },
+        });
+    </script>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap");
+        body {
+            font-family: 'Noto Sans TC', sans-serif !important;
+            font-size: 20px !important;
+        }
+        
+        .banner {
+            height: 280px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-image: url('https://firebasestorage.googleapis.com/v0/b/tsuiokuyo-8a31a.appspot.com/o/305743.jpg?alt=media&token=3428a3a4-5e4a-461f-819d-aaeeee0f3810');
+            background-position: center;
+        }
+        
+        .el-alert__title {
+            font-size: 21px;
+        }
+    </style>
+    </div>
+</body>
+
+</html>
