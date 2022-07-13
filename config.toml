@@ -190,7 +190,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # LoveIt 更改 | 0.2.7 首頁顯示的網站標題 (支持 HTML 格式)
       title = "Tsuiokuyo"
       # 首頁顯示的網站副標題 (允許 HTML 格式)
-      subtitle = "人生無法重來，但是我可以紀錄與回憶，此網站拿來記錄用，只是...人是非常懶惰的。<br>目前超龜速更新中，想弄成肥宅味濃厚的網站"
+      subtitle = "人生無法重來，但是我可以紀錄與回憶，此網站拿來記錄用，只是...人是非常懶惰的。<br>改HUGO後排版炸裂，目前超龜速更新中。"
       # 是否為副標題顯示打字機動畫
       typeit = true
       # 是否顯示社交帳號
