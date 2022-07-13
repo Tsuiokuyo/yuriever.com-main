@@ -7,7 +7,7 @@ var images = [
 		];
 var slideshow = images.sort(function() { return 0.5 - Math.random() });
 $(function () {
-	$.backstretch(slideshow,{ duration: 1000, fade: 1500 });
+	$.backstretch(slideshow,{ duration: 20000, fade: 1500 });
 });
 
 /* 拉姆蕾姆回到頂部或底部按鈕 */
