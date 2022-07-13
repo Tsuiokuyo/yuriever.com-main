@@ -1,7 +1,7 @@
 {{ if or .Params.reward (and .Site.Params.reward.enable (ne .Params.reward false)) -}}
 <div class="post-reward">
   <input type="checkbox" name="reward" id="reward" hidden />
-  <label class="reward-button" for="reward">讚賞斗內{{ T "reward" }}</label>
+  <label class="reward-button" for="reward">{{ T "reward" }}</label>
   <div class="qr-code">
     {{ $qrCode := .Site.Params.reward }}
 	{{- $cdnPrefix := .Site.Params.cdnPrefix -}}
