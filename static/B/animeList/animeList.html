@@ -83,7 +83,7 @@
 						<el-table-column prop="anikore" label="日本anikore評分">
 						<template slot-scope="scope">
 						
-							<el-button @click="scope.row.dialogVisible = true" type="warning" style="margin-left: 16px;" v-if="scope.row.anikore">
+							<el-button @click="scope.row.dialogVisible = true" type="warning" style="margin-left: 16px;" v-if="scope.row.anikore != ''">
 											 開啟右邊抽屜
 											</el-button>
 							<el-drawer size="60%" v-if="scope.row.dialogVisible" :visible.sync="scope.row.dialogVisible" :with-header="false">
