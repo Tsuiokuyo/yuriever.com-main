@@ -35,7 +35,7 @@
                 <el-card class="box-card">
                     <div slot="header" class="clearfix">
                         <span></el-avatar><h1>tsuiokuyo的動畫紀錄清單<el-avatar :size="80" style="float:right" src="https://d33wubrfki0l68.cloudfront.net/699fb7879fa75fcd29a86e8d6599878a9a0b077a/44369/imgs/avatar.jpg"></el-avatar></h1>
-						<a href="https://tsuiokuyo.netlify.app/">回到部落格點我</a><br>
+						<a href="https://tsuiokuyo.netlify.app/">回到部落格請點我</a><br>
 						</span>
                     </div>
                     <div>
@@ -82,6 +82,7 @@
                         </el-table-column>
 						<el-table-column prop="anikore" label="日本anikore評分">
 						<template slot-scope="scope">
+						<v-if="scope.row.anikore">
 							<el-button @click="scope.row.dialogVisible = true" type="warning" style="margin-left: 16px;">
 											 開啟右邊抽屜
 											</el-button>
@@ -92,6 +93,7 @@
 											</iframe>
 								</div>
 							</el-drawer>
+						</v-if>
 						</template>
 					</el-table-column>
                         <el-table-column prop="rip" label="壓制組/個人" :filters="stateRips" :filter-method="filterRip" sortable>
