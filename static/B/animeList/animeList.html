@@ -37,9 +37,11 @@
                     </div>
                     <div>
                         版面建設中，使用Cloud Firestore*2當成資料庫，不過免費的額度一個每天只有五萬筆，而目前查一次就一千多筆了，所以......呵。 <br /> 表格包含待看及有印象看過的的動畫，應該涵蓋我認識的九成的作品了，畢竟忘了的東西也想不起來。
-                        <br /> 基本上我都看BD版，老番通常DVD版，所以新番不太可能會有紀錄，而BD通常TV版放送後約一年後才會壓制。 <br /> 而以下動畫分行的方式，以TVDB分類為基準，某些作品會被分進Season 0、OVA，所以下面也會查不到，例如亡國的阿基德等等。
-                        <br /> 有些只有劇場版也不會出現在下面，例如殼中少女等。有空再去弄劇場版紀錄清單、裏番清單部分。 <br />
-                        <br /> 因為筆數太多，大多都是隨手打的，可能看過但漏掉了，或是其實打錯行，不過要等注意到了才能改了。 <br /> 0顆星等於還沒看，以下表格更新時間:2022/07/09
+                        <br />基本上我都看BD版，老番通常DVD版，所以新番不太可能會有紀錄，而BD通常TV版放送後約一年後才會壓制。 <br /> 而以下動畫分行的方式，以TVDB分類為基準，某些作品會被分進Season 0、OVA，所以下面也會查不到，例如亡國的阿基德等等。
+                        <br />有些只有劇場版也不會出現在下面，例如殼中少女等。有空再去弄劇場版紀錄清單、裏番清單部分。 <br />
+						<br />本來是想把anikore、myanimelist、anidb三個網站的評分放進表格中，但是這工程有點麻煩阿，所以只用iframe把anikore塞進抽屜之中，而anikore路徑以第一季為主
+						
+                        <br /> 最後呢，因為筆數太多，這表格內容八成會有漏掉，或是其實打錯行，這個就沒甚麼辦法了。 <br /> 0顆星等於還沒看，以下表格更新時間:2022/07/15
                         <br />
                     </div>
                     <form action="?" method="POST" v-if="verify" style="float:center">
@@ -75,6 +77,20 @@
                         </el-table-column>
                         <el-table-column prop="memo" label="我的廢話">
                         </el-table-column>
+						<el-table-column prop="anikore" label="日本anikore評分">
+						<template slot-scope="scope">
+							<el-button @click="scope.row.dialogVisible = true" type="warning" style="margin-left: 16px;">
+											 開啟右邊抽屜
+											</el-button>
+							<el-drawer size="60%" v-if="scope.row.dialogVisible" :visible.sync="scope.row.dialogVisible" :with-header="false">
+								<div class="holds-the-iframe">
+									<iframe width='100%' height='100%' :src="scope.row.anikore">
+
+											</iframe>
+								</div>
+							</el-drawer>
+						</template>
+					</el-table-column>
                         <el-table-column prop="rip" label="壓制組/個人" :filters="stateRips" :filter-method="filterRip" sortable>
                             <template slot-scope="scope">
                               <el-tag
@@ -276,7 +292,7 @@
                             vue.color = "warning";
                             break;
                         case 'WAIT': //等待驗證
-                            vue.msg = "目前狀態：等待手動打勾後會自動查詢我的清單，畢竟不想讓爬蟲直接佔免費額度QwQ";
+                            vue.msg = "目前狀態：等待手動打勾後會自動查詢資料庫，畢竟不想讓爬蟲直接佔免費額度QAQ";
                             vue.color = "error";
                             break;
                         case 'TEST': //測試
@@ -419,6 +435,12 @@
         .el-alert__title {
             font-size: 21px;
         }
+		
+		.holds-the-iframe {
+			background:url(loading.svg) center center no-repeat;
+			width:100%;
+			height:100%;
+		}
     </style>
     </div>
 </body>
