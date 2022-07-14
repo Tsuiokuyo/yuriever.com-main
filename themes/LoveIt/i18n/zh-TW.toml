@@ -207,3 +207,9 @@ other = "支付宝打赏"
 
 [rewardWechat]
 other = "街口斗內"
+
+[outdatedInfoWarningBefore]
+other = "本文章最後更新"
+
+[outdatedInfoWarningAfter]
+other = "，文中內容可能已經過時了，有疑慮請當成參考。"

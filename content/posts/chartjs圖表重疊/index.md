@@ -12,9 +12,13 @@ date: 2020-03-24 10:21:00
 ，只不過測到最後的時候，居然發現圖表會重疊......
 
 找了一下別人提供的方法
-```myLineChart.destroy();```
-```$('#lineChart').remove(); // this is my <canvas> element```
-```$('#lineChartParent').append('<canvas id="lineChart" height="230"></canvas>');```
+
+```javascript
+myLineChart.destroy();
+$('#lineChart').remove(); // this is my <canvas> element
+$('#lineChartParent').append('<canvas id="lineChart" height="230"></canvas>');
+```
+
 恩......搭配相關的文件一起看
 https://chartjs-doc.abingoal.com/developers/api.html
 https://www.bookstack.cn/read/ChartJS-zh/40.md
@@ -22,7 +26,8 @@ https://www.bookstack.cn/read/ChartJS-zh/40.md
 
 最後只能朝向，在畫面建立的時候生成一個圖表，然後用他提供的.update()更新資料
 大概是這樣
-<code>
+
+```
 let vue = new Vue({
 	el: "#app",
 	data: {
@@ -73,7 +78,7 @@ function newChart() { //建立空的圖表
             }
     	  });//new Chart
 });
-</code>
+```
 
 不過這是初版的只要單條資料列，確實可以解決重疊的問題，如果真的跟我用一樣的方法造輪子的話= =
 本來要想辦法把那個index[0]的datasets部分改掉的時候，需求變要多條數據啦。

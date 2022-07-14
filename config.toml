@@ -309,7 +309,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # 是否使用目錄
       enable = true
       # LoveIt 新增 | 0.2.9 是否保持使用文章前面的靜態目錄
-      keepStatic = true
+      keepStatic = false
       # 是否使側邊目錄自動摺疊展開
       auto = true
     # LoveIt 新增 | 0.2.0 代碼配置
@@ -375,7 +375,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       Mix = false
     # LoveIt 更改 | 0.2.0 評論系統設置
     [params.page.comment]
-      enable = false
+      enable = true
       # Disqus 評論系統設置
       [params.page.comment.disqus]
         # LoveIt 新增 | 0.1.1
@@ -445,7 +445,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # giscus comment 評論系統設置 (https://giscus.app/zh-CN)
       [params.page.comment.giscus]
         # 你可以參考官方文件來使用下列配置
-        enable = true
+        enable = "true"
         repo = "Tsuiokuyo/tsuiokuyo.netlify.com.comment"
         repoId = "R_kgDOHp8FiQ"
         category = "Announcements"
@@ -456,7 +456,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         reactionsEnabled = "1"
         emitMetadata = "0"
         inputPosition = "top"
-        lazyLoading = true
+        lazyLoading = false
         lightTheme = "light"
         darkTheme = "dark"
     # LoveIt 新增 | 0.2.7 第三方庫配置
