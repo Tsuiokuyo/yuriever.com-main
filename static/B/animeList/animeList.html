@@ -82,18 +82,15 @@
                         </el-table-column>
 						<el-table-column prop="anikore" label="日本anikore評分">
 						<template slot-scope="scope">
-						<!--
 							<el-button @click="scope.row.dialogVisible = true" type="warning" style="margin-left: 16px;" v-if="scope.row.anikore != ''">
 											 開啟右邊抽屜
 											</el-button>
 							<el-drawer size="60%" v-if="scope.row.dialogVisible" :visible.sync="scope.row.dialogVisible" :with-header="false">
 								<div class="holds-the-iframe">
 									<iframe width='100%' height='100%' :src="scope.row.anikore">
-
-											</iframe>
+									</iframe>
 								</div>
 							</el-drawer>
-						-->爆炸中
 						</template>
 					</el-table-column>
                         <el-table-column prop="rip" label="壓制組/個人" :filters="stateRips" :filter-method="filterRip" sortable>
