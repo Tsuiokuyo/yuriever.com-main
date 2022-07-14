@@ -1,11 +1,12 @@
 ---
 title: 個人的動畫紀錄清單
-tags: [其他]
-categories: [其他]
+tags: [動畫留念]
+categories: [動畫留念]
 slug: 6c54
 date: 2022-06-18 00:00:00
 featuredImage: "/assets/未來.jpg"
 featuredImagePreview: "/assets/未來.jpg"
+lastmod: 2022-07-15
 weight: 1
 ---
 
