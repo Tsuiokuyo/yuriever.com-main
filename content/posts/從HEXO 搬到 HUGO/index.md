@@ -88,3 +88,22 @@ hugo可看不懂這是啥
 
 
 9.稍微改一改主題，後續有心情再寫，畢竟也都是其他人的文章找來的，要複製貼上再改成自己的話有點麻煩
+
+
+
+10.修改netlify部屬設定，畢竟我是整包丟在上面讓netlify去Build，原本是hexo generate改成hugo
+
+
+
+11.增加netlify Environment variables的參數，版本就看當前的版本
+
+![2](images/2.jpg)
+
+
+
+12.裝個[giscus](https://giscus.app/zh-TW) 留言功能，建個新個倉庫，建完後從setting內往下勾選Discussion功能，後在github安裝 [giscus](https://github.com/apps/giscus)  應用程式，至於對應方式因為我是用永久連結，所以就直接用路徑名稱來對應了，然後因為Loveit主題有支援，所以就到config.toml內把相關參數填進去即可。
+
+
+
+13.........
+
