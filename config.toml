@@ -445,18 +445,18 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # giscus comment 評論系統設置 (https://giscus.app/zh-CN)
       [params.page.comment.giscus]
         # 你可以參考官方文件來使用下列配置
-        enable = false
-        repo = ""
-        repoId = ""
+        enable = true
+        repo = "Tsuiokuyo/tsuiokuyo.netlify.com.comment"
+        repoId = "R_kgDOHp8FiQ"
         category = "Announcements"
-        categoryId = ""
+        categoryId = "DIC_kwDOHp8Fic4CQNNp"
         # 為空時自動適配當前主題 i18n 配置
         lang = ""
         mapping = "pathname"
         reactionsEnabled = "1"
         emitMetadata = "0"
-        inputPosition = "bottom"
-        lazyLoading = false
+        inputPosition = "top"
+        lazyLoading = true
         lightTheme = "light"
         darkTheme = "dark"
     # LoveIt 新增 | 0.2.7 第三方庫配置
