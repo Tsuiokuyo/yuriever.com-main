@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="footer-container">
 			<div class="footer-line">
-				<span id="run-time"></span>
+				<span id="run-time"></span> 
 			</div>
             {{- /* Custom Content */ -}}
             {{- with .Site.Params.footer.custom -}}
@@ -40,7 +40,7 @@
 
                 {{- /* License */ -}}
                 {{- with .Site.Params.footer.license -}}
-                    &nbsp;|&nbsp;<span class="license">{{ . | safeHTML }}</span>
+                    &nbsp;|&nbsp;<span class="license">{{ . | safeHTML }}
                 {{- end -}}
 
                 {{- /* ICP */ -}}
