@@ -4,6 +4,8 @@ tags: [其他]
 categories: [其他]
 slug: 6c54
 date: 2022-06-18 00:00:00
+featuredImage: "/assets/未來.jpg"
+featuredImagePreview: "/assets/未來.jpg"
 weight: 1
 ---
 
