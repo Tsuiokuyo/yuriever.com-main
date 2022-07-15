@@ -318,3 +318,9 @@ https://www.bilibili.com/video/BV19V411j7pj?share_source=copy_web
 ## 談談螢幕
 
 之後再寫...
+
+
+
+## 談談為何不買正版
+
+因為要面對現實...
