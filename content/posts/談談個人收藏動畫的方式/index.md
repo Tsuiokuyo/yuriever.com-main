@@ -3,6 +3,8 @@ title: "談談個人收藏動畫的方式"
 date: 2022-07-16T02:55:55+08:00
 slug: 0f972d9c
 weight: 2
+featuredImage: "/assets/談談個人收藏動畫的方式.jpg"
+featuredImagePreview: "/assets/談談個人收藏動畫的方式.jpg"
 tags: [動畫留念]
 categories: [動畫留念]
 ---
@@ -418,3 +420,5 @@ BY Tsuiokuyo
 https://tsuiokuyo.netlify.app/posts/0f972d9c/
 
 轉文請註明網址阿，這些內容打得很辛苦耶
+
+![6](images/6.jpg)
