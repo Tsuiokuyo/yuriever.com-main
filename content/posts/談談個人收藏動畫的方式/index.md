@@ -33,7 +33,7 @@ categories: [動畫留念]
 
 以及看完就刪與直接線上看等等，各有所好
 
-而我這邊所使用的是安全性最低的，不組Raid直接放在硬碟中，而且還使用LVM方式儲存，現在想想，還真是找自己麻煩
+而我這邊所使用的是安全性最低的，不組Raid直接放在硬碟中，而且還使用LVM方式儲存，起初當成遺失也無所謂的檔案，然後就越積越多，現在想想，還真是找自己麻煩
 
 而LVM是Linux平台的分區，簡單的說就是把多個硬碟合併成一個，可以理解成Raid 0
 
@@ -52,6 +52,8 @@ Mini ITX主機板及CPU  ECS  NM70-I2 Celeron 1037U 1.8GHz
 FLEX ATX電源供應器 Enhance ENP-7025B 250W
 
 RAM 舊電腦拔下來的隨便兩條DDR3 8G 
+
+UPS CyberPower CP1500PFCLCD
 
 機殼為雜牌的4BAY NAS機殼
 
