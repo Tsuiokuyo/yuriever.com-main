@@ -345,13 +345,15 @@ https://hooke007.github.io/index2
 
 我會開到的也就只有
 
-**Anime4K_Upscale_CNN**
-
-以及
-
 **Anime4K_Restore_CNN**
 
-通常是在解析度低的老番才會開啟的
+**Anime4K_Upscale_CNN**
+
+**Anime4K_Darken_HQ.glsl**
+
+**Anime4K_Clamp_Highlights.glsl**
+
+機率不高，通常是在解析度低的老番才會開啟的
 
 [mpv_lazy第三方著色器內容](https://hooke007.github.io/mpv-lazy/[01]_%E7%AC%AC%E4%B8%89%E6%96%B9%E7%9D%80%E8%89%B2%E5%99%A8%E4%BB%8B%E7%BB%8D.html)
 
