@@ -1,163 +1,183 @@
 [
   {
     "MAL": {
-      "id": 1,
+      "id": 22,
       "type": "TV",
-      "score": 8.76,
-      "votes": 844185,
-      "rank": 38,
-      "image": "https://cdn.myanimelist.net/images/anime/4/19644.jpg",
-      "air_from": "1998-04-03T00:00:00+00:00",
-      "air_to": "1999-04-24T00:00:00+00:00",
+      "score": 7.87,
+      "votes": 78944,
+      "rank": 775,
+      "image": "https://cdn.myanimelist.net/images/anime/6/21624.jpg",
+      "air_from": "2001-10-10T00:00:00+00:00",
+      "air_to": "2005-03-23T00:00:00+00:00",
       "air_status": "Finished Airing",
-      "title": "Cowboy Bebop",
-      "en_name": "Cowboy Bebop",
-      "jp_name": "カウボーイビバップ",
+      "title": "Tennis no Ouji-sama",
+      "en_name": "The Prince of Tennis",
+      "jp_name": "テニスの王子様",
       "adjusted_score": 0
     },
     "ANN": {
-      "id": 13,
+      "id": 876,
       "type": "TV",
-      "votes": 12357,
-      "bayesian_score": 8.89013,
-      "weighted_score": 8.8916,
+      "votes": 1426,
+      "bayesian_score": 7.4017,
+      "weighted_score": 7.4009,
       "titles": [
-        "Cowboy Bebop",
-        "カウボーイビバップ"
+        "The Prince of Tennis",
+        "TeniPuri",
+        "Tennis no Ōji-sama",
+        "テニスの王子様",
+        "テニプリ"
       ],
+      "air": "2001-10-10 to 2005-03-30",
       "adjusted_score": 0
     },
     "BGM": {
-      "id": 253,
-      "votes": 10496,
-      "score": 9.2,
+      "id": 1939,
+      "votes": 1765,
+      "score": 6.8,
       "rating_detail": {
-        "10": 5066,
-        "9": 3280,
-        "8": 1461,
-        "7": 429,
-        "6": 138,
-        "5": 52,
-        "4": 11,
-        "3": 4,
+        "10": 48,
+        "9": 64,
+        "8": 339,
+        "7": 704,
+        "6": 403,
+        "5": 130,
+        "4": 41,
+        "3": 14,
         "2": 10,
-        "1": 45
+        "1": 12
       },
-      "rank": 1,
-      "image": "http://lain.bgm.tv/pic/cover/l/c2/4c/253_t3XWb.jpg",
-      "air_from": "1998-10-23",
-      "cn_name": "星际牛仔",
-      "jp_name": "カウボーイビバップ",
-      "bayesian_score": 9.153963414634145,
+      "rank": 3203,
+      "image": "http://lain.bgm.tv/pic/cover/l/f2/2e/1939_rs1e7.jpg",
+      "air_from": "2001-10-10",
+      "cn_name": "网球王子",
+      "jp_name": "テニスの王子様",
+      "bayesian_score": 6.808883547218214,
       "adjusted_score": 0
     },
     "AniList": {
-      "id": 1,
+      "id": 22,
       "title": {
-        "romaji": "Cowboy Bebop",
-        "english": "Cowboy Bebop",
-        "native": "カウボーイビバップ"
+        "romaji": "Tennis no Ouji-sama",
+        "english": "The Prince of Tennis",
+        "native": "テニスの王子様"
       },
       "coverImage": {
-        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx1-CXtrrkMpJ8Zq.png"
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx22-8Qg3NZXH6asP.png"
       },
-      "averageScore": 86,
+      "averageScore": 74,
       "stats": {
         "scoreDistribution": [
           {
             "score": 10,
-            "amount": 400
+            "amount": 46
           },
           {
             "score": 20,
-            "amount": 124
+            "amount": 29
           },
           {
             "score": 30,
-            "amount": 282
+            "amount": 59
           },
           {
             "score": 40,
-            "amount": 639
+            "amount": 140
           },
           {
             "score": 50,
-            "amount": 1568
+            "amount": 413
           },
           {
             "score": 60,
-            "amount": 3263
+            "amount": 776
           },
           {
             "score": 70,
-            "amount": 9865
+            "amount": 1712
           },
           {
             "score": 80,
-            "amount": 21618
+            "amount": 1954
           },
           {
             "score": 90,
-            "amount": 35072
+            "amount": 1163
           },
           {
             "score": 100,
-            "amount": 33971
+            "amount": 741
           }
         ]
       },
-      "votes": 106802,
-      "bayesian_score": 8.696700436321416,
+      "votes": 7033,
+      "bayesian_score": 7.5449125842782205,
       "adjusted_score": 0
     },
     "Anikore": {
-      "id": 258,
-      "title": "「COWBOY BEBOP - カウボーイビバップ（TVアニメ動画）」",
-      "jp_name": "COWBOY BEBOP - カウボーイビバップ",
+      "id": 401,
+      "title": "「テニスの王子様（TVアニメ動画）」",
+      "jp_name": "テニスの王子様",
       "type": "TVアニメ動画",
-      "score": 4.2,
-      "votes": 3138,
-      "year": 1998,
-      "bayesian_score": 8.4,
+      "score": 3.8,
+      "votes": 885,
+      "year": 2001,
+      "bayesian_score": 7.604040810287236,
       "adjusted_score": 0
     },
     "Gamer": {
-      "id": 40181,
-      "title": "克拉斯特學園",
-      "rating_detail": null
+      "id": 18542,
+      "title": "網球王子",
+      "score": 4.1,
+      "votes": 219,
+      "rating_detail": {
+        "5": 94,
+        "4": 70,
+        "3": 45,
+        "2": 10,
+        "1": 4
+      },
+      "bayesian_score": 8.176830753466652,
+      "adjusted_score": 0
     },
     "AnimePlanetCom": {
-      "id": "cowboy-bebop",
-      "title": "Cowboy Bebop",
-      "score": 4.339,
-      "votes": 51334,
-      "bayesian_score": 8.678
+      "id": "the-prince-of-tennis",
+      "title": "The Prince of Tennis",
+      "score": 3.877,
+      "votes": 9163,
+      "bayesian_score": 7.754534319569378,
+      "adjusted_score": 0
     },
     "anisearch": {
-      "id": 1572,
-      "title": "Cowboy Bebop",
-      "score": 3.99,
-      "vote": 3835,
+      "id": 823,
+      "title": "The Prince of Tennis",
+      "score": 3.41,
+      "votes": 426,
       "rating_detail": {
-        "5": 1695,
-        "4": 1521,
-        "3": 467,
-        "2": 112,
-        "1": 40
+        "5": 102,
+        "4": 146,
+        "3": 119,
+        "2": 45,
+        "1": 14
       },
-      "bayesian_score": 8.461016949152542
+      "bayesian_score": 7.321041149926785,
+      "adjusted_score": 0
     },
     "kitsu": {
-      "id": 1,
-      "score": 82.06,
-      "bayesian_score": 8.206
+      "id": 13,
+      "score": 78.25,
+      "votes": 5375,
+      "bayesian_score": 7.825646518887489,
+      "adjusted_score": 0
     },
     "notifyMoe": {
-      "id": "Tk3ccKimg",
-      "score": 8.660068677949472,
-      "bayesian_score": 8.660068677949472
+      "id": "4LWp5FmiR",
+      "score": 7.5219907407407405,
+      "votes": 10,
+      "bayesian_score": 7.605552628876703,
+      "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0.0
+    "score": 0
   }
 ]
