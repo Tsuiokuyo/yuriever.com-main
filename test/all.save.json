@@ -13,7 +13,7 @@
       "title": "Cowboy Bebop",
       "en_name": "Cowboy Bebop",
       "jp_name": "カウボーイビバップ",
-      "adjusted_score": NaN
+      "adjusted_score": 0
     },
     "ANN": {
       "id": 13,
@@ -25,15 +25,15 @@
         "Cowboy Bebop",
         "カウボーイビバップ"
       ],
-      "adjusted_score": NaN
+      "adjusted_score": 0
     },
     "BGM": {
       "id": 253,
-      "votes": 10495,
+      "votes": 10496,
       "score": 9.2,
       "rating_detail": {
         "10": 5066,
-        "9": 3279,
+        "9": 3280,
         "8": 1461,
         "7": 429,
         "6": 138,
@@ -48,8 +48,8 @@
       "air_from": "1998-10-23",
       "cn_name": "星际牛仔",
       "jp_name": "カウボーイビバップ",
-      "bayesian_score": 9.153978084802286,
-      "adjusted_score": NaN
+      "bayesian_score": 9.153963414634145,
+      "adjusted_score": 0
     },
     "AniList": {
       "id": 1,
@@ -108,7 +108,7 @@
       },
       "votes": 106802,
       "bayesian_score": 8.696700436321416,
-      "adjusted_score": NaN
+      "adjusted_score": 0
     },
     "Anikore": {
       "id": 258,
@@ -119,28 +119,19 @@
       "votes": 3138,
       "year": 1998,
       "bayesian_score": 8.4,
-      "adjusted_score": NaN
+      "adjusted_score": 0
     },
     "Gamer": {
-      "id": 20668,
-      "title": "星際牛仔",
-      "score": 4.7,
-      "vote": 138,
-      "rating_detail": {
-        "5": 109,
-        "4": 22,
-        "3": 5,
-        "2": 1,
-        "1": 2
-      },
-      "bayesian_score": 9.381294964028777
+      "id": 40181,
+      "title": "克拉斯特學園",
+      "rating_detail": null
     },
     "AnimePlanetCom": {
       "id": "cowboy-bebop",
       "title": "Cowboy Bebop",
       "score": 4.339,
-      "votes": 51331,
-      "bayesian_score": 8.678000000000003
+      "votes": 51334,
+      "bayesian_score": 8.678
     },
     "anisearch": {
       "id": 1572,
@@ -166,19 +157,7 @@
       "score": 8.660068677949472,
       "bayesian_score": 8.660068677949472
     },
-    "anidb": {
-      "id": 23,
-      "score": 8.71,
-      "votes": 17575,
-      "air": "1998-04-03",
-      "ann_id": [
-        "13"
-      ],
-      "mal_id": [
-        "17205"
-      ],
-      "bayesian_score": 8.710000000000003
-    },
-    "score": NaN
+    "anidb": null,
+    "score": 0.0
   }
 ]
