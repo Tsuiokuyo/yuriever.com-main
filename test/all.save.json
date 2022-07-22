@@ -1,6 +1,2148 @@
 [
   {
     "MAL": {
+      "id": 1,
+      "type": "TV",
+      "score": 8.76,
+      "votes": 844185,
+      "rank": 38,
+      "image": "https://cdn.myanimelist.net/images/anime/4/19644.jpg",
+      "air_from": "1998-04-03T00:00:00+00:00",
+      "air_to": "1999-04-24T00:00:00+00:00",
+      "air_status": "Finished Airing",
+      "title": "Cowboy Bebop",
+      "en_name": "Cowboy Bebop",
+      "jp_name": "カウボーイビバップ",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 13,
+      "type": "TV",
+      "votes": 12357,
+      "bayesian_score": 8.89013,
+      "weighted_score": 8.8916,
+      "titles": [
+        "Cowboy Bebop",
+        "カウボーイビバップ"
+      ],
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 253,
+      "votes": 10497,
+      "score": 9.2,
+      "rating_detail": {
+        "10": 5067,
+        "9": 3280,
+        "8": 1461,
+        "7": 429,
+        "6": 138,
+        "5": 52,
+        "4": 11,
+        "3": 4,
+        "2": 10,
+        "1": 45
+      },
+      "rank": 1,
+      "image": "http://lain.bgm.tv/pic/cover/l/c2/4c/253_t3XWb.jpg",
+      "air_from": "1998-10-23",
+      "cn_name": "星际牛仔",
+      "jp_name": "カウボーイビバップ",
+      "bayesian_score": 9.153304301543002,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 1,
+      "title": {
+        "romaji": "Cowboy Bebop",
+        "english": "Cowboy Bebop",
+        "native": "カウボーイビバップ"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx1-CXtrrkMpJ8Zq.png"
+      },
+      "averageScore": 86,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 400
+          },
+          {
+            "score": 20,
+            "amount": 124
+          },
+          {
+            "score": 30,
+            "amount": 282
+          },
+          {
+            "score": 40,
+            "amount": 639
+          },
+          {
+            "score": 50,
+            "amount": 1568
+          },
+          {
+            "score": 60,
+            "amount": 3263
+          },
+          {
+            "score": 70,
+            "amount": 9865
+          },
+          {
+            "score": 80,
+            "amount": 21618
+          },
+          {
+            "score": 90,
+            "amount": 35072
+          },
+          {
+            "score": 100,
+            "amount": 33971
+          }
+        ]
+      },
+      "votes": 106802,
+      "bayesian_score": 8.696670967036209,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 258,
+      "title": "「COWBOY BEBOP - カウボーイビバップ（TVアニメ動画）」",
+      "jp_name": "COWBOY BEBOP - カウボーイビバップ",
+      "type": "TVアニメ動画",
+      "score": 4.2,
+      "votes": 3138,
+      "year": 1998,
+      "bayesian_score": 8.398607536596911,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 20668,
+      "title": "星際牛仔",
+      "score": 4.7,
+      "votes": 138,
+      "rating_detail": {
+        "5": 109,
+        "4": 22,
+        "3": 5,
+        "2": 1,
+        "1": 2
+      },
+      "bayesian_score": 9.33692325877671,
+      "adjusted_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "cowboy-bebop",
+      "title": "Cowboy Bebop",
+      "score": 4.339,
+      "votes": 51334,
+      "bayesian_score": 8.677915497690284,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 1572,
+      "title": "Cowboy Bebop",
+      "score": 3.99,
+      "votes": 3835,
+      "rating_detail": {
+        "5": 1695,
+        "4": 1521,
+        "3": 467,
+        "2": 112,
+        "1": 40
+      },
+      "bayesian_score": 8.460331493824029,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 1,
+      "score": 82.06,
+      "votes": 81168,
+      "bayesian_score": 8.205995953388962,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "Tk3ccKimg",
+      "score": 8.660068677949472,
+      "votes": 10,
+      "bayesian_score": 8.174591597481067,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
+      "id": 5,
+      "type": "Movie",
+      "score": 8.38,
+      "votes": 194474,
+      "rank": 176,
+      "image": "https://cdn.myanimelist.net/images/anime/1439/93480.jpg",
+      "air_from": "2001-09-01T00:00:00+00:00",
+      "air_to": null,
+      "air_status": "Finished Airing",
+      "title": "Cowboy Bebop: Tengoku no Tobira",
+      "en_name": "Cowboy Bebop: The Movie",
+      "jp_name": "カウボーイビバップ 天国の扉",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 353,
+      "type": "movie",
+      "votes": 6053,
+      "bayesian_score": 8.37769,
+      "weighted_score": 8.3796,
+      "titles": [
+        "Cowboy Bebop: The Movie",
+        "Cowboy Bebop: Knockin' on Heaven's Door",
+        "Cowboy Bebop: Knocking on Heaven's Door",
+        "Cowboy Bebop: Tengoku no Tobira",
+        "カウボーイビバップ 天国の扉"
+      ],
+      "air": "2001",
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 860,
+      "votes": 3912,
+      "score": 8.3,
+      "rating_detail": {
+        "10": 439,
+        "9": 1152,
+        "8": 1581,
+        "7": 575,
+        "6": 127,
+        "5": 22,
+        "4": 8,
+        "3": 1,
+        "2": 2,
+        "1": 5
+      },
+      "rank": 95,
+      "image": "http://lain.bgm.tv/pic/cover/l/fc/49/860_6qo6D.jpg",
+      "air_from": "2001-09-01",
+      "cn_name": "星际牛仔 天国之扉",
+      "jp_name": "カウボーイビバップ 天国の扉",
+      "bayesian_score": 8.268936332563062,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 5,
+      "title": {
+        "romaji": "Cowboy Bebop: Tengoku no Tobira",
+        "english": "Cowboy Bebop: The Movie - Knockin' on Heaven's Door",
+        "native": "カウボーイビバップ天国の扉"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b5-Zs2cbrglTu67.png"
+      },
+      "averageScore": 82,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 80
+          },
+          {
+            "score": 20,
+            "amount": 15
+          },
+          {
+            "score": 30,
+            "amount": 49
+          },
+          {
+            "score": 40,
+            "amount": 114
+          },
+          {
+            "score": 50,
+            "amount": 418
+          },
+          {
+            "score": 60,
+            "amount": 1007
+          },
+          {
+            "score": 70,
+            "amount": 3609
+          },
+          {
+            "score": 80,
+            "amount": 7835
+          },
+          {
+            "score": 90,
+            "amount": 8011
+          },
+          {
+            "score": 100,
+            "amount": 3936
+          }
+        ]
+      },
+      "votes": 25074,
+      "bayesian_score": 8.305326874943052,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 1837,
+      "title": "「カウボーイビバップ 天国の扉-COWBOY BEBOP（アニメ映画）」",
+      "jp_name": "カウボーイビバップ 天国の扉-COWBOY BEBOP",
+      "type": "アニメ映画",
+      "score": 4.1,
+      "votes": 574,
+      "year": 2001,
+      "bayesian_score": 8.195918707546362,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 81298,
+      "title": "星際牛仔 天國之門",
+      "score": 4.4,
+      "votes": 14,
+      "rating_detail": {
+        "5": 9,
+        "4": 2,
+        "3": 3,
+        "2": 0,
+        "1": 0
+      },
+      "bayesian_score": 8.800065231572082,
+      "adjusted_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "cowboy-bebop-the-movie",
+      "title": "Cowboy Bebop: The Movie",
+      "score": 4.189,
+      "votes": 21065,
+      "bayesian_score": 8.3779364798771,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 261,
+      "title": "Cowboy Bebop: The Movie",
+      "score": 3.89,
+      "votes": 1469,
+      "rating_detail": {
+        "5": 488,
+        "4": 758,
+        "3": 175,
+        "2": 40,
+        "1": 8
+      },
+      "bayesian_score": 8.283958481239617,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 2,
+      "score": 81.85,
+      "votes": 21049,
+      "bayesian_score": 8.184994373152055,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "emzt5FmiR",
+      "score": 8.42689655172414,
+      "votes": 10,
+      "bayesian_score": 8.058005534368402,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
+      "id": 6,
+      "type": "TV",
+      "score": 8.22,
+      "votes": 331510,
+      "rank": 305,
+      "image": "https://cdn.myanimelist.net/images/anime/7/20310.jpg",
+      "air_from": "1998-04-01T00:00:00+00:00",
+      "air_to": "1998-09-30T00:00:00+00:00",
+      "air_status": "Finished Airing",
+      "title": "Trigun",
+      "en_name": "Trigun",
+      "jp_name": "トライガン",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 88,
+      "type": "TV",
+      "votes": 8020,
+      "bayesian_score": 8.26924,
+      "weighted_score": 8.2705,
+      "titles": [
+        "Trigun",
+        "トライガン"
+      ],
+      "air": "1998-04-01 to 1998-09-30",
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 7159,
+      "votes": 494,
+      "score": 7.5,
+      "rating_detail": {
+        "10": 30,
+        "9": 56,
+        "8": 175,
+        "7": 151,
+        "6": 62,
+        "5": 12,
+        "4": 4,
+        "3": 2,
+        "2": 0,
+        "1": 2
+      },
+      "rank": 894,
+      "image": "http://lain.bgm.tv/pic/cover/l/42/e9/7159_RmkTk.jpg",
+      "air_from": "1998-04-01",
+      "cn_name": "枪神",
+      "jp_name": "TRIGUN",
+      "bayesian_score": 7.541206937127638,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 6,
+      "title": {
+        "romaji": "TRIGUN",
+        "english": "Trigun",
+        "native": "TRIGUN"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx6-Zzun7PHNNgPt.jpg"
+      },
+      "averageScore": 79,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 110
+          },
+          {
+            "score": 20,
+            "amount": 50
+          },
+          {
+            "score": 30,
+            "amount": 198
+          },
+          {
+            "score": 40,
+            "amount": 289
+          },
+          {
+            "score": 50,
+            "amount": 1046
+          },
+          {
+            "score": 60,
+            "amount": 1953
+          },
+          {
+            "score": 70,
+            "amount": 6053
+          },
+          {
+            "score": 80,
+            "amount": 9856
+          },
+          {
+            "score": 90,
+            "amount": 8468
+          },
+          {
+            "score": 100,
+            "amount": 4185
+          }
+        ]
+      },
+      "votes": 32208,
+      "bayesian_score": 8.016413785184415,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 2126,
+      "title": "「トライガン [TRIGUN]（TVアニメ動画）」",
+      "jp_name": "トライガン [TRIGUN]",
+      "type": "TVアニメ動画",
+      "score": 3.8,
+      "votes": 314,
+      "year": 1998,
+      "bayesian_score": 7.611162114836656,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 17405,
+      "title": "槍神",
+      "score": 4.5,
+      "votes": 74,
+      "rating_detail": {
+        "5": 39,
+        "4": 31,
+        "3": 4,
+        "2": 0,
+        "1": 0
+      },
+      "bayesian_score": 8.919066256639642,
+      "adjusted_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "trigun",
+      "title": "Trigun",
+      "score": 4.16,
+      "votes": 34976,
+      "bayesian_score": 8.319978314566109,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 2295,
+      "title": "Trigun",
+      "score": 3.67,
+      "votes": 2025,
+      "rating_detail": {
+        "5": 547,
+        "4": 944,
+        "3": 390,
+        "2": 111,
+        "1": 33
+      },
+      "bayesian_score": 7.839790955161373,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 3,
+      "score": 81.75,
+      "votes": 27216,
+      "bayesian_score": 8.174999320657061,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "SDkpcFmig",
+      "score": 8.095712560386474,
+      "votes": 10,
+      "bayesian_score": 7.892413538699569,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
+      "id": 7,
+      "type": "TV",
+      "score": 7.26,
+      "votes": 41655,
+      "rank": 2723,
+      "image": "https://cdn.myanimelist.net/images/anime/1796/91065.jpg",
+      "air_from": "2002-07-03T00:00:00+00:00",
+      "air_to": "2002-12-25T00:00:00+00:00",
+      "air_status": "Finished Airing",
+      "title": "Witch Hunter Robin",
+      "en_name": "Witch Hunter Robin",
+      "jp_name": "Witch Hunter ROBIN (ウイッチハンターロビン)",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 913,
+      "type": "TV",
+      "votes": 3277,
+      "bayesian_score": 7.34298,
+      "weighted_score": 7.3424,
+      "titles": [
+        "Witch Hunter Robin",
+        "ウィッチハンターロビン"
+      ],
+      "air": "2002-07-02 to 2002-12-24",
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 1951,
+      "votes": 278,
+      "score": 7.2,
+      "rating_detail": {
+        "10": 7,
+        "9": 18,
+        "8": 99,
+        "7": 91,
+        "6": 47,
+        "5": 11,
+        "4": 4,
+        "3": 0,
+        "2": 0,
+        "1": 1
+      },
+      "rank": 1621,
+      "image": "http://lain.bgm.tv/pic/cover/l/6a/50/1951_CIE4I.jpg",
+      "air_from": "2002-07-02",
+      "cn_name": "魔女猎人罗宾",
+      "jp_name": "Witch Hunter ROBIN",
+      "bayesian_score": 7.287389917751144,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 7,
+      "title": {
+        "romaji": "Witch Hunter ROBIN",
+        "english": "Witch Hunter ROBIN",
+        "native": "Witch Hunter ROBIN"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx7-6uh1fPvbgS9t.png"
+      },
+      "averageScore": 68,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 30
+          },
+          {
+            "score": 20,
+            "amount": 18
+          },
+          {
+            "score": 30,
+            "amount": 56
+          },
+          {
+            "score": 40,
+            "amount": 131
+          },
+          {
+            "score": 50,
+            "amount": 333
+          },
+          {
+            "score": 60,
+            "amount": 596
+          },
+          {
+            "score": 70,
+            "amount": 940
+          },
+          {
+            "score": 80,
+            "amount": 742
+          },
+          {
+            "score": 90,
+            "amount": 341
+          },
+          {
+            "score": 100,
+            "amount": 121
+          }
+        ]
+      },
+      "votes": 3308,
+      "bayesian_score": 6.8950630895333065,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 461,
+      "title": "「Witch Hunter ROBIN-ウィッチハンター・ロビン（TVアニメ動画）」",
+      "jp_name": "Witch Hunter ROBIN-ウィッチハンター・ロビン",
+      "type": "TVアニメ動画",
+      "score": 3.6,
+      "votes": 196,
+      "year": 2002,
+      "bayesian_score": 7.236973423335322,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 16790,
+      "title": "禁獵魔女",
+      "score": 3.8,
+      "votes": 45,
+      "rating_detail": {
+        "5": 10,
+        "4": 19,
+        "3": 15,
+        "2": 1,
+        "1": 0
+      },
+      "bayesian_score": 7.876392101049635,
+      "adjusted_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "witch-hunter-robin",
+      "title": "Witch Hunter Robin",
+      "score": 3.578,
+      "votes": 10916,
+      "bayesian_score": 7.156995910068634,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 3343,
+      "title": "Witch Hunter Robin",
+      "score": 3.08,
+      "votes": 482,
+      "rating_detail": {
+        "5": 42,
+        "4": 181,
+        "3": 168,
+        "2": 77,
+        "1": 14
+      },
+      "bayesian_score": 6.695070312506896,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 4,
+      "score": 72.18,
+      "votes": 3209,
+      "bayesian_score": 7.220967227154126,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "y1zt5KimR",
+      "score": 6.722222222222222,
+      "votes": 10,
+      "bayesian_score": 7.2056683696174435,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
+      "id": 8,
+      "type": "TV",
+      "score": 6.96,
+      "votes": 6264,
+      "rank": 4136,
+      "image": "https://cdn.myanimelist.net/images/anime/7/21569.jpg",
+      "air_from": "2004-09-30T00:00:00+00:00",
+      "air_to": "2005-09-29T00:00:00+00:00",
+      "air_status": "Finished Airing",
+      "title": "Bouken Ou Beet",
+      "en_name": "Beet the Vandel Buster",
+      "jp_name": "冒険王ビィト",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 4347,
+      "type": "TV",
+      "votes": 294,
+      "bayesian_score": 6.25029,
+      "weighted_score": 6.1955,
+      "titles": [
+        "Beet the Vandel Buster",
+        "Adventure King Beet",
+        "Bōken Ō Beet",
+        "冒険王ビィト"
+      ],
+      "air": "2004-09-30 to 2005-09-29",
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 60188,
+      "votes": 25,
+      "score": 6.2,
+      "rating_detail": {
+        "10": 0,
+        "9": 0,
+        "8": 2,
+        "7": 5,
+        "6": 16,
+        "5": 1,
+        "4": 1,
+        "3": 0,
+        "2": 0,
+        "1": 0
+      },
+      "rank": null,
+      "image": "http://lain.bgm.tv/pic/cover/l/04/3a/60188_Yii1v.jpg",
+      "air_from": "2004-09-30",
+      "cn_name": "冒险王比特",
+      "jp_name": "冒険王ビィト",
+      "bayesian_score": 6.850522751780834,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 8,
+      "title": {
+        "romaji": "Bouken Ou Beet",
+        "english": "Beet the Vandel Buster",
+        "native": "冒険王ビィト"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b8-ReS3TwSgrDDi.jpg"
+      },
+      "averageScore": 62,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 15
+          },
+          {
+            "score": 20,
+            "amount": 6
+          },
+          {
+            "score": 30,
+            "amount": 13
+          },
+          {
+            "score": 40,
+            "amount": 41
+          },
+          {
+            "score": 50,
+            "amount": 66
+          },
+          {
+            "score": 60,
+            "amount": 114
+          },
+          {
+            "score": 70,
+            "amount": 145
+          },
+          {
+            "score": 80,
+            "amount": 83
+          },
+          {
+            "score": 90,
+            "amount": 44
+          },
+          {
+            "score": 100,
+            "amount": 22
+          }
+        ]
+      },
+      "votes": 549,
+      "bayesian_score": 6.480893257730786,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 673,
+      "title": "「冒険王ビィト（TVアニメ動画）」",
+      "jp_name": "冒険王ビィト",
+      "type": "TVアニメ動画",
+      "score": 3.4,
+      "votes": 53,
+      "year": 2004,
+      "bayesian_score": 6.9843892890012125,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 19801,
+      "title": "少年冒險王 BEET",
+      "score": 3.6,
+      "votes": 18,
+      "rating_detail": {
+        "5": 6,
+        "4": 3,
+        "3": 5,
+        "2": 3,
+        "1": 1
+      },
+      "bayesian_score": 7.6857701984903555,
+      "adjusted_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "beet-the-vandel-buster",
+      "title": "Beet the Vandel Buster",
+      "score": 3.378,
+      "votes": 1773,
+      "bayesian_score": 6.76434622176663,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 576,
+      "title": "Beet the Vandel Buster",
+      "score": 2.98,
+      "votes": 77,
+      "rating_detail": {
+        "5": 10,
+        "4": 14,
+        "3": 40,
+        "2": 9,
+        "1": 4
+      },
+      "bayesian_score": 6.6433861350964705,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 5,
+      "score": 68.65,
+      "votes": 438,
+      "bayesian_score": 6.894199786181088,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "pQkt5Fimg",
+      "score": 5.0,
+      "votes": 10,
+      "bayesian_score": 6.344557258506332,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
+      "id": 15,
+      "type": "TV",
+      "score": 7.92,
+      "votes": 83510,
+      "rank": 685,
+      "image": "https://cdn.myanimelist.net/images/anime/12/66961.jpg",
+      "air_from": "2005-04-06T00:00:00+00:00",
+      "air_to": "2008-03-19T00:00:00+00:00",
+      "air_status": "Finished Airing",
+      "title": "Eyeshield 21",
+      "en_name": "Eyeshield 21",
+      "jp_name": "アイシールド21",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 4778,
+      "type": "TV",
+      "votes": 737,
+      "bayesian_score": 7.45638,
+      "weighted_score": 7.4558,
+      "titles": [
+        "Eyeshield 21",
+        "アイシールド21"
+      ],
+      "air": "2005-04-06 to 2008-03-19",
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 2776,
+      "votes": 248,
+      "score": 7.3,
+      "rating_detail": {
+        "10": 9,
+        "9": 20,
+        "8": 71,
+        "7": 94,
+        "6": 39,
+        "5": 10,
+        "4": 4,
+        "3": 1,
+        "2": 0,
+        "1": 0
+      },
+      "rank": 1637,
+      "image": "http://lain.bgm.tv/pic/cover/l/62/44/2776_923In.jpg",
+      "air_from": "2005-04-06",
+      "cn_name": "光速蒙面侠21",
+      "jp_name": "アイシールド21",
+      "bayesian_score": 7.2975515360943,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 15,
+      "title": {
+        "romaji": "Eyeshield 21",
+        "english": "Eyeshield 21",
+        "native": "アイシールド21"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx15-A4F2t0TgWoi4.png"
+      },
+      "averageScore": 75,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 38
+          },
+          {
+            "score": 20,
+            "amount": 26
+          },
+          {
+            "score": 30,
+            "amount": 66
+          },
+          {
+            "score": 40,
+            "amount": 137
+          },
+          {
+            "score": 50,
+            "amount": 386
+          },
+          {
+            "score": 60,
+            "amount": 740
+          },
+          {
+            "score": 70,
+            "amount": 1866
+          },
+          {
+            "score": 80,
+            "amount": 2295
+          },
+          {
+            "score": 90,
+            "amount": 1535
+          },
+          {
+            "score": 100,
+            "amount": 790
+          }
+        ]
+      },
+      "votes": 7879,
+      "bayesian_score": 7.659629779575549,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 747,
+      "title": "「アイシールド21-EYESHIELD21（TVアニメ動画）」",
+      "jp_name": "アイシールド21-EYESHIELD21",
+      "type": "TVアニメ動画",
+      "score": 3.6,
+      "votes": 372,
+      "year": 2005,
+      "bayesian_score": 7.219938547662504,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 18467,
+      "title": "光速蒙面俠 21",
+      "score": 4.1,
+      "votes": 139,
+      "rating_detail": {
+        "5": 65,
+        "4": 40,
+        "3": 27,
+        "2": 6,
+        "1": 2
+      },
+      "bayesian_score": 8.3146771037182,
+      "adjusted_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "eyeshield-21",
+      "title": "Eyeshield 21",
+      "score": 3.95,
+      "votes": 7876,
+      "bayesian_score": 7.900436382628697,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 3520,
+      "title": "Eyeshield 21",
+      "score": 3.62,
+      "votes": 614,
+      "rating_detail": {
+        "5": 158,
+        "4": 277,
+        "3": 129,
+        "2": 38,
+        "1": 12
+      },
+      "bayesian_score": 7.7371387720406934,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 6,
+      "score": 78.55,
+      "votes": 5285,
+      "bayesian_score": 7.855600850653281,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "gCkpcFmmR",
+      "score": 7.736062378167641,
+      "votes": 10,
+      "bayesian_score": 7.712588447590153,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
+      "id": 16,
+      "type": "TV",
+      "score": 8.02,
+      "votes": 79209,
+      "rank": 553,
+      "image": "https://cdn.myanimelist.net/images/anime/11/73923.jpg",
+      "air_from": "2005-04-15T00:00:00+00:00",
+      "air_to": "2005-09-27T00:00:00+00:00",
+      "air_status": "Finished Airing",
+      "title": "Hachimitsu to Clover",
+      "en_name": "Honey and Clover",
+      "jp_name": "ハチミツとクローバー",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 4975,
+      "type": "TV",
+      "votes": 2936,
+      "bayesian_score": 8.36064,
+      "weighted_score": 8.3645,
+      "titles": [
+        "Honey and Clover",
+        "HachiKuro",
+        "Hachimitsu to Clover",
+        "ハチミツとクローバー"
+      ],
+      "air": "2005-04-14",
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 847,
+      "votes": 4109,
+      "score": 8.5,
+      "rating_detail": {
+        "10": 889,
+        "9": 1299,
+        "8": 1199,
+        "7": 489,
+        "6": 160,
+        "5": 51,
+        "4": 12,
+        "3": 2,
+        "2": 2,
+        "1": 6
+      },
+      "rank": 46,
+      "image": "http://lain.bgm.tv/pic/cover/l/f4/55/847_xHHqh.jpg",
+      "air_from": "2005-04-14",
+      "cn_name": "蜂蜜与四叶草",
+      "jp_name": "ハチミツとクローバー",
+      "bayesian_score": 8.487197935497045,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 16,
+      "title": {
+        "romaji": "Hachimitsu to Clover",
+        "english": "Honey and Clover",
+        "native": "ハチミツとクローバー"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx16-5fJZ2Sy2ThRA.jpg"
+      },
+      "averageScore": 76,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 45
+          },
+          {
+            "score": 20,
+            "amount": 48
+          },
+          {
+            "score": 30,
+            "amount": 91
+          },
+          {
+            "score": 40,
+            "amount": 238
+          },
+          {
+            "score": 50,
+            "amount": 444
+          },
+          {
+            "score": 60,
+            "amount": 694
+          },
+          {
+            "score": 70,
+            "amount": 1725
+          },
+          {
+            "score": 80,
+            "amount": 2513
+          },
+          {
+            "score": 90,
+            "amount": 1948
+          },
+          {
+            "score": 100,
+            "amount": 1103
+          }
+        ]
+      },
+      "votes": 8849,
+      "bayesian_score": 7.740695262565923,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 757,
+      "title": "「ハチミツとクローバー（TVアニメ動画）」",
+      "jp_name": "ハチミツとクローバー",
+      "type": "TVアニメ動画",
+      "score": 3.9,
+      "votes": 585,
+      "year": 2005,
+      "bayesian_score": 7.802716849087522,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 17263,
+      "title": "蜂蜜幸運草",
+      "score": 4.5,
+      "votes": 164,
+      "rating_detail": {
+        "5": 100,
+        "4": 52,
+        "3": 8,
+        "2": 4,
+        "1": 1
+      },
+      "bayesian_score": 8.966866088901314,
+      "adjusted_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "honey-and-clover",
+      "title": "Honey and Clover",
+      "score": 3.786,
+      "votes": 8958,
+      "bayesian_score": 7.572749477409667,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 2542,
+      "title": "Honey and Clover",
+      "score": 3.72,
+      "votes": 961,
+      "rating_detail": {
+        "5": 307,
+        "4": 418,
+        "3": 150,
+        "2": 63,
+        "1": 23
+      },
+      "bayesian_score": 7.923763742279498,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 7,
+      "score": 79.78,
+      "votes": 7011,
+      "bayesian_score": 7.978277952458216,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "JZipcKmmg",
+      "score": 7.589285714285714,
+      "votes": 10,
+      "bayesian_score": 7.639200115649189,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
+      "id": 17,
+      "type": "TV",
+      "score": 7.56,
+      "votes": 12531,
+      "rank": 1501,
+      "image": "https://cdn.myanimelist.net/images/anime/12/49655.jpg",
+      "air_from": "2002-09-11T00:00:00+00:00",
+      "air_to": "2003-09-10T00:00:00+00:00",
+      "air_status": "Finished Airing",
+      "title": "Hungry Heart: Wild Striker",
+      "en_name": "Hungry Heart: Wild Striker",
+      "jp_name": "ハングリーハート Wild Striker",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 1793,
+      "type": "TV",
+      "votes": 234,
+      "bayesian_score": 7.42773,
+      "weighted_score": 7.4243,
+      "titles": [
+        "Hungry Heart - Wild Striker",
+        "STRIKER: Hungry Heart",
+        "Wild Striker",
+        "ハングリーハート WILD STRIKER"
+      ],
+      "air": "2002-09-11 to 2003-09-10",
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 19712,
+      "votes": 17,
+      "score": 7.2,
+      "rating_detail": {
+        "10": 0,
+        "9": 1,
+        "8": 5,
+        "7": 8,
+        "6": 2,
+        "5": 1,
+        "4": 0,
+        "3": 0,
+        "2": 0,
+        "1": 0
+      },
+      "rank": null,
+      "image": "http://lain.bgm.tv/pic/cover/l/51/91/19712_DjiXM.jpg",
+      "air_from": "2002-09-11",
+      "cn_name": "野驁射手",
+      "jp_name": "ハングリーハートWILD STRIKER",
+      "bayesian_score": 7.621048011567748,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 17,
+      "title": {
+        "romaji": "Hungry Heart: Wild Striker",
+        "english": null,
+        "native": "ハングリーハート Wild Striker"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx17-6kqIbdUk3dgi.png"
+      },
+      "averageScore": 70,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 6
+          },
+          {
+            "score": 20,
+            "amount": 10
+          },
+          {
+            "score": 30,
+            "amount": 23
+          },
+          {
+            "score": 40,
+            "amount": 38
+          },
+          {
+            "score": 50,
+            "amount": 89
+          },
+          {
+            "score": 60,
+            "amount": 188
+          },
+          {
+            "score": 70,
+            "amount": 371
+          },
+          {
+            "score": 80,
+            "amount": 310
+          },
+          {
+            "score": 90,
+            "amount": 155
+          },
+          {
+            "score": 100,
+            "amount": 89
+          }
+        ]
+      },
+      "votes": 1279,
+      "bayesian_score": 7.188378069101248,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 469,
+      "title": "「ハングリーハート WILD STRIKER（TVアニメ動画）」",
+      "jp_name": "ハングリーハート WILD STRIKER",
+      "type": "TVアニメ動画",
+      "score": 3.6,
+      "votes": 34,
+      "year": 2002,
+      "bayesian_score": 7.373102845615372,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 34054,
+      "title": "飆悍射將",
+      "score": 3.8,
+      "votes": 5,
+      "rating_detail": {
+        "5": 1,
+        "4": 2,
+        "3": 2,
+        "2": 0,
+        "1": 0
+      },
+      "bayesian_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "hungry-heart-wild-striker",
+      "title": "Hungry Heart: Wild Striker",
+      "score": 3.805,
+      "votes": 1964,
+      "bayesian_score": 7.6132124181407805,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 1071,
+      "title": "Hungry Heart",
+      "score": 3.56,
+      "votes": 339,
+      "rating_detail": {
+        "5": 76,
+        "4": 156,
+        "3": 80,
+        "2": 17,
+        "1": 10
+      },
+      "bayesian_score": 7.615973048003991,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 8,
+      "score": 74.16,
+      "votes": 998,
+      "bayesian_score": 7.42351141290588,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "gFmp5Kmmg",
+      "score": 6.545454545454546,
+      "votes": 10,
+      "bayesian_score": 7.117284531233605,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
+      "id": 18,
+      "type": "TV",
+      "score": 8.15,
+      "votes": 88884,
+      "rank": 381,
+      "image": "https://cdn.myanimelist.net/images/anime/9/10521.jpg",
+      "air_from": "2004-04-17T00:00:00+00:00",
+      "air_to": "2006-02-18T00:00:00+00:00",
+      "air_status": "Finished Airing",
+      "title": "Initial D Fourth Stage",
+      "en_name": "Initial D Fourth Stage",
+      "jp_name": "頭文字〈イニシャル〉D FOURTH STAGE",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 3396,
+      "type": "TV",
+      "votes": 846,
+      "bayesian_score": 8.06437,
+      "weighted_score": 8.0732,
+      "titles": [
+        "Initial D: Fourth Stage",
+        "頭文字〈イニシャル〉D FOURTH STAGE"
+      ],
+      "air": "2004-04-17",
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 3816,
+      "votes": 740,
+      "score": 7.5,
+      "rating_detail": {
+        "10": 26,
+        "9": 67,
+        "8": 268,
+        "7": 285,
+        "6": 71,
+        "5": 14,
+        "4": 5,
+        "3": 3,
+        "2": 0,
+        "1": 1
+      },
+      "rank": 994,
+      "image": "http://lain.bgm.tv/pic/cover/l/c9/11/3816_eTotY.jpg",
+      "air_from": "2004-04-17",
+      "cn_name": "头文字D Fourth Stage",
+      "jp_name": "頭文字D Fourth Stage",
+      "bayesian_score": 7.482357728416439,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 18,
+      "title": {
+        "romaji": "Initial D FOURTH STAGE",
+        "english": "Initial D 4th Stage",
+        "native": "頭文字〈イニシャル〉D FOURTH STAGE"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/b18-r7IirVmwP89u.jpg"
+      },
+      "averageScore": 79,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 64
+          },
+          {
+            "score": 20,
+            "amount": 18
+          },
+          {
+            "score": 30,
+            "amount": 43
+          },
+          {
+            "score": 40,
+            "amount": 80
+          },
+          {
+            "score": 50,
+            "amount": 345
+          },
+          {
+            "score": 60,
+            "amount": 767
+          },
+          {
+            "score": 70,
+            "amount": 2303
+          },
+          {
+            "score": 80,
+            "amount": 4039
+          },
+          {
+            "score": 90,
+            "amount": 2848
+          },
+          {
+            "score": 100,
+            "amount": 1706
+          }
+        ]
+      },
+      "votes": 12213,
+      "bayesian_score": 8.024610924574286,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 648,
+      "title": "「頭文字D Fourth Stage（TVアニメ動画）」",
+      "jp_name": "頭文字D Fourth Stage",
+      "type": "TVアニメ動画",
+      "score": 3.9,
+      "votes": 189,
+      "year": 2004,
+      "bayesian_score": 7.808123242246615,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 58226,
+      "title": "頭文字D Fourth Stage",
+      "score": 4.8,
+      "votes": 97,
+      "rating_detail": {
+        "5": 83,
+        "4": 9,
+        "3": 4,
+        "2": 0,
+        "1": 1
+      },
+      "bayesian_score": 9.487865098670374,
+      "adjusted_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "initial-d-fourth-stage",
+      "title": "Initial D Fourth Stage",
+      "score": 4.176,
+      "votes": 5924,
+      "bayesian_score": 8.351818219314106,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 3342,
+      "title": "Initial D: Fourth Stage",
+      "score": 3.95,
+      "votes": 604,
+      "rating_detail": {
+        "5": 209,
+        "4": 307,
+        "3": 67,
+        "2": 18,
+        "1": 3
+      },
+      "bayesian_score": 8.319176862790542,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 9,
+      "score": 79.85,
+      "votes": 5573,
+      "bayesian_score": 7.985337005948258,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "woit5KmiR",
+      "score": 8.518461538461539,
+      "votes": 10,
+      "bayesian_score": 8.103788027737101,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
+      "id": 19,
+      "type": "TV",
+      "score": 8.84,
+      "votes": 312264,
+      "rank": 24,
+      "image": "https://cdn.myanimelist.net/images/anime/10/18793.jpg",
+      "air_from": "2004-04-07T00:00:00+00:00",
+      "air_to": "2005-09-28T00:00:00+00:00",
+      "air_status": "Finished Airing",
+      "title": "Monster",
+      "en_name": "Monster",
+      "jp_name": "モンスター",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 3750,
+      "type": "TV",
+      "votes": 3501,
+      "bayesian_score": 8.70588,
+      "weighted_score": 8.7104,
+      "titles": [
+        "Monster",
+        "モンスター",
+        "몬스터"
+      ],
+      "air": "2004-04-06 to 2005-09-27",
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 1959,
+      "votes": 2318,
+      "score": 8.3,
+      "rating_detail": {
+        "10": 328,
+        "9": 774,
+        "8": 770,
+        "7": 297,
+        "6": 102,
+        "5": 27,
+        "4": 11,
+        "3": 1,
+        "2": 2,
+        "1": 6
+      },
+      "rank": 80,
+      "image": "http://lain.bgm.tv/pic/cover/l/e4/dd/1959_004b0.jpg",
+      "air_from": "2004-04-06",
+      "cn_name": "怪物",
+      "jp_name": "MONSTER",
+      "bayesian_score": 8.321635866113544,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 19,
+      "title": {
+        "romaji": "MONSTER",
+        "english": "Monster",
+        "native": "MONSTER"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx19-ham53gnijfiN.jpg"
+      },
+      "averageScore": 87,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 221
+          },
+          {
+            "score": 20,
+            "amount": 74
+          },
+          {
+            "score": 30,
+            "amount": 140
+          },
+          {
+            "score": 40,
+            "amount": 229
+          },
+          {
+            "score": 50,
+            "amount": 610
+          },
+          {
+            "score": 60,
+            "amount": 1069
+          },
+          {
+            "score": 70,
+            "amount": 2720
+          },
+          {
+            "score": 80,
+            "amount": 6026
+          },
+          {
+            "score": 90,
+            "amount": 11903
+          },
+          {
+            "score": 100,
+            "amount": 15641
+          }
+        ]
+      },
+      "votes": 38633,
+      "bayesian_score": 8.851223231402104,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 637,
+      "title": "「MONSTERモンスター（TVアニメ動画）」",
+      "jp_name": "MONSTERモンスター",
+      "type": "TVアニメ動画",
+      "score": 4.0,
+      "votes": 612,
+      "year": 2004,
+      "bayesian_score": 7.999383481040315,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 21648,
+      "title": "怪物",
+      "score": 4.5,
+      "votes": 101,
+      "rating_detail": {
+        "5": 63,
+        "4": 30,
+        "3": 5,
+        "2": 3,
+        "1": 0
+      },
+      "bayesian_score": 9.001815905925495,
+      "adjusted_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "monster",
+      "title": "Monster",
+      "score": 4.209,
+      "votes": 15991,
+      "bayesian_score": 8.417891338879437,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 1888,
+      "title": "Monster",
+      "score": 4.14,
+      "votes": 2643,
+      "rating_detail": {
+        "5": 1554,
+        "4": 680,
+        "3": 245,
+        "2": 111,
+        "1": 53
+      },
+      "bayesian_score": 8.700329662176175,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 10,
+      "score": 82.05,
+      "votes": 21947,
+      "bayesian_score": 8.204985494567069,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "gLmp5FimR",
+      "score": 8.662106615285806,
+      "votes": 10,
+      "bayesian_score": 8.175610566149235,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
+      "id": 20,
+      "type": "TV",
+      "score": 7.97,
+      "votes": 1757755,
+      "rank": 610,
+      "image": "https://cdn.myanimelist.net/images/anime/13/17405.jpg",
+      "air_from": "2002-10-03T00:00:00+00:00",
+      "air_to": "2007-02-08T00:00:00+00:00",
+      "air_status": "Finished Airing",
+      "title": "Naruto",
+      "en_name": "Naruto",
+      "jp_name": "ナルト",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 1825,
+      "type": "TV",
+      "votes": 9349,
+      "bayesian_score": 7.418,
+      "weighted_score": 7.4179,
+      "titles": [
+        "Naruto",
+        "ナルト"
+      ],
+      "air": "2007-02-12",
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 3425,
+      "votes": 4167,
+      "score": 7.5,
+      "rating_detail": {
+        "10": 284,
+        "9": 425,
+        "8": 1370,
+        "7": 1343,
+        "6": 505,
+        "5": 148,
+        "4": 48,
+        "3": 17,
+        "2": 7,
+        "1": 20
+      },
+      "rank": 958,
+      "image": "http://lain.bgm.tv/pic/cover/l/07/21/3425_9PQ1L.jpg",
+      "air_from": "2002-10-03",
+      "cn_name": "火影忍者",
+      "jp_name": "NARUTO -ナルト-",
+      "bayesian_score": 7.459125759232063,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 20,
+      "title": {
+        "romaji": "NARUTO",
+        "english": "Naruto",
+        "native": "NARUTO -ナルト-"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx20-YJvLbgJQPCoI.jpg"
+      },
+      "averageScore": 79,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 1281
+          },
+          {
+            "score": 20,
+            "amount": 610
+          },
+          {
+            "score": 30,
+            "amount": 1296
+          },
+          {
+            "score": 40,
+            "amount": 2547
+          },
+          {
+            "score": 50,
+            "amount": 7542
+          },
+          {
+            "score": 60,
+            "amount": 15239
+          },
+          {
+            "score": 70,
+            "amount": 40466
+          },
+          {
+            "score": 80,
+            "amount": 59766
+          },
+          {
+            "score": 90,
+            "amount": 52105
+          },
+          {
+            "score": 100,
+            "amount": 46134
+          }
+        ]
+      },
+      "votes": 226986,
+      "bayesian_score": 8.094767393835449,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 479,
+      "title": "「NARUTO ナルト（TVアニメ動画）」",
+      "jp_name": "NARUTO ナルト",
+      "type": "TVアニメ動画",
+      "score": 3.9,
+      "votes": 1049,
+      "year": 2002,
+      "bayesian_score": 7.801526463840487,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 124,
+      "title": "火影忍者",
+      "score": 4.6,
+      "votes": 1,
+      "rating_detail": {
+        "5": 0,
+        "4": 0,
+        "3": 0,
+        "2": 0,
+        "1": 0
+      },
+      "bayesian_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "naruto",
+      "title": "Naruto",
+      "score": 4.012,
+      "votes": 94264,
+      "bayesian_score": 8.02402335016452,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 2788,
+      "title": "Naruto",
+      "score": 3.59,
+      "votes": 6833,
+      "rating_detail": {
+        "5": 1900,
+        "4": 2740,
+        "3": 1483,
+        "2": 559,
+        "1": 151
+      },
+      "bayesian_score": 7.663009585525851,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 11,
+      "score": 79.9,
+      "votes": 81815,
+      "bayesian_score": 7.9900223831861785,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "Pjip5Kmmg",
+      "score": 7.906042446941324,
+      "votes": 10,
+      "bayesian_score": 7.797578481976994,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
+      "id": 21,
+      "type": "TV",
+      "score": 8.65,
+      "votes": 1094413,
+      "rank": 64,
+      "image": "https://cdn.myanimelist.net/images/anime/6/73245.jpg",
+      "air_from": "1999-10-20T00:00:00+00:00",
+      "air_to": null,
+      "air_status": "Currently Airing",
+      "title": "One Piece",
+      "en_name": "One Piece",
+      "jp_name": "ONE PIECE",
+      "adjusted_score": 0
+    },
+    "ANN": {
+      "id": 836,
+      "type": "TV",
+      "votes": 4203,
+      "bayesian_score": 7.92126,
+      "weighted_score": 7.9226,
+      "titles": [
+        "One Piece",
+        "ワンピース"
+      ],
+      "air": "1999-10-20",
+      "adjusted_score": 0
+    },
+    "BGM": {
+      "id": 975,
+      "votes": 8391,
+      "score": 8.4,
+      "rating_detail": {
+        "10": 2726,
+        "9": 1739,
+        "8": 1948,
+        "7": 1106,
+        "6": 471,
+        "5": 214,
+        "4": 67,
+        "3": 25,
+        "2": 32,
+        "1": 63
+      },
+      "rank": 59,
+      "image": "http://lain.bgm.tv/pic/cover/l/92/97/975_YKuWd.jpg",
+      "air_from": "1999-10-20",
+      "cn_name": "海贼王",
+      "jp_name": "ONE PIECE",
+      "bayesian_score": 8.41408978649117,
+      "adjusted_score": 0
+    },
+    "AniList": {
+      "id": 21,
+      "title": {
+        "romaji": "ONE PIECE",
+        "english": "ONE PIECE",
+        "native": "ONE PIECE"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/nx21-tXMN3Y20PIL9.jpg"
+      },
+      "averageScore": 87,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 1533
+          },
+          {
+            "score": 20,
+            "amount": 475
+          },
+          {
+            "score": 30,
+            "amount": 750
+          },
+          {
+            "score": 40,
+            "amount": 1374
+          },
+          {
+            "score": 50,
+            "amount": 2912
+          },
+          {
+            "score": 60,
+            "amount": 4676
+          },
+          {
+            "score": 70,
+            "amount": 11097
+          },
+          {
+            "score": 80,
+            "amount": 19370
+          },
+          {
+            "score": 90,
+            "amount": 34634
+          },
+          {
+            "score": 100,
+            "amount": 63672
+          }
+        ]
+      },
+      "votes": 140493,
+      "bayesian_score": 8.782686628264674,
+      "adjusted_score": 0
+    },
+    "Anikore": {
+      "id": 282,
+      "title": "「ONE PIECE -ワンピース（TVアニメ動画）」",
+      "jp_name": "ONE PIECE -ワンピース",
+      "type": "TVアニメ動画",
+      "score": 3.9,
+      "votes": 1778,
+      "year": 1999,
+      "bayesian_score": 7.8009040968719665,
+      "adjusted_score": 0
+    },
+    "Gamer": {
+      "id": 16208,
+      "title": "航海王",
+      "score": 4.6,
+      "votes": 2,
+      "rating_detail": {
+        "5": 1,
+        "4": 0,
+        "3": 0,
+        "2": 0,
+        "1": 0
+      },
+      "bayesian_score": 0
+    },
+    "AnimePlanetCom": {
+      "id": "one-piece",
+      "title": "One Piece",
+      "score": 4.288,
+      "votes": 55955,
+      "bayesian_score": 8.575940700677386,
+      "adjusted_score": 0
+    },
+    "anisearch": {
+      "id": 2227,
+      "title": "One Piece",
+      "score": 4.17,
+      "votes": 7323,
+      "rating_detail": {
+        "5": 4222,
+        "4": 2020,
+        "3": 697,
+        "2": 275,
+        "1": 109
+      },
+      "bayesian_score": 8.722483921144606,
+      "adjusted_score": 0
+    },
+    "kitsu": {
+      "id": 12,
+      "score": 83.18,
+      "votes": 149690,
+      "bayesian_score": 8.317990324009413,
+      "adjusted_score": 0
+    },
+    "notifyMoe": {
+      "id": "jdZp5KmiR",
+      "score": 8.574184729545006,
+      "votes": 10,
+      "bayesian_score": 8.131649623278836,
+      "adjusted_score": 0
+    },
+    "anidb": null,
+    "score": 0
+  },
+  {
+    "MAL": {
       "id": 22,
       "type": "TV",
       "score": 7.87,
@@ -160,7 +2302,7 @@
         "2": 45,
         "1": 14
       },
-      "bayesian_score": 7.321041149926785,
+      "bayesian_score": 7.321042646223378,
       "adjusted_score": 0
     },
     "kitsu": {
