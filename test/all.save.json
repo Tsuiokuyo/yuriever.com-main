@@ -13,13 +13,14 @@
       "title": "Cowboy Bebop",
       "en_name": "Cowboy Bebop",
       "jp_name": "カウボーイビバップ",
+      "bayesian_score": 8.76,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 13,
       "type": "TV",
       "votes": 12357,
-      "bayesian_score": 8.89013,
+      "bayesian_score": 8.89,
       "weighted_score": 8.8916,
       "titles": [
         "Cowboy Bebop",
@@ -29,11 +30,11 @@
     },
     "BGM": {
       "id": 253,
-      "votes": 10497,
+      "votes": 10499,
       "score": 9.2,
       "rating_detail": {
         "10": 5067,
-        "9": 3280,
+        "9": 3282,
         "8": 1461,
         "7": 429,
         "6": 138,
@@ -48,7 +49,7 @@
       "air_from": "1998-10-23",
       "cn_name": "星际牛仔",
       "jp_name": "カウボーイビバップ",
-      "bayesian_score": 9.153304301543002,
+      "bayesian_score": 9.15,
       "adjusted_score": 0
     },
     "AniList": {
@@ -107,7 +108,7 @@
         ]
       },
       "votes": 106802,
-      "bayesian_score": 8.696670967036209,
+      "bayesian_score": 8.7,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -118,7 +119,7 @@
       "score": 4.2,
       "votes": 3138,
       "year": 1998,
-      "bayesian_score": 8.398607536596911,
+      "bayesian_score": 8.4,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -133,7 +134,7 @@
         "2": 1,
         "1": 2
       },
-      "bayesian_score": 9.33692325877671,
+      "bayesian_score": 9.34,
       "adjusted_score": 0
     },
     "AnimePlanetCom": {
@@ -141,7 +142,7 @@
       "title": "Cowboy Bebop",
       "score": 4.339,
       "votes": 51334,
-      "bayesian_score": 8.677915497690284,
+      "bayesian_score": 8.68,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -156,25 +157,25 @@
         "2": 112,
         "1": 40
       },
-      "bayesian_score": 8.460331493824029,
+      "bayesian_score": 8.46,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 1,
       "score": 82.06,
       "votes": 81168,
-      "bayesian_score": 8.205995953388962,
+      "bayesian_score": 8.21,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "Tk3ccKimg",
       "score": 8.660068677949472,
       "votes": 10,
-      "bayesian_score": 8.174591597481067,
+      "bayesian_score": 8.17,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 8.68
   },
   {
     "MAL": {
@@ -190,13 +191,14 @@
       "title": "Cowboy Bebop: Tengoku no Tobira",
       "en_name": "Cowboy Bebop: The Movie",
       "jp_name": "カウボーイビバップ 天国の扉",
+      "bayesian_score": 8.38,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 353,
       "type": "movie",
       "votes": 6053,
-      "bayesian_score": 8.37769,
+      "bayesian_score": 8.38,
       "weighted_score": 8.3796,
       "titles": [
         "Cowboy Bebop: The Movie",
@@ -229,7 +231,7 @@
       "air_from": "2001-09-01",
       "cn_name": "星际牛仔 天国之扉",
       "jp_name": "カウボーイビバップ 天国の扉",
-      "bayesian_score": 8.268936332563062,
+      "bayesian_score": 8.27,
       "adjusted_score": 0
     },
     "AniList": {
@@ -288,7 +290,7 @@
         ]
       },
       "votes": 25074,
-      "bayesian_score": 8.305326874943052,
+      "bayesian_score": 8.31,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -299,7 +301,7 @@
       "score": 4.1,
       "votes": 574,
       "year": 2001,
-      "bayesian_score": 8.195918707546362,
+      "bayesian_score": 8.2,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -314,7 +316,7 @@
         "2": 0,
         "1": 0
       },
-      "bayesian_score": 8.800065231572082,
+      "bayesian_score": 8.8,
       "adjusted_score": 0
     },
     "AnimePlanetCom": {
@@ -322,7 +324,7 @@
       "title": "Cowboy Bebop: The Movie",
       "score": 4.189,
       "votes": 21065,
-      "bayesian_score": 8.3779364798771,
+      "bayesian_score": 8.38,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -337,25 +339,25 @@
         "2": 40,
         "1": 8
       },
-      "bayesian_score": 8.283958481239617,
+      "bayesian_score": 8.28,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 2,
       "score": 81.85,
       "votes": 21049,
-      "bayesian_score": 8.184994373152055,
+      "bayesian_score": 8.18,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "emzt5FmiR",
       "score": 8.42689655172414,
       "votes": 10,
-      "bayesian_score": 8.058005534368402,
+      "bayesian_score": 8.06,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 8.32
   },
   {
     "MAL": {
@@ -371,13 +373,14 @@
       "title": "Trigun",
       "en_name": "Trigun",
       "jp_name": "トライガン",
+      "bayesian_score": 8.22,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 88,
       "type": "TV",
       "votes": 8020,
-      "bayesian_score": 8.26924,
+      "bayesian_score": 8.27,
       "weighted_score": 8.2705,
       "titles": [
         "Trigun",
@@ -407,7 +410,7 @@
       "air_from": "1998-04-01",
       "cn_name": "枪神",
       "jp_name": "TRIGUN",
-      "bayesian_score": 7.541206937127638,
+      "bayesian_score": 7.54,
       "adjusted_score": 0
     },
     "AniList": {
@@ -466,7 +469,7 @@
         ]
       },
       "votes": 32208,
-      "bayesian_score": 8.016413785184415,
+      "bayesian_score": 8.02,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -477,7 +480,7 @@
       "score": 3.8,
       "votes": 314,
       "year": 1998,
-      "bayesian_score": 7.611162114836656,
+      "bayesian_score": 7.61,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -492,7 +495,7 @@
         "2": 0,
         "1": 0
       },
-      "bayesian_score": 8.919066256639642,
+      "bayesian_score": 8.92,
       "adjusted_score": 0
     },
     "AnimePlanetCom": {
@@ -500,7 +503,7 @@
       "title": "Trigun",
       "score": 4.16,
       "votes": 34976,
-      "bayesian_score": 8.319978314566109,
+      "bayesian_score": 8.32,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -515,25 +518,25 @@
         "2": 111,
         "1": 33
       },
-      "bayesian_score": 7.839790955161373,
+      "bayesian_score": 7.84,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 3,
       "score": 81.75,
       "votes": 27216,
-      "bayesian_score": 8.174999320657061,
+      "bayesian_score": 8.17,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "SDkpcFmig",
       "score": 8.095712560386474,
       "votes": 10,
-      "bayesian_score": 7.892413538699569,
+      "bayesian_score": 7.89,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 8.08
   },
   {
     "MAL": {
@@ -549,13 +552,14 @@
       "title": "Witch Hunter Robin",
       "en_name": "Witch Hunter Robin",
       "jp_name": "Witch Hunter ROBIN (ウイッチハンターロビン)",
+      "bayesian_score": 7.26,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 913,
       "type": "TV",
       "votes": 3277,
-      "bayesian_score": 7.34298,
+      "bayesian_score": 7.34,
       "weighted_score": 7.3424,
       "titles": [
         "Witch Hunter Robin",
@@ -585,7 +589,7 @@
       "air_from": "2002-07-02",
       "cn_name": "魔女猎人罗宾",
       "jp_name": "Witch Hunter ROBIN",
-      "bayesian_score": 7.287389917751144,
+      "bayesian_score": 7.29,
       "adjusted_score": 0
     },
     "AniList": {
@@ -644,7 +648,7 @@
         ]
       },
       "votes": 3308,
-      "bayesian_score": 6.8950630895333065,
+      "bayesian_score": 6.9,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -655,7 +659,7 @@
       "score": 3.6,
       "votes": 196,
       "year": 2002,
-      "bayesian_score": 7.236973423335322,
+      "bayesian_score": 7.24,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -670,7 +674,7 @@
         "2": 1,
         "1": 0
       },
-      "bayesian_score": 7.876392101049635,
+      "bayesian_score": 7.88,
       "adjusted_score": 0
     },
     "AnimePlanetCom": {
@@ -678,7 +682,7 @@
       "title": "Witch Hunter Robin",
       "score": 3.578,
       "votes": 10916,
-      "bayesian_score": 7.156995910068634,
+      "bayesian_score": 7.16,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -693,25 +697,25 @@
         "2": 77,
         "1": 14
       },
-      "bayesian_score": 6.695070312506896,
+      "bayesian_score": 6.7,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 4,
       "score": 72.18,
       "votes": 3209,
-      "bayesian_score": 7.220967227154126,
+      "bayesian_score": 7.22,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "y1zt5KimR",
       "score": 6.722222222222222,
       "votes": 10,
-      "bayesian_score": 7.2056683696174435,
+      "bayesian_score": 7.21,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 7.22
   },
   {
     "MAL": {
@@ -727,13 +731,14 @@
       "title": "Bouken Ou Beet",
       "en_name": "Beet the Vandel Buster",
       "jp_name": "冒険王ビィト",
+      "bayesian_score": 6.96,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 4347,
       "type": "TV",
       "votes": 294,
-      "bayesian_score": 6.25029,
+      "bayesian_score": 6.25,
       "weighted_score": 6.1955,
       "titles": [
         "Beet the Vandel Buster",
@@ -765,7 +770,7 @@
       "air_from": "2004-09-30",
       "cn_name": "冒险王比特",
       "jp_name": "冒険王ビィト",
-      "bayesian_score": 6.850522751780834,
+      "bayesian_score": 6.85,
       "adjusted_score": 0
     },
     "AniList": {
@@ -824,7 +829,7 @@
         ]
       },
       "votes": 549,
-      "bayesian_score": 6.480893257730786,
+      "bayesian_score": 6.48,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -835,7 +840,7 @@
       "score": 3.4,
       "votes": 53,
       "year": 2004,
-      "bayesian_score": 6.9843892890012125,
+      "bayesian_score": 6.98,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -850,7 +855,7 @@
         "2": 3,
         "1": 1
       },
-      "bayesian_score": 7.6857701984903555,
+      "bayesian_score": 7.69,
       "adjusted_score": 0
     },
     "AnimePlanetCom": {
@@ -858,7 +863,7 @@
       "title": "Beet the Vandel Buster",
       "score": 3.378,
       "votes": 1773,
-      "bayesian_score": 6.76434622176663,
+      "bayesian_score": 6.76,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -873,25 +878,25 @@
         "2": 9,
         "1": 4
       },
-      "bayesian_score": 6.6433861350964705,
+      "bayesian_score": 6.64,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 5,
       "score": 68.65,
       "votes": 438,
-      "bayesian_score": 6.894199786181088,
+      "bayesian_score": 6.89,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "pQkt5Fimg",
       "score": 5.0,
       "votes": 10,
-      "bayesian_score": 6.344557258506332,
+      "bayesian_score": 6.34,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 6.78
   },
   {
     "MAL": {
@@ -907,13 +912,14 @@
       "title": "Eyeshield 21",
       "en_name": "Eyeshield 21",
       "jp_name": "アイシールド21",
+      "bayesian_score": 7.92,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 4778,
       "type": "TV",
       "votes": 737,
-      "bayesian_score": 7.45638,
+      "bayesian_score": 7.46,
       "weighted_score": 7.4558,
       "titles": [
         "Eyeshield 21",
@@ -943,7 +949,7 @@
       "air_from": "2005-04-06",
       "cn_name": "光速蒙面侠21",
       "jp_name": "アイシールド21",
-      "bayesian_score": 7.2975515360943,
+      "bayesian_score": 7.3,
       "adjusted_score": 0
     },
     "AniList": {
@@ -1002,7 +1008,7 @@
         ]
       },
       "votes": 7879,
-      "bayesian_score": 7.659629779575549,
+      "bayesian_score": 7.66,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -1013,7 +1019,7 @@
       "score": 3.6,
       "votes": 372,
       "year": 2005,
-      "bayesian_score": 7.219938547662504,
+      "bayesian_score": 7.22,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -1028,7 +1034,7 @@
         "2": 6,
         "1": 2
       },
-      "bayesian_score": 8.3146771037182,
+      "bayesian_score": 8.31,
       "adjusted_score": 0
     },
     "AnimePlanetCom": {
@@ -1036,7 +1042,7 @@
       "title": "Eyeshield 21",
       "score": 3.95,
       "votes": 7876,
-      "bayesian_score": 7.900436382628697,
+      "bayesian_score": 7.9,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -1051,32 +1057,32 @@
         "2": 38,
         "1": 12
       },
-      "bayesian_score": 7.7371387720406934,
+      "bayesian_score": 7.74,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 6,
       "score": 78.55,
       "votes": 5285,
-      "bayesian_score": 7.855600850653281,
+      "bayesian_score": 7.86,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "gCkpcFmmR",
       "score": 7.736062378167641,
       "votes": 10,
-      "bayesian_score": 7.712588447590153,
+      "bayesian_score": 7.71,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 7.71
   },
   {
     "MAL": {
       "id": 16,
       "type": "TV",
       "score": 8.02,
-      "votes": 79209,
+      "votes": 79235,
       "rank": 553,
       "image": "https://cdn.myanimelist.net/images/anime/11/73923.jpg",
       "air_from": "2005-04-15T00:00:00+00:00",
@@ -1085,13 +1091,14 @@
       "title": "Hachimitsu to Clover",
       "en_name": "Honey and Clover",
       "jp_name": "ハチミツとクローバー",
+      "bayesian_score": 8.02,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 4975,
       "type": "TV",
       "votes": 2936,
-      "bayesian_score": 8.36064,
+      "bayesian_score": 8.36,
       "weighted_score": 8.3645,
       "titles": [
         "Honey and Clover",
@@ -1123,7 +1130,7 @@
       "air_from": "2005-04-14",
       "cn_name": "蜂蜜与四叶草",
       "jp_name": "ハチミツとクローバー",
-      "bayesian_score": 8.487197935497045,
+      "bayesian_score": 8.49,
       "adjusted_score": 0
     },
     "AniList": {
@@ -1182,7 +1189,7 @@
         ]
       },
       "votes": 8849,
-      "bayesian_score": 7.740695262565923,
+      "bayesian_score": 7.74,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -1193,7 +1200,7 @@
       "score": 3.9,
       "votes": 585,
       "year": 2005,
-      "bayesian_score": 7.802716849087522,
+      "bayesian_score": 7.8,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -1208,7 +1215,7 @@
         "2": 4,
         "1": 1
       },
-      "bayesian_score": 8.966866088901314,
+      "bayesian_score": 8.97,
       "adjusted_score": 0
     },
     "AnimePlanetCom": {
@@ -1216,7 +1223,7 @@
       "title": "Honey and Clover",
       "score": 3.786,
       "votes": 8958,
-      "bayesian_score": 7.572749477409667,
+      "bayesian_score": 7.57,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -1231,25 +1238,25 @@
         "2": 63,
         "1": 23
       },
-      "bayesian_score": 7.923763742279498,
+      "bayesian_score": 7.92,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 7,
       "score": 79.78,
       "votes": 7011,
-      "bayesian_score": 7.978277952458216,
+      "bayesian_score": 7.98,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "JZipcKmmg",
       "score": 7.589285714285714,
       "votes": 10,
-      "bayesian_score": 7.639200115649189,
+      "bayesian_score": 7.64,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 8.05
   },
   {
     "MAL": {
@@ -1265,13 +1272,14 @@
       "title": "Hungry Heart: Wild Striker",
       "en_name": "Hungry Heart: Wild Striker",
       "jp_name": "ハングリーハート Wild Striker",
+      "bayesian_score": 7.56,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 1793,
       "type": "TV",
       "votes": 234,
-      "bayesian_score": 7.42773,
+      "bayesian_score": 7.43,
       "weighted_score": 7.4243,
       "titles": [
         "Hungry Heart - Wild Striker",
@@ -1303,7 +1311,7 @@
       "air_from": "2002-09-11",
       "cn_name": "野驁射手",
       "jp_name": "ハングリーハートWILD STRIKER",
-      "bayesian_score": 7.621048011567748,
+      "bayesian_score": 7.62,
       "adjusted_score": 0
     },
     "AniList": {
@@ -1362,7 +1370,7 @@
         ]
       },
       "votes": 1279,
-      "bayesian_score": 7.188378069101248,
+      "bayesian_score": 7.19,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -1373,7 +1381,7 @@
       "score": 3.6,
       "votes": 34,
       "year": 2002,
-      "bayesian_score": 7.373102845615372,
+      "bayesian_score": 7.37,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -1395,7 +1403,7 @@
       "title": "Hungry Heart: Wild Striker",
       "score": 3.805,
       "votes": 1964,
-      "bayesian_score": 7.6132124181407805,
+      "bayesian_score": 7.61,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -1410,25 +1418,25 @@
         "2": 17,
         "1": 10
       },
-      "bayesian_score": 7.615973048003991,
+      "bayesian_score": 7.62,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 8,
       "score": 74.16,
       "votes": 998,
-      "bayesian_score": 7.42351141290588,
+      "bayesian_score": 7.42,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "gFmp5Kmmg",
       "score": 6.545454545454546,
       "votes": 10,
-      "bayesian_score": 7.117284531233605,
+      "bayesian_score": 7.12,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 6.69
   },
   {
     "MAL": {
@@ -1444,13 +1452,14 @@
       "title": "Initial D Fourth Stage",
       "en_name": "Initial D Fourth Stage",
       "jp_name": "頭文字〈イニシャル〉D FOURTH STAGE",
+      "bayesian_score": 8.15,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 3396,
       "type": "TV",
       "votes": 846,
-      "bayesian_score": 8.06437,
+      "bayesian_score": 8.06,
       "weighted_score": 8.0732,
       "titles": [
         "Initial D: Fourth Stage",
@@ -1480,7 +1489,7 @@
       "air_from": "2004-04-17",
       "cn_name": "头文字D Fourth Stage",
       "jp_name": "頭文字D Fourth Stage",
-      "bayesian_score": 7.482357728416439,
+      "bayesian_score": 7.48,
       "adjusted_score": 0
     },
     "AniList": {
@@ -1539,7 +1548,7 @@
         ]
       },
       "votes": 12213,
-      "bayesian_score": 8.024610924574286,
+      "bayesian_score": 8.02,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -1550,7 +1559,7 @@
       "score": 3.9,
       "votes": 189,
       "year": 2004,
-      "bayesian_score": 7.808123242246615,
+      "bayesian_score": 7.81,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -1565,7 +1574,7 @@
         "2": 0,
         "1": 1
       },
-      "bayesian_score": 9.487865098670374,
+      "bayesian_score": 9.49,
       "adjusted_score": 0
     },
     "AnimePlanetCom": {
@@ -1573,7 +1582,7 @@
       "title": "Initial D Fourth Stage",
       "score": 4.176,
       "votes": 5924,
-      "bayesian_score": 8.351818219314106,
+      "bayesian_score": 8.35,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -1588,25 +1597,25 @@
         "2": 18,
         "1": 3
       },
-      "bayesian_score": 8.319176862790542,
+      "bayesian_score": 8.32,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 9,
       "score": 79.85,
       "votes": 5573,
-      "bayesian_score": 7.985337005948258,
+      "bayesian_score": 7.99,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "woit5KmiR",
       "score": 8.518461538461539,
       "votes": 10,
-      "bayesian_score": 8.103788027737101,
+      "bayesian_score": 8.1,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 8.18
   },
   {
     "MAL": {
@@ -1622,13 +1631,14 @@
       "title": "Monster",
       "en_name": "Monster",
       "jp_name": "モンスター",
+      "bayesian_score": 8.84,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 3750,
       "type": "TV",
       "votes": 3501,
-      "bayesian_score": 8.70588,
+      "bayesian_score": 8.71,
       "weighted_score": 8.7104,
       "titles": [
         "Monster",
@@ -1640,12 +1650,12 @@
     },
     "BGM": {
       "id": 1959,
-      "votes": 2318,
+      "votes": 2319,
       "score": 8.3,
       "rating_detail": {
         "10": 328,
         "9": 774,
-        "8": 770,
+        "8": 771,
         "7": 297,
         "6": 102,
         "5": 27,
@@ -1659,7 +1669,7 @@
       "air_from": "2004-04-06",
       "cn_name": "怪物",
       "jp_name": "MONSTER",
-      "bayesian_score": 8.321635866113544,
+      "bayesian_score": 8.32,
       "adjusted_score": 0
     },
     "AniList": {
@@ -1718,7 +1728,7 @@
         ]
       },
       "votes": 38633,
-      "bayesian_score": 8.851223231402104,
+      "bayesian_score": 8.85,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -1729,7 +1739,7 @@
       "score": 4.0,
       "votes": 612,
       "year": 2004,
-      "bayesian_score": 7.999383481040315,
+      "bayesian_score": 8.0,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -1744,7 +1754,7 @@
         "2": 3,
         "1": 0
       },
-      "bayesian_score": 9.001815905925495,
+      "bayesian_score": 9.0,
       "adjusted_score": 0
     },
     "AnimePlanetCom": {
@@ -1752,7 +1762,7 @@
       "title": "Monster",
       "score": 4.209,
       "votes": 15991,
-      "bayesian_score": 8.417891338879437,
+      "bayesian_score": 8.42,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -1767,25 +1777,25 @@
         "2": 111,
         "1": 53
       },
-      "bayesian_score": 8.700329662176175,
+      "bayesian_score": 8.7,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 10,
       "score": 82.05,
       "votes": 21947,
-      "bayesian_score": 8.204985494567069,
+      "bayesian_score": 8.2,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "gLmp5FimR",
       "score": 8.662106615285806,
       "votes": 10,
-      "bayesian_score": 8.175610566149235,
+      "bayesian_score": 8.18,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 8.52
   },
   {
     "MAL": {
@@ -1801,13 +1811,14 @@
       "title": "Naruto",
       "en_name": "Naruto",
       "jp_name": "ナルト",
+      "bayesian_score": 7.97,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 1825,
       "type": "TV",
       "votes": 9349,
-      "bayesian_score": 7.418,
+      "bayesian_score": 7.42,
       "weighted_score": 7.4179,
       "titles": [
         "Naruto",
@@ -1837,7 +1848,7 @@
       "air_from": "2002-10-03",
       "cn_name": "火影忍者",
       "jp_name": "NARUTO -ナルト-",
-      "bayesian_score": 7.459125759232063,
+      "bayesian_score": 7.46,
       "adjusted_score": 0
     },
     "AniList": {
@@ -1896,7 +1907,7 @@
         ]
       },
       "votes": 226986,
-      "bayesian_score": 8.094767393835449,
+      "bayesian_score": 8.09,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -1907,7 +1918,7 @@
       "score": 3.9,
       "votes": 1049,
       "year": 2002,
-      "bayesian_score": 7.801526463840487,
+      "bayesian_score": 7.8,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -1929,7 +1940,7 @@
       "title": "Naruto",
       "score": 4.012,
       "votes": 94264,
-      "bayesian_score": 8.02402335016452,
+      "bayesian_score": 8.02,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -1944,25 +1955,25 @@
         "2": 559,
         "1": 151
       },
-      "bayesian_score": 7.663009585525851,
+      "bayesian_score": 7.66,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 11,
       "score": 79.9,
-      "votes": 81815,
-      "bayesian_score": 7.9900223831861785,
+      "votes": 81816,
+      "bayesian_score": 7.99,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "Pjip5Kmmg",
       "score": 7.906042446941324,
       "votes": 10,
-      "bayesian_score": 7.797578481976994,
+      "bayesian_score": 7.8,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 7.02
   },
   {
     "MAL": {
@@ -1978,13 +1989,14 @@
       "title": "One Piece",
       "en_name": "One Piece",
       "jp_name": "ONE PIECE",
+      "bayesian_score": 8.65,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 836,
       "type": "TV",
       "votes": 4203,
-      "bayesian_score": 7.92126,
+      "bayesian_score": 7.92,
       "weighted_score": 7.9226,
       "titles": [
         "One Piece",
@@ -2014,7 +2026,7 @@
       "air_from": "1999-10-20",
       "cn_name": "海贼王",
       "jp_name": "ONE PIECE",
-      "bayesian_score": 8.41408978649117,
+      "bayesian_score": 8.41,
       "adjusted_score": 0
     },
     "AniList": {
@@ -2073,7 +2085,7 @@
         ]
       },
       "votes": 140493,
-      "bayesian_score": 8.782686628264674,
+      "bayesian_score": 8.78,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -2084,7 +2096,7 @@
       "score": 3.9,
       "votes": 1778,
       "year": 1999,
-      "bayesian_score": 7.8009040968719665,
+      "bayesian_score": 7.8,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -2106,7 +2118,7 @@
       "title": "One Piece",
       "score": 4.288,
       "votes": 55955,
-      "bayesian_score": 8.575940700677386,
+      "bayesian_score": 8.58,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -2121,25 +2133,25 @@
         "2": 275,
         "1": 109
       },
-      "bayesian_score": 8.722483921144606,
+      "bayesian_score": 8.72,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 12,
       "score": 83.18,
-      "votes": 149690,
-      "bayesian_score": 8.317990324009413,
+      "votes": 149695,
+      "bayesian_score": 8.32,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "jdZp5KmiR",
       "score": 8.574184729545006,
       "votes": 10,
-      "bayesian_score": 8.131649623278836,
+      "bayesian_score": 8.13,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 7.53
   },
   {
     "MAL": {
@@ -2155,13 +2167,14 @@
       "title": "Tennis no Ouji-sama",
       "en_name": "The Prince of Tennis",
       "jp_name": "テニスの王子様",
+      "bayesian_score": 7.87,
       "adjusted_score": 0
     },
     "ANN": {
       "id": 876,
       "type": "TV",
       "votes": 1426,
-      "bayesian_score": 7.4017,
+      "bayesian_score": 7.4,
       "weighted_score": 7.4009,
       "titles": [
         "The Prince of Tennis",
@@ -2194,7 +2207,7 @@
       "air_from": "2001-10-10",
       "cn_name": "网球王子",
       "jp_name": "テニスの王子様",
-      "bayesian_score": 6.808883547218214,
+      "bayesian_score": 6.81,
       "adjusted_score": 0
     },
     "AniList": {
@@ -2253,7 +2266,7 @@
         ]
       },
       "votes": 7033,
-      "bayesian_score": 7.5449125842782205,
+      "bayesian_score": 7.54,
       "adjusted_score": 0
     },
     "Anikore": {
@@ -2264,7 +2277,7 @@
       "score": 3.8,
       "votes": 885,
       "year": 2001,
-      "bayesian_score": 7.604040810287236,
+      "bayesian_score": 7.6,
       "adjusted_score": 0
     },
     "Gamer": {
@@ -2279,7 +2292,7 @@
         "2": 10,
         "1": 4
       },
-      "bayesian_score": 8.176830753466652,
+      "bayesian_score": 8.18,
       "adjusted_score": 0
     },
     "AnimePlanetCom": {
@@ -2287,7 +2300,7 @@
       "title": "The Prince of Tennis",
       "score": 3.877,
       "votes": 9163,
-      "bayesian_score": 7.754534319569378,
+      "bayesian_score": 7.75,
       "adjusted_score": 0
     },
     "anisearch": {
@@ -2302,24 +2315,24 @@
         "2": 45,
         "1": 14
       },
-      "bayesian_score": 7.321042646223378,
+      "bayesian_score": 7.32,
       "adjusted_score": 0
     },
     "kitsu": {
       "id": 13,
       "score": 78.25,
       "votes": 5375,
-      "bayesian_score": 7.825646518887489,
+      "bayesian_score": 7.83,
       "adjusted_score": 0
     },
     "notifyMoe": {
       "id": "4LWp5FmiR",
       "score": 7.5219907407407405,
       "votes": 10,
-      "bayesian_score": 7.605552628876703,
+      "bayesian_score": 7.61,
       "adjusted_score": 0
     },
     "anidb": null,
-    "score": 0
+    "score": 7.59
   }
 ]
