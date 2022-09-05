@@ -13,18 +13,20 @@
       "premiered": 1998,
       "genres": [
         "Action",
-        "Sci-Fi"
+        "Sci-Fi",
+        "Adult Cast",
+        "Space"
       ],
       "trailer": "qig4KOK2R2g",
       "bayesian_score": 8.75,
-      "adjusted_score": 8.87
+      "adjusted_score": 8.89
     },
     "ANN": {
       "id": 13,
       "votes": 12387,
       "bayesian_score": 8.89,
       "weighted_score": 8.8896,
-      "adjusted_score": 8.61
+      "adjusted_score": 8.56
     },
     "BGM": {
       "id": 253,
@@ -45,7 +47,7 @@
       "cn_name": "星际牛仔",
       "image": "c2/4c/253_t3XWb",
       "bayesian_score": 9.16,
-      "adjusted_score": 10.2
+      "adjusted_score": 10.24
     },
     "AniList": {
       "id": 1,
@@ -103,7 +105,7 @@
       "score": 4.2,
       "votes": 3143,
       "bayesian_score": 8.4,
-      "adjusted_score": 8.19
+      "adjusted_score": 8.21
     },
     "Gamer": {
       "id": 20668,
@@ -119,7 +121,7 @@
         "1": 2
       },
       "bayesian_score": 9.36,
-      "adjusted_score": 8.15
+      "adjusted_score": 8.14
     },
     "AnimePlanetCom": {
       "id": "cowboy-bebop",
@@ -141,14 +143,14 @@
       },
       "coverS": "1/1572/26",
       "bayesian_score": 8.46,
-      "adjusted_score": 8.17
+      "adjusted_score": 8.15
     },
     "kitsu": {
       "id": 1,
       "score": 82.05,
       "coverT": "1/cover_image/tiny-1f92cfe65c1b31d8b47e36f025d32b35.jpeg",
       "rating_detail": {
-        "20": 37216,
+        "20": 37218,
         "19": 834,
         "18": 11214,
         "17": 911,
@@ -169,9 +171,9 @@
         "2": 4464,
         "1": 0
       },
-      "votes": 81726,
+      "votes": 81728,
       "bayesian_score": 8.22,
-      "adjusted_score": 8.27
+      "adjusted_score": 8.28
     },
     "notifyMoe": {
       "id": "Tk3ccKimg",
@@ -204,7 +206,7 @@
         "netflix": "50356350"
       },
       "bayesian_score": 8.91,
-      "adjusted_score": 7.87
+      "adjusted_score": 7.75
     },
     "sakuhindb": null,
     "redditanimelist": null,
@@ -227,7 +229,7 @@
       "online": null,
       "bayesian_score": 8.44
     },
-    "score": 8.54,
+    "score": 8.53,
     "rank": 1
   },
   {
@@ -245,18 +247,20 @@
       "genres": [
         "Drama",
         "Mystery",
-        "Suspense"
+        "Suspense",
+        "Adult Cast",
+        "Psychological"
       ],
       "trailer": null,
       "bayesian_score": 8.84,
-      "adjusted_score": 8.96
+      "adjusted_score": 8.98
     },
     "ANN": {
       "id": 3750,
       "votes": 3515,
       "bayesian_score": 8.7,
       "weighted_score": 8.7077,
-      "adjusted_score": 8.46
+      "adjusted_score": 8.42
     },
     "BGM": {
       "id": 1959,
@@ -277,7 +281,7 @@
       "cn_name": "怪物",
       "image": "e4/dd/1959_004b0",
       "bayesian_score": 8.32,
-      "adjusted_score": 9.27
+      "adjusted_score": 9.3
     },
     "AniList": {
       "id": 19,
@@ -335,7 +339,7 @@
       "score": 4.0,
       "votes": 613,
       "bayesian_score": 8.0,
-      "adjusted_score": 7.94
+      "adjusted_score": 7.96
     },
     "Gamer": {
       "id": 21648,
@@ -351,7 +355,7 @@
         "1": 0
       },
       "bayesian_score": 9.01,
-      "adjusted_score": 7.83
+      "adjusted_score": 7.82
     },
     "AnimePlanetCom": {
       "id": "monster",
@@ -373,7 +377,7 @@
       },
       "coverS": null,
       "bayesian_score": 8.7,
-      "adjusted_score": 8.38
+      "adjusted_score": 8.36
     },
     "kitsu": {
       "id": 10,
@@ -398,10 +402,10 @@
         "5": 13,
         "4": 147,
         "3": 15,
-        "2": 1096,
+        "2": 1097,
         "1": 0
       },
-      "votes": 22226,
+      "votes": 22227,
       "bayesian_score": 8.21,
       "adjusted_score": 8.27
     },
@@ -412,7 +416,7 @@
       "score": 8.66,
       "votes": 173,
       "bayesian_score": 8.63,
-      "adjusted_score": 7.91
+      "adjusted_score": 7.92
     },
     "anidb": null,
     "trakt": null,
@@ -454,18 +458,19 @@
       "premiered": 2020,
       "genres": [
         "Action",
-        "Fantasy"
+        "Fantasy",
+        "Historical"
       ],
       "trailer": "PrZ0O8Qp18s",
       "bayesian_score": 8.65,
-      "adjusted_score": 8.78
+      "adjusted_score": 8.79
     },
     "ANN": {
       "id": 23040,
       "votes": 244,
       "bayesian_score": 8.1,
       "weighted_score": 8.1337,
-      "adjusted_score": 7.99
+      "adjusted_score": 7.96
     },
     "BGM": {
       "id": 291494,
@@ -486,7 +491,7 @@
       "cn_name": "剧场版 鬼灭之刃 无限列车篇",
       "image": "3c/64/291494_2kB2n",
       "bayesian_score": 7.23,
-      "adjusted_score": 8.06
+      "adjusted_score": 8.09
     },
     "AniList": {
       "id": 112151,
@@ -544,7 +549,7 @@
       "score": 4.1,
       "votes": 502,
       "bayesian_score": 8.19,
-      "adjusted_score": 8.06
+      "adjusted_score": 8.08
     },
     "Gamer": {
       "id": 107959,
@@ -582,26 +587,26 @@
       },
       "coverS": "14/14653/MA",
       "bayesian_score": 9.15,
-      "adjusted_score": 8.77
+      "adjusted_score": 8.74
     },
     "kitsu": {
       "id": 42586,
       "score": 86.75,
       "coverT": "cover_images/42586/tiny.jpg",
       "rating_detail": {
-        "20": 70997,
+        "20": 71002,
         "19": 1015,
-        "18": 4532,
+        "18": 4533,
         "17": 1256,
         "16": 3890,
         "15": 593,
-        "14": 16118,
+        "14": 16121,
         "13": 259,
         "12": 840,
         "11": 187,
         "10": 559,
         "9": 108,
-        "8": 5312,
+        "8": 5313,
         "7": 73,
         "6": 265,
         "5": 54,
@@ -610,17 +615,17 @@
         "2": 3487,
         "1": 0
       },
-      "votes": 109860,
+      "votes": 109870,
       "bayesian_score": 8.71,
-      "adjusted_score": 8.72
+      "adjusted_score": 8.73
     },
     "notifyMoe": {
       "id": "a8hdTT2WR",
       "tvdbId": "133777",
       "score": 8.74,
       "votes": 151,
-      "bayesian_score": 8.7,
-      "adjusted_score": 7.95
+      "bayesian_score": 8.71,
+      "adjusted_score": 7.96
     },
     "anidb": null,
     "trakt": null,
@@ -679,14 +684,14 @@
       ],
       "trailer": "l_98K4_6UQ0",
       "bayesian_score": 8.66,
-      "adjusted_score": 8.79
+      "adjusted_score": 8.8
     },
     "ANN": {
       "id": 836,
       "votes": 4212,
       "bayesian_score": 7.92,
       "weighted_score": 7.9211,
-      "adjusted_score": 7.85
+      "adjusted_score": 7.82
     },
     "BGM": {
       "id": 975,
@@ -707,7 +712,7 @@
       "cn_name": "海贼王",
       "image": "92/97/975_YKuWd",
       "bayesian_score": 8.41,
-      "adjusted_score": 9.37
+      "adjusted_score": 9.4
     },
     "AniList": {
       "id": 21,
@@ -765,7 +770,7 @@
       "score": 3.9,
       "votes": 1780,
       "bayesian_score": 7.8,
-      "adjusted_score": 7.81
+      "adjusted_score": 7.83
     },
     "Gamer": {
       "id": 16208,
@@ -781,7 +786,7 @@
         "1": 42
       },
       "bayesian_score": 9.26,
-      "adjusted_score": 8.06
+      "adjusted_score": 8.05
     },
     "AnimePlanetCom": {
       "id": "one-piece",
@@ -803,14 +808,14 @@
       },
       "coverS": "2/2227/Y8",
       "bayesian_score": 8.72,
-      "adjusted_score": 8.4
+      "adjusted_score": 8.37
     },
     "kitsu": {
       "id": 12,
       "score": 83.22,
       "coverT": "12/cover_image/tiny-cd1b0729d5c15400bfa2441ea3751e86.jpeg",
       "rating_detail": {
-        "20": 88017,
+        "20": 88022,
         "19": 1139,
         "18": 8241,
         "17": 1177,
@@ -831,9 +836,9 @@
         "2": 8059,
         "1": 0
       },
-      "votes": 151671,
+      "votes": 151676,
       "bayesian_score": 8.34,
-      "adjusted_score": 8.38
+      "adjusted_score": 8.39
     },
     "notifyMoe": {
       "id": "jdZp5KmiR",
@@ -864,7 +869,7 @@
       "coverS": "037/696/fanarts/full/ea70dc8e5c.jpg",
       "online": {},
       "bayesian_score": 9.01,
-      "adjusted_score": 7.92
+      "adjusted_score": 7.79
     },
     "sakuhindb": null,
     "redditanimelist": null,
@@ -889,7 +894,7 @@
       },
       "bayesian_score": 9.06
     },
-    "score": 8.38,
+    "score": 8.36,
     "rank": 4
   },
   {
@@ -911,14 +916,14 @@
       ],
       "trailer": "yBBePKQTWFE",
       "bayesian_score": 8.56,
-      "adjusted_score": 8.69
+      "adjusted_score": 8.71
     },
     "ANN": {
       "id": 22588,
       "votes": 180,
       "bayesian_score": 8.3,
       "weighted_score": 8.36,
-      "adjusted_score": 8.15
+      "adjusted_score": 8.11
     },
     "BGM": {
       "id": 291039,
@@ -939,7 +944,7 @@
       "cn_name": "水果篮子 第二季",
       "image": "c7/17/291039_gGN89",
       "bayesian_score": 7.29,
-      "adjusted_score": 8.13
+      "adjusted_score": 8.15
     },
     "AniList": {
       "id": 111762,
@@ -997,7 +1002,7 @@
       "score": 3.6,
       "votes": 166,
       "bayesian_score": 7.24,
-      "adjusted_score": 7.47
+      "adjusted_score": 7.48
     },
     "Gamer": {
       "id": 104514,
@@ -1035,7 +1040,7 @@
       },
       "coverS": "14/14621/69",
       "bayesian_score": 8.91,
-      "adjusted_score": 8.56
+      "adjusted_score": 8.53
     },
     "kitsu": {
       "id": 42554,
@@ -1065,14 +1070,14 @@
       },
       "votes": 11990,
       "bayesian_score": 8.22,
-      "adjusted_score": 8.27
+      "adjusted_score": 8.28
     },
     "notifyMoe": {
       "id": "cGgckL2Wg",
       "score": 8.47,
       "votes": 61,
       "bayesian_score": 8.43,
-      "adjusted_score": 7.8
+      "adjusted_score": 7.81
     },
     "anidb": null,
     "trakt": null,
@@ -1114,18 +1119,20 @@
       "premiered": 2001,
       "genres": [
         "Action",
-        "Sci-Fi"
+        "Sci-Fi",
+        "Adult Cast",
+        "Space"
       ],
       "trailer": "hc7IxJ93jtM",
       "bayesian_score": 8.38,
-      "adjusted_score": 8.51
+      "adjusted_score": 8.53
     },
     "ANN": {
       "id": 353,
       "votes": 6059,
       "bayesian_score": 8.38,
       "weighted_score": 8.3793,
-      "adjusted_score": 8.21
+      "adjusted_score": 8.17
     },
     "BGM": {
       "id": 860,
@@ -1146,7 +1153,7 @@
       "cn_name": "星际牛仔 天国之扉",
       "image": "fc/49/860_6qo6D",
       "bayesian_score": 8.27,
-      "adjusted_score": 9.21
+      "adjusted_score": 9.25
     },
     "AniList": {
       "id": 5,
@@ -1204,7 +1211,7 @@
       "score": 4.1,
       "votes": 575,
       "bayesian_score": 8.19,
-      "adjusted_score": 8.06
+      "adjusted_score": 8.08
     },
     "Gamer": {
       "id": 81298,
@@ -1220,7 +1227,7 @@
         "1": 0
       },
       "bayesian_score": 8.9,
-      "adjusted_score": 7.73
+      "adjusted_score": 7.72
     },
     "AnimePlanetCom": {
       "id": "cowboy-bebop-the-movie",
@@ -1242,7 +1249,7 @@
       },
       "coverS": null,
       "bayesian_score": 8.29,
-      "adjusted_score": 8.02
+      "adjusted_score": 8.01
     },
     "kitsu": {
       "id": 2,
@@ -1272,14 +1279,14 @@
       },
       "votes": 21179,
       "bayesian_score": 8.2,
-      "adjusted_score": 8.26
+      "adjusted_score": 8.27
     },
     "notifyMoe": {
       "id": "emzt5FmiR",
       "score": 8.43,
       "votes": 145,
       "bayesian_score": 8.41,
-      "adjusted_score": 7.79
+      "adjusted_score": 7.8
     },
     "anidb": null,
     "trakt": null,
@@ -1323,7 +1330,8 @@
         "Action",
         "Adventure",
         "Drama",
-        "Fantasy"
+        "Fantasy",
+        "Isekai"
       ],
       "trailer": null,
       "bayesian_score": null
@@ -1348,7 +1356,7 @@
       "cn_name": "盾之勇者成名录 第三季",
       "image": "c0/2d/289907_94SD1",
       "bayesian_score": 7.58,
-      "adjusted_score": 8.45
+      "adjusted_score": 8.48
     },
     "AniList": {
       "id": 111322,
@@ -1416,7 +1424,7 @@
         "1": 75
       },
       "bayesian_score": 9.3,
-      "adjusted_score": 8.1
+      "adjusted_score": 8.09
     },
     "AnimePlanetCom": {
       "id": "the-rising-of-the-shield-hero-3rd-season",
@@ -1466,7 +1474,7 @@
       },
       "votes": 113,
       "bayesian_score": 8.12,
-      "adjusted_score": 8.18
+      "adjusted_score": 8.19
     },
     "notifyMoe": {
       "id": "iOsaLChWg",
@@ -1497,7 +1505,7 @@
       "online": null,
       "bayesian_score": 0
     },
-    "score": 8.24,
+    "score": 8.25,
     "rank": 7
   },
   {
@@ -1516,18 +1524,19 @@
         "Boys Love",
         "Drama",
         "Romance",
-        "Slice of Life"
+        "Slice of Life",
+        "Music"
       ],
       "trailer": "hDd2sAMXVco",
       "bayesian_score": 8.15,
-      "adjusted_score": 8.29
+      "adjusted_score": 8.31
     },
     "ANN": {
       "id": 23072,
       "votes": 41,
       "bayesian_score": 7.77,
       "weighted_score": 7.8569,
-      "adjusted_score": 7.73
+      "adjusted_score": 7.71
     },
     "BGM": {
       "id": 290993,
@@ -1548,7 +1557,7 @@
       "cn_name": "GIVEN 剧场版",
       "image": "14/fc/290993_3cgLG",
       "bayesian_score": 6.66,
-      "adjusted_score": 7.43
+      "adjusted_score": 7.45
     },
     "AniList": {
       "id": 111734,
@@ -1621,7 +1630,7 @@
         "1": 18
       },
       "bayesian_score": 9.61,
-      "adjusted_score": 8.38
+      "adjusted_score": 8.37
     },
     "AnimePlanetCom": {
       "id": "given-movie",
@@ -1643,7 +1652,7 @@
       },
       "coverS": null,
       "bayesian_score": 8.57,
-      "adjusted_score": 8.27
+      "adjusted_score": 8.24
     },
     "kitsu": {
       "id": 42572,
@@ -1652,7 +1661,7 @@
       "rating_detail": {
         "20": 3889,
         "19": 94,
-        "18": 459,
+        "18": 460,
         "17": 181,
         "16": 614,
         "15": 98,
@@ -1671,7 +1680,7 @@
         "2": 384,
         "1": 0
       },
-      "votes": 7755,
+      "votes": 7756,
       "bayesian_score": 8.21,
       "adjusted_score": 8.27
     },
@@ -1680,7 +1689,7 @@
       "score": 8.44,
       "votes": 29,
       "bayesian_score": 8.37,
-      "adjusted_score": 7.77
+      "adjusted_score": 7.78
     },
     "anidb": null,
     "trakt": null,
@@ -1722,18 +1731,19 @@
       "premiered": 2004,
       "genres": [
         "Action",
-        "Drama"
+        "Drama",
+        "Racing"
       ],
       "trailer": null,
       "bayesian_score": 8.15,
-      "adjusted_score": 8.29
+      "adjusted_score": 8.31
     },
     "ANN": {
       "id": 3396,
       "votes": 851,
       "bayesian_score": 8.06,
       "weighted_score": 8.0657,
-      "adjusted_score": 7.96
+      "adjusted_score": 7.93
     },
     "BGM": {
       "id": 3816,
@@ -1754,7 +1764,7 @@
       "cn_name": "头文字D Fourth Stage",
       "image": "c9/11/3816_eTotY",
       "bayesian_score": 7.48,
-      "adjusted_score": 8.34
+      "adjusted_score": 8.37
     },
     "AniList": {
       "id": 18,
@@ -1812,7 +1822,7 @@
       "score": 3.9,
       "votes": 189,
       "bayesian_score": 7.8,
-      "adjusted_score": 7.81
+      "adjusted_score": 7.83
     },
     "Gamer": {
       "id": 58226,
@@ -1828,7 +1838,7 @@
         "1": 1
       },
       "bayesian_score": 9.51,
-      "adjusted_score": 8.29
+      "adjusted_score": 8.28
     },
     "AnimePlanetCom": {
       "id": "initial-d-fourth-stage",
@@ -1850,7 +1860,7 @@
       },
       "coverS": null,
       "bayesian_score": 8.32,
-      "adjusted_score": 8.05
+      "adjusted_score": 8.03
     },
     "kitsu": {
       "id": 9,
@@ -1888,11 +1898,31 @@
       "traktId": "40239",
       "score": 8.52,
       "votes": 65,
-      "bayesian_score": 8.47,
-      "adjusted_score": 7.83
+      "bayesian_score": 8.48,
+      "adjusted_score": 7.84
     },
     "anidb": null,
-    "trakt": null,
+    "trakt": {
+      "id": "40239",
+      "score": 86.0,
+      "votes": 400,
+      "rating_detail": {
+        "10": 154,
+        "9": 85,
+        "8": 96,
+        "7": 40,
+        "6": 11,
+        "5": 6,
+        "4": 1,
+        "3": 1,
+        "2": 1,
+        "1": 5
+      },
+      "coverS": "040/239/fanarts/full/0da4ff9bbc.jpg",
+      "online": {},
+      "bayesian_score": 8.66,
+      "adjusted_score": 7.64
+    },
     "sakuhindb": null,
     "redditanimelist": null,
     "annict": {
@@ -1914,7 +1944,7 @@
       "online": null,
       "bayesian_score": 7.89
     },
-    "score": 8.13,
+    "score": 8.09,
     "rank": 9
   },
   {
@@ -1931,18 +1961,19 @@
       "premiered": 2020,
       "genres": [
         "Comedy",
-        "Fantasy"
+        "Fantasy",
+        "Mythology"
       ],
       "trailer": "k1zuZHvl9ic",
       "bayesian_score": 7.99,
-      "adjusted_score": 8.13
+      "adjusted_score": 8.15
     },
     "ANN": {
       "id": 23362,
       "votes": 154,
       "bayesian_score": 7.78,
       "weighted_score": 7.8025,
-      "adjusted_score": 7.74
+      "adjusted_score": 7.71
     },
     "BGM": {
       "id": 290426,
@@ -1963,7 +1994,7 @@
       "cn_name": "在魔王城说晚安",
       "image": "b1/c3/290426_165P5",
       "bayesian_score": 7.09,
-      "adjusted_score": 7.91
+      "adjusted_score": 7.93
     },
     "AniList": {
       "id": 111428,
@@ -2021,14 +2052,14 @@
       "score": 3.8,
       "votes": 385,
       "bayesian_score": 7.61,
-      "adjusted_score": 7.7
+      "adjusted_score": 7.71
     },
     "Gamer": {
       "id": 107781,
       "title": "在魔王城說晚安",
       "online": "18525",
       "score": 4.9,
-      "votes": 8025,
+      "votes": 8026,
       "rating_detail": {
         "5": 7704,
         "4": 321,
@@ -2037,7 +2068,7 @@
         "1": 80
       },
       "bayesian_score": 9.75,
-      "adjusted_score": 8.51
+      "adjusted_score": 8.5
     },
     "AnimePlanetCom": {
       "id": "sleepy-princess-in-the-demon-castle",
@@ -2059,7 +2090,7 @@
       },
       "coverS": null,
       "bayesian_score": 8.07,
-      "adjusted_score": 7.83
+      "adjusted_score": 7.82
     },
     "kitsu": {
       "id": 42551,
@@ -2089,14 +2120,14 @@
       },
       "votes": 2910,
       "bayesian_score": 8.01,
-      "adjusted_score": 8.08
+      "adjusted_score": 8.09
     },
     "notifyMoe": {
       "id": "sCQpCzwWg",
       "score": 8.1,
       "votes": 40,
       "bayesian_score": 8.12,
-      "adjusted_score": 7.63
+      "adjusted_score": 7.64
     },
     "anidb": null,
     "trakt": null,
@@ -2123,7 +2154,7 @@
       },
       "bayesian_score": 8.05
     },
-    "score": 8.0,
+    "score": 8.01,
     "rank": 10
   },
   {
@@ -2143,18 +2174,19 @@
         "Adventure",
         "Comedy",
         "Drama",
-        "Sci-Fi"
+        "Sci-Fi",
+        "Adult Cast"
       ],
       "trailer": "bJVyIXeUznY",
       "bayesian_score": 8.22,
-      "adjusted_score": 8.36
+      "adjusted_score": 8.38
     },
     "ANN": {
       "id": 88,
       "votes": 8025,
       "bayesian_score": 8.27,
       "weighted_score": 8.2698,
-      "adjusted_score": 8.12
+      "adjusted_score": 8.09
     },
     "BGM": {
       "id": 7159,
@@ -2175,7 +2207,7 @@
       "cn_name": "枪神",
       "image": "42/e9/7159_RmkTk",
       "bayesian_score": 7.53,
-      "adjusted_score": 8.39
+      "adjusted_score": 8.42
     },
     "AniList": {
       "id": 6,
@@ -2233,7 +2265,7 @@
       "score": 3.8,
       "votes": 314,
       "bayesian_score": 7.61,
-      "adjusted_score": 7.7
+      "adjusted_score": 7.71
     },
     "Gamer": {
       "id": 32134,
@@ -2249,7 +2281,7 @@
         "1": 1
       },
       "bayesian_score": 8.5,
-      "adjusted_score": 7.36
+      "adjusted_score": 7.35
     },
     "AnimePlanetCom": {
       "id": "trigun",
@@ -2271,7 +2303,7 @@
       },
       "coverS": null,
       "bayesian_score": 7.84,
-      "adjusted_score": 7.64
+      "adjusted_score": 7.62
     },
     "kitsu": {
       "id": 3,
@@ -2301,7 +2333,7 @@
       },
       "votes": 27395,
       "bayesian_score": 8.18,
-      "adjusted_score": 8.24
+      "adjusted_score": 8.25
     },
     "notifyMoe": {
       "id": "SDkpcFmig",
@@ -2310,7 +2342,7 @@
       "score": 8.1,
       "votes": 184,
       "bayesian_score": 8.1,
-      "adjusted_score": 7.62
+      "adjusted_score": 7.63
     },
     "anidb": null,
     "trakt": null,
@@ -2354,18 +2386,20 @@
         "Comedy",
         "Drama",
         "Romance",
-        "Slice of Life"
+        "Slice of Life",
+        "Love Polygon",
+        "Visual Arts"
       ],
       "trailer": "6TN4a0kZuXg",
       "bayesian_score": 8.01,
-      "adjusted_score": 8.15
+      "adjusted_score": 8.17
     },
     "ANN": {
       "id": 4975,
       "votes": 2940,
       "bayesian_score": 8.36,
       "weighted_score": 8.362,
-      "adjusted_score": 8.2
+      "adjusted_score": 8.16
     },
     "BGM": {
       "id": 847,
@@ -2386,7 +2420,7 @@
       "cn_name": "蜂蜜与四叶草",
       "image": "f4/55/847_xHHqh",
       "bayesian_score": 8.48,
-      "adjusted_score": 9.45
+      "adjusted_score": 9.48
     },
     "AniList": {
       "id": 16,
@@ -2444,7 +2478,7 @@
       "score": 3.9,
       "votes": 586,
       "bayesian_score": 7.8,
-      "adjusted_score": 7.81
+      "adjusted_score": 7.83
     },
     "Gamer": {
       "id": 17263,
@@ -2460,14 +2494,14 @@
         "1": 1
       },
       "bayesian_score": 8.98,
-      "adjusted_score": 7.8
+      "adjusted_score": 7.79
     },
     "AnimePlanetCom": {
       "id": "honey-and-clover",
       "score": 3.787,
       "votes": 8978,
       "bayesian_score": 7.57,
-      "adjusted_score": 7.56
+      "adjusted_score": 7.57
     },
     "anisearch": {
       "id": 2542,
@@ -2482,7 +2516,7 @@
       },
       "coverS": null,
       "bayesian_score": 7.92,
-      "adjusted_score": 7.7
+      "adjusted_score": 7.69
     },
     "kitsu": {
       "id": 7,
@@ -2512,7 +2546,7 @@
       },
       "votes": 7060,
       "bayesian_score": 7.98,
-      "adjusted_score": 8.06
+      "adjusted_score": 8.07
     },
     "notifyMoe": {
       "id": "JZipcKmmg",
@@ -2521,7 +2555,7 @@
       "score": 7.59,
       "votes": 56,
       "bayesian_score": 7.68,
-      "adjusted_score": 7.39
+      "adjusted_score": 7.41
     },
     "anidb": null,
     "trakt": {
@@ -2543,7 +2577,7 @@
       "coverS": "035/263/fanarts/full/d5c1efb23d.jpg",
       "online": {},
       "bayesian_score": 7.85,
-      "adjusted_score": 7.31
+      "adjusted_score": 7.28
     },
     "sakuhindb": null,
     "redditanimelist": null,
@@ -2584,18 +2618,19 @@
       "genres": [
         "Action",
         "Adventure",
-        "Fantasy"
+        "Fantasy",
+        "Martial Arts"
       ],
       "trailer": null,
       "bayesian_score": 7.97,
-      "adjusted_score": 8.12
+      "adjusted_score": 8.13
     },
     "ANN": {
       "id": 1825,
       "votes": 9361,
       "bayesian_score": 7.42,
       "weighted_score": 7.417,
-      "adjusted_score": 7.45
+      "adjusted_score": 7.44
     },
     "BGM": {
       "id": 3425,
@@ -2616,7 +2651,7 @@
       "cn_name": "火影忍者",
       "image": "07/21/3425_9PQ1L",
       "bayesian_score": 7.46,
-      "adjusted_score": 8.32
+      "adjusted_score": 8.34
     },
     "AniList": {
       "id": 20,
@@ -2674,7 +2709,7 @@
       "score": 3.9,
       "votes": 1052,
       "bayesian_score": 7.8,
-      "adjusted_score": 7.81
+      "adjusted_score": 7.83
     },
     "Gamer": {
       "id": 124,
@@ -2697,33 +2732,33 @@
       "score": 4.013,
       "votes": 94807,
       "bayesian_score": 8.03,
-      "adjusted_score": 8.0
+      "adjusted_score": 8.01
     },
     "anisearch": {
       "id": 2788,
       "score": 3.59,
-      "votes": 6852,
+      "votes": 6853,
       "rating_detail": {
         "5": 1909,
-        "4": 2749,
+        "4": 2750,
         "3": 1484,
         "2": 559,
         "1": 151
       },
       "coverS": null,
       "bayesian_score": 7.67,
-      "adjusted_score": 7.49
+      "adjusted_score": 7.48
     },
     "kitsu": {
       "id": 11,
       "score": 79.91,
       "coverT": "cover_images/11/tiny.jpg",
       "rating_detail": {
-        "20": 25513,
+        "20": 25514,
         "19": 498,
         "18": 8961,
         "17": 1029,
-        "16": 13801,
+        "16": 13802,
         "15": 741,
         "14": 17756,
         "13": 330,
@@ -2731,7 +2766,7 @@
         "11": 111,
         "10": 2984,
         "9": 56,
-        "8": 2546,
+        "8": 2547,
         "7": 32,
         "6": 538,
         "5": 17,
@@ -2740,7 +2775,7 @@
         "2": 674,
         "1": 0
       },
-      "votes": 82618,
+      "votes": 82621,
       "bayesian_score": 7.99,
       "adjusted_score": 8.07
     },
@@ -2751,7 +2786,7 @@
       "score": 7.91,
       "votes": 890,
       "bayesian_score": 7.91,
-      "adjusted_score": 7.52
+      "adjusted_score": 7.53
     },
     "anidb": null,
     "trakt": {
@@ -2776,7 +2811,7 @@
         "netflix": "15408543"
       },
       "bayesian_score": 8.27,
-      "adjusted_score": 7.53
+      "adjusted_score": 7.46
     },
     "sakuhindb": null,
     "redditanimelist": null,
@@ -2824,7 +2859,7 @@
       ],
       "trailer": "KXgDnCxNXnk",
       "bayesian_score": 7.48,
-      "adjusted_score": 7.64
+      "adjusted_score": 7.66
     },
     "ANN": null,
     "BGM": {
@@ -2846,7 +2881,7 @@
       "cn_name": "世界第一初恋～求婚篇～",
       "image": "c1/03/289601_qe5nw",
       "bayesian_score": 6.47,
-      "adjusted_score": 7.22
+      "adjusted_score": 7.24
     },
     "AniList": {
       "id": 111305,
@@ -2897,7 +2932,7 @@
       },
       "votes": 1161,
       "bayesian_score": 7.43,
-      "adjusted_score": 7.69
+      "adjusted_score": 7.7
     },
     "Anikore": {
       "id": 12513,
@@ -2919,7 +2954,7 @@
         "1": 24
       },
       "bayesian_score": 9.31,
-      "adjusted_score": 8.11
+      "adjusted_score": 8.1
     },
     "AnimePlanetCom": {
       "id": "sekai-ichi-hatsukoi-worlds-greatest-first-love-proposal-hen",
@@ -2941,7 +2976,7 @@
       },
       "coverS": null,
       "bayesian_score": 7.94,
-      "adjusted_score": 7.72
+      "adjusted_score": 7.71
     },
     "kitsu": {
       "id": 42518,
@@ -2971,7 +3006,7 @@
       },
       "votes": 590,
       "bayesian_score": 7.97,
-      "adjusted_score": 8.05
+      "adjusted_score": 8.06
     },
     "notifyMoe": {
       "id": "MUr1cyUZg",
@@ -3004,7 +3039,7 @@
       },
       "bayesian_score": 0
     },
-    "score": 7.78,
+    "score": 7.79,
     "rank": 14
   },
   {
@@ -3012,26 +3047,28 @@
       "id": 40429,
       "type": "Movie",
       "score": 7.7,
-      "votes": 7634,
-      "rank": 1106,
+      "votes": 7643,
+      "rank": 1107,
       "image": "1710/111094.jpg",
       "title": "Bishoujo Senshi Sailor Moon Eternal Movie 2",
       "en_name": "Pretty Guardians Sailor Moon Eternal The Movie Part 2",
       "jp_name": "劇場版 美少女戦士セーラームーンEternal",
       "premiered": 2021,
       "genres": [
-        "Romance"
+        "Romance",
+        "Mahou Shoujo",
+        "Mythology"
       ],
       "trailer": "XDnKDYpvEgo",
       "bayesian_score": 7.7,
-      "adjusted_score": 7.85
+      "adjusted_score": 7.87
     },
     "ANN": {
       "id": 21145,
       "votes": 30,
       "bayesian_score": 7.07,
       "weighted_score": 6.884,
-      "adjusted_score": 7.18
+      "adjusted_score": 7.17
     },
     "BGM": {
       "id": 218446,
@@ -3052,7 +3089,7 @@
       "cn_name": "剧场版 美少女战士Eternal 后篇",
       "image": "ad/1e/218446_IhLUz",
       "bayesian_score": 6.65,
-      "adjusted_score": 7.42
+      "adjusted_score": 7.44
     },
     "AniList": {
       "id": 103712,
@@ -3157,7 +3194,7 @@
       },
       "votes": 281,
       "bayesian_score": 8.06,
-      "adjusted_score": 8.13
+      "adjusted_score": 8.14
     },
     "notifyMoe": {
       "id": "Zc4U7UZGR",
@@ -3214,14 +3251,14 @@
       ],
       "trailer": "hXTqP_o_Ylw",
       "bayesian_score": 7.45,
-      "adjusted_score": 7.61
+      "adjusted_score": 7.63
     },
     "ANN": {
       "id": 22545,
       "votes": 184,
       "bayesian_score": 7.66,
       "weighted_score": 7.6709,
-      "adjusted_score": 7.64
+      "adjusted_score": 7.62
     },
     "BGM": {
       "id": 291412,
@@ -3242,7 +3279,7 @@
       "cn_name": "期待在地下城邂逅有错吗Ⅲ",
       "image": "b6/d5/291412_zE2C2",
       "bayesian_score": 6.59,
-      "adjusted_score": 7.35
+      "adjusted_score": 7.37
     },
     "AniList": {
       "id": 112124,
@@ -3300,30 +3337,30 @@
       "score": 3.6,
       "votes": 420,
       "bayesian_score": 7.21,
-      "adjusted_score": 7.45
+      "adjusted_score": 7.47
     },
     "Gamer": {
       "id": 107955,
       "title": "在地下城尋求邂逅是否搞錯了什麼 第三季",
       "online": "18430",
       "score": 4.8,
-      "votes": 4673,
+      "votes": 4674,
       "rating_detail": {
-        "5": 4065,
+        "5": 4066,
         "4": 420,
         "3": 140,
         "2": 46,
         "1": 140
       },
       "bayesian_score": 9.42,
-      "adjusted_score": 8.21
+      "adjusted_score": 8.2
     },
     "AnimePlanetCom": {
       "id": "is-it-wrong-to-try-to-pick-up-girls-in-a-dungeon-iii",
       "score": 4.016,
       "votes": 9305,
       "bayesian_score": 8.03,
-      "adjusted_score": 8.0
+      "adjusted_score": 8.01
     },
     "anisearch": {
       "id": 14636,
@@ -3338,7 +3375,7 @@
       },
       "coverS": null,
       "bayesian_score": 8.37,
-      "adjusted_score": 8.09
+      "adjusted_score": 8.07
     },
     "kitsu": {
       "id": 42583,
@@ -3351,7 +3388,7 @@
         "17": 206,
         "16": 1183,
         "15": 263,
-        "14": 1513,
+        "14": 1515,
         "13": 94,
         "12": 509,
         "11": 29,
@@ -3366,16 +3403,16 @@
         "2": 29,
         "1": 0
       },
-      "votes": 5886,
+      "votes": 5888,
       "bayesian_score": 7.6,
-      "adjusted_score": 7.71
+      "adjusted_score": 7.72
     },
     "notifyMoe": {
       "id": "8sTGGxhWg",
       "score": 7.71,
       "votes": 104,
       "bayesian_score": 7.75,
-      "adjusted_score": 7.43
+      "adjusted_score": 7.44
     },
     "anidb": null,
     "trakt": null,
@@ -3418,18 +3455,19 @@
       "jp_name": "アイシールド21",
       "premiered": 2005,
       "genres": [
-        "Sports"
+        "Sports",
+        "Team Sports"
       ],
       "trailer": null,
       "bayesian_score": 7.92,
-      "adjusted_score": 8.07
+      "adjusted_score": 8.08
     },
     "ANN": {
       "id": 4778,
       "votes": 737,
       "bayesian_score": 7.46,
       "weighted_score": 7.4557,
-      "adjusted_score": 7.48
+      "adjusted_score": 7.47
     },
     "BGM": {
       "id": 2776,
@@ -3450,7 +3488,7 @@
       "cn_name": "光速蒙面侠21",
       "image": "62/44/2776_923In",
       "bayesian_score": 7.27,
-      "adjusted_score": 8.11
+      "adjusted_score": 8.13
     },
     "AniList": {
       "id": 15,
@@ -3508,7 +3546,7 @@
       "score": 3.6,
       "votes": 373,
       "bayesian_score": 7.22,
-      "adjusted_score": 7.45
+      "adjusted_score": 7.47
     },
     "Gamer": {
       "id": 18467,
@@ -3546,7 +3584,7 @@
       },
       "coverS": null,
       "bayesian_score": 7.73,
-      "adjusted_score": 7.54
+      "adjusted_score": 7.53
     },
     "kitsu": {
       "id": 6,
@@ -3576,7 +3614,7 @@
       },
       "votes": 5334,
       "bayesian_score": 7.85,
-      "adjusted_score": 7.94
+      "adjusted_score": 7.95
     },
     "notifyMoe": {
       "id": "gCkpcFmmR",
@@ -3585,7 +3623,7 @@
       "score": 7.74,
       "votes": 57,
       "bayesian_score": 7.81,
-      "adjusted_score": 7.47
+      "adjusted_score": 7.48
     },
     "anidb": null,
     "trakt": {
@@ -3609,7 +3647,7 @@
         "crunchyroll": "46701581"
       },
       "bayesian_score": 7.71,
-      "adjusted_score": 7.24
+      "adjusted_score": 7.21
     },
     "sakuhindb": null,
     "redditanimelist": null,
@@ -3651,18 +3689,21 @@
       "premiered": 2020,
       "genres": [
         "Drama",
-        "Slice of Life"
+        "Slice of Life",
+        "School",
+        "Showbiz",
+        "Visual Arts"
       ],
       "trailer": "6gKt-yNzhUI",
       "bayesian_score": 7.59,
-      "adjusted_score": 7.75
+      "adjusted_score": 7.76
     },
     "ANN": {
       "id": 22516,
       "votes": 78,
       "bayesian_score": 7.41,
       "weighted_score": 7.3961,
-      "adjusted_score": 7.44
+      "adjusted_score": 7.43
     },
     "BGM": {
       "id": 289951,
@@ -3683,7 +3724,7 @@
       "cn_name": "请在T台上微笑",
       "image": "96/2c/289951_1sogr",
       "bayesian_score": 6.44,
-      "adjusted_score": 7.19
+      "adjusted_score": 7.21
     },
     "AniList": {
       "id": 111501,
@@ -3741,7 +3782,7 @@
       "score": 3.7,
       "votes": 364,
       "bayesian_score": 7.41,
-      "adjusted_score": 7.57
+      "adjusted_score": 7.59
     },
     "Gamer": {
       "id": 107757,
@@ -3757,7 +3798,7 @@
         "1": 20
       },
       "bayesian_score": 9.65,
-      "adjusted_score": 8.42
+      "adjusted_score": 8.41
     },
     "AnimePlanetCom": {
       "id": "smile-down-the-runway",
@@ -3779,7 +3820,7 @@
       },
       "coverS": null,
       "bayesian_score": 8.06,
-      "adjusted_score": 7.83
+      "adjusted_score": 7.81
     },
     "kitsu": {
       "id": 42552,
@@ -3809,14 +3850,14 @@
       },
       "votes": 2107,
       "bayesian_score": 7.5,
-      "adjusted_score": 7.62
+      "adjusted_score": 7.63
     },
     "notifyMoe": {
       "id": "JFsZCq2ZR",
       "score": 7.41,
       "votes": 35,
       "bayesian_score": 7.58,
-      "adjusted_score": 7.34
+      "adjusted_score": 7.35
     },
     "anidb": null,
     "trakt": null,
@@ -3859,18 +3900,19 @@
       "genres": [
         "Comedy",
         "Slice of Life",
-        "Sports"
+        "Sports",
+        "Team Sports"
       ],
       "trailer": null,
       "bayesian_score": 7.55,
-      "adjusted_score": 7.71
+      "adjusted_score": 7.72
     },
     "ANN": {
       "id": 1793,
       "votes": 234,
       "bayesian_score": 7.43,
       "weighted_score": 7.4242,
-      "adjusted_score": 7.46
+      "adjusted_score": 7.45
     },
     "BGM": {
       "id": 19712,
@@ -3891,7 +3933,7 @@
       "cn_name": "野驁射手",
       "image": "51/91/19712_DjiXM",
       "bayesian_score": 7.45,
-      "adjusted_score": 8.3
+      "adjusted_score": 8.33
     },
     "AniList": {
       "id": 17,
@@ -3949,7 +3991,7 @@
       "score": 3.6,
       "votes": 34,
       "bayesian_score": 7.34,
-      "adjusted_score": 7.53
+      "adjusted_score": 7.55
     },
     "Gamer": {
       "id": 34054,
@@ -3986,7 +4028,7 @@
       },
       "coverS": null,
       "bayesian_score": 7.6,
-      "adjusted_score": 7.43
+      "adjusted_score": 7.42
     },
     "kitsu": {
       "id": 8,
@@ -4016,7 +4058,7 @@
       },
       "votes": 1010,
       "bayesian_score": 7.38,
-      "adjusted_score": 7.51
+      "adjusted_score": 7.52
     },
     "notifyMoe": {
       "id": "gFmp5Kmmg",
@@ -4024,31 +4066,11 @@
       "traktId": "65625",
       "score": 6.55,
       "votes": 11,
-      "bayesian_score": 7.32,
-      "adjusted_score": 7.2
+      "bayesian_score": 7.33,
+      "adjusted_score": 7.22
     },
     "anidb": null,
-    "trakt": {
-      "id": "65625",
-      "score": 69.0,
-      "votes": 22,
-      "rating_detail": {
-        "10": 2,
-        "9": 2,
-        "8": 9,
-        "7": 3,
-        "6": 2,
-        "5": 0,
-        "4": 1,
-        "3": 1,
-        "2": 0,
-        "1": 2
-      },
-      "coverS": "065/625/fanarts/full/fc8b9f7cea.jpg",
-      "online": {},
-      "bayesian_score": 7.47,
-      "adjusted_score": 7.11
-    },
+    "trakt": null,
     "sakuhindb": null,
     "redditanimelist": null,
     "annict": {
@@ -4072,7 +4094,7 @@
       },
       "bayesian_score": 0
     },
-    "score": 7.53,
+    "score": 7.58,
     "rank": 19
   },
   {
@@ -4093,7 +4115,7 @@
       ],
       "trailer": "0rDjIraRLnY",
       "bayesian_score": 7.07,
-      "adjusted_score": 7.24
+      "adjusted_score": 7.26
     },
     "ANN": {
       "id": 22485,
@@ -4120,7 +4142,7 @@
       "cn_name": "甜梦猫",
       "image": "16/47/289829_8IDIm",
       "bayesian_score": 7.65,
-      "adjusted_score": 8.53
+      "adjusted_score": 8.56
     },
     "AniList": {
       "id": 111310,
@@ -4178,7 +4200,7 @@
       "score": 4.0,
       "votes": 28,
       "bayesian_score": 7.95,
-      "adjusted_score": 7.91
+      "adjusted_score": 7.93
     },
     "Gamer": {
       "id": 110206,
@@ -4200,7 +4222,7 @@
       "score": 3.383,
       "votes": 93,
       "bayesian_score": 6.91,
-      "adjusted_score": 6.93
+      "adjusted_score": 6.94
     },
     "anisearch": {
       "id": 14710,
@@ -4244,7 +4266,7 @@
       },
       "votes": 108,
       "bayesian_score": 7.19,
-      "adjusted_score": 7.34
+      "adjusted_score": 7.35
     },
     "notifyMoe": {
       "id": "W4JohALZg",
@@ -4276,7 +4298,7 @@
       "online": null,
       "bayesian_score": 0
     },
-    "score": 7.52,
+    "score": 7.53,
     "rank": 20
   },
   {
@@ -4293,11 +4315,12 @@
       "premiered": 2020,
       "genres": [
         "Action",
-        "Sci-Fi"
+        "Sci-Fi",
+        "Isekai"
       ],
       "trailer": "WdTagKn0cSM",
       "bayesian_score": 7.57,
-      "adjusted_score": 7.73
+      "adjusted_score": 7.74
     },
     "ANN": null,
     "BGM": {
@@ -4319,7 +4342,7 @@
       "cn_name": "约会大作战 赤黑新章：虚或实",
       "image": "b6/8f/291171_PA7pA",
       "bayesian_score": 5.95,
-      "adjusted_score": 6.64
+      "adjusted_score": 6.66
     },
     "AniList": {
       "id": 111852,
@@ -4376,8 +4399,8 @@
       "id": 12784,
       "score": 3.5,
       "votes": 43,
-      "bayesian_score": 7.15,
-      "adjusted_score": 7.41
+      "bayesian_score": 7.16,
+      "adjusted_score": 7.43
     },
     "Gamer": {
       "id": 107857,
@@ -4431,14 +4454,14 @@
       },
       "votes": 952,
       "bayesian_score": 7.5,
-      "adjusted_score": 7.62
+      "adjusted_score": 7.63
     },
     "notifyMoe": {
       "id": "hZF4G82Zg",
       "score": 7.47,
       "votes": 20,
       "bayesian_score": 7.71,
-      "adjusted_score": 7.41
+      "adjusted_score": 7.42
     },
     "anidb": null,
     "trakt": null,
@@ -4463,7 +4486,7 @@
       "online": null,
       "bayesian_score": 7.87
     },
-    "score": 7.44,
+    "score": 7.45,
     "rank": 21
   },
   {
@@ -4483,7 +4506,7 @@
       ],
       "trailer": "RdaqBkqhySE",
       "bayesian_score": 6.85,
-      "adjusted_score": 7.03
+      "adjusted_score": 7.04
     },
     "ANN": null,
     "BGM": null,
@@ -4543,7 +4566,7 @@
       "score": 4.1,
       "votes": 17,
       "bayesian_score": 8.06,
-      "adjusted_score": 7.98
+      "adjusted_score": 8.0
     },
     "Gamer": {
       "id": 107645,
@@ -4580,7 +4603,7 @@
       },
       "coverS": null,
       "bayesian_score": 7.69,
-      "adjusted_score": 7.51
+      "adjusted_score": 7.5
     },
     "kitsu": {
       "id": 43052,
@@ -4610,7 +4633,7 @@
       },
       "votes": 21,
       "bayesian_score": 7.08,
-      "adjusted_score": 7.24
+      "adjusted_score": 7.25
     },
     "notifyMoe": {
       "id": "jaEA9bUZg",
@@ -4641,7 +4664,7 @@
       "online": null,
       "bayesian_score": 0
     },
-    "score": 7.42,
+    "score": 7.43,
     "rank": 22
   },
   {
@@ -4662,7 +4685,7 @@
       ],
       "trailer": "ru2SU-JM8x4",
       "bayesian_score": 7.31,
-      "adjusted_score": 7.48
+      "adjusted_score": 7.49
     },
     "ANN": {
       "id": 23264,
@@ -4689,7 +4712,7 @@
       "cn_name": "A3！满开剧团 秋&amp;冬",
       "image": "8a/f4/289131_wg9Cd",
       "bayesian_score": 6.36,
-      "adjusted_score": 7.1
+      "adjusted_score": 7.12
     },
     "AniList": {
       "id": 111145,
@@ -4740,14 +4763,14 @@
       },
       "votes": 1320,
       "bayesian_score": 7.28,
-      "adjusted_score": 7.53
+      "adjusted_score": 7.54
     },
     "Anikore": {
       "id": 12894,
       "score": 3.2,
       "votes": 25,
       "bayesian_score": 6.81,
-      "adjusted_score": 7.2
+      "adjusted_score": 7.22
     },
     "Gamer": {
       "id": 107758,
@@ -4769,7 +4792,7 @@
       "score": 3.884,
       "votes": 516,
       "bayesian_score": 7.78,
-      "adjusted_score": 7.76
+      "adjusted_score": 7.77
     },
     "anisearch": {
       "id": 14564,
@@ -4784,7 +4807,7 @@
       },
       "coverS": null,
       "bayesian_score": 7.59,
-      "adjusted_score": 7.42
+      "adjusted_score": 7.41
     },
     "kitsu": {
       "id": 42508,
@@ -4847,7 +4870,7 @@
       },
       "bayesian_score": 7.81
     },
-    "score": 7.41,
+    "score": 7.42,
     "rank": 23
   },
   {
@@ -4863,11 +4886,14 @@
       "jp_name": "アイカツオンパレード!",
       "premiered": 2019,
       "genres": [
-        "Slice of Life"
+        "Slice of Life",
+        "Idols (Female)",
+        "Music",
+        "School"
       ],
       "trailer": "ZBB7H21KXss",
       "bayesian_score": 7.02,
-      "adjusted_score": 7.19
+      "adjusted_score": 7.21
     },
     "ANN": {
       "id": 22441,
@@ -4894,7 +4920,7 @@
       "cn_name": "偶像活动 on Parade",
       "image": "a0/bb/289119_kt1J9",
       "bayesian_score": 6.6,
-      "adjusted_score": 7.36
+      "adjusted_score": 7.39
     },
     "AniList": {
       "id": 111082,
@@ -4952,7 +4978,7 @@
       "score": 3.4,
       "votes": 14,
       "bayesian_score": 7.23,
-      "adjusted_score": 7.46
+      "adjusted_score": 7.48
     },
     "Gamer": {
       "id": 111757,
@@ -5019,7 +5045,7 @@
       },
       "votes": 136,
       "bayesian_score": 7.44,
-      "adjusted_score": 7.57
+      "adjusted_score": 7.58
     },
     "notifyMoe": {
       "id": "sVXheioWg",
@@ -5050,7 +5076,7 @@
       "online": null,
       "bayesian_score": 0
     },
-    "score": 7.35,
+    "score": 7.36,
     "rank": 24
   },
   {
@@ -5069,18 +5095,19 @@
         "Action",
         "Drama",
         "Mystery",
-        "Supernatural"
+        "Supernatural",
+        "Detective"
       ],
       "trailer": "7UkaILjPk8M",
       "bayesian_score": 7.26,
-      "adjusted_score": 7.43
+      "adjusted_score": 7.44
     },
     "ANN": {
       "id": 913,
       "votes": 3276,
       "bayesian_score": 7.34,
       "weighted_score": 7.342,
-      "adjusted_score": 7.39
+      "adjusted_score": 7.38
     },
     "BGM": {
       "id": 1951,
@@ -5101,7 +5128,7 @@
       "cn_name": "魔女猎人罗宾",
       "image": "6a/50/1951_CIE4I",
       "bayesian_score": 7.26,
-      "adjusted_score": 8.09
+      "adjusted_score": 8.12
     },
     "AniList": {
       "id": 7,
@@ -5159,7 +5186,7 @@
       "score": 3.6,
       "votes": 199,
       "bayesian_score": 7.23,
-      "adjusted_score": 7.46
+      "adjusted_score": 7.48
     },
     "Gamer": {
       "id": 16790,
@@ -5197,7 +5224,7 @@
       },
       "coverS": null,
       "bayesian_score": 6.69,
-      "adjusted_score": 6.64
+      "adjusted_score": 6.65
     },
     "kitsu": {
       "id": 4,
@@ -5227,33 +5254,14 @@
       },
       "votes": 3226,
       "bayesian_score": 7.17,
-      "adjusted_score": 7.32
+      "adjusted_score": 7.33
     },
-    "notifyMoe": {
-      "id": "y1zt5KimR",
-      "tvdbId": "78936",
-      "traktId": "1093",
-      "score": 6.72,
-      "votes": 18,
-      "bayesian_score": 7.24,
-      "adjusted_score": 7.15
-    },
+    "notifyMoe": null,
     "anidb": null,
     "trakt": null,
     "sakuhindb": null,
     "redditanimelist": null,
-    "annict": {
-      "id": 189,
-      "rating_detail": {
-        "4": 1,
-        "3": 0,
-        "2": 0,
-        "1": 0
-      },
-      "score": 0,
-      "votes": 1,
-      "bayesian_score": 0
-    },
+    "annict": null,
     "livechart": {
       "id": 4120,
       "score": 7.64,
@@ -5261,7 +5269,7 @@
       "online": null,
       "bayesian_score": 7.69
     },
-    "score": 7.26,
+    "score": 7.28,
     "rank": 25
   },
   {
@@ -5280,11 +5288,12 @@
         "Action",
         "Adventure",
         "Drama",
-        "Fantasy"
+        "Fantasy",
+        "Isekai"
       ],
       "trailer": "TA4OjH-RSeA",
       "bayesian_score": 6.56,
-      "adjusted_score": 6.75
+      "adjusted_score": 6.76
     },
     "ANN": null,
     "BGM": {
@@ -5306,7 +5315,7 @@
       "cn_name": "盾之勇者成名录 第二季",
       "image": "98/f0/289906_nu7Zq",
       "bayesian_score": 5.35,
-      "adjusted_score": 5.98
+      "adjusted_score": 5.99
     },
     "AniList": {
       "id": 111321,
@@ -5357,7 +5366,7 @@
       },
       "votes": 24348,
       "bayesian_score": 6.82,
-      "adjusted_score": 7.04
+      "adjusted_score": 7.05
     },
     "Anikore": null,
     "Gamer": {
@@ -5365,7 +5374,7 @@
       "title": "盾之勇者成名錄 第二季",
       "online": "28873",
       "score": 3.8,
-      "votes": 6784,
+      "votes": 6785,
       "rating_detail": {
         "5": 3731,
         "4": 814,
@@ -5381,7 +5390,7 @@
       "score": 3.675,
       "votes": 5439,
       "bayesian_score": 7.35,
-      "adjusted_score": 7.35
+      "adjusted_score": 7.36
     },
     "anisearch": {
       "id": 14597,
@@ -5396,7 +5405,7 @@
       },
       "coverS": null,
       "bayesian_score": 7.88,
-      "adjusted_score": 7.67
+      "adjusted_score": 7.66
     },
     "kitsu": {
       "id": 42530,
@@ -5407,7 +5416,7 @@
         "19": 55,
         "18": 197,
         "17": 108,
-        "16": 338,
+        "16": 339,
         "15": 133,
         "14": 865,
         "13": 103,
@@ -5424,16 +5433,16 @@
         "2": 248,
         "1": 0
       },
-      "votes": 4901,
+      "votes": 4902,
       "bayesian_score": 7.65,
-      "adjusted_score": 7.76
+      "adjusted_score": 7.77
     },
     "notifyMoe": {
       "id": "rBaaLj2Wg",
       "score": 7.63,
       "votes": 29,
       "bayesian_score": 7.77,
-      "adjusted_score": 7.44
+      "adjusted_score": 7.45
     },
     "anidb": null,
     "trakt": null,
@@ -5473,7 +5482,7 @@
       },
       "bayesian_score": 7.62
     },
-    "score": 7.06,
+    "score": 7.07,
     "rank": 26
   },
   {
@@ -5490,11 +5499,12 @@
       "premiered": 2020,
       "genres": [
         "Drama",
-        "Mystery"
+        "Mystery",
+        "Delinquents"
       ],
       "trailer": "iOaaNJ7c4cA",
       "bayesian_score": 6.87,
-      "adjusted_score": 7.05
+      "adjusted_score": 7.06
     },
     "ANN": {
       "id": 22494,
@@ -5522,7 +5532,7 @@
       "cn_name": "池袋西口公园",
       "image": "d1/ae/289915_CMcWn",
       "bayesian_score": 5.29,
-      "adjusted_score": 5.91
+      "adjusted_score": 5.93
     },
     "AniList": {
       "id": 111324,
@@ -5573,14 +5583,14 @@
       },
       "votes": 7335,
       "bayesian_score": 6.64,
-      "adjusted_score": 6.85
+      "adjusted_score": 6.86
     },
     "Anikore": {
       "id": 12560,
       "score": 3.1,
       "votes": 145,
       "bayesian_score": 6.3,
-      "adjusted_score": 6.88
+      "adjusted_score": 6.9
     },
     "Gamer": {
       "id": 107523,
@@ -5603,7 +5613,7 @@
       "score": 3.538,
       "votes": 1499,
       "bayesian_score": 7.08,
-      "adjusted_score": 7.09
+      "adjusted_score": 7.1
     },
     "anisearch": {
       "id": 14605,
@@ -5618,7 +5628,7 @@
       },
       "coverS": null,
       "bayesian_score": 7.6,
-      "adjusted_score": 7.43
+      "adjusted_score": 7.42
     },
     "kitsu": {
       "id": 42533,
@@ -5648,14 +5658,14 @@
       },
       "votes": 1241,
       "bayesian_score": 6.71,
-      "adjusted_score": 6.9
+      "adjusted_score": 6.91
     },
     "notifyMoe": {
       "id": "aZqLth9WR",
       "score": 7.05,
       "votes": 19,
       "bayesian_score": 7.44,
-      "adjusted_score": 7.26
+      "adjusted_score": 7.28
     },
     "anidb": null,
     "trakt": null,
@@ -5682,236 +5692,8 @@
       },
       "bayesian_score": 7.44
     },
-    "score": 6.91,
+    "score": 6.92,
     "rank": 27
-  },
-  {
-    "MAL": {
-      "id": 8,
-      "type": "TV",
-      "score": 6.95,
-      "votes": 6279,
-      "rank": 4121,
-      "image": "7/21569.jpg",
-      "title": "Bouken Ou Beet",
-      "en_name": "Beet the Vandel Buster",
-      "jp_name": "冒険王ビィト",
-      "premiered": 2004,
-      "genres": [
-        "Adventure",
-        "Fantasy",
-        "Supernatural"
-      ],
-      "trailer": null,
-      "bayesian_score": 6.95,
-      "adjusted_score": 7.13
-    },
-    "ANN": {
-      "id": 4347,
-      "votes": 294,
-      "bayesian_score": 6.25,
-      "weighted_score": 6.1954,
-      "adjusted_score": 6.53
-    },
-    "BGM": {
-      "id": 60188,
-      "votes": 26,
-      "score": 6.2,
-      "rating_detail": {
-        "10": 0,
-        "9": 0,
-        "8": 2,
-        "7": 5,
-        "6": 16,
-        "5": 2,
-        "4": 1,
-        "3": 0,
-        "2": 0,
-        "1": 0
-      },
-      "cn_name": "冒险王比特",
-      "image": "04/3a/60188_Yii1v",
-      "bayesian_score": 6.67,
-      "adjusted_score": 7.44
-    },
-    "AniList": {
-      "id": 8,
-      "averageScore": 62,
-      "stats": {
-        "scoreDistribution": [
-          {
-            "score": 10,
-            "amount": 16
-          },
-          {
-            "score": 20,
-            "amount": 6
-          },
-          {
-            "score": 30,
-            "amount": 13
-          },
-          {
-            "score": 40,
-            "amount": 38
-          },
-          {
-            "score": 50,
-            "amount": 68
-          },
-          {
-            "score": 60,
-            "amount": 115
-          },
-          {
-            "score": 70,
-            "amount": 146
-          },
-          {
-            "score": 80,
-            "amount": 83
-          },
-          {
-            "score": 90,
-            "amount": 46
-          },
-          {
-            "score": 100,
-            "amount": 22
-          }
-        ]
-      },
-      "votes": 553,
-      "bayesian_score": 6.49,
-      "adjusted_score": 6.69
-    },
-    "Anikore": {
-      "id": 673,
-      "score": 3.4,
-      "votes": 53,
-      "bayesian_score": 6.96,
-      "adjusted_score": 7.29
-    },
-    "Gamer": {
-      "id": 19801,
-      "title": "少年冒險王 BEET",
-      "online": "",
-      "score": 3.6,
-      "votes": 18,
-      "rating_detail": {
-        "5": 6,
-        "4": 3,
-        "3": 5,
-        "2": 3,
-        "1": 1
-      },
-      "bayesian_score": 7.77,
-      "adjusted_score": 6.68
-    },
-    "AnimePlanetCom": {
-      "id": "beet-the-vandel-buster",
-      "score": 3.378,
-      "votes": 1774,
-      "bayesian_score": 6.76,
-      "adjusted_score": 6.79
-    },
-    "anisearch": {
-      "id": 576,
-      "score": 2.95,
-      "votes": 76,
-      "rating_detail": {
-        "5": 9,
-        "4": 14,
-        "3": 40,
-        "2": 9,
-        "1": 4
-      },
-      "coverS": null,
-      "bayesian_score": 6.6,
-      "adjusted_score": 6.56
-    },
-    "kitsu": {
-      "id": 5,
-      "score": 68.68,
-      "coverT": null,
-      "rating_detail": {
-        "20": 34,
-        "19": 0,
-        "18": 30,
-        "17": 0,
-        "16": 78,
-        "15": 1,
-        "14": 120,
-        "13": 2,
-        "12": 75,
-        "11": 1,
-        "10": 51,
-        "9": 0,
-        "8": 29,
-        "7": 0,
-        "6": 7,
-        "5": 1,
-        "4": 9,
-        "3": 1,
-        "2": 3,
-        "1": 0
-      },
-      "votes": 442,
-      "bayesian_score": 6.75,
-      "adjusted_score": 6.94
-    },
-    "notifyMoe": {
-      "id": "pQkt5Fimg",
-      "tvdbId": "75205",
-      "traktId": "43047",
-      "score": 5.0,
-      "votes": 0,
-      "bayesian_score": 0
-    },
-    "anidb": null,
-    "trakt": {
-      "id": "43047",
-      "score": 56.0,
-      "votes": 9,
-      "rating_detail": {
-        "10": 1,
-        "9": 0,
-        "8": 2,
-        "7": 2,
-        "6": 0,
-        "5": 1,
-        "4": 1,
-        "3": 0,
-        "2": 0,
-        "1": 2
-      },
-      "coverS": "043/047/fanarts/full/4eaea34471.jpg",
-      "online": {},
-      "bayesian_score": 0
-    },
-    "sakuhindb": null,
-    "redditanimelist": null,
-    "annict": {
-      "id": 2001,
-      "rating_detail": {
-        "4": 0,
-        "3": 0,
-        "2": 1,
-        "1": 0
-      },
-      "score": 0,
-      "votes": 1,
-      "bayesian_score": 0
-    },
-    "livechart": {
-      "id": 8145,
-      "score": 0,
-      "votes": 0,
-      "online": null,
-      "bayesian_score": 0
-    },
-    "score": 6.89,
-    "rank": 28
   },
   {
     "MAL": {
@@ -5933,7 +5715,7 @@
       ],
       "trailer": "dHyYZtWrTD4",
       "bayesian_score": 7.2,
-      "adjusted_score": 7.37
+      "adjusted_score": 7.38
     },
     "ANN": {
       "id": 22559,
@@ -5960,7 +5742,7 @@
       "cn_name": "宝可梦 旅途‎",
       "image": "bb/6d/292522_9Gor7",
       "bayesian_score": 4.0,
-      "adjusted_score": 4.48
+      "adjusted_score": 4.49
     },
     "AniList": {
       "id": 112153,
@@ -6018,7 +5800,7 @@
       "score": 3.5,
       "votes": 11,
       "bayesian_score": 7.39,
-      "adjusted_score": 7.56
+      "adjusted_score": 7.58
     },
     "Gamer": {
       "id": 107963,
@@ -6034,7 +5816,7 @@
         "1": 762
       },
       "bayesian_score": 4.95,
-      "adjusted_score": 4.07
+      "adjusted_score": 4.09
     },
     "AnimePlanetCom": {
       "id": "pokemon-journeys",
@@ -6086,14 +5868,14 @@
       },
       "votes": 1342,
       "bayesian_score": 7.58,
-      "adjusted_score": 7.69
+      "adjusted_score": 7.7
     },
     "notifyMoe": {
       "id": "y-4dMjhWR",
       "score": 7.96,
       "votes": 17,
       "bayesian_score": 8.04,
-      "adjusted_score": 7.59
+      "adjusted_score": 7.6
     },
     "anidb": null,
     "trakt": null,
@@ -6120,8 +5902,8 @@
       },
       "bayesian_score": 7.75
     },
-    "score": 6.82,
-    "rank": 29
+    "score": 6.83,
+    "rank": 28
   },
   {
     "MAL": {
@@ -6141,14 +5923,14 @@
       ],
       "trailer": "6PbCJNNffFg",
       "bayesian_score": 6.45,
-      "adjusted_score": 6.64
+      "adjusted_score": 6.65
     },
     "ANN": {
       "id": 22492,
       "votes": 18,
       "bayesian_score": 6.19,
       "weighted_score": 5.2583,
-      "adjusted_score": 6.48
+      "adjusted_score": 6.5
     },
     "BGM": {
       "id": 289910,
@@ -6169,7 +5951,7 @@
       "cn_name": "辣妹与恐龙",
       "image": "a1/9d/289910_7JCdI",
       "bayesian_score": 6.58,
-      "adjusted_score": 7.34
+      "adjusted_score": 7.36
     },
     "AniList": {
       "id": 111323,
@@ -6220,14 +6002,14 @@
       },
       "votes": 2593,
       "bayesian_score": 6.04,
-      "adjusted_score": 6.21
+      "adjusted_score": 6.22
     },
     "Anikore": {
       "id": 12400,
       "score": 2.8,
       "votes": 116,
       "bayesian_score": 5.78,
-      "adjusted_score": 6.56
+      "adjusted_score": 6.57
     },
     "Gamer": {
       "id": 107537,
@@ -6243,14 +6025,14 @@
         "1": 66
       },
       "bayesian_score": 9.61,
-      "adjusted_score": 8.38
+      "adjusted_score": 8.37
     },
     "AnimePlanetCom": {
       "id": "gal-and-dino",
       "score": 2.877,
       "votes": 421,
       "bayesian_score": 5.81,
-      "adjusted_score": 5.88
+      "adjusted_score": 5.89
     },
     "anisearch": {
       "id": 14604,
@@ -6265,7 +6047,7 @@
       },
       "coverS": null,
       "bayesian_score": 5.7,
-      "adjusted_score": 5.78
+      "adjusted_score": 5.81
     },
     "kitsu": {
       "id": 42532,
@@ -6295,14 +6077,14 @@
       },
       "votes": 505,
       "bayesian_score": 6.23,
-      "adjusted_score": 6.47
+      "adjusted_score": 6.48
     },
     "notifyMoe": {
       "id": "iSh5o7TZR",
       "score": 5.45,
       "votes": 11,
       "bayesian_score": 6.75,
-      "adjusted_score": 6.88
+      "adjusted_score": 6.9
     },
     "anidb": null,
     "trakt": null,
@@ -6318,7 +6100,7 @@
       },
       "score": 0,
       "votes": 13,
-      "bayesian_score": 6.86
+      "bayesian_score": 6.87
     },
     "livechart": {
       "id": 9580,
@@ -6333,8 +6115,8 @@
       },
       "bayesian_score": 7.47
     },
-    "score": 6.66,
-    "rank": 30
+    "score": 6.68,
+    "rank": 29
   },
   {
     "MAL": {
@@ -6350,18 +6132,20 @@
       "premiered": 2020,
       "genres": [
         "Adventure",
-        "Sci-Fi"
+        "Sci-Fi",
+        "Mecha",
+        "Performing Arts"
       ],
       "trailer": "tYbbM7clEYs",
       "bayesian_score": 5.79,
-      "adjusted_score": 6.0
+      "adjusted_score": 6.01
     },
     "ANN": {
       "id": 22510,
       "votes": 26,
       "bayesian_score": 6.19,
       "weighted_score": 5.5478,
-      "adjusted_score": 6.48
+      "adjusted_score": 6.5
     },
     "BGM": {
       "id": 290630,
@@ -6382,7 +6166,7 @@
       "cn_name": "新樱花大战 the Animation",
       "image": "e3/6e/290630_DfdRF",
       "bayesian_score": 5.48,
-      "adjusted_score": 6.12
+      "adjusted_score": 6.14
     },
     "AniList": {
       "id": 111500,
@@ -6433,14 +6217,14 @@
       },
       "votes": 1100,
       "bayesian_score": 5.23,
-      "adjusted_score": 5.35
+      "adjusted_score": 5.36
     },
     "Anikore": {
       "id": 12555,
       "score": 3.1,
       "votes": 141,
       "bayesian_score": 6.31,
-      "adjusted_score": 6.89
+      "adjusted_score": 6.9
     },
     "Gamer": {
       "id": 107694,
@@ -6456,14 +6240,14 @@
         "1": 57
       },
       "bayesian_score": 8.37,
-      "adjusted_score": 7.24
+      "adjusted_score": 7.23
     },
     "AnimePlanetCom": {
       "id": "sakura-wars-the-animation",
       "score": 2.75,
       "votes": 324,
       "bayesian_score": 5.58,
-      "adjusted_score": 5.66
+      "adjusted_score": 5.67
     },
     "anisearch": {
       "id": 14641,
@@ -6477,8 +6261,8 @@
         "1": 8
       },
       "coverS": null,
-      "bayesian_score": 5.97,
-      "adjusted_score": 6.02
+      "bayesian_score": 5.98,
+      "adjusted_score": 6.04
     },
     "kitsu": {
       "id": 42966,
@@ -6508,7 +6292,7 @@
       },
       "votes": 271,
       "bayesian_score": 5.58,
-      "adjusted_score": 5.88
+      "adjusted_score": 5.89
     },
     "notifyMoe": {
       "id": "OgEqcb8WR",
@@ -6516,7 +6300,7 @@
       "score": 5.6,
       "votes": 10,
       "bayesian_score": 6.89,
-      "adjusted_score": 6.96
+      "adjusted_score": 6.98
     },
     "anidb": null,
     "trakt": null,
@@ -6543,8 +6327,8 @@
       },
       "bayesian_score": 7.43
     },
-    "score": 6.26,
-    "rank": 31
+    "score": 6.27,
+    "rank": 30
   },
   {
     "MAL": {
@@ -6561,18 +6345,19 @@
       "genres": [
         "Comedy",
         "Fantasy",
-        "Ecchi"
+        "Ecchi",
+        "Harem"
       ],
       "trailer": "imcc0U7LoYI",
       "bayesian_score": 5.5,
-      "adjusted_score": 5.72
+      "adjusted_score": 5.73
     },
     "ANN": {
       "id": 22963,
       "votes": 95,
       "bayesian_score": 6.04,
       "weighted_score": 5.844,
-      "adjusted_score": 6.36
+      "adjusted_score": 6.38
     },
     "BGM": {
       "id": 291195,
@@ -6593,7 +6378,7 @@
       "cn_name": "彼得·格里尔和贤者的时间",
       "image": "87/f4/291195_i473n",
       "bayesian_score": 5.54,
-      "adjusted_score": 6.19
+      "adjusted_score": 6.21
     },
     "AniList": {
       "id": 111965,
@@ -6651,7 +6436,7 @@
       "score": 3.1,
       "votes": 141,
       "bayesian_score": 6.31,
-      "adjusted_score": 6.89
+      "adjusted_score": 6.9
     },
     "Gamer": {
       "id": 107915,
@@ -6674,7 +6459,7 @@
       "score": 2.779,
       "votes": 3219,
       "bayesian_score": 5.57,
-      "adjusted_score": 5.65
+      "adjusted_score": 5.66
     },
     "anisearch": {
       "id": 14633,
@@ -6689,7 +6474,7 @@
       },
       "coverS": null,
       "bayesian_score": 6.19,
-      "adjusted_score": 6.21
+      "adjusted_score": 6.22
     },
     "kitsu": {
       "id": 42563,
@@ -6719,14 +6504,14 @@
       },
       "votes": 2395,
       "bayesian_score": 5.4,
-      "adjusted_score": 5.71
+      "adjusted_score": 5.72
     },
     "notifyMoe": {
       "id": "6GhJrq2ZR",
       "score": 6.15,
       "votes": 51,
       "bayesian_score": 6.48,
-      "adjusted_score": 6.74
+      "adjusted_score": 6.76
     },
     "anidb": null,
     "trakt": null,
@@ -6753,8 +6538,8 @@
       },
       "bayesian_score": 6.66
     },
-    "score": 6.21,
-    "rank": 32
+    "score": 6.22,
+    "rank": 31
   },
   {
     "MAL": {
@@ -6772,11 +6557,13 @@
         "Action",
         "Adventure",
         "Fantasy",
-        "Supernatural"
+        "Supernatural",
+        "Historical",
+        "Martial Arts"
       ],
       "trailer": null,
       "bayesian_score": 5,
-      "adjusted_score": 5.23
+      "adjusted_score": 5.24
     },
     "ANN": {
       "id": 22480,
@@ -6803,7 +6590,7 @@
       "cn_name": "天华百剑 ～欢迎来到铭治馆！～",
       "image": "eb/97/289672_lL7Mq",
       "bayesian_score": 5.59,
-      "adjusted_score": 6.24
+      "adjusted_score": 6.26
     },
     "AniList": {
       "id": 111400,
@@ -6854,14 +6641,14 @@
       },
       "votes": 593,
       "bayesian_score": 4.62,
-      "adjusted_score": 4.7
+      "adjusted_score": 4.71
     },
     "Anikore": {
       "id": 12342,
       "score": 2.9,
       "votes": 30,
       "bayesian_score": 6.31,
-      "adjusted_score": 6.89
+      "adjusted_score": 6.9
     },
     "Gamer": {
       "id": 107454,
@@ -6883,8 +6670,8 @@
       "id": "tenka-hyakken-meiji-kan-e-youkoso",
       "score": 2.414,
       "votes": 119,
-      "bayesian_score": 5.09,
-      "adjusted_score": 5.19
+      "bayesian_score": 5.1,
+      "adjusted_score": 5.21
     },
     "anisearch": {
       "id": 14580,
@@ -6928,7 +6715,7 @@
       },
       "votes": 141,
       "bayesian_score": 5.1,
-      "adjusted_score": 5.44
+      "adjusted_score": 5.45
     },
     "notifyMoe": {
       "id": "7dXUd7oZg",
@@ -6959,8 +6746,8 @@
       "online": null,
       "bayesian_score": 0
     },
-    "score": 5.77,
-    "rank": 33
+    "score": 5.78,
+    "rank": 32
   },
   {
     "MAL": {
@@ -6976,7 +6763,8 @@
       "premiered": 2019,
       "genres": [
         "Drama",
-        "Slice of Life"
+        "Slice of Life",
+        "School"
       ],
       "trailer": "64e9QTFwGm8",
       "bayesian_score": 5.28,
@@ -7007,7 +6795,7 @@
       "cn_name": "只想受你欢迎。",
       "image": "78/45/243168_mjB2Z",
       "bayesian_score": 3.89,
-      "adjusted_score": 4.36
+      "adjusted_score": 4.37
     },
     "AniList": {
       "id": 111290,
@@ -7086,7 +6874,7 @@
       "score": 3.287,
       "votes": 63,
       "bayesian_score": 6.81,
-      "adjusted_score": 6.83
+      "adjusted_score": 6.84
     },
     "anisearch": {
       "id": 14602,
@@ -7130,7 +6918,7 @@
       },
       "votes": 37,
       "bayesian_score": 6.01,
-      "adjusted_score": 6.27
+      "adjusted_score": 6.28
     },
     "notifyMoe": {
       "id": "mDfRp7oZg",
@@ -7161,8 +6949,8 @@
       "online": null,
       "bayesian_score": 0
     },
-    "score": 5.67,
-    "rank": 34
+    "score": 5.68,
+    "rank": 33
   },
   {
     "MAL": {
@@ -7177,7 +6965,9 @@
       "jp_name": "劇場版 巨蟲列島",
       "premiered": 2020,
       "genres": [
-        "Horror"
+        "Horror",
+        "Gore",
+        "Survival"
       ],
       "trailer": "OqrJsjlYg2E",
       "bayesian_score": 4.58,
@@ -7188,7 +6978,7 @@
       "votes": 30,
       "bayesian_score": 5.61,
       "weighted_score": 4.8016,
-      "adjusted_score": 6.02
+      "adjusted_score": 6.06
     },
     "BGM": {
       "id": 289856,
@@ -7209,7 +6999,7 @@
       "cn_name": "巨虫列岛",
       "image": "79/4f/289856_cz773",
       "bayesian_score": 4.46,
-      "adjusted_score": 4.99
+      "adjusted_score": 5.0
     },
     "AniList": {
       "id": 107880,
@@ -7260,14 +7050,14 @@
       },
       "votes": 2216,
       "bayesian_score": 4.09,
-      "adjusted_score": 4.14
+      "adjusted_score": 4.15
     },
     "Anikore": {
       "id": 12500,
       "score": 2.7,
       "votes": 32,
       "bayesian_score": 5.98,
-      "adjusted_score": 6.68
+      "adjusted_score": 6.7
     },
     "Gamer": {
       "id": 109685,
@@ -7283,14 +7073,14 @@
         "1": 5
       },
       "bayesian_score": 6.65,
-      "adjusted_score": 5.64
+      "adjusted_score": 5.65
     },
     "AnimePlanetCom": {
       "id": "the-island-of-giant-insects-movie",
       "score": 2.382,
       "votes": 747,
       "bayesian_score": 4.81,
-      "adjusted_score": 4.92
+      "adjusted_score": 4.93
     },
     "anisearch": {
       "id": 14601,
@@ -7304,8 +7094,8 @@
         "1": 16
       },
       "coverS": null,
-      "bayesian_score": 5.29,
-      "adjusted_score": 5.43
+      "bayesian_score": 5.3,
+      "adjusted_score": 5.47
     },
     "kitsu": {
       "id": 42941,
@@ -7335,7 +7125,7 @@
       },
       "votes": 472,
       "bayesian_score": 4.36,
-      "adjusted_score": 4.77
+      "adjusted_score": 4.78
     },
     "notifyMoe": {
       "id": "1gPpty8Wg",
@@ -7368,7 +7158,7 @@
       },
       "bayesian_score": 7.33
     },
-    "score": 5.27,
-    "rank": 35
+    "score": 5.29,
+    "rank": 34
   }
 ]
