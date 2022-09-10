@@ -12,7 +12,7 @@ let vue = new Vue({
                                 <span v-else>{{ bScore }}</span>
                                 </v-chip>
                                 <br />
-                                <a v-if="item" class="original" @click="toAnime(website,item.id)"><br />{{!!item.score ? item.score : 0 }}<br /> ({{!!item.votes? item.votes : 0 }})
+                                <a v-if="item" class="original" @click="toAnime(website,item.id)"><br />{{!!item.score ? item.score : !!item.averageScore ? item.averageScore : 0 }}<br /> ({{!!item.votes? item.votes : 0 }})
                                 </a>
                                 </div>`,
             methods: {
@@ -840,6 +840,11 @@ let vue = new Vue({
             // else if (name.indexOf('amazon') != -1) {
             //     return [amazon,id]
             // }
+            // hmvod
+            // https://www3.nhk.or.jp/
+            // itunes
+            // 犬夜叉巴哈
+            // roosterteeth
             return [name, id];
         },
         toTop() {
