@@ -12,7 +12,8 @@ let vue = new Vue({
                                 <span v-else>{{ bScore }}</span>
                                 </v-chip>
                                 <br />
-                                <a v-if="item" class="original" @click="toAnime(website,item.id)"><br />{{!!item.score ? item.score : !!item.averageScore ? item.averageScore : 0 }}<br /> ({{!!item.votes? item.votes : 0 }})
+                                <a v-if="item" class="original" @click="toAnime(website,item.id)"><br />
+                                {{!!item.score ? item.score : !!item.averageScore ? item.averageScore : !!item.weighted_score ? item.bayesian_score: 0 }}<br /> ({{!!item.votes? item.votes : 0 }})
                                 </a>
                                 </div>`,
             methods: {
@@ -122,6 +123,8 @@ let vue = new Vue({
         moelong: {},
         gnn: {},
         bangumiDisable: false,
+        rssDisabledMoe: false,
+        rssDisabledGNN: false,
 
     },
     computed: {
@@ -463,7 +466,7 @@ let vue = new Vue({
                             'title': '已在此網站待了一小時，已停止新聞迴圈'
                         }
                     }, 3600000);
-
+                    this.rssDisabledMoe = true;
                 } else {
                     this.moelong = {
                         'title': '萌朧動漫情報網 RSS撈取失敗，暫停使用，反正也沒甚麼人會看這些資訊'
@@ -516,10 +519,11 @@ let vue = new Vue({
                             'title': '已在此網站待了一小時，已停止新聞迴圈'
                         }
                     }, 3600000);
-
+                    this.rssDisabledGNN = true;
                 } else {
+
                     this.gnn = {
-                        'title': '巴哈GNN新聞 RSS撈取失敗，暫停使用，反正也沒甚麼人會看這些資訊'
+                        'title': '巴哈GNN新聞 RSS撈取失敗，請無視，反正也沒甚麼人會看這些資訊'
                     }
                 }
 
@@ -781,7 +785,6 @@ let vue = new Vue({
             if (null != item.livechart && !!item.livechart.online) {
                 online = item.livechart.online;
             }
-
             let format = new Object();
             if (!!online) {
                 for (let [key, value] of Object.entries(online)) {
@@ -793,7 +796,6 @@ let vue = new Vue({
                     format[key] = value
                 }
             }
-
             return format;
         },
         switchName(name, id) {
@@ -801,7 +803,11 @@ let vue = new Vue({
             if (id.indexOf('trakt.tv') != -1) {
                 return [name, id]
             } else if (name.indexOf('bahamut') != -1) {
-                return ['bahamut', 'https://ani.gamer.com.tw/animeVideo.php?sn=' + id]
+                if (id.indexOf('https://') != -1) {
+                    return ['bahamut', id] //lc犬夜叉異常
+                } else {
+                    return ['bahamut', 'https://ani.gamer.com.tw/animeVideo.php?sn=' + id]
+                }
             } else if (name.indexOf('bilibili') != -1) {
                 return ['bilibili', 'https://www.bilibili.com/bangumi/' + id]
             } else if (name.indexOf('disney') != -1) {
@@ -838,13 +844,16 @@ let vue = new Vue({
                 return ['crunchyroll', 'https://www.crunchyroll.com/' + id]
             }
             // else if (name.indexOf('amazon') != -1) {
-            //     return [amazon,id]
+            //     return ['amazon',id]
+            // }else if (name.indexOf('hmvod') != -1) {
+            //     return ['hmvod',id]
+            // }else if (name.indexOf('nhk.or') != -1) {
+            //     return ['nhk',id]
+            // }else if (name.indexOf('itunes') != -1) {
+            //     return ['itunes',id]
+            // }else if (name.indexOf('roosterteeth') != -1) {
+            //     return ['roosterteeth',id]
             // }
-            // hmvod
-            // https://www3.nhk.or.jp/
-            // itunes
-            // 犬夜叉巴哈
-            // roosterteeth
             return [name, id];
         },
         toTop() {

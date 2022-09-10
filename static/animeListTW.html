@@ -51,10 +51,10 @@
                     </span>
 
                 </v-tabs>
-                <v-alert dismissible color="#16A2B2" border="left" elevation="3" colored-border icon="GNN新聞" dense>
+                <v-alert v-if="rssDisabledGNN" dismissible color="#16A2B2" border="left" elevation="3" colored-border icon="GNN新聞" dense>
                     <a :href="gnn.link" target="_blank" v-if="!!gnn" style="animation:anis 10s linear infinite;">{{gnn.title}} </a>
                 </v-alert>
-                <v-alert dismissible color="green lighten-2" border="left" elevation="3" colored-border icon="萌朧" dense>
+                <v-alert v-if="rssDisabledMoe" dismissible color="green lighten-2" border="left" elevation="3" colored-border icon="萌朧" dense>
                     <a :href="moelong.link" target="_blank" v-if="!!moelong">{{moelong.title}}</a>
                 </v-alert>
 
@@ -334,8 +334,6 @@
                                     </td>
                                     <td style="font-size:15px;font-weight:bold;padding:0">
                                         <span v-if="null != item.Gamer">{{ item.Gamer.title }}
-                                            <!-- <a v-if="item.Gamer.online" class="original" @click="toAnime('online',item.Gamer.online)">動畫瘋
-                      </a>-->
                                         </span> <br />
                                         <span v-if="null != item.BGM">{{ item.BGM.cn_name }}</span> <br />
                                         <span v-if="null != item.MAL">{{ item.MAL.jp_name }}</span> <br />
@@ -368,7 +366,7 @@
                                             </span>
                             </v-chip>
                             <div>
-                                <v-menu offset-y v-if="Object.keys(onlineList(item)).length > 0">
+                                <v-menu offset-y open-on-hover v-if="Object.keys(onlineList(item)).length > 0">
                                     <template v-slot:activator="{ on, attrs }">
                                                     <v-btn color="primary" dark v-bind="attrs" v-on="on" small text>
                                                         線上看<v-icon>mdi-menu-down</v-icon>
