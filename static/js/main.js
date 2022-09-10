@@ -122,9 +122,6 @@ let vue = new Vue({
         moelong: {},
         gnn: {},
         bangumiDisable: false,
-        newMoes: [],
-        newGnns: [],
-
 
     },
     computed: {
@@ -422,30 +419,12 @@ let vue = new Vue({
         this.pageCount = Math.ceil(this.rawData.length / this.itemsPerPage)
         this.getRandomArray();
 
-        this.$nextTick(function() {
-                let genres = []
-                for (item of this.rawData) {
-                    if (!'name' in item.MAL) {
-                        break;
-                    }
-                    for (gen of item.MAL.genres) {
-                        this.badges[gen] = ++this.badges[gen] || 1
-                    }
 
-                    genres = genres.concat(item.MAL.genres)
-                }
-                this.badgesDef = this.badges
-                genres = [...new Set(genres.sort())]
-
-
-                this.genreList = genres
-            })
-            // let newMoes = []
-
-        // https://thingproxy.freeboard.io/fetch/
-        // http://www.whateverorigin.org/get?url=
-        // https://api.allorigins.win/get?url=
-        // 11/28
+        let newMoes = []
+            // https://thingproxy.freeboard.io/fetch/
+            // http://www.whateverorigin.org/get?url=
+            // https://api.allorigins.win/get?url=
+            // 11/28
         const moelongUrl = 'https://tsuiokuyo.herokuapp.com//https://www.moelong.com/moelongnews/feed';
         fetch(moelongUrl)
             .then(response =>
@@ -471,10 +450,10 @@ let vue = new Vue({
                         'link': el.getElementsByTagName('link')[0].textContent,
                         'date': formattedDate
                     }
-                    this.newMoes.push(news)
+                    newMoes.push(news)
                 })
-                if (this.newMoes.length > 0) {
-                    this.moelong = this.newMoes[0]
+                if (newMoes.length > 0) {
+                    this.moelong = newMoes[0]
                 } else {
                     this.moelong = {
                         'title': '萌朧動漫情報網 RSS撈取失敗，暫停使用，反正也沒甚麼人會看這些資訊'
@@ -483,7 +462,9 @@ let vue = new Vue({
 
             })
 
-        // let newGnns = []
+
+
+        let newGnns = []
 
         const gnnUrl = 'https://tsuiokuyo.herokuapp.com//https://gnn.gamer.com.tw/rss.xml';
 
@@ -512,10 +493,10 @@ let vue = new Vue({
                         'link': el.getElementsByTagName('link')[0].textContent,
                         'date': formattedDate
                     }
-                    this.newGnns.push(news)
+                    newGnns.push(news)
                 })
-                if (this.newGnns.length > 0) {
-                    this.gnn = this.newGnns[0]
+                if (newGnns.length > 0) {
+                    this.gnn = newGnns[0]
                 } else {
                     this.gnn = {
                         'title': '巴哈GNN新聞 RSS撈取失敗，暫停使用，反正也沒甚麼人會看這些資訊'
@@ -524,32 +505,50 @@ let vue = new Vue({
 
             })
 
-        if (this.newMoes.length > 0) {
-            let moeId = setInterval((() => {
-                this.moelong = this.newMoes[Math.floor(Math.random() * this.newMoes.length)]
-            }), 5000);
-            setTimeout(() => {
-                clearInterval(moeId);
-                this.moelong = {
-                    'title': '已在此網站待了一小時，已停止新聞迴圈'
+
+
+        this.$nextTick(function() {
+            let genres = []
+            for (item of this.rawData) {
+                if (!'name' in item.MAL) {
+                    break;
                 }
-            }, 3600000);
-        } else {
-
-        }
-
-        if (this.newGnns.length > 0) {
-            let gnnId = setInterval((() => {
-                this.gnn = this.newGnns[Math.floor(Math.random() * this.newGnns.length)]
-            }), 5000);
-            setTimeout(() => {
-                clearInterval(gnnId);
-                this.gnn = {
-                    'title': '已在此網站待了一小時，已停止新聞迴圈'
+                for (gen of item.MAL.genres) {
+                    this.badges[gen] = ++this.badges[gen] || 1
                 }
-            }, 3600000);
-        }
 
+                genres = genres.concat(item.MAL.genres)
+            }
+            this.badgesDef = this.badges
+            genres = [...new Set(genres.sort())]
+
+
+            this.genreList = genres
+
+            if (newMoes.length > 0) {
+                let moeId = setInterval((() => {
+                    this.moelong = newMoes[Math.floor(Math.random() * newMoes.length)]
+                }), 5000);
+                setTimeout(() => {
+                    clearInterval(moeId);
+                    this.moelong = {
+                        'title': '已在此網站待了一小時，已停止新聞迴圈'
+                    }
+                }, 3600000);
+            }
+
+            if (newGnns.length > 0) {
+                let gnnId = setInterval((() => {
+                    this.gnn = newGnns[Math.floor(Math.random() * newGnns.length)]
+                }), 5000);
+                setTimeout(() => {
+                    clearInterval(gnnId);
+                    this.gnn = {
+                        'title': '已在此網站待了一小時，已停止新聞迴圈'
+                    }
+                }, 3600000);
+            }
+        })
 
         // if (this.moelong == undefined) {
         //     this.moelong = { 'title': '萌朧動漫情報網 RSS接收異常，暫停使用，反正也沒甚麼人會看這些資訊' }
