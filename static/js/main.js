@@ -425,7 +425,7 @@ let vue = new Vue({
             // http://www.whateverorigin.org/get?url=
             // https://api.allorigins.win/get?url=
             // 11/28
-        const moelongUrl = 'https://tsuiokuyo.herokuapp.com//https://www.moelong.com/moelongnews/feed';
+        const moelongUrl = 'https://tsuiokuyo.herokuapp.com/https://www.moelong.com/moelongnews/feed';
         fetch(moelongUrl)
             .then(response =>
                 response.text()
@@ -454,6 +454,16 @@ let vue = new Vue({
                 })
                 if (newMoes.length > 0) {
                     this.moelong = newMoes[0]
+                    let moeId = setInterval((() => {
+                        this.moelong = newMoes[Math.floor(Math.random() * newMoes.length)]
+                    }), 5000);
+                    setTimeout(() => {
+                        clearInterval(moeId);
+                        this.moelong = {
+                            'title': '已在此網站待了一小時，已停止新聞迴圈'
+                        }
+                    }, 3600000);
+
                 } else {
                     this.moelong = {
                         'title': '萌朧動漫情報網 RSS撈取失敗，暫停使用，反正也沒甚麼人會看這些資訊'
@@ -466,7 +476,7 @@ let vue = new Vue({
 
         let newGnns = []
 
-        const gnnUrl = 'https://tsuiokuyo.herokuapp.com//https://gnn.gamer.com.tw/rss.xml';
+        const gnnUrl = 'https://tsuiokuyo.herokuapp.com/https://gnn.gamer.com.tw/rss.xml';
 
         fetch(gnnUrl)
             .then(response =>
@@ -497,6 +507,16 @@ let vue = new Vue({
                 })
                 if (newGnns.length > 0) {
                     this.gnn = newGnns[0]
+                    let gnnId = setInterval((() => {
+                        this.gnn = newGnns[Math.floor(Math.random() * newGnns.length)]
+                    }), 5000);
+                    setTimeout(() => {
+                        clearInterval(gnnId);
+                        this.gnn = {
+                            'title': '已在此網站待了一小時，已停止新聞迴圈'
+                        }
+                    }, 3600000);
+
                 } else {
                     this.gnn = {
                         'title': '巴哈GNN新聞 RSS撈取失敗，暫停使用，反正也沒甚麼人會看這些資訊'
@@ -525,29 +545,6 @@ let vue = new Vue({
 
             this.genreList = genres
 
-            if (newMoes.length > 0) {
-                let moeId = setInterval((() => {
-                    this.moelong = newMoes[Math.floor(Math.random() * newMoes.length)]
-                }), 5000);
-                setTimeout(() => {
-                    clearInterval(moeId);
-                    this.moelong = {
-                        'title': '已在此網站待了一小時，已停止新聞迴圈'
-                    }
-                }, 3600000);
-            }
-
-            if (newGnns.length > 0) {
-                let gnnId = setInterval((() => {
-                    this.gnn = newGnns[Math.floor(Math.random() * newGnns.length)]
-                }), 5000);
-                setTimeout(() => {
-                    clearInterval(gnnId);
-                    this.gnn = {
-                        'title': '已在此網站待了一小時，已停止新聞迴圈'
-                    }
-                }, 3600000);
-            }
         })
 
         // if (this.moelong == undefined) {
