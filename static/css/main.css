@@ -1,0 +1,100 @@
+.center {
+    padding: 0 5 !important;
+    text-align: center;
+    font-weight: bold !important;
+    font-size: 18px !important;
+}
+
+.randomBar {
+    padding: 0 10 0 15;
+    text-align: center;
+}
+
+.anime {
+    font-size: 18px !important;
+    font-weight: bold !important
+}
+
+.v-chip.v-size--default {
+    font-size: 18px !important;
+}
+
+
+/* .v-expansion-panel--active>.v-expansion-panel-header {
+    min-height: 20px !important;
+    height: 20px !important;
+} */
+
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif !important;
+}
+
+.original {
+    text-decoration: dotted #ccc underline;
+    text-align: center !important;
+}
+
+.overlay {
+    position: fixed;
+    /* Sit on top of the page content */
+    width: 100%;
+    /* Full width (cover the whole page) */
+    height: 100%;
+    /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.05);
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer;
+    /* Add a pointer on hover */
+}
+
+.sidebar_wo {
+    position: fixed;
+    line-height: 0;
+    bottom: 0;
+    z-index: 1000
+}
+
+#leimu {
+    left: 0;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    -webkit-transform: translate(-7px, 7px);
+    -ms-transform: translate(-7px, 7px);
+    transform: translate(-7px, 7px)
+}
+
+#lamu {
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    -webkit-transform: translate(7px, 7px);
+    -ms-transform: translate(7px, 7px);
+    transform: translate(7px, 7px);
+    right: 0
+}
+
+#leimu:hover {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0)
+}
+
+#lamu:hover {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0)
+}
+
+.sidebar_wo img {
+    cursor: pointer;
+}
+
+@media only screen and (max-width:1024px) {
+    .sidebar_wo {
+        display: none
+    }
+}
