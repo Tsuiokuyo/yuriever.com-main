@@ -98,6 +98,7 @@ let vue = new Vue({
         rank2: '',
         diff: '',
         true: true,
+        false: false,
         selectedImage: false,
         tab: '',
         selectYears: ['等於', '大於', '小於', '介於'],
@@ -150,192 +151,210 @@ let vue = new Vue({
 
         headers() {
             return [{
-                text: '封面',
-                value: 'cover',
-                align: 'center',
-                filterable: false,
-                width: '10%'
-            }, {
-                text: '名稱',
-                align: 'center',
-                value: 'name',
-                width: '25%',
-                filter: (value, search, item) => {
-                    let bYear = true;
-                    let bSelType = true;
-                    let generCheck = true
-                    let rank = true;
-                    let difference = true;
-                    if (this.year && this.year > 1900) {
-                        switch (this.selYear) {
-                            case '等於':
-                                bYear = parseInt(item.MAL.premiered) == parseInt(this.year)
-                                break;
-                            case '大於':
-                                bYear = parseInt(item.MAL.premiered) >= parseInt(this.year)
-                                break;
-                            case '小於':
-                                bYear = parseInt(item.MAL.premiered) <= parseInt(this.year)
-                                break;
-                            case '介於':
-                                bYear = (parseInt(item.MAL.premiered) >= parseInt(this.year) && parseInt(item.MAL.premiered) <= parseInt(this.year2 > 99 ? this.year2 : 9999))
-                                break;
-                        }
-                    }
-                    if (this.rank1 && this.rank2) {
-                        rank = (parseInt(item.rank) >= parseInt(this.rank1) && parseInt(item.rank) <= parseInt(this.rank2))
-                    } else if (this.rank1) {
-                        rank = parseInt(item.rank) >= parseInt(this.rank1)
-                    } else if (this.rank2) {
-                        rank = parseInt(item.rank) <= parseInt(this.rank2)
-                    }
+                    text: '封面',
+                    value: 'cover',
+                    align: 'center',
+                    filterable: false,
+                    width: '10%'
+                }, {
+                    text: '名稱',
+                    align: 'center',
+                    value: 'name',
+                    width: '25%',
+                    filter: (value, search, item) => {
+                        let bYear = true;
+                        let bSelType = true;
+                        let generCheck = true
+                        let rank = true;
+                        let difference = true;
+                        let name = true;
+                        if (this.search) {
+                            name = false
+                            if (item.MAL && null != item.MAL.en_name && item.MAL.en_name.indexOf(this.search) != -1) {
+                                name = true;
+                            } else if (item.MAL && null != item.MAL.jp_name && item.MAL.jp_name.indexOf(this.search) != -1) {
+                                name = true;
+                            } else if (item.BGM && null != item.BGM.cn_name && item.BGM.cn_name.indexOf(this.search) != -1) {
 
-                    if (this.diff) {
-                        if (item.Gamer && item.Gamer.bayesian_score > 0) {
-                            function comput(a, b, range) {
-                                if (b == null) return false;
-                                b = b.bayesian_score > 0 ? b.bayesian_score : false
-                                return Math.abs(parseFloat(a) - parseFloat(b)) >= parseFloat(range)
-                            }
-
-                            let gScore = item.Gamer.bayesian_score
-                            difference = Math.abs(parseFloat(gScore) - parseFloat(item.MAL.score > 0 ? item.MAL.score : false)) >= parseFloat(this.diff) ||
-                                comput(gScore, !this.bangumiDisable ? item.BGM : false, this.diff) ||
-                                comput(gScore, item.Anikore, this.diff) ||
-                                comput(gScore, item.AniList, this.diff) ||
-                                comput(gScore, item.AnimePlanetCom, this.diff) ||
-                                comput(gScore, item.ANN, this.diff) ||
-                                comput(gScore, item.anisearch, this.diff) ||
-                                comput(gScore, item.notifyMoe, this.diff) ||
-                                comput(gScore, item.trakt, this.diff) ||
-                                comput(gScore, item.livechart, this.diff)
-
-                            // Math.abs(parseInt(item.Gamer.bayesian_score) - parseInt(null != item.annict ? item.annict.bayesian_score : 0)) >= this.diff||
-                            // Math.abs(parseInt(item.Gamer.bayesian_score) - parseInt(null != item.sakuhindb ? item.sakuhindb.bayesian_score : 0)) >= this.diff||
-                        } else {
-                            return false;
-                        }
-                    }
-                    if (this.selType != 'ALL') {
-                        bSelType = item.MAL.type.toUpperCase() == this.selType.toUpperCase()
-                    }
-                    if (this.genreList) {
-                        for (gen of this.genreSel) {
-                            generCheck = item.MAL.genres.find(element => element == gen)
-                            if (!generCheck) {
-                                return false
+                                name = true;
+                            } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.indexOf(this.search) != -1) {
+                                name = true;
                             }
                         }
-                    }
-                    return bYear && bSelType && generCheck && rank && difference
+                        if (this.year && this.year > 1900) {
+                            switch (this.selYear) {
+                                case '等於':
+                                    bYear = parseInt(item.MAL.premiered) == parseInt(this.year)
+                                    break;
+                                case '大於':
+                                    bYear = parseInt(item.MAL.premiered) >= parseInt(this.year)
+                                    break;
+                                case '小於':
+                                    bYear = parseInt(item.MAL.premiered) <= parseInt(this.year)
+                                    break;
+                                case '介於':
+                                    bYear = (parseInt(item.MAL.premiered) >= parseInt(this.year) && parseInt(item.MAL.premiered) <= parseInt(this.year2 > 99 ? this.year2 : 9999))
+                                    break;
+                            }
+                        }
+                        if (this.rank1 && this.rank2) {
+                            rank = (parseInt(item.rank) >= parseInt(this.rank1) && parseInt(item.rank) <= parseInt(this.rank2))
+                        } else if (this.rank1) {
+                            rank = parseInt(item.rank) >= parseInt(this.rank1)
+                        } else if (this.rank2) {
+                            rank = parseInt(item.rank) <= parseInt(this.rank2)
+                        }
+
+                        if (this.diff) {
+                            if (item.Gamer && item.Gamer.bayesian_score > 0) {
+                                function comput(a, b, range) {
+                                    if (b == null) return false;
+                                    b = b.bayesian_score > 0 ? b.bayesian_score : false
+                                    return Math.abs(parseFloat(a) - parseFloat(b)) >= parseFloat(range)
+                                }
+
+                                let gScore = item.Gamer.bayesian_score
+                                difference = Math.abs(parseFloat(gScore) - parseFloat(item.MAL.score > 0 ? item.MAL.score : false)) >= parseFloat(this.diff) ||
+                                    comput(gScore, !this.bangumiDisable ? item.BGM : false, this.diff) ||
+                                    comput(gScore, item.Anikore, this.diff) ||
+                                    comput(gScore, item.AniList, this.diff) ||
+                                    comput(gScore, item.AnimePlanetCom, this.diff) ||
+                                    comput(gScore, item.ANN, this.diff) ||
+                                    comput(gScore, item.anisearch, this.diff) ||
+                                    comput(gScore, item.notifyMoe, this.diff) ||
+                                    comput(gScore, item.trakt, this.diff) ||
+                                    comput(gScore, item.livechart, this.diff)
+
+                                // Math.abs(parseInt(item.Gamer.bayesian_score) - parseInt(null != item.annict ? item.annict.bayesian_score : 0)) >= this.diff||
+                                // Math.abs(parseInt(item.Gamer.bayesian_score) - parseInt(null != item.sakuhindb ? item.sakuhindb.bayesian_score : 0)) >= this.diff||
+                            } else {
+                                return false;
+                            }
+                        }
+                        if (this.selType != 'ALL') {
+                            bSelType = item.MAL.type.toUpperCase() == this.selType.toUpperCase()
+                        }
+                        if (this.genreList) {
+                            for (gen of this.genreSel) {
+                                generCheck = item.MAL.genres.find(element => element == gen)
+                                if (!generCheck) {
+                                    return false
+                                }
+                            }
+                        }
+
+                        return bYear && bSelType && generCheck && rank && difference && name
+                    },
                 },
-            }, {
-                text: '簡中名稱(搜尋用)',
-                value: 'BGM.cn_name',
-                align: ' d-none'
-            }, {
-                text: '日文名稱(搜尋用)',
-                value: 'MAL.jp_name',
-                align: ' d-none'
-            }, {
-                text: '英文名稱(搜尋用)',
-                value: 'MAL.en_name',
-                align: ' d-none'
-            }, {
-                text: '繁中名稱(搜尋用)',
-                value: 'Gamer.title',
-                align: ' d-none'
-            }, {
-                text: '算數平均值',
-                align: 'center',
-                value: 'score',
-                filterable: false,
-                width: '8%'
-            }, {
-                text: '巴哈評分',
-                value: 'gamer',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'MyAnimeList評分',
-                value: 'mal',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'bangumi評分',
-                value: 'bgm',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'Anikore評分',
-                value: 'anikore',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'AniList評分',
-                value: 'anilist',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'AnimePlanetCom評分',
-                value: 'animeplanetcom',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'AnimeNewsNetwork評分',
-                value: 'ann',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'anisearch評分',
-                value: 'anisearch',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'kitsu評分',
-                value: 'kitsu',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'notifyMoe評分',
-                value: 'notifymoe',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'trakt評分',
-                value: 'trakt',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'livechart評分',
-                value: 'livechart',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'annict評分',
-                value: 'annict',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, {
-                text: 'sakuhindb評分',
-                value: 'sakuhindb',
-                align: 'center',
-                filterable: false,
-                width: '5%',
-            }, ]
+                // {
+                //     text: '簡中名稱(搜尋用)',
+                //     value: 'cn',
+                //     align: 'd-none',
+                // }, {
+                //     text: '日文名稱(搜尋用)',
+                //     value: 'MAL.jp_name',
+                //     align: 'd-none'
+                // }, {
+                //     text: '英文名稱(搜尋用)',
+                //     value: 'MAL.en_name',
+                //     align: 'd-none'
+                // }, {
+                //     text: '繁中名稱(搜尋用)',
+                //     value: 'Gamer.title',
+                //     align: 'd-none'
+                // },
+                {
+                    text: '算數平均值',
+                    align: 'center',
+                    value: 'score',
+                    filterable: false,
+                    width: '8%'
+                }, {
+                    text: '巴哈評分',
+                    value: 'gamer',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'MyAnimeList評分',
+                    value: 'mal',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'bangumi評分',
+                    value: 'bgm',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'Anikore評分',
+                    value: 'anikore',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'AniList評分',
+                    value: 'anilist',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'AnimePlanetCom評分',
+                    value: 'animeplanetcom',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'AnimeNewsNetwork評分',
+                    value: 'ann',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'anisearch評分',
+                    value: 'anisearch',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'kitsu評分',
+                    value: 'kitsu',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'notifyMoe評分',
+                    value: 'notifymoe',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'trakt評分',
+                    value: 'trakt',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'livechart評分',
+                    value: 'livechart',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'annict評分',
+                    value: 'annict',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                }, {
+                    text: 'sakuhindb評分',
+                    value: 'sakuhindb',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                },
+            ]
         },
     },
     filters: {
@@ -389,6 +408,9 @@ let vue = new Vue({
             } else {
                 return gen
             }
+        },
+        returnZero(score) {
+            return score != 0 ? score : '票數過少'
         }
 
     },
