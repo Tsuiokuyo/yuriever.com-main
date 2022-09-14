@@ -154,7 +154,7 @@
                                     <li>sakuhindb:日本，249.2K人次</li>
                                     <li>trakt:美國，8.6M人次</li>
                                 </ol>
-                                其餘如anidb、redditanimelist、imdb、tmdb列表因為API問題，有生之年再說。
+                                而anidb不允許網頁抓取(scrape)，作罷，其餘如redditanimelist、imdb、tmdb列表，有空再研究。
                                 <p />
                                 <h2>感謝</h2>
                                 <ol>
@@ -243,7 +243,7 @@
                                 </v-expansion-panel-content>
                             </v-expansion-panel>
 
-                            <span v-if="windowWidth < 600">(目前手機版把一些篩選功能移除)</span>
+                            <span v-if="windowWidth < 600">(目前手機版把一些無用篩選功能移除)</span>
                             <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense :disabled="isSearch"></v-select>
                             <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense :disabled="isSearch"></v-select>
                             <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clearable dense :disabled="isSearch">
