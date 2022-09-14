@@ -19,11 +19,9 @@
     font-size: 18px !important;
 }
 
-
-/* .v-expansion-panel--active>.v-expansion-panel-header {
-    min-height: 20px !important;
-    height: 20px !important;
-} */
+.v-data-table>.v-data-table__wrapper .v-data-table__mobile-row {
+    min-height: 25px !important;
+}
 
 body {
     font-family: 'Helvetica', 'Arial', sans-serif !important;
