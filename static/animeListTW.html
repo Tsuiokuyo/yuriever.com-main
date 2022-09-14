@@ -244,7 +244,7 @@
 
 
                         </v-expansion-panels>
-                        <v-card-title>
+                        <v-card-title v-if="windowWidth > 600">
                             <v-row>
                                 <v-col cols="1">
                                     <v-select :items="selectTypes" v-model="selType" label="作品類型" dense :disabled="isSearch"></v-select>
@@ -282,17 +282,22 @@
                                     </v-text-field>
                                 </v-col>
                                 <!-- <v-col></v-col> -->
-
-
-
-
-
                                 <v-btn @click="selType = 'ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
                                     重設本列條件</v-btn>
                             </v-row>
-
+                            <!-- <v-divider></v-divider> -->
+                            <v-row>
+                                <v-col cols="2">
+                                    <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
+                                    <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(省流量(幾乎無感))" dense></v-checkbox>
+                                </v-col>
+                                <v-col> </v-col>
+                                <v-col cols="2">
+                                    <v-select :items="itemsPerPages" v-model="itemsPerPage" label="每頁列數" dense>
+                                    </v-select>
+                                </v-col>
+                            </v-row>
                         </v-card-title>
-
                         <v-row>
                             <v-col>
                                 <v-pagination v-model="page" :length="pageCount" :total-visible="10" @input="next">
@@ -300,37 +305,8 @@
                             </v-col>
                         </v-row>
                         <br />
-                        <!-- <v-divider></v-divider> -->
-                        <v-row>
-                            <!-- <v-col cols="1">
-                                <v-select :items="selectTypes" v-model="selType" label="作品類型" dense :disabled="isSearch"></v-select>
-                            </v-col>
-                            <v-col cols="1">
-                                <v-select :items="selectYears" v-model="selYear" label="年份符號" dense :disabled="isSearch"></v-select>
-                            </v-col>
-                            <v-col cols="1">
-                                <v-text-field v-model="year" type="number" label="動畫年份" clearable dense :disabled="isSearch">
-                                </v-text-field>
-                            </v-col>
-                            <v-col>
-                                <v-text-field v-model="search" append-icon="mdi-magnify" label="動畫名稱搜尋(中/英/日)" single-line hide-details clearable dense :disabled="isSearch">
-                                </v-text-field>
-                            </v-col>
-                            <v-col></v-col> -->
-                            <v-col cols="2">
-                                <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
-                                <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(省流量(幾乎無感))" dense></v-checkbox>
-                            </v-col>
-
-                            <v-col> </v-col>
-
-                            <v-col cols="2">
-                                <v-select :items="itemsPerPages" v-model="itemsPerPage" label="每頁列數" dense>
-                                </v-select>
-                            </v-col>
-                        </v-row>
-                        <v-data-table ref="tb" :loading-text="loadingText" :no-results-text="noResultsText" :custom-sort="customSort" item-key="rank" fixed-header :search="search" :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1" query="true"
-                            :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
+                        <v-data-table ref="tb" :loading-text="loadingText" :no-results-text="noResultsText" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1" query="true" :loading="isLoading"
+                            :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                             <template v-slot:item="{item}" v-if="windowWidth > 600">
                                 <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
                                     <td class="center">
@@ -499,100 +475,83 @@
                                 <span
                                     style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;({{ item.MAL.premiered }})</span><br />
                                 <span :style="" style="font-size:20px;">綜合排名： </span>
-                                <span :style="setRankColor(item.rank)"
-                                    style="font-size:30px;font-weight:bold;">{{item.rank}} </span>
+                                <span 
+                                    style="font-size:30px;font-weight:bold;">{{item.rank}} 
+                                </span>
                             </template>
+
                             <!-- 平均 -->
                             <template v-slot:item.score="{ item }">
                                 <span style="font-size:30px;">{{item.score}}</span>
                             </template>
                             <!-- 巴哈-->
                             <template v-slot:item.gamer="{ item }">
-                                <rating v-if="item.Gamer" :item="item.Gamer" website="Gamer"
-                                    :b-score="item.Gamer.bayesian_score">
-                                </rating>
+                                <span v-if="item.Gamer">{{item.Gamer.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--MAL -->
                             <template v-slot:item.mal="{ item }">
-                                <rating v-if="item.MAL" :item="item.MAL" website="MAL" :b-score="item.MAL.score">
-                                </rating>
+                                <span v-if="item.MAL">{{item.MAL.score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--BGM -->
                             <template v-slot:item.bgm="{ item }">
-                                <rating v-if="item.BGM" :item="item.BGM" website="BGM"
-                                    :b-score="item.BGM.bayesian_score"></rating>
+                                <span v-if="item.BGM">{{item.BGM.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--ANIKORE -->
                             <template v-slot:item.anikore="{ item }">
-                                <rating v-if="item.Anikore" :item="item.Anikore" website="Anikore"
-                                    :b-score="item.Anikore.bayesian_score"></rating>
+                                <span v-if="item.Anikore">{{item.Anikore.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--ANILIST -->
                             <template v-slot:item.anilist="{ item }">
-                                <rating v-if="item.AniList" :item="item.AniList" website="AniList"
-                                    :b-score="item.AniList.bayesian_score"></rating>
+                                <span v-if="item.AniList">{{item.AniList.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--APC -->
                             <template v-slot:item.animeplanetcom="{ item }">
-                                <rating v-if="item.AnimePlanetCom" :item="item.AnimePlanetCom" website="AnimePlanetCom"
-                                    :b-score="item.AnimePlanetCom.bayesian_score"></rating>
+                                <span v-if="item.AnimePlanetCom">{{item.AnimePlanetCom.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--ANN -->
                             <template v-slot:item.ANN="{ item }">
-                                <rating v-if="item.ANN" :item="item.ANN" website="ANN"
-                                    :b-score="item.ANN.bayesian_score"></rating>
+                                <span v-if="item.ANN">{{item.ANN.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--ANISEARCH -->
                             <template v-slot:item.anisearch="{ item }">
-                                <rating v-if="item.anisearch" :item="item.anisearch" website="anisearch"
-                                    :b-score="item.anisearch.bayesian_score"></rating>
+                                <span v-if="item.anisearch">{{item.anisearch.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--KITSU -->
                             <template v-slot:item.kitsu="{ item }">
-                                <rating v-if="item.kitsu" :item="item.kitsu" website="kitsu"
-                                    :b-score="item.kitsu.bayesian_score">
-                                </rating>
+                                <span v-if="item.kitsu">{{item.kitsu.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--NOTIFYMOE -->
                             <template v-slot:item.notifymoe="{ item }">
-                                <rating v-if="item.notifyMoe" :item="item.notifyMoe" website="notifyMoe"
-                                    :b-score="item.notifyMoe.bayesian_score"></rating>
+                                <span v-if="item.notifyMoe">{{item.notifyMoe.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--trakt -->
                             <template v-slot:item.trakt="{ item }">
-                                <rating v-if="item.trakt" :item="item.trakt" website="trakt"
-                                    :b-score="item.trakt.bayesian_score">
-                                </rating>
+                                <span v-if="item.trakt">{{item.trakt.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--livechart -->
                             <template v-slot:item.livechart="{ item }">
-                                <rating v-if="item.livechart" :item="item.livechart" website="livechart"
-                                    :b-score="item.livechart.bayesian_score">
-                                </rating>
+                                <span v-if="item.livechart">{{item.livechart.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--annict -->
                             <template v-slot:item.annict="{ item }">
-                                <rating v-if="item.annict" :item="item.annict" website="annict"
-                                    :b-score="item.annict.bayesian_score">
-                                </rating>
+                                <span v-if="item.annict">{{item.annict.bayesian_score| returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                             <!--sakuhindb -->
                             <template v-slot:item.sakuhindb="{ item }">
-                                <rating v-if="item.sakuhindb" :item="item.sakuhindb" website="sakuhindb"
-                                    :b-score="item.sakuhindb.bayesian_score"></rating>
+                                <span v-if="item.sakuhindb">{{item.sakuhindb.bayesian_score | returnZero}}</span>
                                 <span v-else>暫無</span>
                             </template>
                         </v-data-table>
