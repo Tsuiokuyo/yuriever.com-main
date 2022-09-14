@@ -549,6 +549,14 @@ let vue = new Vue({
 
             this.genreList = genres
 
+            let geturl = window.location.href
+            let getqyinfo = geturl.split('?')[1]
+            if (getqyinfo) {
+                let getqys = new URLSearchParams('?' + getqyinfo)
+                let getQName = getqys.get('name')
+                this.search = getQName
+            }
+
         })
 
         // if (this.moelong == undefined) {
