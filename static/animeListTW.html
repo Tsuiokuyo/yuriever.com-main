@@ -221,6 +221,7 @@
                             <!-- <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(稍微省流量)" dense></v-checkbox> -->
                         </v-row>
                         <span>資料更新時間:(2022年9月上旬)</span>
+                        <span v-if="windowWidth < 600">目前手機版把一些篩選功能移除</span>
                         <v-expansion-panels v-model="panel">
                             <v-expansion-panel>
                                 <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
