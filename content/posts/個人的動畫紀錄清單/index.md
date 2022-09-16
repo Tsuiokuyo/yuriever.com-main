@@ -7,7 +7,7 @@ date: 2022-06-18 00:00:00
 featuredImage: "/assets/未來.jpg"
 featuredImagePreview: "/assets/未來.jpg"
 lastmod: 2022-07-15
-weight: 1
+weight: 3
 ---
 
 
@@ -27,5 +27,7 @@ weight: 1
 
 
 手機大概沒辦法讀吧，表格要用小螢幕看，我還真的不知道要怎麼調整
+
+以停止更新，現在倒是直接看榜單了，這個一個人搞太沒效率了...
 
 https://tsuiokuyo.netlify.app/b/animelist/animelist
