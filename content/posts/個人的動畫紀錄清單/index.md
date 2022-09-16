@@ -28,6 +28,6 @@ weight: 3
 
 手機大概沒辦法讀吧，表格要用小螢幕看，我還真的不知道要怎麼調整
 
-以停止更新，現在倒是直接看榜單了，這個一個人搞太沒效率了...
+停止更新，現在倒是直接看[動畫榜單](https://tsuiokuyo.netlify.app/posts/a0e397c3/)了，搞這個太沒效率了...
 
 https://tsuiokuyo.netlify.app/b/animelist/animelist
