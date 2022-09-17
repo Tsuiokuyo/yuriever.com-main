@@ -96,11 +96,11 @@
                                         <li>哈囉！小梅子，在myanimelist被建了兩個，所以列表中出現了兩次。</li>
                                         <li class="text-decoration-line-through">我立於百萬生命之上，都因為一二季別名完全一樣...導致撈到第一季的ID</li>
                                         <li class="text-decoration-line-through">銀魂第一季及第四季及百花繚亂、槍神 Badlands Rumble等等撈錯，是因為巴哈命名不規範...</li>
-                                        <li>甜點兔，巴哈似乎沒有第一季的頁面，導致撈到第二季</li>
-                                        <li>FAIRY TAIL 魔導少年 百年任務、盾勇3、入間同學入魔了！2、月光下的異世界之旅2、黃金神威4、總之就是很可愛2、實力至上3、間諜家家酒2、世界盡頭的聖騎士2，最新一季會錯撈等，為了解決第二點反倒出現這個...</li>
-                                        <li>...</li>
+                                        <li class="text-decoration-line-through">甜點兔，巴哈似乎沒有第一季的頁面，導致撈到第二季</li>
+                                        <li class="text-decoration-line-through">FAIRY TAIL 魔導少年 百年任務、盾勇3、入間同學入魔了！2、月光下的異世界之旅2、黃金神威4、總之就是很可愛2、實力至上3、間諜家家酒2、世界盡頭的聖騎士2，最新一季會錯撈等，為了解決第二點反倒出現這個...</li>
+                                        <li>再加首播年度判斷後，又出現新的問題，MAL年度還會被填錯...，例如:鬼滅の刃 遊郭編</li>
                                         </ol>
-                                        另外這不是巴哈全部的動畫清單，因為總會有沒有比對到的作品，畢竟一部作品的不管中英日都各有好幾種寫法，<br />
+                                        調整比對方式後，又少了240筆...，另外這不是巴哈全部的動畫清單，因為總會有沒有比對到的作品，畢竟一部作品的不管中英日都各有好幾種寫法，<br />
                                         舉個已解決的例子：<br />
                                         (蟲師 續章)
                                         巴哈作品名稱：日文:むしし 続章<br />
@@ -108,7 +108,7 @@
                                         恩...為何巴哈要用成平假名+漢字，<br />
                                         當然，其他部分也有可能有問題，但是首先我需要知道有問題。<p />
                                         <h3>來源網站挑選依據</h3>
-                                        沒有，好塞先就塞，只不過再多的話排版就要打掉了...<p />
+                                        沒有，好塞先就塞，但是有明文說不能爬蟲的有注意到也會去掉，只不過再多的話排版就要打掉了...<p />
                                     </span>
 
                                     <h2>分數計算方式</h2>
@@ -220,7 +220,7 @@
                             <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(省流量)" dense></v-checkbox> -->
                             <!-- <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(稍微省流量)" dense></v-checkbox> -->
                         </v-row>
-                        <span>資料更新時間:(2022年9月上旬)</span>
+                        <span>資料更新時間:(2022年9月中旬)</span>
 
                         <v-expansion-panels v-model="panel">
                             <v-expansion-panel>
@@ -337,20 +337,34 @@
                                         <span
                                             style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;({{ item.MAL.premiered }})
                                             <template>
-
                                                 <v-menu offset-y open-on-hover rounded>
                                                     <template v-slot:activator="{ on, attrs }">
                                                         <v-btn x-small v-bind="attrs" v-on="on" color="transparent"
                                                             light>
-                                                            顯示類型
+                                                            動畫製作
                                                         </v-btn>
                                                     </template>
                             <v-list>
-                                <v-list-item v-for="(genre, index) in item.MAL.genres" :key="index">
-                                    <v-list-item-title>{{ genre | genreToCht}}</v-list-item-title>
+                                <v-list-item v-for="(stu, index) in item.MAL.studios" :key="index">
+                                    <v-list-item-title>{{ stu }}</v-list-item-title>
                                 </v-list-item>
                             </v-list>
                             </v-menu>
+
+                            <v-menu offset-y open-on-hover rounded>
+                                <template v-slot:activator="{ on, attrs }">
+                                                        <v-btn x-small v-bind="attrs" v-on="on" color="transparent"
+                                                            light>
+                                                            作品類型
+                                                        </v-btn>
+                                                    </template>
+                                <v-list>
+                                    <v-list-item v-for="(genre, index) in item.MAL.genres" :key="index">
+                                        <v-list-item-title>{{ genre | genreToCht}}</v-list-item-title>
+                                    </v-list-item>
+                                </v-list>
+                            </v-menu>
+
 
                             </template>
 
