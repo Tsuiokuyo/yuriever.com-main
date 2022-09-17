@@ -126,6 +126,7 @@ let vue = new Vue({
         isSearch: false,
         moelong: {},
         gnn: {},
+        disabledZero: true,
         bangumiDisable: false,
         rssDisabledMoe: false,
         rssDisabledGNN: false,
@@ -171,6 +172,11 @@ let vue = new Vue({
                         let rank = true;
                         let difference = true;
                         let name = true;
+                        if (this.disabledZero) {
+                            if (item.score == 0) {
+                                return false;
+                            }
+                        }
                         if (this.search) {
                             name = false
                             if (item.MAL && null != item.MAL.en_name && item.MAL.en_name.indexOf(this.search) != -1) {

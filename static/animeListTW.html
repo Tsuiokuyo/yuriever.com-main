@@ -305,6 +305,10 @@
                                     <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
                                     <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(省流量(幾乎無感))" dense></v-checkbox>
                                 </v-col>
+                                <v-col cols="2">
+
+                                    <v-checkbox v-model="disabledZero" label="不顯示平均零分作品" dense></v-checkbox>
+                                </v-col>
                                 <v-col> </v-col>
                                 <v-col cols="2">
                                     <v-select :items="itemsPerPages" v-model="itemsPerPage" label="每頁列數" dense>
