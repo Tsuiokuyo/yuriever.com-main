@@ -81,7 +81,8 @@ let vue = new Vue({
     },
     data: {
         //rawUrl: 'https://tsuiokuyo.netlify.app/all.save.json',
-        rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/all.save.json',
+        // rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/all.save.json',
+        rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/result.json',
         //rawUrl: 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/data/all.save.json',
         rawData: [],
         windowWidth: window.innerWidth,
@@ -118,6 +119,8 @@ let vue = new Vue({
         dialog: {},
         genreList: [],
         genreSel: [],
+        studioList: [],
+
         badges: {},
         badgesDef: {},
         isSearch: false,
@@ -555,6 +558,7 @@ let vue = new Vue({
 
         this.$nextTick(function() {
             let genres = []
+            let studios = []
             for (item of this.rawData) {
                 if (!'name' in item.MAL) {
                     break;
@@ -563,13 +567,20 @@ let vue = new Vue({
                     this.badges[gen] = ++this.badges[gen] || 1
                 }
 
+                // for (stu of item.MAL.studios) {
+                //     // this.badges[stu] = ++this.badges[stu] || 1
+                // }
+
                 genres = genres.concat(item.MAL.genres)
+                studios = studios.concat(item.MAL.studios)
             }
             this.badgesDef = this.badges
             genres = [...new Set(genres.sort())]
-
+            studios = [...new Set(studios.sort())]
 
             this.genreList = genres
+            this.studioList = studios
+
 
             let geturl = window.location.href
             let getqyinfo = geturl.split('?')[1]
