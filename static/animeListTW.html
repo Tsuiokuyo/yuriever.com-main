@@ -239,9 +239,9 @@
                                     </span></v-expansion-panel-header>
                                 <v-expansion-panel-content><br />
                                     <v-chip-group v-model="genreSel" column multiple>
-                                        <v-chip v-for="(genre, index) in genreList" :key="index" filter :value="genre" :disabled="!badges[genre]" class="accent">
+                                        <v-chip v-for="(genre, index) in genreList" :key="index" filter :value="genre" :disabled="!badges[genre]" dark :class="[setGenColor(genre) == 'A'?'pink accent-1':setGenColor(genre) == 'B' ? 'blue darken-4' :setGenColor(genre) == 'C' ? 'primary ': '']">
                                             <span>{{genre | genreToCht}}</span>
-                                            <span>&nbsp;({{badges[genre] ? badges[genre] : '0'}})</span>
+                                            <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp;0&nbsp;&nbsp;'}})</span>
 
                                         </v-chip>
                                     </v-chip-group>
@@ -415,10 +415,9 @@
                             </div>
                             </td>
                             <td class="center">
-
                                 <span style="font-size:35px;font-weight:bold">{{item.score}}</span>
-
                             </td>
+
                             <td class="center">
                                 <rating v-if="item.Gamer" :item="item.Gamer" website="Gamer" :b-score="item.Gamer.bayesian_score">
                                 </rating>
