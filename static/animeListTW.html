@@ -44,6 +44,10 @@
                         關於
                         <v-icon>mdi-information-outline </v-icon>
                     </v-tab>
+                    <v-tab to="b" onclick="window.open('https://tsuiokuyo.netlify.app/b/swd/swdtime', '_blank')">
+                        以前做的軒轅劍時間線
+                        <v-icon>mdi-timeline-clock-outline </v-icon>
+                    </v-tab>
                     <span style="position: absolute;
                     left:50%;
                     top:50%;
@@ -72,7 +76,7 @@
                 <v-container fluid>
 
                     <v-card v-if="tab == 'tab-2'">
-                        <div>
+                        <div class="text-justify">
                             <div>
                                 <div>
                                     <template class="radius">
@@ -260,6 +264,8 @@
                         </v-expansion-panels>
                         <v-card-title v-if="windowWidth > 600">
                             <v-row>
+                                <v-btn @click="selType = 'ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
+                                    重設本列條件</v-btn>
                                 <v-col cols="1">
                                     <v-select :items="selectTypes" v-model="selType" label="作品類型" dense :disabled="isSearch"></v-select>
                                 </v-col>
@@ -296,8 +302,7 @@
                                     </v-text-field>
                                 </v-col>
                                 <!-- <v-col></v-col> -->
-                                <v-btn @click="selType = 'ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
-                                    重設本列條件</v-btn>
+
                             </v-row>
                             <!-- <v-divider></v-divider> -->
                             <v-row>
@@ -346,6 +351,10 @@
                                         <v-divider></v-divider>
                                         <span
                                             style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;({{ item.MAL.premiered }})
+                                            <span v-if="item.MAL.source">改編：{{ item.MAL.source }}</span>
+                                            <span v-if="item.MAL.episodes">，{{ item.MAL.episodes }}話</span>
+                                            <span v-if="item.MAL.duration">(~{{ item.MAL.duration }}分鐘)</span>
+                                            <br /> 
                                             <template>
                                                 <v-menu offset-y open-on-hover rounded>
                                                     <template v-slot:activator="{ on, attrs }">
