@@ -8,7 +8,7 @@ let vue = new Vue({
             props: ['item', 'website', 'bScore'],
             template: `<div>
                                 <v-chip :color="setChipColor(bScore,website)" dark>
-                                <span v-if="!!!bScore">票數過少</span>
+                                <span v-if="!!!bScore">低票數</span>
                                 <span v-else>{{ bScore }}</span>
                                 </v-chip>
                                 <br />
@@ -279,7 +279,7 @@ let vue = new Vue({
                     filterable: false,
                     width: '8%'
                 }, {
-                    text: '巴哈評分',
+                    text: '巴哈姆特評分',
                     value: 'gamer',
                     align: 'center',
                     filterable: false,
@@ -351,13 +351,13 @@ let vue = new Vue({
                     filterable: false,
                     width: '5%',
                 }, {
-                    text: 'annict評分',
+                    text: 'annict評分*',
                     value: 'annict',
                     align: 'center',
                     filterable: false,
                     width: '5%',
                 }, {
-                    text: 'sakuhindb評分',
+                    text: 'sakuhindb評分*',
                     value: 'sakuhindb',
                     align: 'center',
                     filterable: false,
@@ -935,6 +935,8 @@ let vue = new Vue({
                     return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS
                 } else if (null != item.kitsu && null != item.kitsu.coverT) {
                     return 'https://media.kitsu.io/anime/' + item.kitsu.coverT;
+                } else {
+                    return ''
                 }
             }
             return ''
