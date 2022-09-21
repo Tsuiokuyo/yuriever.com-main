@@ -125,6 +125,7 @@ let vue = new Vue({
         bangumiDisable: false,
         rssDisabledMoe: false,
         rssDisabledGNN: false,
+        toRandom: true,
     },
     computed: {
         listenChange() {
@@ -464,6 +465,9 @@ let vue = new Vue({
 
     },
     watch: {
+        toRandom() {
+            this.rawToRandom(this.toRandom)
+        },
         listenChange() {
             this.badges = {}
             let filters = this.$refs.tb.$children[0].filteredItems
@@ -607,6 +611,7 @@ let vue = new Vue({
             let studios = []
                 // let ddd = []
             for (item of this.rawData) {
+
                 // if (!'name' in item.MAL) {
                 //     break;
                 // }
@@ -652,6 +657,11 @@ let vue = new Vue({
                 this.search = getQName
             }
 
+            if (this.toRandom) {
+                this.rawData.sort(function() {
+                    return (0.5 - Math.random());
+                });
+            }
         })
 
         // if (this.moelong == undefined) {
@@ -1146,6 +1156,19 @@ let vue = new Vue({
                     str += cc.charAt(i);
             }
             return str;
+        },
+        rawToRandom(check) {
+            if (check) {
+                this.rawData.sort(function() {
+                    return (0.5 - Math.random());
+                });
+            } else {
+                // this.rawData.sort()
+                this.rawData.sort(function(a, b) {
+                    return a.rank - b.rank
+                })
+            }
+
         },
     }, //methonds
 });
