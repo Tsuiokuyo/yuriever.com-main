@@ -601,9 +601,9 @@ let vue = new Vue({
             let studios = []
                 // let ddd = []
             for (item of this.rawData) {
-                if (!'name' in item.MAL) {
-                    break;
-                }
+                // if (!'name' in item.MAL) {
+                //     break;
+                // }
                 for (gen of item.MAL.genres) {
                     this.badges[gen] = ++this.badges[gen] || 1
                 }
@@ -617,6 +617,11 @@ let vue = new Vue({
                 genres = genres.concat(item.MAL.genres)
                     // studios = studios.concat(item.MAL.studios)
                     // ddd.push(item.MAL.source)
+                if ('duration' in item.MAL && null != item.MAL.duration && item.MAL.type != "Movie" && item.MAL.duration < 16) {
+                    item.MAL.genres.push('cup')
+                    genres.push('cup')
+                    this.badges['cup'] = ++this.badges['cup'] || 1
+                }
             }
             this.badgesDef = this.badges
             genres = [...new Set(genres.sort())]
@@ -1092,10 +1097,10 @@ let vue = new Vue({
             return 'https://www.youtube.com/embed/' + id + '?enablejsapi=1&wmode=opaque&autoplay=1'
         },
         engGen() {
-            return ['Action', 'Adult Cast', 'Adventure', 'Anthropomorphic', 'Avant Garde', 'Award Winning', 'Boys Love', 'CGDCT', 'Childcare', 'Combat Sports', 'Comedy', 'Crossdressing', 'Delinquents', 'Detective', 'Drama', 'Ecchi', 'Educational', 'Erotica', 'Fantasy', 'Gag Humor', 'Girls Love', 'Gore', 'Gourmet', 'Harem', 'High Stakes Game', 'Historical', 'Horror', 'Idols (Female)', 'Idols (Male)', 'Isekai', 'Iyashikei', 'Love Polygon', 'Magical Sex Shift', 'Mahou Shoujo', 'Martial Arts', 'Mecha', 'Medical', 'Military', 'Music', 'Mystery', 'Mythology', 'Organized Crime', 'Otaku Culture', 'Parody', 'Performing Arts', 'Pets', 'Psychological', 'Racing', 'Reincarnation', 'Reverse Harem', 'Romance', 'Romantic Subtext', 'Samurai', 'School', 'Sci-Fi', 'Showbiz', 'Slice of Life', 'Space', 'Sports', 'Strategy Game', 'Super Power', 'Supernatural', 'Survival', 'Suspense', 'Team Sports', 'Time Travel', 'Vampire', 'Video Game', 'Visual Arts', 'Workplace']
+            return ['cup', 'Action', 'Adult Cast', 'Adventure', 'Anthropomorphic', 'Avant Garde', 'Award Winning', 'Boys Love', 'CGDCT', 'Childcare', 'Combat Sports', 'Comedy', 'Crossdressing', 'Delinquents', 'Detective', 'Drama', 'Ecchi', 'Educational', 'Erotica', 'Fantasy', 'Gag Humor', 'Girls Love', 'Gore', 'Gourmet', 'Harem', 'High Stakes Game', 'Historical', 'Horror', 'Idols (Female)', 'Idols (Male)', 'Isekai', 'Iyashikei', 'Love Polygon', 'Magical Sex Shift', 'Mahou Shoujo', 'Martial Arts', 'Mecha', 'Medical', 'Military', 'Music', 'Mystery', 'Mythology', 'Organized Crime', 'Otaku Culture', 'Parody', 'Performing Arts', 'Pets', 'Psychological', 'Racing', 'Reincarnation', 'Reverse Harem', 'Romance', 'Romantic Subtext', 'Samurai', 'School', 'Sci-Fi', 'Showbiz', 'Slice of Life', 'Space', 'Sports', 'Strategy Game', 'Super Power', 'Supernatural', 'Survival', 'Suspense', 'Team Sports', 'Time Travel', 'Vampire', 'Video Game', 'Visual Arts', 'Workplace']
         },
         chtGen() {
-            return ['動作', '成年人主角', '冒險', '擬人化', '前衛', '曾經得獎', '耽美', '純女角', '育兒', '格鬥運動', '喜劇', '變裝', '不良', '偵探', '劇情', '賣肉', '教育', '成人', '奇幻', '惡作劇幽默', '百合', '血腥', '美食', '後宮', '高風險遊戲', '歷史', '恐怖', '偶像(女性)', '偶像(男性)', '異世界', '療癒', '多角戀', '性轉', '魔法少女', '武術', '機甲', '醫療', '軍事', '音樂', '神秘', '神話', '組織犯罪', '宅圈', '惡搞', '表演藝術', '寵物', '心理', '競速', '異世界重生', '乙女', '浪漫', '浪漫敘事', '武士', '學園', '科幻', '娛樂圈', '空氣系', '太空', '體育', '策略', '超能力', '超自然力量', '生存', '懸疑', '團隊運動', '時間旅行', '吸血鬼', '電子遊戲', '視覺藝術', '職場']
+            return ['泡麵番', '動作', '成年人主角', '冒險', '擬人化', '前衛', '曾經得獎', '耽美', '純女角', '育兒', '格鬥運動', '喜劇', '變裝', '不良', '偵探', '劇情', '賣肉', '教育', '成人', '奇幻', '惡作劇幽默', '百合', '血腥', '美食', '後宮', '高風險遊戲', '歷史', '恐怖', '偶像(女性)', '偶像(男性)', '異世界', '療癒', '多角戀', '性轉', '魔法少女', '武術', '機甲', '醫療', '軍事', '音樂', '神秘', '神話', '組織犯罪', '宅圈', '惡搞', '表演藝術', '寵物', '心理', '競速', '異世界重生', '乙女', '浪漫', '浪漫敘事', '武士', '學園', '科幻', '娛樂圈', '空氣系', '太空', '體育', '策略', '超能力', '超自然力量', '生存', '懸疑', '團隊運動', '時間旅行', '吸血鬼', '電子遊戲', '視覺藝術', '職場']
         },
         engStu() {
             return ''
