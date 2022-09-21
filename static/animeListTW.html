@@ -349,12 +349,16 @@
                                         <span v-if="null != item.MAL">{{ item.MAL.jp_name }}</span> <br />
                                         <span v-if="null != item.MAL">{{ item.MAL.en_name }}</span> <br />
                                         <v-divider></v-divider>
+                                        <a :href="'https://' + item.MAL.official"  target="_blank">動畫官網</a>
+                                        <br /> 
                                         <span
                                             style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;({{ item.MAL.premiered }})
-                                            <span v-if="item.MAL.source">改編：{{ item.MAL.source }}</span>
+                                            <span v-if="item.MAL.source">改編：{{ item.MAL.source | sourceToCht }}</span>
                                             <span v-if="item.MAL.episodes">，{{ item.MAL.episodes }}話</span>
                                             <span v-if="item.MAL.duration">(~{{ item.MAL.duration }}分鐘)</span>
-                                            <br /> 
+                                            
+
+                                            <br />
                                             <template>
                                                 <v-menu offset-y open-on-hover rounded>
                                                     <template v-slot:activator="{ on, attrs }">
