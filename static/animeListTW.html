@@ -328,12 +328,12 @@
                             </v-col>
                         </v-row>
                         <br />
-                        <v-data-table ref="tb" loading-text="讀取中，除非網速慢，不然初次進入應該不會超過10秒啦..." no-results-text="該條件查無任何資料，可能是沒有收錄、翻譯不同等等，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1"
-                            query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
+                        <v-data-table loader-height="10" ref="tb" loading-text="讀取中，除非網速慢，不然初次進入應該不會超過10秒啦..." no-results-text="該條件查無任何資料，可能是沒有收錄、翻譯不同等等，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage
+                            class="elevation-1" query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                             <template v-slot:item="{item}" v-if="windowWidth > 600">
                                 <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
-                                    <td class="center">
-                                        <v-img :contain=true :lazy-src=setCover(item,true) height="200" width="150"
+                                    <td class="center pa-0" >
+                                        <v-img :contain=true :lazy-src=setCover(item,true) height="250" width="200"
                                             title="點圖放大" :src=setCover(item,false) @click="toggleFullscreen(item)">
                                         </v-img>
                                         <div v-if="selectedImage" class="overlay">
@@ -354,7 +354,7 @@
                                         <span
                                             style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;({{ item.MAL.premiered }})
                                             <span v-if="item.MAL.source">改編：{{ item.MAL.source | sourceToCht }}</span>
-                                            <span v-if="item.MAL.episodes">，{{ item.MAL.episodes }}話</span>
+                                            <span v-if="item.MAL.episodes && item.MAL.type != 'Movie'">，{{ item.MAL.episodes }}話</span>
                                             <span v-if="item.MAL.duration">(~{{ item.MAL.duration }}分鐘)</span>
                                             
 
@@ -427,67 +427,67 @@
                                             </span>
                             </div>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <span style="font-size:35px;font-weight:bold">{{item.score}}</span>
                             </td>
 
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.Gamer" :item="item.Gamer" website="Gamer" :b-score="item.Gamer.bayesian_score">
                                 </rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.MAL" :item="item.MAL" website="MAL" :b-score="item.MAL.score"></rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.BGM" :item="item.BGM" website="BGM" :b-score="item.BGM.bayesian_score"></rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.Anikore" :item="item.Anikore" website="Anikore" :b-score="item.Anikore.bayesian_score"></rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.AniList" :item="item.AniList" website="AniList" :b-score="item.AniList.bayesian_score"></rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.AnimePlanetCom" :item="item.AnimePlanetCom" website="AnimePlanetCom" :b-score="item.AnimePlanetCom.bayesian_score">
                                 </rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.ANN" :item="item.ANN" website="ANN" :b-score="item.ANN.bayesian_score"></rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.anisearch" :item="item.anisearch" website="anisearch" :b-score="item.anisearch.bayesian_score"></rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.kitsu" :item="item.kitsu" website="kitsu" :b-score="item.kitsu.bayesian_score">
                                 </rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.notifyMoe" :item="item.notifyMoe" website="notifyMoe" :b-score="item.notifyMoe.bayesian_score"></rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.trakt" :item="item.trakt" website="trakt" :b-score="item.trakt.bayesian_score">
                                 </rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.livechart" :item="item.livechart" website="livechart" :b-score="item.livechart.bayesian_score"></rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.annict" :item="item.annict" website="annict" :b-score="item.annict.bayesian_score"></rating>
                                 <span v-else>暫無</span>
                             </td>
-                            <td class="center">
+                            <td class="center pa-0">
                                 <rating v-if="item.sakuhindb" :item="item.sakuhindb" website="sakuhindb" :b-score="item.sakuhindb.bayesian_score"></rating>
                                 <span v-else>暫無</span>
                             </td>
