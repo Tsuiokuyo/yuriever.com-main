@@ -361,6 +361,46 @@ let vue = new Vue({
         },
     },
     filters: {
+        sourceToCht(src) {
+            switch (src) {
+                case '4-koma manga':
+                    return '四格漫畫';
+                case 'Book':
+                    return '書籍';
+                case 'Card game':
+                    return '卡牌遊戲';
+                case 'Game':
+                    return '遊戲';
+                case 'Light novel':
+                    return '輕小說';
+                case 'Manga':
+                    return '漫畫';
+                case 'Mixed media':
+                    return '綜合';
+                case 'Music':
+                    return '音樂';
+                case 'Novel':
+                    return '小說';
+                case 'Original':
+                    return '原創';
+
+                case 'Picture book':
+                    return '繪本';
+                case 'Radio':
+                    return '廣播';
+                case 'Other':
+                case 'undefined':
+                case 'Unknown':
+                    return '其他';
+
+                case 'Visual novel':
+                    return '電子小說';
+                case 'Web manga':
+                    return '網路漫畫';
+
+            }
+            return src
+        },
         onlineNameFormat(name) {
             switch (name) {
                 case 'bahamut':
@@ -559,6 +599,7 @@ let vue = new Vue({
         this.$nextTick(function() {
             let genres = []
             let studios = []
+            let ddd = []
             for (item of this.rawData) {
                 if (!'name' in item.MAL) {
                     break;
@@ -571,15 +612,19 @@ let vue = new Vue({
                 //     // this.badges[stu] = ++this.badges[stu] || 1
                 // }
 
+
+
                 genres = genres.concat(item.MAL.genres)
-                studios = studios.concat(item.MAL.studios)
+                    // studios = studios.concat(item.MAL.studios)
+                ddd.push(item.MAL.source)
             }
             this.badgesDef = this.badges
             genres = [...new Set(genres.sort())]
-            studios = [...new Set(studios.sort())]
-
+                // studios = [...new Set(studios.sort())]
+            ddd = [...new Set(ddd.sort())]
+            console.log(ddd)
             this.genreList = genres
-            this.studioList = studios
+                // this.studioList = studios
 
 
             let geturl = window.location.href
