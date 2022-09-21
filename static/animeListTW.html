@@ -263,6 +263,7 @@
                             </v-text-field>
                             <v-text-field v-if="windowWidth < 600" v-model="search" append-icon="mdi-magnify" label="動畫名稱搜尋(中/英/日)" single-line hide-details clearable dense :disabled="isSearch">
                             </v-text-field>
+                            <v-checkbox v-if="windowWidth < 600" v-model="toRandom" label="亂數排序" dense></v-checkbox>
 
                         </v-expansion-panels>
                         <v-card-title v-if="windowWidth > 600">
@@ -314,7 +315,7 @@
                                     <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(省流量(幾乎無感))" dense></v-checkbox>
                                 </v-col>
                                 <v-col cols="2">
-                                    <v-checkbox v-model="disabledZero" label="不顯示無分數作品" dense></v-checkbox>
+                                    <v-checkbox v-model="disabledZero" label="隱藏無分數動畫" dense></v-checkbox>
                                 </v-col>
                                 <v-col cols="1">
                                     <v-checkbox v-model="toRandom" label="亂數排序" dense></v-checkbox>
