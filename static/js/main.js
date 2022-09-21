@@ -88,8 +88,8 @@ let vue = new Vue({
         search: '',
         isLoading: true,
         page: 1,
-        itemsPerPage: 10,
-        itemsPerPages: [5, 10, 30, 50, 100],
+        itemsPerPage: 15,
+        itemsPerPages: [5, 15, 30, 50, 100],
         panel: 1,
         pageCount: 1,
         year: '',
@@ -599,7 +599,7 @@ let vue = new Vue({
         this.$nextTick(function() {
             let genres = []
             let studios = []
-            let ddd = []
+                // let ddd = []
             for (item of this.rawData) {
                 if (!'name' in item.MAL) {
                     break;
@@ -616,13 +616,13 @@ let vue = new Vue({
 
                 genres = genres.concat(item.MAL.genres)
                     // studios = studios.concat(item.MAL.studios)
-                ddd.push(item.MAL.source)
+                    // ddd.push(item.MAL.source)
             }
             this.badgesDef = this.badges
             genres = [...new Set(genres.sort())]
                 // studios = [...new Set(studios.sort())]
-            ddd = [...new Set(ddd.sort())]
-            console.log(ddd)
+                // ddd = [...new Set(ddd.sort())]
+                // console.log(ddd)
             this.genreList = genres
                 // this.studioList = studios
 
@@ -854,9 +854,12 @@ let vue = new Vue({
                 return item.Gamer.title
             } else if (null != item.BGM) {
                 return item.BGM.cn_name
+            } else if (null != item.MAL.jp_name) {
+                return item.MAL.jp_name;
             } else {
-                return item.MAL.jp_name
+                return item.MAL.title
             }
+
         },
         onlineList(item) {
             let online = new Object();
