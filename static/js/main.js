@@ -8,7 +8,7 @@ let vue = new Vue({
             props: ['item', 'website', 'bScore'],
             template: `<div>
                                 <v-chip :color="setChipColor(bScore,website)" dark>
-                                <span v-if="!!!bScore">低票數</span>
+                                <span style="font-size:15px;" v-if="!!!bScore">不計分</span>
                                 <span v-else>{{ bScore }}</span>
                                 </v-chip>
                                 <br />
@@ -460,7 +460,7 @@ let vue = new Vue({
             }
         },
         returnZero(score) {
-            return score != 0 ? score : '低票數'
+            return score != 0 ? score : '不計分'
         }
 
     },
