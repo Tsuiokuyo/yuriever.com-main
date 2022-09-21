@@ -95,7 +95,7 @@
                                         此列表"目前"基於myanimelist同時巴哈有撈到資料為主，<br />
                                         因為myanimelist約24000筆資料，每分鐘撈取一至兩筆，但撈完一輪約需要半個月...<br />
                                         所以暫時僅撈取巴哈不為空的資料，約4000筆<p />
-                                        如果覺得排名有問題請不要找我，因為這只是個野雞榜單，而且我的用途其實也不是為了看排名...
+                                        如果覺得排名有問題請不要找我，因為這只是個野雞榜單，當然也能當成找番、補番用工具。
                                         <h3>一些問題</h3>
                                         因為anime-offline-database別名重複命名的關係，或者一些判斷不嚴謹，所以有列表會重複，舉幾個記得的例子<br />
                                         <ol>
@@ -230,7 +230,7 @@
                             <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(省流量)" dense></v-checkbox> -->
                             <!-- <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(稍微省流量)" dense></v-checkbox> -->
                         </v-row>
-                        <span>資料更新時間:(2022年9月中旬)</span>
+                        <span>資料更新時間:2022-09-21，總筆數:{{rawData.length}}</span>
 
                         <v-expansion-panels v-model="panel">
                             <v-expansion-panel>
@@ -328,8 +328,8 @@
                             </v-col>
                         </v-row>
                         <br />
-                        <v-data-table ref="tb" :loading-text="loadingText" :no-results-text="noResultsText" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1" query="true" :loading="isLoading"
-                            :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
+                        <v-data-table ref="tb" loading-text="讀取中，除非網速慢，不然初次進入應該不會超過10秒啦..." no-results-text="該條件查無任何資料，可能是沒有收錄、翻譯不同等等，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1"
+                            query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                             <template v-slot:item="{item}" v-if="windowWidth > 600">
                                 <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
                                     <td class="center">
