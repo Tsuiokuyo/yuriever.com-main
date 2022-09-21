@@ -617,11 +617,17 @@ let vue = new Vue({
                 genres = genres.concat(item.MAL.genres)
                     // studios = studios.concat(item.MAL.studios)
                     // ddd.push(item.MAL.source)
+                    //FixMe 正規打錯了 
+                if (item.MAL.type == "Movie" && item.MAL.duration < 3) {
+                    item.MAL.duration = item.MAL.duration * 60
+                }
                 if ('duration' in item.MAL && null != item.MAL.duration && item.MAL.type != "Movie" && item.MAL.duration < 16) {
                     item.MAL.genres.push('cup')
                     genres.push('cup')
                     this.badges['cup'] = ++this.badges['cup'] || 1
                 }
+
+
             }
             this.badgesDef = this.badges
             genres = [...new Set(genres.sort())]
