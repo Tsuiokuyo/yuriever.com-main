@@ -80,7 +80,6 @@ let vue = new Vue({
         },
     },
     data: {
-        //rawUrl: 'https://tsuiokuyo.netlify.app/all.save.json',
         // rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/all.save.json',
         rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/result.json',
         //rawUrl: 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/data/all.save.json',
@@ -106,8 +105,6 @@ let vue = new Vue({
         selYear: '等於',
         selectTypes: ['ALL', 'TV', 'MOVIE', 'OVA'],
         selType: 'ALL',
-        noResultsText: '該條件查無任何資料，可能是沒有收錄進來，請嘗試其他條件',
-        loadingText: '讀取中，除非網速慢，不然初次進入應該不會超過10秒啦...',
         randomTen: [],
         count: undefined,
         overlay: false,
@@ -115,12 +112,10 @@ let vue = new Vue({
         lamuUrl: 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/image/lamuA.png',
         destroy: true,
         disabledBgImage: false,
-        // disabledCovImage: false,
         dialog: {},
         genreList: [],
         genreSel: [],
         studioList: [],
-
         badges: {},
         badgesDef: {},
         isSearch: false,
@@ -130,7 +125,6 @@ let vue = new Vue({
         bangumiDisable: false,
         rssDisabledMoe: false,
         rssDisabledGNN: false,
-
     },
     computed: {
         listenChange() {
@@ -419,7 +413,7 @@ let vue = new Vue({
             }
         },
         returnZero(score) {
-            return score != 0 ? score : '票數過少'
+            return score != 0 ? score : '低票數'
         }
 
     },
@@ -1053,7 +1047,7 @@ let vue = new Vue({
             return ['Action', 'Adult Cast', 'Adventure', 'Anthropomorphic', 'Avant Garde', 'Award Winning', 'Boys Love', 'CGDCT', 'Childcare', 'Combat Sports', 'Comedy', 'Crossdressing', 'Delinquents', 'Detective', 'Drama', 'Ecchi', 'Educational', 'Erotica', 'Fantasy', 'Gag Humor', 'Girls Love', 'Gore', 'Gourmet', 'Harem', 'High Stakes Game', 'Historical', 'Horror', 'Idols (Female)', 'Idols (Male)', 'Isekai', 'Iyashikei', 'Love Polygon', 'Magical Sex Shift', 'Mahou Shoujo', 'Martial Arts', 'Mecha', 'Medical', 'Military', 'Music', 'Mystery', 'Mythology', 'Organized Crime', 'Otaku Culture', 'Parody', 'Performing Arts', 'Pets', 'Psychological', 'Racing', 'Reincarnation', 'Reverse Harem', 'Romance', 'Romantic Subtext', 'Samurai', 'School', 'Sci-Fi', 'Showbiz', 'Slice of Life', 'Space', 'Sports', 'Strategy Game', 'Super Power', 'Supernatural', 'Survival', 'Suspense', 'Team Sports', 'Time Travel', 'Vampire', 'Video Game', 'Visual Arts', 'Workplace']
         },
         chtGen() {
-            return ['動作', '成年人主角', '冒險', '擬人化', '前衛', '曾經得獎', '耽美', '純女角', '育兒', '格鬥運動', '喜劇', '變裝', '不良', '偵探', '劇情', 'H', '教育', '成人', '奇幻', '惡作劇幽默', '百合', '血腥', '美食', '後宮', '高風險遊戲', '歷史', '恐怖', '偶像(女性)', '偶像(男性)', '異世界', '療癒', '多角戀', '性轉', '魔法少女', '武術', '機甲', '醫療', '軍事', '音樂', '神秘', '神話', '組織犯罪', '宅圈', '惡搞', '表演藝術', '寵物', '心理', '競速', '異世界重生', '乙女', '浪漫', '浪漫敘事', '武士', '學園', '科幻', '娛樂圈', '空氣系', '太空', '體育', '策略', '超能力', '超自然力量', '生存', '懸疑', '團隊運動', '時間旅行', '吸血鬼', '電子遊戲', '視覺藝術', '職場']
+            return ['動作', '成年人主角', '冒險', '擬人化', '前衛', '曾經得獎', '耽美', '純女角', '育兒', '格鬥運動', '喜劇', '變裝', '不良', '偵探', '劇情', '賣肉', '教育', '成人', '奇幻', '惡作劇幽默', '百合', '血腥', '美食', '後宮', '高風險遊戲', '歷史', '恐怖', '偶像(女性)', '偶像(男性)', '異世界', '療癒', '多角戀', '性轉', '魔法少女', '武術', '機甲', '醫療', '軍事', '音樂', '神秘', '神話', '組織犯罪', '宅圈', '惡搞', '表演藝術', '寵物', '心理', '競速', '異世界重生', '乙女', '浪漫', '浪漫敘事', '武士', '學園', '科幻', '娛樂圈', '空氣系', '太空', '體育', '策略', '超能力', '超自然力量', '生存', '懸疑', '團隊運動', '時間旅行', '吸血鬼', '電子遊戲', '視覺藝術', '職場']
         },
         engStu() {
             return ''
