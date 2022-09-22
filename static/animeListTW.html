@@ -44,10 +44,17 @@
 </head>
 
 <body>
+
+
     <div id="app">
         <v-app>
             <v-main>
+                <v-snackbar v-model="snackbar" shaped text right v-if="hug != ''" outlined timeout="6000" min-height="200" min-width="300">
+                    <v-img max-height="200" max-width="300" contain :src="hug.url">
+                    </v-img>
 
+
+                </v-snackbar>
                 <v-tabs v-model="tab" background-color="#3d4450" dark icons-and-text>
                     <v-tabs-slider></v-tabs-slider>
 
@@ -336,7 +343,7 @@
                                     <v-checkbox v-model="disabledZero" label="隱藏無分數動畫" dense></v-checkbox>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-checkbox v-model="toRandom" label="亂數排序" dense color="red"></v-checkbox>
+                                    <v-checkbox class="font-weight-black" v-model="toRandom" label="亂數排序" dense color="red"></v-checkbox>
                                 </v-col>
                                 <v-col> </v-col>
                                 <v-col cols="2">
@@ -353,7 +360,7 @@
                         </v-row>
                         <br />
                         <v-data-table loader-height="10" ref="tb" loading-text="讀取中，除非網速慢，不然初次進入應該不會超過10秒啦..." no-results-text="該條件查無任何資料，可能是沒有收錄、翻譯不同等等，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage
-                            class="elevation-1" query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
+                            class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                             <template v-slot:item="{item}" v-if="windowWidth > 600">
                                 <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
                                     <td class="center pa-0" >

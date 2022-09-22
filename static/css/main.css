@@ -1,3 +1,7 @@
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif !important;
+}
+
 .center {
     padding: 0 5 !important;
     text-align: center;
@@ -21,10 +25,6 @@
 
 .v-data-table>.v-data-table__wrapper .v-data-table__mobile-row {
     min-height: 25px !important;
-}
-
-body {
-    font-family: 'Helvetica', 'Arial', sans-serif !important;
 }
 
 .original {
