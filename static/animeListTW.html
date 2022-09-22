@@ -262,7 +262,7 @@
                             <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense :disabled="isSearch"></v-select>
                             <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
                             </v-text-field>
-                            <v-text-field v-if="windowWidth < 600" v-model="search" append-icon="mdi-magnify" label="動畫名稱搜尋(中/英/日)" single-line hide-details clearable clear-icon="mdi-close-circle" dense :disabled="isSearch">
+                            <v-text-field v-if="windowWidth < 600" v-model="search" append-icon="mdi-magnify" hint="支援繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense :disabled="isSearch">
                             </v-text-field>
 
                             <v-checkbox v-if="windowWidth < 600" v-model="toRandom" label="排名亂數排序" dense color="red"></v-checkbox>
@@ -287,7 +287,7 @@
                                     </v-text-field>
                                 </v-col>
                                 <v-col>
-                                    <v-text-field v-model="search" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="支援繁簡互轉,例:聖母=圣母" label="動畫名稱搜尋(中/英/日)" dense clearable :disabled="isSearch">
+                                    <v-text-field v-model="search" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="支援繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" dense clearable :disabled="isSearch">
                                     </v-text-field>
                                 </v-col>
                                 <v-col></v-col>
