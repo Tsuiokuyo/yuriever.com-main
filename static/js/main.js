@@ -127,6 +127,8 @@ let vue = new Vue({
         rssDisabledMoe: false,
         rssDisabledGNN: false,
         toRandom: true,
+        hug: '',
+        snackbar: true,
     },
     computed: {
         listenChange() {
@@ -499,6 +501,9 @@ let vue = new Vue({
         }
     },
     async created() {
+        if (this.windowWidth >= 600) {
+            this.hug = await fetch('https://api.waifu.pics/sfw/hug').then((res) => res.json());
+        }
         this.rawData = await fetch(
             this.rawUrl,
         ).then((res) => res.json());
@@ -1014,7 +1019,7 @@ let vue = new Vue({
                     // } else if (null != item.kitsu && null != item.kitsu.coverT) {
                     // return 'https://media.kitsu.io/anime/' + item.kitsu.coverT;
                 } else if (null != item.kitsu && null != item.kitsu.coverT) {
-                    return 'https://media.kitsu.io/anime/' + item.kitsu.coverT
+                    return 'https://media.kitsu.io/anime/' + item.kitsu.coverT;
                 } else if (null != item.trakt && null != item.trakt.coverS) {
                     return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS;
                 } else {
