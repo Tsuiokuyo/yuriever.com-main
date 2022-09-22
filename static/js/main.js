@@ -1,4 +1,5 @@
-// Vue.config.devtools = true;
+// 麵條式代碼，其實我也很無奈，一開始沒想到會變得這麼亂...
+
 
 let vue = new Vue({
     el: '#app',
@@ -122,7 +123,7 @@ let vue = new Vue({
         moelong: {},
         gnn: {},
         disabledZero: true,
-        bangumiDisable: false,
+        // bangumiDisable: false,
         rssDisabledMoe: false,
         rssDisabledGNN: false,
         toRandom: true,
@@ -173,6 +174,7 @@ let vue = new Vue({
                             }
                         }
                         if (this.search) {
+                            this.search.replace('', '')
                             name = false
                             if (item.MAL && null != item.MAL.en_name && item.MAL.en_name.indexOf(this.search) != -1) {
                                 name = true;
@@ -225,7 +227,8 @@ let vue = new Vue({
 
                                 let gScore = item.Gamer.bayesian_score
                                 difference = Math.abs(parseFloat(gScore) - parseFloat(item.MAL.score > 0 ? item.MAL.score : false)) >= parseFloat(this.diff) ||
-                                    comput(gScore, !this.bangumiDisable ? item.BGM : false, this.diff) ||
+                                    // comput(gScore, !this.bangumiDisable ? item.BGM : false, this.diff) ||
+                                    comput(gScore, item.BGM, this.diff) ||
                                     comput(gScore, item.Anikore, this.diff) ||
                                     comput(gScore, item.AniList, this.diff) ||
                                     comput(gScore, item.AnimePlanetCom, this.diff) ||
@@ -1000,10 +1003,14 @@ let vue = new Vue({
             if (!this.disabledBgImage) {
                 if (null != item.anisearch && null != item.anisearch.coverS) {
                     return 'https://cdn.anisearch.com/images/anime/header/' + item.anisearch.coverS + '.webp';
-                } else if (null != item.trakt && null != item.trakt.coverS) {
-                    return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS
+                    // } else if (null != item.trakt && null != item.trakt.coverS) {
+                    //     return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS
+                    // } else if (null != item.kitsu && null != item.kitsu.coverT) {
+                    // return 'https://media.kitsu.io/anime/' + item.kitsu.coverT;
                 } else if (null != item.kitsu && null != item.kitsu.coverT) {
-                    return 'https://media.kitsu.io/anime/' + item.kitsu.coverT;
+                    return 'https://media.kitsu.io/anime/' + item.kitsu.coverT
+                } else if (null != item.trakt && null != item.trakt.coverS) {
+                    return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS;
                 } else {
                     return ''
                 }
