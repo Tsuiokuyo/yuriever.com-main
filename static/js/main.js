@@ -486,6 +486,7 @@ let vue = new Vue({
             }
             if (this.search || this.year) {
                 this.badges = {}
+
             } else {
                 if (this.genreSel.length == 0) {
                     this.badges = this.badgesDef
