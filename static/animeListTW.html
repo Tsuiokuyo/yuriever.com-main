@@ -93,21 +93,22 @@
                                     <h2>關於列表</h2>
                                     <span>純前端畫面，沒有後端，本想串firebase，但50000筆的免費額度有點微妙，<br />
                                         此列表"目前"基於myanimelist同時巴哈有撈到資料為主，<br />
-                                        因為myanimelist約24000筆資料，每分鐘撈取一至兩筆，但撈完一輪約需要半個月...<br />
-                                        所以暫時僅撈取巴哈不為空的資料，約4000筆<p />
-                                        如果覺得排名有問題請不要找我，因為這只是個野雞榜單，當然也能當成找番、補番用工具。
-                                        <h3>一些問題</h3>
-                                        因為anime-offline-database別名重複命名的關係，或者一些判斷不嚴謹，所以有列表會重複，舉幾個記得的例子<br />
-                                        <ol>
+                                        因為myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...<br />
+                                        <span class="text-decoration-line-through">所以暫時僅撈取巴哈不為空的資料，約4000筆</span>
+                                    <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜單，當然也能當成找番、補番用工具。
+                                    <h3>一些問題</h3>
+                                    <br />
+                                    <ol>
                                         <li>哈囉！小梅子，在myanimelist被建了兩個，所以列表中出現了兩次。</li>
                                         <li class="text-decoration-line-through">我立於百萬生命之上，都因為一二季別名完全一樣...導致撈到第一季的ID</li>
                                         <li class="text-decoration-line-through">銀魂第一季及第四季及百花繚亂、槍神 Badlands Rumble等等撈錯，是因為巴哈命名不規範...</li>
                                         <li class="text-decoration-line-through">甜點兔，巴哈似乎沒有第一季的頁面，導致撈到第二季</li>
                                         <li class="text-decoration-line-through">FAIRY TAIL 魔導少年 百年任務、盾勇3、入間同學入魔了！2、月光下的異世界之旅2、黃金神威4、總之就是很可愛2、實力至上3、間諜家家酒2、世界盡頭的聖騎士2，最新一季會錯撈等，為了解決第二點反倒出現這個...</li>
                                         <li class="text-decoration-line-through">MAL首播年度有些編輯者和我有著年度的理解差異啊...，例如:鬼滅の刃 遊郭編 當地是2021年12月05日首播 但填寫 2022年冬季?</li>
-                                        </ol>
-                                        <span class="text-decoration-line-through">
-                                        調整比對方式後，又少了240筆...，另外這不是巴哈全部的動畫清單，因為總會有沒有比對到的作品，畢竟一部作品的不管中英日都各有好幾種寫法，<br />
+                                        <li>Phantom:The Animation標點符號無法與巴哈對上</li>
+                                    </ol>
+                                    <span class="text-decoration-line-through">
+                                        這並非包含巴哈全部的動畫清單，因為總會有沒有比對到的作品，畢竟一部作品的不管中英日都各有好幾種寫法，<br />
                                         舉個已解決的例子：<br />
                                         (蟲師 續章)
                                         巴哈作品名稱：日文:むしし 続章<br />
@@ -259,9 +260,9 @@
                             <span v-if="windowWidth < 600">(目前手機版把一些無用篩選功能移除)</span>
                             <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense :disabled="isSearch"></v-select>
                             <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense :disabled="isSearch"></v-select>
-                            <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clearable dense :disabled="isSearch">
+                            <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
                             </v-text-field>
-                            <v-text-field v-if="windowWidth < 600" v-model="search" append-icon="mdi-magnify" label="動畫名稱搜尋(中/英/日)" single-line hide-details clearable dense :disabled="isSearch">
+                            <v-text-field v-if="windowWidth < 600" v-model="search" append-icon="mdi-magnify" label="動畫名稱搜尋(中/英/日)" single-line hide-details clearable clear-icon="mdi-close-circle" dense :disabled="isSearch">
                             </v-text-field>
 
                             <v-checkbox v-if="windowWidth < 600" v-model="toRandom" label="排名亂數排序" dense color="red"></v-checkbox>
@@ -278,32 +279,32 @@
                                     <v-select :items="selectYears" v-model="selYear" label="年份範圍" dense :disabled="isSearch"></v-select>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-text-field v-model="year" type="number" label="西元年" clearable dense :disabled="isSearch">
+                                    <v-text-field v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
                                     </v-text-field>
                                 </v-col>
                                 <v-col cols="1" v-if="selYear == '介於'">
-                                    <v-text-field v-model="year2" type="number" label="迄" clearable dense :disabled="isSearch">
+                                    <v-text-field v-model="year2" type="number" label="迄" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
                                     </v-text-field>
                                 </v-col>
                                 <v-col>
-                                    <v-text-field v-model="search" append-icon="mdi-magnify" label="動畫名稱搜尋(中/英/日)" single-line hide-details clearable dense :disabled="isSearch">
+                                    <v-text-field v-model="search" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="支援繁簡互轉,例:聖母=圣母" label="動畫名稱搜尋(中/英/日)" dense clearable :disabled="isSearch">
                                     </v-text-field>
                                 </v-col>
                                 <v-col></v-col>
                                 <v-col cols="1">
                                     <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
-                                    <v-checkbox v-model="bangumiDisable" label="相差分數不含bangumi" dense></v-checkbox>
+                                    <!-- <v-checkbox v-model="bangumiDisable" label="相差分數不含bangumi" dense></v-checkbox> -->
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-text-field v-model="diff" type="number" label="與巴哈相差分數" clearable dense :disabled="isSearch">
+                                    <v-text-field v-model="diff" type="number" label="與巴哈相差分數" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
                                     </v-text-field>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-text-field v-model="rank1" type="number" label="排名區間" clearable dense :disabled="isSearch">
+                                    <v-text-field v-model="rank1" type="number" label="排名區間" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
                                     </v-text-field>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-text-field v-model="rank2" type="number" label="迄" clearable dense :disabled="isSearch">
+                                    <v-text-field v-model="rank2" type="number" label="迄" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
                                     </v-text-field>
                                 </v-col>
                                 <!-- <v-col></v-col> -->
@@ -356,10 +357,10 @@
                                         <span v-if="null != item.MAL">{{ item.MAL.jp_name }}</span> <br />
                                         <span v-if="null != item.MAL">{{ item.MAL.en_name }}</span> <br />
                                         <v-divider></v-divider>
-                                        <a :href="'https://' + item.MAL.official"  target="_blank">動畫官網</a>
+                                        <a :href="'https://' + item.MAL.official"  target="_blank" v-if="null != item.MAL.official">動畫官網</a>
                                         <br /> 
                                         <span
-                                            style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;({{ item.MAL.premiered }})
+                                            style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;<span v-if="null != item.MAL.premiered">({{ item.MAL.premiered }})</span>
                                             <span v-if="item.MAL.source">改編：{{ item.MAL.source | sourceToCht }}</span>
                                             <span v-if="item.MAL.episodes && item.MAL.type != 'Movie'">，{{ item.MAL.episodes }}話</span>
                                             <span v-if="item.MAL.duration">(~{{ item.MAL.duration }}分鐘)</span>
