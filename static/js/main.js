@@ -174,8 +174,13 @@ let vue = new Vue({
                             }
                         }
                         if (this.search) {
-                            this.search.replace('', '')
+                            // let searchs = this.search.split(',')
+
                             name = false
+                                // for (sear of searchs) {
+                                //     if (!sear) {
+                                //         break;
+                                //     }
                             if (item.MAL && null != item.MAL.en_name && item.MAL.en_name.indexOf(this.search) != -1) {
                                 name = true;
                             } else if (item.MAL && null != item.MAL.jp_name && item.MAL.jp_name.indexOf(this.search) != -1) {
@@ -190,7 +195,7 @@ let vue = new Vue({
                             } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.indexOf(this.trad(this.search)) != -1) {
                                 name = true;
                             }
-
+                            // }
 
                         }
                         if (this.year && this.year > 1900) {
