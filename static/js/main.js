@@ -81,10 +81,8 @@ let vue = new Vue({
         },
     },
     data: {
-        // rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/all.save.json',
         // rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/result.json',
         rawUrl: 'https://tsuiokuyo.netlify.app/result.json',
-        //rawUrl: 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/data/all.save.json',
         rawData: [],
         windowWidth: window.innerWidth,
         search: '',
@@ -111,8 +109,8 @@ let vue = new Vue({
         randomTen: [],
         count: undefined,
         overlay: false,
-        leimuUrl: 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/image/leimuA.png',
-        lamuUrl: 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/image/lamuA.png',
+        leimuUrl: 'https://tsuiokuyo.netlify.app/image/leimuA.webp',
+        lamuUrl: 'https://tsuiokuyo.netlify.app/image/lamuA.webp',
         destroy: true,
         disabledBgImage: false,
         dialog: {},
@@ -1028,16 +1026,16 @@ let vue = new Vue({
         },
         lamu(value) {
             if (value == 'A') {
-                return 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/image/lamuA.png'
+                return 'https://tsuiokuyo.netlify.app/image/lamuA.webp'
             } else {
-                return 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/image/lamuB.png'
+                return 'https://tsuiokuyo.netlify.app/image/lamuB.webp'
             }
         },
         leimu(value) {
             if (value == 'A') {
-                return 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/image/leimuA.png'
+                return 'https://tsuiokuyo.netlify.app/image/leimuA.webp'
             } else {
-                return 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/image/leimuB.png'
+                return 'https://tsuiokuyo.netlify.app/image/leimuB.webp'
             }
         },
         getBackground(item) {
@@ -1059,7 +1057,7 @@ let vue = new Vue({
             return ''
         },
         setBackgroundLazy(entries, observer, isIntersecting) {
-            let bg = 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/image/background.png'
+            let bg = 'https://tsuiokuyo.netlify.app/image/background.webp'
             let aniBg = entries[0].target.lastChild.innerText
             if (isIntersecting) {
                 if (!!aniBg) {
