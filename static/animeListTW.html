@@ -16,7 +16,6 @@
     <script src="js/snowstorm.js"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCHS68JGBX"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue-gtag@2.0.1/dist/vue-gtag.umd.min.js"></script>
 
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -44,8 +43,6 @@
 </head>
 
 <body>
-
-
     <div id="app">
         <v-app>
             <v-main>
@@ -76,7 +73,7 @@
                     transform: translate(-50%, -50%);">
                         <v-avatar color="indigo" size="50" @click="goToBlog">
                             <img alt="Avatar"
-                                src="https://d33wubrfki0l68.cloudfront.net/699fb7879fa75fcd29a86e8d6599878a9a0b077a/d43fc/images/avatar.jpg">
+                                src="image/avatar.jpg">
                         </v-avatar>
                     </span>
 
@@ -104,7 +101,7 @@
                                     <template class="radius">
                                         <v-card max-height="554" max-width="739" style="display:block; margin:auto;" raised shaped>
                                         <v-img  max-height="554" max-width="739" contain
-                                            src="https://firebasestorage.googleapis.com/v0/b/tsuiokuyo-8a31a.appspot.com/o/345621.jpg?alt=media&token=c6d8ab0a-7ab5-45d0-8896-7c9cd263aab1">
+                                            src="image/345621.jpg">
                                         </v-img></v-card>
                                     </template>
                                     <br />
@@ -253,7 +250,7 @@
                                 </v-sheet>
                             </v-expand-transition> -->
                         </v-sheet>
-                        <h2 style="text-align: center;">動畫野雞榜單</h2>
+                        <h2 style="text-align: center;">動畫野雞榜單(2022/09/23，23:16分測試中，要是看到這個，然後畫面掛掉，你還是五分鐘後再回來吧)</h2>
                         <v-row dense>
                             <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(省流量)" dense></v-checkbox> -->
                             <!-- <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(稍微省流量)" dense></v-checkbox> -->
@@ -273,7 +270,7 @@
                                     <v-chip-group v-model="genreSel" column multiple>
                                         <v-chip v-for="(genre, index) in genreList" :key="index" filter :value="genre" :disabled="!badges[genre]" dark :class="[setGenColor(genre) == 'A'?'pink accent-1':setGenColor(genre) == 'B' ? 'blue darken-4' :setGenColor(genre) == 'C' ? 'primary ': '']">
                                             <span>{{genre | genreToCht}}</span>
-                                            <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp;0&nbsp;&nbsp;'}})</span>
+                                            <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span>
 
                                         </v-chip>
                                     </v-chip-group>
@@ -384,7 +381,7 @@
                                         <a :href="'https://' + item.MAL.official"  target="_blank" v-if="null != item.MAL.official">動畫官網</a>
                                         <br /> 
                                         <span
-                                            style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;<span v-if="null != item.MAL.premiered">({{ item.MAL.premiered }})</span>
+                                            style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;<span v-if="null != item.MAL.premiered">({{ item.MAL.premiered }}<span v-if="null != item.MAL.season">{{item.MAL.season|seasonCht}}</span>)</span>
                                             <span v-if="item.MAL.source">改編：{{ item.MAL.source | sourceToCht }}</span>
                                             <span v-if="item.MAL.episodes && item.MAL.type != 'Movie'">，{{ item.MAL.episodes }}話</span>
                                             <span v-if="item.MAL.duration">(~{{ item.MAL.duration }}分鐘)</span>

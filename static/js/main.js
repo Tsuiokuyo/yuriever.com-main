@@ -82,7 +82,8 @@ let vue = new Vue({
     },
     data: {
         // rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/all.save.json',
-        rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/result.json',
+        // rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/result.json',
+        rawUrl: 'https://tsuiokuyo.netlify.app/result.json',
         //rawUrl: 'https://cdn.jsdelivr.net/gh/tsuiokuyo/tsuiokuyo.netlify.com@master/static/data/all.save.json',
         rawData: [],
         windowWidth: window.innerWidth,
@@ -379,6 +380,21 @@ let vue = new Vue({
         },
     },
     filters: {
+        seasonCht(sen) {
+            switch (sen.toLowerCase()) {
+                case 'spring':
+                    return '春';
+                case 'summer':
+                    return '夏';
+                case 'fall':
+                case 'autumn':
+                    return '秋';
+                case 'winter':
+                    return '冬';
+                default:
+                    return sen
+            }
+        },
         sourceToCht(src) {
             switch (src) {
                 case '4-koma manga':
@@ -722,20 +738,21 @@ let vue = new Vue({
             if (lazy) {
                 if (null != item.BGM) {
                     return "http://lain.bgm.tv/pic/cover/g/" + item.BGM.image + ".jpg"
-                } else {
+                } else { //FIXME 下一輪
+
                     if (item.MAL.image.length > 50) {
                         return item.MAL.image
                     }
-                    return "https://cdn.myanimelist.net/images/anime/" + item.MAL.image
+                    return "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + 't.webp'
                 }
             } else {
                 if (null != item.BGM) {
                     return "http://lain.bgm.tv/pic/cover/c/" + item.BGM.image + ".jpg"
-                } else {
+                } else { //FIXME 下一輪
                     if (item.MAL.image.length > 50) {
                         return item.MAL.image
                     }
-                    return "https://cdn.myanimelist.net/images/anime/" + item.MAL.image
+                    return "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + '.webp'
                 }
             }
         },
