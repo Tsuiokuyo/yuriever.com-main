@@ -121,6 +121,7 @@
                                     <h3>一些問題</h3>
                                     <br />
                                     <ol>
+                                        <li>資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic Number減肥看看了。</li>
                                         <li>哈囉！小梅子，在myanimelist被建了兩個，所以列表中出現了兩次。</li>
                                         <li class="text-decoration-line-through">我立於百萬生命之上，都因為一二季別名完全一樣...導致撈到第一季的ID</li>
                                         <li class="text-decoration-line-through">銀魂第一季及第四季及百花繚亂、槍神 Badlands Rumble等等撈錯，是因為巴哈命名不規範...</li>
@@ -354,7 +355,7 @@
                         </v-card-title>
                         <v-row>
                             <v-col>
-                                <v-pagination v-model="page" :length="pageCount" :total-visible="10" @input="next">
+                                <v-pagination v-model="page" :length="pageCount" :total-visible="totalVis" @input="next">
                                 </v-pagination>
                             </v-col>
                         </v-row>
@@ -631,7 +632,7 @@
                             </template>
                         </v-data-table>
                         <br />
-                        <v-pagination v-model="page" :length="pageCount" :total-visible="10" @input="next">
+                        <v-pagination v-model="page" :length="pageCount" :total-visible="totalVis" @input="next">
                         </v-pagination>
                 </v-container>
             </v-main>
@@ -650,7 +651,7 @@
 
             <footer class="footer" style="display:block; margin:auto;text-align: center;">
                 <div class="footer-line">
-                    <span style="font-size: 10px;">冷門的來訪次數<br/>
+                    <span style="font-size: 10px;">可憐的來訪次數(´・ω・`)<br/>
                         <img src="https://SiteStates.com/show/image/33330.jpg" border="0" />
                     </span>
                 </div>
