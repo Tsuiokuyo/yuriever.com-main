@@ -91,6 +91,7 @@ let vue = new Vue({
         page: 1,
         itemsPerPage: 15,
         itemsPerPages: [5, 15, 30, 50, 100],
+        totalVis: 15,
         panel: 1,
         pageCount: 1,
         year: '',
@@ -486,6 +487,7 @@ let vue = new Vue({
                     this.badges[gen] = ++this.badges[gen] || 1
                 }
             }
+
             if (this.search || this.year) {
                 this.badges = {}
 
@@ -502,6 +504,8 @@ let vue = new Vue({
     },
     async created() {
         if (this.windowWidth >= 600) {
+
+            // this.hug = await fetch('https://api.rei.my.id/v3/hug').then((res) => res.json());
             this.hug = await fetch('https://api.waifu.pics/sfw/hug').then((res) => res.json());
         }
         this.rawData = await fetch(
@@ -654,11 +658,17 @@ let vue = new Vue({
 
 
             }
+
             this.badgesDef = this.badges
             genres = [...new Set(genres.sort())]
-                // studios = [...new Set(studios.sort())]
-                // ddd = [...new Set(ddd.sort())]
-                // console.log(ddd)
+
+            //FIXME 不該出現，下一輪再看看
+            genres = genres.filter(function(item) {
+                return item !== 'Hentai' && item !== 'Josei'
+            });
+            // studios = [...new Set(studios.sort())]
+            // ddd = [...new Set(ddd.sort())]
+            // console.log(ddd)
             this.genreList = genres
                 // this.studioList = studios
 
@@ -934,7 +944,7 @@ let vue = new Vue({
                 return [name, id]
             } else if (name.indexOf('bahamut') != -1) {
                 if (id.indexOf('https://') != -1) {
-                    return ['bahamut', id] //lc犬夜叉異常
+                    return ['bahamut', id] //LC犬夜叉異常 FIXME
                 } else {
                     return ['bahamut', 'https://ani.gamer.com.tw/animeVideo.php?sn=' + id]
                 }
@@ -972,7 +982,10 @@ let vue = new Vue({
                 return ['googleplay', 'https://play.google.com/store/' + id]
             } else if (name.indexOf('crunchyroll') != -1) {
                 return ['crunchyroll', 'https://www.crunchyroll.com/' + id]
+            } else if (name.indexOf('nhk world-japan on demand') != -1) { //FixMe
+                return ['NHK(英文)', id]
             }
+
             // else if (name.indexOf('amazon') != -1) {
             //     return ['amazon',id]
             // }else if (name.indexOf('hmvod') != -1) {
