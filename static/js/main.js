@@ -1,6 +1,5 @@
 // 麵條式代碼，其實我也很無奈，一開始沒想到會變得這麼亂...
 
-
 let vue = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
@@ -81,8 +80,8 @@ let vue = new Vue({
         },
     },
     data: {
-        // rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/result.json',
-        rawUrl: 'https://tsuiokuyo.netlify.app/result.json',
+        rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/result.json',
+        // rawUrl: 'https://tsuiokuyo.netlify.app/result.json',
         rawData: [],
         windowWidth: window.innerWidth,
         search: '',
@@ -129,6 +128,7 @@ let vue = new Vue({
         toRandom: true,
         hug: '',
         snackbar: true,
+        test: '',
     },
     computed: {
         listenChange() {
@@ -517,14 +517,36 @@ let vue = new Vue({
         }
     },
     async created() {
-        if (this.windowWidth >= 600) {
+        // async function checkResponseTime(testURL) {
+        //     let time1 = performance.now();
+        //     await fetch(testURL);
+        //     let time2 = performance.now();
+        //     return time2 - time1;
+        // }
+        // console.log(await checkResponseTime('https://some-random-api.ml/animu/hug'))
 
-            // this.hug = await fetch('https://api.rei.my.id/v3/hug').then((res) => res.json());
-            this.hug = await fetch('https://api.waifu.pics/sfw/hug').then((res) => res.json());
+        if (this.windowWidth >= 600) {
+            this.hug = await fetch('https://api.waifu.pics/sfw/hug').then((res) => res.json().then((obj) => obj.url));
+
+            // this.hug = await fetch('https://some-random-api.ml/animu/hug').then((res) => res.json().then((obj) => obj.link));
         }
-        this.rawData = await fetch(
-            this.rawUrl,
-        ).then((res) => res.json());
+
+        // this.rawData = await fetch(
+        //     this.rawUrl,
+        // ).then((res) => res.json());
+
+
+        await axios.get('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test.gzip', { responseType: 'arraybuffer', 'decompress': true })
+            .then(res => {
+                let zippedContent = new Uint8Array(res.data);
+                let byteArray = pako.ungzip(zippedContent);
+                let textDecoder = new TextDecoder();
+                let textContent = textDecoder.decode(byteArray);
+                this.rawData = JSON.parse(textContent)
+                    // console.log(this.rawData)
+            })
+
+
         vue.isLoading = false;
         this.pageCount = Math.ceil(this.rawData.length / this.itemsPerPage)
         this.getRandomArray();

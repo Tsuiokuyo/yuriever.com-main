@@ -5,15 +5,16 @@
     <link rel="Shortcut Icon" type="image/x-icon" href="image/favicons.webp" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/axios@0.27.2/dist/axios.min.js"></script>
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script src="js/snowstorm.js"></script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCHS68JGBX"></script>
 
@@ -47,7 +48,7 @@
         <v-app>
             <v-main>
                 <v-snackbar v-model="snackbar" shaped text right v-if="hug != ''" outlined timeout="6000" min-height="200" min-width="300">
-                    <v-img max-height="200" max-width="300" contain :src="hug.url">
+                    <v-img max-height="200" max-width="300" contain :src="hug">
                     </v-img>
 
 
@@ -107,7 +108,9 @@
                                     <br />
                                     <span class="text-decoration-line-through">
                                     因為不重要，這邊真的懶得排版...</span><br />
-                                    <h4>對了，先提一下，其實不用太在意巴哈評分特高的問題，雖然沒有去極值，但也對分數另外再進行標準化後，再去做平均，當然，大前提是我的運算邏輯沒寫錯
+                                    <h4>對了，先提一下，其實不用太在意巴哈評分特高的問題，雖然沒有去極值，但也對分數另外再進行標準化後，再去做平均，當然，大前提是運算邏輯沒問題。
+                                        <br />將計算混合在一起的所有分數的總體 μ（平均值）和總體 σ（標準差）。 然後，對於某個網站 i，將計算其自身的 μi 和 σi。 最後，來自網站 i 的分數將通過以下方式標準化：
+                                        <br /> (單標準 /總標準) * (分數 -單平均) + 總平均
                                     </h4>
                                     <h2>關於列表</h2>
                                     <span>純前端畫面，沒有後端，本想串firebase，但50000筆的免費額度有點微妙，<br />
@@ -338,7 +341,7 @@
                                     <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(省流量(幾乎無感))" dense></v-checkbox>
                                 </v-col>
                                 <v-col cols="2">
-                                    <v-checkbox v-model="disabledZero" label="隱藏無分數動畫" dense></v-checkbox>
+                                    <v-checkbox v-model="disabledZero" label="隱藏無計分動畫" dense></v-checkbox>
                                 </v-col>
                                 <v-col cols="1">
                                     <v-checkbox class="font-weight-black" v-model="toRandom" label="亂數排序" dense color="red"></v-checkbox>
@@ -362,7 +365,7 @@
                             <template v-slot:item="{item}" v-if="windowWidth > 600">
                                 <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
                                     <td class="center pa-0" >
-                                        <v-img :contain=true :lazy-src=setCover(item,true) height="250" width="200"
+                                        <v-img :contain=true :lazy-src=setCover(item,true) height="250" width="200" 
                                             title="點圖放大" :src=setCover(item,false) @click="toggleFullscreen(item)">
                                         </v-img>
                                         <div v-if="selectedImage" class="overlay">
@@ -662,5 +665,6 @@
 
 <script src="js/main.js" type="text/javascript"></script>
 <link href="css/main.css" rel="stylesheet">
+<script async src="js/snowstorm.js"></script>
 
 </html>
