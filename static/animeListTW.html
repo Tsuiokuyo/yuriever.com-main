@@ -365,7 +365,7 @@
                             </v-col>
                         </v-row>
                         <br />
-                        <h3 v-if="selSource != 'ALL'">改編類型篩選還沒用好，資料缺了應該算最重要的三千多筆，因為那部份我是中途才想到才弄，所以資料要等下一輪更新才會完善，而中文化要等我睡醒在弄了，只是剛好在PTT看到有人提，所以先丟出來@@</h3>
+                        <h3 v-if="selSource != 'ALL'">改編類型篩選還沒用好，資料應該有缺，缺了多少就不確定了，因為那部份我是"中途"才想到才順便弄，而資料要等下一輪更新才會完善，中文選項則要等我晚點再弄了，只是剛好在PTT看到有人提，所以先丟出來@@</h3>
                         <v-data-table loader-height="10" ref="tb" loading-text="讀取中，除非網速慢，不然初次進入應該不會超過10秒啦..." no-results-text="該條件查無任何資料，可能是沒有收錄、翻譯不同等等，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage
                             class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                             <template v-slot:item="{item}" v-if="windowWidth > 600">
