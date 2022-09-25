@@ -104,7 +104,9 @@ let vue = new Vue({
         selectYears: ['等於', '大於', '小於', '介於'],
         selYear: '等於',
         selectTypes: ['ALL', 'TV', 'MOVIE', 'OVA'],
+        selectSources: ['ALL', '4-koma manga', 'Original', 'Novel', 'Book', 'Card game', 'Game', 'Light novel', 'Manga', 'Mixed media', 'Music', 'Picture book', 'Radio', 'Visual novel', 'Web manga'],
         selType: 'ALL',
+        selSource: 'ALL',
         randomTen: [],
         count: undefined,
         overlay: false,
@@ -129,6 +131,7 @@ let vue = new Vue({
         hug: '',
         snackbar: true,
         test: '',
+
     },
     computed: {
         listenChange() {
@@ -170,6 +173,7 @@ let vue = new Vue({
                         let rank = true;
                         let difference = true;
                         let name = true;
+                        let selSrc = true
                         if (this.disabledZero) {
                             if (item.score == 0) {
                                 return false;
@@ -224,6 +228,8 @@ let vue = new Vue({
                             rank = parseInt(item.rank) <= parseInt(this.rank2)
                         }
 
+
+
                         if (this.diff) {
                             if (item.Gamer && item.Gamer.bayesian_score > 0) {
                                 function comput(a, b, range) {
@@ -251,6 +257,9 @@ let vue = new Vue({
                                 return false;
                             }
                         }
+                        if (this.selSource != 'ALL') {
+                            selSrc = item.MAL.source == this.selSource
+                        }
                         if (this.selType != 'ALL') {
                             bSelType = item.MAL.type.toUpperCase() == this.selType.toUpperCase()
                         }
@@ -263,7 +272,7 @@ let vue = new Vue({
                             }
                         }
 
-                        return bYear && bSelType && generCheck && rank && difference && name
+                        return bYear && bSelType && generCheck && rank && difference && name && selSrc
                     },
                 },
                 // {
@@ -541,7 +550,7 @@ let vue = new Vue({
             let textDecoder = new TextDecoder();
             let textContent = textDecoder.decode(byteArray);
             this.rawData = JSON.parse(textContent)
-                // this.rawData = JSON.parse(textContent)
+
         }));
 
         // await axios.get('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test.gzip', { responseType: 'arraybuffer', 'decompress': true })
