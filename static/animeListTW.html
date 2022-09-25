@@ -121,7 +121,7 @@
                                     <h3>一些問題</h3>
                                     <br />
                                     <ol>
-                                        <li class="text-decoration-line-through">資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic Number減肥看看了。</li>
+                                        <li><span class="text-decoration-line-through">資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic Number減肥看看了。</span>目前改成壓縮成gzip檔，體積約剩下原本的10%，但因為還要解壓，現在倒是效能問題了</li>
                                         <li>哈囉！小梅子，在myanimelist被建了兩個，所以列表中出現了兩次。</li>
                                         <li class="text-decoration-line-through">我立於百萬生命之上，都因為一二季別名完全一樣...導致撈到第一季的ID</li>
                                         <li class="text-decoration-line-through">銀魂第一季及第四季及百花繚亂、槍神 Badlands Rumble等等撈錯，是因為巴哈命名不規範...</li>
@@ -366,7 +366,7 @@
                         </v-row>
                         <br />
                         <h3 v-if="selSource != 'ALL'">改編類型篩選還沒用好，資料應該有缺，缺了多少就不確定了，因為那部份我是"中途"才想到才順便弄，而資料要等下一輪更新才會完善，中文選項則要等我晚點再弄了，只是剛好在PTT看到有人提，所以先丟出來@@</h3>
-                        <v-data-table loader-height="10" ref="tb" loading-text="讀取中，除非網速慢，不然初次進入應該不會超過10秒啦..." no-results-text="該條件查無任何資料，可能是沒有收錄、翻譯不同等等，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage
+                        <v-data-table loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦..." no-results-text="該條件查無任何資料，可能是沒有收錄、翻譯不同等等，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage
                             class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                             <template v-slot:item="{item}" v-if="windowWidth > 600">
                                 <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
