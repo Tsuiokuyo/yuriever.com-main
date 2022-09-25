@@ -80,7 +80,7 @@ let vue = new Vue({
         },
     },
     data: {
-        rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/result.json',
+        // rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/result.json',
         // rawUrl: 'https://tsuiokuyo.netlify.app/result.json',
         rawData: [],
         windowWidth: window.innerWidth,
@@ -534,17 +534,25 @@ let vue = new Vue({
         // this.rawData = await fetch(
         //     this.rawUrl,
         // ).then((res) => res.json());
+        await fetch('https://tsuiokuyo.netlify.app/test.gzip').then((res) => res.arrayBuffer().then(buf => {
+            // await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test.gzip').then((res) => res.arrayBuffer().then(buf => {
+            let zippedContent = new Uint8Array(buf);
+            let byteArray = pako.ungzip(zippedContent);
+            let textDecoder = new TextDecoder();
+            let textContent = textDecoder.decode(byteArray);
+            this.rawData = JSON.parse(textContent)
+                // this.rawData = JSON.parse(textContent)
+        }));
 
-
-        await axios.get('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test.gzip', { responseType: 'arraybuffer', 'decompress': true })
-            .then(res => {
-                let zippedContent = new Uint8Array(res.data);
-                let byteArray = pako.ungzip(zippedContent);
-                let textDecoder = new TextDecoder();
-                let textContent = textDecoder.decode(byteArray);
-                this.rawData = JSON.parse(textContent)
-                    // console.log(this.rawData)
-            })
+        // await axios.get('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test.gzip', { responseType: 'arraybuffer', 'decompress': true })
+        //     .then(res => {
+        //         let zippedContent = new Uint8Array(res.data);
+        //         let byteArray = pako.ungzip(zippedContent);
+        //         let textDecoder = new TextDecoder();
+        //         let textContent = textDecoder.decode(byteArray);
+        //         this.rawData = JSON.parse(textContent)
+        //             // console.log(this.rawData)
+        //     })
 
 
         vue.isLoading = false;
