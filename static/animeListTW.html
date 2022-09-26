@@ -267,7 +267,7 @@
                                         <v-icon>
                                             mdi-label-multiple
                                         </v-icon>
-                                        類型篩選箱 (與下方搜尋條件不相容)
+                                        類型篩選箱
                                     </span></v-expansion-panel-header>
                                 <v-expansion-panel-content><br />
                                     <v-chip-group v-model="genreSel" column multiple>
@@ -282,12 +282,12 @@
                             </v-expansion-panel>
 
                             <span v-if="windowWidth < 600">(目前手機版把一些無用篩選功能移除)</span>
-                            <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense :disabled="isSearch" item-text="cht" item-value="value"></v-select>
-                            <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense :disabled="isSearch" item-text="cht" item-value="value"></v-select>
-                            <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense :disabled="isSearch"></v-select>
-                            <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
+                            <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
+                            <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
+                            <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense></v-select>
+                            <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense>
                             </v-text-field>
-                            <v-text-field v-if="windowWidth < 600" id="srh2" v-model="search" append-icon="mdi-magnify" hint="支援繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense :disabled="isSearch">
+                            <v-text-field v-if="windowWidth < 600" id="srh2" v-model="search" append-icon="mdi-magnify" hint="支援繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
                             </v-text-field>
 
                             <v-checkbox v-if="windowWidth < 600" v-model="toRandom" label="排名亂數排序" dense color="red"></v-checkbox>
@@ -295,27 +295,27 @@
                         </v-expansion-panels>
                         <v-card-title v-if="windowWidth > 600">
                             <v-row>
-                                <v-btn @click="selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
-                                    重設本列條件</v-btn>
+                                <v-btn @click="genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
+                                    重設所有條件</v-btn>
                                 <v-col cols="1">
-                                    <v-select :items="selectTypes" v-model="selType" label="作品類型" dense :disabled="isSearch" item-text="cht" item-value="value"></v-select>
+                                    <v-select :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-select :items="selectSources" v-model="selSource" label="改編類型" dense :disabled="isSearch" item-text="cht" item-value="value"></v-select>
+                                    <v-select :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-select :items="selectYears" v-model="selYear" label="年份範圍" dense :disabled="isSearch"></v-select>
+                                    <v-select :items="selectYears" v-model="selYear" label="年份範圍" dense></v-select>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-text-field v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
+                                    <v-text-field v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense>
                                     </v-text-field>
                                 </v-col>
                                 <v-col cols="1" v-if="selYear == '介於'">
-                                    <v-text-field v-model="year2" type="number" label="迄" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
+                                    <v-text-field v-model="year2" type="number" label="迄" clear-icon="mdi-close-circle" clearable dense>
                                     </v-text-field>
                                 </v-col>
                                 <v-col>
-                                    <v-text-field v-model="search" id="srh1" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="支援繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" dense clearable :disabled="isSearch">
+                                    <v-text-field v-model="search" id="srh1" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="支援繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" dense clearable>
                                     </v-text-field>
                                 </v-col>
                                 <v-col></v-col>
@@ -324,15 +324,15 @@
                                     <!-- <v-checkbox v-model="bangumiDisable" label="相差分數不含bangumi" dense></v-checkbox> -->
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-text-field v-model="diff" type="number" label="與巴哈相差分數" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
+                                    <v-text-field v-model="diff" type="number" label="與巴哈相差分數" clear-icon="mdi-close-circle" clearable dense>
                                     </v-text-field>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-text-field v-model="rank1" type="number" label="排名區間" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
+                                    <v-text-field v-model="rank1" type="number" label="排名區間" clear-icon="mdi-close-circle" clearable dense>
                                     </v-text-field>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-text-field v-model="rank2" type="number" label="迄" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
+                                    <v-text-field v-model="rank2" type="number" label="迄" clear-icon="mdi-close-circle" clearable dense>
                                     </v-text-field>
                                 </v-col>
                                 <!-- <v-col></v-col> -->

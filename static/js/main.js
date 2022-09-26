@@ -1,4 +1,5 @@
 // 麵條式代碼，其實我也很無奈，一開始沒想到會變得這麼亂...
+// Vue.config.devtools = true;
 
 let vue = new Vue({
     el: '#app',
@@ -125,7 +126,6 @@ let vue = new Vue({
         studioList: [],
         badges: {},
         badgesDef: {},
-        isSearch: false,
         moelong: {},
         gnn: {},
         disabledZero: true,
@@ -134,7 +134,7 @@ let vue = new Vue({
         toRandom: true,
         hug: '',
         snackbar: true,
-        test: '',
+
     },
     computed: {
         listenChange() {
@@ -144,7 +144,8 @@ let vue = new Vue({
                 selYear,
                 selType,
                 itemsPerPage,
-                genreSel
+                genreSel,
+                selSource
             } = this
             return {
                 search,
@@ -152,7 +153,8 @@ let vue = new Vue({
                 selYear,
                 selType,
                 itemsPerPage,
-                genreSel
+                genreSel,
+                selSource
             }
         },
         headers() {
@@ -476,16 +478,16 @@ let vue = new Vue({
                     this.badges[gen] = ++this.badges[gen] || 1
                 }
             }
-            if (this.search || this.year) {
-                this.badges = {}
-            } else {
-                if (this.genreSel.length == 0) {
-                    this.badges = this.badgesDef
-                    this.isSearch = false
-                } else {
-                    this.isSearch = true
-                }
-            }
+            // if (this.search || this.year) {
+            //     this.badges = {}
+            // } else {
+            //     if (this.genreSel.length == 0) {
+            //         this.badges = this.badgesDef
+            //             // this.isSearch = false
+            //     } else {
+            //         // this.isSearch = true
+            //     }
+            // }
             this.destroyTable()
         }
     },
