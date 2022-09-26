@@ -103,8 +103,19 @@ let vue = new Vue({
         tab: '',
         selectYears: ['等於', '大於', '小於', '介於'],
         selYear: '等於',
-        selectTypes: ['ALL', 'TV', 'MOVIE', 'OVA'],
-        selectSources: ['ALL', '4-koma manga', 'Original', 'Novel', 'Book', 'Card game', 'Game', 'Light novel', 'Manga', 'Mixed media', 'Music', 'Picture book', 'Radio', 'Visual novel', 'Web manga'],
+        selectTypes: [{ value: 'ALL', cht: '全部' }, { value: 'TV', cht: '電視' }, { value: 'MOVIE', cht: '劇場版' }, { value: 'OVA', cht: 'OVA' }],
+        selectSources: [{ value: 'ALL', cht: '全部' }, { value: '4-koma manga', cht: '四格漫畫' }, { value: 'Original', cht: '原創' },
+            { value: 'Novel', cht: '小說' }, { value: 'Book', cht: '書籍' }, { value: 'Card game', cht: '卡牌遊戲' },
+            { value: 'Game', cht: '遊戲' },
+            { value: 'Light novel', cht: '輕小說' },
+            { value: 'Manga', cht: '漫畫' },
+            { value: 'Mixed media', cht: '跨媒體製作' },
+            { value: 'Music', cht: '音樂' },
+            { value: 'Picture book', cht: '繪本' },
+            { value: 'Radio', cht: '廣播' },
+            { value: 'Visual novel', cht: '電子小說' },
+            { value: 'Web manga', cht: '網路漫畫' }
+        ],
         selType: 'ALL',
         selSource: 'ALL',
         randomTen: [],
@@ -131,7 +142,6 @@ let vue = new Vue({
         hug: '',
         snackbar: true,
         test: '',
-
     },
     computed: {
         listenChange() {
@@ -152,8 +162,6 @@ let vue = new Vue({
                 genreSel
             }
         },
-
-
         headers() {
             return [{
                     text: '封面',
@@ -181,7 +189,6 @@ let vue = new Vue({
                         }
                         if (this.search) {
                             // let searchs = this.search.split(',')
-
                             name = false
                                 // for (sear of searchs) {
                                 //     if (!sear) {
@@ -202,7 +209,6 @@ let vue = new Vue({
                                 name = true;
                             }
                             // }
-
                         }
                         if (this.year && this.year > 1900) {
                             switch (this.selYear) {
@@ -227,9 +233,6 @@ let vue = new Vue({
                         } else if (this.rank2) {
                             rank = parseInt(item.rank) <= parseInt(this.rank2)
                         }
-
-
-
                         if (this.diff) {
                             if (item.Gamer && item.Gamer.bayesian_score > 0) {
                                 function comput(a, b, range) {
@@ -240,7 +243,6 @@ let vue = new Vue({
 
                                 let gScore = item.Gamer.bayesian_score
                                 difference = Math.abs(parseFloat(gScore) - parseFloat(item.MAL.score > 0 ? item.MAL.score : false)) >= parseFloat(this.diff) ||
-                                    // comput(gScore, !this.bangumiDisable ? item.BGM : false, this.diff) ||
                                     comput(gScore, item.BGM, this.diff) ||
                                     comput(gScore, item.Anikore, this.diff) ||
                                     comput(gScore, item.AniList, this.diff) ||
@@ -251,8 +253,6 @@ let vue = new Vue({
                                     comput(gScore, item.trakt, this.diff) ||
                                     comput(gScore, item.livechart, this.diff)
 
-                                // Math.abs(parseInt(item.Gamer.bayesian_score) - parseInt(null != item.annict ? item.annict.bayesian_score : 0)) >= this.diff||
-                                // Math.abs(parseInt(item.Gamer.bayesian_score) - parseInt(null != item.sakuhindb ? item.sakuhindb.bayesian_score : 0)) >= this.diff||
                             } else {
                                 return false;
                             }
@@ -275,23 +275,6 @@ let vue = new Vue({
                         return bYear && bSelType && generCheck && rank && difference && name && selSrc
                     },
                 },
-                // {
-                //     text: '簡中名稱(搜尋用)',
-                //     value: 'cn',
-                //     align: 'd-none',
-                // }, {
-                //     text: '日文名稱(搜尋用)',
-                //     value: 'MAL.jp_name',
-                //     align: 'd-none'
-                // }, {
-                //     text: '英文名稱(搜尋用)',
-                //     value: 'MAL.en_name',
-                //     align: 'd-none'
-                // }, {
-                //     text: '繁中名稱(搜尋用)',
-                //     value: 'Gamer.title',
-                //     align: 'd-none'
-                // },
                 {
                     text: '算數平均值',
                     align: 'center',
@@ -417,14 +400,13 @@ let vue = new Vue({
                 case 'Manga':
                     return '漫畫';
                 case 'Mixed media':
-                    return '綜合';
+                    return '跨媒體製作';
                 case 'Music':
                     return '音樂';
                 case 'Novel':
                     return '小說';
                 case 'Original':
                     return '原創';
-
                 case 'Picture book':
                     return '繪本';
                 case 'Radio':
@@ -432,13 +414,11 @@ let vue = new Vue({
                 case 'Other':
                 case 'undefined':
                 case 'Unknown':
-                    return '其他';
-
+                    return '未知';
                 case 'Visual novel':
                     return '電子小說';
                 case 'Web manga':
                     return '網路漫畫';
-
             }
             return src
         },

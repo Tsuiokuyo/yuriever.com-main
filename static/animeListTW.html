@@ -282,9 +282,8 @@
                             </v-expansion-panel>
 
                             <span v-if="windowWidth < 600">(目前手機版把一些無用篩選功能移除)</span>
-                            <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense :disabled="isSearch"></v-select>
-                            <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense :disabled="isSearch"></v-select>
-                            <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense :disabled="isSearch"></v-select>
+                            <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense :disabled="isSearch" item-text="cht" item-value="value"></v-select>
+                            <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense :disabled="isSearch" item-text="cht" item-value="value"></v-select>
                             <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense :disabled="isSearch"></v-select>
                             <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense :disabled="isSearch">
                             </v-text-field>
@@ -299,10 +298,10 @@
                                 <v-btn @click="selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
                                     重設本列條件</v-btn>
                                 <v-col cols="1">
-                                    <v-select :items="selectTypes" v-model="selType" label="作品類型" dense :disabled="isSearch"></v-select>
+                                    <v-select :items="selectTypes" v-model="selType" label="作品類型" dense :disabled="isSearch" item-text="cht" item-value="value"></v-select>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-select :items="selectSources" v-model="selSource" label="改編類型" dense :disabled="isSearch"></v-select>
+                                    <v-select :items="selectSources" v-model="selSource" label="改編類型" dense :disabled="isSearch" item-text="cht" item-value="value"></v-select>
                                 </v-col>
                                 <v-col cols="1">
                                     <v-select :items="selectYears" v-model="selYear" label="年份範圍" dense :disabled="isSearch"></v-select>
@@ -365,7 +364,7 @@
                             </v-col>
                         </v-row>
                         <br />
-                        <h3 v-if="selSource != 'ALL'">改編類型篩選還沒用好，資料應該有缺，缺了多少就不確定了，因為那部份我是"中途"才想到才順便弄，而資料要等下一輪更新才會完善，中文選項則要等我晚點再弄了，只是剛好在PTT看到有人提，所以先丟出來@@</h3>
+                        <h4 v-if="selSource != 'ALL'">改編類型篩選出來的資料尚未完全，有部分作品沒有改編資料，因為這部份我是"中途"想到才加進來，所以要等下一輪更新資料才會完善，只是剛好在PTT看到有人提，所以先丟出來@@</h4>
                         <v-data-table loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦..." no-results-text="該條件查無任何資料，可能是沒有收錄、翻譯不同等等，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage
                             class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                             <template v-slot:item="{item}" v-if="windowWidth > 600">
