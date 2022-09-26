@@ -345,7 +345,7 @@
                                     <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(省流量(幾乎無感))" dense></v-checkbox>
                                 </v-col>
                                 <v-col cols="2">
-                                    <v-checkbox v-model="disabledZero" label="隱藏無計分動畫" dense></v-checkbox>
+                                    <v-checkbox v-model="disabledZero" label="排除無計分動畫" dense></v-checkbox>
                                 </v-col>
                                 <v-col cols="1">
                                     <v-checkbox class="font-weight-black" v-model="toRandom" label="亂數排序" dense color="red"></v-checkbox>
@@ -365,8 +365,8 @@
                         </v-row>
                         <br />
                         <h4 v-if="selSource != 'ALL'">改編類型篩選出來的資料尚未完全，有2263筆作品沒有改編資料，因為這部份我是"中途"想到才加進來，所以要等下一輪更新資料才會完善，只是剛好在PTT看到有人提，所以先丟出來@@</h4>
-                        <v-data-table loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦..." no-results-text="查無任何資料，可能是篩選條件沒有重設、勾選隱藏無計分動畫，或是沒有收錄、翻譯問題(建議直接日文原名)，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage
-                            class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
+                        <v-data-table loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦..." no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers"
+                            :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                             <template v-slot:item="{item}" v-if="windowWidth > 600">
                                 <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
                                     <td class="center pa-0" >

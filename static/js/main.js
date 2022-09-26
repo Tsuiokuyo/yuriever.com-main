@@ -145,7 +145,8 @@ let vue = new Vue({
                 selType,
                 itemsPerPage,
                 genreSel,
-                selSource
+                selSource,
+                disabledZero
             } = this
             return {
                 search,
@@ -154,7 +155,8 @@ let vue = new Vue({
                 selType,
                 itemsPerPage,
                 genreSel,
-                selSource
+                selSource,
+                disabledZero
             }
         },
         headers() {
@@ -475,7 +477,14 @@ let vue = new Vue({
             let filters = this.$refs.tb.$children[0].filteredItems
             for (item of filters) {
                 for (gen of item.MAL.genres) {
-                    this.badges[gen] = ++this.badges[gen] || 1
+                    if (this.disabledZero) {
+                        if (item.score > 0) {
+                            this.badges[gen] = ++this.badges[gen] || 1
+                        }
+                    } else {
+                        this.badges[gen] = ++this.badges[gen] || 1
+
+                    }
                 }
             }
             // if (this.search || this.year) {
@@ -624,7 +633,13 @@ let vue = new Vue({
 
             for (item of this.rawData) {
                 for (gen of item.MAL.genres) {
-                    this.badges[gen] = ++this.badges[gen] || 1
+                    if (this.disabledZero) {
+                        if (item.score > 0) {
+                            this.badges[gen] = ++this.badges[gen] || 1
+                        }
+                    } else {
+                        this.badges[gen] = ++this.badges[gen] || 1
+                    }
                 }
                 genres = genres.concat(item.MAL.genres)
 
@@ -633,9 +648,17 @@ let vue = new Vue({
                     item.MAL.duration = item.MAL.duration * 60
                 }
                 if ('duration' in item.MAL && null != item.MAL.duration && item.MAL.type != "Movie" && item.MAL.duration < 16) {
-                    item.MAL.genres.push('cup')
-                    genres.push('cup')
-                    this.badges['cup'] = ++this.badges['cup'] || 1
+                    if (this.disabledZero) {
+                        // if (item.score > 0) {
+                        item.MAL.genres.push('cup')
+                        genres.push('cup')
+                        this.badges['cup'] = ++this.badges['cup'] || 1
+                            // }
+                    } else {
+                        item.MAL.genres.push('cup')
+                        genres.push('cup')
+                        this.badges['cup'] = ++this.badges['cup'] || 1
+                    }
                 }
             }
 
