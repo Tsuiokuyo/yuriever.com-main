@@ -113,40 +113,36 @@
                                         <br /> (單標準 /總標準) * (分數 -單平均) + 總平均
                                     </h4>
                                     <h2>關於列表</h2>
-                                    <span>純前端畫面，沒有後端，本想串firebase，但50000筆的免費額度有點微妙，<br />
-                                        此列表"目前"基於myanimelist同時巴哈有撈到資料為主，<br />
-                                        因為myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...<br />
-                                        <span class="text-decoration-line-through">所以暫時僅撈取巴哈不為空的資料，約4000筆</span>
+                                    <span>應該算是純前端畫面，畢竟沒有後端更沒有資料庫，本想串firebase，但50000筆的免費額度有點微妙，<br />
+                                        RSS雖用Heroku抓取，但11/28停止免費服務，屆時沒找到替代方法應該就直接拔掉了
+                                        <br />
+                                        所有資料基於myanimelist產生，目前在myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...<br />
+                                        所以肯定不會全部都撈，也沒辦法每幾分鐘就更新一筆，畢竟沒有使用到資料庫一筆一筆的更新                                        
                                     <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜單，當然也能當成找番、補番用工具。
+                                    <h3>作品篩選依據</h3>
+                                    可比對到巴哈姆特的作品或者是至少有四個分數來源網站，順便一提，巴哈應該有2K多筆資料我沒有比對到
+                                    <p />
+                                    <h3>來源網站挑選依據</h3>
+                                    沒有，好塞先就塞，但是如有明文說不能爬蟲的，有注意到就會放棄，
+                                    例如anidb就表明不允許，雖然這單純只是覺得麻煩，畢竟再多的話也要調整。
+                                    <p />
                                     <h3>一些問題</h3>
                                     <br />
                                     <ol>
                                         <li><span class="text-decoration-line-through">資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic Number減肥看看了。</span>目前改成壓縮成gzip檔，體積約剩下原本的10%，但因為還要解壓，現在倒是效能問題了</li>
-                                        <li>哈囉！小梅子，在myanimelist被建了兩個，所以列表中出現了兩次。</li>
-                                        <li class="text-decoration-line-through">我立於百萬生命之上，都因為一二季別名完全一樣...導致撈到第一季的ID</li>
-                                        <li class="text-decoration-line-through">銀魂第一季及第四季及百花繚亂、槍神 Badlands Rumble等等撈錯，是因為巴哈命名不規範...</li>
-                                        <li class="text-decoration-line-through">甜點兔，巴哈似乎沒有第一季的頁面，導致撈到第二季</li>
-                                        <li class="text-decoration-line-through">FAIRY TAIL 魔導少年 百年任務、盾勇3、入間同學入魔了！2、月光下的異世界之旅2、黃金神威4、總之就是很可愛2、實力至上3、間諜家家酒2、世界盡頭的聖騎士2，最新一季會錯撈等，為了解決第二點反倒出現這個...</li>
-                                        <li class="text-decoration-line-through">MAL首播年度有些編輯者和我有著年度的理解差異啊...，例如:鬼滅の刃 遊郭編 當地是2021年12月05日首播 但填寫 2022年冬季?</li>
-                                        <li>Phantom:The Animation標點符號無法與巴哈對上</li>
+                                    <li>哈囉！小梅子，在myanimelist被建了兩個，所以列表中出現了兩次。</li>
+                                    <li class="text-decoration-line-through">我立於百萬生命之上，都因為一二季別名完全一樣...導致撈到第一季的ID</li>
+                                    <li class="text-decoration-line-through">銀魂第一季及第四季及百花繚亂、槍神 Badlands Rumble等等撈錯，是因為巴哈命名不規範...</li>
+                                    <li class="text-decoration-line-through">甜點兔，巴哈似乎沒有第一季的頁面，導致撈到第二季</li>
+                                    <li class="text-decoration-line-through">FAIRY TAIL 魔導少年 百年任務、盾勇3、入間同學入魔了！2、月光下的異世界之旅2、黃金神威4、總之就是很可愛2、實力至上3、間諜家家酒2、世界盡頭的聖騎士2，最新一季會錯撈等，為了解決第二點反倒出現這個...</li>
+                                    <li class="text-decoration-line-through">MAL首播年度有些編輯者和我有著年度的理解差異啊...，例如:鬼滅の刃 遊郭編 當地是2021年12月05日首播 但填寫 2022年冬季...?</li>
+                                    <li>Phantom:The Animation標點符號無法與巴哈對上</li>
+                                    <li>蟲師 續章 一樣是命名問題</li>
                                     </ol>
-                                    <span class="text-decoration-line-through">
-                                        這並非包含巴哈全部的動畫清單，因為總會有沒有比對到的作品，畢竟一部作品的不管中英日都各有好幾種寫法，<br />
-                                        舉個已解決的例子：<br />
-                                        (蟲師 續章)
-                                        巴哈作品名稱：日文:むしし 続章<br />
-                                        來源比對名稱: 日文:蟲師 続章、むししぞくしょう<br />
-                                        恩...為何巴哈要用成平假名+漢字，<br />
-                                        當然，其他部分也有可能有問題，但是首先我需要知道有問題。</span>
-                                    <p />
-                                    <h3>來源網站挑選依據</h3>
-                                    沒有，好塞先就塞，但是有明文說不能爬蟲的，如有注意到也會去掉，只不過再多的話排版就要打掉了...
-                                    <p />
-                                    </span>
 
                                     <h2>分數計算方式</h2>
                                     除特定網站，其餘使用貝氏估計法重新計算分數，規則如下：<br /> 各網站作品投票數至少需要10票，低於10票則不計算分數，
-                                    <br /> 使用貝氏估計法後，若至少4個網站有分數，則標準化所有分數取平均值，<br /> 而無投票細節的網站得出的分數多少會有誤差，
+                                    <br /> 使用貝氏估計法後，若至少4個網站有計算出分數，則標準化所有分數取平均值，<br /> 而無投票細節的網站得出的分數多少會有誤差，
                                     <br /> 公式使用自https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation
                                 </div>
                                 <p />
@@ -187,7 +183,7 @@
                                     <li>sakuhindb:日本，249.2K人次</li>
                                     <li>trakt:美國，8.6M人次</li>
                                 </ol>
-                                而anidb不允許網頁抓取(scrape)，作罷，其餘如redditanimelist、imdb、tmdb列表，有空再研究。
+
                                 <p />
                                 <h2>感謝</h2>
                                 <ol>
@@ -198,6 +194,7 @@
                                     <li>https://github.com/jikan-me/jikan-rest </li>
                                     <li>https://github.com/AniList/ApiV2-GraphQL-Docs</li>
                                     <li>https://github.com/bangumi/api</li>
+                                    <li>https://github.com/Rob--W/cors-anywhere</li>
                                 </ol>
                                 <br />
 
