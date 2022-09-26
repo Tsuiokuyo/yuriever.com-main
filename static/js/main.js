@@ -561,7 +561,7 @@ let vue = new Vue({
         }));
         vue.isLoading = false;
 
-        this.getRandomArray();
+
 
         let newMoes = []
             // https://thingproxy.freeboard.io/fetch/
@@ -663,6 +663,7 @@ let vue = new Vue({
             })
 
         this.$nextTick(function() {
+            this.getRandomArray();
             let genres = []
             let studios = []
 
@@ -929,20 +930,32 @@ let vue = new Vue({
             return items;
         },
         getRandomArray() {
-            this.$nextTick(function() {
-                this.randomTen = []
-                let shuffled = this.rawData.slice(0),
-                    i = this.rawData.length,
-                    min = i - 10,
-                    temp, index;
-                while (i-- > min) {
-                    index = Math.floor((i + 1) * Math.random());
-                    temp = shuffled[index];
-                    shuffled[index] = shuffled[i];
-                    shuffled[i] = temp;
+            // this.$nextTick(function() {
+            this.randomTen = []
+            let shuffled = this.rawData.slice(0),
+                i = this.rawData.length,
+                min = i - 10,
+                temp, index;
+            while (i-- > min) {
+                index = Math.floor((i + 1) * Math.random());
+                temp = shuffled[index];
+                shuffled[index] = shuffled[i];
+                shuffled[i] = temp;
+            }
+            let check = shuffled.slice(min)
+            for (item of check) {
+                if (this.disabledNSFW) {
+                    if (item.MAL.genres.includes('Hentai')) {
+                        return this.getRandomArray()
+                    }
                 }
-                this.randomTen = shuffled.slice(min)
-            })
+                // if (this.disabledZero) {
+                //     if (item.score == 0) {
+                //         return this.getRandomArray()
+                //     }
+                // }
+            }
+            this.randomTen = check
         },
         randomListTitle(item) {
             if (null != item.Gamer) {
