@@ -281,7 +281,7 @@
                                 </v-expansion-panel-content>
                             </v-expansion-panel>
 
-                            <span v-if="windowWidth < 600">(目前手機版把一些無用篩選功能移除)</span>
+                            <span v-if="windowWidth < 600">(手機版預設排除裏番及無計分作品)</span>
                             <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
                             <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
                             <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense></v-select>
@@ -347,10 +347,14 @@
                                 <v-col cols="2">
                                     <v-checkbox v-model="disabledZero" label="排除無計分動畫" dense></v-checkbox>
                                 </v-col>
+
                                 <v-col cols="1">
                                     <v-checkbox class="font-weight-black" v-model="toRandom" label="亂數排序" dense color="red"></v-checkbox>
                                 </v-col>
                                 <v-col> </v-col>
+                                <v-col cols="1">
+                                    <v-checkbox v-model="disabledNSFW" label="排除裏番" dense></v-checkbox>
+                                </v-col>
                                 <v-col cols="2">
                                     <v-select :items="itemsPerPages" v-model="itemsPerPage" label="每頁列數" dense>
                                     </v-select>
