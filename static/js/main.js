@@ -105,11 +105,12 @@ let vue = new Vue({
         selectYears: ['等於', '大於', '小於', '介於'],
         selYear: '等於',
         selectTypes: [{ value: 'ALL', cht: '全部' }, { value: 'TV', cht: '電視' }, { value: 'MOVIE', cht: '劇場版' }, { value: 'OVA', cht: 'OVA' }],
-        selectSources: [{ value: 'ALL', cht: '全部' }, { value: '4-koma manga', cht: '四格漫畫' }, { value: 'Original', cht: '原創' },
-            { value: 'Novel', cht: '小說' }, { value: 'Book', cht: '書籍' }, { value: 'Card game', cht: '卡牌遊戲' },
-            { value: 'Game', cht: '遊戲' }, { value: 'Light novel', cht: '輕小說' }, { value: 'Manga', cht: '漫畫' },
-            { value: 'Mixed media', cht: '跨媒體製作' }, { value: 'Music', cht: '音樂' }, { value: 'Picture book', cht: '繪本' },
-            { value: 'Radio', cht: '廣播' }, { value: 'Visual novel', cht: '電子小說' }, { value: 'Web manga', cht: '網路漫畫' }
+        selectSources: [{ value: 'ALL', cht: '全部' }, { value: 'Original', cht: '原創' }, { value: 'Light novel', cht: '輕小說' },
+            { value: 'Visual novel', cht: '電子小說' }, { value: 'Manga', cht: '漫畫' }, { value: 'Mixed media', cht: '跨媒體製作' },
+            { value: '4-koma manga', cht: '四格漫畫' }, { value: 'Game', cht: '遊戲' }, { value: 'Card game', cht: '卡牌遊戲' },
+            { value: 'Radio', cht: '廣播劇' }, { value: 'Music', cht: '音樂' }, { value: 'Web manga', cht: '網路漫畫' },
+            { value: 'Novel', cht: '小說' }, { value: 'Book', cht: '書籍' },
+            { value: 'Picture book', cht: '繪本' }
         ],
         selType: 'ALL',
         selSource: 'ALL',
@@ -174,42 +175,18 @@ let vue = new Vue({
                     value: 'name',
                     width: '25%',
                     filter: (value, search, item) => {
-                        let bYear = true;
-                        let bSelType = true;
-                        let generCheck = true
-                        let rank = true;
-                        let difference = true;
-                        let name = true;
-                        let selSrc = true
                         if (this.disabledNSFW) {
                             if (item.MAL.genres.includes('Hentai')) {
                                 return false;
                             }
-
                         }
                         if (this.disabledZero) {
                             if (item.score == 0) {
                                 return false;
                             }
                         }
-                        if (this.search) {
-                            name = false
-                            if (item.MAL && null != item.MAL.en_name && item.MAL.en_name.indexOf(this.search) != -1) {
-                                name = true;
-                            } else if (item.MAL && null != item.MAL.jp_name && item.MAL.jp_name.indexOf(this.search) != -1) {
-                                name = true;
-                            } else if (item.BGM && null != item.BGM.cn_name && item.BGM.cn_name.indexOf(this.search) != -1) {
-
-                                name = true;
-                            } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.indexOf(this.search) != -1) {
-                                name = true;
-                            } else if (item.BGM && null != item.BGM.cn_name && item.BGM.cn_name.indexOf(this.simp(this.search)) != -1) {
-                                name = true;
-                            } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.indexOf(this.trad(this.search)) != -1) {
-                                name = true;
-                            }
-                        }
                         if (this.year && this.year > 1900) {
+                            let bYear = true
                             switch (this.selYear) {
                                 case '等於':
                                     bYear = parseInt(item.MAL.premiered) == parseInt(this.year)
@@ -224,7 +201,11 @@ let vue = new Vue({
                                     bYear = (parseInt(item.MAL.premiered) >= parseInt(this.year) && parseInt(item.MAL.premiered) <= parseInt(this.year2 > 99 ? this.year2 : 9999))
                                     break;
                             }
+                            if (!bYear) {
+                                return false;
+                            }
                         }
+                        let rank = true
                         if (this.rank1 && this.rank2) {
                             rank = (parseInt(item.rank) >= parseInt(this.rank1) && parseInt(item.rank) <= parseInt(this.rank2))
                         } else if (this.rank1) {
@@ -232,14 +213,17 @@ let vue = new Vue({
                         } else if (this.rank2) {
                             rank = parseInt(item.rank) <= parseInt(this.rank2)
                         }
+                        if (!rank) {
+                            return false;
+                        }
                         if (this.diff) {
+                            let difference = true
                             if (item.Gamer && item.Gamer.bayesian_score > 0) {
                                 function comput(a, b, range) {
                                     if (b == null) return false;
                                     b = b.bayesian_score > 0 ? b.bayesian_score : false
                                     return Math.abs(parseFloat(a) - parseFloat(b)) >= parseFloat(range)
                                 }
-
                                 let gScore = item.Gamer.bayesian_score
                                 difference = Math.abs(parseFloat(gScore) - parseFloat(item.MAL.score > 0 ? item.MAL.score : false)) >= parseFloat(this.diff) ||
                                     comput(gScore, item.BGM, this.diff) ||
@@ -251,27 +235,54 @@ let vue = new Vue({
                                     comput(gScore, item.notifyMoe, this.diff) ||
                                     comput(gScore, item.trakt, this.diff) ||
                                     comput(gScore, item.livechart, this.diff)
-
                             } else {
+                                return false;
+                            }
+                            if (!difference) {
                                 return false;
                             }
                         }
                         if (this.selSource != 'ALL') {
-                            selSrc = item.MAL.source == this.selSource
+                            let selSrc = item.MAL.source == this.selSource
+                            if (!selSrc) {
+                                return false;
+                            }
                         }
                         if (this.selType != 'ALL') {
-                            bSelType = item.MAL.type.toUpperCase() == this.selType.toUpperCase()
+                            let bSelType = item.MAL.type.toUpperCase() == this.selType.toUpperCase()
+                            if (!bSelType) {
+                                return false;
+                            }
                         }
                         if (this.genreList) {
                             for (gen of this.genreSel) {
-                                generCheck = item.MAL.genres.find(element => element == gen)
+                                let generCheck = item.MAL.genres.find(element => element == gen)
                                 if (!generCheck) {
                                     return false
                                 }
                             }
                         }
+                        if (this.search) {
+                            let name = false
+                            if (item.MAL && null != item.MAL.en_name && item.MAL.en_name.indexOf(this.search) != -1) {
+                                name = true;
+                            } else if (item.MAL && null != item.MAL.jp_name && item.MAL.jp_name.indexOf(this.search) != -1) {
+                                name = true;
+                            } else if (item.BGM && null != item.BGM.cn_name && item.BGM.cn_name.indexOf(this.search) != -1) {
 
-                        return bYear && bSelType && generCheck && rank && difference && name && selSrc
+                                name = true;
+                            } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.indexOf(this.search) != -1) {
+                                name = true;
+                            } else if (item.BGM && null != item.BGM.cn_name && item.BGM.cn_name.indexOf(this.simp(this.search)) != -1) {
+                                name = true;
+                            } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.indexOf(this.trad(this.search)) != -1) {
+                                name = true;
+                            }
+                            if (!name) {
+                                return false;
+                            }
+                        }
+                        return true
                     },
                 },
                 {
