@@ -1,0 +1,184 @@
+[
+  {
+    "MAL": {
+      "id": 1,
+      "type": "TV",
+      "score": 8.76,
+      "votes": 844185,
+      "rank": 38,
+      "image": "https://cdn.myanimelist.net/images/anime/4/19644.jpg",
+      "air_from": "1998-04-03T00:00:00+00:00",
+      "air_to": "1999-04-24T00:00:00+00:00",
+      "air_status": "Finished Airing",
+      "title": "Cowboy Bebop",
+      "en_name": "Cowboy Bebop",
+      "jp_name": "カウボーイビバップ",
+      "adjusted_score": NaN
+    },
+    "ANN": {
+      "id": 13,
+      "type": "TV",
+      "votes": 12357,
+      "bayesian_score": 8.89013,
+      "weighted_score": 8.8916,
+      "titles": [
+        "Cowboy Bebop",
+        "カウボーイビバップ"
+      ],
+      "adjusted_score": NaN
+    },
+    "BGM": {
+      "id": 253,
+      "votes": 10495,
+      "score": 9.2,
+      "rating_detail": {
+        "10": 5066,
+        "9": 3279,
+        "8": 1461,
+        "7": 429,
+        "6": 138,
+        "5": 52,
+        "4": 11,
+        "3": 4,
+        "2": 10,
+        "1": 45
+      },
+      "rank": 1,
+      "image": "http://lain.bgm.tv/pic/cover/l/c2/4c/253_t3XWb.jpg",
+      "air_from": "1998-10-23",
+      "cn_name": "星际牛仔",
+      "jp_name": "カウボーイビバップ",
+      "bayesian_score": 9.153978084802286,
+      "adjusted_score": NaN
+    },
+    "AniList": {
+      "id": 1,
+      "title": {
+        "romaji": "Cowboy Bebop",
+        "english": "Cowboy Bebop",
+        "native": "カウボーイビバップ"
+      },
+      "coverImage": {
+        "large": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx1-CXtrrkMpJ8Zq.png"
+      },
+      "averageScore": 86,
+      "stats": {
+        "scoreDistribution": [
+          {
+            "score": 10,
+            "amount": 400
+          },
+          {
+            "score": 20,
+            "amount": 124
+          },
+          {
+            "score": 30,
+            "amount": 282
+          },
+          {
+            "score": 40,
+            "amount": 639
+          },
+          {
+            "score": 50,
+            "amount": 1568
+          },
+          {
+            "score": 60,
+            "amount": 3263
+          },
+          {
+            "score": 70,
+            "amount": 9865
+          },
+          {
+            "score": 80,
+            "amount": 21618
+          },
+          {
+            "score": 90,
+            "amount": 35072
+          },
+          {
+            "score": 100,
+            "amount": 33971
+          }
+        ]
+      },
+      "votes": 106802,
+      "bayesian_score": 8.696700436321416,
+      "adjusted_score": NaN
+    },
+    "Anikore": {
+      "id": 258,
+      "title": "「COWBOY BEBOP - カウボーイビバップ（TVアニメ動画）」",
+      "jp_name": "COWBOY BEBOP - カウボーイビバップ",
+      "type": "TVアニメ動画",
+      "score": 4.2,
+      "votes": 3138,
+      "year": 1998,
+      "bayesian_score": 8.4,
+      "adjusted_score": NaN
+    },
+    "Gamer": {
+      "id": 20668,
+      "title": "星際牛仔",
+      "score": 4.7,
+      "vote": 138,
+      "rating_detail": {
+        "5": 109,
+        "4": 22,
+        "3": 5,
+        "2": 1,
+        "1": 2
+      },
+      "bayesian_score": 9.381294964028777
+    },
+    "AnimePlanetCom": {
+      "id": "cowboy-bebop",
+      "title": "Cowboy Bebop",
+      "score": 4.339,
+      "votes": 51331,
+      "bayesian_score": 8.678000000000003
+    },
+    "anisearch": {
+      "id": 1572,
+      "title": "Cowboy Bebop",
+      "score": 3.99,
+      "vote": 3835,
+      "rating_detail": {
+        "5": 1695,
+        "4": 1521,
+        "3": 467,
+        "2": 112,
+        "1": 40
+      },
+      "bayesian_score": 8.461016949152542
+    },
+    "kitsu": {
+      "id": 1,
+      "score": 82.06,
+      "bayesian_score": 8.206
+    },
+    "notifyMoe": {
+      "id": "Tk3ccKimg",
+      "score": 8.660068677949472,
+      "bayesian_score": 8.660068677949472
+    },
+    "anidb": {
+      "id": 23,
+      "score": 8.71,
+      "votes": 17575,
+      "air": "1998-04-03",
+      "ann_id": [
+        "13"
+      ],
+      "mal_id": [
+        "17205"
+      ],
+      "bayesian_score": 8.710000000000003
+    },
+    "score": NaN
+  }
+]
