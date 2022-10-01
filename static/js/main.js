@@ -1194,12 +1194,12 @@ let vue = new Vue({
                         return id;
                     }
                     return 'https://www.primevideo.com/detail/' + id
-                case '羚邦集團(Ani-One) YouTube':
+                case '羚邦(Ani-One) YouTube':
                 case 'AnimeLog Youtube':
                 case 'GUNDAM.INFO Youtube':
-                case '木棉花國際(Muse) Youtube':
+                case '木棉花(Muse) Youtube':
                     return 'https://www.youtube.com/' + id
-                case '巴哈姆特':
+                case '動畫瘋':
                     return 'https://ani.gamer.com.tw/animeVideo.php?sn=' + id
                 case '中華電信MOD':
                     return 'http://mod.cht.com.tw/video/' + id
