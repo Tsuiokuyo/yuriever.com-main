@@ -108,7 +108,7 @@
                                     </template>
                                     <br />
                                     <span class="text-decoration-line-through">
-                                        因為不重要，這邊真的懶得排版...</span><br />
+                                        因為大概沒人看，這邊真的懶得排版...</span><br />
                                     <h4>對了，先提一下，其實不用太在意巴哈評分特高的問題，雖然沒有去極值，但也對分數另外再進行標準化後，再去做平均，當然，大前提是運算邏輯沒問題。
                                         <br />將計算混合在一起的所有分數的總體 μ（平均值）和總體 σ（標準差）。 然後，對於某個網站 i，將計算其自身的 μi 和 σi。 最後，來自網站 i 的分數將通過以下方式標準化：
                                         <br /> (單標準 /總標準) * (分數 -單平均) + 總平均
@@ -128,15 +128,17 @@
                                         例如anidb就表明不允許，雖然這單純只是覺得麻煩，畢竟再多的話也要調整。
                                         <p />
                                         <h3>一些問題</h3>
-                                        <br />
+                                        <!-- <br /> -->
                                         <ol>
-                                            <li><v-btn @click="mo = window.performance.memory.usedJSHeapSize">{{mo}}</v-btn></li>
                                             <li>
-                                                <h2>目前載入JSON後，瞬間吃的記憶體上看500M了，這畫面快沒救了...</h2>
-                                            </li>
-                                            <li><span class="text-decoration-line-through">資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic
-                                                    Number減肥看看了。</span>目前改成壓縮成gzip檔，體積約剩下原本的10%，但因為還要解壓，現在倒是效能問題了</li>
-                                    <li>哈囉！小梅子，在myanimelist被建了兩個，所以列表中出現了兩次。</li>
+                                                <h2>忽然發現目前載入JSON後，瞬間吃的記憶體上看500MB了，懶惰終於變炸彈了，緩慢修正中...
+                                                    當前記憶體用量：<span v-if="null != memory">{{memory/Math.pow(1000,2)}}MB<v-btn color="error" @click="memory = performance.memory.usedJSHeapSize">更新</v-btn></span>
+                                    <span v-else>僅支援chrome內核</span>
+                                    </h2>
+                                    </li>
+                                    <li><span class="text-decoration-line-through">資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic
+                                                    Number減肥看看了，</span>目前弄成壓縮成gzip檔，但因為還要解壓，現在倒是效能問題了</li>
+                                    <li class="text-decoration-line-through">哈囉！小梅子，在myanimelist被建了兩個，所以列表中出現了兩次。</li>
                                     <li class="text-decoration-line-through">我立於百萬生命之上，都因為一二季別名完全一樣...導致撈到第一季的ID
                                     </li>
                                     <li class="text-decoration-line-through">銀魂第一季及第四季及百花繚亂、槍神 Badlands Rumble等等撈錯，是因為巴哈命名不規範...
@@ -145,13 +147,13 @@
                                     <li class="text-decoration-line-through">FAIRY TAIL 魔導少年 百年任務、盾勇3、入間同學入魔了！2、月光下的異世界之旅2、黃金神威4、總之就是很可愛2、實力至上3、間諜家家酒2、世界盡頭的聖騎士2，最新一季會錯撈等，為了解決第二點反倒出現這個...
                                     </li>
                                     <li class="text-decoration-line-through">MAL首播年度有些編輯者和我有著年度的理解差異啊...，例如:鬼滅の刃 遊郭編 當地是2021年12月05日首播 但填寫 2022年冬季...?</li>
-                                    <li>Phantom:The Animation標點符號無法與巴哈對上</li>
-                                    <li>蟲師 續章 一樣是命名問題</li>
+                                    <li>Phantom:The Animation因為標點符號無法與巴哈對上</li>
+                                    <li>有些動畫因24話有分成part 1、part 2的評分，但巴哈倒是直接合併</li>
                                     </ol>
-
+                                    <p />
                                     <h2>分數計算方式</h2>
                                     除特定網站，其餘使用貝氏估計法重新計算分數，規則如下：<br /> 各網站作品投票數至少需要10票，低於10票則不計算分數，
-                                    <br /> 使用貝氏估計法後，若至少4個網站有計算出分數，則標準化所有分數取平均值，<br /> 而無投票細節的網站得出的分數多少會有誤差，
+                                    <br /> 使用貝氏估計法後，若至少4個網站有計算出分數(裏番只需2個)，則標準化所有分數取平均值，<br /> 而無投票細節的網站得出的分數多少會有誤差，
                                     <br /> 公式使用自https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation
                                 </div>
                                 <p />
@@ -170,10 +172,8 @@
                                     <li>notifyMoe :重新計算分數，但沒找到投票分數細節</li>
                                     <li>sakuhindb:重新計算分數，但不列入總平均分數，七分制換算的問題</li>
                                     <li>trakt:重新計算分數</li>
-
                                 </ol>
                                 <p />
-
 
                                 <h2>2022年8月來源網站的國家及來源網站自身的訪問總量</h2>
                                 <ol>
@@ -348,7 +348,26 @@
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
-                        <v-expansion-panels v-model="panel">
+                        <v-expansion-panels multiple v-model="panel">
+                            <v-expansion-panel>
+                                <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
+                                    <span>
+                                        <v-icon>
+                                            mdi-label-multiple
+                                        </v-icon>
+                                        線上看篩選箱
+                                    </span></v-expansion-panel-header>
+                                <v-expansion-panel-content><br />
+                                    <v-chip-group v-model="onlineWatchSel" column multiple>
+                                        <v-chip v-for="(online, index) in onlineWatchs" :key="index" filter :value="online" dark>
+                                            <span>{{online}}</span>
+                                            <!-- <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span> -->
+
+                                        </v-chip>
+                                    </v-chip-group>
+                                    <v-btn @click="onlineWatchSel = []">重設類型</v-btn>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
                             <v-expansion-panel>
                                 <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
                                     <span>
@@ -385,7 +404,7 @@
 
                         <v-card-title v-if="windowWidth > 600">
                             <v-row>
-                                <v-btn @click="genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
+                                <v-btn @click="onlineWatchSel = [],genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
                                     重設所有條件</v-btn>
                                 <v-col cols="1">
                                     <v-select :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
@@ -460,7 +479,7 @@
                         <br />
                         <h4 v-if="selSource != 'ALL'">
                             改編類型篩選出來的資料尚未完全，有2263筆作品沒有改編資料，因為這部份我是"中途"想到才加進來，所以要等下一輪更新資料才會完善，只是剛好在PTT看到有人提，所以先丟出來@@</h4>
-                        <span>資料更新時間:2022年9月下旬，總筆數:{{rawData.length}}</span>
+                        <span>表格最適瀏覽解析度為1920x1080，資料更新時間:2022年9月下旬，總筆數:{{rawData.length}}</span>
                         <v-data-table loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦..." no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers"
                             :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                             <template v-slot:item="{item}" v-if="windowWidth > 600">
@@ -475,7 +494,7 @@
                                             </v-img>
                                         </div>
                                     </td>
-                                    <td style="font-size:15px;font-weight:bold;padding:0">
+                                    <td style="font-size:15px;font-weight:bold;padding:0" width="800px">
                                         <span v-if="null != item.Gamer">{{ item.Gamer.title }}
                                         </span> <br />
                                         <span v-if="null != item.BGM">{{ item.BGM.cn_name }}</span> <br />
@@ -548,7 +567,21 @@
                                             </span>
                             </v-chip>
                             <div>
-                                <v-menu offset-y open-on-hover v-if="Object.keys(onlineList(item)).length > 0">
+                                <v-menu offset-y open-on-hover v-if="Object.keys(item.online).length > 0">
+                                    <template v-slot:activator="{ on, attrs }">
+                                                    <v-btn color="primary" dark v-bind="attrs" v-on="on" small text>
+                                                        線上看<v-icon>mdi-menu-down</v-icon>
+                                                    </v-btn>
+                                                </template>
+
+                                    <v-list>
+                                        <v-list-item v-for="(item, key, index) in onlineList(item.online)" :key="index">
+                                            <v-list-item-title><a :href="item" :target="key" :title="key">{{ key }}</a>
+                                            </v-list-item-title>
+                                        </v-list-item>
+                                    </v-list>
+                                </v-menu>
+                                <!-- <v-menu offset-y open-on-hover v-if="Object.keys(onlineList(item)).length > 0">
                                     <template v-slot:activator="{ on, attrs }">
                                                     <v-btn color="primary" dark v-bind="attrs" v-on="on" small text>
                                                         線上看<v-icon>mdi-menu-down</v-icon>
@@ -561,7 +594,7 @@
                                             </v-list-item-title>
                                         </v-list-item>
                                     </v-list>
-                                </v-menu>
+                                </v-menu> -->
                                 <span style="float: right;" v-if="item.MAL.trailer">
                                                 <v-btn color="transparent" light
                                                     @click.stop="$set(dialogYt, item.MAL.id, true)">

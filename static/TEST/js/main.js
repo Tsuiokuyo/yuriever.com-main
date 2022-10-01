@@ -133,11 +133,14 @@ let vue = new Vue({
         destroy: true,
         disabledBgImage: false,
         dialogYt: {},
+
         genreList: [],
         genreSel: [],
-
         badges: {},
         badgesDef: {},
+        onlineWatchs: [],
+        onlineWatchSel: [],
+
         moelong: {},
         gnn: {},
         disabledZero: true,
@@ -154,7 +157,7 @@ let vue = new Vue({
         eventVoice: [],
         dialogCal: false,
         focus: '',
-        mo: performance.memory.usedJSHeapSize  /  Math.pow(1000,  2),
+        memory: null,
     },
     computed: {
         listenChange() {
@@ -167,7 +170,8 @@ let vue = new Vue({
                 genreSel,
                 selSource,
                 disabledZero,
-                disabledNSFW
+                disabledNSFW,
+                onlineWatchSel
             } = this
             return {
                 search,
@@ -178,7 +182,8 @@ let vue = new Vue({
                 genreSel,
                 selSource,
                 disabledZero,
-                disabledNSFW
+                disabledNSFW,
+                onlineWatchSel
             }
         },
         headers() {
@@ -272,6 +277,24 @@ let vue = new Vue({
                             if (!bSelType) {
                                 return false;
                             }
+                        }
+                        if (this.onlineWatchSel.length > 0) {
+                            let check = false
+                            if (Object.keys(item.online).length != 0) {
+                                for (key of this.onlineWatchSel) {
+                                    if (item.online.hasOwnProperty(key)) {
+                                        check = true
+                                    }
+                                }
+                                if (!check) {
+                                    return false
+                                }
+                            } else {
+                                return false
+                            }
+                            // if (!check) {
+                            //     return false
+                            // }
                         }
                         if (this.genreList) {
                             for (gen of this.genreSel) {
@@ -465,49 +488,125 @@ let vue = new Vue({
             }
             return src
         },
-        onlineNameFormat(name) {
-            switch (name) {
-                case 'bahamut':
-                    return '巴哈姆特';
-                case 'bilibili':
-                    return '哔哩哔哩';
-                case 'disney':
-                    return '迪士尼+'
-                case 'friday':
-                    return 'friDay影音'
-                case 'hamivideo':
-                    return 'HamiVideo'
-                case 'kktv':
-                    return 'KKTV'
-                case 'line':
-                    return 'LINE TV'
-                case 'litv':
-                    return 'LiTV'
-                case 'myvideo':
-                    return 'myVideo'
-                case 'netflix':
-                    return 'Netflix'
-                case 'yahoo':
-                    return 'Yahoo! TV'
-                case 'ani-one asia':
-                    return 'Ani-One YouTube'
-                case 'catchplay':
-                    return 'Catchplay'
-                case 'cht':
-                    return '中華電信MOD'
-                case 'iqiyi':
-                    return '愛奇藝'
-                case 'muse':
-                    return '木棉花 Youtube'
-                case 'googleplay':
-                    return 'Google Play';
-                case 'animelog':
-                    return 'Animelog Youtube'
-                case 'crunchyroll':
-                    return 'crunchyroll(英文)'
-            }
-            return name;
-        },
+        // onlineNameFormat(name) {
+        //     switch (name) {
+        //         case 'bahamut':
+        //             return '巴哈姆特';
+        //         case 'bilibili':
+        //             return '哔哩哔哩';
+        //         case 'disney':
+        //             return '迪士尼+'
+        //         case 'friday':
+        //             return 'friDay影音'
+        //         case 'hamivideo':
+        //             return 'HamiVideo'
+        //         case 'kktv':
+        //             return 'KKTV'
+        //         case 'line':
+        //             return 'LINE TV'
+        //         case 'litv':
+        //             return 'LiTV'
+        //         case 'myvideo':
+        //             return 'myVideo'
+        //         case 'netflix':
+        //             return 'Netflix'
+        //         case 'yahoo':
+        //             return 'Yahoo! TV'
+        //         case 'ani-one asia':
+        //             return 'Ani-One YouTube'
+        //         case 'catchplay':
+        //             return 'Catchplay'
+        //         case 'cht':
+        //             return '中華電信MOD'
+        //         case 'iqiyi':
+        //             return '愛奇藝'
+        //         case 'muse':
+        //             return '木棉花 Youtube'
+        //         case 'googleplay':
+        //             return 'Google Play';
+        //         case 'animelog':
+        //             return 'Animelog Youtube'
+        //         case 'crunchyroll':
+        //             return 'crunchyroll(英文)'
+        //     }
+        //     return name;
+        // },
+        // onlineNameFormat2(name) { //FIXME
+        //     switch (name) {
+        //         case 'Amazon Prime Video':
+        //             return 'Amazon Prime Video';
+        //         case 'Ani-One Asia':
+        //         case 'Ani-One Asia (Playlist)':
+        //             return '羚邦集團(Ani-One) YouTube'
+        //         case 'Animelog':
+        //             return 'Animelog Youtube'
+        //         case 'Bahamut Anime Crazy':
+        //             return '巴哈姆特';
+        //         case 'CHT MOD':
+        //             return '中華電信MOD'
+        //         case 'CatchPlay+ TW':
+        //             return 'Catchplay'
+        //         case 'crunchyroll':
+        //         case 'Crunchyroll (Film)':
+        //             return 'crunchyroll(英文)'
+        //         case 'Disney+ (Movies)':
+        //         case 'Disney+ (Series)':
+        //             return '迪士尼+'
+        //         case 'GUNDAM.INFO':
+        //             return 'GUNDAM.INFO'
+        //         case 'GagaOOLala':
+        //             return 'GagaOOLala'
+        //         case 'Google Play (Movie)':
+        //             return 'Google Play (Movie)';
+        //         case 'HamiVideo':
+        //             return 'HamiVideo'
+        //         case 'KKTV':
+        //             return 'KKTV'
+        //         case 'LINE TV Taiwan':
+        //             return 'LINE TV'
+        //         case 'LiTV':
+        //             return 'LiTV'
+        //         case 'LiTV (Movie)':
+        //             return 'LiTV (Movie)'
+        //         case 'Muse TW (Playlist)':
+        //             return '木棉花 Youtube'
+        //         case 'NHK WORLD-JAPAN On Demand':
+        //             return 'NHK WORLD-JAPAN On Demand'
+        //         case 'Netflix':
+        //             return 'Netflix'
+        //         case 'Pokémon YouTube (Playlist)':
+        //             return 'Pokémon YouTube (Playlist)'
+        //         case 'Rooster Teeth':
+        //             return 'Rooster Teeth'
+        //         case 'Tencent Video':
+        //             return '騰訊'
+        //         case 'Yahoo! TV Taiwan':
+        //             return 'Yahoo! TV Taiwan'
+        //         case 'YouTube':
+        //             return 'YouTube'
+        //         case 'YouTube (Channel)':
+        //             return 'YouTube (Channel)'
+        //         case 'YouTube (Playlist)':
+        //             return 'YouTube (Playlist)'
+        //         case 'bilibili':
+        //             return 'bilibili'
+        //         case 'friDay':
+        //             return 'friDay'
+        //         case 'friDay Video (Movie)':
+        //             return 'friDay Video (Movie)'
+        //         case 'hmvod':
+        //             return 'hmvod'
+        //         case 'i-Fun':
+        //             return 'i-Fun'
+        //         case 'iQIYI':
+        //             return 'iQIYI'
+        //         case 'iTunes':
+        //             return 'iTunes'
+        //         case 'myVideo':
+        //             return 'myVideo'
+        //     }
+        //     return name;
+        // },
         genreToCht(gen) {
             let i = vue.engGen().indexOf(gen)
             if (i != -1) {
@@ -683,27 +782,63 @@ let vue = new Vue({
 
         this.$nextTick(function() {
 
-            this.getRandomArray();
-            let genres = []
-                // let voices = []
-            let births = []
-            for (item of this.rawData) {
-                if (this.disabledNSFW) { //移除18禁
-                    if (item.MAL.genres.includes('Hentai')) {}
-                }
-                // for (voice of item.MAL.voices) {
-                //     if (null != voice.name) {
-                //         voices.push(voice.name)
-                //     }
+                this.getRandomArray();
+                let genres = []
+                let births = []
+                let onlines = []
+                for (item of this.rawData) {
+                    if (this.disabledNSFW) { //移除18禁
+                        if (item.MAL.genres.includes('Hentai')) {}
+                    }
+                    // if (null != item.Gamer && null != item.Gamer.online) {
+                    //     onlines.push('Bahamut Anime Crazy')
+                    // }
+                    // if (null != item.livechart && null != item.livechart.online) {
+                    //     for (const [key, value] of Object.entries(item.livechart.online)) {
+                    //         if (key != 'Twitter' && key != 'Instagram' && key != 'Plex' && key != 'Steam') {
+                    //             // let obj = this.switchName(key, value)
+                    //             // onlines.push(obj[0])
+                    //             onlines.push(key)
+                    //         }
 
-                // }
-                // voices = [...new Set(voices.sort())]
-                // this.voicesList = voices
+                    //     }
+                    // }
 
-                // voices = voices.concat(item.MAL.voices)
-                for (gen of item.MAL.genres) {
-                    if (this.disabledZero) {
-                        if (item.score > 0) {
+                    for (let [key, value] of Object.entries(item.online)) {
+                        // if (key.toLowerCase().indexOf('tencent') != -1) {
+                        //     break;
+                        // }
+                        // [key, value] = this.switchName(key, value)
+                        // format[key] = value
+                        onlines.push(key)
+                    }
+                    // onlines.push(item.online)
+                    // if (null != item.trakt && null != item.trakt.online) {
+                    //     for (const [key, value] of Object.entries(item.trakt.online)) {
+                    //         if (key != 'Twitter' && key != 'Instagram' && key != 'Plex' && key != 'Steam') {
+                    //             // let obj = this.switchName(key, value)
+                    //             // onlines.push(obj[0])
+                    //             onlines.push(key)
+                    //         }
+                    //     }
+                    // }
+                    // }
+                    // onlines = [...new Set(onlines.sort())]
+                    // this.voicesList = voices
+
+                    // voices = voices.concat(item.MAL.voices)
+                    for (gen of item.MAL.genres) {
+                        if (this.disabledZero) {
+                            if (item.score > 0) {
+                                if (this.disabledNSFW) {
+                                    if (!item.MAL.genres.includes('Hentai')) {
+                                        this.badges[gen] = ++this.badges[gen] || 1
+                                    }
+                                } else {
+                                    this.badges[gen] = ++this.badges[gen] || 1
+                                }
+                            }
+                        } else {
                             if (this.disabledNSFW) {
                                 if (!item.MAL.genres.includes('Hentai')) {
                                     this.badges[gen] = ++this.badges[gen] || 1
@@ -711,99 +846,99 @@ let vue = new Vue({
                             } else {
                                 this.badges[gen] = ++this.badges[gen] || 1
                             }
+
                         }
-                    } else {
-                        if (this.disabledNSFW) {
-                            if (!item.MAL.genres.includes('Hentai')) {
-                                this.badges[gen] = ++this.badges[gen] || 1
-                            }
+                    }
+                    genres = genres.concat(item.MAL.genres)
+
+                    //FixMe 正規打錯了 
+                    if (item.MAL.type == "Movie" && item.MAL.duration < 3) {
+                        item.MAL.duration = item.MAL.duration * 60
+                    }
+                    if ('duration' in item.MAL && null != item.MAL.duration && item.MAL.type != "Movie" && item.MAL.duration < 16) {
+                        if (this.disabledZero) {
+                            // if (item.score > 0) {
+                            item.MAL.genres.push('cup')
+                            genres.push('cup')
+                            this.badges['cup'] = ++this.badges['cup'] || 1
+                                // }
                         } else {
-                            this.badges[gen] = ++this.badges[gen] || 1
+                            item.MAL.genres.push('cup')
+                            genres.push('cup')
+                            this.badges['cup'] = ++this.badges['cup'] || 1
                         }
-
+                    }
+                    if ('voices' in item.MAL && item.MAL.voices.length != 0) {
+                        births = births.concat(item.MAL.voices)
                     }
                 }
-                genres = genres.concat(item.MAL.genres)
-
-                //FixMe 正規打錯了 
-                if (item.MAL.type == "Movie" && item.MAL.duration < 3) {
-                    item.MAL.duration = item.MAL.duration * 60
-                }
-                if ('duration' in item.MAL && null != item.MAL.duration && item.MAL.type != "Movie" && item.MAL.duration < 16) {
-                    if (this.disabledZero) {
-                        // if (item.score > 0) {
-                        item.MAL.genres.push('cup')
-                        genres.push('cup')
-                        this.badges['cup'] = ++this.badges['cup'] || 1
-                            // }
-                    } else {
-                        item.MAL.genres.push('cup')
-                        genres.push('cup')
-                        this.badges['cup'] = ++this.badges['cup'] || 1
+                onlines = [...new Set(onlines.sort())]
+                console.log(onlines)
+                this.onlineWatchs = onlines
+                    //FIXME 正規化
+                const set = new Set();
+                births = births.filter(item => !set.has(item.voice) ? set.add(item.voice) : false);
+                this.voiceCount = births.length
+                let events = []
+                let now = new Date()
+                for (item of births) {
+                    if (null != item.birth) {
+                        let bir = new Date(item.birth)
+                        let todayBir = false;
+                        if (now.getMonth() == bir.getMonth() && now.getDate() == bir.getDate()) {
+                            todayBir = true
+                        }
+                        bir = String(now.getFullYear()).concat('-', String(bir.getMonth() + 1), '-', String(bir.getDate()))
+                        events.push({
+                            name: item.name,
+                            start: bir,
+                            voice: item.voice,
+                            isMain: item.isMain,
+                            isSup: item.isSup,
+                            chId: item.chId,
+                            // end: bir,
+                            color: this.setVoiceColor(item.isMain, item.isSup, todayBir),
+                        })
                     }
                 }
-                if ('voices' in item.MAL && item.MAL.voices.length != 0) {
-                    births = births.concat(item.MAL.voices)
-                }
-            }
-            //FIXME 正規化
-            const set = new Set();
-            births = births.filter(item => !set.has(item.voice) ? set.add(item.voice) : false);
-            this.voiceCount = births.length
-            let events = []
-            let now = new Date()
-            for (item of births) {
-                if (null != item.birth) {
-                    let bir = new Date(item.birth)
-                    let todayBir = false;
-                    if (now.getMonth() == bir.getMonth() && now.getDate() == bir.getDate()) {
-                        todayBir = true
-                    }
-                    bir = String(now.getFullYear()).concat('-', String(bir.getMonth() + 1), '-', String(bir.getDate()))
-                    events.push({
-                        name: item.name,
-                        start: bir,
-                        voice: item.voice,
-                        isMain: item.isMain,
-                        isSup: item.isSup,
-                        chId: item.chId,
-                        // end: bir,
-                        color: this.setVoiceColor(item.isMain, item.isSup, todayBir),
-                    })
-                }
-            }
-            events.sort(function(a, b) {
-                return b.isMain - a.isMain
-            })
-            this.eventVoice = events
+                events.sort(function(a, b) {
+                    return b.isMain - a.isMain
+                })
+                this.eventVoice = events
 
-            this.badgesDef = this.badges
-            genres = [...new Set(genres.sort())]
+                this.badgesDef = this.badges
+                genres = [...new Set(genres.sort())]
 
-            //FIXME 不該出現，下一輪再看看
-            genres = genres.filter(function(item) {
-                return item !== 'Josei'
-            });
-
-            this.genreList = genres
-
-            //抓網址參數
-            let geturl = window.location.href
-            let getqyinfo = geturl.split('?')[1]
-            if (getqyinfo) {
-                let getqys = new URLSearchParams('?' + getqyinfo)
-                let getQName = getqys.get('name')
-                this.search = getQName
-            }
-
-            if (this.toRandom) {
-                this.rawData.sort(function() {
-                    return (0.5 - Math.random());
+                //FIXME 不該出現，下一輪再看看
+                genres = genres.filter(function(item) {
+                    return item !== 'Josei'
                 });
+
+                this.genreList = genres
+
+                //抓網址參數
+                let geturl = window.location.href
+                let getqyinfo = geturl.split('?')[1]
+                if (getqyinfo) {
+                    let getqys = new URLSearchParams('?' + getqyinfo)
+                    let getQName = getqys.get('name')
+                    this.search = getQName
+                }
+
+                if (this.toRandom) {
+                    this.rawData.sort(function() {
+                        return (0.5 - Math.random());
+                    });
+                }
+                // this.pageCount = Math.ceil(this.rawData.length / this.itemsPerPage)
+                // delete newGnns, newMoes, events, now, genres, births, moelongUrl, gnnUrl, geturl, getqyinfo, set
+
+                if (navigator.userAgent.search("Chrome") > -1 || navigator.userAgent.search("Opera") > -1) {
+                    this.memory = 0
+                }
             }
-            // this.pageCount = Math.ceil(this.rawData.length / this.itemsPerPage)
-            // delete newGnns, newMoes, events, now, genres, births, moelongUrl, gnnUrl, geturl, getqyinfo, set
-        })
+
+        )
 
 
     },
@@ -1022,28 +1157,82 @@ let vue = new Vue({
         },
         onlineList(item) {
             let online = new Object();
-            if (null != item.trakt && !!item.trakt.online) {
-                for (const [key, value] of Object.entries(item.trakt.online)) {
-                    online[key] = 'https://trakt.tv/watchnow/' + value
-                }
-            }
-            if (null != item.Gamer && !!item.Gamer.online) {
-                online['Bahamut Anime Crazy'] = item.Gamer.online
-            }
-            if (null != item.livechart && !!item.livechart.online) {
-                online = item.livechart.online;
-            }
+            // if (null != item.trakt && !!item.trakt.online) { //FIXME
+            //     for (const [key, value] of Object.entries(item.trakt.online)) {
+            //         online[key] = 'https://trakt.tv/watchnow/' + value
+            //     }
+            // }
+            // if (null != item.Gamer && !!item.Gamer.online) {
+            //     online['Bahamut Anime Crazy'] = item.Gamer.online
+            // }
+            // if (null != item.livechart && !!item.livechart.online) {
+            //     online = item.livechart.online;
+            // }
             let format = new Object();
-            if (!!online) {
-                for (let [key, value] of Object.entries(online)) {
-                    if (key.toLowerCase().indexOf('tencent') != -1) {
-                        break;
-                    }
-                    [key, value] = this.switchName(key, value)
+            if (!!item) {
+                for (let [key, value] of Object.entries(item)) {
+                    // if (key.toLowerCase().indexOf('tencent') != -1) {
+                    //     break;
+                    // }
+                    // [key, value] = this.switchName(key, value)
+                    // format[key] = value
+                    value = this.addUrl(key, value)
                     format[key] = value
+
                 }
             }
             return format;
+        },
+        addUrl(key, id) {
+            if (id.indexOf('watchnow') != -1) {
+                return 'https://trakt.tv' + id
+            }
+
+            switch (key) {
+                case 'Amazon Prime Video':
+                    return 'https://www.primevideo.com/detail/' + id
+                case '羚邦集團(Ani-One) YouTube':
+                case 'AnimeLog Youtube':
+                case 'GUNDAM.INFO Youtube':
+                case '木棉花國際(Muse) Youtube':
+                    return 'https://www.youtube.com/' + id
+                case '巴哈姆特':
+                    return 'https://ani.gamer.com.tw/animeVideo.php?sn=' + id
+                case '中華電信MOD':
+                    return 'http://mod.cht.com.tw/video/' + id
+                case 'CatchPlay+ TW':
+                    return 'https://www.catchplay.com/' + id
+                case 'Disney+':
+                    return 'https://www.disneyplus.com/' + id
+                case 'Google Play':
+                    return 'https://play.google.com/store/' + id
+                case 'HamiVideo':
+                    return 'https://hamivideo.hinet.net/' + id
+                case 'KKTV':
+                    return 'https://www.kktv.me/' + id
+                case 'LINE TV Taiwan':
+                    return 'https://www.linetv.tw/' + id
+                case 'LiTV立視':
+                    return 'https://www.litv.tv/vod/' + id
+                case 'Netflix':
+                    return 'https://www.netflix.com/' + id
+                case 'Yahoo! TV Taiwan':
+                    return 'https://tw.tv.yahoo.com/' + id
+                case 'bilibili':
+                    return 'https://www.bilibili.com/bangumi/' + id
+                case 'friDay影音':
+                    return 'https://video.friday.tw/' + id
+                        // case 'hmvod':
+                        //     return ''
+                case 'iQIYI愛奇藝':
+                    return 'https://www.iq.com/' + id
+                        // case 'iTunes':
+                        //     return ''
+                case 'MyVideo':
+                    return 'https://www.myvideo.net.tw/' + id
+                default:
+                    return id
+            }
         },
         switchName(name, id) {
             name = name.toLowerCase()
@@ -1091,19 +1280,60 @@ let vue = new Vue({
                 return ['crunchyroll', 'https://www.crunchyroll.com/' + id]
             } else if (name.indexOf('nhk world-japan on demand') != -1) { //FixMe
                 return ['NHK(英文)', id]
+            } else if (name.indexOf('prime') != -1) { //FixMe
+                return ['Amazon Prime Video', 'https://www.primevideo.com/detail/' + id]
+            } else if (name.indexOf('gundam.info') != -1) {
+                return ['gundam.info', 'https://www.youtube.com/' + id]
+            } else if (name.indexOf('animelog') != -1) {
+                return ['AnimeLog', 'https://www.youtube.com/' + id]
             }
 
-            // else if (name.indexOf('amazon') != -1) {
-            //     return ['amazon',id]
-            // }else if (name.indexOf('hmvod') != -1) {
-            //     return ['hmvod',id]
-            // }else if (name.indexOf('nhk.or') != -1) {
-            //     return ['nhk',id]
-            // }else if (name.indexOf('itunes') != -1) {
-            //     return ['itunes',id]
-            // }else if (name.indexOf('roosterteeth') != -1) {
-            //     return ['roosterteeth',id]
+            // if (id.indexOf('trakt.tv') != -1) {
+            //     return [name, id]
+            // } else if (name.indexOf('bahamut') != -1) {
+            //     if (id.indexOf('https://') != -1) {
+            //         return ['bahamut', id] //LC犬夜叉異常 FIXME
+            //     } else {
+            //         return ['bahamut', 'https://ani.gamer.com.tw/animeVideo.php?sn=' + id]
+            //     }
+            // } else if (name.indexOf('bilibili') != -1) {
+            //     return [name, 'https://www.bilibili.com/bangumi/' + id]
+            // } else if (name.indexOf('disney') != -1) {
+            //     return [name, 'https://www.disneyplus.com/' + id]
+            // } else if (name.indexOf('friday') != -1) {
+            //     return [name, 'https://video.friday.tw/' + id]
+            // } else if (name.indexOf('hamivideo') != -1) {
+            //     return [name, 'https://hamivideo.hinet.net/' + id]
+            // } else if (name.indexOf('kktv') != -1) {
+            //     return [name, 'https://www.kktv.me/' + id]
+            // } else if (name.indexOf('line') != -1) {
+            //     return [name, 'https://www.linetv.tw/' + id]
+            // } else if (name.indexOf('litv') != -1) {
+            //     return [name, 'https://www.litv.tv/vod/' + id]
+            // } else if (name.indexOf('myvideo') != -1) {
+            //     return [name, 'https://www.myvideo.net.tw/' + id]
+            // } else if (name.indexOf('netflix') != -1) {
+            //     return [name, 'https://www.netflix.com/' + id]
+            // } else if (name.indexOf('ani-one asia') != -1) {
+            //     return [name, 'https://www.youtube.com/' + id]
+            // } else if (name.indexOf('yahoo') != -1) {
+            //     return [name, 'https://tw.tv.yahoo.com/' + id]
+            // } else if (name.indexOf('catchplay') != -1) {
+            //     return [name, 'https://www.catchplay.com/' + id]
+            // } else if (name.indexOf('cht') != -1) {
+            //     return [name, 'http://mod.cht.com.tw/video/' + id]
+            // } else if (name.indexOf('iqiyi') != -1) {
+            //     return [name, 'https://www.iq.com/' + id]
+            // } else if (name.indexOf('muse') != -1) {
+            //     return [name, 'https://www.youtube.com/' + id]
+            // } else if (name.indexOf('google') != -1) {
+            //     return [name, 'https://play.google.com/store/' + id]
+            // } else if (name.indexOf('crunchyroll') != -1) {
+            //     return [name, 'https://www.crunchyroll.com/' + id]
+            // } else if (name.indexOf('nhk world-japan on demand') != -1) { //FixMe
+            //     return [name, id]
             // }
+
             return [name, id];
         },
         toTop() {
