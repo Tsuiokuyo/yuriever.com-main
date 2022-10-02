@@ -109,6 +109,11 @@ let vue = new Vue({
         selYear: '等於',
         selType: 'ALL',
         selSource: 'ALL',
+        sortDesc: true,
+        sortBy: 'score',
+        sorts: [{ 'name': '預設', 'value': 'score' }, { 'name': '巴哈姆特', 'value': 'gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
+            { 'name': 'Bangumi', 'value': 'bgm' }, { 'name': 'Anikore', 'value': 'anikore' }
+        ],
 
         // true: true,
         // false: false,
@@ -979,141 +984,149 @@ let vue = new Vue({
             }
         },
         customSort(items, index, isDescending) {
-            this.destroyTable()
-            items.sort((a, b) => {
-                switch (index[0]) {
-                    case 'name':
-                        if (isDescending[0]) {
-                            return b.rank > a.rank ? 1 : -1;
-                        } else {
-                            return a.rank > b.rank ? 1 : -1;
-                        }
-                    case 'score':
-                        if (isDescending[0]) {
-                            return b.score > a.score ? 1 : -1;
-                        } else {
-                            return a.score > b.score ? 1 : -1;
-                        }
-                    case 'mal':
-                        if (isDescending[0]) {
-                            return b.MAL.score > a.MAL.score ? 1 : -1;
-                        } else {
-                            return a.MAL.score > b.MAL.score ? 1 : -1;
-                        }
-                    case 'gamer':
-                        b = !!b.Gamer ? b.Gamer.bayesian_score : 0;
-                        a = !!a.Gamer ? a.Gamer.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'anidb':
-                        b = !!b.anidb ? b.anidb.bayesian_score : 0;
-                        a = !!a.anidb ? a.anidb.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'bgm':
-                        b = !!b.BGM ? b.BGM.bayesian_score : 0;
-                        a = !!a.BGM ? a.BGM.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'anikore':
-                        b = !!b.Anikore ? b.Anikore.bayesian_score : 0;
-                        a = !!a.Anikore ? a.Anikore.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'anisearch':
-                        b = !!b.anisearch ? b.anisearch.bayesian_score : 0;
-                        a = !!a.anisearch ? a.anisearch.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'anilist':
-                        b = !!b.AniList ? b.AniList.bayesian_score : 0;
-                        a = !!a.AniList ? a.AniList.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'animeplanetcom':
-                        b = !!b.AnimePlanetCom ? b.AnimePlanetCom.bayesian_score : 0;
-                        a = !!a.AnimePlanetCom ? a.AnimePlanetCom.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'ann':
-                        b = !!b.ANN ? b.ANN.bayesian_score : 0;
-                        a = !!a.ANN ? a.ANN.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'kitsu':
-                        b = !!b.kitsu ? b.kitsu.bayesian_score : 0;
-                        a = !!a.kitsu ? a.kitsu.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'notifymoe':
-                        b = !!b.notifyMoe ? b.notifyMoe.bayesian_score : 0;
-                        a = !!a.notifyMoe ? a.notifyMoe.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'trakt':
-                        b = !!b.trakt ? b.trakt.bayesian_score : 0;
-                        a = !!a.trakt ? a.trakt.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'livechart':
-                        b = !!b.livechart ? b.livechart.bayesian_score : 0;
-                        a = !!a.livechart ? a.livechart.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'redditanimelist':
-                        b = !!b.sakuhindb ? b.sakuhindb.bayesian_score : 0;
-                        a = !!a.sakuhindb ? a.sakuhindb.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
-                    case 'sakuhindb':
-                        b = !!b.sakuhindb ? b.sakuhindb.bayesian_score : 0;
-                        a = !!a.sakuhindb ? a.sakuhindb.bayesian_score : 0;
-                        if (isDescending[0]) {
-                            return b > a ? 1 : -1
-                        } else {
-                            return a > b ? 1 : -1
-                        }
+            if (this.toRandom) {
+
+            } else {
+
+                if (!!!index) {
+                    index[0] = this.sortBy
                 }
-            });
+                this.destroyTable()
+                items.sort((a, b) => {
+                    switch (index[0]) {
+                        case 'name':
+                            if (isDescending[0]) {
+                                return b.rank > a.rank ? 1 : -1;
+                            } else {
+                                return a.rank > b.rank ? 1 : -1;
+                            }
+                        case 'score':
+                            if (isDescending[0]) {
+                                return b.score > a.score ? 1 : -1;
+                            } else {
+                                return a.score > b.score ? 1 : -1;
+                            }
+                        case 'mal':
+                            if (isDescending[0]) {
+                                return b.MAL.score > a.MAL.score ? 1 : -1;
+                            } else {
+                                return a.MAL.score > b.MAL.score ? 1 : -1;
+                            }
+                        case 'gamer':
+                            b = !!b.Gamer ? b.Gamer.bayesian_score : 0;
+                            a = !!a.Gamer ? a.Gamer.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'anidb':
+                            b = !!b.anidb ? b.anidb.bayesian_score : 0;
+                            a = !!a.anidb ? a.anidb.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'bgm':
+                            b = !!b.BGM ? b.BGM.bayesian_score : 0;
+                            a = !!a.BGM ? a.BGM.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'anikore':
+                            b = !!b.Anikore ? b.Anikore.bayesian_score : 0;
+                            a = !!a.Anikore ? a.Anikore.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'anisearch':
+                            b = !!b.anisearch ? b.anisearch.bayesian_score : 0;
+                            a = !!a.anisearch ? a.anisearch.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'anilist':
+                            b = !!b.AniList ? b.AniList.bayesian_score : 0;
+                            a = !!a.AniList ? a.AniList.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'animeplanetcom':
+                            b = !!b.AnimePlanetCom ? b.AnimePlanetCom.bayesian_score : 0;
+                            a = !!a.AnimePlanetCom ? a.AnimePlanetCom.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'ann':
+                            b = !!b.ANN ? b.ANN.bayesian_score : 0;
+                            a = !!a.ANN ? a.ANN.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'kitsu':
+                            b = !!b.kitsu ? b.kitsu.bayesian_score : 0;
+                            a = !!a.kitsu ? a.kitsu.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'notifymoe':
+                            b = !!b.notifyMoe ? b.notifyMoe.bayesian_score : 0;
+                            a = !!a.notifyMoe ? a.notifyMoe.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'trakt':
+                            b = !!b.trakt ? b.trakt.bayesian_score : 0;
+                            a = !!a.trakt ? a.trakt.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'livechart':
+                            b = !!b.livechart ? b.livechart.bayesian_score : 0;
+                            a = !!a.livechart ? a.livechart.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'redditanimelist':
+                            b = !!b.sakuhindb ? b.sakuhindb.bayesian_score : 0;
+                            a = !!a.sakuhindb ? a.sakuhindb.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                        case 'sakuhindb':
+                            b = !!b.sakuhindb ? b.sakuhindb.bayesian_score : 0;
+                            a = !!a.sakuhindb ? a.sakuhindb.bayesian_score : 0;
+                            if (isDescending[0]) {
+                                return b > a ? 1 : -1
+                            } else {
+                                return a > b ? 1 : -1
+                            }
+                    }
+                });
+            }
             return items;
         },
         getRandomArray() {
