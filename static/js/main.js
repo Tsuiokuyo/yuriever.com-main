@@ -985,7 +985,7 @@ let vue = new Vue({
         },
         customSort(items, index, isDescending) {
             if (this.toRandom) {
-
+                this.destroyTable()
             } else {
 
                 if (!!!index) {
