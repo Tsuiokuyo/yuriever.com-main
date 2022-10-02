@@ -397,6 +397,7 @@
                         <v-text-field v-if="windowWidth < 600" id="srh2" v-model="search" append-icon="mdi-magnify" hint="支援繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
                         </v-text-field>
 
+
                         <v-checkbox v-if="windowWidth < 600" v-model="toRandom" label="排名亂數排序" dense color="red">
                         </v-checkbox>
 
@@ -448,17 +449,33 @@
                             </v-row>
                             <!-- <v-divider></v-divider> -->
                             <v-row>
+                                <v-col>
+                                    <label>排序：</label>
+                                    <select v-model="sortBy" :disabled="toRandom">
+                                        <option  v-for="item in sorts" :value="item.value">{{item.name}}</option>
+                                    </select>
+                                    <!-- <v-select :items="sorts" v-model="sortBy" label="排序" dense solo></v-select> -->
+                                    <v-btn-toggle v-model="sortDesc" mandatory>
+                                        <v-btn depressed :value="false" :disabled="toRandom">
+                                            <v-icon>mdi-arrow-up</v-icon>
+                                        </v-btn>
+                                        <v-btn depressed :value="true" :disabled="toRandom">
+                                            <v-icon>mdi-arrow-down</v-icon>
+                                        </v-btn>
+                                    </v-btn-toggle>
+                                </v-col>
+                                <v-col cols="1">
+                                    <v-checkbox class="font-weight-black" v-model="toRandom" label="亂數排序" dense color="red"></v-checkbox>
+                                </v-col>
+
+                                <v-col cols="2">
+                                    <v-checkbox v-model="disabledZero" label="排除無計分動畫" dense></v-checkbox>
+                                </v-col>
                                 <v-col cols="2">
                                     <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
                                     <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(省流量(幾乎無感))" dense></v-checkbox>
                                 </v-col>
-                                <v-col cols="2">
-                                    <v-checkbox v-model="disabledZero" label="排除無計分動畫" dense></v-checkbox>
-                                </v-col>
 
-                                <v-col cols="1">
-                                    <v-checkbox class="font-weight-black" v-model="toRandom" label="亂數排序" dense color="red"></v-checkbox>
-                                </v-col>
                                 <v-col> </v-col>
                                 <v-col cols="1">
                                     <v-checkbox v-model="disabledNSFW" label="排除裏番" dense></v-checkbox>
@@ -469,6 +486,7 @@
                                 </v-col>
                             </v-row>
                         </v-card-title>
+
                         <v-row>
                             <v-col>
                                 <v-pagination v-model="page" :length="pageCount" :total-visible="totalVis" @input="next">
@@ -476,12 +494,15 @@
                             </v-col>
                         </v-row>
                         <br />
-                        <span>表格最適瀏覽解析度為1920x1080，資料更新時間:2022年10月1日，總筆數:{{rawData.length}}</span>
-                        <v-data-table loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers"
-                            :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
-                            <template v-slot:item="{item}" v-if="windowWidth > 600">
+                        <span>資料更新時間:2022年10月2日，總筆數:{{rawData.length}}</span>
+
+                        <v-data-table :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
+                            :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event"
+                            hide-default-footer>
+
+                            <template v-slot:item="{item}">
                                 <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
-                                    <td class="center pa-0">
+                                    <td class="center pa-0" style="padding:0">
                                         <v-img :contain=true :lazy-src=setCover(item,true) height="250" width="200"
                                             title="點圖放大" :src=setCover(item,false) @click="toggleFullscreen(item)">
                                         </v-img>
@@ -491,7 +512,7 @@
                                             </v-img>
                                         </div>
                                     </td>
-                                    <td style="font-size:15px;font-weight:bold;padding:0" width="800px">
+                                    <td style="font-size:15px;font-weight:bold;padding:0" >
                                         <span v-if="null != item.Gamer">{{ item.Gamer.title }}
                                         </span> <br />
                                         <span v-if="null != item.BGM">{{ item.BGM.cn_name }}</span> <br />
@@ -578,20 +599,6 @@
                                         </v-list-item>
                                     </v-list>
                                 </v-menu>
-                                <!-- <v-menu offset-y open-on-hover v-if="Object.keys(onlineList(item)).length > 0">
-                                    <template v-slot:activator="{ on, attrs }">
-                                                    <v-btn color="primary" dark v-bind="attrs" v-on="on" small text>
-                                                        線上看<v-icon>mdi-menu-down</v-icon>
-                                                    </v-btn>
-                                                </template>
-
-                                    <v-list>
-                                        <v-list-item v-for="(item, key,index) in onlineList(item)" :key="index">
-                                            <v-list-item-title><a :href="item" :target="key" :title="key">{{ key |onlineNameFormat }}</a>
-                                            </v-list-item-title>
-                                        </v-list-item>
-                                    </v-list>
-                                </v-menu> -->
                                 <span style="float: right;" v-if="item.MAL.trailer">
                                                 <v-btn color="transparent" light
                                                     @click.stop="$set(dialogYt, item.MAL.id, true)">
@@ -608,76 +615,137 @@
                             </div>
                             </td>
                             <td class="center pa-0">
+                                標準化總平均<br />
                                 <span style="font-size:35px;font-weight:bold">{{item.score}}</span>
                             </td>
 
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/gamer.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.Gamer" :item="item.Gamer" website="Gamer" :b-score="item.Gamer.bayesian_score">
                                 </rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/mal.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.MAL" :item="item.MAL" website="MAL" :b-score="item.MAL.score"></rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/bgm.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.BGM" :item="item.BGM" website="BGM" :b-score="item.BGM.bayesian_score"></rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/anikore.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.Anikore" :item="item.Anikore" website="Anikore" :b-score="item.Anikore.bayesian_score"></rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/aniList.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.AniList" :item="item.AniList" website="AniList" :b-score="item.AniList.bayesian_score"></rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/apc.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.AnimePlanetCom" :item="item.AnimePlanetCom" website="AnimePlanetCom" :b-score="item.AnimePlanetCom.bayesian_score">
                                 </rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/ann.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.ANN" :item="item.ANN" website="ANN" :b-score="item.ANN.bayesian_score"></rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/anisearch.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.anisearch" :item="item.anisearch" website="anisearch" :b-score="item.anisearch.bayesian_score"></rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/kitsu.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.kitsu" :item="item.kitsu" website="kitsu" :b-score="item.kitsu.bayesian_score">
                                 </rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/notifymoe.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.notifyMoe" :item="item.notifyMoe" website="notifyMoe" :b-score="item.notifyMoe.bayesian_score"></rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/trakt.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.trakt" :item="item.trakt" website="trakt" :b-score="item.trakt.bayesian_score">
                                 </rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/livechart.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.livechart" :item="item.livechart" website="livechart" :b-score="item.livechart.bayesian_score"></rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/anidb.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.anidb" :item="item.anidb" website="anidb" :b-score="item.anidb.bayesian_score"></rating>
+                                <span v-else><v-chip>暫無</v-chip></span>
+                            </td>
+                            <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/reddit.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.redditanimelist" :item="item.redditanimelist" website="redditanimelist" :b-score="item.redditanimelist.bayesian_score"></rating>
+                                <span v-else><v-chip>暫無</v-chip></span>
+                            </td>
+                            <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/annict.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.annict" :item="item.annict" website="annict" :b-score="item.annict.bayesian_score"></rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
+                                <v-avatar size="32" rounded>
+                                    <img alt="Avatar" src="image/sakuhindb.webp">
+                                </v-avatar><br />
                                 <rating v-if="item.sakuhindb" :item="item.sakuhindb" website="sakuhindb" :b-score="item.sakuhindb.bayesian_score"></rating>
-                                <span v-else>暫無</span>
+                                <span v-else><v-chip>暫無</v-chip></span>
                             </td>
+                            <td></td>
                             <td v-show=false>
                                 <span v-text="getBackground(item)"></span>
                             </td>
+
                             </tr>
                             </template>
+                        </v-data-table>
 
-                            <!------------------------------------------------------------------------->
+                        <v-data-table v-if="windowWidth < 600" loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header
+                            :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                             <template v-slot:item.cover="{ item }">
                                 <v-img :contain=true :lazy-src=setCover(item,true) height="200" width="150"
                                     :src=setCover(item,false) @click="toggleFullscreen(item)">
