@@ -405,7 +405,7 @@
 
                         <v-card-title v-if="windowWidth > 600">
                             <v-row>
-                                <v-btn @click="onlineWatchSel = [],genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
+                                <v-btn @click="sortBy = 'rank', onlineWatchSel = [],genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
                                     重設所有條件</v-btn>
                                 <v-col cols="1">
                                     <v-select :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
@@ -534,7 +534,7 @@
 
                                             <br />
                                             <template>
-                                                <v-menu offset-y open-on-hover rounded>
+                                                <v-menu offset-y open-on-hover rounded v-if="item.MAL.studios.length > 0">
                                                     <template v-slot:activator="{ on, attrs }">
                                                         <v-btn x-small v-bind="attrs" v-on="on" color="transparent"
                                                             light>
@@ -548,7 +548,7 @@
                             </v-list>
                             </v-menu>
 
-                            <v-menu offset-y open-on-hover rounded>
+                            <v-menu offset-y open-on-hover rounded v-if="item.MAL.genres.length > 0">
                                 <template v-slot:activator="{ on, attrs }">
                                                         <v-btn x-small v-bind="attrs" v-on="on" color="transparent"
                                                             light>
@@ -563,7 +563,7 @@
                                 </v-list>
                             </v-menu>
 
-                            <v-menu offset-y open-on-hover rounded>
+                            <v-menu offset-y open-on-hover rounded v-if="item.MAL.voices.length > 0">
                                 <template v-slot:activator="{ on, attrs }">
                                                         <v-btn x-small v-bind="attrs" v-on="on" color="transparent"
                                                             light>
@@ -616,7 +616,7 @@
                             </div>
                             </td>
                             <td class="center pa-0">
-                                標準化總平均<br />
+                                <span style="font-size:14px;">標準化</span><br/>總平均<br />
                                 <span style="font-size:35px;font-weight:bold">{{item.score}}</span>
                             </td>
 

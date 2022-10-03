@@ -111,8 +111,8 @@ let vue = new Vue({
         selType: 'ALL',
         selSource: 'ALL',
         sortDesc: true,
-        sortBy: 'score',
-        sorts: [{ 'name': '預設', 'value': 'score' }, { 'name': '巴哈姆特', 'value': 'gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
+        sortBy: 'rank',
+        sorts: [{ 'name': '預設', 'value': 'rank' }, { 'name': '巴哈姆特', 'value': 'gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
             { 'name': 'Bangumi', 'value': 'bgm' }, { 'name': 'Anikore', 'value': 'anikore' }
         ],
 
@@ -987,7 +987,7 @@ let vue = new Vue({
             if (null != item.BGM) {
                 this.selectedImage = "http://lain.bgm.tv/pic/cover/l/" + item.BGM.image + ".jpg"
             } else {
-                this.selectedImage = "https://cdn.myanimelist.net/images/anime/" + item.MAL.image
+                this.selectedImage = "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '') + 'l.webp'
             }
         },
         customSort(items, index, isDescending) {
