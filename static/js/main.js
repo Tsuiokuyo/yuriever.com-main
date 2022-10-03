@@ -100,6 +100,7 @@ let vue = new Vue({
         totalVis: 15,
         pageCount: 1,
 
+        inputErr: '',
         search: '',
         year: '',
         year2: '',
@@ -204,6 +205,12 @@ let vue = new Vue({
                     value: 'name',
                     width: '25%',
                     filter: (value, search, item) => {
+                        if (this.search.length == 1) {
+                            this.inputErr = '請至少輸入兩個字';
+                            return false
+                        } else {
+                            this.inputErr = '';
+                        }
                         if (this.disabledNSFW) {
                             if (item.MAL.genres.includes('Hentai')) {
                                 return false;
@@ -878,7 +885,7 @@ let vue = new Vue({
                     }
                 }
                 onlines = [...new Set(onlines.sort())]
-                console.log(onlines)
+                    // console.log(onlines)
                 this.onlineWatchs = onlines
                     //FIXME 正規化
                 const set = new Set();
