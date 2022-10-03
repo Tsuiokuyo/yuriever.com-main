@@ -1396,7 +1396,7 @@ let vue = new Vue({
                 } else if (null != item.trakt && null != item.trakt.coverS) {
                     return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS;
                 } else {
-                    return ''
+                    return 'image/noImage.webp'
                 }
             }
             return ''
