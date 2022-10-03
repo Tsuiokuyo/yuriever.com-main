@@ -86,16 +86,16 @@
                     </span>
 
                 </v-tabs>
-                <v-alert v-if="rssDisabledGNN" dismissible color="#16A2B2" border="left" elevation="3" colored-border icon="GNN新聞" dense>
+                <v-alert v-if="rssDisabledGNN" dismissible color="#16A2B2" border="left" elevation="3" colored-border icon="GNN新聞" dense class="bkColor">
                     <a :href="gnn.link" target="_blank" v-if="!!gnn" style="animation:anis 10s linear infinite;">{{gnn.title}} </a>
                 </v-alert>
-                <v-alert v-if="rssDisabledMoe" dismissible color="green lighten-2" border="left" elevation="3" colored-border icon="萌朧" dense>
+                <v-alert v-if="rssDisabledMoe" dismissible color="green lighten-2" border="left" elevation="3" colored-border icon="萌朧" dense class="bkColor">
                     <a :href="moelong.link" target="_blank" v-if="!!moelong">{{moelong.title}}</a>
                 </v-alert>
 
                 <v-container fluid>
 
-                    <v-card v-if="tab == 'tab-2'">
+                    <v-card v-if="tab == 'tab-2'" class="bkColor">
                         <div class="text-justify">
                             <div>
                                 <div>
@@ -212,7 +212,7 @@
                             </div>
                         </div>
                     </v-card>
-                    <v-card v-show="tab == 'tab-1'">
+                    <v-card v-show="tab == 'tab-1'" class="bkColor">
                         <h2 style="text-align: center;">隨機作品
                             <v-btn @click="getRandomArray" color="primary" fab x-small dark>
                                 <v-icon>mdi-dice-multiple</v-icon>
@@ -221,7 +221,7 @@
 
                         <v-sheet class="mx-auto" elevation="0" max-width="1800" v-if="randomTen.length == 0">
                             <v-slide-group class="pa-0" show-arrows>
-                                <v-slide-item v-for="n in 10" :key="n">
+                                <v-slide-item v-for="n in 10" :key="n" class="bkColor">
                                     <v-sheet class="pa-3">
                                         <v-skeleton-loader class="mx-auto" height="280" width="180" type="card">
                                         </v-skeleton-loader>
@@ -234,7 +234,7 @@
                         <v-sheet class="mx-auto" elevation="0" max-width="1800">
                             <!-- <v-slide-group v-model="count" class="pa-4" show-arrows> -->
                             <v-slide-group class="pa-4" show-arrows>
-                                <v-slide-item v-for="item in randomTen" :key="item.MAL.id" v-slot="{ active, toggle }">
+                                <v-slide-item v-for="item in randomTen" :key="item.MAL.id" v-slot="{ active, toggle }" class="bkColor">
                                     <!-- <v-card class="ma-4" height="300" width="180" @click="toggle"> -->
                                     <v-card class="ma-4" height="260" width="170" @click="search = randomListTitle(item),year = ''">
                                         <v-row class="fill-height" align="center" justify="center">
@@ -496,7 +496,7 @@
                         <br />
                         <span>資料更新時間:2022年10月2日，總筆數:{{rawData.length}}</span>
 
-                        <v-data-table :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
+                        <v-data-table class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
                             :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event"
                             hide-default-footer>
 
@@ -744,8 +744,8 @@
                             </template>
                         </v-data-table>
 
-                        <v-data-table v-if="windowWidth < 600" loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件" :custom-sort="customSort" item-key="rank" fixed-header
-                            :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
+                        <v-data-table class="bkColor" v-if="windowWidth < 600" loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件" :custom-sort="customSort" item-key="rank"
+                            fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                             <template v-slot:item.cover="{ item }">
                                 <v-img :contain=true :lazy-src=setCover(item,true) height="200" width="150"
                                     :src=setCover(item,false) @click="toggleFullscreen(item)">
