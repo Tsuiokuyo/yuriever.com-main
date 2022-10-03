@@ -1399,7 +1399,7 @@ let vue = new Vue({
                     return 'image/noImage.webp'
                 }
             }
-            return ''
+            return 'image/noImage.webp'
         },
         setBackgroundLazy(entries, observer, isIntersecting) {
             let bg = 'https://tsuiokuyo.netlify.app/image/background.webp'
