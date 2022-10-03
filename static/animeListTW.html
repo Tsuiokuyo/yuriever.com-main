@@ -495,7 +495,7 @@
                             </v-col>
                         </v-row>
                         <br />
-                        <span>資料更新時間:2022年10月2日，總筆數:{{rawData.length}}</span>
+                        <span>資料更新時間:2022年10月4日，總筆數:{{rawData.length}}</span>
 
                         <v-data-table class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
                             :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event"

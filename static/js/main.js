@@ -74,6 +74,9 @@ let vue = new Vue({
                         case 'annict':
                             url = 'https://annict.com/works/' + id;
                             break;
+                        case 'redditanimelist':
+                            url = 'http://www.redditanimelist.net/anime.php?anime=' + id;
+                            break;
                     }
                     window.open(url);
                 },
