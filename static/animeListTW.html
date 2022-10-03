@@ -5,6 +5,7 @@
     <link rel="Shortcut Icon" type="image/x-icon" href="image/favicons.webp" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="description" content="動畫排名及找番用網頁，計算超過10個評分網站分數，再使用貝氏估計重新計分後再標準化各網站分數得排名">
     <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
@@ -74,16 +75,16 @@
                     top:50%;
                     transform: translate(-50%, -50%);">
                         <v-avatar color="indigo" size="50" @click="goToBlog">
-                            <img alt="Avatar" src="image/avatar.webp">
+                            <img alt="tsuiokuyo" src="image/avatar.webp">
                         </v-avatar>
                     </span>
 
-                    <span style="margin:auto 0 auto auto;">
+                    <!-- <span style="margin:auto 0 auto auto;">
                         <v-btn @click="$vuetify.theme.dark = !$vuetify.theme.dark" class="mx-2" fab dark small
                             color="dark">
                             <v-icon>mdi-brightness-6</v-icon>
                         </v-btn>
-                    </span>
+                    </span> -->
 
                 </v-tabs>
                 <v-alert v-if="rssDisabledGNN" dismissible color="#16A2B2" border="left" elevation="3" colored-border icon="GNN新聞" dense class="bkColor">
@@ -507,7 +508,7 @@
                                             title="點圖放大" :src=setCover(item,false) @click="toggleFullscreen(item)">
                                         </v-img>
                                         <div v-if="selectedImage" class="overlay">
-                                            <v-img class="mt-12" :src="selectedImage" alt="" max-height="95vh" contain
+                                            <v-img class="mt-12" :src="selectedImage" alt="animeCover" max-height="95vh" contain
                                                 dark @click.stop="selectedImage = false">
                                             </v-img>
                                         </div>
@@ -587,8 +588,8 @@
                             <div>
                                 <v-menu offset-y open-on-hover v-if="Object.keys(item.online).length > 0">
                                     <template v-slot:activator="{ on, attrs }">
-                                                    <v-btn color="primary" dark v-bind="attrs" v-on="on" small text>
-                                                        線上看<v-icon>mdi-menu-down</v-icon>
+                                                    <v-btn light  outlined color="primary" dark v-bind="attrs" v-on="on" >
+                                                        <v-icon>mdi-video-check-outline</v-icon>線上看<v-icon>mdi-menu-down</v-icon>
                                                     </v-btn>
                                                 </template>
 
@@ -621,7 +622,7 @@
 
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/gamer.webp">
+                                    <img alt="gamer" src="image/gamer.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.Gamer" :item="item.Gamer" website="Gamer" :b-score="item.Gamer.bayesian_score">
                                 </rating>
@@ -629,35 +630,35 @@
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/mal.webp">
+                                    <img alt="mal" src="image/mal.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.MAL" :item="item.MAL" website="MAL" :b-score="item.MAL.score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/bgm.webp">
+                                    <img alt="bgm" src="image/bgm.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.BGM" :item="item.BGM" website="BGM" :b-score="item.BGM.bayesian_score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/anikore.webp">
+                                    <img alt="anikore" src="image/anikore.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.Anikore" :item="item.Anikore" website="Anikore" :b-score="item.Anikore.bayesian_score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/aniList.webp">
+                                    <img alt="aniList" src="image/aniList.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.AniList" :item="item.AniList" website="AniList" :b-score="item.AniList.bayesian_score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/apc.webp">
+                                    <img alt="apc" src="image/apc.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.AnimePlanetCom" :item="item.AnimePlanetCom" website="AnimePlanetCom" :b-score="item.AnimePlanetCom.bayesian_score">
                                 </rating>
@@ -665,21 +666,21 @@
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/ann.webp">
+                                    <img alt="ann" src="image/ann.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.ANN" :item="item.ANN" website="ANN" :b-score="item.ANN.bayesian_score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/anisearch.webp">
+                                    <img alt="anisearch" src="image/anisearch.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.anisearch" :item="item.anisearch" website="anisearch" :b-score="item.anisearch.bayesian_score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/kitsu.webp">
+                                    <img alt="kitsu" src="image/kitsu.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.kitsu" :item="item.kitsu" website="kitsu" :b-score="item.kitsu.bayesian_score">
                                 </rating>
@@ -687,14 +688,14 @@
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/notifymoe.webp">
+                                    <img alt="notifymoe" src="image/notifymoe.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.notifyMoe" :item="item.notifyMoe" website="notifyMoe" :b-score="item.notifyMoe.bayesian_score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/trakt.webp">
+                                    <img alt="trakt" src="image/trakt.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.trakt" :item="item.trakt" website="trakt" :b-score="item.trakt.bayesian_score">
                                 </rating>
@@ -702,35 +703,35 @@
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/livechart.webp">
+                                    <img alt="livechart" src="image/livechart.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.livechart" :item="item.livechart" website="livechart" :b-score="item.livechart.bayesian_score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/anidb.webp">
+                                    <img alt="anidb" src="image/anidb.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.anidb" :item="item.anidb" website="anidb" :b-score="item.anidb.bayesian_score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/reddit.webp">
+                                    <img alt="reddit" src="image/reddit.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.redditanimelist" :item="item.redditanimelist" website="redditanimelist" :b-score="item.redditanimelist.bayesian_score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/annict.webp">
+                                    <img alt="annict" src="image/annict.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.annict" :item="item.annict" website="annict" :b-score="item.annict.bayesian_score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
                             </td>
                             <td class="center pa-0">
                                 <v-avatar size="32" rounded>
-                                    <img alt="Avatar" src="image/sakuhindb.webp">
+                                    <img alt="sakuhindb" src="image/sakuhindb.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.sakuhindb" :item="item.sakuhindb" website="sakuhindb" :b-score="item.sakuhindb.bayesian_score"></rating>
                                 <span v-else><v-chip>暫無</v-chip></span>
@@ -751,7 +752,7 @@
                                     :src=setCover(item,false) @click="toggleFullscreen(item)">
                                 </v-img>
                                 <div v-if="selectedImage" class="overlay">
-                                    <v-img class="mt-12" :src="selectedImage" alt="" max-height="95vh" contain dark
+                                    <v-img class="mt-12" :src="selectedImage" alt="animeCover" max-height="95vh" contain dark
                                         @click.stop="selectedImage = false">
                                     </v-img>
                                 </div>
