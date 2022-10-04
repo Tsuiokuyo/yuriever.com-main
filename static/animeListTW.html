@@ -147,7 +147,7 @@
                                 <!-- <br /> -->
                                 <ol>
                                     <li>
-                                        <h2>忽然發現目前載入JSON後，瞬間吃的記憶體上看500MB了，懶惰終於變炸彈了... 當前記憶體用量：
+                                        <h2>忽然發現目前載入JSON後，瞬間吃的記憶體上看<span class="text-decoration-line-through">5</span>400MB了，現在又多了個firebase... 當前記憶體用量：
                                             <span v-if="null != memory">{{Math.round(memory/Math.pow(1000,2),2)}}MB
                                                     <v-btn color="error"
                                                         @click="memory = performance.memory.usedJSHeapSize">更新</v-btn>
@@ -518,7 +518,7 @@
                         </v-col>
                     </v-row>
                     <br />
-                    <span style="float:right;">總筆數:{{rawData.length}}，資料更新時間:2022年10月4日</span>
+                    <span style="float:right;">總筆數:{{rawData.length}}，資料更新時間:2022年10月5日</span>
                     <span v-if="windowWidth > 600">
                     <!-- <span style="float:right;" v-if="user != null">已登入：{{user.email}}</span> -->
                     <v-btn v-if="user != null" @click="loginOut" color="error" dark>
@@ -536,7 +536,7 @@
                             <v-icon v-bind="attrs"
                             v-on="on">mdi-help-circle</v-icon>
                         </template>
-                        <span>動畫收藏功能，目前缺少查詢收藏的作品以及備註功能，也就是說現在只有打勾儲存功能，還沒有畫面可以額外查詢，而FIREBASE的額度問題還是繞不開QQ，</span>
+                        <span>動畫收藏功能，有興趣請用，只是目前缺少查詢收藏的作品以及備註功能，也就是說現在只有登入打勾儲存讀取功能，還沒有畫面可以額外查詢。</span>
                     </v-tooltip>
                     <v-tooltip bottom v-if="user != null">
                         <template v-slot:activator="{ on, attrs }">
@@ -544,7 +544,7 @@
                             v-on="on">mdi-alert-circle
                         </v-icon>
                         </template>
-                        <span>這東西屬玩樂性質，請不要給予太大希望，還是那個額度問題，雖然以目前來看是不太可能達到上限啦，屆時可能會提供excel匯出，但也其實沒甚麼意義</span>
+                        <span>這東西屬玩樂性質，請不要給予太大希望，還是那個免費額度問題，雖然目前來看是不太可能達到上限。</span>
                     </v-tooltip>
                     </span>
                     <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
@@ -964,11 +964,12 @@
     </div>
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"; import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js"; import { getAuth,signOut, getRedirectResult,signInWithRedirect,GoogleAuthProvider}
-        from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"; import { getFirestore, doc, updateDoc, setDoc,getDoc,collection, getDocs,query, where } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"; vue.$children["0"].initializeApp
-        = initializeApp; vue.$children["0"].getAnalytics = getAnalytics; vue.$children["0"].getAuth = getAuth; vue.$children["0"].signInWithRedirect = signInWithRedirect; vue.$children["0"].GoogleAuthProvider = GoogleAuthProvider; vue.$children["0"].getRedirectResult
-        =getRedirectResult;vue.$children["0"].signOut =signOut; vue.$children["0"].updateDoc = updateDoc; vue.$children["0"].doc = doc; vue.$children["0"].getFirestore = getFirestore; vue.$children["0"].setDoc = setDoc;vue.$children["0"].getDoc = getDoc
-        ;vue.$children["0"].collection = collection;vue.$children["0"].getDocs = getDocs;;vue.$children["0"].query = query;vue.$children["0"].where = where
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"; import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js"; import { getAuth,signOut, getRedirectResult,signInWithRedirect,GoogleAuthProvider,setPersistence,browserLocalPersistence
+        ,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"; import { getFirestore, doc, updateDoc, setDoc,getDoc,collection, getDocs,query, where } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+        vue.$children["0"].initializeApp = initializeApp; vue.$children["0"].getAnalytics = getAnalytics; vue.$children["0"].getAuth = getAuth; vue.$children["0"].signInWithRedirect = signInWithRedirect; vue.$children["0"].GoogleAuthProvider = GoogleAuthProvider;
+        vue.$children["0"].getRedirectResult =getRedirectResult;vue.$children["0"].signOut =signOut; vue.$children["0"].updateDoc = updateDoc; vue.$children["0"].doc = doc; vue.$children["0"].getFirestore = getFirestore; vue.$children["0"].setDoc = setDoc;vue.$children["0"].getDoc
+        = getDoc ;vue.$children["0"].collection = collection;vue.$children["0"].getDocs = getDocs;;vue.$children["0"].query = query;vue.$children["0"].where = where ;vue.$children["0"].setPersistence = setPersistence ;vue.$children["0"].browserLocalPersistence
+        = browserLocalPersistence ;vue.$children["0"].onAuthStateChanged = onAuthStateChanged
     </script>
     <script src="js/main.js" type="text/javascript"></script>
     <script async src="js/snowstorm.js"></script>

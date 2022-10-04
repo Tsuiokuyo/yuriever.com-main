@@ -821,9 +821,6 @@ let vue = new Vue({
                     initializeApp(firebaseConfig);
                 const analytics = getAnalytics(app);
 
-
-
-
                 getRedirectResult = this.$children["0"].getRedirectResult
                     // delete this.$children["0"].getRedirectResult
                 GoogleAuthProvider = this.$children["0"].GoogleAuthProvider
@@ -836,24 +833,60 @@ let vue = new Vue({
                     // delete this.$children["0"].signInWithRedirect
                     // signInWithRedirect(this.auth, this.providerGoogle)
 
+                setPersistence = this.$children["0"].setPersistence
+
+                browserLocalPersistence = this.$children["0"].browserLocalPersistence
+                onAuthStateChanged = this.$children["0"].onAuthStateChanged
+                signOut = this.$children["0"].signOut
+                doc = this.$children["0"].doc
+                updateDoc = this.$children["0"].updateDoc
+                getFirestore = this.$children["0"].getFirestore
+                setDoc = this.$children["0"].setDoc;
+                getDoc = this.$children["0"].getDoc;
+                collection = this.$children["0"].collection
+                getDocs = this.$children["0"].getDocs
+                query = this.$children["0"].query
+                where = this.$children["0"].where
+                this.db = getFirestore();
+                //FIXME 膩了，有心情再來調整這裡...........................................
+                onAuthStateChanged(this.auth, user => {
+
+                    this.user = user
+                    if (user) {
+                        getDoc(doc(this.db, "animeListTW", user.email)).then((result) => {
+                            if (result.exists()) {
+                                let count = 0
+                                this.seenData = result.data().seen
+                                for (item of this.rawData) {
+                                    for (seen of this.seenData) {
+                                        if (item.MAL.id == seen) {
+                                            item['seen'] = true
+                                            count++
+                                            let idx = this.seenData.indexOf(seen);
+                                            if (idx !== -1) {
+                                                this.seenData.splice(idx, 1);
+                                            }
+                                            break;
+                                        }
+                                    }
+                                }
+                                this.saveMsg['text'] = '本次讀取了' + count + '筆資料。'
+                                this.saveMsg['state'] = true
+                            }
+
+                        })
+                    }
+                })
+
                 getRedirectResult(this.auth)
                     .then((result) => {
                         this.disableBtn = false
                         if (result) {
-                            signOut = this.$children["0"].signOut
-                            doc = this.$children["0"].doc
-                            updateDoc = this.$children["0"].updateDoc
-                            getFirestore = this.$children["0"].getFirestore
-                            setDoc = this.$children["0"].setDoc;
-                            getDoc = this.$children["0"].getDoc;
-                            collection = this.$children["0"].collection
-                            getDocs = this.$children["0"].getDocs
-                            query = this.$children["0"].query
-                            where = this.$children["0"].where
+                            setPersistence(this.auth, browserLocalPersistence)
                                 // const credential = GoogleAuthProvider.credentialFromResult(result);
                                 // this.token = credential.accessToken;
                             this.user = result.user;
-                            this.db = getFirestore();
+
 
                             getDoc(doc(this.db, "animeListTW", result.user.email)).then((result) => {
                                 if (result.exists()) {
@@ -1057,7 +1090,11 @@ let vue = new Vue({
             this.saveMsg['state'] = true
         },
         btnAuth() {
-            signInWithRedirect(this.auth, this.providerGoogle);
+            setPersistence(this.auth, browserLocalPersistence)
+                .then(() => {
+                    return signInWithRedirect(this.auth, this.providerGoogle);
+                })
+                // signInWithRedirect(this.auth, this.providerGoogle);
 
         },
         loginOut() {
