@@ -92,9 +92,10 @@ let vue = new Vue({
 
         windowWidth: window.innerWidth,
         isLoading: true,
-        panel: '',
+        panel: [],
         hug: '',
         snackbarHug: true,
+        saveMsg: { 'state': false, 'text': '' },
 
 
         page: 1,
@@ -154,8 +155,8 @@ let vue = new Vue({
         gnn: {},
         disabledZero: true,
         disabledNSFW: true,
-        rssDisabledMoe: false,
-        rssDisabledGNN: false,
+        // rssDisabledMoe: true,
+        // rssDisabledGNN: true,
 
         voiceCount: 0,
         voiceOpen: false,
@@ -167,6 +168,14 @@ let vue = new Vue({
         dialogCal: false,
         focus: '',
         memory: null,
+
+        auth: null,
+        providerGoogle: null,
+        user: null,
+        token: null,
+        db: null,
+        seenData: null,
+        disableBtn: true
     },
     computed: {
         listenChange() {
@@ -739,7 +748,7 @@ let vue = new Vue({
                             'title': '已在此網站待了半小時，已停止新聞迴圈'
                         }
                     }, 1800000);
-                    this.rssDisabledMoe = true;
+
                 } else {
                     this.moelong = {
                         'title': '萌朧動漫情報網 RSS撈取失敗，暫停使用，反正也沒甚麼人會看這些資訊'
@@ -785,7 +794,7 @@ let vue = new Vue({
                             'title': '已在此網站待了半小時，已停止新聞迴圈'
                         }
                     }, 1800000);
-                    this.rssDisabledGNN = true;
+
                 } else {
 
                     this.gnn = {
@@ -796,6 +805,82 @@ let vue = new Vue({
             })
 
         this.$nextTick(function() {
+
+                const firebaseConfig = {
+                    apiKey: "AIzaSyC8m9BWMwBmIHJ_NVWzwcgbYwAfqHj1g0Q",
+                    authDomain: "animelisttw.firebaseapp.com",
+                    projectId: "animelisttw",
+                    storageBucket: "animelisttw.appspot.com",
+                    messagingSenderId: "822507041160",
+                    appId: "1:822507041160:web:264c7087169996d50e0a3d",
+                    measurementId: "G-4Y1Q0EHQCY"
+                };
+                initializeApp = this.$children["0"].initializeApp
+                getAnalytics = this.$children["0"].getAnalytics
+                const app =
+                    initializeApp(firebaseConfig);
+                const analytics = getAnalytics(app);
+
+
+
+
+                getRedirectResult = this.$children["0"].getRedirectResult
+                    // delete this.$children["0"].getRedirectResult
+                GoogleAuthProvider = this.$children["0"].GoogleAuthProvider
+                    // delete this.$children["0"].GoogleAuthProvider
+                getAuth = this.$children["0"].getAuth
+                    // delete this.$children["0"].getAuth
+                this.auth = getAuth();
+                this.providerGoogle = new GoogleAuthProvider();
+                signInWithRedirect = this.$children["0"].signInWithRedirect
+                    // delete this.$children["0"].signInWithRedirect
+                    // signInWithRedirect(this.auth, this.providerGoogle)
+
+                getRedirectResult(this.auth)
+                    .then((result) => {
+                        this.disableBtn = false
+                        if (result) {
+                            signOut = this.$children["0"].signOut
+                            doc = this.$children["0"].doc
+                            updateDoc = this.$children["0"].updateDoc
+                            getFirestore = this.$children["0"].getFirestore
+                            setDoc = this.$children["0"].setDoc;
+                            getDoc = this.$children["0"].getDoc;
+                            collection = this.$children["0"].collection
+                            getDocs = this.$children["0"].getDocs
+                            query = this.$children["0"].query
+                            where = this.$children["0"].where
+                                // const credential = GoogleAuthProvider.credentialFromResult(result);
+                                // this.token = credential.accessToken;
+                            this.user = result.user;
+                            this.db = getFirestore();
+
+                            getDoc(doc(this.db, "animeListTW", result.user.email)).then((result) => {
+                                if (result.exists()) {
+                                    let count = 0
+                                    this.seenData = result.data().seen
+                                    for (item of this.rawData) {
+                                        for (seen of this.seenData) {
+                                            if (item.MAL.id == seen) {
+                                                item['seen'] = true
+                                                count++
+                                                let idx = this.seenData.indexOf(seen);
+                                                if (idx !== -1) {
+                                                    this.seenData.splice(idx, 1);
+                                                }
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    this.saveMsg['text'] = '本次讀取了' + count + '筆資料。'
+                                    this.saveMsg['state'] = true
+                                }
+
+                            })
+                        }
+
+                    })
+
 
                 this.getRandomArray();
                 let genres = []
@@ -960,6 +1045,28 @@ let vue = new Vue({
     async mounted() {}, //mounted
     updated() {},
     methods: {
+        saveItem() {
+            let saveList = [];
+            for (item of this.rawData) {
+                if (item.hasOwnProperty('seen') && item.seen) {
+                    saveList.push(item.MAL.id)
+                }
+            }
+            setDoc(doc(this.db, "animeListTW", this.user.email), { 'seen': saveList });
+            this.saveMsg['text'] = '目前一共儲存了' + saveList.length + '筆資料。'
+            this.saveMsg['state'] = true
+        },
+        btnAuth() {
+            signInWithRedirect(this.auth, this.providerGoogle);
+
+        },
+        loginOut() {
+            signOut(this.auth).then(() => {
+                this.user = null
+            }).catch((error) => {
+
+            });
+        },
         setRankColor(i) {
             let pitch = 255 / this.rawData.length;
             pitch = 255 - (pitch * i)
