@@ -700,6 +700,7 @@ let vue = new Vue({
             let textDecoder = new TextDecoder();
             let textContent = textDecoder.decode(byteArray);
             this.rawData = JSON.parse(textContent)
+
             vue.isLoading = null;
         }));
 
@@ -850,21 +851,21 @@ let vue = new Vue({
                 this.db = getFirestore();
                 //FIXME 膩了，有心情再來調整這裡...........................................
                 onAuthStateChanged(this.auth, user => {
-
                     this.user = user
                     if (user) {
                         getDoc(doc(this.db, "animeListTW", user.email)).then((result) => {
                             if (result.exists()) {
                                 let count = 0
+                                let res = result.data().seen
                                 this.seenData = result.data().seen
                                 for (item of this.rawData) {
-                                    for (seen of this.seenData) {
+                                    for (seen of res) {
                                         if (item.MAL.id == seen) {
-                                            item['seen'] = true
+                                            item.seen = true
                                             count++
-                                            let idx = this.seenData.indexOf(seen);
+                                            let idx = res.indexOf(seen);
                                             if (idx !== -1) {
-                                                this.seenData.splice(idx, 1);
+                                                res.splice(idx, 1);
                                             }
                                             break;
                                         }
@@ -872,6 +873,7 @@ let vue = new Vue({
                                 }
                                 this.saveMsg['text'] = '本次讀取了' + count + '筆資料。'
                                 this.saveMsg['state'] = true
+                                this.destroyTable()
                             }
 
                         })
@@ -891,15 +893,17 @@ let vue = new Vue({
                             getDoc(doc(this.db, "animeListTW", result.user.email)).then((result) => {
                                 if (result.exists()) {
                                     let count = 0
+                                    let res = result.data().seen
                                     this.seenData = result.data().seen
                                     for (item of this.rawData) {
-                                        for (seen of this.seenData) {
+                                        // item.seen = false
+                                        for (seen of res) {
                                             if (item.MAL.id == seen) {
-                                                item['seen'] = true
+                                                item.seen = true
                                                 count++
-                                                let idx = this.seenData.indexOf(seen);
+                                                let idx = res.indexOf(seen);
                                                 if (idx !== -1) {
-                                                    this.seenData.splice(idx, 1);
+                                                    res.splice(idx, 1);
                                                 }
                                                 break;
                                             }
@@ -907,6 +911,7 @@ let vue = new Vue({
                                     }
                                     this.saveMsg['text'] = '本次讀取了' + count + '筆資料。'
                                     this.saveMsg['state'] = true
+                                    this.destroyTable()
                                 }
 
                             })
@@ -920,6 +925,7 @@ let vue = new Vue({
                 let births = []
                 let onlines = []
                 for (item of this.rawData) {
+
                     if (this.disabledNSFW) { //移除18禁
                         if (item.MAL.genres.includes('Hentai')) {}
                     }
