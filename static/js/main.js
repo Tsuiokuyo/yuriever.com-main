@@ -88,7 +88,7 @@ let vue = new Vue({
         // rawUrl: 'https://tsuiokuyo.netlify.app/result.json',
         rawData: [],
         randomTen: [],
-        toRandom: true,
+        toRandom: false,
 
         windowWidth: window.innerWidth,
         isLoading: true,
