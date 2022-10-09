@@ -217,6 +217,7 @@ let vue = new Vue({
                     value: 'name',
                     width: '25%',
                     filter: (value, search, item) => {
+                        this.search == null ? this.search = '' : this.search
                         if (this.search.length == 1) {
                             this.inputErr = '請至少輸入兩個字';
                             return false
