@@ -2,8 +2,8 @@
 title: "使用Foobar2000+request_http建個基於icecast2的可點歌網路電台"
 date: 2022-10-13T14:48:06+08:00
 slug: 9e31d4b6
-featuredImage: "/assets/.jpg"
-featuredImagePreview: "/assets/.jpg"
+featuredImage: "/assets/foobar2000.jpg"
+featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
 ---
@@ -12,9 +12,9 @@ categories: [foobar2000]
 
 
 
-ㄔ
-
 成品大概是這樣吧
+
+<!--more-->
 
 http://tsuiokuyo.ddns.net:8763/js_flat.html
 
@@ -22,7 +22,9 @@ http://tsuiokuyo.ddns.net:8764/status.xsl
 
 <audio controls="controls" preload="none" __idm_id__="21979137"><source src="http://tsuiokuyo.ddns.net:8764/stream.ogg" type="application/ogg"></audio>
 
+{{< audio >}}
 
+<!-- ^^themes\LoveIt\layouts\shortcodes\audio.html -->
 
 現在雖然都用google drive串流來聽歌，但不曉得哪一天無限空間會被拔掉，總要有幾個備援方案，
 
