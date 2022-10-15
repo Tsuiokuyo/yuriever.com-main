@@ -206,3 +206,51 @@ Javascript version ( flat )
 https://www.ptt.cc/bbs/WebRadio/M.1296124848.A.E0A.html
 
 https://ptt.healtyman.xyz/?man/WebRadio/D766/D6CE/M.1296145083.A.AB6.html
+
+
+
+既然已知是參數問題，
+
+所以我倒是沒改那麼多，直接用懶人方式調整
+
+僅僅在requester.js中多加三行讓他的列表能夠正常運作而已
+
+<code>
+
+  updateFromThis: function(element, params, isFocus, isBackground) {
+
+
+
+​    **params = params.replace('_song_id=', '&song_id=')**
+
+​    **page = params.substring(params.lastIndexOf('=') + 1, params.length)**
+
+​    **params += '&page=' + page / 100**
+
+
+
+​    var p = element;
+
+​    for (; p != null; p = p.parentNode) {
+
+​      logDebug(p);
+
+​      if (Element.hasClassName(p, 'tab_item')) break;
+
+​    }
+
+
+
+</code>
+
+第一行是把傳入的參數修正，
+
+第二行是取得他要查詢的N筆資料，
+
+第三行是把那N筆轉成頁數，
+
+
+
+大概是這樣
+
+其他bug如果有遇到就再說了
