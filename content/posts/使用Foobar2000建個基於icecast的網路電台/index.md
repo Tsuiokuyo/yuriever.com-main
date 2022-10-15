@@ -20,6 +20,8 @@ http://tsuiokuyo.ddns.net:8763/js_flat.html
 
 http://tsuiokuyo.ddns.net:8764/status.xsl
 
+<audio controls="controls" preload="none" __idm_id__="21979137"><source src="http://tsuiokuyo.ddns.net:8764/stream.ogg" type="application/ogg"></audio>
+
 
 
 現在雖然都用google drive串流來聽歌，但不曉得哪一天無限空間會被拔掉，總要有幾個備援方案，
@@ -104,8 +106,6 @@ foobar2000設定大概就這樣而已，再來是icecast2(v2.4.4)部分
 而掛載點則為http://localhost:8000/stream.ogg，也就是插件內的mountpoint路徑
 
 預設是stream，就是這個電台的檔案名稱，能直接讀取它
-
-<audio xmlns="http://www.w3.org/1999/xhtml" controls="controls" preload="none"><source src="http://localhost:8763/stream.ogg" type="application/ogg" /></audio>
 
 弄上實體IP或動態域名後
 
