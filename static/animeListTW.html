@@ -87,6 +87,7 @@
                     點歌台
                     <v-icon>mdi-radio-tower </v-icon>
                 </v-tab>
+
                 <span style="position: absolute;
                     left:50%;
                     top:50%;
@@ -104,7 +105,7 @@
                     </span> -->
 
             </v-tabs>
-
+            <audio controls="controls" preload="none" __idm_id__="22913025"><source src="http://tsuiokuyo.ddns.net:8764/stream.ogg" type="application/ogg"></audio>
             <v-alert dismissible color="#16A2B2" border="left" elevation="3" colored-border icon="GNN新聞" dense class="bkColor">
                 <a :href="gnn.link" target="_blank" v-if="!!gnn" style="animation:anis 10s linear infinite;">{{gnn.title}} </a>
             </v-alert>
