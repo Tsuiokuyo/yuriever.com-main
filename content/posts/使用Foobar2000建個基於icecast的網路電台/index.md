@@ -34,8 +34,8 @@ http://tsuiokuyo.ddns.net:8764/status.xsl
 
 此文為簡單的icecast v2.4.4 foobar2000 stream Components 以及 foo_request_http_v09-0.4說明
 
-不過這些東西九成都已經過時了...教學都好幾年以前的產物了，而且連載點都很難找了，可惜的是PTT的foo_request_http_v09-0.4_fix版我倒是真的找不到了，
-不過也是因為我只想在windows用foobar直接推送的關係，不然現在還有很多其他更方便的軟體...。
+不過這些東西九成都已經過時了...教學都好幾年以前的產物了，而且連載點都很難找了，可惜的是PTT的foo_request_http_v09-0.4_fix版我倒是真的找不到了，所以那邊只能自己用懶人改法了，
+不過這也是因為我只想在windows用foobar直接推送的關係，不然現在還有很多其他更方便的軟體...。
 
 
 
