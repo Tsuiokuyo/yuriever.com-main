@@ -524,7 +524,7 @@
                     </v-row>
                     <br />
                     <v-row>
-                        <span style="float:right;">總筆數:{{rawData.length}}，資料更新時間:2022年10月19日</span>
+                        <span style="float:right;">總筆數:{{rawData.length}}，資料更新時間:2022年10月22日</span>
                         <span v-if="windowWidth > 600"> 
                         <!-- <span style="float:right;" v-if="user != null">已登入：{{user.email}}</span> -->
                         <v-btn v-if="user != null" @click="loginOut" color="error" dark>
@@ -555,7 +555,7 @@
                     </v-row>
                     </span>
                     <br/>
-                    <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
+                    <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...超過太久就重新整理，還是不行大概就是'暫時掛掉'，看我甚麼時候注意到" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
                         :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event"
                         hide-default-footer>
 
