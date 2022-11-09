@@ -282,6 +282,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     RootMe= ""
     Phone = ""
     Email = "Tsuiokuyo@gmail.com"
+	pixiv = "15348773"
     RSS = true # LoveIt 新增 | 0.2.0
 
   # LoveIt 更改 | 0.2.0 文章頁面全局配置
