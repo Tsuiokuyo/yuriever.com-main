@@ -41,9 +41,11 @@ http://tsuiokuyo.ddns.net:8764/status.xsl
 而其他格式倒是正常，雖然這其實沒啥必要，只是看到這邊有顯示on Air的歌曲會比較爽一點
 http://dir.xiph.org/search?q=tsuiokuyo
 
+目前已不使用foo_shuicast，因為用shuicast在某些時候會有破音問題，因為只有hi-res跟mp3會破音，懷疑是跟歌曲本身的位元率高低有關，因此改用butt+vb audio cable來播放，這樣才不會接收到本機的音效，順便一提icecast的多個Genre 設定有固定格式，否則會直接送你異常，第二個以後的類型都要加, 才行，一定要用",空格"，如：Anime,  Jpop, Game，這爛分割方式讓我剛開始研究好久。
 
 
 
+以下沒變
 
 現在雖然都用google drive串流來聽歌，但不曉得哪一天無限空間會被拔掉，總要有幾個備援方案，
 
