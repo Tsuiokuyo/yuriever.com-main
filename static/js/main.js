@@ -706,7 +706,9 @@ let vue = new Vue({
         }));
 
 
-
+ this.gnn.title = 'heroku已死，暫時無法撈取RSS'
+ this.moelong.title = 'heroku已死，暫時無法撈取RSS' 
+		/*
         let newMoes = []
             // https://thingproxy.freeboard.io/fetch/
             // http://www.whateverorigin.org/get?url=
@@ -715,9 +717,6 @@ let vue = new Vue({
         //const moelongUrl = 'https://tsuiokuyo.herokuapp.com/https://www.moelong.com/moelongnews/feed';
         //const gnnUrl = 'https://tsuiokuyo.herokuapp.com/https://gnn.gamer.com.tw/rss.xml';
 		
-		const moelongUrl = 'https://thingproxy.freeboard.io/fetch/https://www.moelong.com/moelongnews/feed';
-        const gnnUrl = 'https://thingproxy.freeboard.io/fetch/https://gnn.gamer.com.tw/rss.xml';
-
         fetch(moelongUrl)
             .then(response => response.text())
             .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
@@ -808,6 +807,7 @@ let vue = new Vue({
                 }
 
             })
+			*/
 
         this.$nextTick(function() {
 
