@@ -712,8 +712,11 @@ let vue = new Vue({
             // http://www.whateverorigin.org/get?url=
             // https://api.allorigins.win/get?url=
             // 只有rss部分是靠node.js才實現的 但11/28 heroku會停止支援免費版，上面三個算屆時備用的，但我也可能會直接放棄使用RSS
-        const moelongUrl = 'https://tsuiokuyo.herokuapp.com/https://www.moelong.com/moelongnews/feed';
-        const gnnUrl = 'https://tsuiokuyo.herokuapp.com/https://gnn.gamer.com.tw/rss.xml';
+        //const moelongUrl = 'https://tsuiokuyo.herokuapp.com/https://www.moelong.com/moelongnews/feed';
+        //const gnnUrl = 'https://tsuiokuyo.herokuapp.com/https://gnn.gamer.com.tw/rss.xml';
+		
+		const moelongUrl = 'https://thingproxy.freeboard.io/fetch/https://www.moelong.com/moelongnews/feed';
+        const gnnUrl = 'https://thingproxy.freeboard.io/fetch/https://gnn.gamer.com.tw/rss.xml';
 
         fetch(moelongUrl)
             .then(response => response.text())
