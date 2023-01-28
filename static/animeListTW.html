@@ -128,18 +128,26 @@
                                 </template>
                                 <br />
 								<span>
-									2022/11月後的心力放在
-									玩AI繪圖，https://www.pixiv.net/users/15348773
-									看動畫、玩AVG遊戲補充電台音樂，http://tsuiokuyo.ddns.net:8764/
-									老實說平均跑一款AVG看攻略走全CG+全未讀全結局基本上還是要花上30小時左右，大概夠我看5~6部動畫了，感覺有點虧
+									這幾個月的心力放在
+									玩AI繪圖，https://www.pixiv.net/users/15348773 <br>
+									看動畫、看百合漫畫、玩AVG遊戲或HGAME來補充個人電台音樂，<br>
+									因為google無限空間被砍了，只能連到自己電腦聽了...<br>
+									基於foobar2000架設，http://tsuiokuyo.ddns.net:8763/js_flat.html <br>
+									歷史歌單：https://www.last.fm/zh/user/Tsuiokuyo <br>
+									目前約有17K首無損的二次元相關歌，類型大概是Anime, Vocaloid, OST, Touhou Project, Doujin Music, Jpop, Game，每週會緩慢增加<br>
+									<br>
+									另外老實說平均跑一款AVG看攻略走全CG+全未讀全結局基本上還是要花上30小時左右，大概夠我看5~6部動畫了，感覺有點虧<br>
+
+									也因此，這邊偶爾跑一次更新就不管了<br>
+									標準化總平均得出的分數我一直覺得計算八成有問題，但是...我還是決定不去改<br>
+									而Heroku已死，新聞快訊的RSS目前懶得找替代品抓取(2023.01)
 									
-									也因此，這邊偶爾跑一次更新就懶得管了@@
 									<br />
 									以下為舊文
 								</span>
                                 <span class="text-decoration-line-through">
 	
-                                    因為大概沒人看，這邊真的懶得排版...</span><br />
+                                    因為大概沒人看，這邊就不排版了...</span><br />
 
                                 <h4>對了，先提一下，其實不用太在意巴哈評分特高的問題，雖然沒有去極值，但也對分數另外再進行標準化後，再去做平均，當然，大前提是運算邏輯沒問題。
                                     <br />將計算混合在一起的所有分數的總體 μ（平均值）和總體 σ（標準差）。 然後，對於某個網站 i，將計算其自身的 μi 和 σi。 最後，來自網站 i 的分數將通過以下方式標準化：
@@ -147,10 +155,16 @@
                                 </h4>
                                 <h2>關於列表</h2>
                                 <span>應該算是純前端畫面，畢竟沒有後端更沒有資料庫，本想串firebase，但50000筆的免費額度有點微妙，<br />
-                                    RSS雖用Heroku抓取，但11/28停止免費服務，屆時沒找到替代方法應該就直接拔掉了
+                                    
                                     <br />
                                     <span
-                                        class="text-decoration-line-through">所有資料基於myanimelist產生，目前在myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...</span><br /> 記憶體問題，塞到變1G的倒是不知道還打不打得開，所以不會全部都撈，畢竟沒有使用到後端或者資料庫
+                                        class="text-decoration-line-through">所有資料基於myanimelist產生，目前在myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...</span><br /> 
+										<br /> 
+										目前抓取流程是分成三部分<br /> 
+										撈取各網站作品ID->各網站作品ID映射->依作品ID取分數、票數等 <br /> 
+										
+										基本上分數會存快取7天更新一次，ANIDB則為30天更新，<br /> 
+										
                                 <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜，當然也能當成找番、補番用工具。
                                 <h3>作品篩選依據</h3>
                                 可比對到巴哈姆特的作品或者是至少有四個分數來源網站，順便一提，巴哈應該有2K多筆資料我沒有比對到
@@ -163,12 +177,12 @@
                                 <!-- <br /> -->
                                 <ol>
                                     <li>
-                                        <h2>忽然發現目前載入JSON後，瞬間吃的記憶體上看<span class="text-decoration-line-through">5</span>400MB了，現在又多了個firebase... 當前記憶體用量：
+                                        <h2>目前載入JSON後，瞬間吃的記憶體上看400MB了，現在又多了個firebase... 當前記憶體用量：
                                             <span v-if="null != memory">{{Math.round(memory/Math.pow(1000,2),2)}}MB
                                                     <v-btn color="error"
                                                         @click="memory = performance.memory.usedJSHeapSize">更新</v-btn>
                                                     </span>
-                                            <span v-else>僅支援chrome內核</span>
+                                            <span v-else>僅支援chrome內核查看</span>
                                         </h2>
                                     </li>
                                     <li><span class="text-decoration-line-through">資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic
@@ -199,14 +213,14 @@
                                 <li>animeNewsNetwork:無重新計算，網站已使用貝氏估計法</li>
                                 <li>animePlanetVom:重新計算分數，且分數乘2，但沒找到投票分數細節</li>
                                 <li>anisearch:重新計算分數</li>
-                                <li>annict:重新計算分數，但不列入總平均分數，四分制換算的問題</li>
+                                <li>annict:重新計算分數，但不列入總平均分數，因有四分制換算的問題</li>
                                 <li>bangumi:重新計算分數</li>
                                 <li>巴哈姆特:重新計算分數，且分數乘2</li>
                                 <li>kitsu:重新計算分數，且分數除10</li>
                                 <li>livechart:重新計算分數，但沒找到投票分數細節</li>
                                 <li>myanimelist :無重新計算，網站已使用Bayesian</li>
                                 <li>notifyMoe :重新計算分數，但沒找到投票分數細節</li>
-                                <li>sakuhindb:重新計算分數，但不列入總平均分數，七分制換算的問題</li>
+                                <li>sakuhindb:重新計算分數，但不列入總平均分數，因有七分制換算的問題</li>
                                 <li>trakt:重新計算分數</li>
                             </ol>
                             <p />
@@ -433,7 +447,7 @@
                     </v-select>
                     <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense>
                     </v-text-field>
-                    <v-text-field v-if="windowWidth < 600" id="srh2" v-model="search" append-icon="mdi-magnify" hint="至少輸入兩字，支援繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
+                    <v-text-field v-if="windowWidth < 600" id="srh2" v-model="search" append-icon="mdi-magnify" hint="至少輸入兩字，會繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
                     </v-text-field>
 
 
@@ -463,7 +477,7 @@
                                 </v-text-field>
                             </v-col>
                             <v-col>
-                                <v-text-field :error-messages="inputErr" v-model="search" id="srh1" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="支援繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" dense clearable>
+                                <v-text-field :error-messages="inputErr" v-model="search" id="srh1" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="會繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" dense clearable>
                                 </v-text-field>
                             </v-col>
                             <v-col></v-col>
@@ -535,7 +549,7 @@
                     </v-row>
                     <br />
                     <v-row>
-                        <span style="float:right;">總筆數:{{rawData.length}}，資料更新時間:2022年12月24日</span>
+                        <span style="float:right;">總筆數:{{rawData.length}}，資料更新時間:2023年01月28日</span>
                         <span v-if="windowWidth > 600"> 
                         <!-- <span style="float:right;" v-if="user != null">已登入：{{user.email}}</span> -->
                         <v-btn v-if="user != null" @click="loginOut" color="error" dark>
@@ -553,7 +567,7 @@
                             <v-icon v-bind="attrs"
                             v-on="on">mdi-help-circle</v-icon>
                         </template>
-                            <span>動畫收藏功能，有興趣請用，只是目前缺少查詢收藏的作品以及備註功能，也就是說現在只有登入打勾儲存讀取功能，還沒有畫面可以額外查詢。</span>
+                            <span>動畫收藏功能，只是目前缺少查詢收藏的作品以及備註功能，也就是說現在只有登入打勾儲存讀取功能，沒有畫面可以額外查詢。</span>
                         </v-tooltip>
                         <v-tooltip bottom v-if="user != null">
                             <template v-slot:activator="{ on, attrs }">
@@ -561,7 +575,7 @@
                             v-on="on">mdi-alert-circle
                         </v-icon>
                         </template>
-                            <span>這東西屬玩樂性質，請不要給予太大希望，還是那個免費額度問題，雖然目前來看是不太可能達到上限。</span>
+                            <span>這東西屬玩樂性質，不要有太大希望，免費額度問題，雖然目前來看是不太可能達到上限。</span>
                         </v-tooltip>
                     </v-row>
                     </span>
