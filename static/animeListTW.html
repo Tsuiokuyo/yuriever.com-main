@@ -161,9 +161,9 @@
                                         class="text-decoration-line-through">所有資料基於myanimelist產生，目前在myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...</span><br /> 
 										<br /> 
 										目前抓取流程是分成三部分<br /> 
-										撈取各網站作品ID->各網站作品ID映射->依作品ID取分數、票數等 <br /> 
+										撈取各網站作品ID->各網站作品ID映射(嚴格比對)->依作品ID取分數、票數等 <br /> 
 										
-										基本上分數會存快取7天更新一次，ANIDB則為30天更新，<br /> 
+										分數全都會存快取，7天更新一次，僅ANIDB則為30天更新，<br /> 
 										
                                 <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜，當然也能當成找番、補番用工具。
                                 <h3>作品篩選依據</h3>
@@ -198,7 +198,8 @@
                                     </li>
                                     <li class="text-decoration-line-through">MAL首播年度有些編輯者和我有著年度的理解差異啊...，例如:鬼滅の刃 遊郭編 當地是2021年12月05日首播 但填寫 2022年冬季...?</li>
                                     <li>Phantom:The Animation因為標點符號無法與巴哈對上</li>
-                                    <li>有些動畫因24話有分成part 1、part 2的評分，但巴哈倒是直接合併</li>
+                                    <li>有些動畫因24話有分成part 1、part 2的評分，基本上只有巴哈是直接兩季合併...</li>
+									<li>bangumi裏番部分因命名差異挺多的，這個不好處理</li>
                                 </ol>
                                 <p />
                                 <h2>分數計算方式</h2>
@@ -211,7 +212,7 @@
                                 <li>anikore:重新計算分數，但沒找到投票分數細節</li>
                                 <li>anilist:重新計算分數，且分數除10</li>
                                 <li>animeNewsNetwork:無重新計算，網站已使用貝氏估計法</li>
-                                <li>animePlanetVom:重新計算分數，且分數乘2，但沒找到投票分數細節</li>
+                                <li>animePlanetCom:重新計算分數，且分數乘2，但沒找到投票分數細節</li>
                                 <li>anisearch:重新計算分數</li>
                                 <li>annict:重新計算分數，但不列入總平均分數，因有四分制換算的問題</li>
                                 <li>bangumi:重新計算分數</li>
@@ -702,7 +703,7 @@
                         </td>
                         <td class="center pa-0">
 
-                            <span style="font-size:14px;">bayesian</span><br />總平均<br />
+                            <span style="font-size:14px;">Bayesian</span><br />總平均<br />
                             <span style="font-size:35px;font-weight:bold">{{item.score}}</span>
                         </td>
 
