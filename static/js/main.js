@@ -331,18 +331,18 @@ let vue = new Vue({
                         }
                         if (this.search) {
                             let name = false
-                            if (item.MAL && null != item.MAL.en_name && item.MAL.en_name.indexOf(this.search) != -1) {
+                            if (item.MAL && null != item.MAL.en_name && item.MAL.en_name.toUpperCase().indexOf(this.search.toUpperCase()) != -1) {
                                 name = true;
-                            } else if (item.MAL && null != item.MAL.jp_name && item.MAL.jp_name.indexOf(this.search) != -1) {
+                            } else if (item.MAL && null != item.MAL.jp_name && item.MAL.jp_name.toUpperCase().indexOf(this.search.toUpperCase()) != -1) {
                                 name = true;
-                            } else if (item.BGM && null != item.BGM.cn_name && item.BGM.cn_name.indexOf(this.search) != -1) {
+                            } else if (item.BGM && null != item.BGM.cn_name && item.BGM.cn_name.toUpperCase().indexOf(this.search.toUpperCase()) != -1) {
 
                                 name = true;
-                            } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.indexOf(this.search) != -1) {
+                            } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.toUpperCase().indexOf(this.search.toUpperCase()) != -1) {
                                 name = true;
-                            } else if (item.BGM && null != item.BGM.cn_name && item.BGM.cn_name.indexOf(this.simp(this.search)) != -1) {
+                            } else if (item.BGM && null != item.BGM.cn_name && item.BGM.cn_name.toUpperCase().indexOf(this.simp(this.search.toUpperCase())) != -1) {
                                 name = true;
-                            } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.indexOf(this.trad(this.search)) != -1) {
+                            } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.toUpperCase().indexOf(this.trad(this.search.toUpperCase())) != -1) {
                                 name = true;
                             }
                             if (!name) {
