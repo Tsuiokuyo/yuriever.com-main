@@ -114,9 +114,11 @@ EVA-FANS字幕 https://www.bilibili.com/read/cv435247/ ，只要看第一點就�
 不過弄成gif有點麻煩，因此就沒辦法在此呈現了...，簡單弄了兩個對比圖，但是單張照片看起來果然還是差強人意，必須得用動圖才行...。
 
 原先基本上都是看繁體字，但後來發現，通常簡體字的字型會比較適合字幕組的調教，畢竟他們是以他們選的那個字型為基準去製作...
-<iframe frameborder="0" class="juxtapose" width="50%" height="300" src="https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=87d52940-ad42-11ed-b5bd-6595d9b17862"></iframe>
 
-<iframe frameborder="0" class="juxtapose" width="50%" height="300" src="https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=bc4c6a1c-ad42-11ed-b5bd-6595d9b17862"></iframe>
+<iframe height="500" name="iframe" src="https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=87d52940-ad42-11ed-b5bd-6595d9b17862"> </iframe>
+
+<iframe height="500" name="iframe" src="https://cdn.knightlab.com/libs/juxtapose/latest/embed/index.html?uid=bc4c6a1c-ad42-11ed-b5bd-6595d9b17862"> </iframe>
+
 選這部單純是因為這兩天剛看完這部，又少了一部作品看，些許鬱悶而已
 
 而且有時候字幕的時間軸有問題，特效有小問題等等，也常常有熱心網友會調整，基本上外掛字幕對於動畫的觀感是利大於弊，即使不滿意這個字幕組的翻譯或是特效，大不了換一個外掛字幕而已。
