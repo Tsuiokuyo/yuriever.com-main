@@ -706,9 +706,9 @@ let vue = new Vue({
         }));
 
 
- this.gnn.title = 'heroku已死，暫時無法撈取RSS'
- this.moelong.title = 'heroku已死，暫時無法撈取RSS' 
-		/*
+        this.gnn.title = 'heroku已死，暫時無法撈取RSS'
+        this.moelong.title = 'heroku已死，暫時無法撈取RSS'
+            /*
         let newMoes = []
             // https://thingproxy.freeboard.io/fetch/
             // http://www.whateverorigin.org/get?url=
@@ -1405,6 +1405,8 @@ let vue = new Vue({
                         // case 'hmvod':
                         //     return ''
                 case 'iQIYI愛奇藝':
+                    return 'https://www.iq.com/' + id
+                case '愛奇藝':
                     return 'https://www.iq.com/' + id
                         // case 'iTunes':
                         //     return ''
