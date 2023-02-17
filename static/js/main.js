@@ -1406,7 +1406,7 @@ let vue = new Vue({
                         //     return ''
                 case 'iQIYI愛奇藝':
                     return 'https://www.iq.com/' + id
-                case '愛奇藝':
+                case '愛奇藝': //有些地方沒規範好，暫留
                     return 'https://www.iq.com/' + id
                         // case 'iTunes':
                         //     return ''
