@@ -6,6 +6,7 @@ featuredImage: "/assets/foobar2000.jpg"
 featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
+lastmod: 2023-02-24
 ---
 
 
@@ -24,6 +25,8 @@ http://tsuiokuyo.ddns.net:8763/js_flat.html
 
 http://tsuiokuyo.ddns.net:8764/status.xsl
 (Lossless)
+
+2023/02/24 修復換頁千分位錯誤，
 
 <audio controls="controls" preload="none" __idm_id__="21979137"><source src="http://tsuiokuyo.ddns.net:8764/stream" type="application/ogg"></audio>
 
@@ -156,8 +159,11 @@ Admin Settings: 設定遠端http登入foobar控制，預設是全鎖
 右邊的三選項是下載選項，
 
 1.Allow download in public playlist
+
 2.Allow in upload playlist
+
 3.Allow in play history
+
 設定如下
 完全不允許下載 => 三個都別勾
 只允許下載別人上傳的 => 勾2和3
@@ -166,24 +172,37 @@ Enable Upload:允許別人可上傳音樂,看你要不要開啟
 
 
 Search format: 設定搜尋時尋找歌曲的那些資訊
+
 Use fast search: 不要勾，這個搜尋模式有BUG會讓電台當掉
+
 Max song view: 歌單單頁顯示最大歌曲數
+
 Max request num: 最大點歌數
+
 Max request per ip: 每人最大點播歌曲數
+
 Max search result num: 搜尋數量上限
+
 當搜尋到的結果量到達這個數量就會強制停止
 減輕伺服器負擔
 Index threshold: 條目歌曲下限，當同專輯或歌手歌曲少於這個數量，
 就不會出現在專輯或歌手歌單裡。
 設為0就是所有歌全部都編到條目裡。
+
 Song history num: 歷史紀錄的歌曲數量，當被點過的歌還在歷史紀錄上，
 就不能再次點同首歌。
+
 Sub list item num: 系統預先選歌的數量
+
 Priority per IP: 每個人點歌的權重
+
 Priority per time: 當前面的點播歌曲播完，已點的歌增加的權重
+
 Max priority: 歌曲最大權重
  (權重越大的歌曲播放越優先)
+ 
 Debug Requst: 除錯
+
 Deny Proxy: 防止Proxy來的連線，安全和點播上的顧慮，可以勾起來
 
 
@@ -236,6 +255,8 @@ https://ptt.healtyman.xyz/?man/WebRadio/D766/D6CE/M.1296145083.A.AB6.html
 
 僅僅在requester.js中多加三行讓他的列表能夠正常運作而已
 
+.replace(',','')已直接補進去，100這個數值需要同時調整前端，所以沒在這裡直接調整
+
 <code>
 
   updateFromThis: function(element, params, isFocus, isBackground) {
@@ -246,7 +267,7 @@ https://ptt.healtyman.xyz/?man/WebRadio/D766/D6CE/M.1296145083.A.AB6.html
 
 ​    **page = params.substring(params.lastIndexOf('=') + 1, params.length)**
 
-​    **params += '&page=' + page / 100**
+​    **params += '&page=' + page.replace(',','') / 100**
 
 
 
@@ -259,9 +280,6 @@ https://ptt.healtyman.xyz/?man/WebRadio/D766/D6CE/M.1296145083.A.AB6.html
 ​      if (Element.hasClassName(p, 'tab_item')) break;
 
 ​    }
-
-
-
 </code>
 
 第一行是把傳入的參數修正，
@@ -275,3 +293,32 @@ https://ptt.healtyman.xyz/?man/WebRadio/D766/D6CE/M.1296145083.A.AB6.html
 大概是這樣
 
 其他bug如果有遇到就再說了
+
+2023/02/24 修正頁數千分位異常，以及分頁改foobar2000獲取
+由
+<code>
+**params += '&page=' + page / 100**
+</code>
+這部分已經直接在上面改了就是補上.replace(',','')去除千分位而已而已
+
+再來就是把那個最大檢視數量改由foobar2000拿取而不是寫死，不然分頁會有點小小的問題
+<code>
+***maxView = document.getElementById("maxView").innerText***
+**params += '&page=' + page.replace(',','') / maxView**
+</code>
+
+另外到前端中FOOBAR2000-Info的tag隨便找個地方塞進%max_song_view%這個參數
+例如
+<code>
+    <span>View# <span class="caution">$if(%playlist_name%, %playlist_name% ,  $if(%search_text%, " %search_text% " search result, %index_id%))</span> 
+	
+    &nbsp; 
+	***顯示筆數：<span id='maxView'>%max_song_view%</span> ***
+	Page: %current_page%</span>
+    <script>
+	var isDownload = %enable_download_in_playlist% == 1;
+	if '('isDownload')' {
+		addRule'(''''.download''', '''display:table-cell;'''')';
+	}
+	</script>
+</code>
