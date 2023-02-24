@@ -17,14 +17,15 @@ lastmod: 2023-02-24
 
 <!--more-->
 
+(有封鎖特定IP區段連入)
 點歌台
-
 http://tsuiokuyo.ddns.net:8763/js_flat.html
 
 狀態
-
 http://tsuiokuyo.ddns.net:8764/status.xsl
-(Lossless)
+(icecast)
+http://tsuiokuyo.ddns.net:8765
+(shoutcast)
 
 2023/02/24 修復換頁千分位錯誤，
 
