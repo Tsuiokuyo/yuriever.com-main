@@ -217,7 +217,23 @@ Deny Proxy: 防止Proxy來的連線，安全和點播上的顧慮，可以勾起
 
 
 
-Javascript version ( New! ) ，看起來還未完成，不能用
+Javascript version ( New! ) <s>看起來還未完成，不能用</s>
+
+![ext](images/ext.jpg)
+
+2023/02/24，我發現光是這個找歌部分就比flat好上幾百倍了，
+
+但如要改用這個的話，還要想辦法美化，因為畫面真的空的
+
+有看到網友改的，起初還看不出來是的模板，也是塞進去一些東西
+
+不過這東西，有機會再去改吧
+
+恩，有機會......
+
+畢竟我只是用來自己聽的，所以才選擇flat，而且現在都考慮走UPnP了...
+
+
 
 Simple version
 
@@ -322,3 +338,5 @@ https://ptt.healtyman.xyz/?man/WebRadio/D766/D6CE/M.1296145083.A.AB6.html
 	}
 	</script>
 </code>
+
+
