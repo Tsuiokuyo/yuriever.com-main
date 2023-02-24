@@ -153,7 +153,7 @@ let vue = new Vue({
 
         moelong: {},
         gnn: {},
-        disabledZero: true,
+        disabledZero: false,
         disabledNSFW: true,
         // rssDisabledMoe: true,
         // rssDisabledGNN: true,
