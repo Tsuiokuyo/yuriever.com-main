@@ -444,7 +444,7 @@
                             </v-expansion-panel-content>
                         </v-expansion-panel>
                     </v-expansion-panels>
-                    <span v-if="windowWidth < 600">(手機版排除裏番及無計分作品)</span>
+                    <span v-if="windowWidth < 600">(手機版排除裏番)</span>
                     <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
                     <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
                     <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense>
@@ -553,7 +553,7 @@
                     </v-row>
                     <br />
                     <v-row>
-                        <span style="float:right;">總筆數:{{rawData.length}}，資料更新時間:2023年02月17日</span>
+                        <span style="float:right;">總筆數:{{rawData.length}}，資料更新時間:2023年02月24日</span>
                         <span v-if="windowWidth > 600"> 
                         <!-- <span style="float:right;" v-if="user != null">已登入：{{user.email}}</span> -->
                         <v-btn v-if="user != null" @click="loginOut" color="error" dark>
