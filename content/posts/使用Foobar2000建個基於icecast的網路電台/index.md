@@ -29,10 +29,6 @@ http://tsuiokuyo.ddns.net:8765
 
 2023/02/24 修復換頁千分位錯誤，
 
-<audio controls="controls" preload="none" __idm_id__="21979137"><source src="http://tsuiokuyo.ddns.net:8764/stream" type="application/ogg"></audio>
-
-(192kbps)
-
 <audio controls="controls" preload="none" __idm_id__="21979137"><source src="http://tsuiokuyo.ddns.net:8764/vorbis" type="application/ogg"></audio>
 
 {{< audio >}}
@@ -41,7 +37,7 @@ http://tsuiokuyo.ddns.net:8765
 
 2022/12/15 補充
 當前(v2.4.1)版本的ICECAST的FLAC尚不支援METADATA，難怪手機串流時能抓到METADATA，但是
-官網那邊看不到，github有人提出問題過才知道不是我的問題，不知何時才會支援，
+官網那邊看不到，不過github看到有人提出問題過，才知道不是我的問題，不知何時才會支援，
 而其他格式倒是正常，雖然這其實沒啥必要，只是看到這邊有顯示on Air的歌曲會比較爽一點
 http://dir.xiph.org/search?q=tsuiokuyo
 
