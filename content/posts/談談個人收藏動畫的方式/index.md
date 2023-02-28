@@ -2,7 +2,7 @@
 title: "談談個人收藏動畫的方式"
 date: 2022-07-16T02:55:55+08:00
 slug: 0f972d9c
-weight: 2
+weight: 3
 featuredImage: "/assets/談談個人收藏動畫的方式.jpg"
 featuredImagePreview: "/assets/談談個人收藏動畫的方式.jpg"
 tags: [動畫留念]

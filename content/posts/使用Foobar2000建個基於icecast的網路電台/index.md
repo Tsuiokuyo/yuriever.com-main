@@ -7,6 +7,7 @@ featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
 lastmod: 2023-02-24
+weight: 2
 ---
 
 
@@ -18,21 +19,23 @@ lastmod: 2023-02-24
 <!--more-->
 
 (有封鎖特定IP區段連入)
+
 點歌台
 http://tsuiokuyo.ddns.net:8763/js_flat.html
 
 狀態
 http://tsuiokuyo.ddns.net:8764/status.xsl
 (icecast)
+
 http://tsuiokuyo.ddns.net:8765
 (shoutcast)
 
 2023/02/24 修復換頁千分位錯誤，
-
+<!--
 <audio controls="controls" preload="none" __idm_id__="21979137"><source src="http://tsuiokuyo.ddns.net:8764/vorbis" type="application/ogg"></audio>
 
 {{< audio >}}
-
+-->
 <!-- ^^themes\LoveIt\layouts\shortcodes\audio.html -->
 
 2022/12/15 補充
