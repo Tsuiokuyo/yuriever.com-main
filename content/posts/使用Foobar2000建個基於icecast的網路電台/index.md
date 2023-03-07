@@ -6,7 +6,7 @@ featuredImage: "/assets/foobar2000.jpg"
 featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
-lastmod: 2023-02-24
+lastmod: 2023-03-07
 weight: 2
 ---
 
@@ -29,6 +29,10 @@ http://tsuiokuyo.ddns.net:8764/status.xsl
 
 http://tsuiokuyo.ddns.net:8765
 (shoutcast)
+
+2023/03/07 花了一大段時間想辦法在網頁上塞入封面，因為串流的metadata不含圖片資訊，request_http目前幾乎沒有人在玩了，因此也基本上沒有任何更新及討論，反編譯重寫難度太高，所以只能去找其他元件來混用，
+但因為別的元件是區網用的，有直接放到公網會有安全性問題，取得後原始碼把不開放的功能移除，所以花了很多時間建置C++的環境重新編譯dll檔...，實際上90%的時間就是花在建置環境，編譯完成後又遇到跨網域問題...。
+這部分不放上來，因為這部分還沒調整完成，估計會先搞定新版的畫面吧。
 
 2023/02/24 修復換頁千分位錯誤，
 <!--
