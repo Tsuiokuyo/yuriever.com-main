@@ -6,7 +6,7 @@ featuredImage: "/assets/foobar2000.jpg"
 featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
-lastmod: 2023-03-08
+lastmod: 2023-03-11
 weight: 2
 ---
 
@@ -30,7 +30,7 @@ http://tsuiokuyo.ddns.net:8764/status.xsl
 http://tsuiokuyo.ddns.net:8765
 (shoutcast)
 
-2023/03/10 取封面平均色來改變背景色，本來是想實現頻譜會依封面而變色，不過有些平均不是很明顯，因此作罷。
+2023/03/10 取封面平均色來改變背景色，本來是想實現頻譜會依封面而變色，不過有些平均不是很明顯，因此作罷，下一步估計是研究弄出動態歌詞，因為看到AVG遊戲大約的專輯量讓我感到絕望...，只能選擇逃避了。
 
 2023/03/08 換成了上面那個畫面，本來想用Javascript version ( New! )這個畫面的，但想要有以前那種黑底風格因此換了個模板，也塞入了頻譜與進度條等等調整，只不過因為foobar引入js套件會出現問題，所以沒有甚麼新花樣。
 搞得我連內嵌聊天室都辦不到...，在Javascript version ( New! )能辦到的事情，其他畫面都辦不到，估計是編譯的問題。
