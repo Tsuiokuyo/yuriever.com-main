@@ -624,9 +624,9 @@
                                         </a>&nbsp;
                                     </span>
                                     <span  v-if="null != item.tmdb">
-                                        <a :href="'https://www.themoviedb.org/tv/' + item.tmdb" title="TMDB" target="_blank">
-                                            TMDB
-                                        </a>
+
+                                        <a :href="'https://www.themoviedb.org/movie/' + item.tmdb" title="TMDB" target="_blank" v-if="item.MAL.type == 'Movie'">TMDB</a>
+                                        <a :href="'https://www.themoviedb.org/tv/' + item.tmdb" title="TMDB" target="_blank" v-else>TMDB</a>
                                     </span>
                                                 
                                     <br />
