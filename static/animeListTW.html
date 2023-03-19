@@ -127,7 +127,7 @@
                                     </v-card>
                                 </template>
                                 <br />
-								<span>
+                                <span>
 									這幾個月的心力放在
 									玩AI繪圖，https://www.pixiv.net/users/15348773 <br>
 									看動畫、看百合漫畫、玩AVG遊戲或HGAME來補充個人電台音樂，<br>
@@ -159,19 +159,19 @@
                                     
                                     <br />
                                     <span
-                                        class="text-decoration-line-through">所有資料基於myanimelist產生，目前在myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...</span><br /> 
-										<br /> 
-										目前抓取流程是分成三部分<br /> 
-										撈取各網站作品ID->各網站作品ID映射(嚴格比對)->依作品ID取分數、票數等 <br /> 
-										
-										分數全都會存快取，7天更新一次，僅ANIDB則為30天更新，<br /> 
-										
+                                        class="text-decoration-line-through">所有資料基於myanimelist產生，目前在myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...</span><br />
+                                <br /> 目前抓取流程是分成三部分
+                                <br /> 撈取各網站作品ID->各網站作品ID映射(嚴格比對)->依作品ID取分數、票數等 <br /> 分數全都會存快取，7天更新一次，僅ANIDB則為30天更新，
+
+                                <br />
+
                                 <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜，當然也能當成找番、補番用工具。
                                 <h3>作品篩選依據</h3>
                                 可比對到巴哈姆特的作品或者是至少有四個分數來源網站，順便一提，巴哈應該有2K多筆資料我沒有比對到
                                 <p />
                                 <h3>來源網站挑選依據</h3>
-                                沒有
+                                沒有。
+
 
                                 <p />
                                 <h3>一些問題</h3>
@@ -200,9 +200,9 @@
                                     <li class="text-decoration-line-through">MAL首播年度有些編輯者和我有著年度的理解差異啊...，例如:鬼滅の刃 遊郭編 當地是2021年12月05日首播 但填寫 2022年冬季...?</li>
                                     <li>Phantom:The Animation因為標點符號無法與巴哈對上</li>
                                     <li>有些動畫因24話有分成part 1、part 2的評分，基本上只有巴哈是直接兩季合併...</li>
-									<li>bangumi裏番部分因命名差異挺多的，這個不好處理</li>
-									
-									<li class="text-decoration-line-through">找Lapis Re：LiGHTs排名時發現搜尋條件居然有區分大小寫</li>
+                                    <li>bangumi裏番部分因命名差異挺多的，這個不好處理</li>
+
+                                    <li class="text-decoration-line-through">找Lapis Re：LiGHTs排名時發現搜尋條件居然有區分大小寫</li>
                                 </ol>
                                 <p />
                                 <h2>分數計算方式</h2>
@@ -607,8 +607,28 @@
                                     <span v-if="null != item.MAL">{{ item.MAL.jp_name }}</span> <br />
                                     <span v-if="null != item.MAL">{{ item.MAL.en_name }}</span> <br />
                                     <v-divider></v-divider>
-                                    <a :href="'https://' + item.MAL.official" target="_blank"
-                                        v-if="null != item.MAL.official">動畫官網</a>
+
+                                    <span v-if="null != item.MAL.official">
+                                        <a :href="'https://' + item.MAL.official" target="_blank"
+                                        >動畫官網
+                                        </a>&nbsp;
+                                    </span>
+                                    <span v-if="null != item.tvdb">
+                                        <a :href="'https://www.thetvdb.com/?tab=series&amp;id=' + item.tvdb" title="TVDB" target="_blank">
+                                            TVDB
+                                        </a>&nbsp;
+                                    </span>
+                                    <span v-if="null != item.imdb">
+                                        <a :href="'https://www.imdb.com/title/' + item.imdb" title="IMDB" target="_blank">
+                                            IMDB
+                                        </a>&nbsp;
+                                    </span>
+                                    <span  v-if="null != item.tmdb">
+                                        <a :href="'https://www.themoviedb.org/tv/' + item.tmdb" title="TMDB" target="_blank">
+                                            TMDB
+                                        </a>
+                                    </span>
+                                                
                                     <br />
                                     <span style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;<span
                                             v-if="null != item.MAL.premiered">({{ item.MAL.premiered }}<span
@@ -685,6 +705,13 @@
                                     </v-list-item>
                                 </v-list>
                             </v-menu>
+                            <span>
+                                <!-- <v-btn color="transparent" size="x-small" light > -->
+           
+                                <!-- </v-btn> -->
+                 
+        
+                                </span>
                             <span style="float: right;" v-if="item.MAL.trailer">
                                             <v-btn color="transparent" light
                                                 @click.stop="$set(dialogYt, item.MAL.id, true)">
