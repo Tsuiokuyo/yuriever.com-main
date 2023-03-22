@@ -82,11 +82,11 @@
                 <!-- <v-tab to="b" onclick="window.open('https://tsuiokuyo.netlify.app/b/swd/swdtime', '_blank')">
                     以前做的軒轅劍時間線
                     <v-icon>mdi-timeline-clock-outline </v-icon>
-                </v-tab> 
-                <v-tab to="b" onclick="window.open('http://tsuiokuyo.ddns.net:8763/js_flat.html', '_blank')">
-                    音樂電台
+                </v-tab> -->
+                <v-tab to="b" onclick="window.open('http://tsuiokuyo.ddns.net:8763/js_index.html', '_blank')">
+                    ACG歌
                     <v-icon>mdi-radio-tower </v-icon>
-                </v-tab>-->
+                </v-tab>
 
                 <span style="position: absolute;
                     left:50%;
@@ -114,7 +114,6 @@
             </v-alert>
 
             <v-container fluid>
-
                 <v-card v-if="tab == 'tab-2'" class="bkColor">
                     <div class="text-justify">
                         <div>
@@ -128,23 +127,29 @@
                                 </template>
                                 <br />
                                 <span>
-									這幾個月的心力放在
-									玩AI繪圖，https://www.pixiv.net/users/15348773 <br>
+                                    2023/03/20 增加tmdb、imdb、tvdb關聯
+
+									這幾個月的心力放在<br>
+									<s>玩AI繪圖，https://www.pixiv.net/users/15348773</s> <br>
 									看動畫、看百合漫畫、玩AVG遊戲或HGAME來補充個人電台音樂，<br>
 									因為google無限空間被砍了，只能連到自己電腦聽了...<br>
-									基於foobar2000架設，http://tsuiokuyo.ddns.net:8763/js_flat.html <br>
+                                    就是上方列的連結，基於foobar2000架設<br>
+                                    http://tsuiokuyo.ddns.net:8763/js_index.html <br>
 									歷史歌單：https://www.last.fm/zh/user/Tsuiokuyo <br>
-									目前約有20K首無損的二次元相關歌，類型大概是Anime, Vocaloid, OST, Touhou Project, Doujin Music, Jpop, Game，每週會緩慢增加<br>
+									類型大概是Anime, Vocaloid, OST, Touhou Project, Doujin Music, Jpop, Game，每週會緩慢增加<br>
+                                    不過新番基本上不太可能會包含進去，起碼要過的半年以上才有可能塞進去，<br>
+                                    原因倒是很多，不過最大的原因基本上是專輯尚未出完，<br>
+                                    先弄完OPED的話，除非喜歡，否則之後就不會特地再弄角色專輯或形象專輯了。
 									<br>
 									另外老實說平均跑一款AVG，就算看攻略走全CG+全未讀全結局基本上還是要花上30小時左右，大概夠我看5~6部動畫了，感覺有點虧<br>
-
+<br><br>
 									也因此，這邊偶爾跑一次更新就不管了<br>
-									標準化總平均得出的分數我一直覺得計算八成有問題，直接改成取bayesian的總平均好了<br>
+									標準化總平均得出的分數我一直覺得計算出來的分數有問題，所以直接改成取bayesian的總平均<br>
 									而Heroku已死，新聞快訊的RSS目前懶得找替代品抓取(2023.01)
 									
-									找時間研究以公司篩選作品，只不過包含的公司數量相當多，怎麼呈現是個主要問題
+									有空會研究以公司來篩選作品，只不過包含的公司數量相當多，怎麼呈現是個主要問題
 									<br />
-									以下為舊文
+									以下為2022/08的舊文
 								</span>
                                 <span class="text-decoration-line-through">
 	
@@ -258,6 +263,7 @@
                                 <li>https://github.com/AniList/ApiV2-GraphQL-Docs</li>
                                 <li>https://github.com/bangumi/api</li>
                                 <li>https://github.com/Rob--W/cors-anywhere</li>
+                                <li>https://github.com/Fribb/anime-lists</li>
                             </ol>
                             <br />
 
