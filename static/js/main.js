@@ -1,6 +1,20 @@
 // 麵條式代碼，其實我也很無奈，一開始沒想到會變得這麼亂...
 // Vue.config.devtools = true;
 
+let OriginTitile = document.title;
+let titleTime;
+document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+        document.title = "ლ(´•д• ̀ლ" + " - " + OriginTitile;
+        clearTimeout(titleTime);
+    } else {
+        document.title = "( •́ _ •̀)？" + " - " + OriginTitile;
+        titleTime = setTimeout(function() {
+            document.title = OriginTitile;
+        }, 1500);
+    }
+});
+
 let vue = new Vue({
     el: '#app',
     vuetify: new Vuetify(),
