@@ -1,5 +1,13 @@
-body {
+/* body {
     font-family: Helvetica, Arial, sans-serif!important
+} */
+
+.v-application {
+    font-family: 'Kosugi Maru', 'Noto Sans SC', Helvetica, Arial, sans-serif !important;
+}
+
+body {
+    font-family: 'Kosugi Maru', 'Noto Sans SC', Helvetica, Arial, sans-serif !important;
 }
 
 .bkColor {
