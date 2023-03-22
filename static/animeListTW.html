@@ -14,9 +14,9 @@
 
     <script defer type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
     <!-- <script src=https://cdn.bootcss.com/vue/2.7.10/vue.js></script> -->
-    <script defer src="https://cdn.jsdelivr.net/npm/vue@2.7.10"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/vue@2.7.14"></script>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.6.0/dist/jquery.min.js"></script>
     <!-- Google tag (gtag.js) -->
     <script defer src="https://www.googletagmanager.com/gtag/js?id=G-QCHS68JGBX"></script>
@@ -32,7 +32,7 @@
     </script>
 
     <script defer src="js/main.js" type="text/javascript"></script>
-    <script defer src="js/snowstorm.js"></script>
+    <script defer src="js/snowstorm-min.js"></script>
 
     <script defer type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"; import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js"; import { getAuth,signOut, getRedirectResult,signInWithRedirect,GoogleAuthProvider,setPersistence,browserLocalPersistence
@@ -125,10 +125,11 @@
                                 <br />
                                 <span>
                                     2023/03/23 基於firebase增加記錄功能，目前用於個人紀錄(評分、備註)，參考附圖，實際上我也不知道要塞甚麼。<br/>
-                                    至於登入的安全性，我只能說firebase這東西是Google的資料庫，反正我前端的程式碼在github都能看<br />
-                                    而我這網頁完全只有前端的畫面操作，因此100%的運算都是在你的瀏覽器中，可參考下方記憶體部分，因此你才會覺得網頁的速度很慢╮(╯_╰)╭<br />
-                                    可能，可能會弄個匯出成文字檔或excel啦，但也只是可能。
-                                    <v-img max-height="554" max-width="739" contain src="image/memo.webp">
+                                    至於登入的安全性，我只能說firebase這東西是Google的資料庫，帳戶關連也是google寫的，基本上與我無關<br />
+                                    我這網頁完全只有前端的畫面操作，畢竟前端的程式碼在我github內都能看，<br />
+                                    因此100%的運算都是在你的瀏覽器中，可參考下方記憶體部分，因此你才會覺得網頁的速度很慢╮(╯_╰)╭<br />
+                                    另外，可能，可能會弄個紀錄匯出成文字檔或excel的功能，但也只是可能。
+                                    <v-img max-height="500" max-width="700" contain src="image/memo.webp">
                                     </v-img>
                                     
 
@@ -187,9 +188,14 @@
                                 <p />
                                 <h3>一些問題</h3>
                                 <!-- <br /> -->
+                                <ui>
+                                    <li>有些動畫因24話有分成part 1、part 2的評分，基本上只有巴哈是直接兩季合併...，放棄處理</li>
+                                    <li>bangumi裏番部分，如點進網址但顯示数据库中没有查询您所指定的条目，單純你沒有權限查看而已@@</li>
+                                </ui>
+
                                 <ol>
                                     <li>
-                                        <h2>目前載入JSON後，瞬間吃的記憶體上看450MB了，現在又多了個firebase... 當前記憶體用量：
+                                        <h2>目前載入JSON後，瞬間吃的記憶體終於上看500MB了，然後再釋放，當前記憶體用量：
                                             <span v-if="null != memory">{{Math.round(memory/Math.pow(1000,2),2)}}MB
                                                     <v-btn color="error"
                                                         @click="memory = performance.memory.usedJSHeapSize">更新</v-btn>
@@ -209,11 +215,12 @@
                                     <li class="text-decoration-line-through">FAIRY TAIL 魔導少年 百年任務、盾勇3、入間同學入魔了！2、月光下的異世界之旅2、黃金神威4、總之就是很可愛2、實力至上3、間諜家家酒2、世界盡頭的聖騎士2，最新一季會錯撈等，為了解決第二點反倒出現這個...
                                     </li>
                                     <li class="text-decoration-line-through">MAL首播年度有些編輯者和我有著年度的理解差異啊...，例如:鬼滅の刃 遊郭編 當地是2021年12月05日首播 但填寫 2022年冬季...?</li>
-                                    <li>Phantom:The Animation因為標點符號無法與巴哈對上</li>
-                                    <li>有些動畫因24話有分成part 1、part 2的評分，基本上只有巴哈是直接兩季合併...，放棄處理</li>
-                                    <li>bangumi裏番部分，如點進網址但顯示数据库中没有查询您所指定的条目，單純你沒有權限查看而已，而命名差異部分則，放棄處理</li>
-
                                     <li class="text-decoration-line-through">找Lapis Re：LiGHTs排名時發現搜尋條件居然有區分大小寫</li>
+                                    <li>Phantom:The Animation因為標點符號無法與巴哈對上</li>
+
+
+
+
                                 </ol>
                                 <p />
                                 <h2>分數計算方式</h2>
