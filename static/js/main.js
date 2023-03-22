@@ -1,5 +1,5 @@
 // 麵條式代碼，其實我也很無奈，一開始沒想到會變得這麼亂...
-// Vue.config.devtools = true;
+//Vue.config.devtools = true;
 
 let vue = new Vue({
     el: '#app',
@@ -645,6 +645,20 @@ let vue = new Vue({
         }
     },
     watch: {
+        panel() {
+            if (this.panel == '') {
+                this.onlineWatchSel = []
+                this.genreSel = []
+            } else {
+                if (this.panel.length == 1) {
+                    if (this.panel[0] == 0) {
+                        this.genreSel = []
+                    } else {
+                        this.onlineWatchSel = []
+                    }
+                }
+            }
+        },
         toRandom() {
             this.rawToRandom(this.toRandom)
         },
