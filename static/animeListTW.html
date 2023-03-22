@@ -6,23 +6,24 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <meta name="description" content="動畫排名及找番用網頁，計算超過10個評分網站分數，再使用貝氏估計重新計分後再標準化各網站分數得排名">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 
-    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
+    <script defer type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
     <!-- <script src=https://cdn.bootcss.com/vue/2.7.10/vue.js></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/vue@2.7.10"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.6.0/dist/jquery.min.js"></script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCHS68JGBX"></script>
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-QCHS68JGBX"></script>
 
-    <script>
+
+
+    <script defer>
         window.dataLayer = window.dataLayer || [];
 
         function gtag() {
@@ -31,18 +32,18 @@
         gtag('js', new Date());
 
         gtag('config', 'G-QCHS68JGBX');
+    </script>
 
+    <script defer src="js/main.js" type="text/javascript"></script>
+    <script defer src="js/snowstorm.js"></script>
 
-        /*  $(document).on('change', '#srh1', function() {
-              gtag('event', 'search', {
-                  'name': $(this).val(),
-              });
-          })
-          $(document).on('change', '#srh2', function() {
-              gtag('event', 'search', {
-                  'name': $(this).val(),
-              });
-          })*/
+    <script defer type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"; import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js"; import { getAuth,signOut, getRedirectResult,signInWithRedirect,GoogleAuthProvider,setPersistence,browserLocalPersistence
+        ,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"; import { getFirestore, doc, updateDoc, setDoc,getDoc,collection, getDocs,query, where } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+        vue.$children["0"].initializeApp = initializeApp; vue.$children["0"].getAnalytics = getAnalytics; vue.$children["0"].getAuth = getAuth; vue.$children["0"].signInWithRedirect = signInWithRedirect; vue.$children["0"].GoogleAuthProvider = GoogleAuthProvider;
+        vue.$children["0"].getRedirectResult =getRedirectResult;vue.$children["0"].signOut =signOut; vue.$children["0"].updateDoc = updateDoc; vue.$children["0"].doc = doc; vue.$children["0"].getFirestore = getFirestore; vue.$children["0"].setDoc = setDoc;vue.$children["0"].getDoc
+        = getDoc ;vue.$children["0"].collection = collection;vue.$children["0"].getDocs = getDocs;;vue.$children["0"].query = query;vue.$children["0"].where = where ;vue.$children["0"].setPersistence = setPersistence ;vue.$children["0"].browserLocalPersistence
+        = browserLocalPersistence ;vue.$children["0"].onAuthStateChanged = onAuthStateChanged
     </script>
 
 </head>
@@ -1057,16 +1058,8 @@
         </v-app>
     </div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"; import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js"; import { getAuth,signOut, getRedirectResult,signInWithRedirect,GoogleAuthProvider,setPersistence,browserLocalPersistence
-        ,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"; import { getFirestore, doc, updateDoc, setDoc,getDoc,collection, getDocs,query, where } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
-        vue.$children["0"].initializeApp = initializeApp; vue.$children["0"].getAnalytics = getAnalytics; vue.$children["0"].getAuth = getAuth; vue.$children["0"].signInWithRedirect = signInWithRedirect; vue.$children["0"].GoogleAuthProvider = GoogleAuthProvider;
-        vue.$children["0"].getRedirectResult =getRedirectResult;vue.$children["0"].signOut =signOut; vue.$children["0"].updateDoc = updateDoc; vue.$children["0"].doc = doc; vue.$children["0"].getFirestore = getFirestore; vue.$children["0"].setDoc = setDoc;vue.$children["0"].getDoc
-        = getDoc ;vue.$children["0"].collection = collection;vue.$children["0"].getDocs = getDocs;;vue.$children["0"].query = query;vue.$children["0"].where = where ;vue.$children["0"].setPersistence = setPersistence ;vue.$children["0"].browserLocalPersistence
-        = browserLocalPersistence ;vue.$children["0"].onAuthStateChanged = onAuthStateChanged
-    </script>
-    <script src="js/main.js" type="text/javascript"></script>
-    <script async src="js/snowstorm.js"></script>
+
+
 
 </body>
 
