@@ -9,13 +9,14 @@
     <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet"> -->
     <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 
-
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/axios@0.27.2/dist/axios.min.js"></script> -->
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
+    <!-- <script src=https://cdn.bootcss.com/vue/2.7.10/vue.js></script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.7.10"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.6.0/dist/jquery.min.js"></script>
     <!-- Google tag (gtag.js) -->
@@ -126,7 +127,15 @@
                                 </template>
                                 <br />
                                 <span>
-                                    2023/03/20 增加tmdb、imdb、tvdb關聯
+                                    2023/03/23 基於firebase增加記錄功能，目前用於個人紀錄(評分、備註)，參考附圖，實際上我也不知道要塞甚麼。<br/>
+                                    至於登入的安全性，我只能說firebase這東西是Google的資料庫，
+                                    而我這邊完全只有前端操作，因此100%的運算都是在你的瀏覽器中，因此你才會覺得網頁的速度很慢QQ
+                                    <v-img max-height="554" max-width="739" contain src="image/memo.webp">
+                                    </v-img>
+                                    
+
+                                    <br />
+                                    2023/03/20 增加tmdb、imdb、tvdb關聯<br><br>
 
 									這幾個月的心力放在<br>
 									<s>玩AI繪圖，https://www.pixiv.net/users/15348773</s> <br>
@@ -449,7 +458,7 @@
                             </v-expansion-panel-content>
                         </v-expansion-panel>
                     </v-expansion-panels>
-                    <span v-if="windowWidth < 600">(手機版排除裏番)</span>
+                    <span v-if="windowWidth < 600">(手機版排除裏番及登入)</span>
                     <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
                     <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
                     <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense>
@@ -514,7 +523,7 @@
                             <v-col>
                                 <label>排序：</label>
                                 <select v-model="sortBy" :disabled="toRandom">
-                                    <option v-for="item in sorts" :value="item.value">{{item.name}}</option>
+                                    <option v-for="item in sorts" :value="item.value" border>{{item.name}}</option>
                                 </select>
                                 <!-- <v-select :items="sorts" v-model="sortBy" label="排序" dense solo></v-select> -->
                                 <v-btn-toggle v-model="sortDesc" mandatory>
@@ -558,34 +567,41 @@
                     </v-row>
                     <br />
                     <v-row>
-                        <span style="float:right;">總筆數:{{rawData.length}}，資料更新時間:2023年03月19日(發現cache機制寫錯，有些資料還在去年10月...重整中)</span>
-                        <span v-if="windowWidth > 600"> 
-                        <!-- <span style="float:right;" v-if="user != null">已登入：{{user.email}}</span> -->
-                        <v-btn v-if="user != null" @click="loginOut" color="error" dark>
-                            <v-icon>mdi-google</v-icon>登出
-                        </v-btn>
-                        <span v-if="user != null">已登入：{{user.email}}</span>
-                        <v-btn v-if="user == null" @click="btnAuth" color="primary" dark :disabled="disableBtn">
-                            <v-icon>mdi-google</v-icon>登入
-                        </v-btn>
-                        <v-btn v-if="user != null " @click="saveItem" color="primary" dark>
-                            <v-icon>mdi-save</v-icon>儲存勾選
-                        </v-btn>
-                        <v-tooltip bottom v-if="!disableBtn && user == null">
-                            <template v-slot:activator="{ on, attrs }">
-                            <v-icon v-bind="attrs"
-                            v-on="on">mdi-help-circle</v-icon>
-                        </template>
-                            <span>動畫收藏功能，只是目前缺少查詢收藏的作品以及備註功能，也就是說現在只有登入打勾儲存讀取功能，沒有畫面可以額外查詢。</span>
-                        </v-tooltip>
-                        <v-tooltip bottom v-if="user != null">
-                            <template v-slot:activator="{ on, attrs }">
-                            <v-icon v-bind="attrs"
-                            v-on="on">mdi-alert-circle
-                        </v-icon>
-                        </template>
-                            <span>這東西屬玩樂性質，不要有太大希望，免費額度問題，雖然目前來看是不太可能達到上限。</span>
-                        </v-tooltip>
+                        <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年03月19日(0322發現cache機制寫錯，MAL資料還在去年10月...調整中)</span>
+                    </v-row>
+                    <span v-if="windowWidth > 600"> 
+                        <br/>
+                        <v-row>
+                            <!-- <span style="float:right;" v-if="user != null">已登入：{{user.email}}</span> -->
+                    <br> &emsp;
+                    <v-btn v-if="user != null" @click="loginOut" color="error" dark>
+                        <v-icon>mdi-google</v-icon>登出
+                    </v-btn>
+                    <span v-if="user != null">已登入：tsuiokuyo@gmail.com</span>
+                    <v-btn v-if="user == null" @click="btnAuth" color="primary" dark :disabled="disableBtn">
+                        <v-icon>mdi-google</v-icon>登入
+                    </v-btn>
+                    <v-checkbox v-model="isMemoMode" label="收藏清單" dense :disabled="user == null"></v-checkbox>
+
+                    <v-btn v-if="user != null " @click="saveItem" color="primary" dark>
+                        <v-icon>mdi-save</v-icon>點我儲存
+                    </v-btn>
+                    <v-tooltip bottom v-if="!disableBtn && user == null">
+                        <template v-slot:activator="{ on, attrs }">
+                                <v-icon v-bind="attrs"
+                                v-on="on">mdi-help-circle</v-icon>
+                            </template>
+                        <span>紀錄觀看清單，可參考上方"關於"</span>
+                    </v-tooltip>
+                    <v-tooltip bottom v-if="user != null">
+                        <template v-slot:activator="{ on, attrs }">
+                                <v-icon v-bind="attrs"
+                                v-on="on">mdi-alert-circle
+                            </v-icon>
+                            </template>
+                        <span>這東西屬玩樂性質，不要有太大希望，每日讀寫都有免費額度的問題，雖然目前來看是不太可能達到上限。</span>
+                    </v-tooltip>
+
                     </v-row>
                     </span>
                     <br/>
@@ -595,7 +611,7 @@
 
                         <template v-slot:item="{item}">
                             <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
-                                <td class="center pa-0" style="padding:0">
+                                <td class="center pa-0" style="padding:0" width="200">
                                     <v-img :contain=true :lazy-src=setCover(item,true) height="250" width="200"
                                         title="點圖放大" :src=setCover(item,false) @click="toggleFullscreen(item)">
                                     </v-img>
@@ -604,6 +620,10 @@
                                             contain dark @click.stop="selectedImage = false">
                                         </v-img>
                                     </div>
+                                </td>
+                                <td v-if="user != null && isMemoMode">
+                                    收藏
+                                    <v-simple-checkbox color="deep-orange accent-3" v-model="item.seen"></v-simple-checkbox>
                                 </td>
                                 <td style="font-size:15px;font-weight:bold;padding:0">
                                     <span v-if="null != item.Gamer">{{ item.Gamer.title }}
@@ -732,17 +752,24 @@
                                         </span>
                         </div>
                         </td>
-                        <td v-if="user != null">
+                        <td v-if="user != null && !isMemoMode">
                             收藏
                             <v-simple-checkbox color="deep-orange accent-3" v-model="item.seen"></v-simple-checkbox>
                         </td>
                         <td class="center pa-0">
-
                             <span style="font-size:14px;">Bayesian</span><br />總平均<br />
                             <span style="font-size:35px;font-weight:bold">{{item.score}}</span>
                         </td>
+                        <td class="center pa-0" v-if="user != null && isMemoMode" Width="100">
+                            個人評分
+                            <v-rating v-model="item.myRank" color="yellow darken-4" class="ma-2" length="5" half-increments hover></v-rating>
+                        </td>
+                        <td class="center pa-0" v-if="user != null && isMemoMode">
+                            備註(100字)
+                            <v-textarea v-model="item.memo" maxlength="100"></v-textarea>
+                        </td>
 
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="gamer" src="image/gamer.webp">
                             </v-avatar><br />
@@ -752,7 +779,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="mal" src="image/mal.webp">
                             </v-avatar><br />
@@ -762,7 +789,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="bgm" src="image/bgm.webp">
                             </v-avatar><br />
@@ -771,7 +798,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="anikore" src="image/anikore.webp">
                             </v-avatar><br />
@@ -780,7 +807,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="aniList" src="image/aniList.webp">
                             </v-avatar><br />
@@ -789,7 +816,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="apc" src="image/apc.webp">
                             </v-avatar><br />
@@ -799,7 +826,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="ann" src="image/ann.webp">
                             </v-avatar><br />
@@ -808,7 +835,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="anisearch" src="image/anisearch.webp">
                             </v-avatar><br />
@@ -817,7 +844,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="kitsu" src="image/kitsu.webp">
                             </v-avatar><br />
@@ -827,7 +854,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="notifymoe" src="image/notifymoe.webp">
                             </v-avatar><br />
@@ -836,7 +863,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="trakt" src="image/trakt.webp">
                             </v-avatar><br />
@@ -846,7 +873,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="livechart" src="image/livechart.webp">
                             </v-avatar><br />
@@ -855,7 +882,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="anidb" src="image/anidb.webp">
                             </v-avatar><br />
@@ -864,7 +891,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="reddit" src="image/reddit.webp">
                             </v-avatar><br />
@@ -874,7 +901,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="annict" src="image/annict.webp">
                             </v-avatar><br />
@@ -883,7 +910,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                         </td>
-                        <td class="center pa-0">
+                        <td class="center pa-0" v-if="!isMemoMode">
                             <v-avatar size="32" rounded>
                                 <img alt="sakuhindb" src="image/sakuhindb.webp">
                             </v-avatar><br />

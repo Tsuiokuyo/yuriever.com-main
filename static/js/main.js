@@ -1,5 +1,5 @@
 // 麵條式代碼，其實我也很無奈，一開始沒想到會變得這麼亂...
-//Vue.config.devtools = true;
+// Vue.config.devtools = true;
 
 let vue = new Vue({
     el: '#app',
@@ -116,7 +116,7 @@ let vue = new Vue({
         selSource: 'ALL',
         sortDesc: true,
         sortBy: 'rank',
-        sorts: [{ 'name': '預設', 'value': 'rank' }, { 'name': '巴哈姆特', 'value': 'gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
+        sorts: [{ 'name': '平均(可下拉)', 'value': 'rank' }, { 'name': '巴哈姆特', 'value': 'gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
             { 'name': 'Bangumi', 'value': 'bgm' }, { 'name': 'Anikore', 'value': 'anikore' }
         ],
 
@@ -175,7 +175,8 @@ let vue = new Vue({
         token: null,
         db: null,
         seenData: null,
-        disableBtn: true
+        disableBtn: true,
+        isMemoMode: false
     },
     computed: {
         listenChange() {
@@ -346,6 +347,11 @@ let vue = new Vue({
                                 name = true;
                             }
                             if (!name) {
+                                return false;
+                            }
+                        }
+                        if (this.isMemoMode) {
+                            if (!item.seen) {
                                 return false;
                             }
                         }
@@ -824,7 +830,6 @@ let vue = new Vue({
 			*/
 
         this.$nextTick(function() {
-
                 const firebaseConfig = {
                     apiKey: "AIzaSyC8m9BWMwBmIHJ_NVWzwcgbYwAfqHj1g0Q",
                     authDomain: "animelisttw.firebaseapp.com",
@@ -878,10 +883,12 @@ let vue = new Vue({
                                 this.seenData = result.data().seen
                                 for (item of this.rawData) {
                                     for (seen of res) {
-                                        if (item.MAL.id == seen) {
+                                        if (item.MAL.id == seen.id) {
                                             item.seen = true
+                                            item.memo = seen.memo
+                                            item.myRank = seen.myRank
                                             count++
-                                            let idx = res.indexOf(seen);
+                                            let idx = res.indexOf(seen.id);
                                             if (idx !== -1) {
                                                 res.splice(idx, 1);
                                             }
@@ -943,7 +950,9 @@ let vue = new Vue({
                 let births = []
                 let onlines = []
                 for (item of this.rawData) {
-
+                    item.myRank = '0'
+                    item.memo = ''
+                    item.seen = false
                     if (this.disabledNSFW) { //移除18禁
                         if (item.MAL.genres.includes('Hentai')) {}
                     }
@@ -1106,7 +1115,7 @@ let vue = new Vue({
             let saveList = [];
             for (item of this.rawData) {
                 if (item.hasOwnProperty('seen') && item.seen) {
-                    saveList.push(item.MAL.id)
+                    saveList.push({ 'id': item.MAL.id, 'memo': item.memo, 'myRank': item.myRank })
                 }
             }
             setDoc(doc(this.db, "animeListTW", this.user.email), { 'seen': saveList });
@@ -1435,11 +1444,7 @@ let vue = new Vue({
             if (id.indexOf('trakt.tv') != -1) {
                 return [name, id]
             } else if (name.indexOf('bahamut') != -1) {
-                if (id.indexOf('https://') != -1) {
-                    return ['bahamut', id] //LC犬夜叉異常 FIXME
-                } else {
-                    return ['bahamut', 'https://ani.gamer.com.tw/animeVideo.php?sn=' + id]
-                }
+                return ['bahamut', 'https://ani.gamer.com.tw/animeVideo.php?sn=' + id]
             } else if (name.indexOf('bilibili') != -1) {
                 return ['bilibili', 'https://www.bilibili.com/bangumi/' + id]
             } else if (name.indexOf('disney') != -1) {
@@ -1818,6 +1823,20 @@ let vue = new Vue({
             }
 
             nativeEvent.stopPropagation()
+        },
+        setMyrankColor(score) {
+            switch (score) {
+                case 5:
+                    return '#FFFF00';
+                case 4:
+                    return '#FFEA00';
+                case 3:
+                    return '#FFD600';
+                case 2:
+                    return '#F9A825';
+                case 1:
+                    return '#FF3D00';
+            }
         },
     }, //methonds
 });
