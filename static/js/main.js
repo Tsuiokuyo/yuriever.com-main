@@ -729,7 +729,7 @@ let vue = new Vue({
         // ).then((res) => res.json());
         // await fetch('https://tsuiokuyo.netlify.app/test.gzip').then((res) => res.arrayBuffer().then(buf => {
         //記憶體爆炸
-        await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test2.gzip').then((res) => res.arrayBuffer().then(buf => {
+        await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test.gzip').then((res) => res.arrayBuffer().then(buf => {
             let zippedContent = new Uint8Array(buf);
             let byteArray = pako.ungzip(zippedContent);
             let textDecoder = new TextDecoder();
@@ -1868,37 +1868,5 @@ let vue = new Vue({
                     return '#FF3D00';
             }
         },
-        qwq() {
-            var _0x396c1b = _0x1a99;
-
-            function _0x4a5f() {
-                var _0x3c48c4 = ['replace', '3736BWyfMF', '8GUVjpW', '10281850UirtyF', '919692IANHVb', '4222650LhmGnm', '3irhzfI', 'split', 'animelisttw||com|822507041160|const|firebaseConfig|apiKey|AIzaSyC8m9BWMwBmIHJ_NVWzwcgbYwAfqHj1g0Q|authDomain|firebaseapp|projectId|storageBucket|appspot|messagingSenderId|appId|web|264c7087169996d50e0a3d|measurementId|G|4Y1Q0EHQCY', '5875303zVALqC', 'toString', '4\x205={6:\x227\x22,8:\x220.9.2\x22,a:\x220\x22,b:\x220.c.2\x22,d:\x223\x22,e:\x221:3:f:g\x22,h:\x22i-j\x22};', '3790SDMnqg', '102081idaHPr', '57880AELCcB', '\x5cw+'];
-                _0x4a5f = function() { return _0x3c48c4; };
-                return _0x4a5f();
-            }
-
-            function _0x1a99(_0x372401, _0x42e7ed) { var _0x4a5f8d = _0x4a5f(); return _0x1a99 = function(_0x1a9902, _0x2a60eb) { _0x1a9902 = _0x1a9902 - 0x14e; var _0x48ceff = _0x4a5f8d[_0x1a9902]; return _0x48ceff; }, _0x1a99(_0x372401, _0x42e7ed); }(function(_0x334b31, _0x340cca) {
-                var _0x339439 = _0x1a99,
-                    _0x13b5a1 = _0x334b31();
-                while (!![]) {
-                    try {
-                        var _0x3788f2 = parseInt(_0x339439(0x158)) / 0x1 + -parseInt(_0x339439(0x159)) / 0x2 * (-parseInt(_0x339439(0x151)) / 0x3) + -parseInt(_0x339439(0x15c)) / 0x4 * (-parseInt(_0x339439(0x157)) / 0x5) + -parseInt(_0x339439(0x150)) / 0x6 + -parseInt(_0x339439(0x154)) / 0x7 + parseInt(_0x339439(0x15d)) / 0x8 * (parseInt(_0x339439(0x14f)) / 0x9) + parseInt(_0x339439(0x14e)) / 0xa;
-                        if (_0x3788f2 === _0x340cca) break;
-                        else _0x13b5a1['push'](_0x13b5a1['shift']());
-                    } catch (_0x256967) { _0x13b5a1['push'](_0x13b5a1['shift']()); }
-                }
-            }(_0x4a5f, 0x68116), eval(function(_0x2cafe9, _0x1098b6, _0x39c57d, _0x452f70, _0xaea57d, _0x4847ee) {
-                var _0xc2b119 = _0x1a99;
-                _0xaea57d = function(_0x36351d) { var _0x59aa5c = _0x1a99; return _0x36351d[_0x59aa5c(0x155)](_0x1098b6); };
-                if (!'' ['replace'](/^/, String)) {
-                    while (_0x39c57d--) _0x4847ee[_0xaea57d(_0x39c57d)] = _0x452f70[_0x39c57d] || _0xaea57d(_0x39c57d);
-                    _0x452f70 = [function(_0x1f8460) { return _0x4847ee[_0x1f8460]; }], _0xaea57d = function() { var _0x1573bf = _0x1a99; return _0x1573bf(0x15a); }, _0x39c57d = 0x1;
-                };
-                while (_0x39c57d--)
-                    if (_0x452f70[_0x39c57d]) _0x2cafe9 = _0x2cafe9[_0xc2b119(0x15b)](new RegExp('\x5cb' + _0xaea57d(_0x39c57d) + '\x5cb', 'g'), _0x452f70[_0x39c57d]);
-                return _0x2cafe9;
-            }(_0x396c1b(0x156), 0x14, 0x14, _0x396c1b(0x153)[_0x396c1b(0x152)]('|'), 0x0, {})));
-            return _0x396c1b
-        }
     }, //methonds
 });
