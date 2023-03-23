@@ -369,6 +369,7 @@
                     <v-dialog v-model="dialogCal" width="1680" heigth="1920">
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
+                                <v-icon>mdi-cake</v-icon>
                                 聲優的生日日曆
                             </v-btn>
                         </template>
@@ -466,7 +467,8 @@
 
                                     </v-chip>
                                 </v-chip-group>
-                                <v-btn @click="onlineWatchSel = []">重設選項</v-btn>
+                                <v-btn @click="onlineWatchSel = []">
+                                    <v-icon>mdi-restart alt</v-icon>重設選項</v-btn>
                             </v-expansion-panel-content>
                         </v-expansion-panel>
                         <v-expansion-panel>
@@ -485,7 +487,8 @@
 
                                     </v-chip>
                                 </v-chip-group>
-                                <v-btn @click="cmpSel = []">重設選項</v-btn>
+                                <v-btn @click="cmpSel = []">
+                                    <v-icon>mdi-restart alt</v-icon>重設選項</v-btn>
                                 <span>共有7XX多間公司(工作室)，塞不進來，這裡僅保留製作數量最多的前100間</span>
                             </v-expansion-panel-content>
                         </v-expansion-panel>
@@ -504,7 +507,9 @@
                                         <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span>
 
                                     </v-chip>
-                                    <v-btn @click="genreSel = []">重設類型</v-btn>
+                                </v-chip-group>
+                                <v-btn @click="genreSel = []">
+                                    <v-icon>mdi-restart alt</v-icon>重設類型</v-btn>
                             </v-expansion-panel-content>
                         </v-expansion-panel>
                     </v-expansion-panels>
@@ -526,7 +531,7 @@
                     <v-card-title v-if="windowWidth > 600">
                         <v-row>
                             <v-btn @click="sortBy = 'rank', onlineWatchSel = [],cmpSel = [],genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
-                                重設所有篩選條件</v-btn>
+                                <v-icon>mdi-restart alt</v-icon>重設所有篩選條件</v-btn>
                             <v-col cols="1">
                                 <v-select :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
                             </v-col>
