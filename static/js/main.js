@@ -160,10 +160,14 @@ let vue = new Vue({
 
         genreList: [],
         genreSel: [],
+        cmpList: [],
+        cmpSel: [],
         badges: {},
         badgesDef: {},
         onlineWatchs: [],
         onlineWatchSel: [],
+
+
 
         moelong: {},
         gnn: {},
@@ -204,7 +208,8 @@ let vue = new Vue({
                 selSource,
                 disabledZero,
                 disabledNSFW,
-                onlineWatchSel
+                onlineWatchSel,
+                cmpSel
             } = this
             return {
                 search,
@@ -216,7 +221,8 @@ let vue = new Vue({
                 selSource,
                 disabledZero,
                 disabledNSFW,
-                onlineWatchSel
+                onlineWatchSel,
+                cmpSel
             }
         },
         headers() {
@@ -336,12 +342,25 @@ let vue = new Vue({
                             //     return false
                             // }
                         }
+
                         if (this.genreList) {
                             for (gen of this.genreSel) {
                                 let generCheck = item.MAL.genres.find(element => element == gen)
                                 if (!generCheck) {
                                     return false
                                 }
+                            }
+                        }
+                        if (this.cmpSel.length > 0) {
+                            let check = false
+                            for (cmp of this.cmpSel) {
+                                let cmpCheck = item.MAL.studios.find(element => element == cmp)
+                                if (cmpCheck) {
+                                    check = true
+                                }
+                            }
+                            if (!check) {
+                                return false
                             }
                         }
                         if (this.search) {
@@ -665,20 +684,20 @@ let vue = new Vue({
         }
     },
     watch: {
-        panel() {
-            if (this.panel == '') {
-                this.onlineWatchSel = []
-                this.genreSel = []
-            } else {
-                if (this.panel.length == 1) {
-                    if (this.panel[0] == 0) {
-                        this.genreSel = []
-                    } else {
-                        this.onlineWatchSel = []
-                    }
-                }
-            }
-        },
+        // panel() {
+        //     if (this.panel == '') {
+        //         this.onlineWatchSel = []
+        //         this.genreSel = []
+        //     } else {
+        //         if (this.panel.length == 1) {
+        //             if (this.panel[0] == 0) {
+        //                 this.genreSel = []
+        //             } else {
+        //                 this.onlineWatchSel = []
+        //             }
+        //         }
+        //     }
+        // },
         toRandom() {
             this.rawToRandom(this.toRandom)
         },
@@ -979,6 +998,7 @@ let vue = new Vue({
                 let genres = []
                 let births = []
                 let onlines = []
+                let studios = []
                 for (item of this.rawData) {
                     item.myRank = '0'
                     item.memo = ''
@@ -1007,6 +1027,15 @@ let vue = new Vue({
                         // [key, value] = this.switchName(key, value)
                         // format[key] = value
                         onlines.push(key)
+                    }
+
+                    for (let [key, value] of Object.entries(item.MAL.studios)) {
+                        // if (key.toLowerCase().indexOf('tencent') != -1) {
+                        //     break;
+                        // }
+                        // [key, value] = this.switchName(key, value)
+                        // format[key] = value
+                        studios.push(value)
                     }
                     // onlines.push(item.online)
                     // if (null != item.trakt && null != item.trakt.online) {
@@ -1047,6 +1076,8 @@ let vue = new Vue({
                     }
                     genres = genres.concat(item.MAL.genres)
 
+
+
                     //FixMe 正規打錯了 
                     if (item.MAL.type == "Movie" && item.MAL.duration < 3) {
                         item.MAL.duration = item.MAL.duration * 60
@@ -1069,7 +1100,37 @@ let vue = new Vue({
                     }
                 }
                 onlines = [...new Set(onlines.sort())]
-                    // console.log(onlines)
+
+                let studiosMap = new Map() //创建一个Map结构数据
+                studios.map(item => { //遍历数组
+                        if (studiosMap.has(item)) { //如果Map数据中存在当前项，给当前项值（即个数）+1
+                            let current = studiosMap.get(item)
+                            studiosMap.set(item, current += 1)
+                        } else { //如果不存在，则添加该项并将它的个数设置为1
+                            studiosMap.set(item, 1)
+                        }
+                    })
+                    //将map结构数据转换成数组对象，每一项也是数组的形式包裹的key和value 
+                let mapEntries = [...studiosMap.entries()]
+                    // mapEntries  [ [ 'a', 2 ], [ 'ab', 3 ], [ 'abc', 2 ], [ 'bc', 1 ] ]
+                mapEntries.sort((pre, nxt) => {
+                        return pre[1] < nxt[1] ? 1 : -1
+                    }) //给mapEntries 排序
+                let studiosF = mapEntries.map(item => item[0])
+                    // let studiosF = mapEntries.map(item => {
+                    //     if (item[1] > 20) {
+                    //         return item[0]
+                    //     } else {
+                    //         return 'lowValue'
+                    //     }
+                    // })
+                    // studiosF = [...new Set(studiosF)]
+                    // studiosF.pop()
+                studiosF.splice(100)
+                this.cmpList = studiosF
+
+
+                // console.log(onlines)
                 this.onlineWatchs = onlines
                     //FIXME 正規化
                 const set = new Set();
@@ -1106,9 +1167,9 @@ let vue = new Vue({
                 genres = [...new Set(genres.sort())]
 
                 //FIXME 不該出現，下一輪再看看
-                genres = genres.filter(function(item) {
-                    return item !== 'Josei'
-                });
+                // genres = genres.filter(function(item) {
+                //     return item !== 'Josei'
+                // });
 
                 this.genreList = genres
 
@@ -1118,7 +1179,9 @@ let vue = new Vue({
                 if (getqyinfo) {
                     let getqys = new URLSearchParams('?' + getqyinfo)
                     let getQName = getqys.get('name')
-                    this.search = getQName
+                    this.search = getQName != null ? getQName : ''
+                    let getQYear = getqys.get('year')
+                    this.year = getQYear != null ? getQYear : ''
                 }
 
                 if (this.toRandom) {
