@@ -124,7 +124,32 @@
                                 </template>
                                 <br />
                                 <span>
-                                    本來想嵌個留言用聊天室在角落，但是，弄不出我想要的效果，因此，暫時放棄。
+                                    本來想嵌個免費的留言用聊天室在角落，但是，弄不出我想要的效果，因此，暫時放棄。<br>
+
+                                    目前網頁功能說明:
+                                    <oi>
+                                    <li>沒啥用的帶參數功能:就是進來會直接查詢某作品，作品名稱或是年份<br>
+                                        https://tsuiokuyo.netlify.app/animelisttw?name=聖母在上<br>
+                                        https://tsuiokuyo.netlify.app/animelisttw?year=2004
+                                    </li>
+                                    <li>上方新聞條：RSS撈取ACGN的資訊，不過目前Heroku掛了。</li>
+                                    <li>聲優的生日日曆：就是聲優的生日日歷，會依照擔任過的主要角色次數變色，紫色則為當日壽星，點擊名字則顯示擔任過的角色及作品<br>
+                                    顏色次數:黃(100)>綠(80)>青(60)>藍(40)>紅(20)>灰(10)>白。</li>
+                                    <li>隨機作品：從這裡所有作品中隨機挑選10部，點擊則篩選出該作品</li>
+                                    <li>線上看篩選箱：當前正版官方線上看，不過因為各網站都有合約時間，有時會失效，網址則由各地網友調整，有時也會誤植</li>
+                                    <li>類型篩選箱：基於myAnimeList的類型，不過因為是用網路翻譯的，如有錯誤歡迎告知</li>
+                                    <li>各種篩選：就是篩選，雖然有繁簡互轉，不過打錯名字你還是會查不出來，另外就是，<br>
+                                        目前內含741間動畫製作公司，雖然我想像類型那樣全部呈現出來，或是用下拉選單搞定，但是這個數量明顯都不行
+                                    </li>
+                                    <li>禁用列表背景圖：每張背景圖大概1KB~100KB左右，看到作品名稱才會下載，基本上你看到一次就會進快取了，所以才說關閉意義不大</li>
+                                    <li>排除裏番：取消勾選才會看到裏番及篩選，不過都是修正過的圖，倒也不用擔心露點</li>
+                                    <li>作品資訊：如果所有資料皆有，則會看到四種譯名、動畫官網、TVDB網址、IMDB網址、TMDB網址、作品年份及季節、原作類型、總話數、<Br>
+                                        每話大約播放時間、動畫製作公司、作品類型、主要聲優表、基於Bayesian平均分排名、(可能有的)正版線上看路徑、youtube預告片</li>
+                                    <li>登入功能：相關資訊如下</li>
+                                </oi>
+                                <br>
+
+                                    
 
                                     2023/03/23 基於firebase增加記錄功能，目前用於個人紀錄(評分、備註)，參考附圖，實際上我也不知道要塞甚麼。<br/>
                                     至於登入的安全性，我只能說firebase這東西是Google的資料庫，帳戶關連也是google寫的，基本上與我無關<br />
@@ -155,8 +180,7 @@
 									也因此，這邊偶爾跑一次更新就不管了<br>
 									標準化總平均得出的分數我一直覺得計算出來的分數有問題，所以直接改成取bayesian的總平均<br>
 									而Heroku已死，新聞快訊的RSS目前懶得找替代品抓取(2023.01)
-									
-									有空會研究以公司來篩選作品，只不過包含的公司數量相當多，怎麼呈現是個主要問題
+
 									<br />
 									以下為2022/08的舊文
 								</span>
@@ -451,6 +475,26 @@
                                     <v-icon>
                                         mdi-label-multiple
                                     </v-icon>
+                                    動畫公司篩選箱
+                                </span></v-expansion-panel-header>
+                            <v-expansion-panel-content><br />
+                                <v-chip-group v-model="cmpSel" column multiple>
+                                    <v-chip v-for="(cmp, index) in cmpList" :key="index" filter :value="cmp" dark>
+                                        <span>{{cmp}}</span>
+                                        <!-- <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span> -->
+
+                                    </v-chip>
+                                </v-chip-group>
+                                <v-btn @click="cmpSel = []">重設選項</v-btn>
+                                <span>共有7XX多間公司(工作室)，塞不進來，這裡僅保留製作數量最多的前100間</span>
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+                        <v-expansion-panel>
+                            <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
+                                <span>
+                                    <v-icon>
+                                        mdi-label-multiple
+                                    </v-icon>
                                     類型篩選箱
                                 </span></v-expansion-panel-header>
                             <v-expansion-panel-content><br />
@@ -460,8 +504,7 @@
                                         <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span>
 
                                     </v-chip>
-                                </v-chip-group>
-                                <v-btn @click="genreSel = []">重設類型</v-btn>
+                                    <v-btn @click="genreSel = []">重設類型</v-btn>
                             </v-expansion-panel-content>
                         </v-expansion-panel>
                     </v-expansion-panels>
@@ -482,8 +525,8 @@
 
                     <v-card-title v-if="windowWidth > 600">
                         <v-row>
-                            <v-btn @click="sortBy = 'rank', onlineWatchSel = [],genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
-                                重設所有條件</v-btn>
+                            <v-btn @click="sortBy = 'rank', onlineWatchSel = [],cmpSel = [],genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
+                                重設所有篩選條件</v-btn>
                             <v-col cols="1">
                                 <v-select :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
                             </v-col>
