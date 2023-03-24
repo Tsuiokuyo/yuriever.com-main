@@ -111,7 +111,6 @@ let vue = new Vue({
         snackbarHug: true,
         saveMsg: { 'state': false, 'text': '' },
 
-
         page: 1,
         itemsPerPage: 15,
         itemsPerPages: [5, 15, 30, 50, 100],
