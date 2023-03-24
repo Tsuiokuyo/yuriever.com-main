@@ -758,17 +758,19 @@ let vue = new Vue({
         }));
 
 
-        this.gnn.title = 'heroku已死，暫時無法撈取RSS'
-        this.moelong.title = 'heroku已死，暫時無法撈取RSS'
-            /*
+        // this.gnn.title = 'heroku已死，暫時無法撈取RSS'
+        // this.moelong.title = 'heroku已死，暫時無法撈取RSS'
+
         let newMoes = []
             // https://thingproxy.freeboard.io/fetch/
             // http://www.whateverorigin.org/get?url=
             // https://api.allorigins.win/get?url=
             // 只有rss部分是靠node.js才實現的 但11/28 heroku會停止支援免費版，上面三個算屆時備用的，但我也可能會直接放棄使用RSS
-        //const moelongUrl = 'https://tsuiokuyo.herokuapp.com/https://www.moelong.com/moelongnews/feed';
-        //const gnnUrl = 'https://tsuiokuyo.herokuapp.com/https://gnn.gamer.com.tw/rss.xml';
-		
+            // const moelongUrl = 'https://tsuiokuyo.herokuapp.com/https://www.moelong.com/moelongnews/feed';
+            // const gnnUrl = 'https://tsuiokuyo.herokuapp.com/https://gnn.gamer.com.tw/rss.xml';
+        const moelongUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/https://www.moelong.com/moelongnews/feed';
+        const gnnUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/https://gnn.gamer.com.tw/rss.xml';
+
         fetch(moelongUrl)
             .then(response => response.text())
             .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
@@ -859,7 +861,7 @@ let vue = new Vue({
                 }
 
             })
-			*/
+
 
         this.$nextTick(function() {
                 //用途不大的firebase字串加密QAQ
