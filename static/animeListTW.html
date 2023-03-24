@@ -144,7 +144,7 @@
                                     </li>
                                     <li>禁用列表背景圖：每張背景圖大概1KB~100KB左右，看到作品名稱才會下載，基本上你看到一次就會進快取了，所以才說關閉意義不大</li>
                                     <li>排除裏番：取消勾選才會看到裏番及篩選，不過都是修正過的圖，倒也不用擔心露點</li>
-                                    <li>作品資訊：如果所有資料皆有，則會看到四種譯名、動畫官網、TVDB網址、IMDB網址、TMDB網址、作品年份及季節、原作類型、總話數、<Br>
+                                    <li>作品資訊：點作品圖可放大，而如果所有資料皆有，則會看到四種譯名、動畫官網、TVDB網址、IMDB網址、TMDB網址、作品年份及季節、原作類型、總話數、<Br>
                                         　　每話大約播放時間、動畫製作公司、作品類型、主要聲優表、基於Bayesian平均分排名、(可能有的)正版線上看路徑、Youtube預告片</li>
                                     <li>登入功能：相關資訊如下</li>
                                 </oi>
@@ -222,13 +222,14 @@
 
                                 <ol>
                                     <li>
-                                        <h2>目前載入JSON後，瞬間吃的記憶體終於上看500MB了，然後再釋放，當前記憶體用量：
+                                        <h2>記憶體怪獸，目前載入JSON後，瞬間吃的記憶體終於上看<b>500MB</b>了，當前記憶體用量：
                                             <span v-if="null != memory">{{Math.round(memory/Math.pow(1000,2),2)}}MB
                                                     <v-btn color="error"
                                                         @click="memory = performance.memory.usedJSHeapSize">更新</v-btn>
                                                     </span>
                                             <span v-else>僅支援chrome內核查看</span>
-                                        </h2>
+										</h2>
+											不過這是指乾淨的瀏覽器，有裝擴充工具會顯示更高
                                     </li>
                                     <li><span class="text-decoration-line-through">資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic
                                                 Number減肥看看了，</span>目前弄成壓縮成gzip檔，但因為還要解壓，現在倒是效能問題了</li>
