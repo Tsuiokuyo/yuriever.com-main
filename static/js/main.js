@@ -771,7 +771,7 @@ let vue = new Vue({
         // https://wispy-smoke-920.fly.dev/
         // https://proxy-6jamtxfrdq-uc.a.run.app/
 
-        let moelongUrl = 'hhttps://www.moelong.com/moelongnews/feed';
+        let moelongUrl = 'https://www.moelong.com/moelongnews/feed';
         let gnnUrl = 'https://gnn.gamer.com.tw/rss.xml';
         let QAQrandom = Math.floor(Math.random() * 3) //0,1,2
         switch (QAQrandom) {
