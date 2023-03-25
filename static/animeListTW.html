@@ -126,7 +126,8 @@
                                 <br />
                                 <span>
                                     本來想嵌個免費的留言用聊天室在角落，但是，弄不出我想要的效果，因此，暫時放棄。<br>
-                                    各個動畫官網部分，API不知為何拔掉了，因此暫不顯示
+                                    各個動畫官網部分，API不知為何拔掉了，因此暫不顯示。
+                                    
                                     <br>
                                     目前網頁功能說明:
                                 <oi>
@@ -201,7 +202,7 @@
                                     <span
                                         class="text-decoration-line-through">所有資料基於myanimelist產生，目前在myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...</span><br />
                                 <br /> 目前抓取流程是分成三部分
-                                <br /> 撈取各網站作品ID->各網站作品ID映射(嚴格比對)->依作品ID取分數、票數等 <br /> 分數全都會存快取，7天更新一次，僅ANIDB則為30天更新，
+                                <br /> 撈取各網站作品ID->各網站作品ID映射(嚴格比對)->依作品ID取分數、票數等 <br /> 分數全都會存快取，進入cache的資料每隔7天才會更新一次，僅ANIDB跟redditanimelist則隨緣更新(可能一個月甚至超過)，
 
                                 <br />
 
@@ -461,26 +462,6 @@
                                     <v-icon>
                                         mdi-label-multiple
                                     </v-icon>
-                                    線上看篩選箱
-                                </span></v-expansion-panel-header>
-                            <v-expansion-panel-content><br />
-                                <v-chip-group v-model="onlineWatchSel" column multiple>
-                                    <v-chip v-for="(online, index) in onlineWatchs" :key="index" filter :value="online" dark>
-                                        <span>{{online}}</span>
-                                        <!-- <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span> -->
-
-                                    </v-chip>
-                                </v-chip-group>
-                                <v-btn @click="onlineWatchSel = []">
-                                    <v-icon>mdi-restart alt</v-icon>重設選項</v-btn>
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
-                        <v-expansion-panel>
-                            <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
-                                <span>
-                                    <v-icon>
-                                        mdi-label-multiple
-                                    </v-icon>
                                     動畫公司篩選箱
                                 </span></v-expansion-panel-header>
                             <v-expansion-panel-content><br />
@@ -496,6 +477,27 @@
                                 <span>共有7XX多間公司(工作室)，塞不進來，這裡僅保留製作數量最多的前100間</span>
                             </v-expansion-panel-content>
                         </v-expansion-panel>
+                        <v-expansion-panel>
+                            <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
+                                <span>
+                                    <v-icon>
+                                        mdi-label-multiple
+                                    </v-icon>
+                                    線上看篩選箱
+                                </span></v-expansion-panel-header>
+                            <v-expansion-panel-content><br />
+                                <v-chip-group v-model="onlineWatchSel" column multiple>
+                                    <v-chip v-for="(online, index) in onlineWatchs" :key="index" filter :value="online" dark>
+                                        <span>{{online}}</span>
+                                        <!-- <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span> -->
+
+                                    </v-chip>
+                                </v-chip-group>
+                                <v-btn @click="onlineWatchSel = []">
+                                    <v-icon>mdi-restart alt</v-icon>重設選項</v-btn>
+                            </v-expansion-panel-content>
+                        </v-expansion-panel>
+
                         <v-expansion-panel>
                             <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
                                 <span>
@@ -609,7 +611,7 @@
 
                             <v-col> </v-col>
                             <v-col cols="1">
-                                <v-checkbox v-model="disabledNSFW" label="排除裏番" dense></v-checkbox>
+                                <v-checkbox class="font-weight-black" v-model="disabledNSFW" label="排除裏番" dense></v-checkbox>
                             </v-col>
                             <v-col cols="2">
                                 <v-select :items="itemsPerPages" v-model="itemsPerPage" label="每頁列數" dense>
@@ -817,7 +819,7 @@
                         </td>
                         <td class="center pa-0">
                             <span style="font-size:14px;">Bayesian</span><br />總平均<br />
-                            <span style="font-size:35px;font-weight:bold">{{item.score}}</span>
+                            <span style="font-size:35px;font-weight:bold">{{item.score != 0 ? item.score :'不計分'}}</span>
                         </td>
                         <td class="center pa-0" v-if="user != null && isMemoMode" Width="100">
                             個人評分
