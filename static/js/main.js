@@ -34,8 +34,8 @@ let vue = new Vue({
             methods: {
                 setChipColor(bScore, website) {
                     if (website != 'annict' && website != 'sakuhindb') {
-                        if (bScore >= 7) return 'green'
-                        else if (bScore >= 4) return 'orange'
+                        if (bScore >= 7) return 'green darken-1'
+                        else if (bScore >= 4) return 'orange darken-1'
                         else if (bScore > 0) return 'red'
                         else return 'Default'
                     }
