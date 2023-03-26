@@ -82,7 +82,7 @@
                     <v-icon>mdi-timeline-clock-outline </v-icon>
                 </v-tab> -->
                 <v-tab to="b" onclick="window.open('http://tsuiokuyo.ddns.net:8763/js_index.html', '_blank')">
-                    ACG歌
+                    點歌器
                     <v-icon>mdi-radio-tower </v-icon>
                 </v-tab>
 
@@ -125,8 +125,9 @@
                                 </template>
                                 <br />
                                 <span>
+                                    目前共含16個二次元相關評分網站，實際上TMDB、TVDB、IMDB也能納入，不過...麻煩，而且跑一輪的時間大概會增加2成吧，有機會再塞入<br>
                                     本來想嵌個免費的留言用聊天室在角落，但是，弄不出我想要的效果，因此，暫時放棄。<br>
-                                    各個動畫官網部分，API不知為何拔掉了，因此暫不顯示。
+                                    
                                     
                                     <br>
                                     目前網頁功能說明:
@@ -202,7 +203,7 @@
                                     <span
                                         class="text-decoration-line-through">所有資料基於myanimelist產生，目前在myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...</span><br />
                                 <br /> 目前抓取流程是分成三部分
-                                <br /> 撈取各網站作品ID->各網站作品ID映射(嚴格比對)->依作品ID取分數、票數等 <br /> 分數全都會存快取，進入cache的資料每隔7天才會更新一次，僅ANIDB跟redditanimelist則隨緣更新(可能一個月甚至超過)，
+                                <br /> 撈取各網站作品ID->各網站作品ID映射(嚴格比對)->依作品ID取分數、票數等 <br /> 分數全都會存快取，進入cache的資料約每隔7天以上才會更新一次，僅ANIDB跟redditanimelist則隨緣更新(可能一個月甚至超過)，
 
                                 <br />
 
@@ -247,6 +248,7 @@
                                     <li class="text-decoration-line-through">MAL首播年度有些編輯者和我有著年度的理解差異啊...，例如:鬼滅の刃 遊郭編 當地是2021年12月05日首播 但填寫 2022年冬季...?</li>
                                     <li class="text-decoration-line-through">找Lapis Re：LiGHTs排名時發現搜尋條件居然有區分大小寫</li>
                                     <li>Phantom:The Animation因為標點符號無法與巴哈對上</li>
+                                    <li>生日日歷的聲優及角色部分因為暫存邏輯寫錯，基本上完全沒更新還在去年10月份，目前緩慢更新中</li>
 
 
 
@@ -254,9 +256,9 @@
                                 </ol>
                                 <p />
                                 <h2>分數計算方式</h2>
-                                除特定網站，其餘使用貝氏估計法重新計算分數，規則如下：<br /> 各網站作品投票數至少需要10票，低於10票則不計算分數，
+                                除特定網站，其餘基於投票資料使用貝氏估計法重新計算分數，規則如下：<br /> 各網站作品投票數至少需要10票，低於10票則不計算分數，
                                 <br /> 使用貝氏估計法後，若至少4個網站有計算出分數(裏番只需2個)，則標準化所有分數取平均值，<br /> 而無投票細節的網站得出的分數多少會有誤差，
-                                <br /> 公式使用自https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation
+                                <br /> 公式使用自https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation <br> 不過目前已經改成直接取貝氏估計法的平均值，因為標準化分數不好理解...
                             </div>
                             <p />
                             <ol>
@@ -266,14 +268,17 @@
                                 <li>animePlanetCom:重新計算分數，且分數乘2，但沒找到投票分數細節</li>
                                 <li>anisearch:重新計算分數</li>
                                 <li>annict:重新計算分數，但不列入總平均分數，因有四分制換算的問題</li>
+                                <li>anidb:重新計算分數，但未使用投票細節</li>
                                 <li>bangumi:重新計算分數</li>
                                 <li>巴哈姆特:重新計算分數，且分數乘2</li>
                                 <li>kitsu:重新計算分數，且分數除10</li>
                                 <li>livechart:重新計算分數，但沒找到投票分數細節</li>
                                 <li>myanimelist :無重新計算，網站已使用Bayesian</li>
                                 <li>notifyMoe :重新計算分數，但沒找到投票分數細節</li>
+                                <li>redditanimelist:重新計算分數，但未使用投票細節</li>
                                 <li>sakuhindb:重新計算分數，但不列入總平均分數，因有七分制換算的問題</li>
                                 <li>trakt:重新計算分數</li>
+
                             </ol>
                             <p />
 
@@ -285,14 +290,17 @@
                                 <li>animePlanetCom:美國，12.2M人次</li>
                                 <li>anisearch:德國，767.7K人次</li>
                                 <li>annict:日本，50.2K人次</li>
+                                <li>anidb:美國，1.4M人次</li>
                                 <li>bangumi:中國，1.1M人次</li>
                                 <li>巴哈姆特:台灣，76.9M人次</li>
                                 <li>kitsu:美國，525.2K人次</li>
                                 <li>livechart:美國，3.2M人次</li>
                                 <li>myanimelist :美國，57.8M人次</li>
                                 <li>notifyMoe :美國，37.5K人次</li>
+                                <li>redditanimelist:美國，11K</li>
                                 <li>sakuhindb:日本，249.2K人次</li>
                                 <li>trakt:美國，8.6M人次</li>
+
                             </ol>
 
                             <p />
@@ -415,7 +423,7 @@
                                                 <v-spacer></v-spacer>
                                             </v-toolbar>
                                             <v-card-text>
-                                                <H4>擔任配音共約{{selectedEvent.isMain + selectedEvent.isSup}}次</H4>
+                                                <H4>擔任配音至少{{selectedEvent.isMain + selectedEvent.isSup}}次</H4>
                                                 <H3>其中擔任主要角色至少為{{selectedEvent.isMain}}次，作品如下表：</H3>
                                                 <h5>下表不一定有顯示全部主要角色，僅限於包含在本網頁列表</h5>
                                                 <v-list dense>
@@ -628,7 +636,7 @@
                     </v-row>
                     <br />
                     <v-row>
-                        <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年03月25日</span>
+                        <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年03月27日(1/2)</span>
                     </v-row>
                     <span v-if="windowWidth > 600"> 
                         <br/>
@@ -694,23 +702,19 @@
                                     <span v-if="null != item.MAL">{{ item.MAL.en_name }}</span> <br />
                                     <v-divider></v-divider>
 
-                                    <span v-if="null != item.MAL.official">
-                                        <a :href="'https://' + item.MAL.official" target="_blank"
-                                        >動畫官網
-                                        </a>&nbsp;
+                                    <span v-if="null != item.official">
+                                        <a :href="'https://' + item.official" target="_blank">動畫官網</a>&nbsp;
+                                    </span>
+                                    <span v-if="null != item.twitter">
+                                        <a :href="'https://' + item.twitter" target="_blank">Twitter</a>&nbsp;
                                     </span>
                                     <span v-if="null != item.tvdb">
-                                        <a :href="'https://www.thetvdb.com/?tab=series&amp;id=' + item.tvdb" title="TVDB" target="_blank">
-                                            TVDB
-                                        </a>&nbsp;
+                                        <a :href="'https://www.thetvdb.com/?tab=series&amp;id=' + item.tvdb" title="TVDB" target="_blank">TVDB</a>&nbsp;
                                     </span>
                                     <span v-if="null != item.imdb">
-                                        <a :href="'https://www.imdb.com/title/' + item.imdb" title="IMDB" target="_blank">
-                                            IMDB
-                                        </a>&nbsp;
+                                        <a :href="'https://www.imdb.com/title/' + item.imdb" title="IMDB" target="_blank">IMDB</a>&nbsp;
                                     </span>
                                     <span  v-if="null != item.tmdb">
-
                                         <a :href="'https://www.themoviedb.org/movie/' + item.tmdb" title="TMDB" target="_blank" v-if="item.MAL.type == 'Movie'">TMDB</a>
                                         <a :href="'https://www.themoviedb.org/tv/' + item.tmdb" title="TMDB" target="_blank" v-else>TMDB</a>
                                     </span>
@@ -729,8 +733,8 @@
                                         <template>
                                             <v-menu offset-y open-on-hover rounded v-if="item.MAL.studios.length > 0">
                                                 <template v-slot:activator="{ on, attrs }">
-                                                    <v-btn x-small v-bind="attrs" v-on="on" color="transparent" light>
-                                                        動畫公司
+                                                    <v-btn small v-bind="attrs" v-on="on" color="transparent" light>
+                                                        <span style="font-size:14px;">動畫公司</span>
                                                     </v-btn>
                                                 </template>
                         <v-list>
@@ -742,8 +746,8 @@
 
                         <v-menu offset-y open-on-hover rounded v-if="item.MAL.genres.length > 0">
                             <template v-slot:activator="{ on, attrs }">
-                                                    <v-btn x-small v-bind="attrs" v-on="on" color="transparent" light>
-                                                        作品類型
+                                                    <v-btn small v-bind="attrs" v-on="on" color="transparent" light>
+                                                        <span style="font-size:14px;">作品類型</span>
                                                     </v-btn>
                                                 </template>
                             <v-list>
@@ -756,8 +760,8 @@
 
                         <v-menu offset-y open-on-hover rounded v-if="item.MAL.voices.length > 0">
                             <template v-slot:activator="{ on, attrs }">
-                                                    <v-btn x-small v-bind="attrs" v-on="on" color="transparent" light>
-                                                        主要聲優
+                                                    <v-btn small v-bind="attrs" v-on="on" color="transparent" light>
+                                                        <span style="font-size:14px;">主要聲優</span>
                                                     </v-btn>
                                                 </template>
                             <v-list>
@@ -834,7 +838,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="gamer" src="image/gamer.webp">
                             </v-avatar><br />
-                            <rating v-if="item.Gamer" :item="item.Gamer" website="Gamer" :b-score="item.Gamer.bayesian_score">
+                            <rating v-if="item.Gamer" :item="item.Gamer" website="Gamer" :b-score="item.Gamer.b_score">
                             </rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
@@ -854,7 +858,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="bgm" src="image/bgm.webp">
                             </v-avatar><br />
-                            <rating v-if="item.BGM" :item="item.BGM" website="BGM" :b-score="item.BGM.bayesian_score"></rating>
+                            <rating v-if="item.BGM" :item="item.BGM" website="BGM" :b-score="item.BGM.b_score"></rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
@@ -863,7 +867,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="anikore" src="image/anikore.webp">
                             </v-avatar><br />
-                            <rating v-if="item.Anikore" :item="item.Anikore" website="Anikore" :b-score="item.Anikore.bayesian_score"></rating>
+                            <rating v-if="item.Anikore" :item="item.Anikore" website="Anikore" :b-score="item.Anikore.b_score"></rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
@@ -872,7 +876,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="aniList" src="image/aniList.webp">
                             </v-avatar><br />
-                            <rating v-if="item.AniList" :item="item.AniList" website="AniList" :b-score="item.AniList.bayesian_score"></rating>
+                            <rating v-if="item.AniList" :item="item.AniList" website="AniList" :b-score="item.AniList.b_score"></rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
@@ -881,7 +885,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="apc" src="image/apc.webp">
                             </v-avatar><br />
-                            <rating v-if="item.AnimePlanetCom" :item="item.AnimePlanetCom" website="AnimePlanetCom" :b-score="item.AnimePlanetCom.bayesian_score">
+                            <rating v-if="item.AnimePlanetCom" :item="item.AnimePlanetCom" website="AnimePlanetCom" :b-score="item.AnimePlanetCom.b_score">
                             </rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
@@ -891,7 +895,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="ann" src="image/ann.webp">
                             </v-avatar><br />
-                            <rating v-if="item.ANN" :item="item.ANN" website="ANN" :b-score="item.ANN.bayesian_score"></rating>
+                            <rating v-if="item.ANN" :item="item.ANN" website="ANN" :b-score="item.ANN.b_score"></rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
@@ -900,7 +904,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="anisearch" src="image/anisearch.webp">
                             </v-avatar><br />
-                            <rating v-if="item.anisearch" :item="item.anisearch" website="anisearch" :b-score="item.anisearch.bayesian_score"></rating>
+                            <rating v-if="item.anisearch" :item="item.anisearch" website="anisearch" :b-score="item.anisearch.b_score"></rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
@@ -909,7 +913,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="kitsu" src="image/kitsu.webp">
                             </v-avatar><br />
-                            <rating v-if="item.kitsu" :item="item.kitsu" website="kitsu" :b-score="item.kitsu.bayesian_score">
+                            <rating v-if="item.kitsu" :item="item.kitsu" website="kitsu" :b-score="item.kitsu.b_score">
                             </rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
@@ -919,7 +923,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="notifymoe" src="image/notifymoe.webp">
                             </v-avatar><br />
-                            <rating v-if="item.notifyMoe" :item="item.notifyMoe" website="notifyMoe" :b-score="item.notifyMoe.bayesian_score"></rating>
+                            <rating v-if="item.notifyMoe" :item="item.notifyMoe" website="notifyMoe" :b-score="item.notifyMoe.b_score"></rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
@@ -928,7 +932,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="trakt" src="image/trakt.webp">
                             </v-avatar><br />
-                            <rating v-if="item.trakt" :item="item.trakt" website="trakt" :b-score="item.trakt.bayesian_score">
+                            <rating v-if="item.trakt" :item="item.trakt" website="trakt" :b-score="item.trakt.b_score">
                             </rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
@@ -938,7 +942,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="livechart" src="image/livechart.webp">
                             </v-avatar><br />
-                            <rating v-if="item.livechart" :item="item.livechart" website="livechart" :b-score="item.livechart.bayesian_score"></rating>
+                            <rating v-if="item.livechart" :item="item.livechart" website="livechart" :b-score="item.livechart.b_score"></rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
@@ -947,7 +951,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="anidb" src="image/anidb.webp">
                             </v-avatar><br />
-                            <rating v-if="item.anidb" :item="item.anidb" website="anidb" :b-score="item.anidb.bayesian_score"></rating>
+                            <rating v-if="item.anidb" :item="item.anidb" website="anidb" :b-score="item.anidb.b_score"></rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
@@ -956,7 +960,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="reddit" src="image/reddit.webp">
                             </v-avatar><br />
-                            <rating v-if="item.redditanimelist" :item="item.redditanimelist" website="redditanimelist" :b-score="item.redditanimelist.bayesian_score">
+                            <rating v-if="item.redditanimelist" :item="item.redditanimelist" website="redditanimelist" :b-score="item.redditanimelist.b_score">
                             </rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
@@ -966,7 +970,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="annict" src="image/annict.webp">
                             </v-avatar><br />
-                            <rating v-if="item.annict" :item="item.annict" website="annict" :b-score="item.annict.bayesian_score"></rating>
+                            <rating v-if="item.annict" :item="item.annict" website="annict" :b-score="item.annict.b_score"></rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
@@ -975,7 +979,7 @@
                             <v-avatar size="32" rounded>
                                 <img alt="sakuhindb" src="image/sakuhindb.webp">
                             </v-avatar><br />
-                            <rating v-if="item.sakuhindb" :item="item.sakuhindb" website="sakuhindb" :b-score="item.sakuhindb.bayesian_score"></rating>
+                            <rating v-if="item.sakuhindb" :item="item.sakuhindb" website="sakuhindb" :b-score="item.sakuhindb.b_score"></rating>
                             <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
@@ -1020,7 +1024,7 @@
                         </template>
                         <!-- 巴哈-->
                         <template v-slot:item.gamer="{ item }">
-                            <span v-if="item.Gamer">{{item.Gamer.bayesian_score| returnZero}}</span>
+                            <span v-if="item.Gamer">{{item.Gamer.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--MAL -->
@@ -1030,62 +1034,72 @@
                         </template>
                         <!--BGM -->
                         <template v-slot:item.bgm="{ item }">
-                            <span v-if="item.BGM">{{item.BGM.bayesian_score| returnZero}}</span>
+                            <span v-if="item.BGM">{{item.BGM.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--ANIKORE -->
                         <template v-slot:item.anikore="{ item }">
-                            <span v-if="item.Anikore">{{item.Anikore.bayesian_score| returnZero}}</span>
+                            <span v-if="item.Anikore">{{item.Anikore.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--ANILIST -->
                         <template v-slot:item.anilist="{ item }">
-                            <span v-if="item.AniList">{{item.AniList.bayesian_score| returnZero}}</span>
+                            <span v-if="item.AniList">{{item.AniList.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--APC -->
                         <template v-slot:item.animeplanetcom="{ item }">
-                            <span v-if="item.AnimePlanetCom">{{item.AnimePlanetCom.bayesian_score| returnZero}}</span>
+                            <span v-if="item.AnimePlanetCom">{{item.AnimePlanetCom.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--ANN -->
                         <template v-slot:item.ANN="{ item }">
-                            <span v-if="item.ANN">{{item.ANN.bayesian_score| returnZero}}</span>
+                            <span v-if="item.ANN">{{item.ANN.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--ANISEARCH -->
                         <template v-slot:item.anisearch="{ item }">
-                            <span v-if="item.anisearch">{{item.anisearch.bayesian_score| returnZero}}</span>
+                            <span v-if="item.anisearch">{{item.anisearch.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--KITSU -->
                         <template v-slot:item.kitsu="{ item }">
-                            <span v-if="item.kitsu">{{item.kitsu.bayesian_score| returnZero}}</span>
+                            <span v-if="item.kitsu">{{item.kitsu.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--NOTIFYMOE -->
                         <template v-slot:item.notifymoe="{ item }">
-                            <span v-if="item.notifyMoe">{{item.notifyMoe.bayesian_score| returnZero}}</span>
+                            <span v-if="item.notifyMoe">{{item.notifyMoe.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--trakt -->
                         <template v-slot:item.trakt="{ item }">
-                            <span v-if="item.trakt">{{item.trakt.bayesian_score| returnZero}}</span>
+                            <span v-if="item.trakt">{{item.trakt.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--livechart -->
                         <template v-slot:item.livechart="{ item }">
-                            <span v-if="item.livechart">{{item.livechart.bayesian_score| returnZero}}</span>
+                            <span v-if="item.livechart">{{item.livechart.b_score| returnZero}}</span>
+                            <span v-else>暫無</span>
+                        </template>
+                        <!--anidb -->
+                        <template v-slot:item.anidb="{ item }">
+                            <span v-if="item.anidb">{{item.anidb.b_score| returnZero}}</span>
+                            <span v-else>暫無</span>
+                        </template>
+                        <!--redditanimelist -->
+                        <template v-slot:item.redditanimelist="{ item }">
+                            <span v-if="item.redditanimelist">{{item.redditanimelist.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--annict -->
                         <template v-slot:item.annict="{ item }">
-                            <span v-if="item.annict">{{item.annict.bayesian_score| returnZero}}</span>
+                            <span v-if="item.annict">{{item.annict.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                         <!--sakuhindb -->
                         <template v-slot:item.sakuhindb="{ item }">
-                            <span v-if="item.sakuhindb">{{item.sakuhindb.bayesian_score | returnZero}}</span>
+                            <span v-if="item.sakuhindb">{{item.sakuhindb.b_score | returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
                     </v-data-table>

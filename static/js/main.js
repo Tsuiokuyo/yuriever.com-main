@@ -28,7 +28,7 @@ let vue = new Vue({
                                 </v-chip>
                                 <br />
                                 <a v-if="item" class="original" @click="toAnime(website,item.id)"><br />
-                                {{!!item.score ? item.score : !!item.averageScore ? item.averageScore : !!item.weighted_score ? item.bayesian_score: 0 }}<br /> ({{!!item.votes? item.votes : 0 }})
+                                {{!!item.score ? item.score : 0 }}<br /> ({{!!item.votes? item.votes : 0 }})
                                 </a>
                                 </div>`,
             methods: {
@@ -287,13 +287,13 @@ let vue = new Vue({
                         }
                         if (this.diff) {
                             let difference = true
-                            if (item.Gamer && item.Gamer.bayesian_score > 0) {
+                            if (item.Gamer && item.Gamer.b_score > 0) {
                                 function comput(a, b, range) {
                                     if (b == null) return false;
-                                    b = b.bayesian_score > 0 ? b.bayesian_score : false
+                                    b = b.b_score > 0 ? b.b_score : false
                                     return Math.abs(parseFloat(a) - parseFloat(b)) >= parseFloat(range)
                                 }
-                                let gScore = item.Gamer.bayesian_score
+                                let gScore = item.Gamer.b_score
                                 difference = Math.abs(parseFloat(gScore) - parseFloat(item.MAL.score > 0 ? item.MAL.score : false)) >= parseFloat(this.diff) ||
                                     comput(gScore, item.BGM, this.diff) ||
                                     comput(gScore, item.Anikore, this.diff) ||
@@ -477,6 +477,20 @@ let vue = new Vue({
                 {
                     text: 'livechart評分',
                     value: 'livechart',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                },
+                {
+                    text: 'anidb評分',
+                    value: 'anidb',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                },
+                {
+                    text: 'redditanimelist評分',
+                    value: 'redditanimelist',
                     align: 'center',
                     filterable: false,
                     width: '5%',
@@ -747,7 +761,7 @@ let vue = new Vue({
         // ).then((res) => res.json());
         // await fetch('https://tsuiokuyo.netlify.app/test.gzip').then((res) => res.arrayBuffer().then(buf => {
         //記憶體爆炸
-        await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test.gzip').then((res) => res.arrayBuffer().then(buf => {
+        await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
             let zippedContent = new Uint8Array(buf);
             let byteArray = pako.ungzip(zippedContent);
             let textDecoder = new TextDecoder();
@@ -1314,112 +1328,112 @@ let vue = new Vue({
                                 return a.MAL.score > b.MAL.score ? 1 : -1;
                             }
                         case 'gamer':
-                            b = !!b.Gamer ? b.Gamer.bayesian_score : 0;
-                            a = !!a.Gamer ? a.Gamer.bayesian_score : 0;
+                            b = !!b.Gamer ? b.Gamer.b_score : 0;
+                            a = !!a.Gamer ? a.Gamer.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'anidb':
-                            b = !!b.anidb ? b.anidb.bayesian_score : 0;
-                            a = !!a.anidb ? a.anidb.bayesian_score : 0;
+                            b = !!b.anidb ? b.anidb.b_score : 0;
+                            a = !!a.anidb ? a.anidb.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'bgm':
-                            b = !!b.BGM ? b.BGM.bayesian_score : 0;
-                            a = !!a.BGM ? a.BGM.bayesian_score : 0;
+                            b = !!b.BGM ? b.BGM.b_score : 0;
+                            a = !!a.BGM ? a.BGM.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'anikore':
-                            b = !!b.Anikore ? b.Anikore.bayesian_score : 0;
-                            a = !!a.Anikore ? a.Anikore.bayesian_score : 0;
+                            b = !!b.Anikore ? b.Anikore.b_score : 0;
+                            a = !!a.Anikore ? a.Anikore.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'anisearch':
-                            b = !!b.anisearch ? b.anisearch.bayesian_score : 0;
-                            a = !!a.anisearch ? a.anisearch.bayesian_score : 0;
+                            b = !!b.anisearch ? b.anisearch.b_score : 0;
+                            a = !!a.anisearch ? a.anisearch.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'anilist':
-                            b = !!b.AniList ? b.AniList.bayesian_score : 0;
-                            a = !!a.AniList ? a.AniList.bayesian_score : 0;
+                            b = !!b.AniList ? b.AniList.b_score : 0;
+                            a = !!a.AniList ? a.AniList.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'animeplanetcom':
-                            b = !!b.AnimePlanetCom ? b.AnimePlanetCom.bayesian_score : 0;
-                            a = !!a.AnimePlanetCom ? a.AnimePlanetCom.bayesian_score : 0;
+                            b = !!b.AnimePlanetCom ? b.AnimePlanetCom.b_score : 0;
+                            a = !!a.AnimePlanetCom ? a.AnimePlanetCom.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'ann':
-                            b = !!b.ANN ? b.ANN.bayesian_score : 0;
-                            a = !!a.ANN ? a.ANN.bayesian_score : 0;
+                            b = !!b.ANN ? b.ANN.b_score : 0;
+                            a = !!a.ANN ? a.ANN.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'kitsu':
-                            b = !!b.kitsu ? b.kitsu.bayesian_score : 0;
-                            a = !!a.kitsu ? a.kitsu.bayesian_score : 0;
+                            b = !!b.kitsu ? b.kitsu.b_score : 0;
+                            a = !!a.kitsu ? a.kitsu.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'notifymoe':
-                            b = !!b.notifyMoe ? b.notifyMoe.bayesian_score : 0;
-                            a = !!a.notifyMoe ? a.notifyMoe.bayesian_score : 0;
+                            b = !!b.notifyMoe ? b.notifyMoe.b_score : 0;
+                            a = !!a.notifyMoe ? a.notifyMoe.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'trakt':
-                            b = !!b.trakt ? b.trakt.bayesian_score : 0;
-                            a = !!a.trakt ? a.trakt.bayesian_score : 0;
+                            b = !!b.trakt ? b.trakt.b_score : 0;
+                            a = !!a.trakt ? a.trakt.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'livechart':
-                            b = !!b.livechart ? b.livechart.bayesian_score : 0;
-                            a = !!a.livechart ? a.livechart.bayesian_score : 0;
+                            b = !!b.livechart ? b.livechart.b_score : 0;
+                            a = !!a.livechart ? a.livechart.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'redditanimelist':
-                            b = !!b.sakuhindb ? b.sakuhindb.bayesian_score : 0;
-                            a = !!a.sakuhindb ? a.sakuhindb.bayesian_score : 0;
+                            b = !!b.sakuhindb ? b.sakuhindb.b_score : 0;
+                            a = !!a.sakuhindb ? a.sakuhindb.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
                         case 'sakuhindb':
-                            b = !!b.sakuhindb ? b.sakuhindb.bayesian_score : 0;
-                            a = !!a.sakuhindb ? a.sakuhindb.bayesian_score : 0;
+                            b = !!b.sakuhindb ? b.sakuhindb.b_score : 0;
+                            a = !!a.sakuhindb ? a.sakuhindb.b_score : 0;
                             if (isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
@@ -1677,16 +1691,29 @@ let vue = new Vue({
         },
         getBackground(item) {
             if (!this.disabledBgImage) {
-                if (null != item.anisearch && null != item.anisearch.coverS) {
-                    return 'https://cdn.anisearch.com/images/anime/header/' + item.anisearch.coverS + '.webp';
-                    // } else if (null != item.trakt && null != item.trakt.coverS) {
-                    //     return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS
-                    // } else if (null != item.kitsu && null != item.kitsu.coverT) {
-                    // return 'https://media.kitsu.io/anime/' + item.kitsu.coverT;
-                } else if (null != item.kitsu && null != item.kitsu.coverT) {
-                    return 'https://media.kitsu.io/anime/' + item.kitsu.coverT;
-                } else if (null != item.trakt && null != item.trakt.coverS) {
-                    return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS;
+                // if (null != item.anisearch && null != item.anisearch.coverS) {
+                //     return 'https://cdn.anisearch.com/images/anime/header/' + item.anisearch.coverS + '.webp';
+                //     // } else if (null != item.trakt && null != item.trakt.coverS) {
+                //     //     return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS
+                //     // } else if (null != item.kitsu && null != item.kitsu.coverT) {
+                //     // return 'https://media.kitsu.io/anime/' + item.kitsu.coverT;
+                // } else if (null != item.kitsu && null != item.kitsu.coverT) {
+                //     return 'https://media.kitsu.io/anime/' + item.kitsu.coverT;
+                // } else if (null != item.trakt && null != item.trakt.coverS) {
+                //     return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS;
+                // } else {
+                //     return 'image/noImage.webp'
+                // }
+                if (null != item.banner) {
+                    if (item.banner.indexOf('kitsuQWQ') != -1) {
+                        return 'https://media.kitsu.io/anime/' + item.banner;
+                    } else if (item.banner.indexOf('anisearchQWQ') != -1) {
+                        return 'https://cdn.anisearch.com/images/anime/header/' + item.banner + '.webp';
+                    } else if (item.banner.indexOf('traktQWQ') != -1) {
+                        return 'https://walter.trakt.tv/images/shows/000/' + item.banner;
+                    } else {
+                        return 'https://' + item.banner;
+                    }
                 } else {
                     return 'image/noImage.webp'
                 }
