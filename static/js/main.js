@@ -787,21 +787,20 @@ let vue = new Vue({
 
         let moelongUrl = 'https://www.moelong.com/moelongnews/feed';
         let gnnUrl = 'https://gnn.gamer.com.tw/rss.xml';
-        let QAQrandom = Math.floor(Math.random() * 3) //0,1,2
-        QAQrandom = 0
+        let QAQrandom = Math.floor(Math.random() * 2) //0,1
         switch (QAQrandom) {
             case 0:
-                moelongUrl = 'https://fubdhltvej.us16.qoddiapp.com/' + moelongUrl
-                gnnUrl = 'https://fubdhltvej.us16.qoddiapp.com/' + gnnUrl
+                moelongUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/' + moelongUrl
+                gnnUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/' + gnnUrl
                 break;
             case 1:
                 moelongUrl = 'https://wispy-smoke-920.fly.dev/' + moelongUrl
                 gnnUrl = 'https://wispy-smoke-920.fly.dev/' + gnnUrl
                 break;
-            default:
-                moelongUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/' + moelongUrl
-                gnnUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/' + gnnUrl
-                break;
+                // default:
+                //     moelongUrl = 'http://fubdhltvej.us16.qoddiapp.com/' + moelongUrl
+                //     gnnUrl = 'http://fubdhltvej.us16.qoddiapp.com/' + gnnUrl
+                //     break;
         }
 
 
