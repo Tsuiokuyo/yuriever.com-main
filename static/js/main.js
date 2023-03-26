@@ -788,7 +788,7 @@ let vue = new Vue({
         let moelongUrl = 'https://www.moelong.com/moelongnews/feed';
         let gnnUrl = 'https://gnn.gamer.com.tw/rss.xml';
         let QAQrandom = Math.floor(Math.random() * 3) //0,1,2
-        QAQrandom = 2
+        QAQrandom = 0
         switch (QAQrandom) {
             case 0:
                 moelongUrl = 'https://fubdhltvej.us16.qoddiapp.com/' + moelongUrl
