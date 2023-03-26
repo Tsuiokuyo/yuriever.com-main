@@ -391,7 +391,7 @@ let vue = new Vue({
                     },
                 },
                 {
-                    text: '算數平均值',
+                    text: 'Bayesian總平均',
                     align: 'center',
                     value: 'score',
                     filterable: false,

@@ -464,7 +464,7 @@
                     </v-dialog>
 
                     <v-expansion-panels multiple v-model="panel">
-                        <v-expansion-panel>
+                        <v-expansion-panel v-if="windowWidth >= 600">
                             <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
                                 <span>
                                     <v-icon>
@@ -485,7 +485,7 @@
                                 <span>共有7XX多間公司(工作室)，塞不進來，這裡僅保留製作數量最多的前100間</span>
                             </v-expansion-panel-content>
                         </v-expansion-panel>
-                        <v-expansion-panel>
+                        <v-expansion-panel v-if="windowWidth >= 600">
                             <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
                                 <span>
                                     <v-icon>
@@ -636,7 +636,7 @@
                     </v-row>
                     <br />
                     <v-row>
-                        <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年03月27日(1/2)</span>
+                        <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年03月26日</span>
                     </v-row>
                     <span v-if="windowWidth > 600"> 
                         <br/>
@@ -758,7 +758,7 @@
                             </v-list>
                         </v-menu>
 
-                        <v-menu offset-y open-on-hover rounded v-if="item.MAL.voices.length > 0">
+                        <v-menu offset-y open-on-hover rounded v-if="null != item.MAL.voices && item.MAL.voices.length > 0">
                             <template v-slot:activator="{ on, attrs }">
                                                     <v-btn small v-bind="attrs" v-on="on" color="transparent" light>
                                                         <span style="font-size:14px;">主要聲優</span>
