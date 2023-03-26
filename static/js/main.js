@@ -843,7 +843,7 @@ let vue = new Vue({
 
                 } else {
                     this.moelong = {
-                        'title': '萌朧動漫情報網 RSS撈取失敗，暫停使用，反正也沒甚麼人會看這些資訊'
+                        'title': '萌朧動漫情報網 RSS撈取失敗，請無視，反正也沒甚麼人會看這些資訊，不過你也可以選擇F5重新整理'
                     }
                 }
             })
@@ -890,7 +890,7 @@ let vue = new Vue({
                 } else {
 
                     this.gnn = {
-                        'title': '巴哈GNN新聞 RSS撈取失敗，請無視，反正也沒甚麼人會看這些資訊'
+                        'title': '巴哈GNN新聞 RSS撈取失敗，請無視，反正也沒甚麼人會看這些資訊，不過你也可以選擇F5重新整理'
                     }
                 }
 
@@ -1706,11 +1706,11 @@ let vue = new Vue({
                 // }
                 if (null != item.banner) {
                     if (item.banner.indexOf('kitsuQWQ') != -1) {
-                        return 'https://media.kitsu.io/anime/' + item.banner;
+                        return 'https://media.kitsu.io/anime/' + item.banner.replace('kitsuQWQ', '');
                     } else if (item.banner.indexOf('anisearchQWQ') != -1) {
-                        return 'https://cdn.anisearch.com/images/anime/header/' + item.banner + '.webp';
+                        return 'https://cdn.anisearch.com/images/anime/header/' + item.banner.replace('anisearchQWQ', '') + '.webp';
                     } else if (item.banner.indexOf('traktQWQ') != -1) {
-                        return 'https://walter.trakt.tv/images/shows/000/' + item.banner;
+                        return 'https://walter.trakt.tv/images/shows/000/' + item.banner.replace('traktQWQ', '');
                     } else {
                         return 'https://' + item.banner;
                     }
