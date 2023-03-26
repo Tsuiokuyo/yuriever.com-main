@@ -646,7 +646,7 @@
                     <v-btn v-if="user != null" @click="loginOut" color="error" dark>
                         <v-icon>mdi-google</v-icon>登出
                     </v-btn>
-                    <!-- <span v-if="user != null">已登入：tsuiokuyo@gmail.com</span> -->
+                    <span v-if="user != null">已登入：{{user.email}}</span>
                     <v-btn v-if="user == null" @click="btnAuth" color="primary" dark :disabled="disableBtn">
                         <v-icon>mdi-google</v-icon>登入
                     </v-btn>
