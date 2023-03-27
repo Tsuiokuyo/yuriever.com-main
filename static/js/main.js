@@ -1908,7 +1908,9 @@ let vue = new Vue({
             if (todayBir) {
                 return 'deep-purple accent-1'
             }
-            if (isMain > 100) {
+            if (isMain > 150) {
+                return 'purple accent-1'
+            } else if (isMain > 100) {
                 return 'yellow accent-2'
             } else if (isMain > 80) {
                 return 'light-green accent-1'
