@@ -1725,9 +1725,10 @@ let vue = new Vue({
             let aniBg = entries[0].target.lastChild.innerText
             if (isIntersecting) {
                 if (!!aniBg) {
-                    entries[0].target.attributes.style.value = 'background-image:url(' + bg + '),url(' + aniBg + ');background-blend-mode: luminosity;background-size:cover;'
+                    entries[0].target.attributes.style.value = 'background-image:url(' + bg + '),url(' + aniBg + ');background-blend-mode: luminosity;background-size:100% 100%;'
                 } else {
-                    entries[0].target.attributes.style.value = 'background-image:url(' + bg + ');background-size:cover;'
+                    // entries[0].target.attributes.style.value = 'background-image:url(' + bg + ');background-size:cover;'
+                    entries[0].target.attributes.style.value = 'background-image:url(' + bg + ');background-size:100% 100%;'
                 }
                 return entries
             }
