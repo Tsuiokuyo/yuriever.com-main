@@ -1161,7 +1161,7 @@ let vue = new Vue({
                     // })
                     // studiosF = [...new Set(studiosF)]
                     // studiosF.pop()
-                studiosF.splice(100)
+                studiosF.splice(50)
                 this.cmpList = studiosF
 
 
