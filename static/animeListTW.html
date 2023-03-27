@@ -378,7 +378,7 @@
                         <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(省流量)" dense></v-checkbox> -->
                         <!-- <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(稍微省流量)" dense></v-checkbox> -->
                     </v-row>
-                    <span>含{{voiceCount}}位聲優，及相關作品</span>
+                    <span>含{{voiceCount}}位聲優及擔任角色</span>
                     <v-dialog v-model="dialogCal" width="1680" heigth="1920">
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
@@ -690,9 +690,10 @@
                                         </v-img>
                                     </div>
                                 </td>
-                                <td v-if="user != null && isMemoMode">
-                                    收藏
-                                    <v-simple-checkbox color="deep-orange accent-3" v-model="item.seen"></v-simple-checkbox>
+                                <td v-show="user != null && isMemoMode">
+                                    <div>收藏
+                                    <v-checkbox v-model="item.seen" color="deep-orange accent-3" ></v-checkbox>
+                                    </div>
                                 </td>
                                 <td style="font-size:15px;font-weight:bold;padding:0">
                                     <span v-if="null != item.Gamer">{{ item.Gamer.title }}
@@ -796,9 +797,7 @@
                                 </v-list>
                             </v-menu>
                             <span>
-                                <!-- <v-btn color="transparent" size="x-small" light > -->
-           
-                                <!-- </v-btn> -->
+
                  
         
                                 </span>
@@ -817,9 +816,11 @@
                                         </span>
                         </div>
                         </td>
-                        <td v-if="user != null && !isMemoMode">
-                            收藏
-                            <v-simple-checkbox color="deep-orange accent-3" v-model="item.seen"></v-simple-checkbox>
+                        <td v-show="user != null && !isMemoMode">
+                            <div>
+                                收藏
+                                <v-checkbox v-model="item.seen" color="deep-orange accent-3"></v-checkbox>
+                            </div>
                         </td>
                         <td class="center pa-0">
                             <span style="font-size:14px;">Bayesian</span><br />總平均<br />
