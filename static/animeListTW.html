@@ -470,11 +470,11 @@
                                     <v-icon>
                                         mdi-label-multiple
                                     </v-icon>
-                                    動畫公司篩選箱(密集恐懼?)
+                                    動畫公司篩選箱
                                 </span></v-expansion-panel-header>
                             <v-expansion-panel-content><br />
                                 <v-chip-group v-model="cmpSel" column multiple>
-                                    <v-chip v-for="(cmp, index) in cmpList" :key="index" filter :value="cmp" dark>
+                                    <v-chip v-for="(cmp, index) in cmpList" :key="index" filter :value="cmp" label>
                                         <span>{{cmp}}</span>
                                         <!-- <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span> -->
 
