@@ -1,5 +1,5 @@
 const swup = new Swup();
-content = ""
+
 console.log("JS loaded!")
 
 if (document.getElementById("file")) {
