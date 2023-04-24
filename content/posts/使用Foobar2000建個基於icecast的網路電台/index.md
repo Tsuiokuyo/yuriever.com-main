@@ -6,7 +6,7 @@ featuredImage: "/assets/foobar2000.jpg"
 featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
-lastmod: 2023-04-06
+lastmod: 2023-04-25
 weight: 2
 ---
 
@@ -25,6 +25,12 @@ http://tsuiokuyo.ddns.net:8764
 
 http://tsuiokuyo.ddns.net:8765
 (shoutcast)
+
+
+
+2023/04/25 確認無法搜尋到播放列表中，第20990首之後的任何歌曲，無解，因為沒有插件原始碼可去改...，所以至少有一萬首歌以上查不到QAQ，只能等未來有機會再去整個重弄了
+
+
 
 以下3月的調整一段時間內不會放改法教學上來，因為有點麻煩，暫時也沒有心力來寫。
 估計之後想寫時也忘了改了啥。
@@ -81,8 +87,6 @@ http://dir.xiph.org/search?q=tsuiokuyo
 foo_streamer，版本:v141(2015)，選單位於view -> streaming client，可以看到目前傳輸的位元率、目前在線的用戶端、以及播放歷史，對我來說最有用的就是看位元率吧，很直觀就能了解我確實是在推送FLAC，但換歌時，網頁(用戶)端會自動暫停播放音樂，這個真不能忍，不過我倒是沒特別去研究解決方法，且因為metadata沒有自動推送也是原因之一，在Icecast states沒辦法看到目前播放的音樂名稱，因此放棄。
 
 2023/04/06 目前shoutcast是走這個推MP3，上面為舊文只是沒設定好罷了
-
-
 
 ![foo_vorbisstream_fix3](images/foo_vorbisstream_fix3.jpg)
 
