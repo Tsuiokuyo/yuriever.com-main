@@ -16,8 +16,6 @@ weight: 2
 
 (有封鎖特定IP區段連入)
 
-<iframe src="http://tsuiokuyo.ddns.net:8763/js_index.html" width="700px" height="600px" > </iframe>
-
 點歌台
 http://tsuiokuyo.ddns.net:8763/js_index.html
 
