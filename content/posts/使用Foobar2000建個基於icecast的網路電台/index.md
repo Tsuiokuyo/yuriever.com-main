@@ -6,7 +6,7 @@ featuredImage: "/assets/foobar2000.jpg"
 featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
-lastmod: 2023-04-25
+lastmod: 2023-04-27
 weight: 2
 ---
 
@@ -15,6 +15,8 @@ weight: 2
 <!--more-->
 
 (有封鎖特定IP區段連入)
+
+<iframe src="http://tsuiokuyo.ddns.net:8763/js_index.html" width="700px" height="600px" > </iframe>
 
 點歌台
 http://tsuiokuyo.ddns.net:8763/js_index.html
@@ -26,11 +28,9 @@ http://tsuiokuyo.ddns.net:8764
 http://tsuiokuyo.ddns.net:8765
 (shoutcast)
 
+其實會收聽的反而都在shoutcast......
 
-
-2023/04/25 確認無法搜尋到播放列表中，第20990首之後的任何歌曲，無解，因為沒有插件原始碼可去改...，所以至少有一萬首歌以上查不到QAQ，只能等未來有機會再去整個重弄了
-
-
+2023/04/25 確認無法搜尋到播放列表中在第20990首之後的任何歌曲，暫時無解，因為沒有插件原始碼可去改...，所以差不多一半的歌曲查不到QAQ
 
 以下3月的調整一段時間內不會放改法教學上來，因為有點麻煩，暫時也沒有心力來寫。
 估計之後想寫時也忘了改了啥。
@@ -65,7 +65,7 @@ http://dir.xiph.org/search?q=tsuiokuyo
 
 目前已不使用foo_shuicast，因為用shuicast在某些時候會有破音問題，因為只有hi-res跟mp3會破音，懷疑是跟歌曲本身的位元率高低有關，因此改用butt+vb audio cable來播放，這樣才不會接收到本機的音效，順便一提icecast的多個Genre 設定有固定格式，否則會直接送你異常，第二個以後的類型都要加, 才行，一定要用",空格"，如：Anime,  Jpop, Game，這爛分割方式讓我剛開始研究好久。
 
-以下為舊文章
+<h3>以下為舊文章(2022/10)</h3>
 
 現在雖然都用google drive串流來聽歌，但不曉得哪一天無限空間會被拔掉，總要有幾個備援方案，
 
