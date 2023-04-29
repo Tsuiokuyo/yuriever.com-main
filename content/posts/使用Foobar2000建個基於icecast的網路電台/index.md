@@ -6,7 +6,7 @@ featuredImage: "/assets/foobar2000.jpg"
 featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
-lastmod: 2023-04-27
+lastmod: 2023-04-28
 weight: 2
 ---
 
@@ -23,12 +23,62 @@ http://tsuiokuyo.ddns.net:8763/js_index.html
 http://tsuiokuyo.ddns.net:8764
 (icecast)
 
-http://tsuiokuyo.ddns.net:8765
+<s>http://tsuiokuyo.ddns.net:8765
 (shoutcast)
 
-其實會收聽的都在shoutcast，因為很多程式都能直接搜尋shoutcast電台
+其實會收聽的都在shoutcast，因為很多程式都能直接搜尋shoutcast電台</s>
+
+幾乎都是日本人在收聽的，擔心哪天吃官司，因此關閉icecast的yp跟shoutcast。
 
 
+
+補充目前所使用的DSP，
+
+1.Resampler (Sox) mod2
+
+目前44.1kHz約有(82.5%)、96kHz(10.2%)、48kHz(7.1%)、192kHz(0.2)、88.2(?)kHz(0.0%)
+
+因為我自己串流主要用48kHz聽歌，因此第一個Sox為升頻至48kHz
+
+Passband:95%，phase response:50%
+
+2.Resampler (Sox) mod2
+
+第二個則降頻192kHz及96kHz至48kHz
+
+Passband:95%，phase response:0%
+
+3.ReplayGain(alternative)
+
+基於EBU R 128音軌增益，-14LUFS,-1dBTP(compress peaks)
+
+4.跳過靜音區域
+
+其他類似的DSP是Fake Gapless、Corssmix、Fade in/out
+
+5.交叉漸變器
+
+淡出淡入功能
+
+類似的插件是 SqrSoft Advanced Crossfader
+
+6.Vorbis Streamer
+
+要注意的是，上方的順序不能擺錯，因為DSP的順序是從上到下，串流插件一定要擺在最下面，不然會發現串流與本機的播放聲音不同，第4點比vorbis streamer低則會讓串流中斷，也因此我才會知道那些類似的DSP，試到最後發現只是擺錯位置。
+
+另外重採樣部分 foobar2000的DSP大概有
+
+Sox、SRC(Secret Rabbit Code)、SSRC、RetroArch、multiresampler
+
+雖然爬文大多都是推薦Sox，但我當時還是浪費一堆時間爬文弄軟體測試，結果最後還是選擇Sox...
+
+順便留一個國外各種特定轉換的重採樣的圖表網頁參考
+
+http://src.infinitewave.ca/
+
+剩下關於機碼、MMCSS模式、記憶體優先級、峰值限制等等，無聊時再回來補，
+
+其實這些google都有，畢竟我只是跟著別人的腳步，跟著各種發燒友文章重新調整，雖然在這裡最後都會因為串流壓成320k就是了，
 
 以下3月的調整一段時間內不會放改法教學上來，因為有點麻煩，暫時也沒有心力來寫。
 估計之後想寫時也忘了改了啥。
