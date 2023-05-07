@@ -6,6 +6,7 @@ featuredImage: "/assets/PSP及PSV實機輸出畫面至PC端提升畫質.jpg"
 featuredImagePreview: "/assets/PSP及PSV實機輸出畫面至PC端提升畫質.jpg"
 tags: ["PSP","PSV"]
 categories: ["PSP","PSV"]
+weight: 3
 ---
 
 雖然PPSSPP已經算很成熟了，但我還是喜歡用實機玩
@@ -352,7 +353,3 @@ PSP部分是因為我有實機，為何我還要去玩模擬器呢，因此才�
 這想法大概就是跟，我有手機為何還要用模擬器玩手遊是一樣的道理......。
 
 而VITA部分，我個人有三個原因，STEAM沒推出，我沒有PS4、steam沒買那款遊戲。
-
-
-
-
