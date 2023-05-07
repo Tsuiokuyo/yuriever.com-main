@@ -2,7 +2,7 @@
 title: "談談個人收藏動畫的方式"
 date: 2022-07-16T02:55:55+08:00
 slug: 0f972d9c
-weight: 3
+weight: 4
 featuredImage: "/assets/談談個人收藏動畫的方式.jpg"
 featuredImagePreview: "/assets/談談個人收藏動畫的方式.jpg"
 tags: [動畫留念]
@@ -163,8 +163,6 @@ FontLoaderSub
 
 > 影片畫面處理腳本是影響出品質量的絕對因素，而編碼/壓制只是一個畫面還原過程而已，正因為影像處理腳本會修復原盤存在的瑕疵，所以才有了BDRip畫質優於BD原盤的可能。       from U2
 
-
-
 [談談個人會選擇的動畫壓制組選擇，基本上有御三家就選御三家](#談談個人會選擇的動畫壓制組選擇，基本上有御三家就選御三家)
 
 可以看這篇B站的文章參考 https://www.bilibili.com/read/cv20608603
@@ -238,13 +236,9 @@ RAW是指片源，生肉
 
 4. 裸壓，原盤長怎樣，成品就長怎樣：jsum、Reinforce
 
-
-
 2與3的分類其實只差別在國家，所以被區分開來放在3而已，
 
 另外一提 ANK-Raws != ANK-RAWS 兩個是不同人
-
-
 
 之後就是各個字幕組壓制的作品，但他們的本業是字幕，還請不要對影片的要求太高
 
@@ -262,8 +256,6 @@ RAW是指片源，生肉
 但也是有一些天生帶有血輪眼的人類能發覺到1幀的花屏，然後準備洗版了...
 
 [关于我转生成为史莱姆第二季 24.9集 画面报错 - 作品报错区 - Anime字幕论坛 - Powered by Discuz!](https://bbs.acgrip.com/forum.php?mod=viewthread&tid=10120)
-
-
 
 ## 所以在下收藏通常是 BDRip > DVDRip 沒了，真的找不到就是找原盤後自己壓一部
 
@@ -390,8 +382,6 @@ Anime4K_Upscale_CNN_x2_M.glsl
 Anime4K_AutoDownscalePre_x2.glsl
 Anime4K_AutoDownscalePre_x4.glsl
 Anime4K_Upscale_CNN_x2_S.glsl
-
-
 
 [mpv_lazy第三方著色器內容](https://hooke007.github.io/mpv-lazy/[01]_%E7%AC%AC%E4%B8%89%E6%96%B9%E7%9D%80%E8%89%B2%E5%99%A8%E4%BB%8B%E7%BB%8D.html)
 

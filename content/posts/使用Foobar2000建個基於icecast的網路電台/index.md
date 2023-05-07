@@ -23,14 +23,12 @@ http://tsuiokuyo.ddns.net:8763/js_index.html
 http://tsuiokuyo.ddns.net:8764
 (icecast)
 
-<s>http://tsuiokuyo.ddns.net:8765
+<s>http://tsuiokuyo.ddns.net:8765</s>
 (shoutcast)
 
 其實會收聽的都在shoutcast，因為很多程式都能直接搜尋shoutcast電台</s>
 
-幾乎都是日本人在收聽的，擔心哪天吃官司，因此關閉icecast的yp跟shoutcast。
-
-
+不過幾乎都是日本人在收聽的，擔心哪天吃官司，因此關閉icecast的yp跟shoutcast。
 
 補充目前所使用的DSP，
 
@@ -368,3 +366,9 @@ https://ptt.healtyman.xyz/?man/WebRadio/D766/D6CE/M.1296145083.A.AB6.html
     </script>
 
 </code>
+
+個人用備註
+
+shoutcast則需要到 https://radiomanager.shoutcast.com/ 註冊拿到Authhash才會被搜尋到
+
+歌詞部分需要修改LargeFieldsConfig檔，否則http上會顯示
