@@ -1,4 +1,4 @@
-// 麵條式代碼，其實我也很無奈，一開始沒想到會變得這麼亂...
+// 麵條式代碼，其實我也很無奈，功能不小心越玩越多
 // Vue.config.devtools = true;
 
 let OriginTitile = document.title;
@@ -24,7 +24,7 @@ let vue = new Vue({
             template: `<div>
                                 <v-chip :color="setChipColor(bScore,website)" dark>
                                 <span style="font-size:15px;" v-if="!!!bScore">不計分</span>
-                                <span v-else>{{ bScore }}</span>
+                                <span v-else>{{ bScore }}<span v-if="website == 'annict' || website =='sakuhindb'" style="font-size:small;">*</span></span>
                                 </v-chip>
                                 <br />
                                 <a v-if="item" class="original" @click="toAnime(website,item.id)"><br />
@@ -837,13 +837,13 @@ let vue = new Vue({
                     setTimeout(() => {
                         clearInterval(moeId);
                         this.moelong = {
-                            'title': '已在此網站待了半小時，已停止新聞迴圈'
+                            'title': '已在此網站待了10分鐘，已停止新聞迴圈。'
                         }
-                    }, 1800000);
+                    }, 600000);
 
                 } else {
                     this.moelong = {
-                        'title': '萌朧動漫情報網 RSS撈取失敗，請無視，反正也沒甚麼人會看這些資訊，不過你也可以選擇F5重新整理'
+                        'title': '萌朧動漫情報網 RSS本次撈取失敗，請無視，反正也沒甚麼人會看這些資訊。'
                     }
                 }
             })
@@ -883,14 +883,14 @@ let vue = new Vue({
                     setTimeout(() => {
                         clearInterval(gnnId);
                         this.gnn = {
-                            'title': '已在此網站待了半小時，已停止新聞迴圈'
+                            'title': '已在此網站待了10分鐘，已停止新聞迴圈。'
                         }
-                    }, 1800000);
+                    }, 600000);
 
                 } else {
 
                     this.gnn = {
-                        'title': '巴哈GNN新聞 RSS撈取失敗，請無視，反正也沒甚麼人會看這些資訊，不過你也可以選擇F5重新整理'
+                        'title': '巴哈GNN新聞 RSS本次撈取失敗，請無視，反正也沒甚麼人會看這些資訊。'
                     }
                 }
 
@@ -1730,6 +1730,10 @@ let vue = new Vue({
                     // entries[0].target.attributes.style.value = 'background-image:url(' + bg + ');background-size:cover;'
                     entries[0].target.attributes.style.value = 'background-image:url(' + bg + ');background-size:100% 100%;'
                 }
+
+                return entries
+            } else {
+                entries[0].target.attributes.style.value = 'background-image:url(' + bg + ');background-size:100% 100%;'
                 return entries
             }
         },
