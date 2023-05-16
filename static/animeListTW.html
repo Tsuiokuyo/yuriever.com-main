@@ -85,7 +85,7 @@
                     點歌器
                     <v-icon>mdi-radio-tower </v-icon>
                 </v-tab>
-				
+
                 <v-tab to="b" onclick="window.open('https://tsuiokuyo.netlify.app/', '_blank')">
                     BLOG
                     <v-icon>mdi-home </v-icon>
@@ -131,7 +131,7 @@
                                 <br />
                                 <span>
                                    <h3>未來考慮</h3>
-                                    1.目前共含16個二次元相關評分網站，實際上TMDB、TVDB、IMDB也能納入，不過...麻煩，有心情再考慮<br>                 
+                                    1.目前共含16個二次元相關評分網站，實際上TMDB、TVDB、IMDB也能納入算分，不過...麻煩，有心情再考慮<br>                 
                                     2.背景圖CDN研究中
                                     <br><br><br>
                                     目前網頁功能說明:
@@ -169,6 +169,7 @@
                                     
 
                                     <br />
+                                    2023/05/17 聊天室拖累速度，因此移除
                                     2023/03/20 增加tmdb、imdb、tvdb關聯<br><br>
 
 									這幾個月的心力放在<br>
@@ -626,7 +627,7 @@
                             </v-col>
                             <v-col cols="2">
                                 <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
-                                <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(省流量(幾乎無感))" dense></v-checkbox>
+                                <v-checkbox v-model="disabledBgImage" label="禁用背景圖(省流量)" dense></v-checkbox>
                             </v-col>
 
                             <v-col> </v-col>
@@ -648,7 +649,7 @@
                     </v-row>
                     <br />
                     <v-row>
-                        <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年05月08日</span>
+                        <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年05月17日</span>
                     </v-row>
                     <span v-if="windowWidth > 600"> 
                         <br/>
@@ -1146,7 +1147,7 @@
     </div>
 
 </body>
-
+<!--
 <script id="cid0020000340876575925" data-cfasync="false" async src="https://st.chatango.com/js/gz/emb.js" style="width: 400px;height: 300px;">
     {
         "handle": "wwwqaqwww",
@@ -1176,5 +1177,6 @@
         }
     }
 </script>
+-->
 
 </html>
