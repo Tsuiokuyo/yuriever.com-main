@@ -1729,7 +1729,7 @@ let vue = new Vue({
             if (isIntersecting) {
                 if (!!aniBg) {
                     // entries[0].target.attributes.style.value = 'background-image:url(' + bg + '),url(' + cdn + aniBg + ');background-blend-mode: luminosity;background-size:100% 100%;'
-                    entries[0].target.attributes.style.value = 'background-image:url(' + bg + '),url(' + cdn2 + aniBg + '&af&l=6&output=webp' + ');background-blend-mode: luminosity;background-size:100% 100%;'
+                    entries[0].target.attributes.style.value = 'background-image:url(' + bg + '),url(' + cdn2 + aniBg + '&output=webp&q=50' + ');background-blend-mode: luminosity;background-size:100% 100%;'
                 } else {
                     // entries[0].target.attributes.style.value = 'background-image:url(' + bg + ');background-size:cover;'
                     entries[0].target.attributes.style.value = 'background-image:url(' + bg + ');background-size:100% 100%;'
