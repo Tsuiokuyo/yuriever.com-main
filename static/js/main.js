@@ -1279,7 +1279,7 @@ let vue = new Vue({
                     if (item.MAL.image.length > 50) {
                         return item.MAL.image
                     }
-                    return cdn2 + "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + 't.webp' + "&output=webp&q=80"
+                    return "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + 't.webp'
                 }
             } else {
                 if (item.BGM && item.BGM.image) {
@@ -1288,7 +1288,7 @@ let vue = new Vue({
                     if (item.MAL.image.length > 50) {
                         return item.MAL.image
                     }
-                    return cdn2 + "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + '.webp' + "&output=webp&q=80"
+                    return "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + '.webp'
                 }
             }
         },
@@ -1297,7 +1297,7 @@ let vue = new Vue({
             if (null != item.BGM) {
                 this.selectedImage = cdn2 + "http://lain.bgm.tv/pic/cover/l/" + item.BGM.image + ".jpg" + "&output=webp"
             } else {
-                this.selectedImage = cdn2 + "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '') + 'l.webp'
+                this.selectedImage = "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '') + 'l.webp'
             }
         },
         customSort(items, index, isDescending) {
