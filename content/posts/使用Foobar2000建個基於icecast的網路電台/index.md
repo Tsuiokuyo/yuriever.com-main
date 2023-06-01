@@ -60,9 +60,12 @@ Passband:95%，phase response:0%
 
 類似的插件是 SqrSoft Advanced Crossfader
 
-6.Vorbis Streamer
+6.<s>Vorbis Streamer</s>
 
 要注意的是，上方的順序不能擺錯，因為DSP的順序是從上到下，串流插件一定要擺在最下面，不然會發現串流與本機的播放聲音不同，第4點比vorbis streamer低則會讓串流中斷，也因此我才會知道那些類似的DSP，試到最後發現只是擺錯位置。
+
+推送已改用butt，因為超過4萬首歌後，換首歌時讀取會卡住導致foo_Vorbis推送中斷，
+估計是我訊源及IO負荷太重的關係...，緩衝太長又會讓問題更嚴重...
 
 另外重採樣部分 foobar2000的DSP大概有
 
@@ -78,11 +81,7 @@ http://src.infinitewave.ca/
 
 其實這些google都有，畢竟我只是跟著別人的腳步，跟著各種發燒友文章重新調整，雖然在這裡最後都會因為串流關係壓成320k就是了。
 
-
-
 順帶一提，聽歌通常建議軟體音量調最大，剩餘就是用硬體調整
-
-
 
 用電腦端舉例：系統音量、播放器音量(100%) -> DAC、擴大機音量(調整2) -> 主動式喇叭(調整1)、耳機、被動式喇叭
 
@@ -91,6 +90,14 @@ http://src.infinitewave.ca/
 因為從最左邊的數位音訊，降低就相當於失真了，然後到最右邊轉成類比音訊也只是把失真後的資料再放大而已，基本上用頻譜圖就能看出來了，軟體的聲音低，可以看到某些細節已經歸零了，那你終端音量再大細節也不會憑空產生，其實就跟降頻後再升頻一樣
 
 不過如果因為系統音量問題導致破音，那也只能從軟體部份或用衰減器看看來處理了
+
+2023/06/01 隨著歌曲量增多，換歌時會莫名卡住，全文件緩衝設1GB反而得到嚴重副作用
+
+測試後確定為訊源問題，緩衝寫入RAM時會卡住，因此全文件緩衝由1GB改為1MB，
+
+不設0是擔心訊源瞬間負荷過高時音樂會卡頓，緩衝長度也提高至1280ms
+
+當然，最大的原因我覺得是我的訊源撐不住就是了，弄台好的設備也許就沒問題了
 
 
 
@@ -144,20 +151,20 @@ http://dir.xiph.org/search?q=tsuiokuyo
 
 首先先提以下四個插件
 
-![foo_streamer](images/foo_streamer.jpg)
+<img src="images/foo_streamer.jpg" title="" alt="foo_streamer" data-align="left">
 
 foo_streamer，版本:v141(2015)，選單位於view -> streaming client，可以看到目前傳輸的位元率、目前在線的用戶端、以及播放歷史，對我來說最有用的就是看位元率吧，很直觀就能了解我確實是在推送FLAC，但換歌時，網頁(用戶)端會自動暫停播放音樂，這個真不能忍，不過我倒是沒特別去研究解決方法，且因為metadata沒有自動推送也是原因之一，在Icecast states沒辦法看到目前播放的音樂名稱，因此放棄。
 
 2023/04/06 目前shoutcast是走這個推MP3，上面為舊文只是沒設定好罷了
 
-![foo_vorbisstream_fix3](images/foo_vorbisstream_fix3.jpg)
+<img src="images/foo_vorbisstream_fix3.jpg" title="" alt="foo_vorbisstream_fix3" data-align="left">
 
 foo_vorbisstream_fix3，版本:v1.1_fix3(2013)，選單位於設定 -> dps管理器中，這個應該是問題最少的了，但是他沒辦法調整推送的編碼。
 2023/04/06 如果要吃DSP的話，必須把它移到最下面，否則因為優先順序關係會吃不到。
 
 foo_edcast，版本:v3.1.23(2009)，我的foobar2000版本過高(1.6.10)，直接掰掰
 
-![foo_shuicast](images/foo_shuicast.jpg)
+<img src="images/foo_shuicast.jpg" title="" alt="foo_shuicast" data-align="left">
 
 foo_shuicast，版本:v0.47(2018年)，選單位於設定 -> dps管理器，其實這個介面我不太喜歡，鑒於上面幾個我都有意見，那麼也只能用這個了，亂碼似乎改個UTF-8就行了，反正也不能弄到目前播放的音樂，只不過這個可選編碼，網頁(用戶)端又不會自動暫停，我還能說甚麼。
 
@@ -190,7 +197,7 @@ foobar2000設定大概就這樣而已，再來是icecast2(v2.4.4)部分
 
 就能到localhost:8000、127.0.0.1:8000看看icecast是否正常以及測試播放
 
-![Icecast2_Status](images/Icecast2_Status.jpg)
+<img src="images/Icecast2_Status.jpg" title="" alt="Icecast2_Status" data-align="left">
 
 而掛載點則為http://localhost:8000/stream.ogg，也就是插件內的mountpoint路徑
 
@@ -204,7 +211,7 @@ foobar2000設定大概就這樣而已，再來是icecast2(v2.4.4)部分
 
 最後就是有bug的foo_request_http點歌插件了...，選單位於設定 -> 工具 -> request http
 
-![basic_settings](images/basic_settings.jpg)
+<img src="images/basic_settings.jpg" title="" alt="basic_settings" data-align="left">
 
 basic settings頁面
 
@@ -269,11 +276,11 @@ Deny Proxy: 防止Proxy來的連線，安全和點播上的顧慮，可以勾起
 
 有個明顯的bug就是所有的列表換頁功能無法使用，也就是沒去修bug的話Playlist list只能顯示前100筆
 
-![request_http_index](images/request_http_index.jpg)
+<img src="images/request_http_index.jpg" title="" alt="request_http_index" data-align="left">
 
 Javascript version ( New! ) <s>看起來還未完成，不能用</s>
 
-![ext](images/ext.jpg)
+<img src="images/ext.jpg" title="" alt="ext" data-align="left">
 
 2023/02/24，我發現光是這個找歌部分就比flat好上幾百倍了，
 
@@ -289,7 +296,7 @@ Javascript version ( New! ) <s>看起來還未完成，不能用</s>
 
 Simple version
 
-![Simple](images/Simple.jpg)
+<img src="images/Simple.jpg" title="" alt="Simple" data-align="left">
 
 還不錯的畫面
 
@@ -297,15 +304,15 @@ song file uploader，這個沒甚麼好提的
 
 Javascript version ( 2 column )
 
-![2_column](images/2_column.jpg)
+<img src="images/2_column.jpg" title="" alt="2_column" data-align="left">
 
 Javascript version ( flat )
 
-![flat](images/flat.jpg)
+<img src="images/flat.jpg" title="" alt="flat" data-align="left">
 
 後弄成以下這樣，不過我已經棄用了
 
-![flatEdit](images/flatEdit.jpg)
+<img src="images/flatEdit.jpg" title="" alt="flatEdit" data-align="left">
 
 基本上會選擇的大概就是Simple version、2 column 、 flat 三擇一後並自己調整了
 
@@ -387,4 +394,6 @@ https://ptt.healtyman.xyz/?man/WebRadio/D766/D6CE/M.1296145083.A.AB6.html
 
 shoutcast則需要到 https://radiomanager.shoutcast.com/ 註冊拿到Authhash才會被搜尋到
 
-歌詞部分需要修改LargeFieldsConfig檔，否則http上會顯示
+歌詞部分需要修改LargeFieldsConfig檔，否則http上會顯示"?"
+
+至於一些foobar2000音質上的調整就直接放在網頁左上了
