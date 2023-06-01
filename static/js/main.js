@@ -1271,31 +1271,33 @@ let vue = new Vue({
             return 'color: rgb(255,' + pitch + ',0);';
         },
         setCover(item, lazy) {
+            let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
             if (lazy) {
                 if (item.BGM && item.BGM.image) {
-                    return "http://lain.bgm.tv/pic/cover/g/" + item.BGM.image + ".jpg"
+                    return cdn2 + "http://lain.bgm.tv/pic/cover/g/" + item.BGM.image + ".jpg" + "&output=webp&q=80"
                 } else { //FIXME 下一輪
                     if (item.MAL.image.length > 50) {
                         return item.MAL.image
                     }
-                    return "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + 't.webp'
+                    return cdn2 + "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + 't.webp' + "&output=webp&q=80"
                 }
             } else {
                 if (item.BGM && item.BGM.image) {
-                    return "http://lain.bgm.tv/pic/cover/c/" + item.BGM.image + ".jpg"
+                    return cdn2 + "http://lain.bgm.tv/pic/cover/c/" + item.BGM.image + ".jpg" + "&output=webp&q=80"
                 } else { //FIXME 下一輪
                     if (item.MAL.image.length > 50) {
                         return item.MAL.image
                     }
-                    return "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + '.webp'
+                    return cdn2 + "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + '.webp' + "&output=webp&q=80"
                 }
             }
         },
         toggleFullscreen(item) {
+            let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
             if (null != item.BGM) {
-                this.selectedImage = "http://lain.bgm.tv/pic/cover/l/" + item.BGM.image + ".jpg"
+                this.selectedImage = cdn2 + "http://lain.bgm.tv/pic/cover/l/" + item.BGM.image + ".jpg" + "&output=webp"
             } else {
-                this.selectedImage = "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '') + 'l.webp'
+                this.selectedImage = cdn2 + "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '') + 'l.webp'
             }
         },
         customSort(items, index, isDescending) {
@@ -1723,7 +1725,7 @@ let vue = new Vue({
         setBackgroundLazy(entries, observer, isIntersecting) {
             let bg = 'https://tsuiokuyo.netlify.app/image/background.webp'
             let cdn = 'https://tsuiokuyo-9688.imgix.net/'
-            let cdn2 = 'https://wsrv.nl/?url=' //&af&l=6&output=webp
+            let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
 
             let aniBg = entries[0].target.lastChild.innerText
             if (isIntersecting) {
