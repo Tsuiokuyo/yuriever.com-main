@@ -2017,8 +2017,6 @@ let vue = new Vue({
         },
         async searchImage(bol) {
             try {
-
-
                 this.overlay = true
                 let resJson = ""
                 if (!bol && this.srhImage) {
@@ -2084,6 +2082,9 @@ let vue = new Vue({
                 const set = new Set();
                 this.srhImageRes = this.srhImageRes.filter(item => !set.has(item.en_name) ? set.add(item.en_name) : false);
                 this.overlay = false
+                setTimeout(() => {
+                    this.srhImageRes = []
+                }, 300000);
             } catch (error) {
                 this.overlay = false
                 return false;

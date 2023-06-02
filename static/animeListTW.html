@@ -562,10 +562,11 @@
                                     <v-icon>
                                         mdi-image-search alt
                                     </v-icon>
-                                    以場景截圖找動畫(以圖搜圖)
+                                    以動畫截圖找動畫(以圖搜圖)
                                 </span></v-expansion-panel-header>
                                 <v-expansion-panel-content><br />
-                                    <span>僅適合找動畫中出現的場景，例如搜尋這種作品中沒辨識度的場景：<b>https://tsuiokuyo.netlify.app/assets/test.jpg</b></span>
+                                    <h4>僅適合找動畫中出現的場景，例如搜尋這種沒辨識度的畫面：https://tsuiokuyo.netlify.app/assets/test.jpg</h4>
+
 
                                     <v-row>
                                         <v-col cols="2">
@@ -582,7 +583,9 @@
 
                                         </v-col>
                                     </v-row>
-                                    <span v-if="srhImgPre">搜尋圖片：
+                                    <span v-if="srhImgPre">
+                                        300秒後會自動清除查詢資料<br/>
+                                        搜尋圖片：
                                     <img alt="選擇的圖片" :src="srhImgPre"></span>
 
                                     <v-overlay :value="overlay">
