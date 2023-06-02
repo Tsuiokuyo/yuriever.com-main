@@ -47,14 +47,15 @@
 <body>
     <div id="app">
         <v-app>
-            <v-snackbar v-model="snackbarHug" shaped text right v-if="hug != ''" outlined timeout="7500" min-height="200" min-width="300">
-                <v-img max-height="200" max-width="300" contain :src="hug">
-                </v-img>
-            </v-snackbar>
+            <v-main>
+                <v-snackbar v-model="snackbarHug" shaped text right v-if="hug != ''" outlined timeout="7500" min-height="200" min-width="300">
+                    <v-img max-height="200" max-width="300" contain :src="hug">
+                    </v-img>
+                </v-snackbar>
 
-            <v-snackbar v-model="saveMsg.state">
-                {{saveMsg.text}}
-                <template v-slot:action="{ attrs }">
+                <v-snackbar v-model="saveMsg.state">
+                    {{saveMsg.text}}
+                    <template v-slot:action="{ attrs }">
               <v-btn
                 color="pink"
                 text
@@ -64,34 +65,34 @@
                 
               </v-btn>
             </template>
-            </v-snackbar>
+                </v-snackbar>
 
-            <v-tabs v-model="tab" background-color="#3d4450" dark icons-and-text>
-                <v-tabs-slider></v-tabs-slider>
+                <v-tabs v-model="tab" background-color="#3d4450" dark icons-and-text>
+                    <v-tabs-slider></v-tabs-slider>
 
-                <v-tab href="#tab-1">
-                    列表
-                    <v-icon>mdi-format-list-numbered</v-icon>
-                </v-tab>
-                <v-tab href="#tab-2">
-                    關於
-                    <v-icon>mdi-information-outline </v-icon>
-                </v-tab>
-                <!-- <v-tab to="b" onclick="window.open('https://tsuiokuyo.netlify.app/b/swd/swdtime', '_blank')">
+                    <v-tab href="#tab-1">
+                        列表
+                        <v-icon>mdi-format-list-numbered</v-icon>
+                    </v-tab>
+                    <v-tab href="#tab-2">
+                        關於
+                        <v-icon>mdi-information-outline </v-icon>
+                    </v-tab>
+                    <!-- <v-tab to="b" onclick="window.open('https://tsuiokuyo.netlify.app/b/swd/swdtime', '_blank')">
                     以前做的軒轅劍時間線
                     <v-icon>mdi-timeline-clock-outline </v-icon>
                 </v-tab> -->
-                <v-tab to="b" onclick="window.open('http://tsuiokuyo.ddns.net:8763/js_index.html', '_blank')">
-                    點歌器
-                    <v-icon>mdi-radio-tower </v-icon>
-                </v-tab>
+                    <v-tab to="b" onclick="window.open('http://tsuiokuyo.ddns.net:8763/js_index.html', '_blank')">
+                        點歌器
+                        <v-icon>mdi-radio-tower </v-icon>
+                    </v-tab>
 
-                <v-tab to="b" onclick="window.open('https://tsuiokuyo.netlify.app/', '_blank')">
-                    BLOG
-                    <v-icon>mdi-home </v-icon>
-                </v-tab>
+                    <v-tab to="b" onclick="window.open('https://tsuiokuyo.netlify.app/', '_blank')">
+                        BLOG
+                        <v-icon>mdi-home </v-icon>
+                    </v-tab>
 
-                <span style="position: absolute;
+                    <span style="position: absolute;
                     left:50%;
                     top:50%;
                     transform: translate(-50%, -50%);">
@@ -100,37 +101,38 @@
                     </v-avatar>
                 </span>
 
-                <!-- <span style="margin:auto 0 auto auto;">
+                    <!-- <span style="margin:auto 0 auto auto;">
                         <v-btn @click="$vuetify.theme.dark = !$vuetify.theme.dark" class="mx-2" fab dark small
                             color="dark">
                             <v-icon>mdi-brightness-6</v-icon>
                         </v-btn>
                     </span> -->
 
-            </v-tabs>
+                </v-tabs>
 
-            <v-alert dismissible color="#16A2B2" border="left" elevation="3" colored-border icon="GNN新聞" dense class="bkColor">
-                <a :href="gnn.link" target="_blank" v-if="!!gnn" style="animation:anis 10s linear infinite;">{{gnn.title}} </a>
-            </v-alert>
-            <v-alert dismissible color="green lighten-2" border="left" elevation="3" colored-border icon="萌朧" dense class="bkColor">
-                <a :href="moelong.link" target="_blank" v-if="!!moelong">{{moelong.title}}</a>
-            </v-alert>
+                <v-alert dismissible color="#16A2B2" border="left" elevation="3" colored-border icon="GNN新聞" dense class="bkColor">
+                    <a :href="gnn.link" target="_blank" v-if="!!gnn" style="animation:anis 10s linear infinite;">{{gnn.title}} </a>
+                </v-alert>
+                <v-alert dismissible color="green lighten-2" border="left" elevation="3" colored-border icon="萌朧" dense class="bkColor">
+                    <a :href="moelong.link" target="_blank" v-if="!!moelong">{{moelong.title}}</a>
+                </v-alert>
 
-            <v-container fluid>
-                <v-card v-if="tab == 'tab-2'" class="bkColor">
-                    <div class="text-justify">
-                        <div>
+                <v-container fluid>
+                    <v-card v-if="tab == 'tab-2'" class="bkColor">
+                        <div class="text-justify">
                             <div>
-                                <template class="radius">
+                                <div>
+                                    <template class="radius">
                                     <v-card max-height="554" max-width="739" style="display:block; margin:auto;" raised
                                         shaped>
                                         <v-img max-height="554" max-width="739" contain src="image/345621.webp">
                                         </v-img>
                                     </v-card>
                                 </template>
-                                <br />
-                                <span>
+                                    <br />
+                                    <span>
                                    <h3>未來考慮</h3>
+								   
                                     1.目前共含16個二次元相關評分網站，實際上TMDB、TVDB、IMDB也能納入算分，不過...麻煩，有心情再考慮<br>                 
 									2.最下面的有生之年加入區...<br>  
                                     <br><br><br>
@@ -143,9 +145,10 @@
                                     <li>上方新聞條：RSS撈取ACGN的資訊，因為免費版有次數限制，所以從Fly.io、Firebase隨機擇一基於cors-anywhere撈取RSS資料。</li>
                                     <li>聲優的生日日曆：就是聲優的生日日歷，會依照擔任過的主要角色次數變色，紫色則為當日壽星，點擊名字則顯示擔任過的角色及作品<br>
                                     　　顏色代表次數:粉(150)>黃(100)>綠(80)>青(60)>藍(40)>紅(20)>灰(10)>白。</li>
-                                    <li>隨機作品：從這裡所有作品中隨機挑選10部，點擊則篩選出該作品</li>
-                                    <li>線上看篩選箱：當前正版官方線上看，不過因為各網站都有合約時間，有時會失效，網址則由各地網友調整，有時也會誤植</li>
-                                    <li>類型篩選箱：基於myAnimeList的類型，但是是用網路翻譯的，如有翻譯不順或錯誤歡迎告知</li>
+                                    <li>隨機作品：從這裡所有作品中隨機挑選10部，點擊則篩選出該作品。</li>
+                                    <li>以場景截圖找動畫(以圖搜圖)：僅適用於動畫內有出現的畫面。</li>
+                                    <li>線上看篩選箱：當前正版官方線上看，不過因為各網站都有合約時間，有時會失效，網址則由各地網友調整，有時也會誤植。</li>
+                                    <li>類型篩選箱：基於myAnimeList的類型，但是是用網路翻譯的，如有翻譯不順或錯誤歡迎告知。</li>
                                     <li>各種篩選：就是篩選，雖然有繁簡互轉，不過打錯名字你還是會查不出來，另外就是，<br>
                                         　　目前內含741間動畫製作公司，雖然我想全部呈現出來，或是用多重下拉選單搞定，但是這個數量明顯都不行。
                                     </li>
@@ -208,243 +211,250 @@
                                                         <v-btn color="error"
                                                             @click="memory = performance.memory.usedJSHeapSize">更新</v-btn>
                                                         </span>
-                                <span v-else>僅支援chrome內核查看</span>
-                                </h2>
-                                不過這是指乾淨的瀏覽器，有裝擴充工具會顯示更高
-                                </li>
-                                <li><span class="text-decoration-line-through">資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic
+                                    <span v-else>僅支援chrome內核查看</span>
+                                    </h2>
+                                    不過這是指乾淨的瀏覽器，有裝擴充工具會顯示更高
+                                    </li>
+                                    <li><span class="text-decoration-line-through">資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic
                                                     Number減肥看看了，</span><br>目前弄成壓縮成gzip檔，但因為還要解壓，現在倒是效能問題了</li>
-                                <li class="text-decoration-line-through">哈囉！小梅子，在myanimelist被建了兩個，所以列表中出現了兩次。
-                                </li>
-                                <li class="text-decoration-line-through">我立於百萬生命之上，都因為一二季別名完全一樣...導致撈到第一季的ID
-                                </li>
-                                <li class="text-decoration-line-through">銀魂第一季及第四季及百花繚亂、槍神 Badlands Rumble等等撈錯，是因為巴哈命名不規範...
-                                </li>
-                                <li class="text-decoration-line-through">甜點兔，巴哈似乎沒有第一季的頁面，導致撈到第二季</li>
-                                <li class="text-decoration-line-through">FAIRY TAIL 魔導少年 百年任務、盾勇3、入間同學入魔了！2、月光下的異世界之旅2、黃金神威4、總之就是很可愛2、實力至上3、間諜家家酒2、世界盡頭的聖騎士2，最新一季會錯撈等，為了解決第4點反倒出現這個...
-                                </li>
-                                <li class="text-decoration-line-through">MAL首播年度有些編輯者和我有著年度的理解差異啊...，例如:鬼滅の刃 遊郭編 當地是2021年12月05日首播 但填寫 2022年冬季...?</li>
-                                <li class="text-decoration-line-through">找Lapis Re：LiGHTs排名時發現搜尋條件居然有區分大小寫</li>
-                                <li>Phantom:The Animation因為標點符號無法與巴哈對上</li>
-                                <li>生日日歷的聲優及角色部分因為暫存邏輯寫錯，基本上完全沒更新還在去年10月份，所以新番的角色可能不會出現在裡面，目前緩慢更新中</li>
-                                </ol>
-                                <br><br><br> 以下為2022/08的舊文
-                                </span>
-                                <span class="text-decoration-line-through">
+                                    <li class="text-decoration-line-through">哈囉！小梅子，在myanimelist被建了兩個，所以列表中出現了兩次。
+                                    </li>
+                                    <li class="text-decoration-line-through">我立於百萬生命之上，都因為一二季別名完全一樣...導致撈到第一季的ID
+                                    </li>
+                                    <li class="text-decoration-line-through">銀魂第一季及第四季及百花繚亂、槍神 Badlands Rumble等等撈錯，是因為巴哈命名不規範...
+                                    </li>
+                                    <li class="text-decoration-line-through">甜點兔，巴哈似乎沒有第一季的頁面，導致撈到第二季</li>
+                                    <li class="text-decoration-line-through">FAIRY TAIL 魔導少年 百年任務、盾勇3、入間同學入魔了！2、月光下的異世界之旅2、黃金神威4、總之就是很可愛2、實力至上3、間諜家家酒2、世界盡頭的聖騎士2，最新一季會錯撈等，為了解決第4點反倒出現這個...
+                                    </li>
+                                    <li class="text-decoration-line-through">MAL首播年度有些編輯者和我有著年度的理解差異啊...，例如:鬼滅の刃 遊郭編 當地是2021年12月05日首播 但填寫 2022年冬季...?</li>
+                                    <li class="text-decoration-line-through">找Lapis Re：LiGHTs排名時發現搜尋條件居然有區分大小寫</li>
+                                    <li>Phantom:The Animation因為標點符號無法與巴哈對上</li>
+                                    <li>生日日歷的聲優及角色部分因為暫存邏輯寫錯，基本上完全沒更新還在去年10月份，所以新番的角色可能不會出現在裡面，目前緩慢更新中</li>
+                                    </ol>
+                                    <br><br><br> 以下為2022/08的舊文
+                                    </span>
+                                    <span class="text-decoration-line-through">
 	
                                     因為大概沒人看，這邊就不排版了...</span><br />
 
-                                <h4>對了，先提一下，其實不用太在意巴哈評分特高的問題，雖然沒有去極值，但也對分數另外再進行標準化後，再去做平均，當然，大前提是運算邏輯沒問題。
-                                    <br />將計算混合在一起的所有分數的總體 μ（平均值）和總體 σ（標準差）。 然後，對於某個網站 i，將計算其自身的 μi 和 σi。 最後，來自網站 i 的分數將通過以下方式標準化：
-                                    <br /> (單標準 /總標準) * (分數 -單平均) + 總平均
-                                </h4>
-                                <h2>關於列表</h2>
-                                <span>應該算是純前端畫面，畢竟沒有後端更沒有資料庫，本想串Firebase，但50000筆的免費額度有點微妙，<br />
+                                    <h4>對了，先提一下，其實不用太在意巴哈評分特高的問題，雖然沒有去極值，但也對分數另外再進行標準化後，再去做平均，當然，大前提是運算邏輯沒問題。
+                                        <br />將計算混合在一起的所有分數的總體 μ（平均值）和總體 σ（標準差）。 然後，對於某個網站 i，將計算其自身的 μi 和 σi。 最後，來自網站 i 的分數將通過以下方式標準化：
+                                        <br /> (單標準 /總標準) * (分數 -單平均) + 總平均
+                                    </h4>
+                                    <h2>關於列表</h2>
+                                    <span>應該算是純前端畫面，畢竟沒有後端更沒有資料庫，本想串Firebase，但50000筆的免費額度有點微妙，<br />
                                     
                                     <br />
                                     <span
                                         class="text-decoration-line-through">所有資料基於myanimelist產生，目前在myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...</span><br />
-                                <br /> 目前抓取流程是分成三部分
-                                <br /> 撈取各網站作品ID->各網站作品ID映射(嚴格比對)->依作品ID取分數、票數等 <br /> 分數全都會存快取，進入cache的資料約每隔7天以上才會更新一次，僅ANIDB跟redditanimelist則隨緣更新(可能一個月甚至超過)，
+                                    <br /> 目前抓取流程是分成三部分
+                                    <br /> 撈取各網站作品ID->各網站作品ID映射(嚴格比對)->依作品ID取分數、票數等 <br /> 分數全都會存快取，進入cache的資料約每隔7天以上才會更新一次，僅ANIDB跟redditanimelist則隨緣更新(可能一個月甚至超過)，
 
+                                    <br />
+
+                                    <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜，當然也能當成找番、補番用工具。
+                                    <h3>作品篩選依據</h3>
+                                    可比對到巴哈姆特的作品或者是至少有四個分數來源網站，順便一提，巴哈應該有2K多筆資料我沒有比對到
+                                    <p />
+                                    <h3>來源網站挑選依據</h3>
+                                    沒有。
+
+                                    <p />
+                                    <h2>分數計算方式</h2>
+                                    除特定網站，其餘基於投票資料使用貝氏估計法重新計算分數，規則如下：<br /> 各網站作品投票數至少需要10票，低於10票則不計算分數，
+                                    <br /> 使用貝氏估計法後，若至少4個網站有計算出分數(裏番只需2個)，則標準化所有分數取平均值，<br /> 而無投票細節的網站得出的分數多少會有誤差，
+                                    <br /> 公式使用自https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation <br> 不過目前已經改成直接取貝氏估計法的平均值，因為標準化分數不好理解...
+                                </div>
+                                <p />
+                                <ol>
+                                    <li>anikore:重新計算分數，但沒找到投票分數細節</li>
+                                    <li>anilist:重新計算分數，且分數除10</li>
+                                    <li>animeNewsNetwork:無重新計算，網站已使用貝氏估計法</li>
+                                    <li>animePlanetCom:重新計算分數，且分數乘2，但沒找到投票分數細節</li>
+                                    <li>anisearch:重新計算分數</li>
+                                    <li>annict:重新計算分數，但不列入總平均分數，因有四分制換算的問題</li>
+                                    <li>anidb:重新計算分數，但未使用投票細節</li>
+                                    <li>bangumi:重新計算分數</li>
+                                    <li>巴哈姆特:重新計算分數，且分數乘2</li>
+                                    <li>kitsu:重新計算分數，且分數除10</li>
+                                    <li>livechart:重新計算分數，但沒找到投票分數細節</li>
+                                    <li>myanimelist :無重新計算，網站已使用Bayesian</li>
+                                    <li>notifyMoe :重新計算分數，但沒找到投票分數細節</li>
+                                    <li>redditanimelist:重新計算分數，但未使用投票細節</li>
+                                    <li>sakuhindb:重新計算分數，但不列入總平均分數，因有七分制換算的問題</li>
+                                    <li>trakt:重新計算分數</li>
+
+                                </ol>
+                                <p />
+
+                                <h2>2022年8月來源網站的國家及來源網站自身的訪問總量</h2>
+                                <ol>
+                                    <li>anikore:日本，843.6K人次</li>
+                                    <li>anilist:英國，10.6M人次</li>
+                                    <li>animeNewsNetwork:美國，9.5M人次</li>
+                                    <li>animePlanetCom:美國，12.2M人次</li>
+                                    <li>anisearch:德國，767.7K人次</li>
+                                    <li>annict:日本，50.2K人次</li>
+                                    <li>anidb:美國，1.4M人次</li>
+                                    <li>bangumi:中國，1.1M人次</li>
+                                    <li>巴哈姆特:台灣，76.9M人次</li>
+                                    <li>kitsu:美國，525.2K人次</li>
+                                    <li>livechart:美國，3.2M人次</li>
+                                    <li>myanimelist :美國，57.8M人次</li>
+                                    <li>notifyMoe :美國，37.5K人次</li>
+                                    <li>redditanimelist:美國，11K</li>
+                                    <li>sakuhindb:日本，249.2K人次</li>
+                                    <li>trakt:美國，8.6M人次</li>
+                                </ol>
+
+                                <h2>有生之年加入區 (有評分且至少能搜尋到鋼鍊為基準)</h2>
+                                <h3>這數量很明顯非常非常非常麻煩...，有空再慢慢搞。</h3>
+                                <ol>
+                                    <li>捷克最大 https://www.csfd.cz/film/257242-fullmetal-alchemist-bratrstvi/prehled/</li>
+                                    <li>波蘭最大 https://www.filmweb.pl/serial/Stalowy+alchemik%3A+Misja+braci-2009-495827</li>
+                                    <li>俄羅斯最大 https://www.kinopoisk.ru/series/452838/</li>
+                                    <li>西班牙最大 https://www.filmaffinity.com/us/film916461.html</li>
+                                    <li>日本最大 https://movies.yahoo.co.jp/movie/338428/</li>
+                                    <li>法國最大 https://v3.voiranime.com/anime/fullmetal-alchemist-brotherhood/</li>
+                                    <li>匈牙利最大 https://animeaddicts.hu/encyclopedia.php?anime.2304</li>
+                                    <li>墨西哥(全球流量最大) https://www3.animeflv.net/anime/fullmetal-alchemist-brotherhood</li>
+                                    <li>中國 s1vote.com</li>
+
+                                    <br>
+                                    <li>義大利 https://www.animeclick.it/anime/1963/fullmetal-alchemist-2009</li>
+                                    <li>俄羅斯 http://www.world-art.ru/animation/animation.php?id=7116</li>
+                                    <li>俄羅斯 https://shikimori.me/animes/z5114-fullmetal-alchemist-brotherhood</li>
+                                    <li>印度 www.binged.com </li>
+                                    <li>阿根廷 www.fulltv.com.ar</li>
+                                    <li>土耳其 https://anime.gen.tr/animetanitim.php?id=1732</li>
+                                    <li>希臘 http://animeplanet.gr/1400_fullmetal_alchemist_brotherhood_(tv).html</li>
+                                    <li>匈牙利 https://aoianime.hu/?anime=112</li>
+                                    <li>日本 https://filmarks.com/animes/19/35</li>
+                                    <li>法國 http://www.anime-kun.net/animes/fiche-fullmetal-alchemist-3281.html</li>
+                                    <li>芬蘭 http://www.animewatcher.fi/anime/519f0599-1698-49c0-b858-b0e73501e399</li>
+                                    <li>波蘭 https://shinden.pl/series/7431-hagane-no-renkinjutsushi-2009</li>
+                                    <li>西班牙 https://www.abandomoviez.net/db/pelicula.php?film=17169</li>
+                                    <li>荷蘭 https://www.myseries.tv/fullmetal_alchemist_brotherhood/</li>
+                                    <li>西班牙 https://www.sensacine.com/series/serie-5997/</li>
+                                    <li>巴西 anihub.tv </li>
+                                    <li>德國 https://proxer.me/info/353#top</li>
+                                    <li>法國 https://www.adkami.com/anime/33</li>
+                                    <li>摩洛哥 https://www.animesilver.net/anime/720/fullmetal-alchemist-brotherhood</li>
+                                    <li>英美 https://www.tvmaze.com/shows/2071/fullmetal-alchemist-brotherhood</li>
+                                    <li>摩洛哥 https://shahiid-anime.net/seasons/?serie=37408</li>
+                                    <li>烏克蘭 https://yummyanime.tv/66-stalnoj-alhimik-bratstvo.html</li>
+                                    <li>法國 https://anime.icotaku.com/anime/295/Hagane-no-Renkinjutsushi--Brotherhood.html</li>
+                                    <li>俄羅斯 https://animenime.ru/anime-online/stalnoj-alhimik-bratstvo</li>
+                                    <li>日本 https://akiba-souken.com/anime/1515/</li>
+                                    <li>中國 https://www.maoyan.com/films/368559</li>
+                                    <li>波蘭 https://www.animezone.pl/anime/full-metal-alchemist-brotherhood</li>
+                                    <li>以色列 https://sdarot.buzz/watch/867</li>
+                                    <li>義大利 https://www.animeworld.tv/play/fullmetal-alchemist-brotherhood.Ihtnf/ERkyg</li>
+                                    <li>德國 https://randaris.app/serie/detail/862/fullmetal-alchemist-brotherhood</li>
+                                    <li>捷克 https://akichan.moe/anime/rozcestnik/6107/Hagane-no-Renkinjuts</li>
+                                    <li>義大利 https://www.animesaturn.tv/anime/Fullmetal-Alchemist-Brotherhood-ITA-aszbc</li>
+                                    <li>英美 https://www.metacritic.com/tv/fullmetal-alchemist-brotherhood</li>
+                                    <li>捷克 https://www.postavy.cz/anime/fullmetal-alchemist-brotherhood/</li>
+                                    <li>英美 https://www.rottentomatoes.com/m/fullmetal_alchemist_the_sacred_star_of_milos_2011</li>
+                                    <li>捷克 https://www.fdb.cz/serial/hagane-no-renkinjutsushi/87247</li>
+                                    <li>捷克 https://www.edna.cz/fullmetal-alchemist/</li>
+                                    <li>捷克 https://www.kinobox.cz/film/152303-fullmetal-alchemist-brotherhood</li>
+                                    <li>塞爾維亞 https://www.animesrbija.com/anime/fullmetal-alchemist-brotherhood</li>
+                                    <li>俄羅斯 https://animejoy.ru/tv-serialy/296-stalnoy-alhimik-2-sezon.html</li>
+                                    <li>西班牙 https://animeyt.moe/anime/fullmetal-alchemist-brotherhood/</li>
+                                    <li>越南 https://animetvn.in/thong-tin-phim/f1544-fullmetal-alchemist-brotherhood.html</li>
+                                    <li>俄羅斯 https://animestars.org/aniserials/video/war/259-stalnoy-alhimik-bratstvo-2-sezon.html</li>
+                                    <li>俄羅斯 https://animego.online/106-stalnoj-alhimik-bratstvo-j1.html</li>
+                                    <li>墨西哥 https://animeblix.com/animes/ver-fullmetal-alchemist-brotherhood-latino-xcNu5JiF</li>
+                                    <li>匈牙利 https://mozicsillag1.me/sorozat/fullmetal-alchemist-testveriseg-2009-online/2-evad</li>
+                                    <li>英美 https://moviefit.me/tv/6109-fullmetal-alchemist-brotherhood</li>
+                                    <li>烏克蘭 https://anistar.org/3062-stalnoy-alhimik-tv-2-fullmetal-alchemist-brotherhood.html</li>
+                                    <li>越南 https://anime24h.org/phim-fullmetal-alchemist-brotherhood-44.html</li>
+                                    <li>法國 https://animeka.com/animes/detail/fullmetal-alchemist-brotherhood.html</li>
+                                    <li>烏克蘭https://animevost.org/tip/tv/398-fullmetal-alchemist-brotherhood1.html</li>
+                                    <li>波蘭 https://ogladajanime.pl/anime/full-metal-alchemist-brotherhood</li>
+                                    <li>匈牙利 https://magyaranime.hu/leiras/3241/</li>
+                                    <li>俄羅斯 https://amedia.online/269-stalnoy-alhimik-2.html</li>
+                                    <li>烏克蘭最大(戰爭停運) http://yummyanime.club/</li>
+                                </ol>
+                                <p />
+                                <h2>感謝以下有使用或參考的網頁</h2>
+                                <ol>
+                                    <li>https://github.com/manami-project/anime-offline-database/</li>
+                                    <li>https://github.com/LovEveRv/anime-rating-db</li>
+                                    <li>https://github.com/soruly/burstlink</li>
+                                    <li>https://github.com/kawaiioverflow/arm</li>
+                                    <li>https://github.com/Rob--W/cors-anywhere</li>
+                                    <li>https://github.com/isoaxe/cors-server</li>
+                                    <li>https://github.com/Fribb/anime-lists</li>
+                                    API部分
+                                    <li>https://github.com/jikan-me/jikan-rest </li>
+                                    <li>https://github.com/AniList/ApiV2-GraphQL-Docs</li>
+                                    <li>https://github.com/bangumi/api</li>
+                                    <li>https://github.com/trakt/api-help</li>
+                                    <li>https://wiki.anidb.net/HTTP_API_Definition</li>
+                                    <li>https://www.animenewsnetwork.com/encyclopedia/api.php</li>
+                                    <li>https://developers.annict.com/docs/rest-api/v1</li>
+                                    <li>https://github.com/bangumi/api</li>
+                                    <li>https://fanarttv.docs.apiary.io/</li>
+                                    <li>https://kitsu.docs.apiary.io/#</li>
+                                    <li>https://notify.moe/api</li>
+                                    <li>https://waifu.pics/</li>
+                                    <li>https://soruly.github.io/trace.moe-api/#/</li>
+                                    備用圖片API，先留著，也許以後可以塞
+                                    <li>https://www.waifu.im/</li>
+                                    <li>https://kyoko.rei.my.id/</li>
+                                    <li>https://nekos.best/</li>
+
+
+
+                                </ol>
                                 <br />
 
-                                <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜，當然也能當成找番、補番用工具。
-                                <h3>作品篩選依據</h3>
-                                可比對到巴哈姆特的作品或者是至少有四個分數來源網站，順便一提，巴哈應該有2K多筆資料我沒有比對到
-                                <p />
-                                <h3>來源網站挑選依據</h3>
-                                沒有。
+                                <h3 style="text-align: center;"> 有任何問題還請來信告知 Tsuiokuyo@gmail.com
 
-                                <p />
-                                <h2>分數計算方式</h2>
-                                除特定網站，其餘基於投票資料使用貝氏估計法重新計算分數，規則如下：<br /> 各網站作品投票數至少需要10票，低於10票則不計算分數，
-                                <br /> 使用貝氏估計法後，若至少4個網站有計算出分數(裏番只需2個)，則標準化所有分數取平均值，<br /> 而無投票細節的網站得出的分數多少會有誤差，
-                                <br /> 公式使用自https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation <br> 不過目前已經改成直接取貝氏估計法的平均值，因為標準化分數不好理解...
+                                </h3>
                             </div>
-                            <p />
-                            <ol>
-                                <li>anikore:重新計算分數，但沒找到投票分數細節</li>
-                                <li>anilist:重新計算分數，且分數除10</li>
-                                <li>animeNewsNetwork:無重新計算，網站已使用貝氏估計法</li>
-                                <li>animePlanetCom:重新計算分數，且分數乘2，但沒找到投票分數細節</li>
-                                <li>anisearch:重新計算分數</li>
-                                <li>annict:重新計算分數，但不列入總平均分數，因有四分制換算的問題</li>
-                                <li>anidb:重新計算分數，但未使用投票細節</li>
-                                <li>bangumi:重新計算分數</li>
-                                <li>巴哈姆特:重新計算分數，且分數乘2</li>
-                                <li>kitsu:重新計算分數，且分數除10</li>
-                                <li>livechart:重新計算分數，但沒找到投票分數細節</li>
-                                <li>myanimelist :無重新計算，網站已使用Bayesian</li>
-                                <li>notifyMoe :重新計算分數，但沒找到投票分數細節</li>
-                                <li>redditanimelist:重新計算分數，但未使用投票細節</li>
-                                <li>sakuhindb:重新計算分數，但不列入總平均分數，因有七分制換算的問題</li>
-                                <li>trakt:重新計算分數</li>
-
-                            </ol>
-                            <p />
-
-                            <h2>2022年8月來源網站的國家及來源網站自身的訪問總量</h2>
-                            <ol>
-                                <li>anikore:日本，843.6K人次</li>
-                                <li>anilist:英國，10.6M人次</li>
-                                <li>animeNewsNetwork:美國，9.5M人次</li>
-                                <li>animePlanetCom:美國，12.2M人次</li>
-                                <li>anisearch:德國，767.7K人次</li>
-                                <li>annict:日本，50.2K人次</li>
-                                <li>anidb:美國，1.4M人次</li>
-                                <li>bangumi:中國，1.1M人次</li>
-                                <li>巴哈姆特:台灣，76.9M人次</li>
-                                <li>kitsu:美國，525.2K人次</li>
-                                <li>livechart:美國，3.2M人次</li>
-                                <li>myanimelist :美國，57.8M人次</li>
-                                <li>notifyMoe :美國，37.5K人次</li>
-                                <li>redditanimelist:美國，11K</li>
-                                <li>sakuhindb:日本，249.2K人次</li>
-                                <li>trakt:美國，8.6M人次</li>
-                            </ol>
-
-                            <h2>有生之年加入區 (有評分且至少能搜尋到鋼鍊為基準)</h2>
-                            <h3>這數量很明顯非常非常非常麻煩...，有空再慢慢搞。</h3>
-                            <ol>
-								<li>捷克最大 https://www.csfd.cz/film/257242-fullmetal-alchemist-bratrstvi/prehled/</li>
-								<li>波蘭最大 https://www.filmweb.pl/serial/Stalowy+alchemik%3A+Misja+braci-2009-495827</li>
-								<li>俄羅斯最大 https://www.kinopoisk.ru/series/452838/</li>
-								<li>西班牙最大 https://www.filmaffinity.com/us/film916461.html</li>
-								<li>日本最大 https://movies.yahoo.co.jp/movie/338428/</li>
-								<li>法國最大 https://v3.voiranime.com/anime/fullmetal-alchemist-brotherhood/</li>
-								<li>匈牙利最大 https://animeaddicts.hu/encyclopedia.php?anime.2304</li>
-								<li>墨西哥(全球流量最大) https://www3.animeflv.net/anime/fullmetal-alchemist-brotherhood</li>
-                                <li>中國 s1vote.com</li>
-                                
-<br>
-                                <li>義大利 https://www.animeclick.it/anime/1963/fullmetal-alchemist-2009</li>
-                                <li>俄羅斯 http://www.world-art.ru/animation/animation.php?id=7116</li>
-                                <li>俄羅斯 https://shikimori.me/animes/z5114-fullmetal-alchemist-brotherhood</li>
-                                <li>印度 www.binged.com </li>
-                                <li>阿根廷 www.fulltv.com.ar</li>
-                                <li>土耳其 https://anime.gen.tr/animetanitim.php?id=1732</li>
-                                <li>希臘 http://animeplanet.gr/1400_fullmetal_alchemist_brotherhood_(tv).html</li>
-                                <li>匈牙利 https://aoianime.hu/?anime=112</li>
-                                <li>日本 https://filmarks.com/animes/19/35</li>
-                                <li>法國 http://www.anime-kun.net/animes/fiche-fullmetal-alchemist-3281.html</li>
-                                <li>芬蘭 http://www.animewatcher.fi/anime/519f0599-1698-49c0-b858-b0e73501e399</li>
-                                <li>波蘭 https://shinden.pl/series/7431-hagane-no-renkinjutsushi-2009</li>
-                                <li>西班牙 https://www.abandomoviez.net/db/pelicula.php?film=17169</li>
-                                <li>荷蘭 https://www.myseries.tv/fullmetal_alchemist_brotherhood/</li>
-                                <li>西班牙 https://www.sensacine.com/series/serie-5997/</li>
-                                <li>巴西 anihub.tv </li>
-                                <li>德國 https://proxer.me/info/353#top</li>
-                                <li>法國 https://www.adkami.com/anime/33</li>
-                                <li>摩洛哥 https://www.animesilver.net/anime/720/fullmetal-alchemist-brotherhood</li>
-                                <li>英美 https://www.tvmaze.com/shows/2071/fullmetal-alchemist-brotherhood</li>
-                                <li>摩洛哥 https://shahiid-anime.net/seasons/?serie=37408</li>
-                                <li>烏克蘭 https://yummyanime.tv/66-stalnoj-alhimik-bratstvo.html</li>
-                                <li>法國 https://anime.icotaku.com/anime/295/Hagane-no-Renkinjutsushi--Brotherhood.html</li>
-                                <li>俄羅斯 https://animenime.ru/anime-online/stalnoj-alhimik-bratstvo</li>
-                                <li>日本 https://akiba-souken.com/anime/1515/</li>
-                                <li>中國 https://www.maoyan.com/films/368559</li>
-                                <li>波蘭 https://www.animezone.pl/anime/full-metal-alchemist-brotherhood</li>
-                                <li>以色列 https://sdarot.buzz/watch/867</li>
-                                <li>義大利 https://www.animeworld.tv/play/fullmetal-alchemist-brotherhood.Ihtnf/ERkyg</li>
-                                <li>德國 https://randaris.app/serie/detail/862/fullmetal-alchemist-brotherhood</li>
-                                <li>捷克 https://akichan.moe/anime/rozcestnik/6107/Hagane-no-Renkinjuts</li>
-                                <li>義大利 https://www.animesaturn.tv/anime/Fullmetal-Alchemist-Brotherhood-ITA-aszbc</li>
-                                <li>英美 https://www.metacritic.com/tv/fullmetal-alchemist-brotherhood</li>
-                                <li>捷克 https://www.postavy.cz/anime/fullmetal-alchemist-brotherhood/</li>
-                                <li>英美 https://www.rottentomatoes.com/m/fullmetal_alchemist_the_sacred_star_of_milos_2011</li>
-                                <li>捷克 https://www.fdb.cz/serial/hagane-no-renkinjutsushi/87247</li>
-                                <li>捷克 https://www.edna.cz/fullmetal-alchemist/</li>
-                                <li>捷克 https://www.kinobox.cz/film/152303-fullmetal-alchemist-brotherhood</li>
-                                <li>塞爾維亞 https://www.animesrbija.com/anime/fullmetal-alchemist-brotherhood</li>
-                                <li>俄羅斯 https://animejoy.ru/tv-serialy/296-stalnoy-alhimik-2-sezon.html</li>
-                                <li>西班牙 https://animeyt.moe/anime/fullmetal-alchemist-brotherhood/</li>
-                                <li>越南 https://animetvn.in/thong-tin-phim/f1544-fullmetal-alchemist-brotherhood.html</li>
-                                <li>俄羅斯 https://animestars.org/aniserials/video/war/259-stalnoy-alhimik-bratstvo-2-sezon.html</li>
-                                <li>俄羅斯 https://animego.online/106-stalnoj-alhimik-bratstvo-j1.html</li>
-                                <li>墨西哥 https://animeblix.com/animes/ver-fullmetal-alchemist-brotherhood-latino-xcNu5JiF</li>
-                                <li>匈牙利 https://mozicsillag1.me/sorozat/fullmetal-alchemist-testveriseg-2009-online/2-evad</li>
-                                <li>英美 https://moviefit.me/tv/6109-fullmetal-alchemist-brotherhood</li>
-                                <li>烏克蘭 https://anistar.org/3062-stalnoy-alhimik-tv-2-fullmetal-alchemist-brotherhood.html</li>
-                                <li>越南 https://anime24h.org/phim-fullmetal-alchemist-brotherhood-44.html</li>
-                                <li>法國 https://animeka.com/animes/detail/fullmetal-alchemist-brotherhood.html</li>
-                                <li>烏克蘭https://animevost.org/tip/tv/398-fullmetal-alchemist-brotherhood1.html</li>
-                                <li>波蘭 https://ogladajanime.pl/anime/full-metal-alchemist-brotherhood</li>
-                                <li>匈牙利 https://magyaranime.hu/leiras/3241/</li>
-                                <li>俄羅斯 https://amedia.online/269-stalnoy-alhimik-2.html</li>
-								<li>烏克蘭最大(戰爭停運) http://yummyanime.club/</li>
-                            </ol>
-                            <p />
-                            <h2>感謝以下有使用或參考的網頁</h2>
-                            <ol>
-                                <li>https://github.com/manami-project/anime-offline-database/</li>
-                                <li>https://github.com/LovEveRv/anime-rating-db</li>
-                                <li>https://github.com/soruly/burstlink</li>
-                                <li>https://github.com/kawaiioverflow/arm</li>
-                                <li>https://github.com/Rob--W/cors-anywhere</li>
-                                <li>https://github.com/isoaxe/cors-server</li>
-                                <li>https://github.com/Fribb/anime-lists</li>
-                                API部分
-                                <li>https://github.com/jikan-me/jikan-rest </li>
-                                <li>https://github.com/AniList/ApiV2-GraphQL-Docs</li>
-                                <li>https://github.com/bangumi/api</li>
-                                <li>https://github.com/trakt/api-help</li>
-                                <li>https://wiki.anidb.net/HTTP_API_Definition</li>
-                                <li>https://www.animenewsnetwork.com/encyclopedia/api.php</li>
-                                <li>https://developers.annict.com/docs/rest-api/v1</li>
-                                <li>https://github.com/bangumi/api</li>
-                                <li>https://fanarttv.docs.apiary.io/</li>
-                                <li>https://kitsu.docs.apiary.io/#</li>
-                                <li>https://notify.moe/api</li>
-
-
-                            </ol>
-                            <br />
-
-                            <h3 style="text-align: center;"> 有任何問題還請來信告知 Tsuiokuyo@gmail.com
-
-                            </h3>
                         </div>
-                    </div>
-                </v-card>
-                <v-card v-show="tab == 'tab-1'" class="bkColor">
-                    <h2 style="text-align: center;">
-                        隨機作品
-                        <v-btn @click="getRandomArray" color="primary" fab x-small dark>
-                            <v-icon>mdi-dice-multiple</v-icon>
-                        </v-btn>
-                    </h2>
+                    </v-card>
+                    <v-card v-show="tab == 'tab-1'" class="bkColor">
+                        <h2 style="text-align: center;">
+                            隨機作品
+                            <v-btn @click="getRandomArray" color="primary" fab x-small dark>
+                                <v-icon>mdi-dice-multiple</v-icon>
+                            </v-btn>
+                        </h2>
 
-                    <v-sheet class="mx-auto" elevation="0" max-width="1800" v-if="randomTen.length == 0">
-                        <v-slide-group class="pa-0" show-arrows>
-                            <v-slide-item v-for="n in 10" :key="n" class="bkColor">
-                                <v-sheet class="pa-3">
-                                    <v-skeleton-loader class="mx-auto" height="280" width="180" type="card">
-                                    </v-skeleton-loader>
-                                </v-sheet>
-                            </v-slide-item>
-                        </v-slide-group>
-                    </v-sheet>
+                        <v-sheet class="mx-auto" elevation="0" max-width="1800" v-if="randomTen.length == 0">
+                            <v-slide-group class="pa-0" show-arrows>
+                                <v-slide-item v-for="n in 10" :key="n" class="bkColor">
+                                    <v-sheet class="pa-3">
+                                        <v-skeleton-loader class="mx-auto" height="280" width="180" type="card">
+                                        </v-skeleton-loader>
+                                    </v-sheet>
+                                </v-slide-item>
+                            </v-slide-group>
+                        </v-sheet>
 
-                    <!-- <v-sheet v-if="randomTen.length > 1" class="mx-auto" elevation="0" max-width="1800"> -->
-                    <v-sheet class="mx-auto" elevation="0" max-width="1800">
-                        <!-- <v-slide-group v-model="count" class="pa-4" show-arrows> -->
-                        <v-slide-group class="pa-4" show-arrows>
-                            <v-slide-item v-for="item in randomTen" :key="item.MAL.id" v-slot="{ active, toggle }" class="bkColor">
-                                <!-- <v-card class="ma-4" height="300" width="180" @click="toggle"> -->
-                                <v-card class="ma-4" height="260" width="170" @click="search = randomListTitle(item),year = ''">
-                                    <v-row class="fill-height" align="center" justify="center">
-                                        <v-col class="shrink">
+                        <!-- <v-sheet v-if="randomTen.length > 1" class="mx-auto" elevation="0" max-width="1800"> -->
+                        <v-sheet class="mx-auto" elevation="0" max-width="1800">
+                            <!-- <v-slide-group v-model="count" class="pa-4" show-arrows> -->
+                            <v-slide-group class="pa-4" show-arrows>
+                                <v-slide-item v-for="item in randomTen" :key="item.MAL.id" v-slot="{ active, toggle }" class="bkColor">
+                                    <!-- <v-card class="ma-4" height="300" width="180" @click="toggle"> -->
+                                    <v-card class="ma-4" height="260" width="170" @click="search = randomListTitle(item),year = ''">
+                                        <v-row class="fill-height" align="center" justify="center">
+                                            <v-col class="shrink">
 
-                                            <v-img height="200" width="170" :src="setCover(item,false)">
-                                            </v-img>
-                                        </v-col>
-                                        <span class="randomBar" v-text="randomListTitle(item)"></span>
-                                    </v-row>
-                                </v-card>
-                            </v-slide-item>
-                        </v-slide-group>
-                        <!-- <v-expand-transition>
+                                                <v-img height="200" width="170" :src="setCover(item,false)">
+                                                </v-img>
+                                            </v-col>
+                                            <span class="randomBar" v-text="randomListTitle(item)"></span>
+                                        </v-row>
+                                    </v-card>
+                                </v-slide-item>
+                            </v-slide-group>
+                            <!-- <v-expand-transition>
                                 <v-sheet v-if="count != undefined" height="200" tile>
                                     <v-row class="fill-height" align="center" justify="center">
                                         <v-col>
@@ -454,313 +464,377 @@
                                     </v-row>
                                 </v-sheet>
                             </v-expand-transition> -->
-                    </v-sheet>
-                    <h1 style="text-align: center;">動畫野雞榜單</h1>
-                    <v-row dense>
-                        <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(省流量)" dense></v-checkbox> -->
-                        <!-- <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(稍微省流量)" dense></v-checkbox> -->
-                    </v-row>
-                    <span>含{{voiceCount}}位聲優及擔任角色</span>
-                    <v-dialog v-model="dialogCal" width="1680" heigth="1920">
-                        <template v-slot:activator="{ on, attrs }">
+                        </v-sheet>
+                        <h1 style="text-align: center;">動畫野雞榜單</h1>
+                        <v-row dense>
+                            <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(省流量)" dense></v-checkbox> -->
+                            <!-- <v-checkbox v-model="disabledBgImage" label="禁用列表背景圖(稍微省流量)" dense></v-checkbox> -->
+                        </v-row>
+                        <span>含{{voiceCount}}位聲優及擔任角色</span>
+                        <v-dialog v-model="dialogCal" width="1680" heigth="1920">
+                            <template v-slot:activator="{ on, attrs }">
                             <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
                                 <v-icon>mdi-cake</v-icon>
                                 聲優的生日日曆
                             </v-btn>
                         </template>
 
-                        <v-card min-height="1400px">
-                            <v-card-title class="text-h5  lighten-2">
-                                <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
-                                    <v-icon>mdi-chevron-left</v-icon>
-                                </v-btn>
-                                <v-btn icon class="ma-2" @click="$refs.calendar.next()">
-                                    <v-icon>mdi-chevron-right</v-icon>
-                                </v-btn>
-                                <v-btn outlined class="mr-4" color="grey darken-2" @click="focus = ''">
-                                    Today
-                                </v-btn>
-                                <v-spacer>
-                                    <v-toolbar-title v-if="$refs.calendar" style="text-align: center;padding:0">
-                                        {{ $refs.calendar.title }}
-                                    </v-toolbar-title>
-                                </v-spacer>
-                                <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
-                                    <v-icon>mdi-chevron-left</v-icon>
-                                </v-btn>
-                                <v-btn icon class="ma-2" @click="$refs.calendar.next()">
-                                    <v-icon>mdi-chevron-right</v-icon>
-                                </v-btn>
-                            </v-card-title>
+                            <v-card min-height="1400px">
+                                <v-card-title class="text-h5  lighten-2">
+                                    <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
+                                        <v-icon>mdi-chevron-left</v-icon>
+                                    </v-btn>
+                                    <v-btn icon class="ma-2" @click="$refs.calendar.next()">
+                                        <v-icon>mdi-chevron-right</v-icon>
+                                    </v-btn>
+                                    <v-btn outlined class="mr-4" color="grey darken-2" @click="focus = ''">
+                                        Today
+                                    </v-btn>
+                                    <v-spacer>
+                                        <v-toolbar-title v-if="$refs.calendar" style="text-align: center;padding:0">
+                                            {{ $refs.calendar.title }}
+                                        </v-toolbar-title>
+                                    </v-spacer>
+                                    <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
+                                        <v-icon>mdi-chevron-left</v-icon>
+                                    </v-btn>
+                                    <v-btn icon class="ma-2" @click="$refs.calendar.next()">
+                                        <v-icon>mdi-chevron-right</v-icon>
+                                    </v-btn>
+                                </v-card-title>
 
-                            <v-card-text>
-                                <v-sheet height="1400px">
-                                    <v-calendar v-model="focus" color="deep-purple lighten-3" event-text-color="indigo darken-4" :event-more="false" ref="calendar" :events="eventVoice" :ripple="false" locale='zhHant' @change="getEvents" @click:event="voiceClick">
-                                    </v-calendar>
-                                    <v-menu v-if="selectedEvent" v-model="voiceOpen" :close-on-content-click="false" :activator="selectedElement" offset-x>
-                                        <v-card color="grey lighten-4" min-width="350px" flat height="500px">
-                                            <v-toolbar :color="selectedEvent.color" dark>
-                                                <v-toolbar-title v-html="selectedEvent.name" style="color:black">
-                                                </v-toolbar-title>
-                                                <v-spacer></v-spacer>
-                                            </v-toolbar>
-                                            <v-card-text>
-                                                <H4>擔任配音至少{{selectedEvent.isMain + selectedEvent.isSup}}次</H4>
-                                                <H3>其中擔任主要角色至少為{{selectedEvent.isMain}}次，作品如下表：</H3>
-                                                <h5>下表不一定有顯示全部主要角色，僅限於包含在本網頁列表</h5>
-                                                <v-list dense>
-                                                    <v-list-item v-for="details in selectedEvent.details" :key="selectedEvent.chId">
-                                                        <v-list-item-avatar rounded size="90px">
-                                                            <v-img :src="'https://cdn.myanimelist.net/images/characters/' + details.img">
-                                                            </v-img>
-                                                        </v-list-item-avatar>
-                                                        {{details.title}}
-                                                    </v-list-item>
-                                                </v-list>
-                                            </v-card-text>
-                                        </v-card>
-                                    </v-menu>
-                                </v-sheet>
-                            </v-card-text>
-                            <v-divider></v-divider>
-                            <v-card-actions>
-                                <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
-                                    <v-icon>mdi-chevron-left</v-icon>
-                                </v-btn>
-                                <v-btn icon class="ma-2" @click="$refs.calendar.next()">
-                                    <v-icon>mdi-chevron-right</v-icon>
-                                </v-btn>
-                                <v-spacer>
-                                    <v-toolbar-title v-if="$refs.calendar" style="text-align: center;padding:0">
-                                        {{ $refs.calendar.title }}
-                                    </v-toolbar-title>
-                                </v-spacer>
-                                <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
-                                    <v-icon>mdi-chevron-left</v-icon>
-                                </v-btn>
-                                <v-btn icon class="ma-2" @click="$refs.calendar.next()">
-                                    <v-icon>mdi-chevron-right</v-icon>
-                                </v-btn>
-                            </v-card-actions>
-                        </v-card>
-                    </v-dialog>
+                                <v-card-text>
+                                    <v-sheet height="1400px">
+                                        <v-calendar v-model="focus" color="deep-purple lighten-3" event-text-color="indigo darken-4" :event-more="false" ref="calendar" :events="eventVoice" :ripple="false" locale='zhHant' @change="getEvents" @click:event="voiceClick">
+                                        </v-calendar>
+                                        <v-menu v-if="selectedEvent" v-model="voiceOpen" :close-on-content-click="false" :activator="selectedElement" offset-x>
+                                            <v-card color="grey lighten-4" min-width="350px" flat height="500px">
+                                                <v-toolbar :color="selectedEvent.color" dark>
+                                                    <v-toolbar-title v-html="selectedEvent.name" style="color:black">
+                                                    </v-toolbar-title>
+                                                    <v-spacer></v-spacer>
+                                                </v-toolbar>
+                                                <v-card-text>
+                                                    <H4>擔任配音至少{{selectedEvent.isMain + selectedEvent.isSup}}次</H4>
+                                                    <H3>其中擔任主要角色至少為{{selectedEvent.isMain}}次，作品如下表：</H3>
+                                                    <h5>下表不一定有顯示全部主要角色，僅限於包含在本網頁列表</h5>
+                                                    <v-list dense>
+                                                        <v-list-item v-for="details in selectedEvent.details" :key="selectedEvent.chId">
+                                                            <v-list-item-avatar rounded size="90px">
+                                                                <v-img :src="'https://cdn.myanimelist.net/images/characters/' + details.img">
+                                                                </v-img>
+                                                            </v-list-item-avatar>
+                                                            {{details.title}}
+                                                        </v-list-item>
+                                                    </v-list>
+                                                </v-card-text>
+                                            </v-card>
+                                        </v-menu>
+                                    </v-sheet>
+                                </v-card-text>
+                                <v-divider></v-divider>
+                                <v-card-actions>
+                                    <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
+                                        <v-icon>mdi-chevron-left</v-icon>
+                                    </v-btn>
+                                    <v-btn icon class="ma-2" @click="$refs.calendar.next()">
+                                        <v-icon>mdi-chevron-right</v-icon>
+                                    </v-btn>
+                                    <v-spacer>
+                                        <v-toolbar-title v-if="$refs.calendar" style="text-align: center;padding:0">
+                                            {{ $refs.calendar.title }}
+                                        </v-toolbar-title>
+                                    </v-spacer>
+                                    <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
+                                        <v-icon>mdi-chevron-left</v-icon>
+                                    </v-btn>
+                                    <v-btn icon class="ma-2" @click="$refs.calendar.next()">
+                                        <v-icon>mdi-chevron-right</v-icon>
+                                    </v-btn>
+                                </v-card-actions>
+                            </v-card>
+                        </v-dialog>
 
-                    <v-expansion-panels multiple v-model="panel">
-                        <v-expansion-panel v-if="windowWidth >= 600">
-                            <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
-                                <span>
+                        <v-expansion-panels multiple v-model="panel">
+                            <v-expansion-panel>
+                                <v-expansion-panel-header color="deep-purple lighten-4" style="text-align: center;padding:0">
+                                    <span>
+                                    <v-icon>
+                                        mdi-image-search alt
+                                    </v-icon>
+                                    以場景截圖找動畫(以圖搜圖)
+                                </span></v-expansion-panel-header>
+                                <v-expansion-panel-content><br />
+                                    <span>僅適合找動畫中出現的場景，例如搜尋這種作品中沒辨識度的場景：<b>https://tsuiokuyo.netlify.app/assets/test.jpg</b></span>
+
+                                    <v-row>
+                                        <v-col cols="2">
+                                            <v-file-input accept="image/*" truncate-length="15" label="檔案限制25MB" show-size v-model="srhImage" @change="searchImage(false)" :rules="srhImgSize"></v-file-input>
+                                            <v-btn @click="srhImage = '', srhImageUrl = '', srhImageRes = [], srhImgPre=''">
+                                                <v-icon>mdi-restart alt</v-icon>清除</v-btn>
+                                        </v-col>
+                                        <v-col cols="6">
+                                            <v-text-field label="圖片網址" v-model="srhImageUrl"></v-text-field>
+                                            <v-btn @click="searchImage(true)">
+                                                <v-icon>mdi-search-web alt</v-icon>搜尋</v-btn>
+                                        </v-col>
+                                        <v-col>
+
+                                        </v-col>
+                                    </v-row>
+                                    <span v-if="srhImgPre">搜尋圖片：
+                                    <img alt="選擇的圖片" :src="srhImgPre"></span>
+
+                                    <v-overlay :value="overlay">
+                                        <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                                    </v-overlay>
+                                    <v-container v-if="srhImageRes">
+
+                                        <v-row>
+                                            <v-col v-for="res in srhImageRes" :key="res" cols="4">
+                                                <v-card>
+                                                    <video width="100%" :src=res.video autoplay loop playsinline></video>
+
+
+                                                    <v-card-text>
+                                                        <h3 v-if="res.ch_name">{{res.ch_name}}</h3>
+                                                        <h3>{{res.jp_name}}</h3>
+                                                        <h3>{{res.en_name}}</h3> <span v-if="res.hentai" style="color:red"><b>裏番</b></span> 相似度：~
+                                                        <span :style="setSimilarityColor(res.similarity)">{{res.similarity}}</span>
+                                                        <br/>
+                                                        <span v-if="res.episode">第{{res.episode}}話 </span> {{res.from}}~{{res.to}}處
+                                                        <br>
+                                                        <span v-for="(item, key, index) in onlineList(res.online)" :key="index">
+                                                                <a :href="item" :target="key" :title="key">{{ key }}</a> <br/>
+                                                        </span>
+
+                                                    </v-card-text>
+
+                                                </v-card>
+                                                <br/>
+                                            </v-col>
+                                        </v-row>
+                                    </v-container>
+
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                            <v-expansion-panel v-if="windowWidth >= 600">
+
+                                <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
+                                    <span>
                                     <v-icon>
                                         mdi-label-multiple
                                     </v-icon>
                                     動畫公司篩選箱
                                 </span></v-expansion-panel-header>
-                            <v-expansion-panel-content><br />
-                                <v-chip-group v-model="cmpSel" column multiple>
-                                    <v-chip v-for="(cmp, index) in cmpList" :key="index" filter :value="cmp" label>
-                                        <span>{{cmp}}</span>
-                                        <!-- <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span> -->
+                                <v-expansion-panel-content><br />
+                                    <v-chip-group v-model="cmpSel" column multiple>
+                                        <v-chip v-for="(cmp, index) in cmpList" :key="index" filter :value="cmp" label>
+                                            <span>{{cmp}}</span>
+                                            <!-- <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span> -->
 
-                                    </v-chip>
-                                </v-chip-group>
-                                <v-btn @click="cmpSel = []">
-                                    <v-icon>mdi-restart alt</v-icon>重設選項</v-btn>
-                                <span>共有7XX多間公司(工作室)，塞不進來，這裡僅保留製作數量最多的前50間</span>
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
-                        <v-expansion-panel v-if="windowWidth >= 600">
-                            <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
-                                <span>
+                                        </v-chip>
+                                    </v-chip-group>
+                                    <v-btn @click="cmpSel = []">
+                                        <v-icon>mdi-restart alt</v-icon>重設選項</v-btn>
+                                    <span>共有7XX多間公司(工作室)，塞不進來，這裡僅保留製作數量最多的前50間</span>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
+                            <v-expansion-panel v-if="windowWidth >= 600">
+                                <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
+                                    <span>
                                     <v-icon>
                                         mdi-label-multiple
                                     </v-icon>
                                     線上看篩選箱
                                 </span></v-expansion-panel-header>
-                            <v-expansion-panel-content><br />
-                                <v-chip-group v-model="onlineWatchSel" column multiple>
-                                    <v-chip v-for="(online, index) in onlineWatchs" :key="index" filter :value="online" dark>
-                                        <span>{{online}}</span>
-                                        <!-- <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span> -->
+                                <v-expansion-panel-content><br />
+                                    <v-chip-group v-model="onlineWatchSel" column multiple>
+                                        <v-chip v-for="(online, index) in onlineWatchs" :key="index" filter :value="online" dark>
+                                            <span>{{online}}</span>
+                                            <!-- <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span> -->
 
-                                    </v-chip>
-                                </v-chip-group>
-                                <v-btn @click="onlineWatchSel = []">
-                                    <v-icon>mdi-restart alt</v-icon>重設選項</v-btn>
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
+                                        </v-chip>
+                                    </v-chip-group>
+                                    <v-btn @click="onlineWatchSel = []">
+                                        <v-icon>mdi-restart alt</v-icon>重設選項</v-btn>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
 
-                        <v-expansion-panel>
-                            <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
-                                <span>
+                            <v-expansion-panel>
+                                <v-expansion-panel-header color="light-blue lighten-5" style="text-align: center;padding:0">
+                                    <span>
                                     <v-icon>
                                         mdi-label-multiple
                                     </v-icon>
                                     類型篩選箱
                                 </span></v-expansion-panel-header>
-                            <v-expansion-panel-content><br />
-                                <v-chip-group v-model="genreSel" column multiple>
-                                    <v-chip v-for="(genre, index) in genreList" :key="index" filter :value="genre" :disabled="!badges[genre]" dark :class="[setGenColor(genre) == 'A'?'pink accent-1':setGenColor(genre) == 'B' ? 'blue darken-4' :setGenColor(genre) == 'C' ? 'primary ': '']">
-                                        <span>{{genre | genreToCht}}</span>
-                                        <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span>
+                                <v-expansion-panel-content><br />
+                                    <v-chip-group v-model="genreSel" column multiple>
+                                        <v-chip v-for="(genre, index) in genreList" :key="index" filter :value="genre" :disabled="!badges[genre]" dark :class="[setGenColor(genre) == 'A'?'pink accent-1':setGenColor(genre) == 'B' ? 'blue darken-4' :setGenColor(genre) == 'C' ? 'primary ': '']">
+                                            <span>{{genre | genreToCht}}</span>
+                                            <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span>
 
-                                    </v-chip>
-                                </v-chip-group>
-                                <v-btn @click="genreSel = []">
-                                    <v-icon>mdi-restart alt</v-icon>重設類型</v-btn>
-                            </v-expansion-panel-content>
-                        </v-expansion-panel>
-                    </v-expansion-panels>
-                    <span v-if="windowWidth < 600">(手機版排除裏番及登入)</span>
-                    <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
-                    <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
-                    <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense>
-                    </v-select>
-                    <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense>
-                    </v-text-field>
-                    <v-text-field v-if="windowWidth < 600" id="srh2" v-model="search" append-icon="mdi-magnify" hint="至少輸入兩字，會繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
-                    </v-text-field>
+                                        </v-chip>
+                                    </v-chip-group>
+                                    <v-btn @click="genreSel = []">
+                                        <v-icon>mdi-restart alt</v-icon>重設類型</v-btn>
+                                </v-expansion-panel-content>
+                            </v-expansion-panel>
 
-
-                    <v-checkbox v-if="windowWidth < 600" v-model="toRandom" label="排名亂數排序" dense color="red">
-                    </v-checkbox>
+                        </v-expansion-panels>
+                        <span v-if="windowWidth < 600">(手機版排除裏番及登入)</span>
+                        <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
+                        <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
+                        <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense>
+                        </v-select>
+                        <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense>
+                        </v-text-field>
+                        <v-text-field v-if="windowWidth < 600" id="srh2" v-model="search" append-icon="mdi-magnify" hint="至少輸入兩字，會繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
+                        </v-text-field>
 
 
-                    <v-card-title v-if="windowWidth > 600">
-                        <v-row>
-                            <v-btn @click="sortBy = 'rank', onlineWatchSel = [],cmpSel = [],genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
-                                <v-icon>mdi-restart alt</v-icon>重設所有篩選條件</v-btn>
-                            <v-col cols="1">
-                                <v-select :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
-                            </v-col>
-                            <v-col cols="1">
-                                <v-select :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
-                            </v-col>
-                            <v-col cols="1">
-                                <v-select :items="selectYears" v-model="selYear" label="年份範圍" dense></v-select>
-                            </v-col>
-                            <v-col cols="1">
-                                <v-text-field v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense>
-                                </v-text-field>
-                            </v-col>
-                            <v-col cols="1" v-if="selYear == '介於'">
-                                <v-text-field v-model="year2" type="number" label="迄" clear-icon="mdi-close-circle" clearable dense>
-                                </v-text-field>
-                            </v-col>
-                            <v-col>
-                                <v-text-field :error-messages="inputErr" v-model="search" id="srh1" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="會繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" dense clearable>
-                                </v-text-field>
-                            </v-col>
-                            <v-col></v-col>
-                            <v-col cols="1">
-                                <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
-                                <!-- <v-checkbox v-model="bangumiDisable" label="相差分數不含bangumi" dense></v-checkbox> -->
-                            </v-col>
-                            <v-col cols="1">
-                                <v-text-field v-model="diff" type="number" label="與巴哈相差分數" clear-icon="mdi-close-circle" clearable dense>
-                                </v-text-field>
-                            </v-col>
-                            <v-col cols="1">
-                                <v-text-field v-model="rank1" type="number" label="排名區間" clear-icon="mdi-close-circle" clearable dense>
-                                </v-text-field>
-                            </v-col>
-                            <v-col cols="1">
-                                <v-text-field v-model="rank2" type="number" label="迄" clear-icon="mdi-close-circle" clearable dense>
-                                </v-text-field>
-                            </v-col>
-                            <!-- <v-col></v-col> -->
+                        <v-checkbox v-if="windowWidth < 600" v-model="toRandom" label="排名亂數排序" dense color="red">
+                        </v-checkbox>
 
-                        </v-row>
-                        <!-- <v-divider></v-divider> -->
-                        <v-row>
-                            <v-col>
-                                <label>排序：</label>
-                                <select v-model="sortBy" :disabled="toRandom">
+
+                        <v-card-title v-if="windowWidth > 600">
+                            <v-row>
+                                <v-btn @click="sortBy = 'rank', onlineWatchSel = [],cmpSel = [],genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
+                                    <v-icon>mdi-restart alt</v-icon>重設所有篩選條件</v-btn>
+                                <v-col cols="1">
+                                    <v-select :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
+                                </v-col>
+                                <v-col cols="1">
+                                    <v-select :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
+                                </v-col>
+                                <v-col cols="1">
+                                    <v-select :items="selectYears" v-model="selYear" label="年份範圍" dense></v-select>
+                                </v-col>
+                                <v-col cols="1">
+                                    <v-text-field v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense>
+                                    </v-text-field>
+                                </v-col>
+                                <v-col cols="1" v-if="selYear == '介於'">
+                                    <v-text-field v-model="year2" type="number" label="迄" clear-icon="mdi-close-circle" clearable dense>
+                                    </v-text-field>
+                                </v-col>
+                                <v-col>
+                                    <v-text-field :error-messages="inputErr" v-model="search" id="srh1" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="會繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" dense clearable>
+                                    </v-text-field>
+                                </v-col>
+                                <v-col></v-col>
+                                <v-col cols="1">
+                                    <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
+                                    <!-- <v-checkbox v-model="bangumiDisable" label="相差分數不含bangumi" dense></v-checkbox> -->
+                                </v-col>
+                                <v-col cols="1">
+                                    <v-text-field v-model="diff" type="number" label="與巴哈相差分數" clear-icon="mdi-close-circle" clearable dense>
+                                    </v-text-field>
+                                </v-col>
+                                <v-col cols="1">
+                                    <v-text-field v-model="rank1" type="number" label="排名區間" clear-icon="mdi-close-circle" clearable dense>
+                                    </v-text-field>
+                                </v-col>
+                                <v-col cols="1">
+                                    <v-text-field v-model="rank2" type="number" label="迄" clear-icon="mdi-close-circle" clearable dense>
+                                    </v-text-field>
+                                </v-col>
+                                <!-- <v-col></v-col> -->
+
+                            </v-row>
+                            <!-- <v-divider></v-divider> -->
+                            <v-row>
+                                <v-col>
+                                    <label>排序：</label>
+                                    <select v-model="sortBy" :disabled="toRandom">
                                     <option v-for="item in sorts" :value="item.value" border>{{item.name}}</option>
                                 </select>
-                                <!-- <v-select :items="sorts" v-model="sortBy" label="排序" dense solo></v-select> -->
-                                <v-btn-toggle v-model="sortDesc" mandatory>
-                                    <v-btn depressed :value="false" :disabled="toRandom">
-                                        <v-icon>mdi-arrow-up</v-icon>
-                                    </v-btn>
-                                    <v-btn depressed :value="true" :disabled="toRandom">
-                                        <v-icon>mdi-arrow-down</v-icon>
-                                    </v-btn>
-                                </v-btn-toggle>
-                            </v-col>
-                            <v-col cols="1">
-                                <v-checkbox class="font-weight-black" v-model="toRandom" label="亂數排序" dense color="red">
-                                </v-checkbox>
-                            </v-col>
+                                    <!-- <v-select :items="sorts" v-model="sortBy" label="排序" dense solo></v-select> -->
+                                    <v-btn-toggle v-model="sortDesc" mandatory>
+                                        <v-btn depressed :value="false" :disabled="toRandom">
+                                            <v-icon>mdi-arrow-up</v-icon>
+                                        </v-btn>
+                                        <v-btn depressed :value="true" :disabled="toRandom">
+                                            <v-icon>mdi-arrow-down</v-icon>
+                                        </v-btn>
+                                    </v-btn-toggle>
+                                </v-col>
+                                <v-col cols="1">
+                                    <v-checkbox class="font-weight-black" v-model="toRandom" label="亂數排序" dense color="red">
+                                    </v-checkbox>
+                                </v-col>
 
-                            <v-col cols="2">
-                                <v-checkbox v-model="disabledZero" label="排除無計分動畫" dense></v-checkbox>
-                            </v-col>
-                            <v-col cols="2">
-                                <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
-                                <v-checkbox v-model="disabledBgImage" label="禁用背景圖(省流量)" dense></v-checkbox>
-                            </v-col>
+                                <v-col cols="2">
+                                    <v-checkbox v-model="disabledZero" label="排除無計分動畫" dense></v-checkbox>
+                                </v-col>
+                                <v-col cols="2">
+                                    <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
+                                    <v-checkbox v-model="disabledBgImage" label="禁用背景圖(省流量)" dense></v-checkbox>
+                                </v-col>
 
-                            <v-col> </v-col>
-                            <v-col cols="1">
-                                <v-checkbox class="font-weight-black" v-model="disabledNSFW" label="排除裏番" dense></v-checkbox>
-                            </v-col>
-                            <v-col cols="2">
-                                <v-select :items="itemsPerPages" v-model="itemsPerPage" label="每頁列數" dense>
-                                </v-select>
+                                <v-col> </v-col>
+                                <v-col cols="1">
+                                    <v-checkbox class="font-weight-black" v-model="disabledNSFW" label="排除裏番" dense></v-checkbox>
+                                </v-col>
+                                <v-col cols="2">
+                                    <v-select :items="itemsPerPages" v-model="itemsPerPage" label="每頁列數" dense>
+                                    </v-select>
+                                </v-col>
+                            </v-row>
+                        </v-card-title>
+
+                        <v-row>
+                            <v-col>
+                                <v-pagination v-model="page" :length="pageCount" :total-visible="totalVis" @input="next">
+                                </v-pagination>
                             </v-col>
                         </v-row>
-                    </v-card-title>
-
-                    <v-row>
-                        <v-col>
-                            <v-pagination v-model="page" :length="pageCount" :total-visible="totalVis" @input="next">
-                            </v-pagination>
-                        </v-col>
-                    </v-row>
-                    <br />
-                    <v-row>
-                        <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年06月01日</span>
-                    </v-row>
-                    <span v-if="windowWidth > 600"> 
+                        <br />
+                        <v-row>
+                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年06月02日</span>
+                        </v-row>
+                        <span v-if="windowWidth > 600"> 
                         <br/>
                         <v-row>
                             <!-- <span style="float:right;" v-if="user != null">已登入：{{user.email}}</span> -->
-                    <br> &emsp;
-                    <v-btn v-if="user != null" @click="loginOut" color="error" dark>
-                        <v-icon>mdi-google</v-icon>登出
-                    </v-btn>
-                    <span v-if="user != null">已登入：{{user.email}}</span>
-                    <v-btn v-if="user == null" @click="btnAuth" color="primary" dark :disabled="disableBtn">
-                        <v-icon>mdi-google</v-icon>登入
-                    </v-btn>
-                    <v-checkbox v-model="isMemoMode" label="收藏清單" dense :disabled="user == null"></v-checkbox>
+                        <br> &emsp;
+                        <v-btn v-if="user != null" @click="loginOut" color="error" dark>
+                            <v-icon>mdi-google</v-icon>登出
+                        </v-btn>
+                        <span v-if="user != null">已登入：{{user.email}}</span>
+                        <v-btn v-if="user == null" @click="btnAuth" color="primary" dark :disabled="disableBtn">
+                            <v-icon>mdi-google</v-icon>登入
+                        </v-btn>
+                        <v-checkbox v-model="isMemoMode" label="收藏清單" dense :disabled="user == null"></v-checkbox>
 
-                    <v-btn v-if="user != null " @click="saveItem" color="primary" dark>
-                        <v-icon>mdi-save</v-icon>點我儲存
-                    </v-btn>
-                    <v-tooltip bottom v-if="!disableBtn && user == null">
-                        <template v-slot:activator="{ on, attrs }">
+                        <v-btn v-if="user != null " @click="saveItem" color="primary" dark>
+                            <v-icon>mdi-save</v-icon>點我儲存
+                        </v-btn>
+                        <v-tooltip bottom v-if="!disableBtn && user == null">
+                            <template v-slot:activator="{ on, attrs }">
                                 <v-icon v-bind="attrs"
                                 v-on="on">mdi-help-circle</v-icon>
                             </template>
-                        <span>紀錄觀看清單，可參考上方"關於"</span>
-                    </v-tooltip>
-                    <v-tooltip bottom v-if="user != null">
-                        <template v-slot:activator="{ on, attrs }">
+                            <span>紀錄觀看清單，可參考上方"關於"</span>
+                        </v-tooltip>
+                        <v-tooltip bottom v-if="user != null">
+                            <template v-slot:activator="{ on, attrs }">
                                 <v-icon v-bind="attrs"
                                 v-on="on">mdi-alert-circle
                             </v-icon>
                             </template>
-                        <span>這東西屬玩樂性質，不要有太大希望，每日讀寫都有免費額度的問題，雖然目前來看是不太可能達到上限。</span>
-                    </v-tooltip>
+                            <span>這東西屬玩樂性質，不要有太大希望，每日讀寫都有免費額度的問題，雖然目前來看是不太可能達到上限。</span>
+                        </v-tooltip>
 
-                    </v-row>
-                    </span>
-                    <br/>
-                    <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...超過太久就重新整理，還是不行大概就是'暫時掛掉'，看我甚麼時候注意到" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
-                        :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event"
-                        hide-default-footer>
+                        </v-row>
+                        </span>
+                        <br/>
+                        <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...超過太久就重新整理，還是不行大概就是'暫時掛掉'，看我甚麼時候注意到" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
+                            :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event"
+                            hide-default-footer>
 
-                        <template v-slot:item="{item}">
+                            <template v-slot:item="{item}">
                             <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
                                 <td class="center pa-0" style="padding:0" width="200">
                                     <v-img :contain=true :lazy-src=setCover(item,true) height="250" width="200"
@@ -820,70 +894,70 @@
                                                         <span style="font-size:14px;">動畫公司</span>
                                                     </v-btn>
                                                 </template>
-                        <v-list>
-                            <v-list-item v-for="(stu, index) in item.MAL.studios" :key="index">
-                                <v-list-item-title>{{ stu }}</v-list-item-title>
-                            </v-list-item>
-                        </v-list>
-                        </v-menu>
+                            <v-list>
+                                <v-list-item v-for="(stu, index) in item.MAL.studios" :key="index">
+                                    <v-list-item-title>{{ stu }}</v-list-item-title>
+                                </v-list-item>
+                            </v-list>
+                            </v-menu>
 
-                        <v-menu offset-y open-on-hover rounded v-if="item.MAL.genres.length > 0">
-                            <template v-slot:activator="{ on, attrs }">
+                            <v-menu offset-y open-on-hover rounded v-if="item.MAL.genres.length > 0">
+                                <template v-slot:activator="{ on, attrs }">
                                                     <v-btn small v-bind="attrs" v-on="on" color="transparent" light>
                                                         <span style="font-size:14px;">作品類型</span>
                                                     </v-btn>
                                                 </template>
-                            <v-list>
-                                <v-list-item v-for="(genre, index) in item.MAL.genres" :key="index">
-                                    <v-list-item-title>{{ genre | genreToCht}}
-                                    </v-list-item-title>
-                                </v-list-item>
-                            </v-list>
-                        </v-menu>
+                                <v-list>
+                                    <v-list-item v-for="(genre, index) in item.MAL.genres" :key="index">
+                                        <v-list-item-title>{{ genre | genreToCht}}
+                                        </v-list-item-title>
+                                    </v-list-item>
+                                </v-list>
+                            </v-menu>
 
-                        <v-menu offset-y open-on-hover rounded v-if="null != item.MAL.voices && item.MAL.voices.length > 0">
-                            <template v-slot:activator="{ on, attrs }">
+                            <v-menu offset-y open-on-hover rounded v-if="null != item.MAL.voices && item.MAL.voices.length > 0">
+                                <template v-slot:activator="{ on, attrs }">
                                                     <v-btn small v-bind="attrs" v-on="on" color="transparent" light>
                                                         <span style="font-size:14px;">主要聲優</span>
                                                     </v-btn>
                                                 </template>
-                            <v-list>
-                                <v-list-item v-for="(item, index) in item.MAL.voices" :key="index">
-                                    <v-list-item-title>{{ item.name }}</v-list-item-title>
-                                </v-list-item>
-                            </v-list>
-                        </v-menu>
+                                <v-list>
+                                    <v-list-item v-for="(item, index) in item.MAL.voices" :key="index">
+                                        <v-list-item-title>{{ item.name }}</v-list-item-title>
+                                    </v-list-item>
+                                </v-list>
+                            </v-menu>
 
-                        </template>
+                            </template>
 
-                        </span><br />
-                        <span :style="" style="font-size:23px;">綜合排名： </span>
-                        <v-chip dark>
-                            <span :style="setRankColor(item.rank)" style="font-size:30px;font-weight:bold;">{{item.rank}}
+                            </span><br />
+                            <span :style="" style="font-size:23px;">綜合排名： </span>
+                            <v-chip dark>
+                                <span :style="setRankColor(item.rank)" style="font-size:30px;font-weight:bold;">{{item.rank}}
                                         </span>
-                        </v-chip>
-                        <div>
-                            <v-menu offset-y open-on-hover v-if="Object.keys(item.online).length > 0">
-                                <template v-slot:activator="{ on, attrs }">
+                            </v-chip>
+                            <div>
+                                <v-menu offset-y open-on-hover v-if="Object.keys(item.online).length > 0">
+                                    <template v-slot:activator="{ on, attrs }">
                                                 <v-btn light outlined color="primary" dark v-bind="attrs" v-on="on">
                                                     <v-icon>mdi-video-check-outline</v-icon>線上看<v-icon>mdi-menu-down
                                                     </v-icon>
                                                 </v-btn>
                                             </template>
 
-                                <v-list>
-                                    <v-list-item v-for="(item, key, index) in onlineList(item.online)" :key="index">
-                                        <v-list-item-title><a :href="item" :target="key" :title="key">{{ key }}</a>
-                                        </v-list-item-title>
-                                    </v-list-item>
-                                </v-list>
-                            </v-menu>
-                            <span>
+                                    <v-list>
+                                        <v-list-item v-for="(item, key, index) in onlineList(item.online)" :key="index">
+                                            <v-list-item-title><a :href="item" :target="key" :title="key">{{ key }}</a>
+                                            </v-list-item-title>
+                                        </v-list-item>
+                                    </v-list>
+                                </v-menu>
+                                <span>
 
                  
         
                                 </span>
-                            <span style="float: right;" v-if="item.MAL.trailer">
+                                <span style="float: right;" v-if="item.MAL.trailer">
                                             <v-btn color="transparent" light
                                                 @click.stop="$set(dialogYt, item.MAL.id, true)">
                                                 <v-icon>mdi-youtube</v-icon>PV
@@ -896,189 +970,189 @@
                                                     allowfullscreen></iframe>
                                             </v-dialog>
                                         </span>
-                        </div>
-                        </td>
-                        <td v-show="user != null && !isMemoMode">
-                            <div>
-                                收藏
-                                <v-checkbox v-model="item.seen" color="deep-orange accent-3"></v-checkbox>
                             </div>
-                        </td>
-                        <td class="center pa-0">
-                            <span style="font-size:14px;">Bayesian</span><br />總平均<br />
-                            <span style="font-size:35px;font-weight:bold">{{item.score != 0 ? item.score :'不計分'}}</span>
-                        </td>
-                        <td class="center pa-0" v-if="user != null && isMemoMode" Width="100">
-                            個人評分
-                            <v-rating v-model="item.myRank" color="yellow darken-4" class="ma-2" length="5" half-increments hover></v-rating>
-                        </td>
-                        <td class="center pa-0" v-if="user != null && isMemoMode">
-                            備註(100字)
-                            <v-textarea v-model="item.memo" maxlength="100"></v-textarea>
-                        </td>
+                            </td>
+                            <td v-show="user != null && !isMemoMode">
+                                <div>
+                                    收藏
+                                    <v-checkbox v-model="item.seen" color="deep-orange accent-3"></v-checkbox>
+                                </div>
+                            </td>
+                            <td class="center pa-0">
+                                <span style="font-size:14px;">Bayesian</span><br />總平均<br />
+                                <span style="font-size:35px;font-weight:bold">{{item.score != 0 ? item.score :'不計分'}}</span>
+                            </td>
+                            <td class="center pa-0" v-if="user != null && isMemoMode" Width="100">
+                                個人評分
+                                <v-rating v-model="item.myRank" color="yellow darken-4" class="ma-2" length="5" half-increments hover></v-rating>
+                            </td>
+                            <td class="center pa-0" v-if="user != null && isMemoMode">
+                                備註(100字)
+                                <v-textarea v-model="item.memo" maxlength="100"></v-textarea>
+                            </td>
 
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="gamer" src="image/gamer.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.Gamer" :item="item.Gamer" website="Gamer" :b-score="item.Gamer.b_score">
-                            </rating>
-                            <span v-else>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="gamer" src="image/gamer.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.Gamer" :item="item.Gamer" website="Gamer" :b-score="item.Gamer.b_score">
+                                </rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="mal" src="image/mal.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.MAL" :item="item.MAL" website="MAL" :b-score="item.MAL.score">
-                            </rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="mal" src="image/mal.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.MAL" :item="item.MAL" website="MAL" :b-score="item.MAL.score">
+                                </rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="bgm" src="image/bgm.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.BGM" :item="item.BGM" website="BGM" :b-score="item.BGM.b_score"></rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="bgm" src="image/bgm.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.BGM" :item="item.BGM" website="BGM" :b-score="item.BGM.b_score"></rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="anikore" src="image/anikore.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.Anikore" :item="item.Anikore" website="Anikore" :b-score="item.Anikore.b_score"></rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="anikore" src="image/anikore.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.Anikore" :item="item.Anikore" website="Anikore" :b-score="item.Anikore.b_score"></rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="aniList" src="image/aniList.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.AniList" :item="item.AniList" website="AniList" :b-score="item.AniList.b_score"></rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="aniList" src="image/aniList.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.AniList" :item="item.AniList" website="AniList" :b-score="item.AniList.b_score"></rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="apc" src="image/apc.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.AnimePlanetCom" :item="item.AnimePlanetCom" website="AnimePlanetCom" :b-score="item.AnimePlanetCom.b_score">
-                            </rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="apc" src="image/apc.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.AnimePlanetCom" :item="item.AnimePlanetCom" website="AnimePlanetCom" :b-score="item.AnimePlanetCom.b_score">
+                                </rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="ann" src="image/ann.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.ANN" :item="item.ANN" website="ANN" :b-score="item.ANN.b_score"></rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="ann" src="image/ann.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.ANN" :item="item.ANN" website="ANN" :b-score="item.ANN.b_score"></rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="anisearch" src="image/anisearch.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.anisearch" :item="item.anisearch" website="anisearch" :b-score="item.anisearch.b_score"></rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="anisearch" src="image/anisearch.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.anisearch" :item="item.anisearch" website="anisearch" :b-score="item.anisearch.b_score"></rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="kitsu" src="image/kitsu.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.kitsu" :item="item.kitsu" website="kitsu" :b-score="item.kitsu.b_score">
-                            </rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="kitsu" src="image/kitsu.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.kitsu" :item="item.kitsu" website="kitsu" :b-score="item.kitsu.b_score">
+                                </rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="notifymoe" src="image/notifymoe.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.notifyMoe" :item="item.notifyMoe" website="notifyMoe" :b-score="item.notifyMoe.b_score"></rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="notifymoe" src="image/notifymoe.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.notifyMoe" :item="item.notifyMoe" website="notifyMoe" :b-score="item.notifyMoe.b_score"></rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="trakt" src="image/trakt.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.trakt" :item="item.trakt" website="trakt" :b-score="item.trakt.b_score">
-                            </rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="trakt" src="image/trakt.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.trakt" :item="item.trakt" website="trakt" :b-score="item.trakt.b_score">
+                                </rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="livechart" src="image/livechart.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.livechart" :item="item.livechart" website="livechart" :b-score="item.livechart.b_score"></rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="livechart" src="image/livechart.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.livechart" :item="item.livechart" website="livechart" :b-score="item.livechart.b_score"></rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="anidb" src="image/anidb.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.anidb" :item="item.anidb" website="anidb" :b-score="item.anidb.b_score"></rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="anidb" src="image/anidb.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.anidb" :item="item.anidb" website="anidb" :b-score="item.anidb.b_score"></rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="reddit" src="image/reddit.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.redditanimelist" :item="item.redditanimelist" website="redditanimelist" :b-score="item.redditanimelist.b_score">
-                            </rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="reddit" src="image/reddit.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.redditanimelist" :item="item.redditanimelist" website="redditanimelist" :b-score="item.redditanimelist.b_score">
+                                </rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="annict" src="image/annict.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.annict" :item="item.annict" website="annict" :b-score="item.annict.b_score"></rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="annict" src="image/annict.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.annict" :item="item.annict" website="annict" :b-score="item.annict.b_score"></rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td class="center pa-0" v-if="!isMemoMode">
-                            <v-avatar size="32" rounded>
-                                <img alt="sakuhindb" src="image/sakuhindb.webp">
-                            </v-avatar><br />
-                            <rating v-if="item.sakuhindb" :item="item.sakuhindb" website="sakuhindb" :b-score="item.sakuhindb.b_score"></rating>
-                            <span v-else>
+                            </td>
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="sakuhindb" src="image/sakuhindb.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.sakuhindb" :item="item.sakuhindb" website="sakuhindb" :b-score="item.sakuhindb.b_score"></rating>
+                                <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                        </td>
-                        <td></td>
-                        <td v-show=false>
-                            <span v-text="getBackground(item)"></span>
-                        </td>
+                            </td>
+                            <td></td>
+                            <td v-show=false>
+                                <span v-text="getBackground(item)"></span>
+                            </td>
 
-                        </tr>
-                        </template>
-                    </v-data-table>
+                            </tr>
+                            </template>
+                        </v-data-table>
 
-                    <v-data-table class="bkColor" v-if="windowWidth < 600" loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件" :custom-sort="customSort" item-key="rank"
-                        fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
-                        <template v-slot:item.cover="{ item }">
+                        <v-data-table class="bkColor" v-if="windowWidth < 600" loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...，超過就將就等一下吧" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件" :custom-sort="customSort" item-key="rank"
+                            fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
+                            <template v-slot:item.cover="{ item }">
                             <v-img :contain=true :lazy-src=setCover(item,true) height="200" width="150"
                                 :src=setCover(item,false) @click="toggleFullscreen(item)">
                             </v-img>
@@ -1088,8 +1162,8 @@
                                 </v-img>
                             </div>
                         </template>
-                        <!--名稱 -->
-                        <template v-slot:item.name="{ item }">
+                            <!--名稱 -->
+                            <template v-slot:item.name="{ item }">
                             <span v-if="null != item.Gamer">{{ item.Gamer.title }}
                             </span> <br />
                             <span v-if="null != item.BGM">{{ item.BGM.cn_name }}</span> <br />
@@ -1102,94 +1176,94 @@
                             <span style="font-size:30px;font-weight:bold;">{{item.rank}}
                             </span>
                         </template> 平均
-                        <template v-slot:item.score="{ item }">
+                            <template v-slot:item.score="{ item }">
                             <span style="font-size:30px;">{{item.score| returnZero}}</span>
                         </template>
-                        <!-- 巴哈-->
-                        <template v-slot:item.gamer="{ item }">
+                            <!-- 巴哈-->
+                            <template v-slot:item.gamer="{ item }">
                             <span v-if="item.Gamer">{{item.Gamer.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--MAL -->
-                        <template v-slot:item.mal="{ item }">
+                            <!--MAL -->
+                            <template v-slot:item.mal="{ item }">
                             <span v-if="item.MAL">{{item.MAL.score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--BGM -->
-                        <template v-slot:item.bgm="{ item }">
+                            <!--BGM -->
+                            <template v-slot:item.bgm="{ item }">
                             <span v-if="item.BGM">{{item.BGM.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--ANIKORE -->
-                        <template v-slot:item.anikore="{ item }">
+                            <!--ANIKORE -->
+                            <template v-slot:item.anikore="{ item }">
                             <span v-if="item.Anikore">{{item.Anikore.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--ANILIST -->
-                        <template v-slot:item.anilist="{ item }">
+                            <!--ANILIST -->
+                            <template v-slot:item.anilist="{ item }">
                             <span v-if="item.AniList">{{item.AniList.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--APC -->
-                        <template v-slot:item.animeplanetcom="{ item }">
+                            <!--APC -->
+                            <template v-slot:item.animeplanetcom="{ item }">
                             <span v-if="item.AnimePlanetCom">{{item.AnimePlanetCom.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--ANN -->
-                        <template v-slot:item.ANN="{ item }">
+                            <!--ANN -->
+                            <template v-slot:item.ANN="{ item }">
                             <span v-if="item.ANN">{{item.ANN.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--ANISEARCH -->
-                        <template v-slot:item.anisearch="{ item }">
+                            <!--ANISEARCH -->
+                            <template v-slot:item.anisearch="{ item }">
                             <span v-if="item.anisearch">{{item.anisearch.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--KITSU -->
-                        <template v-slot:item.kitsu="{ item }">
+                            <!--KITSU -->
+                            <template v-slot:item.kitsu="{ item }">
                             <span v-if="item.kitsu">{{item.kitsu.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--NOTIFYMOE -->
-                        <template v-slot:item.notifymoe="{ item }">
+                            <!--NOTIFYMOE -->
+                            <template v-slot:item.notifymoe="{ item }">
                             <span v-if="item.notifyMoe">{{item.notifyMoe.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--trakt -->
-                        <template v-slot:item.trakt="{ item }">
+                            <!--trakt -->
+                            <template v-slot:item.trakt="{ item }">
                             <span v-if="item.trakt">{{item.trakt.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--livechart -->
-                        <template v-slot:item.livechart="{ item }">
+                            <!--livechart -->
+                            <template v-slot:item.livechart="{ item }">
                             <span v-if="item.livechart">{{item.livechart.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--anidb -->
-                        <template v-slot:item.anidb="{ item }">
+                            <!--anidb -->
+                            <template v-slot:item.anidb="{ item }">
                             <span v-if="item.anidb">{{item.anidb.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--redditanimelist -->
-                        <template v-slot:item.redditanimelist="{ item }">
+                            <!--redditanimelist -->
+                            <template v-slot:item.redditanimelist="{ item }">
                             <span v-if="item.redditanimelist">{{item.redditanimelist.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--annict -->
-                        <template v-slot:item.annict="{ item }">
+                            <!--annict -->
+                            <template v-slot:item.annict="{ item }">
                             <span v-if="item.annict">{{item.annict.b_score| returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                        <!--sakuhindb -->
-                        <template v-slot:item.sakuhindb="{ item }">
+                            <!--sakuhindb -->
+                            <template v-slot:item.sakuhindb="{ item }">
                             <span v-if="item.sakuhindb">{{item.sakuhindb.b_score | returnZero}}</span>
                             <span v-else>暫無</span>
                         </template>
-                    </v-data-table>
-                    <br />
-                    <v-pagination v-model="page" :length="pageCount" :total-visible="totalVis" @input="next">
-                    </v-pagination>
-            </v-container>
+                        </v-data-table>
+                        <br />
+                        <v-pagination v-model="page" :length="pageCount" :total-visible="totalVis" @input="next">
+                        </v-pagination>
+                </v-container>
             </v-main>
             <!-- <v-overlay :value="overlay">
                 <v-progress-circular indeterminate size="64"></v-progress-circular>
