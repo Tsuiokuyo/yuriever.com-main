@@ -1,5 +1,5 @@
 // 麵條式代碼，其實我也很無奈，功能不小心越玩越多
-// Vue.config.devtools = true;
+Vue.config.devtools = true;
 
 let OriginTitile = document.title;
 let titleTime;
@@ -117,6 +117,14 @@ let vue = new Vue({
         totalVis: 15,
         pageCount: 1,
 
+        srhImage: '',
+        srhImageUrl: '',
+        srhImageRes: [],
+        srhImgPre: '',
+        srhImgSize: [
+            value => !value || value.size < 26214400 || '圖片大小不可超過25MB!'
+        ],
+
         inputErr: '',
         search: '',
         year: '',
@@ -133,8 +141,7 @@ let vue = new Vue({
             { 'name': 'Bangumi', 'value': 'bgm' }, { 'name': 'Anikore', 'value': 'anikore' }
         ],
 
-        // true: true,
-        // false: false,
+
         selectedImage: false,
         tab: '',
         selectYears: ['等於', '大於', '小於', '介於'],
@@ -150,7 +157,7 @@ let vue = new Vue({
 
 
         // count: undefined,
-        // overlay: false,
+        overlay: false,
         leimuUrl: 'https://tsuiokuyo.netlify.app/image/leimuA.webp',
         lamuUrl: 'https://tsuiokuyo.netlify.app/image/lamuA.webp',
         destroy: true,
@@ -1270,6 +1277,16 @@ let vue = new Vue({
             pitch = 255 - (pitch * i)
             return 'color: rgb(255,' + pitch + ',0);';
         },
+        setSimilarityColor(i) {
+
+            if (parseFloat(i) > 0.9) {
+                return 'color: red';
+            } else if (parseFloat(i) > 0.8) {
+                return 'color: orange';
+            } else {
+                return 'color: black ';
+            }
+        },
         setCover(item, lazy) {
             let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
             if (lazy) {
@@ -1990,6 +2007,80 @@ let vue = new Vue({
                     return '#F9A825';
                 case 1:
                     return '#FF3D00';
+            }
+        },
+        async searchImage(bol) {
+            try {
+
+
+                this.overlay = true
+                let resJson = ""
+                if (!bol && this.srhImage) {
+                    if (this.srhImage.size > 26214400) {
+                        this.overlay = false
+                        return false;
+                    }
+                    const formData = new FormData();
+                    formData.append("image", this.srhImage);
+                    resJson = await fetch("https://api.trace.moe/search?cutBorders", {
+                        method: "POST",
+                        body: formData,
+                    }).then((e) => e.json());
+
+                    this.srhImgPre = URL.createObjectURL(this.srhImage)
+                } else if (bol && this.srhImageUrl) {
+                    resJson = await fetch(
+                        `https://api.trace.moe/search?cutBorders&url=${encodeURIComponent(
+                        this.srhImageUrl
+                      )}`
+                    ).then((e) => e.json());
+                    this.srhImgPre = this.srhImageUrl
+                } else {
+                    this.overlay = false
+                    return false;
+                }
+
+                this.srhImageRes = []
+                let hourSec = 60 * 60;
+                let minuteSec = 60;
+
+                for (obj of resJson.result) {
+                    let vo = {}
+                    let filter = this.rawData.find(element => null != element.AniList && element.AniList.id == obj.anilist)
+                    vo.jp_name = filter.MAL.jp_name
+                    vo.en_name = filter.MAL.en_name
+                    vo.ch_name = null != filter.Gamer ? filter.Gamer.title : null != filter.BGM ? filter.BGM.hasOwnProperty('cn_name') ? filter.BGM.cn_name : null : null
+
+                    vo.hentai = false
+                    if (filter.MAL.genres.includes('Hentai')) {
+                        vo.hentai = true;
+                    }
+
+                    vo.episode = obj.episode
+                    vo.online = filter.online
+
+                    let hhFrom = String(Math.floor(obj.from / hourSec)).padStart(2, '0');
+                    let mmFrom = String(Math.floor((obj.from % hourSec) / minuteSec)).padStart(2, '0');
+                    let ssFrom = String(Math.floor(obj.from % minuteSec)).padStart(2, '0');
+                    vo.from = hhFrom + ":" + mmFrom + ":" + ssFrom
+
+                    let hhTo = String(Math.floor(obj.to / hourSec)).padStart(2, '0');
+                    let mmTo = String(Math.floor((obj.to % hourSec) / minuteSec)).padStart(2, '0');
+                    let ssTo = String(Math.floor(obj.to % minuteSec)).padStart(2, '0');
+                    vo.to = hhTo + ":" + mmTo + ":" + ssTo
+
+                    vo.similarity = Math.round(obj.similarity * 100) / 100
+                    vo.video = obj.video + '&mute'
+                    vo.image = obj.image
+
+                    this.srhImageRes.push(vo)
+                }
+                const set = new Set();
+                this.srhImageRes = this.srhImageRes.filter(item => !set.has(item.en_name) ? set.add(item.en_name) : false);
+                this.overlay = false
+            } catch (error) {
+                this.overlay = false
+                return false;
             }
         },
     }, //methonds
