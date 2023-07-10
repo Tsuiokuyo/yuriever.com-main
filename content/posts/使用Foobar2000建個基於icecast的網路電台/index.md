@@ -393,3 +393,40 @@ shoutcast則需要到 https://radiomanager.shoutcast.com/ 註冊拿到Authhash�
 歌詞部分需要修改LargeFieldsConfig檔，否則http上會顯示"?"
 
 至於一些foobar2000音質上的調整就直接放在網頁左上了
+
+
+
+用於篩選是否有設定增益
+
+```
+$if(%replaygain_track_gain%,$char(13)有播放增益信息,$char(13)無播放增益信息)|$puts(path,$replace($directory_path(%path%),\,|$char(13))|%filename_ext%
+$ifgreater(%subsong%,0,|%tracknumber%.%title%,))
+$puts(path,$substr($get(path),$add($strchr($get(path),|),1),$len($get(path))))
+$substr($get(path),$add($strchr($get(path),|),1),$len($get(path)))
+```
+
+
+
+基於音頻md5篩選是否為重複歌
+
+```
+insert into Playlist_Updatable (path, playlist_name)
+  select path,
+         '重複歌曲'
+  from mediaLibrary
+  where md5 in (select md5
+                  from mediaLibrary
+                  group by md5
+                  having count(*)>1
+               );
+```
+
+只要來源相同，基本上相同格式的音頻md5都會一樣的，即使修改過tag
+
+例如wav轉alac再轉ape再轉flac 跟wav直接flac
+
+兩者的音頻md5也會是一樣的，
+
+ 
+
+只不過，目前用md5篩出的歌比我想像的還要多很多...。
