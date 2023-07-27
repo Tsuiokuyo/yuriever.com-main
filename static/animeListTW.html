@@ -310,16 +310,16 @@
 
                                 <h2>有生之年加入區 (有評分且至少能搜尋到鋼鍊為基準)</h2>
                                 <h3>這數量很明顯非常麻煩，不過還沒篩選，也沒位置呈現分數了，有空再慢慢搞。</h3>
-								<h3>2023/07/23，恩...塞進下面這幾個的網站，結果使得ID映射的迴圈要跑很久，最近也都懶得重寫，也估計會有映射錯誤的id出現</h3>
+                                <h3>2023/07/23，恩...塞進下面這幾個的網站，結果使得ID映射的迴圈要跑很久，最近也都懶得重寫，也估計會有映射錯誤的id出現，全部擱置中</h3>
                                 <ol>
-                                    <li>捷克最大 https://www.csfd.cz/film/257242-fullmetal-alchemist-bratrstvi/prehled/ <span style="color:red">(進行中)</span></li>
-									<li>俄羅斯最大 https://www.kinopoisk.ru/series/452838/ <span style="color:red">(進行中)</span></li>
+                                    <li>捷克最大 https://www.csfd.cz/film/257242-fullmetal-alchemist-bratrstvi/prehled/ <span style="color:red"></span></li>
+                                    <li>俄羅斯最大 https://www.kinopoisk.ru/series/452838/ <span style="color:red"></span></li>
                                     <li>波蘭最大 https://www.filmweb.pl/serial/Stalowy+alchemik%3A+Misja+braci-2009-495827</li>
-                                    <li>匈牙利最大 https://animeaddicts.hu/encyclopedia.php?anime.2304 <span style="color:red">(進行中)</span></li>
-                                    <li>法國最大 https://v3.voiranime.com/anime/fullmetal-alchemist-brotherhood/ <span style="color:red">(進行中)</span></li>
-                                    <li>墨西哥(全球流量最大) https://www3.animeflv.net/anime/fullmetal-alchemist-brotherhood <span style="color:red">(進行中)</span></li>
-                                    <li>中國 s1vote.com <span style="color:red">(進行中)</span></li>
-									
+                                    <li>匈牙利最大 https://animeaddicts.hu/encyclopedia.php?anime.2304 <span style="color:red"></span></li>
+                                    <li>法國最大 https://v3.voiranime.com/anime/fullmetal-alchemist-brotherhood/ <span style="color:red"></span></li>
+                                    <li>墨西哥(全球流量最大) https://www3.animeflv.net/anime/fullmetal-alchemist-brotherhood <span style="color:red"></span></li>
+                                    <li>中國 s1vote.com <span style="color:red"></span></li>
+
                                     <li>西班牙最大 https://www.filmaffinity.com/us/film916461.html</li>
                                     <li>日本最大 https://movies.yahoo.co.jp/movie/338428/</li>
 
@@ -798,7 +798,7 @@
                         </v-row>
                         <br />
                         <v-row>
-                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年07月24日</span>
+                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年07月26日</span>
                         </v-row>
                         <span v-if="windowWidth > 600"> 
                         <br/>
@@ -871,6 +871,7 @@
                                     <span v-if="null != item.twitter">
                                         <a :href="'https://' + item.twitter" target="_blank">Twitter</a>&nbsp;
                                     </span>
+									<br />
                                     <span v-if="null != item.tvdb">
                                         <a :href="'https://www.thetvdb.com/?tab=series&amp;id=' + item.tvdb" title="TVDB" target="_blank">TVDB</a>&nbsp;
                                     </span>
@@ -882,7 +883,26 @@
                                         <a :href="'https://www.themoviedb.org/tv/' + item.tmdb" title="TMDB" target="_blank" v-else>TMDB</a>
                                     </span>
                                                 
-                                    <br />
+                                    
+                                     <span v-if="null != item.voiranime">
+                                        <a :href="'https://v5.voiranime.com/anime/' + item.voiranime" title="voiranime" target="_blank">VOIRANIME</a>&nbsp;
+                                    </span>
+                                    <!--<span v-if="null != item.s1vote">
+                                        <a :href="'https://bbs.saraba1st.com/2b/thread-' + item.s1vote + 'l'" title="s1vote" target="_blank">s1vote</a>&nbsp;
+                                    </span>-->
+                                    <span v-if="null != item.kinopoisk">
+                                        <a :href="'https://www.kinopoisk.ru/' + item.kinopoisk" title="kinopoisk" target="_blank">KINOPOISK</a>&nbsp;
+                                    </span>
+                                    <!--<span v-if="null != item.animeflv">
+                                        <a :href="'https://www3.animeflv.net/anime/' + item.animeflv" title="animeflv" target="_blank">animeflv</a>&nbsp;
+                                    </span>
+                                    <span v-if="null != item.animeaddicts">
+                                        <a :href="'https://animeaddicts.hu/encyclopedia.php?' + item.animeaddicts" title="animeaddicts" target="_blank">animeaddicts</a>&nbsp;
+                                    </span> -->
+                                    <span v-if="null != item.csfd">
+                                        <a :href="'https://www.csfd.cz/film/' + item.csfd" title="csfd" target="_blank">CSFD</a>&nbsp;
+                                    </span>
+                                    <br /> 
                                     <span style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;<span
                                             v-if="null != item.MAL.premiered">({{ item.MAL.premiered }}<span
                                                 v-if="null != item.MAL.season">{{item.MAL.season|seasonCht}}</span>)</span>
