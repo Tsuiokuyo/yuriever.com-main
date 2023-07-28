@@ -6,7 +6,7 @@ featuredImage: "/assets/foobar2000.jpg"
 featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
-lastmod: 2023-06-01
+lastmod: 2023-07-28
 weight: 2
 ---
 
@@ -394,8 +394,6 @@ shoutcast則需要到 https://radiomanager.shoutcast.com/ 註冊拿到Authhash�
 
 至於一些foobar2000音質上的調整就直接放在網頁左上了
 
-
-
 用於篩選是否有設定增益
 
 ```
@@ -405,14 +403,12 @@ $puts(path,$substr($get(path),$add($strchr($get(path),|),1),$len($get(path))))
 $substr($get(path),$add($strchr($get(path),|),1),$len($get(path)))
 ```
 
-
-
 基於音頻md5篩選是否為重複歌
 
 ```
 insert into Playlist_Updatable (path, playlist_name)
   select path,
-         '重複歌曲'
+         '完全重複'
   from mediaLibrary
   where md5 in (select md5
                   from mediaLibrary
@@ -421,12 +417,34 @@ insert into Playlist_Updatable (path, playlist_name)
                );
 ```
 
-只要來源相同，基本上相同格式的音頻md5都會一樣的，即使修改過tag
+只要來源相同，基本上相同格式的音頻md5都會一樣的，即使修改過tag或無損互轉
 
-例如wav轉alac再轉ape再轉flac 跟wav直接flac
+例如:wav轉alac再轉ape再轉flac 跟wav直接flac
 
 兩者的音頻md5也會是一樣的，
 
- 
 
-只不過，目前用md5篩出的歌比我想像的還要多很多...。
+
+基於其他條件重複，藝術家、標題、專輯、相簿、長度、曲目編號、作曲家
+
+```
+insert into PlaylistUpdatable(path,playlist_name)
+select a.path, '其他重複'
+  from mediaLibrary a
+         inner join
+       (select artist, title, album, length, tracknumber, composer
+          from MediaLibrary
+          group by artist, title, album, length, tracknumber, composer
+          having count(*)>1
+       ) b on (    a.artist is b.artist
+               and a.title is b.title
+               and a.album is b.album
+               and a.length is b.length              
+               and a.tracknumber is b.tracknumber
+               and a.composer is b.composer)
+  order by a.path
+```
+
+畢竟即使md5不同也可能是重複的
+
+例如:拿張DVD ISO 跟 OTOTOY買的同一專輯，兩者出來的音頻MD5就可能不一樣了
