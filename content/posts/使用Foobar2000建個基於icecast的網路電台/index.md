@@ -6,11 +6,15 @@ featuredImage: "/assets/foobar2000.jpg"
 featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
-lastmod: 2023-07-28
+lastmod: 2023-08-02
 weight: 2
 ---
 
 成品大概是這樣吧
+
+估計若干時間後，會整理音樂庫，改成用airsonic、navidrome甚至是PLEX來架設  
+如果無法設定guest權限，那這個網址屆時就會停止了，  
+至於emby、jellyfin就算了，因為先前有混用多種無損格式的關係，覺得體感不好。
 
 <!--more-->
 
@@ -423,8 +427,6 @@ insert into Playlist_Updatable (path, playlist_name)
 
 兩者的音頻md5也會是一樣的，
 
-
-
 基於其他條件重複，藝術家、標題、專輯、相簿、長度、曲目編號、作曲家
 
 ```
@@ -448,3 +450,17 @@ select a.path, '其他重複'
 畢竟即使md5不同也可能是重複的
 
 例如:拿張DVD ISO 跟 OTOTOY買的同一專輯，兩者出來的音頻MD5就可能不一樣了
+
+
+
+
+
+
+
+存歌的空間不足，看來要用Flac -8ep再重壓一次了，
+
+保留一下在U2的網友(#38893)所分享的各壓縮等級所耗時間及體積，
+
+測試檔為，Startear/春奈るな 期間生産限定アニメ盤
+
+<img src="images/lossless_startear.png" title="" alt="" data-align="left">
