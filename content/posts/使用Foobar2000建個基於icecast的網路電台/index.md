@@ -6,7 +6,7 @@ featuredImage: "/assets/foobar2000.jpg"
 featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
-lastmod: 2023-08-11
+lastmod: 2023-08-16
 weight: 2
 ---
 
@@ -75,7 +75,7 @@ Passband:95%，phase response:0%
 
 Sox、SRC(Secret Rabbit Code)、SSRC、RetroArch、multiresampler
 
-雖然爬文大多都是推薦Sox，但我當時還是浪費一堆時間爬文弄軟體測試，結果最後還是選擇Sox...
+雖然爬文大多都是推薦Sox，但我當時還是浪費一堆時間爬文，使用Cool Edit Pro建立音檔來測試，結果最後還是選擇Sox...
 
 順便留一個國外各種特定轉換的重採樣的圖表網頁參考
 
@@ -133,6 +133,147 @@ http://src.infinitewave.ca/
 http://dir.xiph.org/search?q=tsuiokuyo
 
 目前已不使用foo_shuicast，因為用shuicast在某些時候會有破音問題，因為只有hi-res跟mp3會破音，懷疑是跟歌曲本身的位元率高低有關，因此改用butt+vb audio cable來播放，這樣才不會接收到本機的音效，順便一提icecast的多個Genre 設定有固定格式，否則會直接送你異常，第二個以後的類型都要加, 才行，一定要用",空格"，如：Anime,  Jpop, Game，這爛分割方式讓我剛開始研究好久。
+
+### 個人用備註
+
+最讓我感到可惜的是我沒有收集水晶琴、音樂盒版本的配樂，
+基本上AVG遊戲甚至裏番的配樂，錯過了大概這輩子不會再聽到了吧，畢竟冷門且小眾，
+即使是好聽的片頭曲基本上也沒有熱度，更別說是被別人來拿使用在影片中。
+只是要我再次收集等同於要全部重來，好聽是好聽，可惜也很可惜，
+但我主要聽的還是人聲為主，因此也只能放棄了。
+
+shoutcast則需要到 [https://radiomanager.shoutcast.com/](https://radiomanager.shoutcast.com/) 註冊拿到Authhash才會被搜尋到
+
+歌詞部分需要修改LargeFieldsConfig檔，否則http上會顯示"?"
+
+至於一些foobar2000音質上的調整就直接放在網頁左上了
+
+兩個串流測試用的vst插件
+
+Voxengo SPAN Plus
+
+Youlean Loudness Meter2
+
+用於篩選是否有設定增益
+
+```
+$if(%replaygain_track_gain%,$char(13)有播放增益資料,$char(13)無播放增益資料)|$puts(path,$replace($directory_path(%path%),\,|$char(13))|%filename_ext%
+$ifgreater(%subsong%,0,|%tracknumber%.%title%,))
+$puts(path,$substr($get(path),$add($strchr($get(path),|),1),$len($get(path))))
+$substr($get(path),$add($strchr($get(path),|),1),$len($get(path)))
+```
+
+SQLite Utilities部分
+
+基於音頻md5篩選是否為重複歌
+
+```
+insert into Playlist_Updatable (path, playlist_name)
+  select path,
+         '完全重複'
+  from mediaLibrary
+  where md5 in (select md5
+                  from mediaLibrary
+                  group by md5
+                  having count(*)>1
+               );
+```
+
+只要來源相同，基本上相同格式的音頻md5都會一樣的，即使修改過tag或無損互轉
+
+例如:wav轉alac再轉ape再轉flac 跟wav直接flac
+
+兩者的音頻md5也會是一樣的，
+
+基於其他條件重複，藝術家、標題、專輯、相簿、長度、曲目編號、作曲家
+
+```
+insert into PlaylistUpdatable(path,playlist_name)
+select a.path, '其他重複'
+  from mediaLibrary a
+         inner join
+       (select artist, title, album, length, tracknumber, composer
+          from MediaLibrary
+          group by artist, title, album, length, tracknumber, composer
+          having count(*)>1
+       ) b on (    a.artist is b.artist
+               and a.title is b.title
+               and a.album is b.album
+               and a.length is b.length              
+               and a.tracknumber is b.tracknumber
+               and a.composer is b.composer)
+  order by a.path
+```
+
+畢竟即使md5不同也可能是重複的
+
+例如:拿張DVD ISO 跟 OTOTOY買的同一專輯，兩者出來的音頻MD5就可能不一樣了
+
+再來就是存歌的空間不足，看來要用Flac -8ep重壓一次了，
+
+畢竟目前有下面這堆格式...
+
+FLAC
+
+MP3
+
+Apple Lossless 
+
+Monkey's Audio
+
+Tom's lossless Audio Kompressor
+
+True Audio 
+
+Audio Interchange File Format
+
+AAC
+
+WavPack
+
+Opus
+
+<s>Waveform Audio File Format</s>
+
+不過DSD編碼的wv就無法處理了，至於為什麼會有這麼多種格式...
+
+順便保留一下在U2的網友(#38893)所分享的各壓縮等級所耗時間及體積，
+
+測試檔為，Startear/春奈るな 期間生産限定アニメ盤
+
+![foo_streamer](images/lossless_startear.png)
+
+因為看了last.fm後，覺得同一首歌的播放次數不合理，因此再稍微測試了一下，最後發現是Shuffle (tracks)在程式重啟之後會重新洗牌一次，但是即使算入點播以及不同專輯的相同歌曲，我還是覺得重複播放率太高就是了。
+
+順便提提Shuffle (tracks)跟random的差別
+
+官方說明可直接看foobar2000的FAQ https://www.foobar2000.org/FAQ#random_shuffle_playback_order
+
+簡單的說就是我有五首歌 1~5
+
+如果我播放15次共三輪，
+
+Shuffle (tracks)模式，會把他打亂之後不重複的排序，因此隊伍可能會是
+
+第一輪:2、3、1、5、4
+
+第二輪:2、3、1、5、4
+
+第三輪:2、3、1、5、4
+
+第四輪如果新增一首歌進去，那可能會是:2、3、1、6、5、4
+
+意思是它會在隊列中隨機位置放入，基本上想要不重複播放就是這個亂序(音軌)
+
+random模式，單純隨機播放
+
+第一輪:1、2、1、2、1
+
+第二輪:3、2、3、4、1
+
+第三輪:4、3、2、1、2
+
+意思就是，除了不會連續2次同一首歌之外，都有可能發生，所以發現有一首歌從來沒被播放過也是正常的。
 
 <h3>以下為舊文章(2022/10)</h3>
 
@@ -389,104 +530,3 @@ https://ptt.healtyman.xyz/?man/WebRadio/D766/D6CE/M.1296145083.A.AB6.html
     </script>
 
 </code>
-
-個人用備註
-
-shoutcast則需要到 https://radiomanager.shoutcast.com/ 註冊拿到Authhash才會被搜尋到
-
-歌詞部分需要修改LargeFieldsConfig檔，否則http上會顯示"?"
-
-至於一些foobar2000音質上的調整就直接放在網頁左上了
-
-用於篩選是否有設定增益
-
-```
-$if(%replaygain_track_gain%,$char(13)有播放增益信息,$char(13)無播放增益信息)|$puts(path,$replace($directory_path(%path%),\,|$char(13))|%filename_ext%
-$ifgreater(%subsong%,0,|%tracknumber%.%title%,))
-$puts(path,$substr($get(path),$add($strchr($get(path),|),1),$len($get(path))))
-$substr($get(path),$add($strchr($get(path),|),1),$len($get(path)))
-```
-
-基於音頻md5篩選是否為重複歌
-
-```
-insert into Playlist_Updatable (path, playlist_name)
-  select path,
-         '完全重複'
-  from mediaLibrary
-  where md5 in (select md5
-                  from mediaLibrary
-                  group by md5
-                  having count(*)>1
-               );
-```
-
-只要來源相同，基本上相同格式的音頻md5都會一樣的，即使修改過tag或無損互轉
-
-例如:wav轉alac再轉ape再轉flac 跟wav直接flac
-
-兩者的音頻md5也會是一樣的，
-
-基於其他條件重複，藝術家、標題、專輯、相簿、長度、曲目編號、作曲家
-
-```
-insert into PlaylistUpdatable(path,playlist_name)
-select a.path, '其他重複'
-  from mediaLibrary a
-         inner join
-       (select artist, title, album, length, tracknumber, composer
-          from MediaLibrary
-          group by artist, title, album, length, tracknumber, composer
-          having count(*)>1
-       ) b on (    a.artist is b.artist
-               and a.title is b.title
-               and a.album is b.album
-               and a.length is b.length              
-               and a.tracknumber is b.tracknumber
-               and a.composer is b.composer)
-  order by a.path
-```
-
-畢竟即使md5不同也可能是重複的
-
-例如:拿張DVD ISO 跟 OTOTOY買的同一專輯，兩者出來的音頻MD5就可能不一樣了
-
-存歌的空間不足，看來要用Flac -8ep再重壓一次了，
-
-保留一下在U2的網友(#38893)所分享的各壓縮等級所耗時間及體積，
-
-測試檔為，Startear/春奈るな 期間生産限定アニメ盤
-
-<img src="images/lossless_startear.png" title="" alt="" data-align="left">
-
-因為看了last.fm後，覺得同一首歌的播放次數不合理，因此再稍微測試了一下，最後發現是Shuffle (tracks)在程式重啟之後會重新洗牌一次，但是即使算入點播以及不同專輯的相同歌曲，我還是覺得重複播放率太高就是了。
-
-順便提提Shuffle (tracks)跟random的差別
-
-官方說明可直接看foobar2000的FAQ                        <a href="https://www.foobar2000.org/FAQ#random_shuffle_playback_order">https://www.foobar2000.org/FAQ#random_shuffle_playback_order</a>
-
-簡單的說就是我有五首歌 1~5
-
-如果我播放15次共三輪，
-
-Shuffle (tracks)模式，會把他打亂之後不重複的排序，因此隊伍可能會是
-
-第一輪:2、3、1、5、4
-
-第二輪:2、3、1、5、4
-
-第三輪:2、3、1、5、4
-
-第四輪如果新增一首歌進去，那可能會是:2、3、1、6、5、4
-
-意思是它會在隊列中隨機位置放入，基本上想要不重複播放就是這個亂序(音軌)
-
-random模式，單純隨機播放
-
-第一輪:1、2、1、2、1
-
-第二輪:3、2、3、4、1
-
-第三輪:4、3、2、1、2
-
-意思就是，除了不會連續2次同一首歌之外，都有可能發生，所以發現有一首歌從來沒被播放過也是正常的
