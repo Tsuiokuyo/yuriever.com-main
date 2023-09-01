@@ -7,7 +7,6 @@ date: 2022-06-18 00:00:00
 featuredImage: "/assets/未來.jpg"
 featuredImagePreview: "/assets/未來.jpg"
 lastmod: 2022-07-15
-weight: 5
 ---
 
 ## 純前端畫面，使用element UI、cloud firestore來玩玩
