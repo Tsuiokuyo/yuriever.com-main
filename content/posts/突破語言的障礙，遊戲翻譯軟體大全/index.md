@@ -1,11 +1,11 @@
 ---
 title: "突破語言的障礙，遊戲翻譯軟體大全"
-date: 2023-08-29T08:43:57+08:00
+date: 2023-09-01T00:43:57+08:00
 slug: e6d8772c
-featuredImage: "/assets/.jpg"
-featuredImagePreview: "/assets/.jpg"
-tags: []
-categories: []
+featuredImage: "/assets/dic.jpg"
+featuredImagePreview: "/assets/dic.jpg"
+tags: [翻譯軟體]
+categories: [翻譯軟體]
 ---
 
 {{< admonition >}}
@@ -20,13 +20,7 @@ categories: []
 
 不過幾乎沒有特化日翻中的模型且參數量13B的模型無法即時運算、品質不高，根本不可能用於遊戲，最終決定，先乖乖地用翻譯API就好了...。
 
-
-
-
-
 以遊戲類型分類，我大致分為3種：unity、RPG、AVG，因為我主要會需要用到翻譯的遊戲多為這三種，而OCR這種幾乎所有遊戲都可用的翻譯軟體也一併放在AVG。
-
-
 
 文長，直接提供給懶人選擇
 
@@ -38,23 +32,15 @@ AVG:LunaTranslator
 
 非上述類型遊戲也可試試LunaTranslator的OCR翻譯
 
-
-
-
-
 這一篇以一般人為基準，指無台胞證、中國手機號碼、無國外信用卡、不花錢等等。
 
 畢竟有些免費的API，在台灣想取得還是有一點難度  
-
-
 
 我這僅提供官網、GITHUB或作者發布區的網址，有沒有毒等等的安全性疑慮請自行判斷，
 
 此文章亦無提供使用教學，因為GITHUB裡大多都有，透過google也能找到許多教學文 
 
 而且這數量要我一個一個寫教程太痛苦了。
-
-
 
 基本上我都有在win10(build 19045.3324)的環境底下一一測試過了。
 
@@ -134,7 +120,7 @@ ALT + T：自動翻譯以及取消翻譯。
 
 [GitHub - NEKOparapa/AiNiee-chatgpt: 一款基于【mtool】或【Translator++】，chatgpt自动批量翻译工具，主要是用来翻译各种RPG游戏。](https://github.com/NEKOparapa/AiNiee-chatgpt)
 
-同上個程式，也是透過提取的資料翻譯。
+同mytrs1，也是透過手動提取的文本翻譯。
 
 撰寫時的軟體版本號為 v4.58.2 (2023/08/02)
 
@@ -282,8 +268,6 @@ V3版使用中國伺服器
 
 這V2跟V3的最主要的差別讀取字典以及Hook用的特殊碼，
 
-
-
 VNR有共享字典，這字典是用於各個熱心網友手動修正翻譯異常或錯誤，
 
 如有哪個地方，翻譯不好、分割錯誤、人名錯譯未統一等等的問題，
@@ -294,17 +278,13 @@ VNR有共享字典，這字典是用於各個熱心網友手動修正翻譯異�
 
 而中國網友連國外大部分都會有異常，實際上我用V2更新共享字典6次也都失敗，V3版倒是一次就成功了，由圖可知目前有兩萬多筆翻譯紀錄
 
-
-
 在目前LunaTranslator可以導入VNR的字典後，VNR的使用者大概就真的越來越少了。
 
 實際上功能幾乎都已經給LunaTranslator給提純了，而且VNR對許多人來說應該算是很難使用或是不理解的工具
 
-
-
 <img title="" src="images/V3.JPG" alt="" data-align="center">
 
-## 3.3 MisakaTranslator 御坂翻译器
+## 3.3 MisakaTranslator 御坂翻譯器
 
 [GitHub - hanmin0822/MisakaTranslator: 御坂翻译器—Galgame/文字游戏/漫画多语种实时机翻工具](https://github.com/hanmin0822/MisakaTranslator)
 
@@ -324,8 +304,6 @@ OCR則需百度API
 
 而第二次就可直接從MisakaTranslator啟動遊戲。
 
-
-
 撰寫時的軟體版本號為 v2.12.2 (2023/02/11)
 
 <img title="" src="images/MIKASA.JPG" alt="" data-align="center">
@@ -342,7 +320,7 @@ OCR則需百度API
 
 撰寫時的軟體版本號為 v1.1 (2020/05/20)
 
-## 3.3  YUKI Galgame 翻译器
+## 3.3  YUKI Galgame 翻譯器
 
 [GitHub - project-yuki/YUKI: YUKI Galgame Translator](https://github.com/project-yuki/YUKI)
 
@@ -482,7 +460,7 @@ DeepL
 
 [GitHub - 0xDC00/agent: Universal script based text hooker (powered by FRIDA)](https://github.com/0xDC00/agent)
 
-算是比較特殊用途的提取器吧，使用js提取文本，
+算是比較特殊用途的文本提取器吧，使用js提取文本，
 
 本來看他能提取PPSSPP的文本還蠻厲害的，測試後發現實際上似乎還是需要等作者寫出對應的專用腳本才行...
 
@@ -710,15 +688,11 @@ Yeekit、baiduweb、雲譯、有道、google
 
 抓剪貼簿的資料並翻譯
 
-
-
 ## 4.7 GTGal
 
 剪貼簿取得文本翻譯
 
 不過目前測試抓不到資料
-
-
 
 ## 4.8 J北京、譯典通、金山快譯等等
 
@@ -796,15 +770,11 @@ Locale Emulator
 
 ver. 2.5.0.1(2021/8/26)
 
-
-
 NTLEA 
 
 [GitHub - zxyacb/ntlea](https://github.com/zxyacb/ntlea)
 
 ver. Build 46(2018/06/17)
-
-
 
 piaip applocale
 
