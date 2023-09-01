@@ -6,7 +6,7 @@ featuredImage: "/assets/PSP及PSV實機輸出畫面至PC端提升畫質.jpg"
 featuredImagePreview: "/assets/PSP及PSV實機輸出畫面至PC端提升畫質.jpg"
 tags: ["PSP","PSV"]
 categories: ["PSP","PSV"]
-weight: 3
+
 ---
 
 雖然PPSSPP已經算很成熟了，但我還是喜歡用實機玩
@@ -351,8 +351,6 @@ MPV就會接收到PSV畫面了
 而手把不可接micro usb到電腦上，
 
 另外要記得的是與PSV斷連接後，xbox手把每次都要手動重新連接到PSV，簡單的說就是藍芽沒辦法自動配對連線
-
-
 
 ## 其他問題
 
