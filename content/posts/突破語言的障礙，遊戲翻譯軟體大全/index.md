@@ -22,25 +22,37 @@ categories: [翻譯軟體]
 
 以遊戲類型分類，我大致分為3種：unity、RPG、AVG，因為我主要會需要用到翻譯的遊戲多為這三種，而OCR這種幾乎所有遊戲都可用的翻譯軟體也一併放在AVG。
 
-文長，直接提供給懶人選擇
 
-unity:XUnity.AutoTranslator
+
+**文超長，因為我能找到的都有列出了，**
+
+**但東西太多會導致無接觸的人看不懂就是了**
+
+
+
+**本文僅有提供官網、GITHUB或作者發布區的網址，有沒有毒等等的安全性疑慮請自行判斷，**
+
+**此文章亦無提供使用教學，因為GITHUB裡大多都有，透過google也能找到許多教學文，**
+
+直接提供給懶人一種選擇
+
+
+
+UNITY:XUnity.AutoTranslator
 
 RPG:MTOOL
 
-AVG:LunaTranslator
+AVG:LunaTranslator/VNR
 
-非上述類型遊戲也可試試LunaTranslator的OCR翻譯
+非上述類型的遊戲也可試試LunaTranslator的OCR翻譯功能
 
-這一篇以一般人為基準，這是指無法正常拿到中國免費API、國外信用卡及不花錢等，
+這一篇文章以一般人為基準，這是指無法正常拿到中國免費API、國外信用卡及不花錢等，
 
-畢竟有些免費的API，在台灣想取得還是有一點難度  
 
-我這僅提供官網、GITHUB或作者發布區的網址，有沒有毒等等的安全性疑慮請自行判斷，
 
 此文章亦無提供使用教學，因為GITHUB裡大多都有，透過google也能找到許多教學文 
 
-而且這數量要我一個一個寫教程太痛苦了。
+
 
 基本上我都有在win10(build 19045.3324)的環境底下一一測試過了。
 
@@ -86,7 +98,7 @@ ALT + T：自動翻譯以及取消翻譯。
 
 ## 2.1 MTOOL
 
-***他會生成快速啟動用的BAT檔案到你的遊戲目錄中
+***他會生成快速啟動用的BAT檔案到你的遊戲目錄中**
 
 [爱发电 · 连接创作者与粉丝的会员制平台](https://afdian.net/a/AdventCirno?tab=feed)
 
@@ -106,7 +118,7 @@ ALT + T：自動翻譯以及取消翻譯。
 
 ### 2.1.1 mytrs1
 
-**你不需要這個東西
+**你不需要這個東西**
 
 [GitHub - stevetrs/mytrs1](https://github.com/stevetrs/mytrs1)
 
@@ -116,7 +128,7 @@ ALT + T：自動翻譯以及取消翻譯。
 
 ### 2.1.2 AiNiee-chatgpt
 
-**你不需要這個東西
+**你不需要這個東西**
 
 [GitHub - NEKOparapa/AiNiee-chatgpt: 一款基于【mtool】或【Translator++】，chatgpt自动批量翻译工具，主要是用来翻译各种RPG游戏。](https://github.com/NEKOparapa/AiNiee-chatgpt)
 
@@ -126,7 +138,7 @@ ALT + T：自動翻譯以及取消翻譯。
 
 ## 2.2 Translator++
 
-***需要修改到原文檔
+***需要修改到原文檔**
 
 https://dreamsavior.net/translator-the-introduction/
 
@@ -152,7 +164,7 @@ https://dreamsavior.net/docs/translator/translator-engine/
 
 ## 2.3 RPGMakerMVGame Hook patcher
 
-***會注入所需程式進你的遊戲資料中
+***會注入所需程式進你的遊戲資料中**
 
 https://ulmf.org/threads/rpgmakermvgame-hook-patcher-how-to-hook-rpg-maker-mv-games.8960/
 
@@ -162,9 +174,9 @@ https://ulmf.org/threads/rpgmakermvgame-hook-patcher-how-to-hook-rpg-maker-mv-ga
 
 ## 2.4 rpgmaker-mv-translator
 
-**你不需要這個東西
+**你不需要這個東西**
 
-***需要修改到原文檔
+***需要修改到原文檔**
 
 [GitHub - davide97l/rpgmaker-mv-translator: Automatic game data translator for RPGMaker-MV](https://github.com/davide97l/rpgmaker-mv-translator)
 
@@ -246,7 +258,7 @@ https://voicevox.hiroshiba.jp/
 
 ## 3.2 VNR
 
-### Visual Novel Reader
+### 3.2.1 Visual Novel Reader
 
 [Google Code Archive - Long-term storage for Google Code Project Hosting.](https://code.google.com/archive/p/annot-player/)
 
@@ -256,11 +268,11 @@ VNR一代因為停止維護，所以線上的翻譯API全滅了，能用的剩�
 
 <img title="" src="images/VNR.JPG" alt="" data-align="center">
 
-### Visual Novel Reader V2
+### 3.2.2  Visual Novel Reader V2
 
 V2版為使用俄羅斯伺服器
 
-### Visual Novel Reader V3
+### 3.2.3 Visual Novel Reader V3
 
 V3版使用中國伺服器
 
@@ -310,7 +322,7 @@ OCR則需百度API
 
 ### 3.3.1 MisakaHookFinder 御坂Hook提取器
 
-**你可能會需要這東西
+**你可能會需要這東西**
 
 [GitHub - hanmin0822/MisakaHookFinder: 御坂Hook提取工具—Galgame/文字游戏文本钩子提取](https://github.com/hanmin0822/MisakaHookFinder)
 
@@ -456,7 +468,7 @@ DeepL
 
 ## 3.9 agent
 
-**你不太需要這個東西
+**你不太需要這個東西**
 
 [GitHub - 0xDC00/agent: Universal script based text hooker (powered by FRIDA)](https://github.com/0xDC00/agent)
 
@@ -468,9 +480,9 @@ DeepL
 
 ## 3.10 GalUpTs
 
-*需遊戲解包
+***需遊戲解包**
 
-***需要修改到原文檔
+***需要修改到原文檔**
 
 [GitHub - Lilyltt/GalUpTs: 对已解包的Gal实现自动化翻译](https://github.com/Lilyltt/GalUpTs)
 
@@ -480,11 +492,11 @@ DeepL
 
 ## 3.11 18ACG翻譯姬
 
-*需遊戲解包
+***需遊戲解包**
 
-**你不太需要這個東西
+**你不太需要這個東西**
 
-***會注入所需程式進你的遊戲資料中
+***會注入所需程式進你的遊戲資料中**
 
 官網已死，
 
@@ -512,7 +524,7 @@ steam遊戲需要去根目錄才能用Locale-Emulator改編碼，否則會亂碼
 
 ## 3.12 EasyTranslation
 
-**你不需要這個東西
+**你不需要這個東西**
 
 這跟18ACG翻譯姬是同個東西，不過這個有毒就不弄了
 
@@ -520,9 +532,9 @@ steam遊戲需要去根目錄才能用Locale-Emulator改編碼，否則會亂碼
 
 ## 3.13 ErogeHelper
 
-**你不需要這個東西
+**你不需要這個東西**
 
-***會注入所需程式進你的遊戲資料中
+***會注入所需程式進你的遊戲資料中**
 
 [GitHub - luojunyuan/ErogeHelper: A visual novel tool for win-tablet](https://github.com/luojunyuan/ErogeHelper)
 
@@ -552,7 +564,7 @@ Yeekit、baiduweb、雲譯、有道、google
 
 ## 3.14 game2text
 
-**你不需要這個東西
+**你不需要這個東西**
 
 [https://game2text.com/](https://game2text.com/)
 
@@ -570,7 +582,7 @@ Yeekit、baiduweb、雲譯、有道、google
 
 ## 3.15 TIny翻译肋手
 
-**你不需要這個東西
+**你不需要這個東西**
 
 百度、有道、騰訊都需要API KEY，因此一般人用不了
 
@@ -580,7 +592,7 @@ Yeekit、baiduweb、雲譯、有道、google
 
 ## 3.16 HighQuality-GalgameTranslator
 
-**你不需要這個東西
+**你不需要這個東西**
 
 [GitHub - umichan0621/HighQuality-GalgameTranslator](https://github.com/umichan0621/HighQuality-GalgameTranslator)
 
@@ -594,9 +606,9 @@ Yeekit、baiduweb、雲譯、有道、google
 
 ## 3.17 LightWeight_VNR
 
-*需要自行打包來執行
+***需要自行打包來執行**
 
-**你不需要這個東西
+**你不需要這個東西**
 
 [GitHub - MasouShizuka/LightWeight_VNR: 实现对Galgame文本的抓取与翻译功能](https://github.com/MasouShizuka/LightWeight_VNR)
 
@@ -614,7 +626,7 @@ Yeekit、baiduweb、雲譯、有道、google
 
 ## 3.18 Capture2Text
 
-**你不需要這個東西
+**你不需要這個東西**
 
 [https://capture2text.sourceforge.net/](https://capture2text.sourceforge.net/)
 
@@ -622,17 +634,17 @@ Yeekit、baiduweb、雲譯、有道、google
 
 撰寫時的軟體版本號為 v4.6.3 (2022/03/19)
 
-## 3.10 PCOT
+## 3.19 PCOT
 
 [ヌルポインターストライク](http://www.gc-net.jp/s_54/)
 
-**你不需要這個東西
+**你不需要這個東西**
 
 純OCR轉文字
 
 撰寫時的軟體版本號為 v1.4.9 (2023/01/10)
 
-## 3.11 javaFxVNR
+## 3.20 javaFxVNR
 
 [GitHub - XHXJ/javaFxVNR: 一个基于javaFx与Tesseract的OCR光学识别软件,支持多区域识别,管理功能.可以监控区域翻译.](https://github.com/XHXJ/javaFxVNR)
 
@@ -722,7 +734,7 @@ Yeekit、baiduweb、雲譯、有道、google
 
 ## 4.13 口罩翻译
 
-***會注入DLL檔到你的遊戲
+***會注入DLL檔到你的遊戲**
 
 基於易語言開發
 
@@ -784,13 +796,13 @@ win7用
 
 GalFC
 
-## 5.3 簡體文字檔台灣化工具
+## 5.3 簡體文字檔台灣用語化工具
 
 繁化姬
 
 https://zhconvert.org/
 
-### 5.4 遊戲縮放工具
+## 5.4 遊戲縮放工具
 
 Magpie
 
