@@ -448,6 +448,8 @@ DeepL
 
 撰寫時的軟體版本號為 v2.63 (2022/12/05)
 
+<img title="" src="images/VNREX.JPG" alt="" data-align="center">
+
 ## 3.8 團子翻譯器
 
 [GitHub - PantsuDango/Dango-Translator: 团子翻译器 —— 个人兴趣制作的一款基于OCR技术的翻译器](https://github.com/PantsuDango/Dango-Translator)
