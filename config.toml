@@ -1,4 +1,4 @@
-baseURL = "https://tsuiokuyo.netlify.com/"
+baseURL = "https://tsuiokuyo.github.io/"
 defaultContentLanguage = "zh-tw"
 # 更改使用 Hugo 構建網站時使用的默認主題
 theme = "LoveIt"
@@ -446,7 +446,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # giscus comment 評論系統設置 (https://giscus.app/zh-CN)
       [params.page.comment.giscus]
         # 你可以參考官方文件來使用下列配置
-        enable = "true"
+        enable = "false"
         repo = "Tsuiokuyo/tsuiokuyo.netlify.com.comment"
         repoId = "R_kgDOHp8FiQ"
         category = "Announcements"
