@@ -3,7 +3,7 @@ name: deploy-to-github
 on:
   push:
     branches:
-      - main  # 當main分支有push操作時
+      - master  # 當main分支有push操作時
 
 jobs:
   deploy:
@@ -27,7 +27,7 @@ jobs:
         with:
           external_repository: tsuiokuyo/tsuiokuyo.github.io
           personal_token: ${{ secrets.ACCESS_TOKEN  }} #設定推送的 Token，直接設為 ${{ secrets.GITHUB_TOKEN }} 就可以了，GITHUB_TOKEN 會由 actions 去處理。
-          PUBLISH_BRANCH: master  # 推送到 gh-pages 分支
+          PUBLISH_BRANCH: main  # 推送到 gh-pages 分支
           PUBLISH_DIR: ./public     # hugo 生成的目錄
           commit_message: ${{ github.event.head_commit.message }}
           #cname: 
