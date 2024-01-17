@@ -79,6 +79,6 @@ site settings ->Change site name
 
 延伸閱讀：
 
-[(一)架設hexo部落格](https://tsuiokuyo.netlify.com/posts/9702c5d)
+[(一)架設hexo部落格](../9702c5d)
 
-[(二)hexo github & gitlab推送](https://tsuiokuyo.netlify.com/posts/1ced115b)
+[(二)hexo github & gitlab推送](../1ced115b)

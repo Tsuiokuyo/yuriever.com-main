@@ -115,7 +115,7 @@ Haroopad
 
 延伸閱讀：
 
-[(二)hexo github & gitlab推送](https://tsuiokuyo.netlify.com/posts/1ced115b)
+[(二)hexo github & gitlab推送](../1ced115b)
 
-[(三)Hexo部屬至netlify](https://tsuiokuyo.netlify.com/posts/3b037b87)
+[(三)Hexo部屬至netlify](../3b037b87)
 

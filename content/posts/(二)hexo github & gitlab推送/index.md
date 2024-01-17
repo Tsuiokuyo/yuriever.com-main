@@ -259,6 +259,6 @@ git push -u origin master
 
 延伸閱讀：
 
-[(一)架設hexo部落格](https://tsuiokuyo.netlify.com/posts/9702c5d)
+[(一)架設hexo部落格](../9702c5d)
 
-[(三)Hexo部屬至netlify](https://tsuiokuyo.netlify.com/posts/3b037b87)
+[(三)Hexo部屬至netlify](../3b037b87)

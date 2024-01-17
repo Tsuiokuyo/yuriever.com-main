@@ -99,7 +99,7 @@ let vue = new Vue({
     },
     data: {
         // rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/result.json',
-        // rawUrl: 'https://tsuiokuyo.netlify.app/result.json',
+        // rawUrl: 'https://tsuiokuyo.github.io/result.json',
         rawData: [],
         randomTen: [],
         toRandom: false,
@@ -158,8 +158,8 @@ let vue = new Vue({
 
         // count: undefined,
         overlay: false,
-        leimuUrl: 'https://tsuiokuyo.netlify.app/image/leimuA.webp',
-        lamuUrl: 'https://tsuiokuyo.netlify.app/image/lamuA.webp',
+        leimuUrl: 'https://tsuiokuyo.github.io/image/leimuA.webp',
+        lamuUrl: 'https://tsuiokuyo.github.io/image/lamuA.webp',
         destroy: true,
         disabledBgImage: false,
         dialogYt: {},
@@ -766,9 +766,10 @@ let vue = new Vue({
         // this.rawData = await fetch(
         //     this.rawUrl,
         // ).then((res) => res.json());
-        // await fetch('https://tsuiokuyo.netlify.app/test.gzip').then((res) => res.arrayBuffer().then(buf => {
+        // await fetch('https://tsuiokuyo.github.io/test.gzip').then((res) => res.arrayBuffer().then(buf => {
         //記憶體爆炸
-        await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
+        //await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
+		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.github.io/master/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
             let zippedContent = new Uint8Array(buf);
             let byteArray = pako.ungzip(zippedContent);
             let textDecoder = new TextDecoder();
@@ -1696,16 +1697,16 @@ let vue = new Vue({
         },
         lamu(value) {
             if (value == 'A') {
-                return 'https://tsuiokuyo.netlify.app/image/lamuA.webp'
+                return 'https://tsuiokuyo.github.io/image/lamuA.webp'
             } else {
-                return 'https://tsuiokuyo.netlify.app/image/lamuB.webp'
+                return 'https://tsuiokuyo.github.io/image/lamuB.webp'
             }
         },
         leimu(value) {
             if (value == 'A') {
-                return 'https://tsuiokuyo.netlify.app/image/leimuA.webp'
+                return 'https://tsuiokuyo.github.io/image/leimuA.webp'
             } else {
-                return 'https://tsuiokuyo.netlify.app/image/leimuB.webp'
+                return 'https://tsuiokuyo.github.io/image/leimuB.webp'
             }
         },
         getBackground(item) {
@@ -1740,7 +1741,7 @@ let vue = new Vue({
             return 'image/noImage.webp'
         },
         setBackgroundLazy(entries, observer, isIntersecting) {
-            let bg = 'https://tsuiokuyo.netlify.app/image/background.webp'
+            let bg = 'https://tsuiokuyo.github.io/image/background.webp'
             let cdn = 'https://tsuiokuyo-9688.imgix.net/'
             let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
 
@@ -1767,7 +1768,7 @@ let vue = new Vue({
             }
         },
         goToBlog() {
-            window.open('https://tsuiokuyo.netlify.app/');
+            window.open('https://tsuiokuyo.github.io/');
         },
         next() {
             this.destroyTable()

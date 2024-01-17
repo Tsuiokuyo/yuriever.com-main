@@ -2,8 +2,7 @@
 
 <head>
     <title>歷年動畫評分排行榜單</title>
-	<meta http-equiv="refresh" content="0.1; url=https://tsuiokuyo.github.io/animeListTW">
-	<link rel="canonical" href="https://tsuiokuyo.github.io/animeListTW" />
+	<!-- <link rel="canonical" href="https://tsuiokuyo.github.io/animeListTW" /> -->
     <link rel="Shortcut Icon" type="image/x-icon" href="image/favicons.ico" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
@@ -80,19 +79,19 @@
                         關於
                         <v-icon>mdi-information-outline </v-icon>
                     </v-tab>
-                    <!-- <v-tab to="b" onclick="window.open('https://tsuiokuyo.netlify.app/b/swd/swdtime', '_blank')">
+                    <!-- <v-tab to="b" onclick="window.open('https://tsuiokuyo.github.io/b/swd/swdtime', '_blank')">
                     以前做的軒轅劍時間線
                     <v-icon>mdi-timeline-clock-outline </v-icon>
-                </v-tab> -->
+                </v-tab> 
                     <v-tab to="b" onclick="window.open('http://tsuiokuyo.ddns.net:8763/js_index.html', '_blank')">
                         點歌器
                         <v-icon>mdi-radio-tower </v-icon>
-                    </v-tab>
+                    </v-tab>-->
 
-                    <v-tab to="b" onclick="window.open('https://tsuiokuyo.netlify.app/', '_blank')">
+                    <!-- <v-tab to="b" onclick="window.open('https://tsuiokuyo.github.io/', '_blank')">
                         BLOG
                         <v-icon>mdi-home </v-icon>
-                    </v-tab>
+                    </v-tab> -->
 
                     <span style="position: absolute;
                     left:50%;
@@ -112,8 +111,7 @@
 
                 </v-tabs>
                <v-alert dismissible color="red lighten-2" border="left" elevation="3" colored-border icon="本站事項" dense class="bkColor">
-                    <span>網頁流量莫名一天內爆掉，要被收2000元，估計10/20後https://tsuiokuyo.netlify.app/animelisttw會強制唯讀，所以暫停更新，因為我不想繳錢，"動畫評分排行"的SEO又要找不到這個網頁了QQ</span><br>
-					<span>目前本畫面已直接跳轉到過渡用的https://tsuiokuyo.github.io/animeListTW，估計10/27舊網站+整個部落格會被移除(netlify.app)，到時候SEO查詢出來的網頁會不會是404就不知道了</span>
+					<span>原網站被砍了，導致一些東西也一併掛了，有空再處裡，而SEO找不到了這裡了，一些貼出去的網址也都無法導到這個網站了，雖然可惜，但就這樣吧，<span>
                 </v-alert>
 		
 				
@@ -143,12 +141,13 @@
                                     1.目前共含16個二次元相關評分網站，實際上TMDB、TVDB、IMDB也能納入算分，不過...麻煩，有心情再考慮<br>                 
 									2.最下面的有生之年加入區...<br>  
 									3.話說，如果資料越塞越多，運算時間肯定會令人無法忍受，屆時就是只能搞資料庫了或擺爛了...<br>  
+									4.新番判斷
                                     <br><br><br>
                                     目前網頁功能說明:
                                 <oi>
                                     <li>網址列帶參數功能:基本上沒啥用，就是帶了參數進來能直接查詢某作品，作品名稱或是年份，使用方法如下方<br>
-                                        　　https://tsuiokuyo.netlify.app/animelisttw?name=聖母在上<br>
-                                        　　https://tsuiokuyo.netlify.app/animelisttw?year=2004
+                                        　　https://tsuiokuyo.github.io/animelisttw?name=聖母在上<br>
+                                        　　https://tsuiokuyo.github.io/animelisttw?year=2004
                                     </li>
                                     <li>上方新聞條：RSS撈取ACGN的資訊，因為免費版有次數限制，所以從Fly.io、Firebase隨機擇一基於cors-anywhere撈取RSS資料。</li>
                                     <li>聲優的生日日曆：就是聲優的生日日歷，會依照擔任過的主要角色次數變色，紫色則為當日壽星，點擊名字則顯示擔任過的角色及作品<br>
@@ -575,7 +574,7 @@
                                     以動畫截圖找動畫(以圖搜圖)
                                 </span></v-expansion-panel-header>
                                 <v-expansion-panel-content><br />
-                                    <h4>僅適合找動畫中出現的場景，例如搜尋這種沒辨識度的畫面：https://tsuiokuyo.netlify.app/assets/test.jpg</h4>
+                                    <h4>僅適合找動畫中出現的場景，例如搜尋這種沒辨識度的畫面：https://tsuiokuyo.github.io/assets/test.jpg</h4>
 
 
                                     <v-row>
@@ -805,7 +804,7 @@
                         </v-row>
                         <br />
                         <v-row>
-                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年08月01日</span>
+                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2023年11月02日</span>
                         </v-row>
                         <span v-if="windowWidth > 600"> 
                         <br/>
@@ -1064,7 +1063,7 @@
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
                                 <v-avatar size="32" rounded>
-                                    <img alt="aniList" src="image/aniList.webp">
+                                    <img alt="aniList" src="image/anilist.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.AniList" :item="item.AniList" website="AniList" :b-score="item.AniList.b_score"></rating>
                                 <span v-else>

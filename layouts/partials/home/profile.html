@@ -1,5 +1,5 @@
-<meta http-equiv="refresh" content="0.1; url=https://tsuiokuyo.github.io">
-<link rel="canonical" href="https://tsuiokuyo.github.io" /> {{- $profile := .Site.Params.home.profile -}}
+<!-- <meta http-equiv="refresh" content="0.1; url=https://tsuiokuyo.github.io"> -->
+<!-- <link rel="canonical" href="https://tsuiokuyo.github.io" /> {{- $profile := .Site.Params.home.profile -}} -->
 <div class="home-profile">
     {{- $avatar := $profile.avatarURL -}} {{- with $profile.gravatarEmail -}} {{- $avatar = md5 . | printf "https://www.gravatar.com/avatar/%v?s=240&d=mp" -}} {{- end -}} {{- if $avatar -}}
     <div class="home-avatar">
@@ -19,8 +19,8 @@
         {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Scratch.Get "this") | $.Scratch.Set "this" -}} {{- else -}} {{- . | safeHTML -}} {{- end -}}
 
     </div>
-    <span>本來是想要推廣各種動畫的，不過文筆爛，加上要花太多時間，算了，目前除了搞動畫排行之外
-		<br />還是來研究真百合傳教用的網站要怎麼搞好了(2022/09/16)</span>
+    <span>因為原本的網站被砍了，一些東西也一併掛了，雖然買網域想架一個前後端分離的傳教用網站
+		<br />可是以我的審美觀大概...只能產出大便，再加上好麻煩QAQ</span>
     <br />
     <span><img src="https://api.netlify.com/api/v1/badges/e0df1af6-5693-4e95-b571-646710bffe5b/deploy-status"></span> {{- end -}} {{- if $profile.social -}}
     <div class="links">
