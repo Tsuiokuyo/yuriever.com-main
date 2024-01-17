@@ -376,7 +376,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       Mix = false
     # LoveIt 更改 | 0.2.0 評論系統設置
     [params.page.comment]
-      enable = true
+      enable = false
       # Disqus 評論系統設置
       [params.page.comment.disqus]
         # LoveIt 新增 | 0.1.1
@@ -447,7 +447,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       [params.page.comment.giscus]
         # 你可以參考官方文件來使用下列配置
         enable = "false"
-        repo = "Tsuiokuyo/tsuiokuyo.netlify.com.comment"
+        repo = ""
         repoId = "R_kgDOHp8FiQ"
         category = "Announcements"
         categoryId = "DIC_kwDOHp8Fic4CQNNp"
