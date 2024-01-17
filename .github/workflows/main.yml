@@ -3,7 +3,7 @@ name: deploy-to-github
 on:
   push:
     branches:
-      - master  # 當main分支有push操作時
+      - main  # 當main分支有push操作時
 
 jobs:
   deploy:
