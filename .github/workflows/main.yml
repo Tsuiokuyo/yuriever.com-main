@@ -18,7 +18,7 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.101.0' # hugo 版本
-          # extended: true  # 如果是使用extended版本的務必取消註解。
+          extended: true  # 如果是使用extended版本的務必取消註解。
       - name: Build
         run: hugo --gc --minify --cleanDestinationDir
 
