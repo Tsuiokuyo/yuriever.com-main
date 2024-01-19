@@ -16,53 +16,71 @@ lastmod: 2024-01-18
 
 <img src="images\1.jpg" title="" alt="OSD02" data-align="left">
 
-該網頁是基於選擇的支援卡給出訓練分數，因此當前使用的支援卡越多張，分數只會越來越高，他並不是單純計算一張卡的效益，而是多卡的組合效益，但並沒有考慮技能組。
+### 先提一下，這個畫面不是我開發的，
 
-例如牌組有一張速北黑，那麼下一張牌則是計算他跟速北黑的搭配的訓練效益。
+#### 
 
-這個畫面不是我開發的，但是看到這個評分表，覺得對我有點用處就拿來改一下，
-當支援卡不多的時候，單純比較低破卡的訓練效益還是有點用處的。
+我只是調整成台服適用以及讓我自己能更方便用而已，
 
-我只是將她弄成中文並僅顯示台服(即將)有的支援卡，再加入及調整一些細微末節，
-並顯示出選擇的卡片擅長率跟一些參數，我本來想顯示更細的參數，但認為沒甚麼意義，
+當自身支援卡不多的時候，用來比較低破卡的訓練效益還是有點用處的，
 
-以及增加自己牌組設定，會自動儲存在瀏覽器，這樣就不用看到自己手中沒有的卡牌了，
-用來比較自己擁有的低破SSR跟高破SR的訓練效果就不用再看一堆牌了。
+#### 也許應該叫做支援卡訓練組合效益排名表。
+
+#### 該網頁是基於目前選擇的支援卡給出訓練組合分數，因此當前使用的支援卡越多張，
+
+分數會越來越高，他並不是單純計算一張卡的效益，而是多卡的組合效益，但並沒有考慮技能組。
+
+#### 例如，牌組第一張是速北黑，那麼下一張牌的分數則是計算他跟速北黑的搭配的訓練效益。
+
+#### 我將她弄成中文並僅顯示台服現有以及即將有的支援卡，
+
+#### 再加入及調整一些細微末節以及參數不合理處，
+
+#### 並在畫面上顯示出選擇的卡片擅長率跟一些參數，
+
+#### 以及增加自己牌組設定，設定後會自動儲存在瀏覽器，
+
+#### 用來比較自己擁有的低破SSR跟高破SR的訓練效果就不用再看一堆牌了。
 
 <img src="images\2.jpg" title="" alt="123" data-align="left">
 
-網址：[https://tsuiokuyo.github.io/uma-tire/index.html]()
+### 因為網頁不算複雜，都有寫用途了，
 
-[GitHub](https://github.com/Tsuiokuyo/umamusume-tierlist/tree/main)
+### 按下預定的劇本後，參數就預設好了，賽程、成長率都預設也行，
 
-另外，這是原作者的畫面網址:[Uma Musume Tier List](https://euophrys.github.io/uma-tiers/)
+### 只需要選你的基底卡即可。
 
-[GitHub - Euophrys/umamusume-tierlist](https://github.com/Euophrys/umamusume-tierlist)
+#### 已選擇的卡片會變灰色，因為無法重複的馬娘，要到上方把它點掉
 
-這是他內附的賽馬娘英文教學手冊(日服進度)
+### [Github](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2FTsuiokuyo%2Fumamusume-tierlist%2Ftree%2Fmain)
 
-目前共217頁，鉅細靡遺，只差沒告訴你要如何開發遊戲而已
+### 畫面網址：[https://tsuiokuyo.github.io/umaTier/index.html](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Ftsuiokuyo.github.io%2FumaTier%2Findex.html)
 
-https://docs.google.com/document/d/1gNcV7XLmxx0OI2DEAR8gmKb8P9BBhcwGhlJOVbYaXeo/edit
+**這****是原開發者的畫面網址:[Uma Musume Tier List](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Feuophrys.github.io%2Fuma-tiers%2F)**
 
-因為網頁不算複雜，都有寫用途了，基本上預設也行，
-沒甚麼好提的，就稍微提一下分數怎麼來的
+[**Github**](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2FEuophrys%2Fumamusume-tierlist)
 
-花了一點時間理解下他的訓練邏輯，雖然對方命名很清楚，但名稱都是英文，
+**內附賽馬娘英文教學手冊(日服進度)，****目前共217頁，鉅細靡遺，只差沒告訴你要如何開發遊戲而已**
 
-寫得再怎麼清楚，單字還是看不懂。
+**[googleDocs](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fdocs.google.com%2Fdocument%2Fd%2F1gNcV7XLmxx0OI2DEAR8gmKb8P9BBhcwGhlJOVbYaXeo%2Fedit)**
 
-訓練邏輯程式碼 https://github.com/Tsuiokuyo/umamusume-tierlist/blob/main/src/components/TierList.js
 
-分數計算說明的原文是英文
 
-https://docs.google.com/document/d/1gNcV7XLmxx0OI2DEAR8gmKb8P9BBhcwGhlJOVbYaXeo/edit#heading=h.aohtlry4ctho
+#### 這邊提一下卡片的分數怎麼來的
+
+花了一點時間理解下他的分數計算方式，雖然對方參數命名很清楚，但不懂的地方還是不懂。
+
+因此下方直接引用原文，並翻成中文
+
+[https://docs.google.com/document/d/1gNcV7XLmxx0OI2DEAR8gmKb8P9BBhcwGhlJOVbYaXeo/edit#heading=h.aohtlry4ctho](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fdocs.google.com%2Fdocument%2Fd%2F1gNcV7XLmxx0OI2DEAR8gmKb8P9BBhcwGhlJOVbYaXeo%2Fedit%23heading%3Dh.aohtlry4ctho)
 
 我稍微提一下大概是在程式碼的哪個地方
 
-只是大概啦...
+大概而已，因為路徑會隨著更新跑掉。
 
-下面這段的邏輯大概在[function processCards](https://github.com/Tsuiokuyo/umamusume-tierlist/blob/main/src/components/TierList.js#L127-L381) 中
+
+
+下面這段的邏輯大概在[processCards](https://github.com/Tsuiokuyo/umamusume-tierlist/blob/main/src/components/TierList.js#L127-L381) 中
 
 > 這個分數是以相當複雜的方式生成的。首先計算卡片需要多少次訓練才能達到橘色羈絆，
 > 然後計算這些訓練的平均專長訓練次數。使用這些非彩圈專長訓練的分數，
@@ -83,14 +101,16 @@ https://docs.google.com/document/d/1gNcV7XLmxx0OI2DEAR8gmKb8P9BBhcwGhlJOVbYaXeo/
 
 > 如果你的牌組是 ABCDE，那麼就會有 A、B、C、D、E、AB、AC、AD、AE、ABC、ABD、ABE、ACD、ACE 等等的組合，以此類推。
 
-而該網頁的擅長率的計算公式以小北來說是
+#### 該網頁的擅長率的計算公式以小北來說，
 
-(100+80)x1.2 / (400+50+(180x1.2))=32.43%，
+(100+80)x1.2 / (400+50+(180x1.2))=32.43%
 
-**以下是廢話，一些其長率的公式，基本上其他算法都算被推翻了**
 
-順便查了一下目前賽馬娘得意率(擅長率)的計算公式，包應該已經被解析得差不多了，不過在各個討論、攻略區查了一下，算法還是2021年的那些，
-實際上說不定根本沒有人在意得意率的公式，反倒比賽的公式才很明確
+
+**以下是廢話，一些擅長率的公式，基本上其他算法都算被推翻了**
+
+順便查了一下目前賽馬娘得意率(擅長率)的計算公式，包應該已經被解析得差不多了，不過在各個討論、攻略區查了一下，被提起算法還是當初的那些，
+實際上說不定根本沒有人在意得意率的公式，反倒比賽及賽道的公式很明確
 
 至於最早是誰或哪個攻略網提出這些算式的我就沒有特地去找了，就隨意的貼上幾個網址供參考。
 
@@ -145,5 +165,7 @@ https://i.gyazo.com/51fe0be75f87b9c38eaed3915ccc8080.png
 順便一提，雖然 [ウマ娘 サポカ性能比較ツール | 数字でわかるウマ娘攻略](https://ogatetsu.shop/entry/2023/03/26/support-card-compare-tool)
 
 算是類似的作品，還有線圖，但是是單卡效益，而且要一個一個挑在加上日文及選卡麻煩，我還是覺得很難用。
+
+
 
 感謝
