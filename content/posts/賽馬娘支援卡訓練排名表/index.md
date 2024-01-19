@@ -23,8 +23,6 @@ lastmod: 2024-01-18
 這個畫面不是我開發的，但是看到這個評分表，覺得對我有點用處就拿來改一下，
 當支援卡不多的時候，單純比較低破卡的訓練效益還是有點用處的。
 
-
-
 我只是將她弄成中文並僅顯示台服(即將)有的支援卡，再加入及調整一些細微末節，
 並顯示出選擇的卡片擅長率跟一些參數，我本來想顯示更細的參數，但認為沒甚麼意義，
 
@@ -36,10 +34,6 @@ lastmod: 2024-01-18
 網址：[https://tsuiokuyo.github.io/uma-tire/index.html]()
 
 [GitHub](https://github.com/Tsuiokuyo/umamusume-tierlist/tree/main)
-
-
-
-
 
 另外，這是原作者的畫面網址:[Uma Musume Tier List](https://euophrys.github.io/uma-tiers/)
 
