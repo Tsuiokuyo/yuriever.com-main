@@ -19,10 +19,10 @@
         {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Scratch.Get "this") | $.Scratch.Set "this" -}} {{- else -}} {{- . | safeHTML -}} {{- end -}}
 
     </div>
-    <span>因為原本的網站被砍了，一些東西也一併掛了，雖然買網域想架一個前後端分離的傳教用網站
-		<br />可是以我的審美觀大概...只能產出大便，再加上好麻煩QAQ</span>
+    <span>原本在netlify的網站被砍了，一些東西也一併掛了，因此買了這網域，想將這首頁改成一個百合傳教用畫面
+		<br />可是還想不到要怎麼呈現，再加上好麻煩，超級麻煩</span>
     <br />
-    <span><img src="https://api.netlify.com/api/v1/badges/e0df1af6-5693-4e95-b571-646710bffe5b/deploy-status"></span> {{- end -}} {{- if $profile.social -}}
+    <!--<span><img src="https://api.netlify.com/api/v1/badges/e0df1af6-5693-4e95-b571-646710bffe5b/deploy-status"></span> -->{{- end -}} {{- if $profile.social -}}
     <div class="links">
         {{- $socialMap := resources.Get "data/social.yml" | transform.Unmarshal -}} {{- $socialArr := slice -}} {{- range $key, $value := .Site.Params.social -}} {{- $social := $key | lower | index $socialMap | default dict -}} {{- if $value -}} {{- if reflect.IsMap
         $value -}} {{- with $value.weight -}} {{- $social = dict "Weight" . | merge $social -}} {{- end -}} {{- with $value.prefix -}} {{- $social = dict "Prefix" . | merge $social -}} {{- end -}} {{- with $value.template -}} {{- $social = dict "Template"
