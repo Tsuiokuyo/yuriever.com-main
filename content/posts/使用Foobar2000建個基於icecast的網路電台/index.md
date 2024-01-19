@@ -6,7 +6,7 @@ featuredImage: "/assets/foobar2000.jpg"
 featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
-lastmod: 2023-08-16
+lastmod: 2024-01-19
 weight: 2
 ---
 
@@ -21,13 +21,13 @@ weight: 2
 (有封鎖特定IP區段連入)
 
 點歌台
-http://tsuiokuyo.ddns.net:8763/js_index.html
+已改用私人的navidrome
 
 狀態
-http://tsuiokuyo.ddns.net:8764
+已改用私人的navidrome
+
 (icecast)
 
-<s>http://tsuiokuyo.ddns.net:8765</s>
 (shoutcast)
 
 其實會收聽的都在shoutcast，因為很多程式都能直接搜尋shoutcast電台</s>
@@ -119,7 +119,7 @@ http://src.infinitewave.ca/
 2023/02/24 修復換頁千分位錯誤，
 
 <!--
-<audio controls="controls" preload="none" __idm_id__="21979137"><source src="http://tsuiokuyo.ddns.net:8764/vorbis" type="application/ogg"></audio>
+<audio controls="controls" preload="none" __idm_id__="21979137"><source src="http://XXX:port/vorbis" type="application/ogg"></audio>
 
 {{< audio >}}
 -->
