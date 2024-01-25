@@ -42,6 +42,8 @@ lastmod: 2024-01-18
 
 #### 用來比較自己擁有的低破SSR跟高破SR的訓練效果就不用再看一堆牌了。
 
+
+
 <img src="images\2.jpg" title="" alt="123" data-align="left">
 
 ### 因為網頁不算複雜，都有寫用途了，
@@ -64,8 +66,6 @@ lastmod: 2024-01-18
 
 **[googleDocs](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fdocs.google.com%2Fdocument%2Fd%2F1gNcV7XLmxx0OI2DEAR8gmKb8P9BBhcwGhlJOVbYaXeo%2Fedit)**
 
-
-
 #### 這邊提一下卡片的分數怎麼來的
 
 花了一點時間理解下他的分數計算方式，雖然對方參數命名很清楚，但不懂的地方還是不懂。
@@ -77,8 +77,6 @@ lastmod: 2024-01-18
 我稍微提一下大概是在程式碼的哪個地方
 
 大概而已，因為路徑會隨著更新跑掉。
-
-
 
 下面這段的邏輯大概在[processCards](https://github.com/Tsuiokuyo/umamusume-tierlist/blob/main/src/components/TierList.js#L127-L381) 中
 
@@ -104,8 +102,6 @@ lastmod: 2024-01-18
 #### 該網頁的擅長率的計算公式以小北來說，
 
 (100+80)x1.2 / (400+50+(180x1.2))=32.43%
-
-
 
 **以下是廢話，一些擅長率的公式，基本上其他算法都算被推翻了**
 
@@ -165,7 +161,5 @@ https://i.gyazo.com/51fe0be75f87b9c38eaed3915ccc8080.png
 順便一提，雖然 [ウマ娘 サポカ性能比較ツール | 数字でわかるウマ娘攻略](https://ogatetsu.shop/entry/2023/03/26/support-card-compare-tool)
 
 算是類似的作品，還有線圖，但是是單卡效益，而且要一個一個挑在加上日文及選卡麻煩，我還是覺得很難用。
-
-
 
 感謝
