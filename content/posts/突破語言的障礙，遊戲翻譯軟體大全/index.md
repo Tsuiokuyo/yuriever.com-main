@@ -654,8 +654,6 @@ Yeekit、baiduweb、雲譯、有道、google
 
 實際上也有其他被埋沒的或持續更新的翻譯器，OCR居多，就不一一列出了
 
-
-
 ### ## 3.21 RENPYTHIEF
 
 **我尚未測試**
@@ -666,7 +664,7 @@ Yeekit、baiduweb、雲譯、有道、google
 
 撰寫時的軟體版本號為 v3.9 (2024/01/31)
 
-### ## 3.22 Sakura-13B-Galgame翻譯模型
+### ### ## 3.22 Sakura-13B-Galgame翻譯模型
 
 ****你不需要這個東西**
 
@@ -678,19 +676,39 @@ Yeekit、baiduweb、雲譯、有道、google
 
 只要模型的輸出可為openAI API格式，並不一定需要使用這個模型，
 
-但是如果說是針對galgame調整的中文模型，我目前也只知道這個，
+但是如果說是針對galgame進行的中文微調模型，我目前也只知道這個，
+
+其他LLM排行表高分的中文模型也不是不能用，
+
+但是品質語意還是比不上直接用API，
+
+因此你會寧願使用其他的翻譯API
 
 且一般的使用者也無法用到13B的參數量，有空我再來玩玩
 
-[https://github.com/SakuraLLM/Sakura-13B-Galgame](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2FSakuraLLM%2FSakura-13B-Galgame)
+[GitHub - SakuraLLM/Sakura-13B-Galgame: 适配轻小说/Galgame的日中翻译大模型](https://github.com/SakuraLLM/Sakura-13B-Galgame)
+
+#### ## 3.22.1 [SakuraTranslator](https://github.com/fkiliver/SakuraTranslator)
+
+**我尚未測試**
+
+基於XUnity.AutoTranslator和Sakura模型的Unity遊戲翻譯
+
+[GitHub - fkiliver/SakuraTranslator](https://github.com/fkiliver/SakuraTranslator)
+
+#### ## 3.22.2 RPGMaker_LLM_Translator
+
+我尚未測試
+
+基於Mtool和Sakura模型的RPGMaker遊戲翻譯
+
+[GitHub - fkiliver/RPGMaker_LLM_Translator](https://github.com/fkiliver/RPGMaker_LLM_Translator)
 
 ### ## 3.23 GalTransl
 
 未補
 
 [https://github.com/cx2333-gt/GalTransl](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2Fcx2333-gt%2FGalTransl)
-
-
 
 # 4. 時代的眼淚
 
