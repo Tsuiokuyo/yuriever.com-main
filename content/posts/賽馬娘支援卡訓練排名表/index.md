@@ -42,8 +42,6 @@ lastmod: 2024-01-18
 
 #### 用來比較自己擁有的低破SSR跟高破SR的訓練效果就不用再看一堆牌了。
 
-
-
 <img src="images\2.jpg" title="" alt="123" data-align="left">
 
 ### 因為網頁不算複雜，都有寫用途了，
@@ -56,9 +54,9 @@ lastmod: 2024-01-18
 
 ### [Github](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2FTsuiokuyo%2Fumamusume-tierlist%2Ftree%2Fmain)
 
-### 畫面網址：[https://tsuiokuyo.github.io/umaTier/index.html](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Ftsuiokuyo.github.io%2FumaTier%2Findex.html)
+### 畫面網址：[https://tsuiokuyo.github.io/umaTier/index.html](https://yuriever.com/umaTier/index.html)
 
-**這****是原開發者的畫面網址:[Uma Musume Tier List](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Feuophrys.github.io%2Fuma-tiers%2F)**
+這是原開發者的畫面網址:[Uma Musume Tier List](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Feuophrys.github.io%2Fuma-tiers%2F)**
 
 [**Github**](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2FEuophrys%2Fumamusume-tierlist)
 

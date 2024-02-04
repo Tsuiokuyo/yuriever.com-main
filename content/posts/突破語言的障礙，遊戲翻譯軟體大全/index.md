@@ -654,6 +654,44 @@ Yeekit、baiduweb、雲譯、有道、google
 
 實際上也有其他被埋沒的或持續更新的翻譯器，OCR居多，就不一一列出了
 
+
+
+### ## 3.21 RENPYTHIEF
+
+**我尚未測試**
+
+支援Unity、Renpy、RPGMaker MV、MZ
+
+中國網友開發的軟體，雖然也有懶的測試的成分
+
+撰寫時的軟體版本號為 v3.9 (2024/01/31)
+
+### ## 3.22 Sakura-13B-Galgame翻譯模型
+
+****你不需要這個東西**
+
+**我尚未測試**
+
+這是一個翻譯模型，似乎LunaTranslator支援使用，
+
+實際上支援自訂API網址的翻譯工具都能使用這個
+
+只要模型的輸出可為openAI API格式，並不一定需要使用這個模型，
+
+但是如果說是針對galgame調整的中文模型，我目前也只知道這個，
+
+且一般的使用者也無法用到13B的參數量，有空我再來玩玩
+
+[https://github.com/SakuraLLM/Sakura-13B-Galgame](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2FSakuraLLM%2FSakura-13B-Galgame)
+
+### ## 3.23 GalTransl
+
+未補
+
+[https://github.com/cx2333-gt/GalTransl](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2Fcx2333-gt%2FGalTransl)
+
+
+
 # 4. 時代的眼淚
 
 **下面的東西你全都不需要**
@@ -774,7 +812,7 @@ Chiitrans及Chiitrans2
 
 撰寫時的軟體版本號為 v1.5.2 (2014/12/26)
 
-<img title="" src="images/Chiitrans%20Lite.jpg" alt="" data-align="center"> 
+<img title="" src="images/ChiitransLite.jpg" alt="" data-align="center"> 
 
 # 5. 其他
 
