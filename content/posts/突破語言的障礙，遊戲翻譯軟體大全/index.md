@@ -6,6 +6,7 @@ featuredImage: "/assets/dic.jpg"
 featuredImagePreview: "/assets/dic.jpg"
 tags: [翻譯軟體]
 categories: [翻譯軟體]
+lastmod: 2024-02-04
 ---
 
 {{< admonition >}}
@@ -13,6 +14,20 @@ categories: [翻譯軟體]
 本文無教程及下載點，但大多有提供github或官網，基本上github內都有教程，冷門的還請自行google方法
 
 {{< /admonition >}}
+
+
+
+(2024/02/04)簡單補上一些資訊，但是最近比較沒空，尚未測試
+
+看來已經到了連LLM模型都要放上來的時候了...?
+
+3.21 RENPYTHIEF
+
+3.22 Sakura-13B-Galgame翻譯模型
+
+3.23 GalTransl
+
+
 
 目前玩過的HG還真不少...
 
