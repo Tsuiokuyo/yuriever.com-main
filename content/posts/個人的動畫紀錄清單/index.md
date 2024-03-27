@@ -6,7 +6,7 @@ slug: 6c54
 date: 2022-06-18 00:00:00
 featuredImage: "/assets/未來.jpg"
 featuredImagePreview: "/assets/未來.jpg"
-lastmod: 2022-07-15
+lastmod: 2024-03-28
 ---
 
 ## 純前端畫面，使用element UI、cloud firestore來玩玩
@@ -23,4 +23,10 @@ lastmod: 2022-07-15
 
 停止更新，現在倒是直接看[動畫榜單](https://tsuiokuyo.netlify.app/posts/a0e397c3/)了，搞這個太沒效率了...
 
-https://tsuiokuyo.netlify.app/b/animelist/animelist
+https://yuriever.com/B/animeList/animeList
+
+
+
+(2024-03-28)看來只能用懶人做法了...確實有些動畫看過就忘了，完全沒有留在記憶之中...
+
+我居然還要來這個早已不管的地方再確認一次...
