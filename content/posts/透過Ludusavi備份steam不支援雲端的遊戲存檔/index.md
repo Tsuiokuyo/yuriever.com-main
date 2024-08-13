@@ -2,10 +2,10 @@
 title: "透過Ludusavi備份steam不支援雲端的遊戲存檔"
 date: 2024-07-31T00:00:00+08:00
 slug: d1cc50a0
-featuredImage: "/assets/.jpg"
-featuredImagePreview: "/assets/.jpg"
-tags: []
-categories: []
+featuredImage: "/assets/Ludusavi.jpg"
+featuredImagePreview: "/assets/Ludusavi.jpg"
+tags: ['軟體']
+categories: ['其他']
 ---
 
 {{< admonition >}}
