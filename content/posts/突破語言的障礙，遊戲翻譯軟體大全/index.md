@@ -6,7 +6,7 @@ featuredImage: "/assets/dic.jpg"
 featuredImagePreview: "/assets/dic.jpg"
 tags: [翻譯軟體]
 categories: [翻譯軟體]
-lastmod: 2024-02-04
+lastmod: 2024-08-13
 ---
 
 {{< admonition >}}
@@ -16,18 +16,74 @@ lastmod: 2024-02-04
 {{< /admonition >}}
 
 
+https://forum.gamer.com.tw/C.php?bsn=60599&snA=42844
 
-(2024/02/04)簡單補上一些資訊，但是最近比較沒空，尚未測試
+巴哈的版本會比較新且比較好閱讀，因為兩邊的排版方式不同，
 
+這裡又因為布局的關係變更亂了，所以排版擺爛了，
+
+會以巴哈那邊優先調整及更新，這邊就...看心情了。
+
+
+實際上，我根本不需要這麼多種的翻譯程式...
+
+有持續關注的也只有SakuraLLM模型
+
+
+而因為我比較懶，玩都沒時間了還來寫文，有些接觸過的新東西也不一定會補上來，
+
+再加上本文稍混亂且沒有實質教學，不會用的人還是需要再去爬文，
+
+再再加上目前這些工具還是迭代很快，很容易就過時了，
+
+基本上有後續更新的程式都會導入適用於openAI api 接口，
+
+我也不會一一去更新下面內容，因此加入了當時的版本號及時間，
+
+所以我建議可以先看這兩篇有後續更新以及教學的文章，本篇文章略過也無所謂
+
+[【心得】遊戲&漫畫翻譯器使用心得及評測](https://forum.gamer.com.tw/Co.php?bsn=60599&sn=144224)
+
+[【密技】LunaTranslator 用中文翻譯遊玩Steam上歐美遊戲及Galgame 更新:Rpgmaker跟Unity的引擎也適用Luna翻譯](https://forum.gamer.com.tw/C.php?bsn=60599&snA=41884)
+
+
+
+此畫面更新紀錄
+
+(2024/08/12)
+3.29 VNLauncher (中國網友開發的galgame管理、紀錄時長及翻譯工具)
+
+(2024/07/25)
+3.28 renpy-translator
+3.25 翻译姬 (純文字檔翻譯用)
+
+(2024/07/03)
+這兩個比較適用於自製漢化補丁
+KeywordGacha (搭配LLM，翻譯前統一及替換專有名稱的工具)
+GalTransl-7B-v1.5 (LLM模型，用於直接翻譯遊戲內腳本文字)
+
+(2024/06/11)
+Qwen2 (LLM模型，用途類似 Sakura-13B-Galgame)
+我等了好久終於開源了...
+不過在這個帖子中，能說的用途只有英翻中一種
+
+(2024/03/22)
+3.27 projz_renpy_translation
+(2024/02/27)補上一些無傷大雅的小資訊
+3.26 RENPYTHIEF補充內容
+3.21.1 OpenCC
+3.23 EraTranslatorPlus
+3.24 ERATranslateHelper
+
+(2024/02/04)簡單補上一些資訊，
 看來已經到了連LLM模型都要放上來的時候了...?
-
-3.21 RENPYTHIEF
-
-3.22 Sakura-13B-Galgame翻譯模型
-
-3.23 GalTransl
+3.26 RENPYTHIEF
+3.21 Sakura-13B-Galgame LLM模型
+3.22 GalTransl
 
 
+
+廢話區
 
 目前玩過的HG還真不少...
 
@@ -133,7 +189,8 @@ ALT + T：自動翻譯以及取消翻譯。
 
 **你不需要這個東西**
 
-[GitHub - stevetrs/mytrs1](https://github.com/stevetrs/mytrs1)
+[GitHub - imboaba/mytrs1](https://github.com/imboaba/mytrs1)
+[GitHub - stevetrs/mytrs1(網址失效)](https://github.com/stevetrs/mytrs1)
 
 這個是拿mtool提取的文本去透過API翻譯
 
@@ -669,61 +726,165 @@ Yeekit、baiduweb、雲譯、有道、google
 
 實際上也有其他被埋沒的或持續更新的翻譯器，OCR居多，就不一一列出了
 
-### ## 3.21 RENPYTHIEF
+## 3.21 Sakura-13B-Galgame LLM模型
 
-**我尚未測試**
+**你不需要這個東西
 
-支援Unity、Renpy、RPGMaker MV、MZ
 
-中國網友開發的軟體，雖然也有懶的測試的成分
+這是一個LLM模型，LunaTranslator支援使用，
+也能搭配text-generation-webui用在MTool，
 
-撰寫時的軟體版本號為 v3.9 (2024/01/31)
+特化於galgame的一個中日翻譯的模型，有點意思，
+用日文輕小說稍微與GPT3.5比對了一下
+sakura、GPT3.5>有道>百度
+當時測試的版本為sakura-13b-lnovel-v0.9b-Q8_0.gguf
 
-### ### ## 3.22 Sakura-13B-Galgame翻譯模型
+目前當然還有些問題，但未來如果繼續發展不夭折，
+我個人認為這將比GPT3.5更適合使用在二次元的文本上，
+前提是你最低需要有一張24GB的顯示卡
 
-****你不需要這個東西**
+當然你也能降低翻譯的品質，找其他量化版本，
+或是找其他參數量的LLM，例如7B，甚至4B的模型來進行翻譯。
 
-**我尚未測試**
+而英翻中也能使用Qwen1.5-14B等等搭配text-generation-webui來玩玩。
 
-這是一個翻譯模型，似乎LunaTranslator支援使用，
+https://github.com/SakuraLLM/Sakura-13B-Galgame
 
-實際上支援自訂API網址的翻譯工具都能使用這個
+撰寫時的版本號為 20240303-Qwen1.5-14B-v0.10pre0
 
-只要模型的輸出可為openAI API格式，並不一定需要使用這個模型，
+# Qwen2 LLM模型
 
-但是如果說是針對galgame進行的中文微調模型，我目前也只知道這個，
+較適合英翻(簡)中
+https://github.com/QwenLM/Qwen2
 
-其他LLM排行表高分的中文模型也不是不能用，
 
-但是品質語意還是比不上直接用API，
+# GalTransl-7B-v1.5 LLM模型
 
-因此你會寧願使用其他的翻譯API
+對adv遊戲的文本、腳本中的行內換行等符號有較好的保留能力。
+簡單的說就是比較適合用來自製翻譯補丁。
+https://huggingface.co/SakuraLLM/GalTransl-7B-v1.5
 
-且一般的使用者也無法用到13B的參數量，有空我再來玩玩
 
-[GitHub - SakuraLLM/Sakura-13B-Galgame: 适配轻小说/Galgame的日中翻译大模型](https://github.com/SakuraLLM/Sakura-13B-Galgame)
+# KeywordGacha
 
-#### ## 3.22.1 [SakuraTranslator](https://github.com/fkiliver/SakuraTranslator)
+搭配LLM用的統一作品內的名詞的工具，比較適用於翻譯前替換文字
+https://github.com/neavo/KeywordGacha
+撰寫時的版本號為 KeywordGacha_DEV_20240702_161945
 
-**我尚未測試**
+## 3.21.1 OpenCC
 
-基於XUnity.AutoTranslator和Sakura模型的Unity遊戲翻譯
+**你不需要這個東西
 
-[GitHub - fkiliver/SakuraTranslator](https://github.com/fkiliver/SakuraTranslator)
+如果這個模型看不慣簡體字還能再搭配openCC實現簡體字轉台灣化功能，
+但是stream模式下會影響到生成速度，
+但如果是全部生成完成後再一次轉換則生成速度不會有太大影響
 
-#### ## 3.22.2 RPGMaker_LLM_Translator
+https://github.com/BYVoid/OpenCC/
+
+撰寫時的版本號為 20240111-v0.9b
+
+## 3.21.2 SakuraTranslator
 
 我尚未測試
+基於XUnity.AutoTranslator和Sakura模型的Unity遊戲翻譯
+https://github.com/fkiliver/SakuraTranslator
 
+## 3.21.3 RPGMaker_LLM_Translator
+
+我尚未測試
 基於Mtool和Sakura模型的RPGMaker遊戲翻譯
+https://github.com/fkiliver/RPGMaker_LLM_Translator
 
-[GitHub - fkiliver/RPGMaker_LLM_Translator](https://github.com/fkiliver/RPGMaker_LLM_Translator)
 
-### ## 3.23 GalTransl
+## 3.22 GalTransl
 
-未補
+內容待補
 
-[https://github.com/cx2333-gt/GalTransl](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2Fcx2333-gt%2FGalTransl)
+https://github.com/cx2333-gt/GalTransl
+
+
+## 3.23 EraTranslatorPlus
+
+**你不需要這個東西
+
+https://github.com/trlaitioer/EraTranslatorPlus
+
+只支援百度API，
+這是純文字遊戲引擎(Eramaker、Emuera)用的，
+
+
+感謝@gamer401告知此程式
+
+撰寫時的軟體版本號為 v1.0.0 (2021/04/23)
+
+## 3.24 ERATranslateHelper
+
+**你不需要這個東西
+
+這是純文字遊戲引擎(Eramaker、Emuera)用的，
+只支援百度API...
+內容待補...
+
+https://github.com/mammothrider/ERATranslateHelper
+
+## 3.25 翻译姬
+
+**你不需要這個東西
+*需遊戲解包
+
+純文本機翻工具
+
+https://gitee.com/this_sensen/NEKO_Print
+撰寫時的軟體版本號為 v1.0.0.4
+
+## 3.26 RENPYTHIEF
+
+**你不需要這個東西
+
+https://lion.craft.me/RenpyThief
+
+我未測試，
+用途和MTOOL類似
+這東西其實2022年就有了
+支援Unity、Renpy、RPGMaker MV、MZ。
+
+補充內容
+早期免費
+現在"註冊"後，每日額度20000字內免費，更多則需收費。
+
+收費是一回事，有個問題是
+被B站網友注意到完全沒有遵守其他開源程式碼的授權條款，然後該網友就被拉黑了
+Textractor的GPLv3開源協議未遵守，畢竟開源了他也不用收費了
+而且連最簡單的MIT協議，只需要保留license檔案也沒有放
+https://bbs.south-plus.net/simple/index.php?t2108205.html
+作者回應
+https://www.bilibili.com/read/cv31955854/
+
+
+本文撰寫時的軟體版本號為 v3.9 (2024/01/31)
+
+## 3.27 projz_renpy_translation
+
+https://github.com/abse4411/projz_renpy_translation/
+
+本文撰寫時的軟體版本號為 v0.4.2 (2024/03/14)
+
+## 3.28 renpy-translator
+
+https://github.com/anonymousException/renpy-translator
+
+本文撰寫時的軟體版本號為 v2.4.4
+
+## 3.29 VNLauncher
+
+中國網友開發的galgame管理、紀錄時長及翻譯工具
+看起來還不錯，不過目前還是初版，可能會有些bug
+
+目前只支援百度翻譯及openAI API、TGW搭配本地模型
+
+https://github.com/Minato302/VNLauncher
+
+本文撰寫時的軟體版本號為 v0.9.3
 
 # 4. 時代的眼淚
 
