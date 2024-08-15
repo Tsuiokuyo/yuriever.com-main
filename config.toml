@@ -190,7 +190,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       # LoveIt 更改 | 0.2.7 首頁顯示的網站標題 (支持 HTML 格式)
       title = "Tsuiokuyo"
       # 首頁顯示的網站副標題 (允許 HTML 格式)
-      subtitle = "人生無法重來，但是我可以紀錄與回憶，此網站拿來記錄用，只是...人是非常懶惰的。"
+      subtitle = "人生無法重來，但是我可以紀錄與回憶，此網站拿來記錄用，<br />只是...人是非常懶惰的。"
       # 是否為副標題顯示打字機動畫
       typeit = true
       # 是否顯示社交帳號
@@ -201,7 +201,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     [params.home.posts]
       enable = true
       # 首頁每頁顯示文章數量
-      paginate = 6
+      paginate = 10
       # LoveIt 刪除 | 0.2.0 被 params.page 中的 hiddenFromHomePage 替代
       # 當你沒有在文章前置參數中設置 "hiddenFromHomePage" 時的默認行為
       defaultHiddenFromHomePage = false

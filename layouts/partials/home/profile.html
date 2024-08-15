@@ -19,8 +19,9 @@
         {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Scratch.Get "this") | $.Scratch.Set "this" -}} {{- else -}} {{- . | safeHTML -}} {{- end -}}
 
     </div>
-    <span>原本在netlify的網站因超量被砍了，一些第三方套件也停止免費了，
-		<br />那麼，下一條路要往哪走呢？</span>
+    <span style="font-size: 12px;">原本在netlify的網站因超量被砍了，一些第三方套件也停止免費了，
+        <br />40T的LVM磁區，搬家壞軌爆了，不那麼重要的資料已遺失，
+		<br />操作繁雜的教學也懶得補上來了，那麼，下一條路要往哪走呢？</span>
     <br />
     <!--<span><img src="https://api.netlify.com/api/v1/badges/e0df1af6-5693-4e95-b571-646710bffe5b/deploy-status"></span> -->{{- end -}} {{- if $profile.social -}}
     <div class="links">
