@@ -494,11 +494,12 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
   # 網站驗證代碼，用於 Google/Bing/Yandex/Pinterest/Baidu
   [params.verification]
-    google = "ca-pub-6943220390459023"
+    google = ""
     bing = ""
     yandex = ""
     pinterest = ""
     baidu = ""
+    adsense = "ca-pub-6943220390459023"
 
   # LoveIt 新增 | 0.2.10 網站 SEO 配置
   [params.seo]
