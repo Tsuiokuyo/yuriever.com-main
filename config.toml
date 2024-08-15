@@ -16,7 +16,7 @@ hasCJKLanguage = true
 # 默認每頁列表顯示的文章數目
 paginate = 12
 # Google分析代號 [UA-XXXXXXXX-X]
-googleAnalytics = "UA-134954724-1"
+googleAnalytics = ""
 # 版權描述，僅僅用於 SEO
 copyright = ""
 
@@ -208,7 +208,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
   # 作者的社交訊息設定
   [params.social]
-    GitHub = ""
+    GitHub = "Tsuiokuyo"
     Linkedin = ""
     Twitter = ""
     Instagram = ""
@@ -494,7 +494,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
   # 網站驗證代碼，用於 Google/Bing/Yandex/Pinterest/Baidu
   [params.verification]
-    google = ""
+    google = "ca-pub-6943220390459023"
     bing = ""
     yandex = ""
     pinterest = ""
@@ -515,7 +515,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   posts = "/posts/:slug"
   
    [params.reward]  # 文章打赏
-    enable = true
+    enable = false
     wechat = "/images/donate.jpg"           # 二维码
   
   # Display a message at the beginning of an article to warn the readers that it's content may be outdated.

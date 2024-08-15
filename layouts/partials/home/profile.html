@@ -19,8 +19,8 @@
         {{- dict $id (slice $id) | dict "typeitMap" | merge ($.Scratch.Get "this") | $.Scratch.Set "this" -}} {{- else -}} {{- . | safeHTML -}} {{- end -}}
 
     </div>
-    <span>原本在netlify的網站被砍了，一些東西也一併掛了，因此買了這網域，想將這首頁改成一個百合傳教用畫面
-		<br />可是還想不到要怎麼呈現，再加上好麻煩，超級麻煩</span>
+    <span>原本在netlify的網站因超量被砍了，一些第三方套件也停止免費了，
+		<br />那麼，下一條路要往哪走呢？</span>
     <br />
     <!--<span><img src="https://api.netlify.com/api/v1/badges/e0df1af6-5693-4e95-b571-646710bffe5b/deploy-status"></span> -->{{- end -}} {{- if $profile.social -}}
     <div class="links">
