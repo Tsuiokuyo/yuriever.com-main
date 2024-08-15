@@ -21,9 +21,9 @@ lastmod: 2024-04-16
 
 手機大概沒辦法讀吧，表格要用小螢幕看，我還真的不知道要怎麼調整
 
-停止更新，現在倒是直接看[動畫榜單](https://tsuiokuyo.netlify.app/posts/a0e397c3/)了，搞這個太沒效率了...
+現在倒是直接看[動畫榜單](https://yuriever.com/posts/a0e397c3/)了，搞這個太沒效率了...
 
-~~https://yuriever.com/B/animeList/animeList~~
+停止更新並刪除資料庫路徑 ~~https://yuriever.com/B/animeList/animeList~~
 
 (2024-03-28)看來只能用懶人做法了...確實有些動畫看過就忘了，完全沒有留在記憶之中...
 

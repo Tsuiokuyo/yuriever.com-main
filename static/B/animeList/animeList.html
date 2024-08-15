@@ -39,7 +39,9 @@
 						</span>
                     </div>
                     <div>
-                        版面放棄中，使用Cloud Firestore*2當成資料庫，不過免費的額度一個每天只有五萬筆，而目前查一次就一千多筆了，所以......呵。 <br /> 表格包含待看及有印象看過的的動畫，應該涵蓋我認識的九成的作品了，畢竟忘了的東西也想不起來。
+                        停止更新並刪除資料庫路徑
+                        ~~版面放棄中，使用Cloud Firestore*2當成資料庫，不過免費的額度一個每天只有五萬筆，而目前查一次就一千多筆了，所以......呵。 <br /> 表格包含待看及有印象看過的的動畫，應該涵蓋我認識的九成的作品了，畢竟忘了的東西也想不起來。~~
+                        
 				
                         <br />基本上我都看BD版，老番通常DVD版，所以新番不太可能會有紀錄，而BD通常TV版放送後約一年後才會壓制。 <br /> 而以下動畫分行的方式，以TVDB分類為基準，某些作品會被分進Season 0、OVA，所以下面也會查不到，例如亡國的阿基德等等。
                         <br />有些只有劇場版也不會出現在下面，例如殼中少女等。有空再去弄劇場版紀錄清單、裏番清單部分。 <br />
@@ -54,7 +56,7 @@
 						<br />伯納德小姐說??，沒回來這邊我根本完全沒有想起來有這部。
                     </div>
                     <form action="?" method="POST" v-if="verify" style="float:center">
-                        <div class="g-recaptcha" data-sitekey="6Ld47WIgAAAAAMeNmW3XFkDiCYwTbvth7aldWJ7N" data-callback="onRecaptchaSuccess"></div>
+                        <!-- <div class="g-recaptcha" data-sitekey="6Ld47WIgAAAAAMeNmW3XFkDiCYwTbvth7aldWJ7N" data-callback="onRecaptchaSuccess"></div> -->
                         <br/>
                     </form>
                 </el-card>
@@ -123,8 +125,8 @@
         }
 
         function onRecaptchaSuccess() {
-            vue.getDB();
-            vue.verify = false;
+            // vue.getDB();
+            // vue.verify = false;
         }
         ELEMENT.locale(ELEMENT.lang.zhTW);
         let vue = new Vue({
@@ -314,7 +316,7 @@
                     }
                 },
                 getDB() {
-function _0x5f34(){var _0x140ec4=['data||object|com|firebase|tsuiokuyo|8a31a|id|year|name||rank|progress|state||memo|rip|updateTime||dialogVisible|anikore|let|tsuiokuyo2|setMsg|this|firebaseConfig|apiKey|authDomain|firebaseapp||projectId|storageBucket|appspot|messagingSenderId|546368251283|appId||||web|initializeApp|db||firestore|ref|collection|animeList|get|then|forEach|push|catch|function|208666185619|db2|vue|anime|AIzaSyC5veCoPDfBM7Vj4WOfI|xN0lLwiZUK_yo|databaseURL|https|firebaseio|23253f9e609b874d897466|measurementId|DXFDWHTMQX|analytics|AIzaSyDCFix9Fb1WP5um_WwJYp2iGEMozEhIVY0|84744fa8e31807602ba266|app','1178605FqvSKP','14kMyvYY','46690uRNTCu','split','l\x202=[],p={q:\x22V-W\x22,r:\x225-6.s.3\x22,X:\x22Y://5-6.Z.3\x22,u:\x225-6\x22,v:\x225-6.w.3\x22,x:\x22y\x22,z:\x221:y:D:10\x22,11:\x22G-12\x22};4.E(p),4.13();l\x20F=4.H(),I=F.J(\x22K\x22);I.L().M(a=>{a.N(a=>{2.O({7:a.7,8:a.0().8,9:a.0().9,b:a.0().b,c:a.0().c,d:a.0().d,f:a.0().f,g:a.0().g,h:a.0().h,j:a.0().j,k:a.0().k})})}).P(Q(a){l\x20e={q:\x2214\x22,r:\x22m.s.3\x22,u:\x22m\x22,v:\x22m.w.3\x22,x:\x22R\x22,z:\x221:R:D:15\x22},t,i;4.E(e,\x22S\x22),4.16(\x22S\x22).H().J(\x22K\x22).L().M(a=>{a.N(a=>{2.O({7:a.7,8:a.0().8,9:a.0().9,b:a.0().b,c:a.0().c,d:a.0().d,f:a.0().f,g:a.0().g,h:a.0().h,j:a.0().j,k:a.0().k})})}).P(Q(a){T.n(\x22C\x22)}),T.n(\x22B\x22),o.U=2}),o.n(\x22A\x22),o.U=2;','1830564tTLGQR','fromCharCode','6NzFsue','replace','1411736rnHqsT','152340DCRDcv','\x5cw+','4878801LqiDtw','583935sxqGOM','toString'];_0x5f34=function(){return _0x140ec4;};return _0x5f34();}function _0x10dd(_0x3fdc97,_0x24025d){var _0x5f3492=_0x5f34();return _0x10dd=function(_0x10dd15,_0x1db8c7){_0x10dd15=_0x10dd15-0xaf;var _0x1d1eeb=_0x5f3492[_0x10dd15];return _0x1d1eeb;},_0x10dd(_0x3fdc97,_0x24025d);}var _0x541783=_0x10dd;(function(_0xa6d2c0,_0x2ae65b){var _0x3473b5=_0x10dd,_0x1b7004=_0xa6d2c0();while(!![]){try{var _0x4cd0b8=parseInt(_0x3473b5(0xb5))/0x1+-parseInt(_0x3473b5(0xb9))/0x2*(-parseInt(_0x3473b5(0xb2))/0x3)+parseInt(_0x3473b5(0xbd))/0x4+parseInt(_0x3473b5(0xb8))/0x5*(-parseInt(_0x3473b5(0xaf))/0x6)+-parseInt(_0x3473b5(0xba))/0x7+-parseInt(_0x3473b5(0xb1))/0x8+-parseInt(_0x3473b5(0xb4))/0x9;if(_0x4cd0b8===_0x2ae65b)break;else _0x1b7004['push'](_0x1b7004['shift']());}catch(_0x29ec5c){_0x1b7004['push'](_0x1b7004['shift']());}}}(_0x5f34,0x6a779),eval(function(_0x3d397e,_0x406de3,_0x441f90,_0x307fb9,_0x4fcaad,_0x1a4ef8){var _0x14d210=_0x10dd;_0x4fcaad=function(_0x7e2dda){var _0x488353=_0x10dd;return(_0x7e2dda<_0x406de3?'':_0x4fcaad(parseInt(_0x7e2dda/_0x406de3)))+((_0x7e2dda=_0x7e2dda%_0x406de3)>0x23?String[_0x488353(0xbe)](_0x7e2dda+0x1d):_0x7e2dda[_0x488353(0xb6)](0x24));};if(!''[_0x14d210(0xb0)](/^/,String)){while(_0x441f90--)_0x1a4ef8[_0x4fcaad(_0x441f90)]=_0x307fb9[_0x441f90]||_0x4fcaad(_0x441f90);_0x307fb9=[function(_0x3e0c92){return _0x1a4ef8[_0x3e0c92];}],_0x4fcaad=function(){var _0x2a65bc=_0x14d210;return _0x2a65bc(0xb3);},_0x441f90=0x1;};while(_0x441f90--)if(_0x307fb9[_0x441f90])_0x3d397e=_0x3d397e[_0x14d210(0xb0)](new RegExp('\x5cb'+_0x4fcaad(_0x441f90)+'\x5cb','g'),_0x307fb9[_0x441f90]);return _0x3d397e;}(_0x541783(0xbc),0x3e,0x45,_0x541783(0xb7)[_0x541783(0xbb)]('|'),0x0,{})));
+                    
                 },
             },
         });
