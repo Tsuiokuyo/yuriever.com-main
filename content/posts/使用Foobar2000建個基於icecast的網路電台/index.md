@@ -7,7 +7,6 @@ featuredImagePreview: "/assets/foobar2000.jpg"
 tags: [foobar2000]
 categories: [foobar2000]
 lastmod: 2024-01-19
-weight: 2
 ---
 
 成品大概是這樣吧
