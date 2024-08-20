@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>
-	SakuraLLM翻譯『リアル』 與 PTT 日本怪談：real 人工翻譯進行對比<br />
+	SakuraLLM翻譯『リアル』 與 PTT_marvel [翻譯] 日本怪談:REAL 人工翻譯內容逐行對比<br />
 	<br />
 	全篇總共718行日文<br /><br />
 	
@@ -48,28 +48,20 @@
 	LLM1: Sakura-32B-Qwen2beta-v0.9.1-GGUF <br /><br />
 	LLM2: Sakura-14B-Qwen2beta-v0.9.2-GGUF <br /><br />
 	
-	32B與14B兩者相比各有千秋，某些地方甚至 14B的翻譯更加人性化<br />
-
-	如果LLM人工潤稿後應該能接近完美<br />
-
-
+	32B與14B兩者相比各有千秋，某些地方甚至 14B的翻譯更加人性化<br /><br />
+	
 	下面LLM翻譯內容無做任何人工變動及潤稿，僅繁體化<br /><br />
 	
-	而PTT格式不同再加人工翻譯所以斷句也不同，<br />
+	而PTT的文章格式不同，再加人工翻譯所以斷句也不同，<br />
 	因此整篇要逐行調整一致有夠痛苦...<br /><br />
+	
+	僅調整斷句部分(Enter)，無對任何內容進行修改<br /><br />
 
-
-
-    <!-- 輸入框區域 -->
     <textarea id="text1" placeholder="文字1"></textarea>
     <textarea id="text2" placeholder="文字2"></textarea>
     <textarea id="text3" placeholder="原文1（不進行對比）"></textarea>
-    <!-- text4 不需要使用者填寫，將由 JavaScript 預設值填入 -->
     <textarea id="text4" placeholder="原文2（不進行對比）" readonly></textarea>
-
     <button onclick="compareTexts()">顯示比較內容</button>
-    
-    <!-- 結果區域 -->
     <div id="result"></div>
 
     <script>
