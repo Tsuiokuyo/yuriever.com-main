@@ -63,8 +63,8 @@
     <textarea id="text4" placeholder="日文（不進行對比）" readonly></textarea>
 
     <div>
-	    <label><input type="radio" name="comparisonMethod" value="lcs" checked> LCS算法(與人工翻譯比對)</label>
-        <label><input type="radio" name="comparisonMethod" value="char" > 逐字比較(LLM翻譯互相比對)</label>
+	    <label><input type="radio" name="comparisonMethod" value="lcs" checked> 32B與人工翻譯比對</label>
+        <label><input type="radio" name="comparisonMethod" value="char" > 32B與14B翻譯比對</label>
     </div>
     
     <button onclick="compareTexts()">比較內容</button>
@@ -3378,18 +3378,21 @@ S老師為了不讓我擔心於是說了謊，
                     resultHtml += `<p>第 ${i + 1} 行:<br>　　日文原文: ${line4}<br>ＰＴＴ翻譯文: ${diffLine1}<br>　　　３２Ｂ: ${diffLine2}<br>　　　１４Ｂ: ${line3}</p>`;
                 } else {
                     // Compare text2 and text3 character by character
-                    const maxCharLength = Math.max(line2.length, line3.length);
-                    for (let j = 0; j < maxCharLength; j++) {
-                        const char2 = line2[j] || '';
-                        const char3 = line3[j] || '';
-                        if (char2 === char3) {
-                            diffLine1 += `<span class="same-char">${char2}</span>`;
-                            diffLine2 += `<span class="same-char">${char3}</span>`;
-                        } else {
-                            diffLine1 += `<span class="diff-char">${char2}</span>`;
-                            diffLine2 += `<span class="diff-char">${char3}</span>`;
-                        }
-                    }
+					 const lcsResult = lcs(line2, line3);
+                    diffLine1 = highlightLCS(line2, lcsResult);
+                    diffLine2 = highlightLCS(line3, lcsResult);
+                    //const maxCharLength = Math.max(line2.length, line3.length);
+                    //for (let j = 0; j < maxCharLength; j++) {
+                    //    const char2 = line2[j] || '';
+                    //    const char3 = line3[j] || '';
+                    //    if (char2 === char3) {
+                    //        diffLine1 += `<span class="same-char">${char2}</span>`;
+                    //        diffLine2 += `<span class="same-char">${char3}</span>`;
+                    //    } else {
+                   //         diffLine1 += `<span class="diff-char">${char2}</span>`;
+                    //        diffLine2 += `<span class="diff-char">${char3}</span>`;
+                    //    }
+                   // }
                     // Display character-by-character comparison results
                     resultHtml += `<p>第 ${i + 1} 行:<br>　　日文原文: ${line4}<br>ＰＴＴ翻譯文: ${line1}<br>　　　３２Ｂ: ${diffLine1}<br>　　　１４Ｂ: ${diffLine2}</p>`;
                 }
