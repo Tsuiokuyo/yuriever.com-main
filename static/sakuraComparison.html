@@ -28,16 +28,16 @@
         .diff-char {
             background-color: #ffcccc; /* 紅色背景 */
         }
-		
 		#text1, #text2, #text3, #text4 {
 			display: none;
 		}
 
 
+
     </style>
 </head>
 <body>
-	SakuraLLM翻譯『リアル』 與 PTT_marvel [翻譯] 日本怪談:REAL 人工翻譯內容逐行對比<br />
+	SakuraLLM翻譯『リアル』 與 PTT_marvel [翻譯] 日本怪談:REAL 人工翻譯內容對比<br />
 	<br />
 	全篇總共718行日文<br /><br />
 	
@@ -45,8 +45,8 @@
 	PTT網友的人工翻譯文: https://www.ptt.cc/bbs/marvel/M.1419021300.A.6ED.html<br /><br />
 	
 	
-	LLM1: Sakura-32B-Qwen2beta-v0.9.1-GGUF <br /><br />
-	LLM2: Sakura-14B-Qwen2beta-v0.9.2-GGUF <br /><br />
+	32B: sakura-32b-qwen2beta-v0.9.1-iq4xs.gguf <br /><br />
+	14B: sakura-14b-qwen2beta-v0.9.2-iq4xs.gguf <br /><br />
 	
 	32B與14B兩者相比各有千秋，某些地方甚至 14B的翻譯更加人性化<br /><br />
 	
@@ -57,16 +57,22 @@
 	
 	僅調整斷句部分(Enter)，無對任何內容進行修改<br /><br />
 
-    <textarea id="text1" placeholder="文字1"></textarea>
-    <textarea id="text2" placeholder="文字2"></textarea>
-    <textarea id="text3" placeholder="原文1（不進行對比）"></textarea>
-    <textarea id="text4" placeholder="原文2（不進行對比）" readonly></textarea>
-    <button onclick="compareTexts()">顯示比較內容</button>
+    <textarea id="text1" placeholder="翻譯文"></textarea>
+    <textarea id="text2" placeholder="32B"></textarea>
+    <textarea id="text3" placeholder="14B（不進行對比）"></textarea>
+    <textarea id="text4" placeholder="日文（不進行對比）" readonly></textarea>
+
+    <div>
+	    <label><input type="radio" name="comparisonMethod" value="lcs" checked> 32B與人工翻譯比對</label>
+        <label><input type="radio" name="comparisonMethod" value="char" > 32B與14B翻譯比對</label>
+    </div>
+    
+    <button onclick="compareTexts()">比較內容</button>
     <div id="result"></div>
 
     <script>
-		//32B
-		document.getElementById('text1').value = `反正也不是什麼特別有趣的事，我會注意別拖得太長，還請各位稍微睜隻眼閉隻眼。
+			//32B
+		document.getElementById('text2').value = `反正也不是什麼特別有趣的事，我會注意別拖得太長，還請各位稍微睜隻眼閉隻眼。
 那我就開始寫了。
 
 先說在前頭，要是被什麼東西附身或是被盯上纏上，那可不是鬧著玩的。
@@ -880,7 +886,7 @@ S老師會不會也是被那傢伙害死的？
 ……事到如今，我後悔莫及。
 `;
 		//14B
-		document.getElementById('text2').value = `雖然不是什麼有趣的事，我會注意盡量不要寫得太冗長，但還是希望各位讀者能睜一隻眼閉一隻眼。
+		document.getElementById('text3').value = `雖然不是什麼有趣的事，我會注意盡量不要寫得太冗長，但還是希望各位讀者能睜一隻眼閉一隻眼。
 那麼，我要開始寫了。
 
 我先聲明，要是被什麼附身、盯上、糾纏的話，那可不是開玩笑的。
@@ -1694,7 +1700,7 @@ S老師為了不讓我擔心，所以才說謊。
 ……事到如今，就算後悔也來不及了。
 `;
 		//日
-		document.getElementById('text3').value = `そこまで面白いことでもないし、長くしないように気をつけるが多少は目をつぶって欲しい。
+		document.getElementById('text4').value = `そこまで面白いことでもないし、長くしないように気をつけるが多少は目をつぶって欲しい。
 では書きます。
 
 何かに取り憑かれたり狙われたり付きまとわれたりしたら、マジで洒落にならんことを最初に言っておく。
@@ -2507,7 +2513,7 @@ S先生は、俺を心配させないように嘘をついてくれたけど、
 
 …今更悔やんでも悔やみきれない。`;
 		//譯
-        document.getElementById('text4').value = `這篇文章可能不是多有趣，我會盡量注意不要寫得太冗長，希望大家別太嚴苛。
+        document.getElementById('text1').value = `這篇文章可能不是多有趣，我會盡量注意不要寫得太冗長，希望大家別太嚴苛。
 那麼我就開始寫了。
 
 話先說在前頭，不管被東西附身、被當作獵物抑或被糾纏上，真的都不是鬧著玩的；
@@ -3325,18 +3331,33 @@ S老師為了不讓我擔心於是說了謊，
 
 ...現在即便我再怎麼懊悔也無濟於事了。`;
 
-		function filterEmptyLines(lines) {
+        function filterEmptyLines(lines) {
             return lines.filter(line => line.trim() !== '');
         }
+
+        function lcs(a, b) {
+            const m = a.length;
+            const n = b.length;
+            const dp = Array(m + 1).fill().map(() => Array(n + 1).fill(''));
+
+            for (let i = 1; i <= m; i++) {
+                for (let j = 1; j <= n; j++) {
+                    if (a[i - 1] === b[j - 1]) {
+                        dp[i][j] = dp[i - 1][j - 1] + a[i - 1];
+                    } else {
+                        dp[i][j] = dp[i - 1][j].length > dp[i][j - 1].length ? dp[i - 1][j] : dp[i][j - 1];
+                    }
+                }
+            }
+            return dp[m][n];
+        }
+
         function compareTexts() {
-		
-			const text1 = filterEmptyLines(document.getElementById('text1').value.split('\n'));
+            const text1 = filterEmptyLines(document.getElementById('text1').value.split('\n'));
             const text2 = filterEmptyLines(document.getElementById('text2').value.split('\n'));
             const text3 = filterEmptyLines(document.getElementById('text3').value.split('\n'));
             const text4 = filterEmptyLines(document.getElementById('text4').value.split('\n'));
-			
-
-			
+            const comparisonMethod = document.querySelector('input[name="comparisonMethod"]:checked').value;
             const maxLength = Math.max(text1.length, text2.length, text3.length, text4.length);
             let resultHtml = '';
 
@@ -3349,24 +3370,57 @@ S老師為了不讓我擔心於是說了謊，
                 let diffLine1 = '';
                 let diffLine2 = '';
                 
-                const maxCharLength = Math.max(line1.length, line2.length);
-                for (let j = 0; j < maxCharLength; j++) {
-                    const char1 = line1[j] || '';
-                    const char2 = line2[j] || '';
-                    if (char1 === char2) {
-                        diffLine1 += `<span class="same-char">${char1}</span>`;
-                        diffLine2 += `<span class="same-char">${char2}</span>`;
-                    } else {
-                        diffLine1 += `<span class="diff-char">${char1}</span>`;
-                        diffLine2 += `<span class="diff-char">${char2}</span>`;
-                    }
+                if (comparisonMethod === 'lcs') {
+                    const lcsResult = lcs(line1, line2);
+                    diffLine1 = highlightLCS(line1, lcsResult);
+                    diffLine2 = highlightLCS(line2, lcsResult);
+                    // Display LCS results
+                    resultHtml += `<p>第 ${i + 1} 行:<br>　　日文原文: ${line4}<br>ＰＴＴ翻譯文: ${diffLine1}<br>　　　３２Ｂ: ${diffLine2}<br>　　　１４Ｂ: ${line3}</p>`;
+                } else {
+                    // Compare text2 and text3 character by character
+					 const lcsResult = lcs(line2, line3);
+                    diffLine1 = highlightLCS(line2, lcsResult);
+                    diffLine2 = highlightLCS(line3, lcsResult);
+                    //const maxCharLength = Math.max(line2.length, line3.length);
+                    //for (let j = 0; j < maxCharLength; j++) {
+                    //    const char2 = line2[j] || '';
+                    //    const char3 = line3[j] || '';
+                    //    if (char2 === char3) {
+                    //        diffLine1 += `<span class="same-char">${char2}</span>`;
+                    //        diffLine2 += `<span class="same-char">${char3}</span>`;
+                    //    } else {
+                   //         diffLine1 += `<span class="diff-char">${char2}</span>`;
+                    //        diffLine2 += `<span class="diff-char">${char3}</span>`;
+                    //    }
+                   // }
+                    // Display character-by-character comparison results
+                    resultHtml += `<p>第 ${i + 1} 行:<br>　　日文原文: ${line4}<br>ＰＴＴ翻譯文: ${line1}<br>　　　３２Ｂ: ${diffLine1}<br>　　　１４Ｂ: ${diffLine2}</p>`;
                 }
-
-                resultHtml += `<p>第 ${i + 1} 行:<br>　　日文原文: ${line3}<br>ＰＴＴ翻譯文: ${line4}<br>　　　３２Ｂ: ${diffLine1}<br>　　　１４Ｂ: ${diffLine2}</p>`;
             }
 
             document.getElementById('result').innerHTML = resultHtml;
         }
+
+        function highlightLCS(line, lcsResult) {
+            let highlighted = '';
+            let lcsIndex = 0;
+
+            for (let char of line) {
+                if (lcsIndex < lcsResult.length && char === lcsResult[lcsIndex]) {
+                    highlighted += `<span class="same-char">${char}</span>`;
+                    lcsIndex++;
+                } else {
+                    highlighted += `<span class="diff-char">${char}</span>`;
+                }
+            }
+
+            return highlighted;
+        }
+
+        // Add event listeners to radio buttons
+        document.querySelectorAll('input[name="comparisonMethod"]').forEach(radio => {
+            radio.addEventListener('change', compareTexts);
+        });
     </script>
 </body>
 </html>
