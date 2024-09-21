@@ -11,7 +11,9 @@ date: 2019-07-19 10:00:00
 
 最後結果是 使用cloud firestore......
 
-https://tsuiokuyo.netlify.app/posts/6c54
+本文棄坑
+https://yuriever.com/posts/6c54 
+(順帶一提，cloud firestore這個也棄坑了，裡面又改直接從bangumi匯出)
 
 整個大材小用，跟這個部落格一樣！！
 
