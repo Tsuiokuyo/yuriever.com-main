@@ -769,7 +769,8 @@ let vue = new Vue({
         // await fetch('https://tsuiokuyo.github.io/test.gzip').then((res) => res.arrayBuffer().then(buf => {
         //記憶體爆炸
         //await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
-		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.github.io/master/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
+		//await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.github.io/master/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
+		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.github.io-main/refs/heads/master/static/test2min.gzip').then((res) => res.arrayBuffer().then(buf => {	
             let zippedContent = new Uint8Array(buf);
             let byteArray = pako.ungzip(zippedContent);
             let textDecoder = new TextDecoder();
