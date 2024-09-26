@@ -111,33 +111,36 @@
 
                 </v-tabs>
                 <v-alert dismissible color="red lighten-2" border="left" elevation="3" colored-border icon="本站事項" dense class="bkColor">
-					<span>Netlify超量已被刪，以及一些資料遺失及第三方套件停止免費，此網頁無限期停止更新<span>
+					<span>復活，但是還要再調整，資料各部分還是有問題，因此總筆數至少缺了五千多筆...<span>
                 </v-alert>
 		
-				
+				<!--
                 <v-alert dismissible color="#16A2B2" border="left" elevation="3" colored-border icon="GNN新聞" dense class="bkColor">
                     <a :href="gnn.link" target="_blank" v-if="!!gnn" style="animation:anis 10s linear infinite;">{{gnn.title}} </a>
                 </v-alert>
                 <v-alert dismissible color="green lighten-2" border="left" elevation="3" colored-border icon="萌朧" dense class="bkColor">
                     <a :href="moelong.link" target="_blank" v-if="!!moelong">{{moelong.title}}</a>
-                </v-alert>
+                </v-alert> -->
 
                 <v-container fluid>
                     <v-card v-if="tab == 'tab-2'" class="bkColor">
                         <div class="text-justify">
                             <div>
                                 <div>
+                                    <!--
                                     <template class="radius">
                                     <v-card max-height="554" max-width="739" style="display:block; margin:auto;" raised
                                         shaped>
                                         <v-img max-height="554" max-width="739" contain src="image/345621.webp">
                                         </v-img>
                                     </v-card>
-                                </template>
+                                </template>-->
+                                    2023/11/02，Netlify超量已被刪，以及一些資料遺失及第三方套件停止免費，此網頁無限期停止更新，總筆數:11949 <br>
+                                    2024/09/27，復活，但是id_mapping部分有問題，redditanimelist已停止，而總筆數剩下5892<br/>
+                                    有空再找時間刪除下面的廢話...
                                     <br />
                                     <span>
                                    <h3>未來考慮</h3>
-								   
                                     1.目前共含16個二次元相關評分網站，實際上TMDB、TVDB、IMDB也能納入算分，不過...麻煩，有心情再考慮<br>                 
 									2.最下面的有生之年加入區...<br>  
 									3.話說，如果資料越塞越多，運算時間肯定會令人無法忍受，屆時就是只能搞資料庫了或擺爛了...<br>  
@@ -1145,7 +1148,7 @@
                                         <v-chip>暫無</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <!-- <td class="center pa-0" v-if="!isMemoMode">
                                 <v-avatar size="32" rounded>
                                     <img alt="reddit" src="image/reddit.webp">
                                 </v-avatar><br />
@@ -1154,7 +1157,7 @@
                                 <span v-else>
                                         <v-chip>暫無</v-chip>
                                     </span>
-                            </td>
+                            </td> -->
                             <td class="center pa-0" v-if="!isMemoMode">
                                 <v-avatar size="32" rounded>
                                     <img alt="annict" src="image/annict.webp">
