@@ -705,8 +705,8 @@
                         </v-select>
                         <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense>
                         </v-text-field>
-                        <v-text-field v-if="windowWidth < 600" id="srh2" v-model="search" append-icon="mdi-magnify" hint="至少輸入兩字，會繁簡互轉,例:聖母在上=圣母在上" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
-                        </v-text-field>
+                        <v-text-field v-if="windowWidth < 600" id="srh2" v-model="search" append-icon="mdi-magnify" hint="至少輸入兩個字" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
+                         </v-text-field>
 
 
                         <v-checkbox v-if="windowWidth < 600" v-model="toRandom" label="排名亂數排序" dense color="red">
@@ -807,7 +807,7 @@
                         </v-row>
                         <br />
                         <v-row>
-                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2024年09月27日</span>
+                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}(異常中)，資料更新時間:2024年09月27日</span>
                         </v-row>
                         <span v-if="windowWidth > 600"> 
                         <br/>
