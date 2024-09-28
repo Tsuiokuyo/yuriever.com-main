@@ -111,7 +111,7 @@
 
                 </v-tabs>
                 <v-alert dismissible color="red lighten-2" border="left" elevation="3" colored-border icon="本站事項" dense class="bkColor">
-					<span>復活，但是還要再調整，少數作品分數異常。<span>
+					<span>復活，但是還要再調整，少數作品分數異常，待下次調整。<span>
                 </v-alert>
 		
 				<!--
@@ -136,15 +136,9 @@
                                     </v-card>
                                 </template>-->
                                     2023/11/02，Netlify超量已被刪，以及一些資料遺失及第三方套件停止免費，此網頁無限期停止更新，總筆數:11949 <br>
-                                    2024/09/27，復活，但是id_mapping部分有問題，redditanimelist已停止，而總筆數剩下5892<br/>
-                                    有空再找時間刪除下面的廢話...
+                                    2024/09/27，因為又看到巴哈分數特高，其他網站低的作品，因此復活，重新運作，不過總筆數剩9136。<br/>
                                     <br />
                                     <span>
-                                   <h3>未來考慮</h3>
-                                    1.目前共含16個二次元相關評分網站，實際上TMDB、TVDB、IMDB也能納入算分，不過...麻煩，有心情再考慮<br>                 
-									2.最下面的有生之年加入區...<br>  
-									3.話說，如果資料越塞越多，運算時間肯定會令人無法忍受，屆時就是只能搞資料庫了或擺爛了...<br>  
-									4.新番判斷
                                     <br><br><br>
                                     目前網頁功能說明:
                                 <oi>
@@ -171,7 +165,6 @@
                                 <br>
 
                                     
-
                                     2023/03/23 基於Firebase增加記錄功能，目前用於個人紀錄(評分、備註)，參考附圖，實際上我也不知道要塞甚麼。<br/>
                                     至於登入的安全性，我只能說Firebase這東西是Google的資料庫，帳戶關連也是google寫的，基本上與我無關<br />
                                     我這網頁完全只有前端的畫面操作，畢竟前端的程式碼在我github內都能看，<br />
@@ -179,69 +172,27 @@
                                     另外，可能，可能會弄個紀錄匯出成文字檔或excel的功能，但也只是可能。
                                     <v-img max-height="500" max-width="700" contain src="image/memo.webp">
                                     </v-img>
-                                    
 
                                     <br />
-                                    2023/05/17 聊天室拖累速度，因此移除<br>
-                                    2023/03/20 增加tmdb、imdb、tvdb關聯<br><br>
-
-									這幾個月的心力放在<br>
-									<s>玩AI繪圖，https://www.pixiv.net/users/15348773</s> <br>
-									看動畫、看百合漫畫、玩AVG遊戲或HGAME來補充個人電台音樂，<br>
-									因為google無限空間被砍了，只能連到自己電腦聽了...<br>
-                                    就是上方列的連結，基於foobar2000架設<br>
-                                    http://tsuiokuyo.ddns.net:8763/js_index.html <br>
-									歷史歌單：https://www.last.fm/zh/user/Tsuiokuyo <br>
-									類型大概是Anime, Vocaloid, OST, Touhou Project, Doujin Music, Jpop, Game，每週會緩慢增加<br>
-                                    不過新番基本上不太可能會包含進去，起碼要過的半年以上才有可能塞進去，<br>
-                                    原因倒是很多，不過最大的原因基本上是專輯尚未出完，<br>
-                                    先弄完OPED的話，除非喜歡，否則之後就不會特地再弄角色專輯或形象專輯了。
-									<br>
-									另外老實說平均跑一款AVG，就算看攻略走全CG+全未讀全結局基本上還是要花上30小時左右，大概夠我看5~6部動畫了，感覺有點虧<br>
-<br><br>
-									也因此，這邊偶爾跑一次更新就不管了<br>
-									標準化總平均得出的分數我一直覺得計算出來的分數有問題，所以直接改成取bayesian的總平均<br>
-									
-
-									<br />
 
                                     <p />
                                     <h3>目前一些問題</h3>
+									資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic
+                                                    Number減肥看看了，但是這樣後續調整大概會爆炸...</span><br>目前弄成壓縮成gzip檔，但因為還要解壓，現在倒是效能問題了
                                     <!-- <br /> -->
                                     <ui>
+									<li>記憶體怪獸，目前載入JSON後，瞬間吃的記憶體上看<b>500MB</b>，當前記憶體用量：
+                                                <span v-if="null != memory">{{Math.round(memory/Math.pow(1000,2),2)}}MB
+                                                        <v-btn color="error"
+                                                            @click="memory = performance.memory.usedJSHeapSize">更新</v-btn>
+                                                        </span></li>
+                                    <span v-else>僅支援chrome內核查看</span>
                                         <li>有些動畫因24話有分成part 1、part 2的評分，基本上只有巴哈是直接兩季合併...(e.g. 巨人第三季)，放棄處理</li>
                                         <li>bangumi裏番部分，如點進網址但顯示数据库中没有查询您所指定的条目，單純你沒有權限查看而已@@</li>
                                         <li>名稱搜尋時速度慢，這是因為輸入的同時也在跑邏輯(自動搜尋)，除非我改成用手動來點擊按鈕來搜尋</li>
                                     </ui>
-    
-                                    <ol>
-                                        <li>
-                                            <h2>記憶體怪獸，目前載入JSON後，瞬間吃的記憶體終於上看<b>500MB</b>了，當前記憶體用量：
-                                                <span v-if="null != memory">{{Math.round(memory/Math.pow(1000,2),2)}}MB
-                                                        <v-btn color="error"
-                                                            @click="memory = performance.memory.usedJSHeapSize">更新</v-btn>
-                                                        </span>
-                                    <span v-else>僅支援chrome內核查看</span>
-                                    </h2>
-                                    不過這是指乾淨的瀏覽器，有裝擴充工具會顯示更高
-                                    </li>
-                                    <li><span class="text-decoration-line-through">資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic
-                                                    Number減肥看看了，</span><br>目前弄成壓縮成gzip檔，但因為還要解壓，現在倒是效能問題了</li>
-                                    <li class="text-decoration-line-through">哈囉！小梅子，在myanimelist被建了兩個，所以列表中出現了兩次。
-                                    </li>
-                                    <li class="text-decoration-line-through">我立於百萬生命之上，都因為一二季別名完全一樣...導致撈到第一季的ID
-                                    </li>
-                                    <li class="text-decoration-line-through">銀魂第一季及第四季及百花繚亂、槍神 Badlands Rumble等等撈錯，是因為巴哈命名不規範...
-                                    </li>
-                                    <li class="text-decoration-line-through">甜點兔，巴哈似乎沒有第一季的頁面，導致撈到第二季</li>
-                                    <li class="text-decoration-line-through">FAIRY TAIL 魔導少年 百年任務、盾勇3、入間同學入魔了！2、月光下的異世界之旅2、黃金神威4、總之就是很可愛2、實力至上3、間諜家家酒2、世界盡頭的聖騎士2，最新一季會錯撈等，為了解決第4點反倒出現這個...
-                                    </li>
-                                    <li class="text-decoration-line-through">MAL首播年度有些編輯者和我有著年度的理解差異啊...，例如:鬼滅の刃 遊郭編 當地是2021年12月05日首播 但填寫 2022年冬季...?</li>
-                                    <li class="text-decoration-line-through">找Lapis Re：LiGHTs排名時發現搜尋條件居然有區分大小寫</li>
-                                    <li>Phantom:The Animation因為標點符號無法與巴哈對上</li>
-                                    <li>生日日歷的聲優及角色部分因為暫存邏輯寫錯，基本上完全沒更新還在去年10月份，所以新番的角色可能不會出現在裡面，目前緩慢更新中</li>
-                                    </ol>
-                                    <br><br><br> 以下為2022/08的舊文
+                                    
+                                    <br><br><br>
                                     </span>
                                     <span class="text-decoration-line-through">
 	
@@ -255,19 +206,16 @@
                                     <span>應該算是純前端畫面，畢竟沒有後端更沒有資料庫，本想串Firebase，但50000筆的免費額度有點微妙，<br />
                                     
                                     <br />
-                                    <span
-                                        class="text-decoration-line-through">所有資料基於myanimelist產生，目前在myanimelist約24000筆資料，龜速撈法每分鐘撈取一至兩筆，撈完一輪約需要接近一個月...</span><br />
+									所有資料基於myanimelist ID為主<br />
                                     <br /> 目前抓取流程是分成三部分
-                                    <br /> 撈取各網站作品ID->各網站作品ID映射(嚴格比對)->依作品ID取分數、票數等 <br /> 分數全都會存快取，進入cache的資料約每隔7天以上才會更新一次，僅ANIDB跟redditanimelist則隨緣更新(可能一個月甚至超過)，
+                                    <br /> 撈取各網站作品ID->各網站作品ID映射->依作品ID取分數、票數等 <br /> 存進cache，而進入cache的資料約每隔10~20天以上才會更新一次，ANIDB則隨緣更新(可能一個月甚至超過)
 
                                     <br />
 
-                                    <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜，當然也能當成找番、補番用工具。
+                                    <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜。
                                     <h3>作品篩選依據</h3>
-                                    可比對到巴哈姆特的作品或者是至少有四個分數來源網站，順便一提，巴哈應該有2K多筆資料我沒有比對到
+                                    至少有四個分數來源網站，順便一提，巴哈應該有三成以上的作品資料沒有比對到
                                     <p />
-                                    <h3>來源網站挑選依據</h3>
-                                    沒有。
 
                                     <p />
                                     <h2>分數計算方式</h2>
@@ -290,105 +238,13 @@
                                     <li>livechart:重新計算分數，但沒找到投票分數細節</li>
                                     <li>myanimelist :無重新計算，網站已使用Bayesian</li>
                                     <li>notifyMoe :重新計算分數，但沒找到投票分數細節</li>
-                                    <li>redditanimelist:重新計算分數，但未使用投票細節</li>
-                                    <li>sakuhindb:重新計算分數，但不列入總平均分數，因有七分制換算的問題</li>
+                                    <li><del>redditanimelist:重新計算分數，但未使用投票細節</del></li>
+                                    <li><del>sakuhindb:重新計算分數，但不列入總平均分數，因有七分制換算的問題</del></li>
                                     <li>trakt:重新計算分數</li>
 
                                 </ol>
                                 <p />
 
-                                <h2>2022年8月來源網站的國家及來源網站自身的訪問總量</h2>
-                                <ol>
-                                    <li>anikore:日本，843.6K人次</li>
-                                    <li>anilist:英國，10.6M人次</li>
-                                    <li>animeNewsNetwork:美國，9.5M人次</li>
-                                    <li>animePlanetCom:美國，12.2M人次</li>
-                                    <li>anisearch:德國，767.7K人次</li>
-                                    <li>annict:日本，50.2K人次</li>
-                                    <li>anidb:美國，1.4M人次</li>
-                                    <li>bangumi:中國，1.1M人次</li>
-                                    <li>巴哈姆特:台灣，76.9M人次</li>
-                                    <li>kitsu:美國，525.2K人次</li>
-                                    <li>livechart:美國，3.2M人次</li>
-                                    <li>myanimelist :美國，57.8M人次</li>
-                                    <li>notifyMoe :美國，37.5K人次</li>
-                                    <li>redditanimelist:美國，11K</li>
-                                    <li>sakuhindb:日本，249.2K人次</li>
-                                    <li>trakt:美國，8.6M人次</li>
-                                </ol>
-
-                                <h2>有生之年加入區 (有評分且至少能搜尋到鋼鍊為基準)</h2>
-                                <h3>這數量很明顯非常麻煩，不過還沒篩選，也沒位置呈現分數了，有空再慢慢搞。</h3>
-                                <h3>2023/07/23，恩...塞進下面這幾個的網站，結果使得ID映射的迴圈要跑很久，最近也都懶得重寫，也估計會有映射錯誤的id出現，全部擱置中</h3>
-                                <ol>
-                                    <li>捷克最大 https://www.csfd.cz/film/257242-fullmetal-alchemist-bratrstvi/prehled/ <span style="color:red"></span></li>
-                                    <li>俄羅斯最大 https://www.kinopoisk.ru/series/452838/ <span style="color:red"></span></li>
-                                    <li>波蘭最大 https://www.filmweb.pl/serial/Stalowy+alchemik%3A+Misja+braci-2009-495827</li>
-                                    <li>匈牙利最大 https://animeaddicts.hu/encyclopedia.php?anime.2304 <span style="color:red"></span></li>
-                                    <li>法國最大 https://v3.voiranime.com/anime/fullmetal-alchemist-brotherhood/ <span style="color:red"></span></li>
-                                    <li>墨西哥(全球流量最大) https://www3.animeflv.net/anime/fullmetal-alchemist-brotherhood <span style="color:red"></span></li>
-                                    <li>中國 s1vote.com <span style="color:red"></span></li>
-
-                                    <li>西班牙最大 https://www.filmaffinity.com/us/film916461.html</li>
-                                    <li>日本最大 https://movies.yahoo.co.jp/movie/338428/</li>
-
-                                    <br>
-                                    <li>義大利 https://www.animeclick.it/anime/1963/fullmetal-alchemist-2009</li>
-                                    <li>俄羅斯 http://www.world-art.ru/animation/animation.php?id=7116</li>
-                                    <li>俄羅斯 https://shikimori.me/animes/z5114-fullmetal-alchemist-brotherhood</li>
-                                    <li>印度 www.binged.com </li>
-                                    <li>阿根廷 www.fulltv.com.ar</li>
-                                    <li>土耳其 https://anime.gen.tr/animetanitim.php?id=1732</li>
-                                    <li>希臘 http://animeplanet.gr/1400_fullmetal_alchemist_brotherhood_(tv).html</li>
-                                    <li>匈牙利 https://aoianime.hu/?anime=112</li>
-                                    <li>日本 https://filmarks.com/animes/19/35</li>
-                                    <li>法國 http://www.anime-kun.net/animes/fiche-fullmetal-alchemist-3281.html</li>
-                                    <li>芬蘭 http://www.animewatcher.fi/anime/519f0599-1698-49c0-b858-b0e73501e399</li>
-                                    <li>波蘭 https://shinden.pl/series/7431-hagane-no-renkinjutsushi-2009</li>
-                                    <li>西班牙 https://www.abandomoviez.net/db/pelicula.php?film=17169</li>
-                                    <li>荷蘭 https://www.myseries.tv/fullmetal_alchemist_brotherhood/</li>
-                                    <li>西班牙 https://www.sensacine.com/series/serie-5997/</li>
-                                    <li>巴西 anihub.tv </li>
-                                    <li>德國 https://proxer.me/info/353#top</li>
-                                    <li>法國 https://www.adkami.com/anime/33</li>
-                                    <li>摩洛哥 https://www.animesilver.net/anime/720/fullmetal-alchemist-brotherhood</li>
-                                    <li>英美 https://www.tvmaze.com/shows/2071/fullmetal-alchemist-brotherhood</li>
-                                    <li>摩洛哥 https://shahiid-anime.net/seasons/?serie=37408</li>
-                                    <li>烏克蘭 https://yummyanime.tv/66-stalnoj-alhimik-bratstvo.html</li>
-                                    <li>法國 https://anime.icotaku.com/anime/295/Hagane-no-Renkinjutsushi--Brotherhood.html</li>
-                                    <li>俄羅斯 https://animenime.ru/anime-online/stalnoj-alhimik-bratstvo</li>
-                                    <li>日本 https://akiba-souken.com/anime/1515/</li>
-                                    <li>中國 https://www.maoyan.com/films/368559</li>
-                                    <li>波蘭 https://www.animezone.pl/anime/full-metal-alchemist-brotherhood</li>
-                                    <li>以色列 https://sdarot.buzz/watch/867</li>
-                                    <li>義大利 https://www.animeworld.tv/play/fullmetal-alchemist-brotherhood.Ihtnf/ERkyg</li>
-                                    <li>德國 https://randaris.app/serie/detail/862/fullmetal-alchemist-brotherhood</li>
-                                    <li>捷克 https://akichan.moe/anime/rozcestnik/6107/Hagane-no-Renkinjuts</li>
-                                    <li>義大利 https://www.animesaturn.tv/anime/Fullmetal-Alchemist-Brotherhood-ITA-aszbc</li>
-                                    <li>英美 https://www.metacritic.com/tv/fullmetal-alchemist-brotherhood</li>
-                                    <li>捷克 https://www.postavy.cz/anime/fullmetal-alchemist-brotherhood/</li>
-                                    <li>英美 https://www.rottentomatoes.com/m/fullmetal_alchemist_the_sacred_star_of_milos_2011</li>
-                                    <li>捷克 https://www.fdb.cz/serial/hagane-no-renkinjutsushi/87247</li>
-                                    <li>捷克 https://www.edna.cz/fullmetal-alchemist/</li>
-                                    <li>捷克 https://www.kinobox.cz/film/152303-fullmetal-alchemist-brotherhood</li>
-                                    <li>塞爾維亞 https://www.animesrbija.com/anime/fullmetal-alchemist-brotherhood</li>
-                                    <li>俄羅斯 https://animejoy.ru/tv-serialy/296-stalnoy-alhimik-2-sezon.html</li>
-                                    <li>西班牙 https://animeyt.moe/anime/fullmetal-alchemist-brotherhood/</li>
-                                    <li>越南 https://animetvn.in/thong-tin-phim/f1544-fullmetal-alchemist-brotherhood.html</li>
-                                    <li>俄羅斯 https://animestars.org/aniserials/video/war/259-stalnoy-alhimik-bratstvo-2-sezon.html</li>
-                                    <li>俄羅斯 https://animego.online/106-stalnoj-alhimik-bratstvo-j1.html</li>
-                                    <li>墨西哥 https://animeblix.com/animes/ver-fullmetal-alchemist-brotherhood-latino-xcNu5JiF</li>
-                                    <li>匈牙利 https://mozicsillag1.me/sorozat/fullmetal-alchemist-testveriseg-2009-online/2-evad</li>
-                                    <li>英美 https://moviefit.me/tv/6109-fullmetal-alchemist-brotherhood</li>
-                                    <li>烏克蘭 https://anistar.org/3062-stalnoy-alhimik-tv-2-fullmetal-alchemist-brotherhood.html</li>
-                                    <li>越南 https://anime24h.org/phim-fullmetal-alchemist-brotherhood-44.html</li>
-                                    <li>法國 https://animeka.com/animes/detail/fullmetal-alchemist-brotherhood.html</li>
-                                    <li>烏克蘭https://animevost.org/tip/tv/398-fullmetal-alchemist-brotherhood1.html</li>
-                                    <li>波蘭 https://ogladajanime.pl/anime/full-metal-alchemist-brotherhood</li>
-                                    <li>匈牙利 https://magyaranime.hu/leiras/3241/</li>
-                                    <li>俄羅斯 https://amedia.online/269-stalnoy-alhimik-2.html</li>
-                                    <li>烏克蘭最大(戰爭停運) http://yummyanime.club/</li>
-                                </ol>
                                 <p />
                                 <h2>感謝以下有使用或參考的網頁</h2>
                                 <ol>
@@ -1033,7 +889,7 @@
                                 <rating v-if="item.Gamer" :item="item.Gamer" website="Gamer" :b-score="item.Gamer.b_score">
                                 </rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1043,7 +899,7 @@
                                 <rating v-if="item.MAL" :item="item.MAL" website="MAL" :b-score="item.MAL.score">
                                 </rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1052,7 +908,7 @@
                                 </v-avatar><br />
                                 <rating v-if="item.BGM" :item="item.BGM" website="BGM" :b-score="item.BGM.b_score"></rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1061,7 +917,7 @@
                                 </v-avatar><br />
                                 <rating v-if="item.Anikore" :item="item.Anikore" website="Anikore" :b-score="item.Anikore.b_score"></rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1070,7 +926,7 @@
                                 </v-avatar><br />
                                 <rating v-if="item.AniList" :item="item.AniList" website="AniList" :b-score="item.AniList.b_score"></rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1080,7 +936,7 @@
                                 <rating v-if="item.AnimePlanetCom" :item="item.AnimePlanetCom" website="AnimePlanetCom" :b-score="item.AnimePlanetCom.b_score">
                                 </rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1089,7 +945,7 @@
                                 </v-avatar><br />
                                 <rating v-if="item.ANN" :item="item.ANN" website="ANN" :b-score="item.ANN.b_score"></rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1098,7 +954,7 @@
                                 </v-avatar><br />
                                 <rating v-if="item.anisearch" :item="item.anisearch" website="anisearch" :b-score="item.anisearch.b_score"></rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1108,7 +964,7 @@
                                 <rating v-if="item.kitsu" :item="item.kitsu" website="kitsu" :b-score="item.kitsu.b_score">
                                 </rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1117,7 +973,7 @@
                                 </v-avatar><br />
                                 <rating v-if="item.notifyMoe" :item="item.notifyMoe" website="notifyMoe" :b-score="item.notifyMoe.b_score"></rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1127,7 +983,7 @@
                                 <rating v-if="item.trakt" :item="item.trakt" website="trakt" :b-score="item.trakt.b_score">
                                 </rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1136,7 +992,7 @@
                                 </v-avatar><br />
                                 <rating v-if="item.livechart" :item="item.livechart" website="livechart" :b-score="item.livechart.b_score"></rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1145,7 +1001,7 @@
                                 </v-avatar><br />
                                 <rating v-if="item.anidb" :item="item.anidb" website="anidb" :b-score="item.anidb.b_score"></rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
                             <!-- <td class="center pa-0" v-if="!isMemoMode">
@@ -1155,7 +1011,7 @@
                                 <rating v-if="item.redditanimelist" :item="item.redditanimelist" website="redditanimelist" :b-score="item.redditanimelist.b_score">
                                 </rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td> -->
                             <td class="center pa-0" v-if="!isMemoMode">
@@ -1164,18 +1020,18 @@
                                 </v-avatar><br />
                                 <rating v-if="item.annict" :item="item.annict" website="annict" :b-score="item.annict.b_score"></rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <!--<td class="center pa-0" v-if="!isMemoMode">
                                 <v-avatar size="32" rounded>
                                     <img alt="sakuhindb" src="image/sakuhindb.webp">
                                 </v-avatar><br />
                                 <rating v-if="item.sakuhindb" :item="item.sakuhindb" website="sakuhindb" :b-score="item.sakuhindb.b_score"></rating>
                                 <span v-else>
-                                        <v-chip>暫無</v-chip>
+                                        <v-chip>N/A</v-chip>
                                     </span>
-                            </td>
+                            </td>-->
                             <td></td>
                             <td v-show=false>
                                 <span v-text="getBackground(item)"></span>
@@ -1217,83 +1073,83 @@
                             <!-- 巴哈-->
                             <template v-slot:item.gamer="{ item }">
                             <span v-if="item.Gamer">{{item.Gamer.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--MAL -->
                             <template v-slot:item.mal="{ item }">
                             <span v-if="item.MAL">{{item.MAL.score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--BGM -->
                             <template v-slot:item.bgm="{ item }">
                             <span v-if="item.BGM">{{item.BGM.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--ANIKORE -->
                             <template v-slot:item.anikore="{ item }">
                             <span v-if="item.Anikore">{{item.Anikore.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--ANILIST -->
                             <template v-slot:item.anilist="{ item }">
                             <span v-if="item.AniList">{{item.AniList.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--APC -->
                             <template v-slot:item.animeplanetcom="{ item }">
                             <span v-if="item.AnimePlanetCom">{{item.AnimePlanetCom.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--ANN -->
                             <template v-slot:item.ANN="{ item }">
                             <span v-if="item.ANN">{{item.ANN.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--ANISEARCH -->
                             <template v-slot:item.anisearch="{ item }">
                             <span v-if="item.anisearch">{{item.anisearch.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--KITSU -->
                             <template v-slot:item.kitsu="{ item }">
                             <span v-if="item.kitsu">{{item.kitsu.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--NOTIFYMOE -->
                             <template v-slot:item.notifymoe="{ item }">
                             <span v-if="item.notifyMoe">{{item.notifyMoe.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--trakt -->
                             <template v-slot:item.trakt="{ item }">
                             <span v-if="item.trakt">{{item.trakt.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--livechart -->
                             <template v-slot:item.livechart="{ item }">
                             <span v-if="item.livechart">{{item.livechart.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
                             <!--anidb -->
                             <template v-slot:item.anidb="{ item }">
                             <span v-if="item.anidb">{{item.anidb.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
-                            <!--redditanimelist -->
+                            <!--redditanimelist 
                             <template v-slot:item.redditanimelist="{ item }">
                             <span v-if="item.redditanimelist">{{item.redditanimelist.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
-                        </template>
+                            <span v-else>N/A</span>
+                        </template>-->
                             <!--annict -->
                             <template v-slot:item.annict="{ item }">
                             <span v-if="item.annict">{{item.annict.b_score| returnZero}}</span>
-                            <span v-else>暫無</span>
+                            <span v-else>N/A</span>
                         </template>
-                            <!--sakuhindb -->
+                            <!--sakuhindb
                             <template v-slot:item.sakuhindb="{ item }">
                             <span v-if="item.sakuhindb">{{item.sakuhindb.b_score | returnZero}}</span>
-                            <span v-else>暫無</span>
-                        </template>
+                            <span v-else>N/A</span>
+                        </template> -->
                         </v-data-table>
                         <br />
                         <v-pagination v-model="page" :length="pageCount" :total-visible="totalVis" @input="next">
