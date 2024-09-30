@@ -47,7 +47,7 @@ skip_render: test/**
 
 然後就把html檔丟進去就完成了，有如：
 
-https://tsuiokuyo.github.io/b/
+https://yuriever.com/b/
 
 本來想說單純都使用html5+css搞出子網站首頁，不過能力不足阿，只能去找好看的模板......
 
