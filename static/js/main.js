@@ -99,7 +99,7 @@ let vue = new Vue({
     },
     data: {
         // rawUrl: 'https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/result.json',
-        // rawUrl: 'https://tsuiokuyo.github.io/result.json',
+        // rawUrl: 'https://yuriever.com/result.json',
         rawData: [],
         randomTen: [],
         toRandom: false,
@@ -158,8 +158,8 @@ let vue = new Vue({
 
         // count: undefined,
         overlay: false,
-        leimuUrl: 'https://tsuiokuyo.github.io/image/leimuA.webp',
-        lamuUrl: 'https://tsuiokuyo.github.io/image/lamuA.webp',
+        leimuUrl: 'https://yuriever.com/image/leimuA.webp',
+        lamuUrl: 'https://yuriever.com/image/lamuA.webp',
         destroy: true,
         disabledBgImage: false,
         dialogYt: {},
@@ -773,11 +773,11 @@ let vue = new Vue({
         // this.rawData = await fetch(
         //     this.rawUrl,
         // ).then((res) => res.json());
-        // await fetch('https://tsuiokuyo.github.io/test.gzip').then((res) => res.arrayBuffer().then(buf => {
+        // await fetch('https://yuriever.com/test.gzip').then((res) => res.arrayBuffer().then(buf => {
         //記憶體爆炸
         //await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
-		//await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.github.io/master/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
-		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.github.io-main/refs/heads/master/static/test.gzip').then((res) => res.arrayBuffer().then(buf => {	
+		//await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com/master/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
+		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test.gzip').then((res) => res.arrayBuffer().then(buf => {	
             let zippedContent = new Uint8Array(buf);
             let byteArray = pako.ungzip(zippedContent);
             let textDecoder = new TextDecoder();
@@ -1707,16 +1707,16 @@ let vue = new Vue({
         },
         lamu(value) {
             if (value == 'A') {
-                return 'https://tsuiokuyo.github.io/image/lamuA.webp'
+                return 'https://yuriever.com/image/lamuA.webp'
             } else {
-                return 'https://tsuiokuyo.github.io/image/lamuB.webp'
+                return 'https://yuriever.com/image/lamuB.webp'
             }
         },
         leimu(value) {
             if (value == 'A') {
-                return 'https://tsuiokuyo.github.io/image/leimuA.webp'
+                return 'https://yuriever.com/image/leimuA.webp'
             } else {
-                return 'https://tsuiokuyo.github.io/image/leimuB.webp'
+                return 'https://yuriever.com/image/leimuB.webp'
             }
         },
         getBackground(item) {
@@ -1751,7 +1751,7 @@ let vue = new Vue({
             return 'image/noImage.webp'
         },
         setBackgroundLazy(entries, observer, isIntersecting) {
-            let bg = 'https://tsuiokuyo.github.io/image/background.webp'
+            let bg = 'https://yuriever.com/image/background.webp'
             let cdn = 'https://tsuiokuyo-9688.imgix.net/'
             let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
 
@@ -1778,7 +1778,7 @@ let vue = new Vue({
             }
         },
         goToBlog() {
-            window.open('https://tsuiokuyo.github.io/');
+            window.open('https://yuriever.com/');
         },
         next() {
             this.destroyTable()

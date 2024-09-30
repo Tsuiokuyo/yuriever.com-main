@@ -56,7 +56,7 @@ lastmod: 2024-01-18
 
 ### [Github](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Fgithub.com%2FTsuiokuyo%2Fumamusume-tierlist%2Ftree%2Fmain)
 
-### 畫面網址：[https://tsuiokuyo.github.io/umaTier/index.html](https://yuriever.com/umaTier/index.html)
+### 畫面網址：[https://yuriever.com/umaTier/index.html](https://yuriever.com/umaTier/index.html)
 
 這是原開發者的畫面網址:[Uma Musume Tier List](https://ref.gamer.com.tw/redir.php?url=https%3A%2F%2Feuophrys.github.io%2Fuma-tiers%2F)**
 
