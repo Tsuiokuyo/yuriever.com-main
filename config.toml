@@ -1,4 +1,4 @@
-baseURL = "https://tsuiokuyo.github.io/"
+baseURL = "https://yuriever.com//"
 defaultContentLanguage = "zh-tw"
 # 更改使用 Hugo 構建網站時使用的默認主題
 theme = "LoveIt"
