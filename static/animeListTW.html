@@ -111,7 +111,7 @@
 
                 </v-tabs>
                 <v-alert dismissible color="red lighten-2" border="left" elevation="3" colored-border icon="本站事項" dense class="bkColor">
-					<span>復活，但是還要再調整，少數作品分數異常，待下次調整。<span>
+					<span>復活。<span>
                 </v-alert>
 		
 				<!--
@@ -136,7 +136,7 @@
                                     </v-card>
                                 </template>-->
                                     2023/11/02，Netlify超量已被刪，以及一些資料遺失及第三方套件停止免費，此網頁無限期停止更新，總筆數:11949 <br>
-                                    2024/09/27，因為又看到巴哈分數特高，其他網站低的作品，因此復活，重新運作，不過總筆數剩9136。<br/>
+                                    2024/09/27，因為又看到某網站特高，其他網站低的作品等等，因此復活，繼續更新。<br/>
                                     <br />
                                     <span>
                                     <br><br><br>
@@ -1023,7 +1023,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <!--<td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" v-if="!isMemoMode">
                                 <v-avatar size="32" rounded>
                                     <img alt="sakuhindb" src="image/sakuhindb.webp">
                                 </v-avatar><br />
@@ -1031,7 +1031,7 @@
                                 <span v-else>
                                         <v-chip>N/A</v-chip>
                                     </span>
-                            </td>-->
+                            </td>
                             <td></td>
                             <td v-show=false>
                                 <span v-text="getBackground(item)"></span>
@@ -1145,11 +1145,11 @@
                             <span v-if="item.annict">{{item.annict.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
-                            <!--sakuhindb
+                            <!--sakuhindb -->
                             <template v-slot:item.sakuhindb="{ item }">
                             <span v-if="item.sakuhindb">{{item.sakuhindb.b_score | returnZero}}</span>
                             <span v-else>N/A</span>
-                        </template> -->
+                        </template>
                         </v-data-table>
                         <br />
                         <v-pagination v-model="page" :length="pageCount" :total-visible="totalVis" @input="next">
