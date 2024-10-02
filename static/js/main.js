@@ -137,8 +137,9 @@ let vue = new Vue({
         selSource: 'ALL',
         sortDesc: true,
         sortBy: 'rank',
-        sorts: [{ 'name': '平均(可下拉)', 'value': 'rank' }, { 'name': '巴哈姆特', 'value': 'gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
-            { 'name': 'Bangumi', 'value': 'bgm' }, { 'name': 'Anikore', 'value': 'anikore' }
+        sorts: [{ 'name': '平均', 'value': 'rank' }
+		//{ 'name': '巴哈姆特', 'value': 'gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
+        //    { 'name': 'Bangumi', 'value': 'bgm' }, { 'name': 'Anikore', 'value': 'anikore' }
         ],
 
 
