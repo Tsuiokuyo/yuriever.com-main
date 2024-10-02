@@ -1315,12 +1315,13 @@ let vue = new Vue({
             }
         },
         toggleFullscreen(item) {
-            let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
+            /*let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
             if (null != item.BGM) {
                 this.selectedImage = cdn2 + "http://lain.bgm.tv/pic/cover/l/" + item.BGM.image + ".jpg" + "&output=webp"
             } else {
                 this.selectedImage = "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '') + 'l.webp'
-            }
+            }*/
+			 this.selectedImage = "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '') + 'l.webp'
         },
         customSort(items, index, isDescending) {
             if (this.toRandom) {
