@@ -503,13 +503,6 @@ let vue = new Vue({
                     width: '5%',
                 },
                 {
-                    text: 'redditanimelist評分',
-                    value: 'redditanimelist',
-                    align: 'center',
-                    filterable: false,
-                    width: '5%',
-                },
-                {
                     text: 'annict評分*',
                     value: 'annict',
                     align: 'center',
@@ -777,7 +770,7 @@ let vue = new Vue({
         //記憶體爆炸
         //await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
 		//await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com/master/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
-		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test.gzip').then((res) => res.arrayBuffer().then(buf => {	
+		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.gzip').then((res) => res.arrayBuffer().then(buf => {	
             let zippedContent = new Uint8Array(buf);
             let byteArray = pako.ungzip(zippedContent);
             let textDecoder = new TextDecoder();
