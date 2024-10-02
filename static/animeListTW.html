@@ -863,16 +863,16 @@
                                                     allowfullscreen></iframe>
                                             </v-dialog>
                                 </span>
-								<span style="float: right;" v-if="item.BGM.summary">
+								<span style="float: right;" v-if="item.BGM && item.BGM.summary">
 									<v-btn color="transparent" light @click.stop="$set(dialogSummary, item.MAL.id, true)">
 										<v-icon>mdi-information-outline</v-icon>簡介
 									</v-btn>
 									<v-dialog v-model="dialogSummary[item.MAL.id]" scrollable lazy max-width="960" :key="item.MAL.id" v-if="dialogSummary[item.MAL.id]">
 										<v-card>
-											 <v-card-title style="font-size: 24px;">動畫簡介</v-card-title>
-												<v-card-text style="font-size: 18px; white-space: pre-wrap;">{{ item.BGM.summary }}</v-card-text>
-
-											 
+											<v-card-title style="font-size: 24px;">動畫簡介</v-card-title>
+											<v-card-text style="font-size: 18px; white-space: pre-wrap;">
+												{{ item.BGM.summary }}
+											</v-card-text>
 										</v-card>
 									</v-dialog>
 								</span>
