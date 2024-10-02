@@ -619,7 +619,7 @@
                             <!-- <v-divider></v-divider> -->
                             <v-row>
                                 <v-col>
-                                    <label>排序(故障中)：</label>
+                                    <label>排序(故障)：</label>
                                     <select v-model="sortBy" :disabled="toRandom">
                                     <option v-for="item in sorts" :value="item.value" border>{{item.name}}</option>
                                 </select>
@@ -634,7 +634,7 @@
                                     </v-btn-toggle>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-checkbox class="font-weight-black" v-model="toRandom" label="亂數排序" dense color="red">
+                                    <v-checkbox class="font-weight-black" v-model="toRandom" label="隨機排序" dense color="red">
                                     </v-checkbox>
                                 </v-col>
 
@@ -643,7 +643,7 @@
                                 </v-col>
                                 <v-col cols="2">
                                     <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
-                                    <v-checkbox v-model="disabledBgImage" label="禁用背景圖(省流量)" dense></v-checkbox>
+                                    <v-checkbox v-model="disabledBgImage" label="禁用背景橫幅(省流量)" dense></v-checkbox>
                                 </v-col>
 
                                 <v-col> </v-col>
