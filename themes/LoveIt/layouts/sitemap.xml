@@ -49,12 +49,14 @@
 	{{- range $staticFiles -}}
 		{{- if eq (path.Ext .Name) ".html" -}}
 			<url>
-				<loc>{{ $.Site.BaseURL }}{{ .Name }}</loc>
+				<loc>{{ $.Site.BaseURL }}/{{ .Name }}</loc> 
 				<changefreq>monthly</changefreq>
 				<priority>1.0</priority>
 			</url>
 		{{- end -}}
 	{{- end -}}
+
+
 
 	
 </urlset>
