@@ -163,7 +163,7 @@ let vue = new Vue({
         destroy: true,
         disabledBgImage: false,
         dialogYt: {},
-
+		dialogSummary: {},
         genreList: [],
         genreSel: [],
         cmpList: [],
