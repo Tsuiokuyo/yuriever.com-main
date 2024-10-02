@@ -555,7 +555,8 @@
                             </v-expansion-panel>
 
                         </v-expansion-panels>
-                        <span v-if="windowWidth < 600">(手機版排除裏番及登入)</span>
+						<span v-if="windowWidth < 600">(以網頁版為主，手機版較難維護)</span>
+                        <span v-if="windowWidth < 600">(手機版排除裏番)</span>
                         <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
                         <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
                         <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense>
@@ -618,7 +619,7 @@
                             <!-- <v-divider></v-divider> -->
                             <v-row>
                                 <v-col>
-                                    <label>排序：</label>
+                                    <label>排序(故障中)：</label>
                                     <select v-model="sortBy" :disabled="toRandom">
                                     <option v-for="item in sorts" :value="item.value" border>{{item.name}}</option>
                                 </select>
