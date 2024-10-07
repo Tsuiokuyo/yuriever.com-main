@@ -24,7 +24,7 @@ let vue = new Vue({
             template: `<div>
                                 <v-chip :color="setChipColor(bScore,website)" dark>
                                 <span style="font-size:15px;" v-if="!!!bScore">不計分</span>
-                                <span v-else>{{ bScore }}<span v-if="website == 'annict' || website =='sakuhindb'" style="font-size:small;">*</span></span>
+                                <span v-else>{{ Number(bScore).toFixed(2) }}<span v-if="website == 'annict' || website =='sakuhindb' || website =='trakt'" style="font-size:small;">*</span></span>
                                 </v-chip>
                                 <br />
                                 <a v-if="item" class="original" @click="toAnime(website,item.id)"><br />
@@ -33,7 +33,7 @@ let vue = new Vue({
                                 </div>`,
             methods: {
                 setChipColor(bScore, website) {
-                    if (website != 'annict' && website != 'sakuhindb') {
+                    if (website != 'annict' && website != 'sakuhindb' && website != 'trakt') {
                         if (bScore >= 7) return 'green darken-1'
                         else if (bScore >= 4) return 'orange darken-1'
                         else if (bScore > 0) return 'red'
@@ -71,7 +71,7 @@ let vue = new Vue({
                             url = 'https://www.anisearch.com/anime/' + id;
                             break
                         case 'kitsu':
-                            url = 'https://kitsu.io/anime/' + id;
+                            url = 'https://kitsu.app/anime/' + id;
                             break
                         case 'notifyMoe':
                             url = 'https://notify.moe/anime/' + id;
@@ -483,13 +483,6 @@ let vue = new Vue({
                     width: '5%',
                 },
                 {
-                    text: 'trakt評分',
-                    value: 'trakt',
-                    align: 'center',
-                    filterable: false,
-                    width: '5%',
-                },
-                {
                     text: 'livechart評分',
                     value: 'livechart',
                     align: 'center',
@@ -499,6 +492,13 @@ let vue = new Vue({
                 {
                     text: 'anidb評分',
                     value: 'anidb',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                },
+                {
+                    text: 'trakt評分*',
+                    value: 'trakt',
                     align: 'center',
                     filterable: false,
                     width: '5%',
@@ -1730,8 +1730,12 @@ let vue = new Vue({
                 //     return 'image/noImage.webp'
                 // }
                 if (null != item.banner) {
-                    if (item.banner.indexOf('kitsuQWQ') != -1) {
-                        return 'https://media.kitsu.io/anime/' + item.banner.replace('kitsuQWQ', '');
+                    if (item.banner.indexOf('kitsuQWQ') != -1) { //FIXME
+						if (item.banner.indexOf('https://media.kitsu.app/anime/') === -1) {
+							return 'https://media.kitsu.app/anime/' + item.banner.replace('kitsuQWQ', '');
+						}else{
+							return item.banner.replace('kitsuQWQ', '');
+						}
                     } else if (item.banner.indexOf('anisearchQWQ') != -1) {
                         return 'https://cdn.anisearch.com/images/anime/header/' + item.banner.replace('anisearchQWQ', '') + '.webp';
                     } else if (item.banner.indexOf('traktQWQ') != -1) {
