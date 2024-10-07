@@ -138,6 +138,8 @@
                                 </template>-->
                                     2023/11/02，Netlify超量已被刪，以及一些資料遺失及第三方套件停止免費，此網頁無限期停止更新，總筆數:11949 <br>
                                     2024/09/27，因為又看到某網站特高，其他網站低的作品等等，因此復活，繼續更新。<br/>
+									目前無法處理的部分是，巴哈沒有分上下季度，因此兩季分數是混在一起的，會導致分數失準...，<br/>
+									而我條目到底要不要兩季都放評分，還是放在第一季內，猶豫中。<br/>
                                     <br />
                                     <span>
                                     <br><br><br>
@@ -199,9 +201,7 @@
 	
                                     因為大概沒人看，這邊就不排版了...</span><br />
 
-                                    <h4>對了，先提一下，其實不用太在意巴哈評分特高的問題，雖然沒有去極值，但也對分數另外再進行標準化後，再去做平均，當然，大前提是運算邏輯沒問題。
-                                        <br />將計算混合在一起的所有分數的總體 μ（平均值）和總體 σ（標準差）。 然後，對於某個網站 i，將計算其自身的 μi 和 σi。 最後，來自網站 i 的分數將通過以下方式標準化：
-                                        <br /> (單標準 /總標準) * (分數 -單平均) + 總平均
+                                   
                                     </h4>
                                     <h2>關於列表</h2>
                                     <span>應該算是純前端畫面，畢竟沒有後端更沒有資料庫，本想串Firebase，但50000筆的免費額度有點微妙，<br />
@@ -215,14 +215,22 @@
 
                                     <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜。
                                     <h3>作品篩選依據</h3>
-                                    至少有四個分數來源網站，順便一提，巴哈應該有三成以上的作品資料沒有比對到
+                                    至少有四個分數來源網站，順便一提，巴哈應該只有比對到六~七成。
                                     <p />
 
                                     <p />
                                     <h2>分數計算方式</h2>
-                                    除特定網站，其餘基於投票資料使用貝氏估計法重新計算分數，規則如下：<br /> 各網站作品投票數至少需要10票，低於10票則不計算分數，
-                                    <br /> 使用貝氏估計法後，若至少4個網站有計算出分數(裏番只需2個)，則標準化所有分數取平均值，<br /> 而無投票細節的網站得出的分數多少會有誤差，
-                                    <br /> 公式使用自https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation <br> 不過目前已經改成直接取貝氏估計法的平均值，因為標準化分數不好理解...
+									 <h4>首先，不必擔心巴哈評分特別高的問題。雖然我沒有去掉極值，但在進行標準化處理後再取平均分數，這樣可以保證計算的合理性（前提是運算邏輯正確）。
+                                        <br />計算混合在一起的所有分數的總體平均值 (μ) 和總體標準差 (σ)。接著，對於每個網站 i，計算該網站的平均值 (μi) 和標準差 (σi)。最後，來自網站 i 的分數將通過以下公式進行標準化處理：
+                                        <br /> (單標準 /總標準) * (分數 -單平均) + 總平均
+										
+                                    <br />此外，對於特定網站，基於投票資料，使用貝氏估計法來重新計算分數。具體規則如下：
+
+									<br />1.各網站的作品投票數至少需要 10 票，低於 10 票則不計算分數。
+									<br />2.使用貝氏估計法後，若至少有 4 個網站的作品計算出分數（裏番只需 2 個），則會將所有分數進行標準化並取平均值。
+									<br />3.無投票細節的網站其分數可能存在誤差。
+                                    <br /> 公式使用自https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation 
+									<br> 總分已經改為直接取貝氏估計法的平均值，因為標準化分數對許多人來說不太直觀。
                                 </div>
                                 <p />
                                 <ol>
@@ -240,8 +248,8 @@
                                     <li>myanimelist :無重新計算，網站已使用Bayesian</li>
                                     <li>notifyMoe :重新計算分數，但沒找到投票分數細節</li>
                                     <li><del>redditanimelist:重新計算分數，但未使用投票細節</del></li>
-                                    <li><del>sakuhindb:重新計算分數，但不列入總平均分數，因有七分制換算的問題</del></li>
-                                    <li>trakt:重新計算分數</li>
+                                    <li>sakuhindb:重新計算分數，但不列入總平均分數，因有七分制換算的問題</li>
+                                    <li>trakt:重新計算分數，但不列入總平均分數</li>
 
                                 </ol>
                                 <p />
@@ -253,18 +261,17 @@
                                     <li>https://github.com/LovEveRv/anime-rating-db</li>
                                     <li>https://github.com/soruly/burstlink</li>
                                     <li>https://github.com/kawaiioverflow/arm</li>
-                                    <li>https://github.com/Rob--W/cors-anywhere</li>
-                                    <li>https://github.com/isoaxe/cors-server</li>
                                     <li>https://github.com/Fribb/anime-lists</li>
+									<li>https://github.com/varoOP/shinkrodb</li>
                                     API部分
                                     <li>https://github.com/jikan-me/jikan-rest </li>
                                     <li>https://github.com/AniList/ApiV2-GraphQL-Docs</li>
                                     <li>https://github.com/bangumi/api</li>
+									<li>https://github.com/bangumi/Archive</li>
                                     <li>https://github.com/trakt/api-help</li>
                                     <li>https://wiki.anidb.net/HTTP_API_Definition</li>
                                     <li>https://www.animenewsnetwork.com/encyclopedia/api.php</li>
                                     <li>https://developers.annict.com/docs/rest-api/v1</li>
-                                    <li>https://github.com/bangumi/api</li>
                                     <li>https://fanarttv.docs.apiary.io/</li>
                                     <li>https://kitsu.docs.apiary.io/#</li>
                                     <li>https://notify.moe/api</li>
@@ -280,7 +287,7 @@
                                 </ol>
                                 <br />
 
-                                <h3 style="text-align: center;"> 有任何問題還請來信告知 Tsuiokuyo@gmail.com
+                                <h3 style="text-align: center;"> 有任何問題可來信 Tsuiokuyo@gmail.com
 
                                 </h3>
                             </div>
@@ -887,7 +894,7 @@
                             </td>
                             <td class="center pa-0">
                                 <span style="font-size:14px;">Bayesian</span><br />總平均<br />
-                                <span style="font-size:35px;font-weight:bold">{{item.score != 0 ? item.score :'不計分'}}</span>
+                                <span style="font-size:35px;font-weight:bold">{{item.score != 0 ? Number(item.score).toFixed(2) :'不計分'}}</span>
                             </td>
                             <td class="center pa-0" v-if="user != null && isMemoMode" Width="100">
                                 個人評分
@@ -992,16 +999,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
-                                <v-avatar size="32" rounded>
-                                    <img alt="trakt" src="image/trakt.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.trakt" :item="item.trakt" website="trakt" :b-score="item.trakt.b_score">
-                                </rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
+
                             <td class="center pa-0" v-if="!isMemoMode">
                                 <v-avatar size="32" rounded>
                                     <img alt="livechart" src="image/livechart.webp">
@@ -1030,6 +1028,16 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td> -->
+                            <td class="center pa-0" v-if="!isMemoMode">
+                                <v-avatar size="32" rounded>
+                                    <img alt="trakt" src="image/trakt.webp">
+                                </v-avatar><br />
+                                <rating v-if="item.trakt" :item="item.trakt" website="trakt" :b-score="item.trakt.b_score">
+                                </rating>
+                                <span v-else>
+                                        <v-chip>N/A</v-chip>
+                                    </span>
+                            </td>
                             <td class="center pa-0" v-if="!isMemoMode">
                                 <v-avatar size="32" rounded>
                                     <img alt="annict" src="image/annict.webp">
@@ -1136,11 +1144,7 @@
                             <span v-if="item.notifyMoe">{{item.notifyMoe.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
-                            <!--trakt -->
-                            <template v-slot:item.trakt="{ item }">
-                            <span v-if="item.trakt">{{item.trakt.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
+
                             <!--livechart -->
                             <template v-slot:item.livechart="{ item }">
                             <span v-if="item.livechart">{{item.livechart.b_score| returnZero}}</span>
@@ -1156,6 +1160,11 @@
                             <span v-if="item.redditanimelist">{{item.redditanimelist.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>-->
+                        <!--trakt -->
+                        <template v-slot:item.trakt="{ item }">
+                            <span v-if="item.trakt">{{item.trakt.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
                             <!--annict -->
                             <template v-slot:item.annict="{ item }">
                             <span v-if="item.annict">{{item.annict.b_score| returnZero}}</span>
