@@ -794,7 +794,8 @@ let vue = new Vue({
 
             vue.isLoading = null;
         }));*/
-		let response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.gzip');
+		//let response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.gzip');
+		let response = await fetch('https://cdn.jsdelivr.net/gh/Tsuiokuyo/yuriever.com-main@master/static/test2min.msgpack.gzip');
 		let reader = response.body.getReader();
 		let contentLength = +response.headers.get('Content-Length');
 		this.fileSize = (contentLength / (1024 * 1024)).toFixed(2);
