@@ -795,23 +795,23 @@ let vue = new Vue({
 		let response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.gzip');
 		let reader = response.body.getReader();
 		let contentLength = +response.headers.get('Content-Length');
+		this.fileSize = (contentLength / (1024 * 1024)).toFixed(2);
 		let loaded = 0;
 		let chunks = [];
-
 
 		while (true) {
 		  const { done, value } = await reader.read();
 		  if (done) break;
 		  chunks.push(value);
 		  loaded += value.length;
-		  this.loadingProgress = Math.min((loaded / contentLength * 90).toFixed(2), 90);
+		  this.loadingProgress = Math.min((loaded / contentLength * 99).toFixed(2), 99);
+		  this.currentLoaded = (loaded / (1024 * 1024)).toFixed(2); 
 		}
 
 		let zippedContent = new Uint8Array(chunks.reduce((acc, val) => acc.concat(Array.from(val)), []));
 		let byteArray = pako.ungzip(zippedContent);
 		this.rawData = msgpack.decode(byteArray);
-
-		this.isLoading = false; 
+		this.isLoading = null; 
 		//this.loadingProgress = 100;
 
         // this.gnn.title = 'heroku已死，暫時無法撈取RSS'
