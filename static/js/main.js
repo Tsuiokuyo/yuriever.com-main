@@ -117,6 +117,8 @@ let vue = new Vue({
         windowWidth: window.innerWidth,
         isLoading: true,
 		loadingProgress: 0,
+		currentLoaded :0,
+		fileSize:0,
         panel: [],
         hug: '',
         snackbarHug: true,
