@@ -20,12 +20,11 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.6.0/dist/jquery.min.js"></script>
-    <!-- Google tag (gtag.js)
-    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-QCHS68JGBX"></script> -->
-
 	<script src="https://cdn.jsdelivr.net/npm/msgpack-lite@latest/dist/msgpack.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script defer src="https://www.googletagmanager.com/gtag/js?id=G-4Y1Q0EHQCY"></script>
 
-
+	
     <script defer>
         window.dataLayer = window.dataLayer || [];
 
@@ -33,7 +32,7 @@
             dataLayer.push(arguments);
         }
         gtag('js', new Date());
-        gtag('config', 'G-QCHS68JGBX');
+        gtag('config', 'G-4Y1Q0EHQCY');
     </script>
 
     <script defer src="js/main.js" type="text/javascript"></script>
@@ -142,7 +141,7 @@
                                     2023/11/02，Netlify超量已被刪，以及一些資料遺失及第三方套件停止免費，此網頁無限期停止更新，總筆數:11949 <br>
                                     2024/09/27，因為又看到某網站特高，其他網站低的作品等等，因此復活，繼續更新。<br/>
 									目前無法處理的部分是，巴哈沒有分上下季度，因此兩季分數是混在一起的，會導致分數失準...，<br/>
-									而我條目到底要不要兩季都放評分，還是放在第一季內，猶豫中。<br/>
+									而條目到底要不要兩季都放評分，還是放在第一季內，猶豫中。<br/>
                                     <br />
                                     <span>
                                     <br><br><br>
@@ -188,13 +187,13 @@
                                                     Number減肥看看了，但是這樣後續調整大概會爆炸...</span><br>目前弄成壓縮成gzip檔，但因為還要解壓，現在倒是效能問題了
                                     <!-- <br /> -->
                                     <ui>
-									<li>記憶體怪獸，目前載入JSON後，瞬間吃的記憶體上看<b>500MB</b>，當前記憶體用量：
+									<li><del>記憶體怪獸，目前載入JSON後，瞬間吃的記憶體上看<b>500MB</b>，當前記憶體用量：
                                                 <span v-if="null != memory">{{Math.round(memory/Math.pow(1000,2),2)}}MB
                                                         <v-btn color="error"
                                                             @click="memory = performance.memory.usedJSHeapSize">更新</v-btn>
-                                                        </span></li>
+                                                        </span></del></li>
                                     <span v-else>僅支援chrome內核查看</span>
-                                        <li>有些動畫因24話有分成part 1、part 2的評分，基本上只有巴哈是直接兩季合併...(e.g. 巨人第三季)，放棄處理</li>
+                                        <li>有些動畫因24話有分成part 1、part 2的評分，基本上只有巴哈是直接兩季合併...(e.g. 巨人第三季)，無法處理</li>
                                         <li>bangumi裏番部分，如點進網址但顯示数据库中没有查询您所指定的条目，單純你沒有權限查看而已@@</li>
                                         <li>名稱搜尋時速度慢，這是因為輸入的同時也在跑邏輯(自動搜尋)，除非我改成用手動來點擊按鈕來搜尋</li>
                                     </ui>
@@ -566,8 +565,7 @@
                             </v-expansion-panel>
 
                         </v-expansion-panels>
-						<span v-if="windowWidth < 600">(以網頁版為主，手機版較難維護)</span>
-                        <span v-if="windowWidth < 600">(手機版排除裏番)</span>
+                        <span v-if="windowWidth < 600">(以網頁版為主，手機版較難維護，手機版排除裏番)</span>
                         <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
                         <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
                         <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense>
@@ -708,13 +706,13 @@
                                 v-on="on">mdi-alert-circle
                             </v-icon>
                             </template>
-                            <span>這東西屬玩樂性質，不要有太大希望，每日讀寫都有免費額度的問題，雖然目前來看是不太可能達到上限。</span>
+                            <span>這東西屬玩樂性質，基本上放爛了...，每日讀寫都有免費額度的問題，雖然目前流量是不太可能達到上限。</span>
                         </v-tooltip>
 
                         </v-row>
                         </span>
                         <br/>
-                        <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...超過太久就重新整理，還是不行大概就是'暫時掛掉'，看我甚麼時候注意到" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
+                        <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...超過太久就重新整理，兩次都不行大概就是'暫時掛掉'，看我甚麼時候注意到" no-results-text="查無任何資料，可能是沒有收錄、名稱錯誤，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
                             :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event"
                             hide-default-footer>
 
@@ -741,10 +739,10 @@
                                     <span v-if="null != item.BGM">{{ item.BGM.cn_name }}</span> <br />
                                     <span v-if="null != item.MAL">{{ item.MAL.jp_name }}</span> <br />
                                     <span v-if="null != item.MAL">{{ item.MAL.en_name }}</span> <br />
-                                    <v-divider></v-divider>
 
                                     <span v-if="null != item.official">
                                         <a :href="'https://' + item.official" target="_blank">動畫官網</a>&nbsp;
+                                    <v-divider></v-divider>
                                     </span>
                                     <span v-if="null != item.twitter">
                                         <a :href="'https://' + item.twitter" target="_blank">Twitter</a>&nbsp;
@@ -882,9 +880,10 @@
 									<v-dialog v-model="dialogSummary[item.MAL.id]" scrollable lazy max-width="960" :key="item.MAL.id" v-if="dialogSummary[item.MAL.id]">
 										<v-card>
 											<v-card-title style="font-size: 24px;">動畫簡介</v-card-title>
-											<v-card-text style="font-size: 18px; white-space: pre-wrap;">
-												{{ item.BGM.summary }}
-											</v-card-text>
+											<!--<v-card-text style="font-size: 18px; white-space: pre-wrap;text-align: left;">
+												{{ item.BGM.summary.trim() }}
+											</v-card-text>-->
+											<v-card-text style="font-size: 18px; white-space: pre-wrap; text-align: left;" v-html="item.BGM.summary.trim()"></v-card-text>
 										</v-card>
 									</v-dialog>
 								</span>
