@@ -6,7 +6,7 @@ featuredImage: "/assets/umaTier.jpg"
 featuredImagePreview: "/assets/umaTier.jpg"
 tags: [其他]
 categories: [其他]
-weight: 1
+weight: 2
 lastmod: 2024-01-18
 ---
 
@@ -17,8 +17,6 @@ lastmod: 2024-01-18
 <img src="images\1.jpg" title="" alt="OSD02" data-align="left">
 
 ### 這邊的文章比較凌亂，可能去巴哈看同一篇文會比較清楚，這邊算初稿而已，要調兩邊很麻煩...
-
-
 
 ### 先提一下，這個畫面不是我開發的，
 
