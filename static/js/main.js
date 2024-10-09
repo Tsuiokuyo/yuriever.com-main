@@ -116,6 +116,7 @@ let vue = new Vue({
 
         windowWidth: window.innerWidth,
         isLoading: true,
+		loadingProgress: 0,
         panel: [],
         hug: '',
         snackbarHug: true,
@@ -790,26 +791,28 @@ let vue = new Vue({
             this.rawData = JSON.parse(textContent)
 
             vue.isLoading = null;
-        }));
-		
+        }));*/
+		let response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.gzip');
+		let reader = response.body.getReader();
+		let contentLength = +response.headers.get('Content-Length');
+		let loaded = 0;
+		let chunks = [];
 
-		
-		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.br').then((res) => res.arrayBuffer().then(buf => {
-			let byteArray = new Uint8Array(buf);
-			let decompressedContent = brotliDecode(byteArray);
-			let textDecoder = new TextDecoder();
-			let textContent = textDecoder.decode(decompressedContent);
-			this.rawData = JSON.parse(textContent);
 
-			vue.isLoading = null;
-		}));*/
-		await	fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.gzip').then((res) => res.arrayBuffer().then(buf => {
-			let zippedContent = new Uint8Array(buf);
-			let byteArray = pako.ungzip(zippedContent);
-			this.rawData = msgpack.decode(byteArray);
+		while (true) {
+		  const { done, value } = await reader.read();
+		  if (done) break;
+		  chunks.push(value);
+		  loaded += value.length;
+		  this.loadingProgress = Math.min((loaded / contentLength * 90).toFixed(2), 90);
+		}
 
-			vue.isLoading = null;
-		}));
+		let zippedContent = new Uint8Array(chunks.reduce((acc, val) => acc.concat(Array.from(val)), []));
+		let byteArray = pako.ungzip(zippedContent);
+		this.rawData = msgpack.decode(byteArray);
+
+		this.isLoading = false; 
+		//this.loadingProgress = 100;
 
         // this.gnn.title = 'heroku已死，暫時無法撈取RSS'
         // this.moelong.title = 'heroku已死，暫時無法撈取RSS'
@@ -1273,7 +1276,6 @@ let vue = new Vue({
             }
 
         )
-
 
     },
     async mounted() {
