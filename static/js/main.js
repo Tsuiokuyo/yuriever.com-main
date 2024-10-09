@@ -33,12 +33,22 @@ let vue = new Vue({
                                 </div>`,
             methods: {
                 setChipColor(bScore, website) {
-                    if (website != 'annict' && website != 'sakuhindb' && website != 'trakt') {
+                /*    if (website != 'annict' && website != 'sakuhindb' && website != 'trakt') {
                         if (bScore >= 7) return 'green darken-1'
                         else if (bScore >= 4) return 'orange darken-1'
                         else if (bScore > 0) return 'red'
                         else return 'Default'
-                    }
+                    }*/
+					if (website != 'annict' && website != 'sakuhindb' && website != 'trakt') {
+						if (bScore >= 9) return 'green darken-1'          
+						else if (bScore >= 8) return 'light-green darken-1' 
+						else if (bScore >= 7) return 'lime darken-1'        
+						else if (bScore >= 6) return 'amber darken-1'       
+						else if (bScore >= 4) return 'orange darken-1'      
+						else if (bScore > 0) return 'red darken-1'         
+						else return 'grey darken-2'                          
+					}
+
                 },
                 toAnime(page, id) {
                     let url = ''
@@ -771,7 +781,8 @@ let vue = new Vue({
         //記憶體爆炸
         //await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
 		//await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com/master/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
-		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/min.gzip').then((res) => res.arrayBuffer().then(buf => {	
+		/*
+		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.gzip').then((res) => res.arrayBuffer().then(buf => {	
             let zippedContent = new Uint8Array(buf);
             let byteArray = pako.ungzip(zippedContent);
             let textDecoder = new TextDecoder();
@@ -780,7 +791,25 @@ let vue = new Vue({
 
             vue.isLoading = null;
         }));
+		
 
+		
+		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.br').then((res) => res.arrayBuffer().then(buf => {
+			let byteArray = new Uint8Array(buf);
+			let decompressedContent = brotliDecode(byteArray);
+			let textDecoder = new TextDecoder();
+			let textContent = textDecoder.decode(decompressedContent);
+			this.rawData = JSON.parse(textContent);
+
+			vue.isLoading = null;
+		}));*/
+		await	fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.gzip').then((res) => res.arrayBuffer().then(buf => {
+			let zippedContent = new Uint8Array(buf);
+			let byteArray = pako.ungzip(zippedContent);
+			this.rawData = msgpack.decode(byteArray);
+
+			vue.isLoading = null;
+		}));
 
         // this.gnn.title = 'heroku已死，暫時無法撈取RSS'
         // this.moelong.title = 'heroku已死，暫時無法撈取RSS'
@@ -795,6 +824,7 @@ let vue = new Vue({
         // https://wispy-smoke-920.fly.dev/
         // https://proxy-6jamtxfrdq-uc.a.run.app/
 
+	/*
         let moelongUrl = 'https://www.moelong.com/moelongnews/feed';
         let gnnUrl = 'https://gnn.gamer.com.tw/rss.xml';
         let QAQrandom = Math.floor(Math.random() * 2) //0,1
@@ -905,7 +935,7 @@ let vue = new Vue({
                 }
 
             })
-
+*/
 
         this.$nextTick(function() {
                 //用途不大的firebase字串加密QAQ
