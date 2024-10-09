@@ -622,9 +622,12 @@
 								>
 								  <template v-slot:default>
 									<span style="font-size: 16px;">進度: {{ loadingProgress }}%</span>
+					
+
 								  </template>
 								</v-progress-linear>
 								<div style="font-size: 16px;">{{ currentLoaded }}/{{ fileSize }} MB</div>
+								<div v-if="loadingProgress > 90" style="font-size: 16px;">解壓縮、運算中，可能會出現停止回應，但應該是不會超過10秒啦...超過太久就重新整理</div>
 							  </div>
 							</template>
                             <template v-slot:item="{item}">
