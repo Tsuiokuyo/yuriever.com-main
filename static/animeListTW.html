@@ -611,6 +611,22 @@
                         <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...超過太久就重新整理，兩次都不行大概就是'暫時掛掉'，看我甚麼時候注意到" no-results-text="查無任何資料，可能是沒有收錄、名稱錯誤，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
                             :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event"
                             hide-default-footer>
+							  <template v-slot:loading>
+								<div>
+								  <v-progress-linear
+									:value="loadingProgress" 
+									color="blue" 
+									height="20" 
+									striped 
+									:indeterminate="isLoading"
+								  >
+									  <template v-slot:default>
+										<span>下載進度: {{ loadingProgress }}%</span>
+									  </template>
+								  </v-progress-linear>
+								</div>
+							  </template>
+							  
                             <template v-slot:item="{item}">
                             <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
                                 <td class="center pa-0" style="padding:0" width="200">
