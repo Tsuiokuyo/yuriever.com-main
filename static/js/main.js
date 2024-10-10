@@ -972,7 +972,7 @@ let vue = new Vue({
             })
 */
 
-        this.$nextTick(function() {
+       /* this.$nextTick(function() {
                 //用途不大的firebase字串加密QAQ
                 var _0x1d7d3f = _0x4320;
 
@@ -1307,7 +1307,7 @@ let vue = new Vue({
                 }
             }
 
-        )
+        )*/
 
     },
     async mounted() {
