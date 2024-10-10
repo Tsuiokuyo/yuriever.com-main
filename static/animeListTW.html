@@ -12,7 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&display=swap" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js" integrity="sha512-g2TeAWw5GPnX7z0Kn8nFbYfeHcvAu/tx6d6mrLe/90mkCxO+RcptyYpksUz35EO337F83bZwcmUyHiHamspkfg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.16/vue.min.js" integrity="sha512-Wx8niGbPNCD87mSuF0sBRytwW2+2ZFr7HwVDF8krCb3egstCc4oQfig+/cfg2OHd82KcUlOYxlSDAqdHqK5TCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.7.2/vuetify.min.js" integrity="sha512-IYt8tD+dURb7hbzLLXHuWV9otZ5fISrB8IvQoKCCRCv4x0A2bum6xXMelApgdT62Za6N1h9Jo+ziEFYht9sRXQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -144,15 +143,8 @@
                                     <br />
                                     <p />
                                     <h3>目前一些問題</h3>
-									資料量越來越臃腫，若不放進資料庫，最終只能全弄Magic
-                                                    Number減肥看看了，但是這樣後續調整大概會爆炸...</span><br>目前弄成壓縮成gzip檔，但因為還要解壓，現在倒是效能問題了
+									資料量越來越臃腫，目前壓縮成<del>gzip</del>已改msgpack.zst檔，但因為還要載入兩個CDN及轉換、解壓，總體速度會不會比較快不確定。
                                     <ui>
-									<li><del>記憶體怪獸，目前載入JSON後，瞬間吃的記憶體上看<b>500MB</b>，當前記憶體用量：
-                                                <span v-if="null != memory">{{Math.round(memory/Math.pow(1000,2),2)}}MB
-                                                        <v-btn color="error"
-                                                            @click="memory = performance.memory.usedJSHeapSize">更新</v-btn>
-                                                        </span></del></li>
-                                    <span v-else>僅支援chrome內核查看</span>
                                         <li>有些動畫因24話有分成part 1、part 2的評分，基本上只有巴哈是直接兩季合併...(e.g. 巨人第三季)，無法處理</li>
                                         <li>bangumi裏番部分，如點進網址但顯示数据库中没有查询您所指定的条目，單純你沒有權限查看而已@@</li>
                                         <li>名稱搜尋時速度慢，這是因為輸入的同時也在跑邏輯(自動搜尋)，除非我改成用手動來點擊按鈕來搜尋</li>
