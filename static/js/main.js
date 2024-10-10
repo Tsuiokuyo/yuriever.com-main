@@ -795,7 +795,9 @@ let vue = new Vue({
             vue.isLoading = null;
         }));*/
 		//let response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.gzip');
-		let response = await fetch('https://cdn.jsdelivr.net/gh/Tsuiokuyo/yuriever.com-main@master/static/test2min.msgpack.gzip');
+		
+		
+		/*let response = await fetch('https://cdn.jsdelivr.net/gh/Tsuiokuyo/yuriever.com-main@master/static/test2min.msgpack.gzip');
 		let reader = response.body.getReader();
 		let contentLength = +response.headers.get('Content-Length');
 		this.fileSize = (contentLength / (1024 * 1024)).toFixed(2);
@@ -813,14 +815,41 @@ let vue = new Vue({
 
 		let zippedContent = new Uint8Array(chunks.reduce((acc, val) => acc.concat(Array.from(val)), []));
 		let byteArray = pako.ungzip(zippedContent);
-		this.rawData = msgpack.decode(byteArray);
+		this.rawData = msgpack.decode(byteArray);*/
+		
+		
+		let response = await fetch('https://cdn.jsdelivr.net/gh/Tsuiokuyo/yuriever.com-main@master/static/test2min.msgpack.zst');
+		let reader = response.body.getReader();
+		let contentLength = +response.headers.get('Content-Length');
+		let loaded = 0;
+		let chunks = [];
+		if (contentLength) {
+		  this.fileSize = (contentLength / (1024 * 1024)).toFixed(2);
+		}
+		while (true) {
+		  const { done, value } = await reader.read();
+		  if (done) break;
+		  chunks.push(value);
+		  loaded += value.length;
+		  if (contentLength) {
+			this.loadingProgress = Math.min((loaded / contentLength * 99).toFixed(2), 99);
+			this.currentLoaded = (loaded / (1024 * 1024)).toFixed(2); 
+		  }
+		}
+		let zippedContent = new Uint8Array(chunks.reduce((acc, val) => acc.concat(Array.from(val)), []));
+		if (!contentLength) {
+		  this.fileSize = (zippedContent.length / (1024 * 1024)).toFixed(2); 
+		}
+		let decompressed = fzstd.decompress(zippedContent);
+		this.rawData = msgpack.decode(decompressed);
+
 		this.isLoading = null; 
 		//this.loadingProgress = 100;
 
         // this.gnn.title = 'heroku已死，暫時無法撈取RSS'
         // this.moelong.title = 'heroku已死，暫時無法撈取RSS'
 
-        let newMoes = []
+        //let newMoes = []
 
         // 只有rss部分是靠node.js才實現的 但11/28 heroku會停止支援免費版，上面三個算屆時備用的，但我也可能會直接放棄使用RSS
         // const moelongUrl = 'https://tsuiokuyo.herokuapp.com/https://www.moelong.com/moelongnews/feed';
