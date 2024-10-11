@@ -1306,6 +1306,7 @@ let vue = new Vue({
                 if (navigator.userAgent.search("Chrome") > -1 || navigator.userAgent.search("Opera") > -1) {
                     this.memory = 0
                 }
+				this.panel.push(3)
             }
 
         )
