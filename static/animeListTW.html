@@ -566,7 +566,7 @@
                         </v-row>
                         <br />
                         <v-row>
-                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2024年10月10日</span>
+                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2024年10月11日</span>
                         </v-row>
                         <span v-if="windowWidth > 600"> 
                         <br/><!--
@@ -953,8 +953,25 @@
                             </template>
                         </v-data-table>
                         <v-data-table class="bkColor" v-if="windowWidth < 600" loader-height="10" ref="tb" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件" :custom-sort="customSort" item-key="rank"
-                            fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true"  :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
-                            <template v-slot:item.cover="{ item }">
+                            fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1" query="true"  :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
+                           		<template v-slot:loading>
+							  <div>
+								<v-progress-linear
+								  :value="loadingProgress" 
+								  color="blue" 
+								  height="20" 
+								  striped 
+								  indeterminate
+								>
+								  <template v-slot:default>
+									<span style="font-size: 16px;">進度: {{ loadingProgress }}%</span>
+								  </template>
+								</v-progress-linear>
+								<div style="font-size: 16px;">{{ currentLoaded }}/{{ fileSize }} MB</div>
+								<div v-if="loadingProgress > 90" style="font-size: 16px;">解壓縮、運算中，可能會出現停止回應，但應該是不會超過10秒啦...超過太久就重新整理</div>
+							  </div>
+							</template>
+						   <template v-slot:item.cover="{ item }">
                             <v-img :contain=true :lazy-src=setCover(item,true) height="200" width="150"
                                 :src=setCover(item,false) @click="toggleFullscreen(item)">
                             </v-img>
