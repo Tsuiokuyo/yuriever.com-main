@@ -627,7 +627,7 @@
 							  </div>
 							</template>
                             <template v-slot:item="{item}">
-                            <tr style="color:red" v-intersect="setBackgroundLazy" clase="lazy" v-if="destroy">
+                            <tr style="color:black" v-intersect="setBackgroundLazy" class="lazy" v-if="destroy">
                                 <td class="center pa-0" style="padding:0" width="200">
                                     <v-img :contain=true :lazy-src=setCover(item,true) height="250" width="200"
                                         title="點圖放大" :src=setCover(item,false) @click="toggleFullscreen(item)">
@@ -753,7 +753,7 @@
                                                 @click.stop="$set(dialogYt, item.MAL.id, true)">
                                                 <v-icon>mdi-youtube</v-icon>PV
                                             </v-btn>
-                                            <v-dialog v-model="dialogYt[item.MAL.id]" scrollable lazy max-width="960"
+                                            <v-dialog v-model="dialogYt[item.MAL.id]" scrollable max-width="960"
                                                 :key="item.MAL.id" v-if="dialogYt[item.MAL.id]">
                                                 <iframe width="960" height="540" :src="getYoutube(item.MAL.trailer)"
                                                     title="YouTube video player" frameborder="0"
@@ -765,7 +765,7 @@
 									<v-btn color="transparent" light @click.stop="$set(dialogSummary, item.MAL.id, true)">
 										<v-icon>mdi-information-outline</v-icon>簡介
 									</v-btn>
-									<v-dialog v-model="dialogSummary[item.MAL.id]" scrollable lazy max-width="960" :key="item.MAL.id" v-if="dialogSummary[item.MAL.id]">
+									<v-dialog v-model="dialogSummary[item.MAL.id]" scrollable max-width="960" :key="item.MAL.id" v-if="dialogSummary[item.MAL.id]">
 										<v-card>
 											<v-card-title style="font-size: 24px;">動畫簡介</v-card-title>
 											<!--<v-card-text style="font-size: 18px; white-space: pre-wrap;text-align: left;">
