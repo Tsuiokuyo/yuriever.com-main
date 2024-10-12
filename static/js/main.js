@@ -214,7 +214,7 @@ let vue = new Vue({
         db: null,
         seenData: null,
         disableBtn: true,
-        isMemoMode: false
+        isMemoMode: false,
     },
     computed: {
         listenChange() {
@@ -384,6 +384,7 @@ let vue = new Vue({
                             }
                         }
                         if (this.search) {
+							this.search = this.search.trim();
                             let name = false
                             if (item.MAL && null != item.MAL.en_name && item.MAL.en_name.toUpperCase().indexOf(this.search.toUpperCase()) != -1) {
                                 name = true;
