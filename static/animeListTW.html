@@ -566,7 +566,7 @@
                         </v-row>
                         <br />
                         <v-row>
-                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2024年10月11日</span>
+                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，資料更新時間:2024年10月15日</span>
                         </v-row>
                         <span v-if="windowWidth > 600"> 
                         <br/><!--
@@ -784,7 +784,7 @@
                                 </div>
                             </td>
                             <td class="center pa-0">
-                                <span style="font-size:14px;">Bayesian</span><br />總平均<br />
+                                <span style="font-size:14px;">Bayesian</span><br />加權平均<br />
                                 <span style="font-size:35px;font-weight:bold">{{item.score != 0 ? Number(item.score).toFixed(2) :'不計分'}}</span>
                             </td>
                             <td class="center pa-0" v-if="user != null && isMemoMode" Width="100">
