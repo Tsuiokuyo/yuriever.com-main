@@ -112,7 +112,7 @@
                                     <br><br><br>
                                     目前網頁功能說明:
                                 <oi>
-									<li>由於網站上的條目眾多，且各動畫作品的票數及分數沒有及時性，因此更新時間不定。存入快取的條目可能每隔15至30天甚至更久才會更新一次。</li>
+									<li>動畫條目眾多，不過票數及分數沒有必要及時更新，因此更新時間不定。暫定存入快取的條目每隔15至45天更新一次。</li>
                                     <li>網址列帶參數功能:基本上沒啥用，就是帶了參數進來能直接查詢某作品，作品名稱或是年份，使用方法如下方<br>
                                         　　https://yuriever.com/animeListTW?name=聖母在上<br>
                                         　　https://yuriever.com/animeListTW?year=2004
@@ -155,16 +155,16 @@
                                     <span class="text-decoration-line-through">
                                     因為大概沒人看，這邊就不排版了...</span><br />
                                     </h4>
-                                    <h2>關於列表</h2>
-                                    <span>應該算是純前端畫面，畢竟沒有後端更沒有資料庫，本想串Firebase，但50000筆的免費額度有點微妙，<br />
+                                    <h2>關於網站</h2>
+                                    <span>閒來無事做的純前端畫面，載入速度及搜尋功能可能有點慢，畢竟沒有後端而且沒有用資料庫，本想串Firebase，但50000筆的免費額度有點微妙，<br />
                                     <br />
 									所有資料基於myanimelist ID為主<br />
-                                    <br /> 目前抓取流程是分成三部分
+                                    <br /> 目前作業流程是分成三部分
                                     <br /> 撈取各網站作品ID->各網站作品ID映射->依作品ID取分數、票數等 <br />
                                     <br />
-                                    <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜。
+                                    <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜單。
                                     <h3>作品篩選依據</h3>
-                                    至少有四個分數來源網站，順便一提，巴哈應該只有比對到六~七成。
+                                    至少要有四個分數來源網站才會放進來此處，里番則為兩個分數來源網站。
                                     <p />
                                     <p />
                                     <h2>分數計算</h2>
@@ -193,13 +193,37 @@
 									<br>'notifyMoe': 1.2,
 									<br>'livechart': 1.0,
 									<br> 
-									<br>4.如果單一網站票數 > 總票數的50% (測試中)
+									<br>4.如果巴哈票數 > 總票數的50% (測試中)
 									<br>則 網站權重 * (0.5 / (票數 / 總票數) * 立方)
 									<br>會有這條主因是，某些作品巴哈分數背離其他網站的分數太大，而且巴哈投票人數又壓倒性的高，導致排名有問題
 									<br>
 									<br>5.分數權重
 									<br>標準化分數 0.2  
-									<br>Bayesian分數 0.8  
+									<br>Bayesian分數 0.8
+									<br>
+									<br>6.最終分數
+									<br> 未來如有發現錯誤邏輯，都會再調整，因此就不解釋了，反正目前程式碼大概長這樣，
+									
+									<br><code> # 根據票數比例動態調整權重<br>
+									if site == "巴哈" and total_site_votes > 0 and votes / total_site_votes > vote_threshold:<br>
+										# 如果該網站的票數佔總票數的比例過高，降低其權重<br>
+										adjustment_factor = vote_threshold / (votes / total_site_votes)<br>
+										weight *= adjustment_factor ** 3<br>
+									<br>
+									weighted_score_sum += Bayesian_score * votes * weight  # 加入加權分數<br>
+									total_votes += votes * weight  # 累加投票數，考慮權重<br>
+									<br>
+									# 計算最終的標準化分數<br>
+									final_normalized_score += normalized_score * weight<br>
+									total_weight += weight  # 累加權重<br>
+									<br>
+									# 最終的標準化分數除以總權重<br>
+									if total_weight > 0:<br>
+										final_normalized_score /= total_weight<br>
+									weighted_avg_score = weighted_score_sum / total_votes  # 計算加權平均分數<br>
+									final_score = (weighted_avg_score * w_b) + (final_normalized_score * w_adj)<br>
+									</code>
+									<br>
                                 </div>
                                 <p />
                                 <ol>
@@ -208,7 +232,7 @@
                                     <li>animeNewsNetwork:無重新計算，網站已使用貝氏估計法</li>
                                     <li>animePlanetCom:重新計算分數，且分數乘2，但沒找到投票分數細節</li>
                                     <li>anisearch:重新計算分數</li>
-                                    <li>annict:重新計算分數，但不列入總平均分數，因有四分制換算的問題</li>
+                                    <li>annict:重新計算分數，但不列入最終分數，因有四分制換算的問題</li>
                                     <li>anidb:重新計算分數，但未使用投票細節</li>
                                     <li>bangumi:重新計算分數</li>
                                     <li>巴哈姆特:重新計算分數，且分數乘2</li>
@@ -217,8 +241,8 @@
                                     <li>myanimelist :無重新計算，網站已使用Bayesian</li>
                                     <li>notifyMoe :重新計算分數，但沒找到投票分數細節</li>
                                     <li><del>redditanimelist:重新計算分數，但未使用投票細節</del></li>
-                                    <li>sakuhindb:重新計算分數，但不列入總平均分數，因有七分制換算的問題</li>
-                                    <li>trakt:重新計算分數，但不列入總平均分數</li>
+                                    <li>sakuhindb:重新計算分數，但不列入最終分數，因有七分制換算的問題</li>
+                                    <li>trakt:重新計算分數，但不列入最終分數</li>
                                 </ol>
                                 <p />
                                 <p />
@@ -589,7 +613,7 @@
                         </v-row>
                         <br />
                         <v-row>
-                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，更新時間:2024年10月17日</span>
+                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，更新時間:2024年10月18日</span>
                         </v-row>
                         <span v-if="windowWidth > 600"> 
                         <br/><!--
