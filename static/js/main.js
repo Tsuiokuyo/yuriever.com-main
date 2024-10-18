@@ -818,8 +818,8 @@ let vue = new Vue({
 		let byteArray = pako.ungzip(zippedContent);
 		this.rawData = msgpack.decode(byteArray);*/
 		
-		
-		let response = await fetch('https://cdn.jsdelivr.net/gh/Tsuiokuyo/yuriever.com-main@master/static/test2min.msgpack.zst');
+		let response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.zst');
+		//let response = await fetch('https://cdn.jsdelivr.net/gh/Tsuiokuyo/yuriever.com-main@master/static/test2min.msgpack.zst?date=20241018');
 		let reader = response.body.getReader();
 		let contentLength = +response.headers.get('Content-Length');
 		let loaded = 0;
