@@ -80,7 +80,7 @@
                 </span>
                 </v-tabs>
                 <v-alert dismissible color="red lighten-2" border="left" elevation="3" colored-border icon="本站事項" dense class="bkColor">
-					<span>復活，最終分數的加權邏輯還在調整中。<span>
+					<span>加入作品類型ONA(原創網路動畫)，大約2000筆，觀察中。<span>
                 </v-alert>
 				<!--
                 <v-alert dismissible color="#16A2B2" border="left" elevation="3" colored-border icon="GNN新聞" dense class="bkColor">
@@ -107,6 +107,7 @@
 									目前無法處理的部分是，巴哈沒有分上下季度，因此兩季分數是混在一起的，會導致分數失準...，<br/>
 									而條目到底要不要兩季都放評分，還是放在第一季內，猶豫中。<br/>
 									2024/10/15，提高最低計算票數，並將分數加入權重，並分為各網站權重及Bayesian與標準化權重，因為票數基數差到10000倍以上。<br/>
+									2024/10/25，增加原創網路動畫(ONA)作品。
                                     <br />
                                     <span>
                                     <br><br><br>
@@ -613,7 +614,7 @@
                         </v-row>
                         <br />
                         <v-row>
-                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，更新時間:2024年10月19日</span>
+                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，更新時間:2024年10月25日(最終分數加權邏輯調整中，少數ID映射錯誤)</span>
                         </v-row>
                         <span v-if="windowWidth > 600"> 
                         <br/><!--

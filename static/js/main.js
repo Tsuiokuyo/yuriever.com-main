@@ -160,7 +160,7 @@ let vue = new Vue({
         tab: '',
         selectYears: ['等於', '大於', '小於', '介於'],
 
-        selectTypes: [{ value: 'ALL', cht: '全部' }, { value: 'TV', cht: '電視' }, { value: 'MOVIE', cht: '劇場版' }, { value: 'OVA', cht: 'OVA' }],
+        selectTypes: [{ value: 'ALL', cht: '全部' }, { value: 'TV', cht: '電視' }, { value: 'MOVIE', cht: '劇場版' }, { value: 'OVA', cht: 'OVA' }, { value: 'ONA', cht: 'ONA' }],
         selectSources: [{ value: 'ALL', cht: '全部' }, { value: 'Original', cht: '原創' }, { value: 'Light novel', cht: '輕小說' },
             { value: 'Visual novel', cht: '電子小說' }, { value: 'Manga', cht: '漫畫' }, { value: 'Mixed media', cht: '跨媒體製作' },
             { value: '4-koma manga', cht: '四格漫畫' }, { value: 'Game', cht: '遊戲' }, { value: 'Card game', cht: '卡牌遊戲' },
