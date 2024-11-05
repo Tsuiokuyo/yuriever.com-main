@@ -140,6 +140,8 @@ let vue = new Vue({
 
         inputErr: '',
         search: '',
+        preSearch:'',
+        queryBtn : false,
         year: '',
         year2: '',
         rank1: '',
@@ -219,7 +221,8 @@ let vue = new Vue({
     computed: {
         listenChange() {
             const {
-                search,
+                preSearch,
+                queryBtn,
                 year,
                 selYear,
                 selType,
@@ -232,7 +235,8 @@ let vue = new Vue({
                 cmpSel
             } = this
             return {
-                search,
+                preSearch,
+                queryBtn,
                 year,
                 selYear,
                 selType,
@@ -719,6 +723,18 @@ let vue = new Vue({
         }
     },
     watch: {
+        queryBtn(){
+            if(this.queryBtn){
+                this.search = this.preSearch;
+            }
+        },
+        preSearch(){
+            if(this.queryBtn){
+                this.queryBtn = false;
+            }else if (this.preSearch == null || this.preSearch.length === 0) {
+                this.search = '';
+            }
+        },
         // panel() {
         //     if (this.panel == '') {
         //         this.onlineWatchSel = []
@@ -1318,6 +1334,10 @@ let vue = new Vue({
     }, //mounted
     updated() {},
     methods: {
+        clearSearch() {
+            this.search = '';
+            this.queryBtn = false;
+        },
         saveItem() {
             let saveList = [];
             for (item of this.rawData) {

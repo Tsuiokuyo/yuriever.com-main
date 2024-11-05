@@ -149,7 +149,7 @@
                                     <ui>
                                         <li>有些動畫因24話有分成part 1、part 2的評分，基本上只有巴哈是直接兩季合併...(e.g. 巨人第三季)，無法處理</li>
                                         <li>bangumi裏番部分，如點進網址但顯示数据库中没有查询您所指定的条目，單純你沒有權限查看而已@@</li>
-                                        <li>名稱搜尋時速度慢，這是因為輸入的同時也在跑邏輯(自動搜尋)，除非我改成用手動來點擊按鈕來搜尋</li>
+                                        <li><del>名稱搜尋時速度慢，這是因為輸入的同時也在跑邏輯(自動搜尋)，除非我改成用手動來點擊按鈕來搜尋</del></li>
                                     </ui>
                                     <br><br><br>
                                     </span>
@@ -470,7 +470,7 @@
                                     </v-chip-group>
                                     <v-btn @click="cmpSel = []">
                                         <v-icon>mdi-restart alt</v-icon>重設選項</v-btn>
-                                    <span>共有7XX多間公司(工作室)，塞不進來，這裡僅保留製作數量最多的前50間</span>
+                                    <span>僅顯示製作數量最多的前50間</span>
                                 </v-expansion-panel-content>
                             </v-expansion-panel>
                             <v-expansion-panel v-if="windowWidth >= 600">
@@ -546,10 +546,17 @@
                                     </v-text-field>
                                 </v-col>
                                 <v-col>
-                                    <v-text-field :error-messages="inputErr" v-model="search" id="srh1" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="效能問題，建議複製再貼到此處" label="名稱搜尋(中/英/日/羅馬拼音)" dense clearable>
+                                    <!-- <v-text-field :error-messages="inputErr" v-model="preSearch" id="srh1" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="效能問題，建議複製再貼到此處" label="名稱搜尋(中/英/日/羅馬拼音)" 
+                                    @click:clear="clearSearch" dense clearable>
+                                    </v-text-field> -->
+                                    <v-text-field :error-messages="inputErr" v-model="preSearch" id="srh1" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="中/英/日/羅馬拼音" label="作品名稱" 
+                                    @click:clear="clearSearch" dense clearable>
                                     </v-text-field>
                                 </v-col>
-                                <v-col></v-col>
+                                <v-col>
+                                    <v-btn @click="queryBtn = true">
+                                        <v-icon>mdi-text-search</v-icon>查詢名稱</v-btn>
+                                </v-col>
                                 <v-col cols="1">
                                     <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
                                     <!-- <v-checkbox v-model="bangumiDisable" label="相差分數不含bangumi" dense></v-checkbox> -->
