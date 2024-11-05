@@ -881,118 +881,103 @@ let vue = new Vue({
         // https://wispy-smoke-920.fly.dev/
         // https://proxy-6jamtxfrdq-uc.a.run.app/
 
-	/*
-        let moelongUrl = 'https://www.moelong.com/moelongnews/feed';
-        let gnnUrl = 'https://gnn.gamer.com.tw/rss.xml';
-        let QAQrandom = Math.floor(Math.random() * 2) //0,1
-        switch (QAQrandom) {
-            case 0:
-                moelongUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/' + moelongUrl
-                gnnUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/' + gnnUrl
-                break;
-            case 1:
-                moelongUrl = 'https://wispy-smoke-920.fly.dev/' + moelongUrl
-                gnnUrl = 'https://wispy-smoke-920.fly.dev/' + gnnUrl
-                break;
-                // default:
-                //     moelongUrl = 'http://fubdhltvej.us16.qoddiapp.com/' + moelongUrl
-                //     gnnUrl = 'http://fubdhltvej.us16.qoddiapp.com/' + gnnUrl
-                //     break;
-        }
+	
+        // let moelongUrl = 'https://www.moelong.com/moelongnews/feed';
+        // let gnnUrl = 'https://gnn.gamer.com.tw/rss.xml';
+
+        let moelongUrl = 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/main/rss_data/moelong.json';
+        let gnnUrl = 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/main/rss_data/gnn.json';
+
+        
+        // let QAQrandom = Math.floor(Math.random() * 2) //0,1
+        // switch (QAQrandom) {
+        //     case 0:
+        //         moelongUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/' + moelongUrl
+        //         gnnUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/' + gnnUrl
+        //         break;
+        //     case 1:
+        //         moelongUrl = 'https://wispy-smoke-920.fly.dev/' + moelongUrl
+        //         gnnUrl = 'https://wispy-smoke-920.fly.dev/' + gnnUrl
+        //         break;
+        //         // default:
+        //         //     moelongUrl = 'http://fubdhltvej.us16.qoddiapp.com/' + moelongUrl
+        //         //     gnnUrl = 'http://fubdhltvej.us16.qoddiapp.com/' + gnnUrl
+        //         //     break;
+        // }
 
 
+        let newMoes = [];
 
         fetch(moelongUrl)
-            .then(response => response.text())
-            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+            .then(response => response.json())
             .then(data => {
-                const items = data.querySelectorAll("item");
+                const items = data.rss.channel.item;
                 items.forEach(el => {
-                    let date = new Date(el.getElementsByTagName('pubDate')[0].textContent)
-                    let year = date.toLocaleString("default", {
-                        year: "numeric"
-                    });
-                    let month = date.toLocaleString("default", {
-                        month: "numeric"
-                    });
-                    let day = date.toLocaleString("default", {
-                        day: "numeric"
-                    });
-                    let formattedDate = '(' + year + '' + month + '' + day + ')';
+                    let date = new Date(el.pubDate._text);
+                    let formattedDate = `(${date.getFullYear()}${date.getMonth() + 1}${date.getDate()})`;
+
                     let news = {
-                        'title': el.getElementsByTagName('title')[0].textContent,
-                        'link': el.getElementsByTagName('link')[0].textContent,
+                        'title': el.title._text,
+                        'link': el.link._text,
                         'date': formattedDate
-                    }
-                    newMoes.push(news)
-                })
+                    };
+                    newMoes.push(news);
+                });
                 if (newMoes.length > 0) {
-                    this.moelong = newMoes[0]
-                    let moeId = setInterval((() => {
-                        this.moelong = newMoes[Math.floor(Math.random() * newMoes.length)]
-                    }), 5000);
+                    this.moelong = newMoes[0];
+                    let moeId = setInterval(() => {
+                        this.moelong = newMoes[Math.floor(Math.random() * newMoes.length)];
+                    }, 6000);
                     setTimeout(() => {
                         clearInterval(moeId);
                         this.moelong = {
                             'title': '在此網站待了10分鐘以上，已停止新聞迴圈。'
-                        }
+                        };
                     }, 600000);
-
                 } else {
                     this.moelong = {
                         'title': '萌朧動漫情報網 RSS本次撈取失敗，請無視，反正也沒甚麼人會看這些資訊。'
-                    }
+                    };
                 }
-            })
+            });
 
-        let newGnns = []
+        let newGnns = [];
 
         fetch(gnnUrl)
-            .then(response => response.text())
-            .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+            .then(response => response.json())
             .then(data => {
-                const items = data.querySelectorAll("item");
+                const items = data.rss.channel.item;
                 items.forEach(el => {
-                    let date = new Date(el.getElementsByTagName('pubDate')[0].textContent)
-                    let year = date.toLocaleString("default", {
-                        year: "numeric"
-                    });
-                    let month = date.toLocaleString("default", {
-                        month: "numeric"
-                    });
-                    let day = date.toLocaleString("default", {
-                        day: "numeric"
-                    });
-                    let formattedDate = '(' + year + '' + month + '' + day + ')';
+                    let date = new Date(el.pubDate._text);
+                    let formattedDate = `(${date.getFullYear()}${date.getMonth() + 1}${date.getDate()})`;
 
                     let news = {
-                        'title': el.getElementsByTagName('title')[0].textContent,
-                        'link': el.getElementsByTagName('link')[0].textContent,
+                        'title': el.title._cdata,
+                        'link': el.link._cdata,
                         'date': formattedDate
-                    }
-                    newGnns.push(news)
-                })
+                    };
+                    newGnns.push(news);
+                });
                 if (newGnns.length > 0) {
-                    this.gnn = newGnns[0]
-                    let gnnId = setInterval((() => {
-                        this.gnn = newGnns[Math.floor(Math.random() * newGnns.length)]
-                    }), 5000);
+                    this.gnn = newGnns[0];
+                    let gnnId = setInterval(() => {
+                        this.gnn = newGnns[Math.floor(Math.random() * newGnns.length)];
+                    }, 6000);
                     setTimeout(() => {
                         clearInterval(gnnId);
                         this.gnn = {
                             'title': '在此網站待了10分鐘以上，已停止新聞迴圈。'
-                        }
+                        };
                     }, 600000);
-
                 } else {
-
                     this.gnn = {
                         'title': '巴哈GNN新聞 RSS本次撈取失敗，請無視，反正也沒甚麼人會看這些資訊。'
-                    }
+                    };
                 }
+            });
 
-            })
-*/
+
+
 
         this.$nextTick(function() {
 			/*
