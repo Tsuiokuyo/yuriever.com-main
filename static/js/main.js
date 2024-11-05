@@ -98,9 +98,9 @@ let vue = new Vue({
                         case 'annict':
                             url = 'https://annict.com/works/' + id;
                             break;
-                        case 'redditanimelist':
-                            url = 'http://www.redditanimelist.net/anime.php?anime=' + id;
-                            break;
+                        // case 'redditanimelist':
+                        //     url = 'http://www.redditanimelist.net/anime.php?anime=' + id;
+                        //     break;
                     }
                     window.open(url);
                 },
@@ -150,11 +150,16 @@ let vue = new Vue({
         selYear: '等於',
         selType: 'ALL',
         selSource: 'ALL',
-        sortDesc: true,
+        sortDesc: false,
         sortBy: 'rank',
-        sorts: [{ 'name': '平均', 'value': 'rank' }
-		//{ 'name': '巴哈姆特', 'value': 'gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
-        //    { 'name': 'Bangumi', 'value': 'bgm' }, { 'name': 'Anikore', 'value': 'anikore' }
+        sorts: [{ 'name': '加權評分', 'value': 'rank' },
+		{ 'name': '巴哈姆特', 'value': 'gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
+           { 'name': 'Bangumi', 'value': 'bgm' }, { 'name': 'Anikore', 'value': 'anikore' },
+           { 'name': 'anidb', 'value': 'anidb' }
+           , { 'name': 'AniList', 'value': 'aniList' }, { 'name': 'AnimePlanetCom', 'value': 'apc' }
+           , { 'name': 'AnimeNewsNetwork', 'value': 'ann' }, { 'name': 'anisearch', 'value': 'anisearch' }
+           , { 'name': 'kitsu', 'value': 'kitsu' }, { 'name': 'notifyMoe', 'value': 'notifyMoe' }
+           , { 'name': 'livechart', 'value': 'livechart' }
         ],
 
 
@@ -1414,27 +1419,26 @@ let vue = new Vue({
             if (this.toRandom) {
                 this.destroyTable()
             } else {
-
                 if (!!!index) {
                     index[0] = this.sortBy
                 }
                 this.destroyTable()
                 items.sort((a, b) => {
                     switch (index[0]) {
-                        case 'name':
+                        case 'rank':
                             if (isDescending[0]) {
                                 return b.rank > a.rank ? 1 : -1;
                             } else {
                                 return a.rank > b.rank ? 1 : -1;
                             }
-                        case 'score':
-                            if (isDescending[0]) {
-                                return b.score > a.score ? 1 : -1;
-                            } else {
-                                return a.score > b.score ? 1 : -1;
-                            }
+                        // case 'score':
+                        //     if (isDescending[0]) {
+                        //         return b.score > a.score ? 1 : -1;
+                        //     } else {
+                        //         return a.score > b.score ? 1 : -1;
+                        //     }
                         case 'mal':
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b.MAL.score > a.MAL.score ? 1 : -1;
                             } else {
                                 return a.MAL.score > b.MAL.score ? 1 : -1;
@@ -1442,7 +1446,7 @@ let vue = new Vue({
                         case 'gamer':
                             b = !!b.Gamer ? b.Gamer.b_score : 0;
                             a = !!a.Gamer ? a.Gamer.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
@@ -1450,7 +1454,7 @@ let vue = new Vue({
                         case 'anidb':
                             b = !!b.anidb ? b.anidb.b_score : 0;
                             a = !!a.anidb ? a.anidb.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
@@ -1458,7 +1462,7 @@ let vue = new Vue({
                         case 'bgm':
                             b = !!b.BGM ? b.BGM.b_score : 0;
                             a = !!a.BGM ? a.BGM.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
@@ -1466,7 +1470,7 @@ let vue = new Vue({
                         case 'anikore':
                             b = !!b.Anikore ? b.Anikore.b_score : 0;
                             a = !!a.Anikore ? a.Anikore.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
@@ -1474,7 +1478,7 @@ let vue = new Vue({
                         case 'anisearch':
                             b = !!b.anisearch ? b.anisearch.b_score : 0;
                             a = !!a.anisearch ? a.anisearch.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
@@ -1482,7 +1486,7 @@ let vue = new Vue({
                         case 'anilist':
                             b = !!b.AniList ? b.AniList.b_score : 0;
                             a = !!a.AniList ? a.AniList.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
@@ -1490,7 +1494,7 @@ let vue = new Vue({
                         case 'animeplanetcom':
                             b = !!b.AnimePlanetCom ? b.AnimePlanetCom.b_score : 0;
                             a = !!a.AnimePlanetCom ? a.AnimePlanetCom.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
@@ -1498,7 +1502,7 @@ let vue = new Vue({
                         case 'ann':
                             b = !!b.ANN ? b.ANN.b_score : 0;
                             a = !!a.ANN ? a.ANN.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
@@ -1506,7 +1510,7 @@ let vue = new Vue({
                         case 'kitsu':
                             b = !!b.kitsu ? b.kitsu.b_score : 0;
                             a = !!a.kitsu ? a.kitsu.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
@@ -1514,7 +1518,7 @@ let vue = new Vue({
                         case 'notifymoe':
                             b = !!b.notifyMoe ? b.notifyMoe.b_score : 0;
                             a = !!a.notifyMoe ? a.notifyMoe.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
@@ -1522,7 +1526,7 @@ let vue = new Vue({
                         case 'trakt':
                             b = !!b.trakt ? b.trakt.b_score : 0;
                             a = !!a.trakt ? a.trakt.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
@@ -1530,23 +1534,23 @@ let vue = new Vue({
                         case 'livechart':
                             b = !!b.livechart ? b.livechart.b_score : 0;
                             a = !!a.livechart ? a.livechart.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'redditanimelist':
-                            b = !!b.sakuhindb ? b.sakuhindb.b_score : 0;
-                            a = !!a.sakuhindb ? a.sakuhindb.b_score : 0;
-                            if (isDescending[0]) {
-                                return b > a ? 1 : -1
-                            } else {
-                                return a > b ? 1 : -1
-                            }
+                        // case 'redditanimelist':
+                        //     b = !!b.sakuhindb ? b.sakuhindb.b_score : 0;
+                        //     a = !!a.sakuhindb ? a.sakuhindb.b_score : 0;
+                        //     if (isDescending[0]) {
+                        //         return b > a ? 1 : -1
+                        //     } else {
+                        //         return a > b ? 1 : -1
+                        //     }
                         case 'sakuhindb':
                             b = !!b.sakuhindb ? b.sakuhindb.b_score : 0;
                             a = !!a.sakuhindb ? a.sakuhindb.b_score : 0;
-                            if (isDescending[0]) {
+                            if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1

@@ -576,16 +576,18 @@
                             </v-row>
                             <v-row>
                                 <v-col>
-                                    <label>排序(故障)：</label>
-                                    <select v-model="sortBy" :disabled="toRandom">
+                                    <label>根據網站排序(分數)：</label>
+                                    <!-- <select v-model="sortBy" :disabled="toRandom">
                                     <option v-for="item in sorts" :value="item.value" border>{{item.name}}</option>
-                                </select>
-                                    <!-- <v-select :items="sorts" v-model="sortBy" label="排序" dense solo></v-select> -->
+                                </select> -->
+                                    <v-select :items="sorts" 
+                                    item-text="name"
+                                    item-value="value" v-model="sortBy" label="排序" dense solo eager></v-select>
                                     <v-btn-toggle v-model="sortDesc" mandatory>
-                                        <v-btn depressed :value="false" :disabled="toRandom">
+                                        <v-btn depressed :value="true" :disabled="toRandom">
                                             <v-icon>mdi-arrow-up</v-icon>
                                         </v-btn>
-                                        <v-btn depressed :value="true" :disabled="toRandom">
+                                        <v-btn depressed :value="false" :disabled="toRandom">
                                             <v-icon>mdi-arrow-down</v-icon>
                                         </v-btn>
                                     </v-btn-toggle>
