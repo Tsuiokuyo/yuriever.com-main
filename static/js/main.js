@@ -1,5 +1,5 @@
 // 麵條式代碼，其實我也很無奈，功能不小心越玩越多
-Vue.config.devtools = true;
+// Vue.config.devtools = true;
 
 let OriginTitile = document.title;
 let titleTime;
@@ -214,7 +214,6 @@ let vue = new Vue({
         db: null,
         seenData: null,
         disableBtn: true,
-        isMemoMode: false,
     },
     computed: {
         listenChange() {
@@ -305,16 +304,31 @@ let vue = new Vue({
                         if ((this.rank1 && rank < parseInt(this.rank1)) || (this.rank2 && rank > parseInt(this.rank2))) return false;
                     
                         // 6. 差異篩選條件
-                        if (this.diff && item.Gamer && item.Gamer.b_score > 0) {
-                            const gScore = item.Gamer.b_score;
-                            const parseDiff = parseFloat(this.diff);
-                            const checkDifference = (a, b) => b && Math.abs(parseFloat(a) - parseFloat(b.b_score)) >= parseDiff;
-                    
-                            if (
-                                Math.abs(parseFloat(gScore) - parseFloat(item.MAL.score || 0)) < parseDiff &&
-                                ![item.BGM, item.Anikore, item.AniList, item.AnimePlanetCom, item.ANN, item.anisearch, item.notifyMoe, item.trakt, item.livechart]
-                                    .some((source) => checkDifference(gScore, source))
-                            ) return false;
+                        if (this.diff) {
+                            let difference = true
+                            if (item.Gamer && item.Gamer.b_score > 0) {
+                                function comput(a, b, range) {
+                                    if (b == null) return false;
+                                    b = b.b_score > 0 ? b.b_score : false
+                                    return Math.abs(parseFloat(a) - parseFloat(b)) >= parseFloat(range)
+                                }
+                                let gScore = item.Gamer.b_score
+                                difference = Math.abs(parseFloat(gScore) - parseFloat(item.MAL.score > 0 ? item.MAL.score : false)) >= parseFloat(this.diff) ||
+                                    comput(gScore, item.BGM, this.diff) ||
+                                    comput(gScore, item.Anikore, this.diff) ||
+                                    comput(gScore, item.AniList, this.diff) ||
+                                    comput(gScore, item.AnimePlanetCom, this.diff) ||
+                                    comput(gScore, item.ANN, this.diff) ||
+                                    comput(gScore, item.anisearch, this.diff) ||
+                                    comput(gScore, item.notifyMoe, this.diff) ||
+                                    comput(gScore, item.trakt, this.diff) ||
+                                    comput(gScore, item.livechart, this.diff)
+                            } else {
+                                return false;
+                            }
+                            if (!difference) {
+                                return false;
+                            }
                         }
                     
                         // 7. 篩選 source 和 type 條件
@@ -349,10 +363,6 @@ let vue = new Vue({
                         
                             if (!nameMatch) return false;
                         }
-                    
-                        // 12. 記憶模式條件
-                        // if (this.isMemoMode && !item.seen) return false;
-                    
                         return true;
                     },
                     
@@ -687,13 +697,48 @@ let vue = new Vue({
     
         initializeData() {
             this.getRandomArray();
-            const { onlines, studios, genres, births } = this.processRawData();
-            this.onlineWatchs = [...new Set(onlines.sort())];
-            this.cmpList = this.processStudios(studios);
-            this.genreList = [...new Set(genres.sort())];
-            this.voiceCount = births.length;
-            this.eventVoice = this.getEventVoices(births);
+            let { onlines, studios, genres, births } = this.processRawData();
+            
+            // 去重并计算 voiceCount
+            const set = new Set();
+            const uniqueBirths = [];
+            births.forEach(item => {
+                if (!set.has(item.voice)) {
+                    set.add(item.voice);
+                    uniqueBirths.push(item);  // 去重后的出生数据
+                }
+            });
+            this.voiceCount = uniqueBirths.length;  // 更新去重后的人数
+        
+            // 处理事件数据
+            let events = [];
+            let now = new Date();
+            uniqueBirths.forEach(item => {
+                if (item.birth != null) {
+                    let bir = new Date(item.birth);
+                    let todayBir = (now.getMonth() === bir.getMonth() && now.getDate() === bir.getDate());
+                    bir = `${now.getFullYear()}-${bir.getMonth() + 1}-${bir.getDate()}`;
+                    
+                    events.push({
+                        name: item.name,
+                        start: bir,
+                        voice: item.voice,
+                        isMain: item.isMain,
+                        isSup: item.isSup,
+                        chId: item.chId,
+                        color: this.setVoiceColor(item.isMain, item.isSup, todayBir),
+                    });
+                }
+            });
+        
+            // 排序事件，主要按 isMain 排序
+            events.sort((a, b) => b.isMain - a.isMain);
+            this.eventVoice = events;
+        
+            // 处理 badges 和 genres
             this.badgesDef = this.badges;
+            genres = [...new Set(genres.sort())];
+            this.genreList = genres;
         },
     
         processRawData() {
@@ -701,16 +746,16 @@ let vue = new Vue({
             const studios = [];
             const genres = [];
             const births = [];
-    
+            
             for (const item of this.rawData) {
-                // 將重複的處理抽取到方法內
                 this.initializeItem(item);
-                if (this.disabledNSFW && item.MAL.genres.includes('Hentai')) continue;
-    
+                // if (this.disabledNSFW && item.MAL.genres.includes('Hentai')) continue;
+                
                 this.collectGenres(item, genres);
                 this.collectOnlineStudios(item, onlines, studios);
-                this.collectBirths(item, births);
+                this.collectBirths(item, births);  
             }
+        
             return { onlines, studios, genres, births };
         },
     
@@ -739,9 +784,11 @@ let vue = new Vue({
         },
     
         collectBirths(item, births) {
-            if ('voices' in item.MAL && item.MAL.voices.length) births.push(...item.MAL.voices);
+            if ('voices' in item.MAL && item.MAL.voices.length) {
+                births.push(...item.MAL.voices); 
+            }
         },
-    
+
         assignCupGenre(item) {
             item.MAL.genres.push('cup');
             this.badges['cup'] = ++this.badges['cup'] || 1;
@@ -793,25 +840,18 @@ let vue = new Vue({
                 this.memory = 0;
             }
         },
-        clearSearch() {
+        clearSearch: () => {
             this.search = '';
             this.queryBtn = false;
         },
 
         setRankColor(i) {
-            let pitch = 255 / this.rawData.length;
-            pitch = 255 - (pitch * i)
-            return 'color: rgb(255,' + pitch + ',0);';
+            const pitch = 255 - (255 / this.rawData.length * i);
+            return `color: rgb(255, ${pitch}, 0);`;
         },
+        
         setSimilarityColor(i) {
-
-            if (parseFloat(i) > 0.9) {
-                return 'color: red';
-            } else if (parseFloat(i) > 0.8) {
-                return 'color: orange';
-            } else {
-                return 'color: black ';
-            }
+            return `color: ${parseFloat(i) > 0.9 ? 'red' : parseFloat(i) > 0.8 ? 'orange' : 'black'}`;
         },
         setCover(item, lazy) {
             let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
@@ -836,7 +876,7 @@ let vue = new Vue({
             }
         },
         toggleFullscreen(item) {
-			 this.selectedImage = "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '') + 'l.webp'
+            this.selectedImage = `https://cdn.myanimelist.net/images/anime/${item.MAL.image.replace('.webp', '')}l.webp`;
         },
         customSort(items, index, isDescending) {
             if (this.toRandom) {
@@ -976,49 +1016,31 @@ let vue = new Vue({
             return items;
         },
         getRandomArray() {
-            this.randomTen = []
-            let shuffled = this.rawData.slice(0),
-                i = this.rawData.length,
-                min = i - 10,
-                temp, index;
-            while (i-- > min) {
-                index = Math.floor((i + 1) * Math.random());
-                temp = shuffled[index];
-                shuffled[index] = shuffled[i];
-                shuffled[i] = temp;
-            }
-            let check = shuffled.slice(min)
-            for (item of check) {
-                if (this.disabledNSFW) {
-                    if (item.MAL.genres.includes('Hentai')) {
-                        return this.getRandomArray()
-                    }
+            function shuffleArray(arr) {
+                let shuffled = arr.slice(); 
+                for (let i = shuffled.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
                 }
+                return shuffled;
             }
-            this.randomTen = check
+        
+            const shuffled = shuffleArray(this.rawData).slice(-10);
+            
+            if (this.disabledNSFW && shuffled.some(item => item.MAL.genres.includes('Hentai'))) {
+                return this.getRandomArray();
+            }
+            
+            this.randomTen = shuffled;
         },
         randomListTitle(item) {
-            if (null != item.Gamer) {
-                return item.Gamer.title
-            } else if (null != item.BGM) {
-                return item.BGM.cn_name
-            } else if (null != item.MAL.jp_name) {
-                return item.MAL.jp_name;
-            } else {
-                return item.MAL.title
-            }
+            return item.Gamer?.title || item.BGM?.cn_name || item.MAL.jp_name || item.MAL.title;
         },
         onlineList(item) {
-            let online = new Object();
-            let format = new Object();
-            if (!!item) {
-                for (let [key, value] of Object.entries(item)) {
-                    value = this.addUrl(key, value)
-                    format[key] = value
-
-                }
-            }
-            return format;
+            return Object.entries(item || {}).reduce((format, [key, value]) => {
+                format[key] = this.addUrl(key, value);
+                return format;
+            }, {});
         },
         addUrl(key, id) {
             if (id.indexOf('watchnow') != -1) {
@@ -1128,16 +1150,6 @@ let vue = new Vue({
 
             return [name, id];
         },
-        toTop() {
-            $("html,body").animate({
-                scrollTop: $(document).height()
-            }, 800);
-        },
-        toFooter() {
-            $("html,body").animate({
-                scrollTop: 0
-            }, 800);
-        },
         lamu(value) {
             if (value == 'A') {
                 return 'https://yuriever.com/image/lamuA.webp'
@@ -1175,6 +1187,7 @@ let vue = new Vue({
             }
             return 'image/noImage.webp'
         },
+        
         setBackgroundLazy(entries, observer, isIntersecting) {
             let bg = 'https://yuriever.com/image/background.webp'
             let cdn = 'https://tsuiokuyo-9688.imgix.net/'
@@ -1524,5 +1537,7 @@ let vue = new Vue({
                 return false;
             }
         },
+        toTop: () => $("html,body").animate({ scrollTop: $(document).height() }, 800),
+        toFooter: () => $("html,body").animate({ scrollTop: 0 }, 800),
     }, //methonds
 });

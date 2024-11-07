@@ -22,22 +22,7 @@
 
 	<script defer src="js/main.js" type="text/javascript"></script>
     <script defer src="js/snowstorm-min.js"></script>
-   <!-- Google tag (gtag.js)
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-QCHS68JGBX"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-	  gtag('config', 'G-QCHS68JGBX');
-	</script>
-    <script defer type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js"; import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js"; import { getAuth,signOut, getRedirectResult,signInWithRedirect,GoogleAuthProvider,setPersistence,browserLocalPersistence
-        ,onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"; import { getFirestore, doc, updateDoc, setDoc,getDoc,collection, getDocs,query, where } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
-        vue.$children["0"].initializeApp = initializeApp; vue.$children["0"].getAnalytics = getAnalytics; vue.$children["0"].getAuth = getAuth; vue.$children["0"].signInWithRedirect = signInWithRedirect; vue.$children["0"].GoogleAuthProvider = GoogleAuthProvider;
-        vue.$children["0"].getRedirectResult =getRedirectResult;vue.$children["0"].signOut =signOut; vue.$children["0"].updateDoc = updateDoc; vue.$children["0"].doc = doc; vue.$children["0"].getFirestore = getFirestore; vue.$children["0"].setDoc = setDoc;vue.$children["0"].getDoc
-        = getDoc ;vue.$children["0"].collection = collection;vue.$children["0"].getDocs = getDocs;;vue.$children["0"].query = query;vue.$children["0"].where = where ;vue.$children["0"].setPersistence = setPersistence ;vue.$children["0"].browserLocalPersistence
-        = browserLocalPersistence ;vue.$children["0"].onAuthStateChanged = onAuthStateChanged
-    </script>-->
+
 </head>
 
 <body>
@@ -108,6 +93,7 @@
 									而條目到底要不要兩季都放評分，還是放在第一季內，猶豫中。<br/>
 									2024/10/15，提高最低計算票數，並將分數加入權重，並分為各網站權重及Bayesian與標準化權重，因為票數基數差到10000倍以上。<br/>
 									2024/10/25，增加原創網路動畫(ONA)作品。
+                                    2024/11/07，重構程式碼
                                     <br />
                                     <span>
                                     <br><br><br>
@@ -181,7 +167,7 @@
                                     <br />對於特定網站、無投票細節的網站其分數可能不計算或存在誤差。
                                     <br /> 公式使用自https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation 
 									<br/>
-									<br>3.網站權重
+									<br>3.網站權重(調整中)
 									<br>'MAL': 0.5,
 									<br>'AniList': 0.7,
 									<br>'ANN': 1.2,
@@ -301,7 +287,7 @@
                         <v-sheet class="mx-auto" elevation="0" max-width="1800">
                             <v-slide-group class="pa-4" show-arrows>
                                 <v-slide-item v-for="item in randomTen" :key="item.MAL.id" v-slot="{ active, toggle }" class="bkColor">
-                                    <v-card class="ma-4" height="260" width="170" @click="search = randomListTitle(item),year = ''">
+                                    <v-card class="ma-4" height="260" width="170" @click="search = randomListTitle(item),preSearch = randomListTitle(item),year = ''">
                                         <v-row class="fill-height" align="center" justify="center">
                                             <v-col class="shrink">
 
@@ -465,7 +451,6 @@
                                     <v-chip-group v-model="cmpSel" column multiple>
                                         <v-chip v-for="(cmp, index) in cmpList" :key="index" filter :value="cmp" label>
                                             <span>{{cmp}}</span>
-                                            <!-- <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span> -->
                                         </v-chip>
                                     </v-chip-group>
                                     <v-btn @click="cmpSel = []">
@@ -485,7 +470,6 @@
                                     <v-chip-group v-model="onlineWatchSel" column multiple>
                                         <v-chip v-for="(online, index) in onlineWatchs" :key="index" filter :value="online" dark>
                                             <span>{{online}}</span>
-                                            <!-- <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span> -->
                                         </v-chip>
                                     </v-chip-group>
                                     <v-btn @click="onlineWatchSel = []">
@@ -546,9 +530,6 @@
                                     </v-text-field>
                                 </v-col>
                                 <v-col>
-                                    <!-- <v-text-field :error-messages="inputErr" v-model="preSearch" id="srh1" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="效能問題，建議複製再貼到此處" label="名稱搜尋(中/英/日/羅馬拼音)" 
-                                    @click:clear="clearSearch" dense clearable>
-                                    </v-text-field> -->
                                     <v-text-field :error-messages="inputErr" v-model="preSearch" id="srh1" append-icon="mdi-magnify" clear-icon="mdi-close-circle" hint="中/英/日/羅馬拼音" label="作品名稱" 
                                     @click:clear="clearSearch" dense clearable>
                                     </v-text-field>
@@ -558,8 +539,6 @@
                                         <v-icon>mdi-text-search</v-icon>查詢名稱</v-btn>
                                 </v-col>
                                 <v-col cols="1">
-                                    <!-- <v-checkbox v-model="disabledCovImage" label="禁用封面圖(無感省流量)" dense></v-checkbox> -->
-                                    <!-- <v-checkbox v-model="bangumiDisable" label="相差分數不含bangumi" dense></v-checkbox> -->
                                 </v-col>
                                 <v-col cols="1">
                                     <v-text-field v-model="diff" type="number" label="與巴哈相差分數" clear-icon="mdi-close-circle" clearable dense>
@@ -577,9 +556,6 @@
                             <v-row>
                                 <v-col>
                                     <label>根據網站排序(分數)：</label>
-                                    <!-- <select v-model="sortBy" :disabled="toRandom">
-                                    <option v-for="item in sorts" :value="item.value" border>{{item.name}}</option>
-                                </select> -->
                                     <v-select :items="sorts" 
                                     item-text="name"
                                     item-value="value" v-model="sortBy" label="排序" dense solo eager></v-select>
@@ -661,11 +637,6 @@
                                         <v-img class="mt-12" :src="selectedImage" alt="animeCover" max-height="95vh"
                                             contain dark @click.stop="selectedImage = false">
                                         </v-img>
-                                    </div>
-                                </td>
-                                <td v-show="user != null && isMemoMode">
-                                    <div>收藏
-                                    <v-checkbox v-model="item.seen" color="deep-orange accent-3" ></v-checkbox>
                                     </div>
                                 </td>
                                 <td style="font-size:15px;font-weight:bold;padding:0">
@@ -793,34 +764,18 @@
 									<v-dialog v-model="dialogSummary[item.MAL.id]" scrollable max-width="960" :key="item.MAL.id" v-if="dialogSummary[item.MAL.id]">
 										<v-card>
 											<v-card-title style="font-size: 24px;">動畫簡介</v-card-title>
-											<!--<v-card-text style="font-size: 18px; white-space: pre-wrap;text-align: left;">
-												{{ item.BGM.summary.trim() }}
-											</v-card-text>-->
 											<v-card-text style="font-size: 18px; white-space: pre-wrap; text-align: left;" v-html="item.BGM.summary.trim()"></v-card-text>
 										</v-card>
 									</v-dialog>
 								</span>
                             </div>
                             </td>
-                            <td v-show="user != null && !isMemoMode">
-                                <div>
-                                    收藏
-                                    <v-checkbox v-model="item.seen" color="deep-orange accent-3"></v-checkbox>
-                                </div>
-                            </td>
+
                             <td class="center pa-0">
                                 <span style="font-size:14px;">Bayesian</span><br />加權評分<br />
                                 <span style="font-size:35px;font-weight:bold">{{item.score != 0 ? Number(item.score).toFixed(2) :'不計分'}}</span>
                             </td>
-                            <td class="center pa-0" v-if="user != null && isMemoMode" Width="100">
-                                個人評分
-                                <v-rating v-model="item.myRank" color="yellow darken-4" class="ma-2" length="5" half-increments hover></v-rating>
-                            </td>
-                            <td class="center pa-0" v-if="user != null && isMemoMode">
-                                備註(100字)
-                                <v-textarea v-model="item.memo" maxlength="100"></v-textarea>
-                            </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="gamer" src="image/gamer.webp">
                                 </v-avatar><br />
@@ -830,7 +785,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="mal" src="image/mal.webp">
                                 </v-avatar><br />
@@ -840,7 +795,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="bgm" src="image/bgm.webp">
                                 </v-avatar><br />
@@ -849,7 +804,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="anikore" src="image/anikore.webp">
                                 </v-avatar><br />
@@ -858,7 +813,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="aniList" src="image/anilist.webp">
                                 </v-avatar><br />
@@ -867,7 +822,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="apc" src="image/apc.webp">
                                 </v-avatar><br />
@@ -877,7 +832,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="ann" src="image/ann.webp">
                                 </v-avatar><br />
@@ -886,7 +841,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="anisearch" src="image/anisearch.webp">
                                 </v-avatar><br />
@@ -895,7 +850,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="kitsu" src="image/kitsu.webp">
                                 </v-avatar><br />
@@ -905,7 +860,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="notifymoe" src="image/notifymoe.webp">
                                 </v-avatar><br />
@@ -914,7 +869,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="livechart" src="image/livechart.webp">
                                 </v-avatar><br />
@@ -923,7 +878,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="anidb" src="image/anidb.webp">
                                 </v-avatar><br />
@@ -932,17 +887,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <!-- <td class="center pa-0" v-if="!isMemoMode">
-                                <v-avatar size="32" rounded>
-                                    <img alt="reddit" src="image/reddit.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.redditanimelist" :item="item.redditanimelist" website="redditanimelist" :b-score="item.redditanimelist.b_score">
-                                </rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td> -->
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="trakt" src="image/trakt.webp">
                                 </v-avatar><br />
@@ -952,7 +897,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="annict" src="image/annict.webp">
                                 </v-avatar><br />
@@ -961,7 +906,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" v-if="!isMemoMode">
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="sakuhindb" src="image/sakuhindb.webp">
                                 </v-avatar><br />
