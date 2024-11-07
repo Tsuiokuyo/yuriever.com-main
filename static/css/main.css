@@ -1,65 +1,70 @@
-/* body {
-    font-family: Helvetica, Arial, sans-serif!important
-} */
+/* 字体设置 */
+.v-application, body {
+    font-family: 'Kosugi Maru', 'Noto Sans SC', Helvetica, Arial, sans-serif !important;
+    line-height: 1.6;
+}
+
+/* 背景颜色设置 */
+.bkColor {
+    background-color: #FFFFF4 !important; /* 保持浅色背景 */
+}
 
 .v-application {
-    font-family: 'Kosugi Maru', 'Noto Sans SC', Helvetica, Arial, sans-serif !important;
-}
-
-body {
-    font-family: 'Kosugi Maru', 'Noto Sans SC', Helvetica, Arial, sans-serif !important;
-}
-
-.bkColor {
-    background-color: #FFFFF4 !important;
+    background-color: #FFE0B2 !important; /* 提高对比度 */
 }
 
 .v-application .pa-4 {
-    background-color: #FFF8E1 !important;
-}
-
-.v-application {
-    background-color: #FFCCBC !important;
+    background-color: #FFF3E0 !important; /* 柔和对比，但更易辨认 */
 }
 
 .theme--light.v-calendar-weekly .v-calendar-weekly__day {
-    background-color: #fffde7;
+    background-color: #FFF4B0; /* 增加对比度 */
 }
 
 .theme--light.v-calendar-weekly .v-calendar-weekly__day.v-outside {
-    background-color: #fff9c4;
+    background-color: #FFF1A3; /* 提高对比度 */
 }
 
+/* 文字设置 */
 .center {
-    padding: 0 5!important;
+    padding: 0 5px !important;
     text-align: center;
-    font-weight: 700!important;
-    font-size: 18px!important
+    font-weight: 800 !important; /* 加粗 */
+    font-size: 18px !important;
+    color: #222 !important; /* 深色文字以确保对比 */
 }
 
 .randomBar {
-    padding: 0 10 0 15;
-    text-align: center
+    padding: 0 10px 0 15px;
+    text-align: center;
+    color: #333; /* 保持深色 */
 }
 
 .anime {
-    font-size: 18px!important;
-    font-weight: 700!important
+    font-size: 18px !important;
+    font-weight: 800 !important; /* 加粗以提升阅读性 */
+    color: #222 !important; /* 深色文字 */
 }
 
 .v-chip.v-size--default {
-    font-size: 18px!important
+    font-size: 18px !important;
+    font-weight: 700;
+    /* color: #333 !important; */
 }
 
+/* 数据表格和行高度 */
 .v-data-table>.v-data-table__wrapper .v-data-table__mobile-row {
-    min-height: 25px!important
+    min-height: 30px !important; /* 增加高度以便于阅读 */
 }
 
+/* 强调原始内容 */
 .original {
-    text-decoration: dotted #ccc underline;
-    text-align: center!important
+    text-decoration: dotted underline #ccc;
+    text-align: center !important;
+    color: #555; /* 避免浅色影响可读性 */
 }
 
+/* 遮罩层设置 */
 .overlay {
     position: fixed;
     width: 100%;
@@ -68,54 +73,43 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, .05);
+    background-color: rgba(0, 0, 0, 0.1); /* 加深以突出前景 */
     z-index: 2;
-    cursor: pointer
+    cursor: pointer;
 }
 
+/* 侧边栏设置 */
 .sidebar_wo {
     position: fixed;
-    line-height: 0;
+    line-height: 1.4;
     bottom: 0;
-    z-index: 1000
+    z-index: 1000;
 }
 
 #leimu {
     left: 0;
-    -webkit-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
-    -webkit-transform: translate(-7px, 7px);
-    -ms-transform: translate(-7px, 7px);
-    transform: translate(-7px, 7px)
+    transition: all 0.3s ease-in-out;
+    transform: translate(-7px, 7px);
 }
 
 #lamu {
-    -webkit-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
-    -webkit-transform: translate(7px, 7px);
-    -ms-transform: translate(7px, 7px);
+    transition: all 0.3s ease-in-out;
     transform: translate(7px, 7px);
-    right: 0
+    right: 0;
 }
 
-#leimu:hover {
-    -webkit-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    transform: translate(0, 0)
+#leimu:hover, #lamu:hover {
+    transform: translate(0, 0);
 }
 
-#lamu:hover {
-    -webkit-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    transform: translate(0, 0)
-}
-
+/* 图片光标 */
 .sidebar_wo img {
-    cursor: pointer
+    cursor: pointer;
 }
 
-@media only screen and (max-width:1024px) {
+/* 响应式隐藏侧边栏 */
+@media only screen and (max-width: 1024px) {
     .sidebar_wo {
-        display: none
+        display: none;
     }
 }

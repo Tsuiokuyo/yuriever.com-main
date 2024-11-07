@@ -126,7 +126,7 @@
                                     我這網頁完全只有前端的畫面操作，畢竟前端的程式碼在我github內都能看，<br />
                                     因此100%的運算都是在你的瀏覽器中，可參考下方記憶體部分，因此你才會覺得網頁的速度很慢╮(╯_╰)╭<br />
                                     另外，可能，可能會弄個紀錄匯出成文字檔或excel的功能，但也只是可能。
-                                    <v-img max-height="500" max-width="700" contain src="image/memo.webp">
+                                    <v-img max-height="500" max-width="700" alt="memo" contain src="image/memo.webp">
                                     </v-img>
                                     <br />
                                     <p />
@@ -255,6 +255,7 @@
                                     <li>https://notify.moe/api</li>
                                     <li>https://waifu.pics/</li>
                                     <li>https://soruly.github.io/trace.moe-api/#/</li>
+                                 
                                     備用圖片API，先留著，也許以後可以塞
                                     <li>https://www.waifu.im/</li>
                                     <li>https://kyoko.rei.my.id/</li>
@@ -291,7 +292,7 @@
                                         <v-row class="fill-height" align="center" justify="center">
                                             <v-col class="shrink">
 
-                                                <v-img height="200" width="170" :src="setCover(item,false)">
+                                                <v-img height="200" width="170" alt="cover" :src="setCover(item,false)">
                                                 </v-img>
                                             </v-col>
                                             <span class="randomBar" v-text="randomListTitle(item)"></span>
@@ -350,7 +351,7 @@
                                                     <v-list dense>
                                                         <v-list-item v-for="details in selectedEvent.details" :key="selectedEvent.chId">
                                                             <v-list-item-avatar rounded size="90px">
-                                                                <v-img :src="'https://cdn.myanimelist.net/images/characters/' + details.img">
+                                                                <v-img alt="charaDetails" :src="'https://cdn.myanimelist.net/images/characters/' + details.img">
                                                                 </v-img>
                                                             </v-list-item-avatar>
                                                             {{details.title}}
@@ -631,11 +632,11 @@
                             <tr style="color:black" v-intersect="setBackgroundLazy" class="lazy" v-if="destroy">
                                 <td class="center pa-0" style="padding:0" width="200">
                                     <v-img :contain=true :lazy-src=setCover(item,true) height="250" width="200"
-                                        title="點圖放大" :src=setCover(item,false) @click="toggleFullscreen(item)">
+                                        alt="coverSM" title="點圖放大" :src=setCover(item,false) @click="toggleFullscreen(item)">
                                     </v-img>
                                     <div v-if="selectedImage" class="overlay">
                                         <v-img class="mt-12" :src="selectedImage" alt="animeCover" max-height="95vh"
-                                            contain dark @click.stop="selectedImage = false">
+                                        alt="coverLG"  contain dark @click.stop="selectedImage = false">
                                         </v-img>
                                     </div>
                                 </td>
@@ -942,7 +943,7 @@
 							  </div>
 							</template>
 						   <template v-slot:item.cover="{ item }">
-                            <v-img :contain=true :lazy-src=setCover(item,true) height="200" width="150"
+                            <v-img :contain=true :lazy-src=setCover(item,true) alt="animeCoverSM" height="200" width="150"
                                 :src=setCover(item,false) @click="toggleFullscreen(item)">
                             </v-img>
                             <div v-if="selectedImage" class="overlay">
@@ -1028,11 +1029,6 @@
                             <span v-if="item.anidb">{{item.anidb.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
-                        <!--redditanimelist 
-                            <template v-slot:item.redditanimelist="{ item }">
-                            <span v-if="item.redditanimelist">{{item.redditanimelist.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>-->
                         <!--trakt -->
                         <template v-slot:item.trakt="{ item }">
                             <span v-if="item.trakt">{{item.trakt.b_score| returnZero}}</span>
