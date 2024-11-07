@@ -526,7 +526,7 @@
                         </v-checkbox>
                         <v-card-title v-if="windowWidth > 600">
                             <v-row>
-                                <v-btn @click="sortBy = 'rank', onlineWatchSel = [],cmpSel = [],genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable= false">
+                                <v-btn @click="sortBy = 'rank', onlineWatchSel = [],cmpSel = [],genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable=false,preSearch=''">
                                     <v-icon>mdi-restart alt</v-icon>重設所有篩選條件</v-btn>
                                 <v-col cols="1">
                                     <v-select :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
@@ -626,39 +626,7 @@
                             <span style="float:right;">&emsp;總筆數:{{rawData.length}}，更新時間:2024年11月05日(巴哈權重降低中)</span>
                         </v-row>
                         <span v-if="windowWidth > 600"> 
-                        <br/><!--
-                        <v-row>
-                             <span style="float:right;" v-if="user != null">已登入：{{user.email}}</span> 
-                        <br> &emsp;
-                        <v-btn v-if="user != null" @click="loginOut" color="error" dark>
-                            <v-icon>mdi-google</v-icon>登出
-                        </v-btn>
-                        <span v-if="user != null">已登入：{{user.email}}</span>
-                        <v-btn v-if="user == null" @click="btnAuth" color="primary" dark :disabled="disableBtn">
-                            <v-icon>mdi-google</v-icon>登入
-                        </v-btn>
-                         <v-checkbox v-model="isMemoMode" label="收藏清單" dense :disabled="user == null"></v-checkbox> 
-
-                        <v-btn v-if="user != null " @click="saveItem" color="primary" dark>
-                            <v-icon>mdi-save</v-icon>點我儲存
-                        </v-btn>
-                        <v-tooltip bottom v-if="!disableBtn && user == null">
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-icon v-bind="attrs"
-                                v-on="on">mdi-help-circle</v-icon>
-                            </template>
-                            <span>紀錄觀看清單，可參考上方"關於"</span>
-                        </v-tooltip>
-                        <v-tooltip bottom v-if="user != null">
-                            <template v-slot:activator="{ on, attrs }">
-                                <v-icon v-bind="attrs"
-                                v-on="on">mdi-alert-circle
-                            </v-icon>
-                            </template>
-                            <span>這東西屬測試性質，基本上我不維護了，每日讀寫都有免費額度的問題，雖然目前流量是不太可能達到上限。</span>
-                        </v-tooltip>
-
-                        </v-row>-->
+                        <br/>
                         </span>
                         <br/>
                         <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...超過太久就重新整理，兩次都不行大概就是'暫時掛掉'，看我甚麼時候注意到" no-results-text="查無任何資料，可能是沒有收錄、名稱錯誤，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"

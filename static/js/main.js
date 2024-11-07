@@ -33,12 +33,6 @@ let vue = new Vue({
                                 </div>`,
             methods: {
                 setChipColor(bScore, website) {
-                /*    if (website != 'annict' && website != 'sakuhindb' && website != 'trakt') {
-                        if (bScore >= 7) return 'green darken-1'
-                        else if (bScore >= 4) return 'orange darken-1'
-                        else if (bScore > 0) return 'red'
-                        else return 'Default'
-                    }*/
 					if (website != 'annict' && website != 'sakuhindb' && website != 'trakt') {
 						if (bScore >= 9) return 'green darken-1'          
 						else if (bScore >= 8) return 'light-green darken-1' 
@@ -531,125 +525,6 @@ let vue = new Vue({
             }
             return src
         },
-        // onlineNameFormat(name) {
-        //     switch (name) {
-        //         case 'bahamut':
-        //             return '巴哈姆特';
-        //         case 'bilibili':
-        //             return '哔哩哔哩';
-        //         case 'disney':
-        //             return '迪士尼+'
-        //         case 'friday':
-        //             return 'friDay影音'
-        //         case 'hamivideo':
-        //             return 'HamiVideo'
-        //         case 'kktv':
-        //             return 'KKTV'
-        //         case 'line':
-        //             return 'LINE TV'
-        //         case 'litv':
-        //             return 'LiTV'
-        //         case 'myvideo':
-        //             return 'myVideo'
-        //         case 'netflix':
-        //             return 'Netflix'
-        //         case 'yahoo':
-        //             return 'Yahoo! TV'
-        //         case 'ani-one asia':
-        //             return 'Ani-One YouTube'
-        //         case 'catchplay':
-        //             return 'Catchplay'
-        //         case 'cht':
-        //             return '中華電信MOD'
-        //         case 'iqiyi':
-        //             return '愛奇藝'
-        //         case 'muse':
-        //             return '木棉花 Youtube'
-        //         case 'googleplay':
-        //             return 'Google Play';
-        //         case 'animelog':
-        //             return 'Animelog Youtube'
-        //         case 'crunchyroll':
-        //             return 'crunchyroll(英文)'
-        //     }
-        //     return name;
-        // },
-        // onlineNameFormat2(name) { //FIXME
-        //     switch (name) {
-        //         case 'Amazon Prime Video':
-        //             return 'Amazon Prime Video';
-        //         case 'Ani-One Asia':
-        //         case 'Ani-One Asia (Playlist)':
-        //             return '羚邦集團(Ani-One) YouTube'
-        //         case 'Animelog':
-        //             return 'Animelog Youtube'
-        //         case 'Bahamut Anime Crazy':
-        //             return '巴哈姆特';
-        //         case 'CHT MOD':
-        //             return '中華電信MOD'
-        //         case 'CatchPlay+ TW':
-        //             return 'Catchplay'
-        //         case 'crunchyroll':
-        //         case 'Crunchyroll (Film)':
-        //             return 'crunchyroll(英文)'
-        //         case 'Disney+ (Movies)':
-        //         case 'Disney+ (Series)':
-        //             return '迪士尼+'
-        //         case 'GUNDAM.INFO':
-        //             return 'GUNDAM.INFO'
-        //         case 'GagaOOLala':
-        //             return 'GagaOOLala'
-        //         case 'Google Play (Movie)':
-        //             return 'Google Play (Movie)';
-        //         case 'HamiVideo':
-        //             return 'HamiVideo'
-        //         case 'KKTV':
-        //             return 'KKTV'
-        //         case 'LINE TV Taiwan':
-        //             return 'LINE TV'
-        //         case 'LiTV':
-        //             return 'LiTV'
-        //         case 'LiTV (Movie)':
-        //             return 'LiTV (Movie)'
-        //         case 'Muse TW (Playlist)':
-        //             return '木棉花 Youtube'
-        //         case 'NHK WORLD-JAPAN On Demand':
-        //             return 'NHK WORLD-JAPAN On Demand'
-        //         case 'Netflix':
-        //             return 'Netflix'
-        //         case 'Pokémon YouTube (Playlist)':
-        //             return 'Pokémon YouTube (Playlist)'
-        //         case 'Rooster Teeth':
-        //             return 'Rooster Teeth'
-        //         case 'Tencent Video':
-        //             return '騰訊'
-        //         case 'Yahoo! TV Taiwan':
-        //             return 'Yahoo! TV Taiwan'
-        //         case 'YouTube':
-        //             return 'YouTube'
-        //         case 'YouTube (Channel)':
-        //             return 'YouTube (Channel)'
-        //         case 'YouTube (Playlist)':
-        //             return 'YouTube (Playlist)'
-        //         case 'bilibili':
-        //             return 'bilibili'
-        //         case 'friDay':
-        //             return 'friDay'
-        //         case 'friDay Video (Movie)':
-        //             return 'friDay Video (Movie)'
-        //         case 'hmvod':
-        //             return 'hmvod'
-        //         case 'i-Fun':
-        //             return 'i-Fun'
-        //         case 'iQIYI':
-        //             return 'iQIYI'
-        //         case 'iTunes':
-        //             return 'iTunes'
-        //         case 'myVideo':
-        //             return 'myVideo'
-        //     }
-        //     return name;
-        // },
         genreToCht(gen) {
             let i = vue.engGen().indexOf(gen)
             if (i != -1) {
@@ -675,20 +550,6 @@ let vue = new Vue({
                 this.search = '';
             }
         },
-        // panel() {
-        //     if (this.panel == '') {
-        //         this.onlineWatchSel = []
-        //         this.genreSel = []
-        //     } else {
-        //         if (this.panel.length == 1) {
-        //             if (this.panel[0] == 0) {
-        //                 this.genreSel = []
-        //             } else {
-        //                 this.onlineWatchSel = []
-        //             }
-        //         }
-        //     }
-        // },
         toRandom() {
             this.rawToRandom(this.toRandom)
         },
@@ -722,60 +583,13 @@ let vue = new Vue({
         }
     },
     async created() {
-        // async function checkResponseTime(testURL) {
-        //     let time1 = performance.now();
-        //     await fetch(testURL);
-        //     let time2 = performance.now();
-        //     return time2 - time1;
-        // }
-        // console.log(await checkResponseTime('https://some-random-api.ml/animu/hug'))
 
         if (this.windowWidth >= 600) {
             this.hug = await fetch('https://api.waifu.pics/sfw/hug').then((res) => res.json().then((obj) => obj.url));
             // this.hug = await fetch('https://some-random-api.ml/animu/hug').then((res) => res.json().then((obj) => obj.link));
         }
-        // this.rawData = await fetch(
-        //     this.rawUrl,
-        // ).then((res) => res.json());
-        // await fetch('https://yuriever.com/test.gzip').then((res) => res.arrayBuffer().then(buf => {
-        //記憶體爆炸
-        //await fetch('https://raw.githubusercontent.com/Tsuiokuyo/tsuiokuyo.netlify.com/master/static/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
-		//await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com/master/test3.gzip').then((res) => res.arrayBuffer().then(buf => {
-		/*
-		await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.gzip').then((res) => res.arrayBuffer().then(buf => {	
-            let zippedContent = new Uint8Array(buf);
-            let byteArray = pako.ungzip(zippedContent);
-            let textDecoder = new TextDecoder();
-            let textContent = textDecoder.decode(byteArray);
-            this.rawData = JSON.parse(textContent)
-
-            vue.isLoading = null;
-        }));*/
-		//let response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.gzip');
-		
-		
-		/*let response = await fetch('https://cdn.jsdelivr.net/gh/Tsuiokuyo/yuriever.com-main@master/static/test2min.msgpack.gzip');
-		let reader = response.body.getReader();
-		let contentLength = +response.headers.get('Content-Length');
-		this.fileSize = (contentLength / (1024 * 1024)).toFixed(2);
-		let loaded = 0;
-		let chunks = [];
-
-		while (true) {
-		  const { done, value } = await reader.read();
-		  if (done) break;
-		  chunks.push(value);
-		  loaded += value.length;
-		  this.loadingProgress = Math.min((loaded / contentLength * 99).toFixed(2), 99);
-		  this.currentLoaded = (loaded / (1024 * 1024)).toFixed(2); 
-		}
-
-		let zippedContent = new Uint8Array(chunks.reduce((acc, val) => acc.concat(Array.from(val)), []));
-		let byteArray = pako.ungzip(zippedContent);
-		this.rawData = msgpack.decode(byteArray);*/
 		
 		let response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.zst');
-		//let response = await fetch('https://cdn.jsdelivr.net/gh/Tsuiokuyo/yuriever.com-main@master/static/test2min.msgpack.zst?date=20241018');
 		let reader = response.body.getReader();
 		let contentLength = +response.headers.get('Content-Length');
 		let loaded = 0;
@@ -801,45 +615,12 @@ let vue = new Vue({
 		this.rawData = msgpack.decode(decompressed);
 
 		this.isLoading = null; 
-		//this.loadingProgress = 100;
-
-        // this.gnn.title = 'heroku已死，暫時無法撈取RSS'
-        // this.moelong.title = 'heroku已死，暫時無法撈取RSS'
-
-        //let newMoes = []
-
-        // 只有rss部分是靠node.js才實現的 但11/28 heroku會停止支援免費版，上面三個算屆時備用的，但我也可能會直接放棄使用RSS
-        // const moelongUrl = 'https://tsuiokuyo.herokuapp.com/https://www.moelong.com/moelongnews/feed';
-        // const gnnUrl = 'https://tsuiokuyo.herokuapp.com/https://gnn.gamer.com.tw/rss.xml';
-
-        // https://fubdhltvej.us16.qoddiapp.com/
-        // https://wispy-smoke-920.fly.dev/
-        // https://proxy-6jamtxfrdq-uc.a.run.app/
-
 	
         // let moelongUrl = 'https://www.moelong.com/moelongnews/feed';
         // let gnnUrl = 'https://gnn.gamer.com.tw/rss.xml';
 
         let moelongUrl = 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/main/rss_data/moelong.json';
         let gnnUrl = 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/main/rss_data/gnn.json';
-
-        
-        // let QAQrandom = Math.floor(Math.random() * 2) //0,1
-        // switch (QAQrandom) {
-        //     case 0:
-        //         moelongUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/' + moelongUrl
-        //         gnnUrl = 'https://proxy-6jamtxfrdq-uc.a.run.app/' + gnnUrl
-        //         break;
-        //     case 1:
-        //         moelongUrl = 'https://wispy-smoke-920.fly.dev/' + moelongUrl
-        //         gnnUrl = 'https://wispy-smoke-920.fly.dev/' + gnnUrl
-        //         break;
-        //         // default:
-        //         //     moelongUrl = 'http://fubdhltvej.us16.qoddiapp.com/' + moelongUrl
-        //         //     gnnUrl = 'http://fubdhltvej.us16.qoddiapp.com/' + gnnUrl
-        //         //     break;
-        // }
-
 
         let newMoes = [];
 
@@ -911,141 +692,7 @@ let vue = new Vue({
                 }
             });
 
-
-
-
         this.$nextTick(function() {
-			/*
-                //用途不大的firebase字串加密QAQ
-                var _0x1d7d3f = _0x4320;
-
-                function _0x4320(_0x227ded, _0x300176) { var _0xf56a5d = _0xf56a(); return _0x4320 = function(_0x43206a, _0x2eaa05) { _0x43206a = _0x43206a - 0x1a6; var _0xbea29c = _0xf56a5d[_0x43206a]; return _0xbea29c; }, _0x4320(_0x227ded, _0x300176); }
-
-                function _0xf56a() {
-                    var _0x1ce207 = ['1865HYFIke', '870180crQtKg', '152742WcsHiR', '72688nUALMw', 'split', '1364NuTqZK', '3197788GUqWyK', '\x5cw+', '2cITSUJ', '10euVKwn', 'replace', '18788XGRIMH', '757962ZqRRBs', '5\x206={c:\x22d\x22,e:\x222.f.7\x22,g:\x222\x22,h:\x222.i.7\x22,j:\x228\x22,k:\x221:8:l:m\x22,n:\x22o-p\x22};3=9.$a[0].3,4=9.$a[0].4;5\x20b=3(6),q=4(b);', '376nmlPyF'];
-                    _0xf56a = function() { return _0x1ce207; };
-                    return _0xf56a();
-                }(function(_0x564fe1, _0x4e784e) {
-                    var _0x2e5ada = _0x4320,
-                        _0x55d12e = _0x564fe1();
-                    while (!![]) {
-                        try {
-                            var _0x4a932f = parseInt(_0x2e5ada(0x1b1)) / 0x1 + parseInt(_0x2e5ada(0x1a7)) / 0x2 * (-parseInt(_0x2e5ada(0x1b0)) / 0x3) + -parseInt(_0x2e5ada(0x1b3)) / 0x4 * (parseInt(_0x2e5ada(0x1ae)) / 0x5) + parseInt(_0x2e5ada(0x1af)) / 0x6 + parseInt(_0x2e5ada(0x1aa)) / 0x7 * (-parseInt(_0x2e5ada(0x1ad)) / 0x8) + -parseInt(_0x2e5ada(0x1ab)) / 0x9 * (parseInt(_0x2e5ada(0x1a8)) / 0xa) + parseInt(_0x2e5ada(0x1b4)) / 0xb;
-                            if (_0x4a932f === _0x4e784e) break;
-                            else _0x55d12e['push'](_0x55d12e['shift']());
-                        } catch (_0x46c28f) { _0x55d12e['push'](_0x55d12e['shift']()); }
-                    }
-                }(_0xf56a, 0x1d491), eval(function(_0x2a8a70, _0x1a8b38, _0x13f95b, _0x13c054, _0x3736b6, _0x1ce38f) {
-                    var _0xc08820 = _0x4320;
-                    _0x3736b6 = function(_0x1dcd24) { return _0x1dcd24['toString'](_0x1a8b38); };
-                    if (!'' [_0xc08820(0x1a9)](/^/, String)) {
-                        while (_0x13f95b--) _0x1ce38f[_0x3736b6(_0x13f95b)] = _0x13c054[_0x13f95b] || _0x3736b6(_0x13f95b);
-                        _0x13c054 = [function(_0x162593) { return _0x1ce38f[_0x162593]; }], _0x3736b6 = function() { var _0x25189d = _0xc08820; return _0x25189d(0x1a6); }, _0x13f95b = 0x1;
-                    };
-                    while (_0x13f95b--)
-                        if (_0x13c054[_0x13f95b]) _0x2a8a70 = _0x2a8a70[_0xc08820(0x1a9)](new RegExp('\x5cb' + _0x3736b6(_0x13f95b) + '\x5cb', 'g'), _0x13c054[_0x13f95b]);
-                    return _0x2a8a70;
-                }(_0x1d7d3f(0x1ac), 0x1b, 0x1b, '||animelisttw|initializeApp|getAnalytics|const|firebaseConfig|com|822507041160|this|children|app|apiKey|AIzaSyC8m9BWMwBmIHJ_NVWzwcgbYwAfqHj1g0Q|authDomain|firebaseapp|projectId|storageBucket|appspot|messagingSenderId|appId|web|264c7087169996d50e0a3d|measurementId|G|4Y1Q0EHQCY|analytics' [_0x1d7d3f(0x1b2)]('|'), 0x0, {})));
-
-                getRedirectResult = this.$children["0"].getRedirectResult
-                    // delete this.$children["0"].getRedirectResult
-                GoogleAuthProvider = this.$children["0"].GoogleAuthProvider
-                    // delete this.$children["0"].GoogleAuthProvider
-                getAuth = this.$children["0"].getAuth
-                    // delete this.$children["0"].getAuth
-                this.auth = getAuth();
-                this.providerGoogle = new GoogleAuthProvider();
-                signInWithRedirect = this.$children["0"].signInWithRedirect
-                    // delete this.$children["0"].signInWithRedirect
-                    // signInWithRedirect(this.auth, this.providerGoogle)
-
-                setPersistence = this.$children["0"].setPersistence
-
-                browserLocalPersistence = this.$children["0"].browserLocalPersistence
-                onAuthStateChanged = this.$children["0"].onAuthStateChanged
-                signOut = this.$children["0"].signOut
-                doc = this.$children["0"].doc
-                updateDoc = this.$children["0"].updateDoc
-                getFirestore = this.$children["0"].getFirestore
-                setDoc = this.$children["0"].setDoc;
-                getDoc = this.$children["0"].getDoc;
-                collection = this.$children["0"].collection
-                getDocs = this.$children["0"].getDocs
-                query = this.$children["0"].query
-                where = this.$children["0"].where
-                this.db = getFirestore();
-                //FIXME 膩了，有心情再來調整這裡...........................................
-                onAuthStateChanged(this.auth, user => {
-                    this.user = user
-                    if (user) {
-                        getDoc(doc(this.db, "animeListTW", user.email)).then((result) => {
-                            if (result.exists()) {
-                                let count = 0
-                                let res = result.data().seen
-                                this.seenData = result.data().seen
-                                for (item of this.rawData) {
-                                    for (seen of res) {
-                                        if (item.MAL.id == seen.id) {
-                                            item.seen = true
-                                            item.memo = seen.memo
-                                            item.myRank = seen.myRank
-                                            count++
-                                            let idx = res.indexOf(seen.id);
-                                            if (idx !== -1) {
-                                                res.splice(idx, 1);
-                                            }
-                                            break;
-                                        }
-                                    }
-                                }
-                                this.saveMsg['text'] = '本次讀取了' + count + '筆資料。'
-                                this.saveMsg['state'] = true
-                                this.destroyTable()
-                            }
-
-                        })
-                    }
-                })
-
-                getRedirectResult(this.auth)
-                    .then((result) => {
-                        this.disableBtn = false
-                        if (result) {
-                            setPersistence(this.auth, browserLocalPersistence)
-                                // const credential = GoogleAuthProvider.credentialFromResult(result);
-                                // this.token = credential.accessToken;
-                            this.user = result.user;
-
-
-                            getDoc(doc(this.db, "animeListTW", result.user.email)).then((result) => {
-                                if (result.exists()) {
-                                    let count = 0
-                                    let res = result.data().seen
-                                    this.seenData = result.data().seen
-                                    for (item of this.rawData) {
-                                        // item.seen = false
-                                        for (seen of res) {
-                                            if (item.MAL.id == seen) {
-                                                item.seen = true
-                                                count++
-                                                let idx = res.indexOf(seen);
-                                                if (idx !== -1) {
-                                                    res.splice(idx, 1);
-                                                }
-                                                break;
-                                            }
-                                        }
-                                    }
-                                    this.saveMsg['text'] = '本次讀取了' + count + '筆資料。'
-                                    this.saveMsg['state'] = true
-                                    this.destroyTable()
-                                }
-
-                            })
-                        }
-
-                    })
-				*/
 
                 this.getRandomArray();
                 let genres = []
@@ -1059,52 +706,15 @@ let vue = new Vue({
                     if (this.disabledNSFW) { //移除18禁
                         if (item.MAL.genres.includes('Hentai')) {}
                     }
-                    // if (null != item.Gamer && null != item.Gamer.online) {
-                    //     onlines.push('Bahamut Anime Crazy')
-                    // }
-                    // if (null != item.livechart && null != item.livechart.online) {
-                    //     for (const [key, value] of Object.entries(item.livechart.online)) {
-                    //         if (key != 'Twitter' && key != 'Instagram' && key != 'Plex' && key != 'Steam') {
-                    //             // let obj = this.switchName(key, value)
-                    //             // onlines.push(obj[0])
-                    //             onlines.push(key)
-                    //         }
-
-                    //     }
-                    // }
-
+                  
                     for (let [key, value] of Object.entries(item.online)) {
-                        // if (key.toLowerCase().indexOf('tencent') != -1) {
-                        //     break;
-                        // }
-                        // [key, value] = this.switchName(key, value)
-                        // format[key] = value
                         onlines.push(key)
                     }
 
                     for (let [key, value] of Object.entries(item.MAL.studios)) {
-                        // if (key.toLowerCase().indexOf('tencent') != -1) {
-                        //     break;
-                        // }
-                        // [key, value] = this.switchName(key, value)
-                        // format[key] = value
                         studios.push(value)
                     }
-                    // onlines.push(item.online)
-                    // if (null != item.trakt && null != item.trakt.online) {
-                    //     for (const [key, value] of Object.entries(item.trakt.online)) {
-                    //         if (key != 'Twitter' && key != 'Instagram' && key != 'Plex' && key != 'Steam') {
-                    //             // let obj = this.switchName(key, value)
-                    //             // onlines.push(obj[0])
-                    //             onlines.push(key)
-                    //         }
-                    //     }
-                    // }
-                    // }
-                    // onlines = [...new Set(onlines.sort())]
-                    // this.voicesList = voices
-
-                    // voices = voices.concat(item.MAL.voices)
+                   
                     for (gen of item.MAL.genres) {
                         if (this.disabledZero) {
                             if (item.score > 0) {
@@ -1170,15 +780,6 @@ let vue = new Vue({
                         return pre[1] < nxt[1] ? 1 : -1
                     }) //给mapEntries 排序
                 let studiosF = mapEntries.map(item => item[0])
-                    // let studiosF = mapEntries.map(item => {
-                    //     if (item[1] > 20) {
-                    //         return item[0]
-                    //     } else {
-                    //         return 'lowValue'
-                    //     }
-                    // })
-                    // studiosF = [...new Set(studiosF)]
-                    // studiosF.pop()
                 studiosF.splice(50)
                 this.cmpList = studiosF
 
@@ -1219,11 +820,6 @@ let vue = new Vue({
                 this.badgesDef = this.badges
                 genres = [...new Set(genres.sort())]
 
-                //FIXME 不該出現，下一輪再看看
-                // genres = genres.filter(function(item) {
-                //     return item !== 'Josei'
-                // });
-
                 this.genreList = genres
 
                 //抓網址參數
@@ -1242,9 +838,6 @@ let vue = new Vue({
                         return (0.5 - Math.random());
                     });
                 }
-                // this.pageCount = Math.ceil(this.rawData.length / this.itemsPerPage)
-                // delete newGnns, newMoes, events, now, genres, births, moelongUrl, gnnUrl, geturl, getqyinfo, set
-
                 if (navigator.userAgent.search("Chrome") > -1 || navigator.userAgent.search("Opera") > -1) {
                     this.memory = 0
                 }
@@ -1263,32 +856,7 @@ let vue = new Vue({
             this.search = '';
             this.queryBtn = false;
         },
-        saveItem() {
-            let saveList = [];
-            for (item of this.rawData) {
-                if (item.hasOwnProperty('seen') && item.seen) {
-                    saveList.push({ 'id': item.MAL.id, 'memo': item.memo, 'myRank': item.myRank })
-                }
-            }
-            setDoc(doc(this.db, "animeListTW", this.user.email), { 'seen': saveList });
-            this.saveMsg['text'] = '目前一共儲存了' + saveList.length + '筆資料。'
-            this.saveMsg['state'] = true
-        },
-        btnAuth() {
-            setPersistence(this.auth, browserLocalPersistence)
-                .then(() => {
-                    return signInWithRedirect(this.auth, this.providerGoogle);
-                })
-                // signInWithRedirect(this.auth, this.providerGoogle);
 
-        },
-        loginOut() {
-            signOut(this.auth).then(() => {
-                this.user = null
-            }).catch((error) => {
-
-            });
-        },
         setRankColor(i) {
             let pitch = 255 / this.rawData.length;
             pitch = 255 - (pitch * i)
@@ -1327,12 +895,6 @@ let vue = new Vue({
             }
         },
         toggleFullscreen(item) {
-            /*let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
-            if (null != item.BGM) {
-                this.selectedImage = cdn2 + "http://lain.bgm.tv/pic/cover/l/" + item.BGM.image + ".jpg" + "&output=webp"
-            } else {
-                this.selectedImage = "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '') + 'l.webp'
-            }*/
 			 this.selectedImage = "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '') + 'l.webp'
         },
         customSort(items, index, isDescending) {
@@ -1459,14 +1021,6 @@ let vue = new Vue({
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        // case 'redditanimelist':
-                        //     b = !!b.sakuhindb ? b.sakuhindb.b_score : 0;
-                        //     a = !!a.sakuhindb ? a.sakuhindb.b_score : 0;
-                        //     if (isDescending[0]) {
-                        //         return b > a ? 1 : -1
-                        //     } else {
-                        //         return a > b ? 1 : -1
-                        //     }
                         case 'sakuhindb':
                             b = !!b.sakuhindb ? b.sakuhindb.b_score : 0;
                             a = !!a.sakuhindb ? a.sakuhindb.b_score : 0;
@@ -1481,7 +1035,6 @@ let vue = new Vue({
             return items;
         },
         getRandomArray() {
-            // this.$nextTick(function() {
             this.randomTen = []
             let shuffled = this.rawData.slice(0),
                 i = this.rawData.length,
@@ -1500,11 +1053,6 @@ let vue = new Vue({
                         return this.getRandomArray()
                     }
                 }
-                // if (this.disabledZero) {
-                //     if (item.score == 0) {
-                //         return this.getRandomArray()
-                //     }
-                // }
             }
             this.randomTen = check
         },
@@ -1521,25 +1069,9 @@ let vue = new Vue({
         },
         onlineList(item) {
             let online = new Object();
-            // if (null != item.trakt && !!item.trakt.online) { //FIXME
-            //     for (const [key, value] of Object.entries(item.trakt.online)) {
-            //         online[key] = 'https://trakt.tv/watchnow/' + value
-            //     }
-            // }
-            // if (null != item.Gamer && !!item.Gamer.online) {
-            //     online['Bahamut Anime Crazy'] = item.Gamer.online
-            // }
-            // if (null != item.livechart && !!item.livechart.online) {
-            //     online = item.livechart.online;
-            // }
             let format = new Object();
             if (!!item) {
                 for (let [key, value] of Object.entries(item)) {
-                    // if (key.toLowerCase().indexOf('tencent') != -1) {
-                    //     break;
-                    // }
-                    // [key, value] = this.switchName(key, value)
-                    // format[key] = value
                     value = this.addUrl(key, value)
                     format[key] = value
 
@@ -1653,52 +1185,6 @@ let vue = new Vue({
                 return ['AnimeLog', 'https://www.youtube.com/' + id]
             }
 
-            // if (id.indexOf('trakt.tv') != -1) {
-            //     return [name, id]
-            // } else if (name.indexOf('bahamut') != -1) {
-            //     if (id.indexOf('https://') != -1) {
-            //         return ['bahamut', id] //LC犬夜叉異常 FIXME
-            //     } else {
-            //         return ['bahamut', 'https://ani.gamer.com.tw/animeVideo.php?sn=' + id]
-            //     }
-            // } else if (name.indexOf('bilibili') != -1) {
-            //     return [name, 'https://www.bilibili.com/bangumi/' + id]
-            // } else if (name.indexOf('disney') != -1) {
-            //     return [name, 'https://www.disneyplus.com/' + id]
-            // } else if (name.indexOf('friday') != -1) {
-            //     return [name, 'https://video.friday.tw/' + id]
-            // } else if (name.indexOf('hamivideo') != -1) {
-            //     return [name, 'https://hamivideo.hinet.net/' + id]
-            // } else if (name.indexOf('kktv') != -1) {
-            //     return [name, 'https://www.kktv.me/' + id]
-            // } else if (name.indexOf('line') != -1) {
-            //     return [name, 'https://www.linetv.tw/' + id]
-            // } else if (name.indexOf('litv') != -1) {
-            //     return [name, 'https://www.litv.tv/vod/' + id]
-            // } else if (name.indexOf('myvideo') != -1) {
-            //     return [name, 'https://www.myvideo.net.tw/' + id]
-            // } else if (name.indexOf('netflix') != -1) {
-            //     return [name, 'https://www.netflix.com/' + id]
-            // } else if (name.indexOf('ani-one asia') != -1) {
-            //     return [name, 'https://www.youtube.com/' + id]
-            // } else if (name.indexOf('yahoo') != -1) {
-            //     return [name, 'https://tw.tv.yahoo.com/' + id]
-            // } else if (name.indexOf('catchplay') != -1) {
-            //     return [name, 'https://www.catchplay.com/' + id]
-            // } else if (name.indexOf('cht') != -1) {
-            //     return [name, 'http://mod.cht.com.tw/video/' + id]
-            // } else if (name.indexOf('iqiyi') != -1) {
-            //     return [name, 'https://www.iq.com/' + id]
-            // } else if (name.indexOf('muse') != -1) {
-            //     return [name, 'https://www.youtube.com/' + id]
-            // } else if (name.indexOf('google') != -1) {
-            //     return [name, 'https://play.google.com/store/' + id]
-            // } else if (name.indexOf('crunchyroll') != -1) {
-            //     return [name, 'https://www.crunchyroll.com/' + id]
-            // } else if (name.indexOf('nhk world-japan on demand') != -1) { //FixMe
-            //     return [name, id]
-            // }
-
             return [name, id];
         },
         toTop() {
@@ -1727,19 +1213,7 @@ let vue = new Vue({
         },
         getBackground(item) {
             if (!this.disabledBgImage) {
-                // if (null != item.anisearch && null != item.anisearch.coverS) {
-                //     return 'https://cdn.anisearch.com/images/anime/header/' + item.anisearch.coverS + '.webp';
-                //     // } else if (null != item.trakt && null != item.trakt.coverS) {
-                //     //     return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS
-                //     // } else if (null != item.kitsu && null != item.kitsu.coverT) {
-                //     // return 'https://media.kitsu.io/anime/' + item.kitsu.coverT;
-                // } else if (null != item.kitsu && null != item.kitsu.coverT) {
-                //     return 'https://media.kitsu.io/anime/' + item.kitsu.coverT;
-                // } else if (null != item.trakt && null != item.trakt.coverS) {
-                //     return 'https://walter.trakt.tv/images/shows/000/' + item.trakt.coverS;
-                // } else {
-                //     return 'image/noImage.webp'
-                // }
+
                 if (null != item.banner) {
                     if (item.banner.indexOf('kitsuQWQ') != -1) { //FIXME
 						if (item.banner.indexOf('https://media.kitsu.app/anime/') === -1) {
@@ -1932,7 +1406,6 @@ let vue = new Vue({
         },
         getEvents({ start, end }) {
             let now = new Date()
-                // if (String(start.year) != now.getFullYear()) {
             let events = []
             let calYear = String(start.year)
             for (item of this.eventVoice) {
@@ -1957,7 +1430,6 @@ let vue = new Vue({
                 }
             }
             this.eventVoice = events
-                // }
         },
         setVoiceColor(isMain, isSup, todayBir) {
             if (todayBir) {
