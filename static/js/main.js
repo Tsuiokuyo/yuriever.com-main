@@ -153,15 +153,14 @@ let vue = new Vue({
         sortDesc: false,
         sortBy: 'rank',
         sorts: [{ 'name': '加權評分', 'value': 'rank' },
-		{ 'name': '巴哈姆特', 'value': 'gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
-           { 'name': 'Bangumi', 'value': 'bgm' }, { 'name': 'Anikore', 'value': 'anikore' },
+		{ 'name': '巴哈姆特', 'value': 'Gamer' }, { 'name': 'MyAnimeList', 'value': 'MAL' },
+           { 'name': 'Bangumi', 'value': 'BGM' }, { 'name': 'Anikore', 'value': 'Anikore' },
            { 'name': 'anidb', 'value': 'anidb' }
-           , { 'name': 'AniList', 'value': 'aniList' }, { 'name': 'AnimePlanetCom', 'value': 'apc' }
-           , { 'name': 'AnimeNewsNetwork', 'value': 'ann' }, { 'name': 'anisearch', 'value': 'anisearch' }
+           , { 'name': 'AniList', 'value': 'AniList' }, { 'name': 'AnimePlanetCom', 'value': 'AnimePlanetCom' }
+           , { 'name': 'AnimeNewsNetwork', 'value': 'ANN' }, { 'name': 'anisearch', 'value': 'anisearch' }
            , { 'name': 'kitsu', 'value': 'kitsu' }, { 'name': 'notifyMoe', 'value': 'notifyMoe' }
            , { 'name': 'livechart', 'value': 'livechart' }
         ],
-
 
         selectedImage: false,
         tab: '',
@@ -283,6 +282,15 @@ let vue = new Vue({
                             if (item.score == 0) {
                                 return false;
                             }
+                        }
+                        if(this.sortBy != 'rank'){
+                            function checkZero(item, sortBy) {
+                                if (!item[sortBy]  || item[sortBy] && item[sortBy].b_score == 0) {
+                                    return false;
+                                }
+                                return true;
+                            }
+                            return checkZero(item, this.sortBy)
                         }
                         if (this.year && this.year > 1900) {
                             let bYear = true
@@ -1422,13 +1430,13 @@ let vue = new Vue({
                         //     } else {
                         //         return a.score > b.score ? 1 : -1;
                         //     }
-                        case 'mal':
+                        case 'MAL':
                             if (!isDescending[0]) {
                                 return b.MAL.score > a.MAL.score ? 1 : -1;
                             } else {
                                 return a.MAL.score > b.MAL.score ? 1 : -1;
                             }
-                        case 'gamer':
+                        case 'Gamer':
                             b = !!b.Gamer ? b.Gamer.b_score : 0;
                             a = !!a.Gamer ? a.Gamer.b_score : 0;
                             if (!isDescending[0]) {
@@ -1444,7 +1452,7 @@ let vue = new Vue({
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'bgm':
+                        case 'BGM':
                             b = !!b.BGM ? b.BGM.b_score : 0;
                             a = !!a.BGM ? a.BGM.b_score : 0;
                             if (!isDescending[0]) {
@@ -1452,7 +1460,7 @@ let vue = new Vue({
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'anikore':
+                        case 'Anikore':
                             b = !!b.Anikore ? b.Anikore.b_score : 0;
                             a = !!a.Anikore ? a.Anikore.b_score : 0;
                             if (!isDescending[0]) {
@@ -1468,7 +1476,7 @@ let vue = new Vue({
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'anilist':
+                        case 'AniList':
                             b = !!b.AniList ? b.AniList.b_score : 0;
                             a = !!a.AniList ? a.AniList.b_score : 0;
                             if (!isDescending[0]) {
@@ -1476,7 +1484,7 @@ let vue = new Vue({
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'animeplanetcom':
+                        case 'AnimePlanetCom':
                             b = !!b.AnimePlanetCom ? b.AnimePlanetCom.b_score : 0;
                             a = !!a.AnimePlanetCom ? a.AnimePlanetCom.b_score : 0;
                             if (!isDescending[0]) {
@@ -1484,7 +1492,7 @@ let vue = new Vue({
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'ann':
+                        case 'ANN':
                             b = !!b.ANN ? b.ANN.b_score : 0;
                             a = !!a.ANN ? a.ANN.b_score : 0;
                             if (!isDescending[0]) {
@@ -1500,7 +1508,7 @@ let vue = new Vue({
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'notifymoe':
+                        case 'notifyMoe':
                             b = !!b.notifyMoe ? b.notifyMoe.b_score : 0;
                             a = !!a.notifyMoe ? a.notifyMoe.b_score : 0;
                             if (!isDescending[0]) {
