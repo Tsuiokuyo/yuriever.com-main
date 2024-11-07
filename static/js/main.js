@@ -266,175 +266,102 @@ let vue = new Vue({
                     value: 'name',
                     width: '25%',
                     filter: (value, search, item) => {
-                        this.search == null ? this.search = '' : this.search
-                        if (this.search.length == 1) {
+                        if (!this.search) this.search = '';
+                    
+                        // 1. 檢查搜尋字串長度
+                        if (this.search.length === 1) {
                             this.inputErr = '請至少輸入兩個字';
-                            return false
-                        } else {
-                            this.inputErr = '';
-                        }
-                        if (this.disabledNSFW) {
-                            if (item.MAL.genres.includes('Hentai')) {
-                                return false;
-                            }
-                        }
-                        if (this.disabledZero) {
-                            if (item.score == 0) {
-                                return false;
-                            }
-                        }
-                        if(this.sortBy != 'rank'){
-                            function checkZero(item, sortBy) {
-                                if (!item[sortBy]  || item[sortBy] && item[sortBy].b_score == 0) {
-                                    return false;
-                                }
-                                return true;
-                            }
-                            return checkZero(item, this.sortBy)
-                        }
-                        if (this.year && this.year > 1900) {
-                            let bYear = true
-                            switch (this.selYear) {
-                                case '等於':
-                                    bYear = parseInt(item.MAL.premiered) == parseInt(this.year)
-                                    break;
-                                case '大於':
-                                    bYear = parseInt(item.MAL.premiered) >= parseInt(this.year)
-                                    break;
-                                case '小於':
-                                    bYear = parseInt(item.MAL.premiered) <= parseInt(this.year)
-                                    break;
-                                case '介於':
-                                    bYear = (parseInt(item.MAL.premiered) >= parseInt(this.year) && parseInt(item.MAL.premiered) <= parseInt(this.year2 > 99 ? this.year2 : 9999))
-                                    break;
-                            }
-                            if (!bYear) {
-                                return false;
-                            }
-                        }
-                        let rank = true
-                        if (this.rank1 && this.rank2) {
-                            rank = (parseInt(item.rank) >= parseInt(this.rank1) && parseInt(item.rank) <= parseInt(this.rank2))
-                        } else if (this.rank1) {
-                            rank = parseInt(item.rank) >= parseInt(this.rank1)
-                        } else if (this.rank2) {
-                            rank = parseInt(item.rank) <= parseInt(this.rank2)
-                        }
-                        if (!rank) {
                             return false;
                         }
-                        if (this.diff) {
-                            let difference = true
-                            if (item.Gamer && item.Gamer.b_score > 0) {
-                                function comput(a, b, range) {
-                                    if (b == null) return false;
-                                    b = b.b_score > 0 ? b.b_score : false
-                                    return Math.abs(parseFloat(a) - parseFloat(b)) >= parseFloat(range)
-                                }
-                                let gScore = item.Gamer.b_score
-                                difference = Math.abs(parseFloat(gScore) - parseFloat(item.MAL.score > 0 ? item.MAL.score : false)) >= parseFloat(this.diff) ||
-                                    comput(gScore, item.BGM, this.diff) ||
-                                    comput(gScore, item.Anikore, this.diff) ||
-                                    comput(gScore, item.AniList, this.diff) ||
-                                    comput(gScore, item.AnimePlanetCom, this.diff) ||
-                                    comput(gScore, item.ANN, this.diff) ||
-                                    comput(gScore, item.anisearch, this.diff) ||
-                                    comput(gScore, item.notifyMoe, this.diff) ||
-                                    comput(gScore, item.trakt, this.diff) ||
-                                    comput(gScore, item.livechart, this.diff)
-                            } else {
-                                return false;
+                        this.inputErr = '';
+                    
+                        // 2. 預先處理篩選條件，並使用高效返回以提高效能
+                        if (this.disabledNSFW && item.MAL.genres.includes('Hentai')) return false;
+                        if (this.disabledZero && item.score === 0) return false;
+                    
+                        // 3. 檢查 sortBy 項目是否為零
+                        if (this.sortBy !== 'rank' && (!item[this.sortBy] || item[this.sortBy].b_score === 0)) return false;
+                    
+                        // 4. 檢查年份篩選條件
+                        if (this.year && this.year > 1900) {
+                            const premiered = parseInt(item.MAL.premiered);
+                            const year = parseInt(this.year);
+                            const year2 = parseInt(this.year2 > 99 ? this.year2 : 9999);
+                            let bYear = false;
+                    
+                            switch (this.selYear) {
+                                case '等於':
+                                    bYear = premiered === year;
+                                    break;
+                                case '大於':
+                                    bYear = premiered >= year;
+                                    break;
+                                case '小於':
+                                    bYear = premiered <= year;
+                                    break;
+                                case '介於':
+                                    bYear = premiered >= year && premiered <= year2;
+                                    break;
                             }
-                            if (!difference) {
-                                return false;
-                            }
+                            if (!bYear) return false;
                         }
-                        if (this.selSource != 'ALL') {
-                            let selSrc = item.MAL.source == this.selSource
-                            if (!selSrc) {
-                                return false;
-                            }
+                    
+                        // 5. 檢查排名篩選
+                        const rank = parseInt(item.rank);
+                        if ((this.rank1 && rank < parseInt(this.rank1)) || (this.rank2 && rank > parseInt(this.rank2))) return false;
+                    
+                        // 6. 差異篩選條件
+                        if (this.diff && item.Gamer && item.Gamer.b_score > 0) {
+                            const gScore = item.Gamer.b_score;
+                            const parseDiff = parseFloat(this.diff);
+                            const checkDifference = (a, b) => b && Math.abs(parseFloat(a) - parseFloat(b.b_score)) >= parseDiff;
+                    
+                            if (
+                                Math.abs(parseFloat(gScore) - parseFloat(item.MAL.score || 0)) < parseDiff &&
+                                ![item.BGM, item.Anikore, item.AniList, item.AnimePlanetCom, item.ANN, item.anisearch, item.notifyMoe, item.trakt, item.livechart]
+                                    .some((source) => checkDifference(gScore, source))
+                            ) return false;
                         }
-                        if (this.selType != 'ALL') {
-                            let bSelType = item.MAL.type.toUpperCase() == this.selType.toUpperCase()
-                            if (!bSelType) {
-                                return false;
-                            }
+                    
+                        // 7. 篩選 source 和 type 條件
+                        if (this.selSource !== 'ALL' && item.MAL.source !== this.selSource) return false;
+                        if (this.selType !== 'ALL' && item.MAL.type.toUpperCase() !== this.selType.toUpperCase()) return false;
+                    
+                        // 8. 在線觀看條件
+                        if (this.onlineWatchSel.length && !this.onlineWatchSel.some(key => item.online[key])) return false;
+                    
+                        // 9. 檢查所選 genre
+                        if (this.genreSel.some(gen => !item.MAL.genres.includes(gen))) return false;
+                    
+                        // 10. 檢查所選公司 (studios)
+                        if (this.cmpSel.length && !this.cmpSel.some(cmp => item.MAL.studios.includes(cmp))) return false;
+                    
+                        // 11. 搜尋條件
+                        if (this.search.trim()) {
+                            const searchValue = this.search.trim().toUpperCase();
+                            const simpSearch = this.simp(searchValue);
+                            const tradSearch = this.trad(searchValue);
+                        
+                            const nameMatch = [
+                                item.MAL?.en_name, item.MAL?.jp_name, item.BGM?.cn_name,
+                                item.Gamer?.title, ...(item.BGM?.alias || [])
+                            ].some(name => 
+                                name && (
+                                    name.toUpperCase().includes(searchValue) || 
+                                    name.includes(simpSearch) || 
+                                    name.includes(tradSearch)
+                                )
+                            );
+                        
+                            if (!nameMatch) return false;
                         }
-                        if (this.onlineWatchSel.length > 0) {
-                            let check = false
-                            if (Object.keys(item.online).length != 0) {
-                                for (key of this.onlineWatchSel) {
-                                    if (item.online.hasOwnProperty(key)) {
-                                        check = true
-                                    }
-                                }
-                                if (!check) {
-                                    return false
-                                }
-                            } else {
-                                return false
-                            }
-                            // if (!check) {
-                            //     return false
-                            // }
-                        }
-
-                        if (this.genreList) {
-                            for (gen of this.genreSel) {
-                                let generCheck = item.MAL.genres.find(element => element == gen)
-                                if (!generCheck) {
-                                    return false
-                                }
-                            }
-                        }
-                        if (this.cmpSel.length > 0) {
-                            let check = false
-                            for (cmp of this.cmpSel) {
-                                let cmpCheck = item.MAL.studios.find(element => element == cmp)
-                                if (cmpCheck) {
-                                    check = true
-                                }
-                            }
-                            if (!check) {
-                                return false
-                            }
-                        }
-                        if (this.search) {
-							this.search = this.search.trim();
-                            let name = false
-                            if (item.MAL && null != item.MAL.en_name && item.MAL.en_name.toUpperCase().indexOf(this.search.toUpperCase()) != -1) {
-                                name = true;
-                            } else if (item.MAL && null != item.MAL.jp_name && item.MAL.jp_name.toUpperCase().indexOf(this.search.toUpperCase()) != -1) {
-                                name = true;
-                            } else if (item.BGM && null != item.BGM.cn_name && item.BGM.cn_name.toUpperCase().indexOf(this.search.toUpperCase()) != -1) {
-
-                                name = true;
-                            } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.toUpperCase().indexOf(this.search.toUpperCase()) != -1) {
-                                name = true;
-                            } else if (item.BGM && null != item.BGM.cn_name && item.BGM.cn_name.toUpperCase().indexOf(this.simp(this.search.toUpperCase())) != -1) {
-                                name = true;
-                            } else if (item.Gamer && null != item.Gamer.title && item.Gamer.title.toUpperCase().indexOf(this.trad(this.search.toUpperCase())) != -1) {
-                                name = true;
-                            } else if (item.BGM && item.BGM['alias']){
-                                item.BGM['alias'].forEach(alias => {
-                                    if (alias.toUpperCase().indexOf(this.simp(this.search.toUpperCase())) != -1) {
-                                      name = true;
-                                      return;
-                                    }
-                                  });
-                            }
-                            if (!name) {
-                                return false;
-                            }
-                        }
-                        if (this.isMemoMode) {
-                            if (!item.seen) {
-                                return false;
-                            }
-                        }
-                        return true
+                    
+                        // 12. 記憶模式條件
+                        // if (this.isMemoMode && !item.seen) return false;
+                    
+                        return true;
                     },
+                    
                 },
                 {
                     text: 'Bayesian總平均',
