@@ -739,6 +739,9 @@ let vue = new Vue({
             this.badgesDef = this.badges;
             genres = [...new Set(genres.sort())];
             this.genreList = genres;
+
+            this.cmpList = this.processStudios(studios);
+            this.onlineWatchs = [...new Set(onlines.sort())];
         },
     
         processRawData() {

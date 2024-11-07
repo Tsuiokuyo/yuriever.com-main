@@ -393,7 +393,7 @@
                                     </v-icon>
                                     以動畫截圖找動畫(以圖搜圖)
                                 </span></v-expansion-panel-header>
-                                <v-expansion-panel-content><br />
+                                <v-expansion-panel-content color="yellow lighten-4"><br />
                                     <h4>僅適合找動畫中出現的場景，例如搜尋這種沒辨識度的畫面：https://yuriever.com/assets/test.jpg</h4>
                                     <v-row>
                                         <v-col cols="2">
@@ -448,7 +448,7 @@
                                     </v-icon>
                                     動畫公司篩選箱
                                 </span></v-expansion-panel-header>
-                                <v-expansion-panel-content><br />
+                                <v-expansion-panel-content color="yellow lighten-4"><br />
                                     <v-chip-group v-model="cmpSel" column multiple>
                                         <v-chip v-for="(cmp, index) in cmpList" :key="index" filter :value="cmp" label>
                                             <span>{{cmp}}</span>
@@ -467,7 +467,7 @@
                                     </v-icon>
                                     線上看篩選箱
                                 </span></v-expansion-panel-header>
-                                <v-expansion-panel-content><br />
+                                <v-expansion-panel-content color="yellow lighten-4"><br />
                                     <v-chip-group v-model="onlineWatchSel" column multiple>
                                         <v-chip v-for="(online, index) in onlineWatchs" :key="index" filter :value="online" dark>
                                             <span>{{online}}</span>
@@ -486,9 +486,15 @@
                                     </v-icon>
                                     類型篩選箱
                                 </span></v-expansion-panel-header>
-                                <v-expansion-panel-content><br />
+                                <v-expansion-panel-content color="yellow lighten-4"><br />
                                     <v-chip-group v-model="genreSel" column multiple>
-                                        <v-chip v-for="(genre, index) in genreList" :key="index" filter :value="genre" :disabled="!badges[genre]" dark :class="[setGenColor(genre) == 'A'?'pink accent-1':setGenColor(genre) == 'B' ? 'blue darken-4' :setGenColor(genre) == 'C' ? 'primary ': '']">
+                                        <v-chip v-for="(genre, index) in genreList" :key="index" filter :value="genre" :disabled="!badges[genre]" dark    
+                                        :class="{
+                                            'orange lighten-1': setGenColor(genre) === 'A', 
+                                            'blue lighten-2': setGenColor(genre) === 'B', 
+                                            'brown lighten-1': setGenColor(genre) === 'C', 
+                                            'red darken-2': setGenColor(genre) === 'D', 
+                                        }">
                                             <span>{{genre | genreToCht}}</span>
                                             <span>&nbsp;({{badges[genre] ? badges[genre] : '&nbsp;&nbsp; 0 &nbsp;&nbsp;'}})</span>
                                         </v-chip>
