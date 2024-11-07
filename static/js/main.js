@@ -583,275 +583,216 @@ let vue = new Vue({
         }
     },
     async created() {
-
+        // 初始化圖片和數據加載
         if (this.windowWidth >= 600) {
-            this.hug = await fetch('https://api.waifu.pics/sfw/hug').then((res) => res.json().then((obj) => obj.url));
-            // this.hug = await fetch('https://some-random-api.ml/animu/hug').then((res) => res.json().then((obj) => obj.link));
+            await this.fetchHugImage();
         }
-		
-		let response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.zst');
-		let reader = response.body.getReader();
-		let contentLength = +response.headers.get('Content-Length');
-		let loaded = 0;
-		let chunks = [];
-		if (contentLength) {
-		  this.fileSize = (contentLength / (1024 * 1024)).toFixed(2);
-		}
-		while (true) {
-		  const { done, value } = await reader.read();
-		  if (done) break;
-		  chunks.push(value);
-		  loaded += value.length;
-		  if (contentLength) {
-			this.loadingProgress = Math.min((loaded / contentLength * 99).toFixed(2), 99);
-			this.currentLoaded = (loaded / (1024 * 1024)).toFixed(2); 
-		  }
-		}
-		let zippedContent = new Uint8Array(chunks.reduce((acc, val) => acc.concat(Array.from(val)), []));
-		if (!contentLength) {
-		  this.fileSize = (zippedContent.length / (1024 * 1024)).toFixed(2); 
-		}
-		let decompressed = fzstd.decompress(zippedContent);
-		this.rawData = msgpack.decode(decompressed);
-
-		this.isLoading = null; 
-	
-        // let moelongUrl = 'https://www.moelong.com/moelongnews/feed';
-        // let gnnUrl = 'https://gnn.gamer.com.tw/rss.xml';
-
-        let moelongUrl = 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/main/rss_data/moelong.json';
-        let gnnUrl = 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/main/rss_data/gnn.json';
-
-        let newMoes = [];
-
-        fetch(moelongUrl)
-            .then(response => response.json())
-            .then(data => {
-                const items = data.rss.channel.item;
-                items.forEach(el => {
-                    let date = new Date(el.pubDate._text);
-                    let formattedDate = `(${date.getFullYear()}${date.getMonth() + 1}${date.getDate()})`;
-
-                    let news = {
-                        'title': el.title._text,
-                        'link': el.link._text,
-                        'date': formattedDate
-                    };
-                    newMoes.push(news);
-                });
-                if (newMoes.length > 0) {
-                    this.moelong = newMoes[0];
-                    let moeId = setInterval(() => {
-                        this.moelong = newMoes[Math.floor(Math.random() * newMoes.length)];
-                    }, 6000);
-                    setTimeout(() => {
-                        clearInterval(moeId);
-                        this.moelong = {
-                            'title': '在此網站待了10分鐘以上，已停止新聞迴圈。'
-                        };
-                    }, 600000);
-                } else {
-                    this.moelong = {
-                        'title': '萌朧動漫情報網 RSS本次撈取失敗，請無視，反正也沒甚麼人會看這些資訊。'
-                    };
-                }
-            });
-
-        let newGnns = [];
-
-        fetch(gnnUrl)
-            .then(response => response.json())
-            .then(data => {
-                const items = data.rss.channel.item;
-                items.forEach(el => {
-                    let date = new Date(el.pubDate._text);
-                    let formattedDate = `(${date.getFullYear()}${date.getMonth() + 1}${date.getDate()})`;
-
-                    let news = {
-                        'title': el.title._cdata,
-                        'link': el.link._cdata,
-                        'date': formattedDate
-                    };
-                    newGnns.push(news);
-                });
-                if (newGnns.length > 0) {
-                    this.gnn = newGnns[0];
-                    let gnnId = setInterval(() => {
-                        this.gnn = newGnns[Math.floor(Math.random() * newGnns.length)];
-                    }, 6000);
-                    setTimeout(() => {
-                        clearInterval(gnnId);
-                        this.gnn = {
-                            'title': '在此網站待了10分鐘以上，已停止新聞迴圈。'
-                        };
-                    }, 600000);
-                } else {
-                    this.gnn = {
-                        'title': '巴哈GNN新聞 RSS本次撈取失敗，請無視，反正也沒甚麼人會看這些資訊。'
-                    };
-                }
-            });
-
-        this.$nextTick(function() {
-
-                this.getRandomArray();
-                let genres = []
-                let births = []
-                let onlines = []
-                let studios = []
-                for (item of this.rawData) {
-                    item.myRank = '0'
-                    item.memo = ''
-                    item.seen = false
-                    if (this.disabledNSFW) { //移除18禁
-                        if (item.MAL.genres.includes('Hentai')) {}
-                    }
-                  
-                    for (let [key, value] of Object.entries(item.online)) {
-                        onlines.push(key)
-                    }
-
-                    for (let [key, value] of Object.entries(item.MAL.studios)) {
-                        studios.push(value)
-                    }
-                   
-                    for (gen of item.MAL.genres) {
-                        if (this.disabledZero) {
-                            if (item.score > 0) {
-                                if (this.disabledNSFW) {
-                                    if (!item.MAL.genres.includes('Hentai')) {
-                                        this.badges[gen] = ++this.badges[gen] || 1
-                                    }
-                                } else {
-                                    this.badges[gen] = ++this.badges[gen] || 1
-                                }
-                            }
-                        } else {
-                            if (this.disabledNSFW) {
-                                if (!item.MAL.genres.includes('Hentai')) {
-                                    this.badges[gen] = ++this.badges[gen] || 1
-                                }
-                            } else {
-                                this.badges[gen] = ++this.badges[gen] || 1
-                            }
-
-                        }
-                    }
-                    genres = genres.concat(item.MAL.genres)
-
-
-
-                    //FixMe 正規打錯了 
-                    if (item.MAL.type == "Movie" && item.MAL.duration < 3) {
-                        item.MAL.duration = item.MAL.duration * 60
-                    }
-                    if ('duration' in item.MAL && null != item.MAL.duration && item.MAL.type != "Movie" && item.MAL.duration < 16) {
-                        if (this.disabledZero) {
-                            // if (item.score > 0) {
-                            item.MAL.genres.push('cup')
-                            genres.push('cup')
-                            this.badges['cup'] = ++this.badges['cup'] || 1
-                                // }
-                        } else {
-                            item.MAL.genres.push('cup')
-                            genres.push('cup')
-                            this.badges['cup'] = ++this.badges['cup'] || 1
-                        }
-                    }
-                    if ('voices' in item.MAL && item.MAL.voices.length != 0) {
-                        births = births.concat(item.MAL.voices)
-                    }
-                }
-                onlines = [...new Set(onlines.sort())]
-
-                let studiosMap = new Map() //创建一个Map结构数据
-                studios.map(item => { //遍历数组
-                        if (studiosMap.has(item)) { //如果Map数据中存在当前项，给当前项值（即个数）+1
-                            let current = studiosMap.get(item)
-                            studiosMap.set(item, current += 1)
-                        } else { //如果不存在，则添加该项并将它的个数设置为1
-                            studiosMap.set(item, 1)
-                        }
-                    })
-                    //将map结构数据转换成数组对象，每一项也是数组的形式包裹的key和value 
-                let mapEntries = [...studiosMap.entries()]
-                    // mapEntries  [ [ 'a', 2 ], [ 'ab', 3 ], [ 'abc', 2 ], [ 'bc', 1 ] ]
-                mapEntries.sort((pre, nxt) => {
-                        return pre[1] < nxt[1] ? 1 : -1
-                    }) //给mapEntries 排序
-                let studiosF = mapEntries.map(item => item[0])
-                studiosF.splice(50)
-                this.cmpList = studiosF
-
-
-                // console.log(onlines)
-                this.onlineWatchs = onlines
-                    //FIXME 正規化
-                const set = new Set();
-                births = births.filter(item => !set.has(item.voice) ? set.add(item.voice) : false);
-                this.voiceCount = births.length
-                let events = []
-                let now = new Date()
-                for (item of births) {
-                    if (null != item.birth) {
-                        let bir = new Date(item.birth)
-                        let todayBir = false;
-                        if (now.getMonth() == bir.getMonth() && now.getDate() == bir.getDate()) {
-                            todayBir = true
-                        }
-                        bir = String(now.getFullYear()).concat('-', String(bir.getMonth() + 1), '-', String(bir.getDate()))
-                        events.push({
-                            name: item.name,
-                            start: bir,
-                            voice: item.voice,
-                            isMain: item.isMain,
-                            isSup: item.isSup,
-                            chId: item.chId,
-                            // end: bir,
-                            color: this.setVoiceColor(item.isMain, item.isSup, todayBir),
-                        })
-                    }
-                }
-                events.sort(function(a, b) {
-                    return b.isMain - a.isMain
-                })
-                this.eventVoice = events
-
-                this.badgesDef = this.badges
-                genres = [...new Set(genres.sort())]
-
-                this.genreList = genres
-
-                //抓網址參數
-                let geturl = window.location.href
-                let getqyinfo = geturl.split('?')[1]
-                if (getqyinfo) {
-                    let getqys = new URLSearchParams('?' + getqyinfo)
-                    let getQName = getqys.get('name')
-                    this.search = getQName != null ? getQName : ''
-                    let getQYear = getqys.get('year')
-                    this.year = getQYear != null ? getQYear : ''
-                }
-
-                if (this.toRandom) {
-                    this.rawData.sort(function() {
-                        return (0.5 - Math.random());
-                    });
-                }
-                if (navigator.userAgent.search("Chrome") > -1 || navigator.userAgent.search("Opera") > -1) {
-                    this.memory = 0
-                }
-				this.panel.push(3)
-            }
-
-        )
-
+        await this.loadCompressedData();
+        this.isLoading = null; 
+        await this.loadRSSData();
+    
+        this.$nextTick(() => {
+            this.initializeData();
+            this.parseURLParams();
+            this.randomizeData();
+            this.detectBrowser();
+            this.panel.push(3);
+        });
     },
     async mounted() {
 
     }, //mounted
     updated() {},
     methods: {
+        async fetchHugImage() {
+            try {
+                const response = await fetch('https://api.waifu.pics/sfw/hug');
+                const data = await response.json();
+                this.hug = data.url;
+            } catch (error) {
+                console.error("Error fetching hug image:", error);
+            }
+        },
+    
+        async loadCompressedData() {
+            try {
+                const response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.zst');
+                const reader = response.body.getReader();
+                const contentLength = +response.headers.get('Content-Length');
+                let loaded = 0;
+                const chunks = [];
+    
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+                    chunks.push(value);
+                    loaded += value.length;
+                    if (contentLength) {
+                        this.loadingProgress = Math.min((loaded / contentLength * 99).toFixed(2), 99);
+                        this.currentLoaded = (loaded / (1024 * 1024)).toFixed(2);
+                    }
+                }
+    
+                const zippedContent = new Uint8Array(chunks.reduce((acc, val) => acc.concat(Array.from(val)), []));
+                const decompressed = fzstd.decompress(zippedContent);
+                this.rawData = msgpack.decode(decompressed);
+                this.fileSize = contentLength ? (contentLength / (1024 * 1024)).toFixed(2) : (zippedContent.length / (1024 * 1024)).toFixed(2);
+    
+            } catch (error) {
+                console.error("Error loading compressed data:", error);
+            }
+        },
+    
+        async loadRSSData() {
+            const urls = [
+                { name: 'moelong', url: 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/main/rss_data/moelong.json' },
+                { name: 'gnn', url: 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/main/rss_data/gnn.json' }
+            ];
+            
+            for (const { name, url } of urls) {
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json();
+                    this.setNewsData(name, data);
+                } catch (error) {
+                    console.error(`Error loading RSS data for ${name}:`, error);
+                    this[name] = { title: `${name.toUpperCase()} RSS 本次撈取失敗，請無視。` };
+                }
+            }
+        },
+    
+        setNewsData(name, data) {
+            const items = data.rss.channel.item;
+            const newsList = items.map(el => {
+                const date = new Date(el.pubDate._text);
+                return {
+                    title: name === 'moelong' ? el.title._text : el.title._cdata,
+                    link: name === 'moelong' ? el.link._text : el.link._cdata,
+                    date: `(${date.getFullYear()}${date.getMonth() + 1}${date.getDate()})`
+                };
+            });
+    
+            if (newsList.length) {
+                this[name] = newsList[0];
+                const intervalId = setInterval(() => {
+                    this[name] = newsList[Math.floor(Math.random() * newsList.length)];
+                }, 6000);
+    
+                setTimeout(() => {
+                    clearInterval(intervalId);
+                    this[name] = { title: '在此網站待了10分鐘以上，已停止新聞迴圈。' };
+                }, 600000);
+            }
+        },
+    
+        initializeData() {
+            this.getRandomArray();
+            const { onlines, studios, genres, births } = this.processRawData();
+            this.onlineWatchs = [...new Set(onlines.sort())];
+            this.cmpList = this.processStudios(studios);
+            this.genreList = [...new Set(genres.sort())];
+            this.voiceCount = births.length;
+            this.eventVoice = this.getEventVoices(births);
+            this.badgesDef = this.badges;
+        },
+    
+        processRawData() {
+            const onlines = [];
+            const studios = [];
+            const genres = [];
+            const births = [];
+    
+            for (const item of this.rawData) {
+                // 將重複的處理抽取到方法內
+                this.initializeItem(item);
+                if (this.disabledNSFW && item.MAL.genres.includes('Hentai')) continue;
+    
+                this.collectGenres(item, genres);
+                this.collectOnlineStudios(item, onlines, studios);
+                this.collectBirths(item, births);
+            }
+            return { onlines, studios, genres, births };
+        },
+    
+        initializeItem(item) {
+            item.myRank = '0';
+            item.memo = '';
+            item.seen = false;
+            if (item.MAL.type === "Movie" && item.MAL.duration < 3) item.MAL.duration *= 60;
+            if ('duration' in item.MAL && item.MAL.duration < 16 && item.MAL.type !== "Movie") this.assignCupGenre(item);
+        },
+    
+        collectGenres(item, genres) {
+            item.MAL.genres.forEach(gen => {
+                if ((this.disabledZero && item.score > 0) || !this.disabledZero) {
+                    if (!this.disabledNSFW || !item.MAL.genres.includes('Hentai')) {
+                        this.badges[gen] = ++this.badges[gen] || 1;
+                    }
+                }
+            });
+            genres.push(...item.MAL.genres);
+        },
+    
+        collectOnlineStudios(item, onlines, studios) {
+            onlines.push(...Object.keys(item.online));
+            studios.push(...Object.values(item.MAL.studios));
+        },
+    
+        collectBirths(item, births) {
+            if ('voices' in item.MAL && item.MAL.voices.length) births.push(...item.MAL.voices);
+        },
+    
+        assignCupGenre(item) {
+            item.MAL.genres.push('cup');
+            this.badges['cup'] = ++this.badges['cup'] || 1;
+        },
+    
+        processStudios(studios) {
+            const studiosMap = new Map();
+            studios.forEach(studio => studiosMap.set(studio, (studiosMap.get(studio) || 0) + 1));
+            const sortedStudios = [...studiosMap.entries()].sort((a, b) => b[1] - a[1]);
+            return sortedStudios.slice(0, 50).map(entry => entry[0]);
+        },
+    
+        getEventVoices(births) {
+            const events = [];
+            const now = new Date();
+            const uniqueBirths = [...new Set(births.map(item => item.voice))];
+    
+            uniqueBirths.forEach(item => {
+                if (item.birth) {
+                    const birDate = new Date(item.birth);
+                    const formattedBirth = `${now.getFullYear()}-${birDate.getMonth() + 1}-${birDate.getDate()}`;
+                    events.push({
+                        name: item.name,
+                        start: formattedBirth,
+                        voice: item.voice,
+                        isMain: item.isMain,
+                        isSup: item.isSup,
+                        chId: item.chId,
+                        color: this.setVoiceColor(item.isMain, item.isSup, birDate.getMonth() === now.getMonth() && birDate.getDate() === now.getDate())
+                    });
+                }
+            });
+    
+            return events.sort((a, b) => b.isMain - a.isMain);
+        },
+    
+        parseURLParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            this.search = urlParams.get('name') || '';
+            this.year = urlParams.get('year') || '';
+        },
+    
+        randomizeData() {
+            if (this.toRandom) this.rawData.sort(() => 0.5 - Math.random());
+        },
+    
+        detectBrowser() {
+            if (navigator.userAgent.includes("Chrome") || navigator.userAgent.includes("Opera")) {
+                this.memory = 0;
+            }
+        },
         clearSearch() {
             this.search = '';
             this.queryBtn = false;
