@@ -19,7 +19,6 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/fzstd@0.1.1/umd/index.js"></script>
 
 
-
 	<script src="js/main.js" type="module"></script>
     <script defer src="js/snowstorm-min.js"></script>
 
@@ -504,19 +503,17 @@
                                 </v-expansion-panel-content>
                             </v-expansion-panel>
                         </v-expansion-panels>
-                        <span v-if="windowWidth < 600">(以網頁版為主，手機版較難維護，手機版排除裏番)</span>
-                        <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
+                        <span v-if="windowWidth < 600">(以網頁版為主，手機版較難維護，移除大部分功能)</span>
+                        <!-- <v-select v-if="windowWidth < 600" :items="selectTypes" v-model="selType" label="作品類型" dense item-text="cht" item-value="value"></v-select>
                         <v-select v-if="windowWidth < 600" :items="selectSources" v-model="selSource" label="改編類型" dense item-text="cht" item-value="value"></v-select>
                         <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense>
                         </v-select>
-                        <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense>
-                            <v-btn @click="queryBtn = true">
-                                <v-icon>mdi-text-search</v-icon>查詢名稱</v-btn>
+                        <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense> -->
                         </v-text-field>
-                        <v-text-field v-if="windowWidth < 600" id="srh2" v-model="preSearch" append-icon="mdi-magnify" hint="至少輸入兩個字" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
+                        <!-- <v-text-field v-if="windowWidth < 600" id="srh2" v-model="preSearch" append-icon="mdi-magnify" hint="至少輸入兩個字" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
                          </v-text-field>
                         <v-checkbox v-if="windowWidth < 600" v-model="toRandom" label="排名亂數排序" dense color="red">
-                        </v-checkbox>
+                        </v-checkbox> -->
                         <v-card-title v-if="windowWidth > 600">
                             <v-row>
                                 <v-btn @click="sortBy = 'rank', onlineWatchSel = [],cmpSel = [],genreSel = [],selType = 'ALL',selSource='ALL', selYear = '等於',year = '' , rank1 = '', rank2 = '', search = '',diff = '',bangumiDisable=false,preSearch=''">
@@ -531,11 +528,11 @@
                                     <v-select :items="selectYears" v-model="selYear" label="年份範圍" dense></v-select>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-text-field v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense>
+                                    <v-text-field v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle"  dense>
                                     </v-text-field>
                                 </v-col>
                                 <v-col cols="1" v-if="selYear == '介於'">
-                                    <v-text-field v-model="year2" type="number" label="迄" clear-icon="mdi-close-circle" clearable dense>
+                                    <v-text-field v-model="year2" type="number" label="迄" clear-icon="mdi-close-circle"  dense>
                                     </v-text-field>
                                 </v-col>
                                 <v-col>
@@ -931,7 +928,7 @@
                             </tr>
                             </template>
                         </v-data-table>
-                        <v-data-table class="bkColor" v-if="windowWidth < 600" loader-height="10" ref="tb" no-results-text="查無任何資料，可能是沒有收錄、翻譯問題(建議直接日文原名)，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件" :custom-sort="customSort" item-key="rank"
+                        <v-data-table class="bkColor" v-if="windowWidth < 600" loader-height="10" ref="tb" no-results-text="查無任何資料，請看電腦版..." item-key="rank" disable-sort
                             fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1" query="true"  :loading="isLoading" :page.sync="page" @page-count="pageCount = $event" hide-default-footer>
                            		<template v-slot:loading>
 							  <div>
