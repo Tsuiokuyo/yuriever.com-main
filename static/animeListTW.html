@@ -20,7 +20,7 @@
 
 
 
-	<script defer src="js/main.js" type="text/javascript"></script>
+	<script src="js/main.js" type="module"></script>
     <script defer src="js/snowstorm-min.js"></script>
 
 </head>
@@ -93,7 +93,7 @@
 									而條目到底要不要兩季都放評分，還是放在第一季內，猶豫中。<br/>
 									2024/10/15，提高最低計算票數，並將分數加入權重，並分為各網站權重及Bayesian與標準化權重，因為票數基數差到10000倍以上。<br/>
 									2024/10/25，增加原創網路動畫(ONA)作品。
-                                    2024/11/07，重構程式碼
+                                    2024/11/07，開始重構程式碼
                                     <br />
                                     <span>
                                     <br><br><br>
@@ -105,7 +105,7 @@
                                         　　https://yuriever.com/animeListTW?year=2004
                                     </li>
                                     <li><del>上方新聞條：RSS撈取ACGN的資訊，因為免費版有次數限制，所以從Fly.io、Firebase隨機擇一基於cors-anywhere撈取RSS資料。</del></li>
-                                    <li>聲優的生日日曆：就是聲優的生日日歷，會依照擔任過的主要角色次數變色，紫色則為當日壽星，點擊名字則顯示擔任過的角色及作品<br>
+                                    <li>聲優的生日日曆表：就是聲優的生日日歷，會依照擔任過的主要角色次數變色，紫色則為當日壽星，點擊名字則顯示擔任過的角色及作品<br>
                                     　　顏色代表次數:粉(150)>黃(100)>綠(80)>青(60)>藍(40)>紅(20)>灰(10)>白。</li>
                                     <li>隨機作品：從這裡所有作品中隨機挑選10部，點擊則篩選出該作品。</li>
                                     <li>以場景截圖找動畫(以圖搜圖)：僅適用於動畫內有出現的畫面。</li>
@@ -262,7 +262,7 @@
                                     <li>https://nekos.best/</li>
                                 </ol>
                                 <br />
-                                <h3 style="text-align: center;"> 有任何問題可來信 Tsuiokuyo@gmail.com
+                                <h3 style="text-align: center;"> 有任何建議可來信 Tsuiokuyo@gmail.com
                                 </h3>
                             </div>
                         </div>
@@ -307,7 +307,7 @@
                             <template v-slot:activator="{ on, attrs }">
                             <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
                                 <v-icon>mdi-cake</v-icon>
-                                聲優的生日日曆
+                                聲優的生日日曆表
                             </v-btn>
                         </template>
                             <v-card min-height="1400px">
@@ -578,7 +578,7 @@
                                     </v-btn-toggle>
                                 </v-col>
                                 <v-col cols="1">
-                                    <v-checkbox class="font-weight-black" v-model="toRandom" label="隨機排序" dense color="red">
+                                    <v-checkbox class="font-weight-black" color="red" v-model="toRandom" label="隨機排序" dense color="red">
                                     </v-checkbox>
                                 </v-col>
 
@@ -591,7 +591,7 @@
 
                                 <v-col> </v-col>
                                 <v-col cols="1">
-                                    <v-checkbox class="font-weight-black" v-model="disabledNSFW" label="排除裏番" dense></v-checkbox>
+                                    <v-checkbox class="font-weight-black" color="red" v-model="disabledNSFW" label="排除裏番" dense></v-checkbox>
                                 </v-col>
                                 <v-col cols="2">
                                     <v-select :items="itemsPerPages" v-model="itemsPerPage" label="每頁列數" dense>
