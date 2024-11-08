@@ -510,8 +510,10 @@
                         <v-select v-if="windowWidth < 600" :items="selectYears" v-model="selYear" label="年份範圍" dense>
                         </v-select>
                         <v-text-field v-if="windowWidth < 600" v-model="year" type="number" label="西元年" clear-icon="mdi-close-circle" clearable dense>
+                            <v-btn @click="queryBtn = true">
+                                <v-icon>mdi-text-search</v-icon>查詢名稱</v-btn>
                         </v-text-field>
-                        <v-text-field v-if="windowWidth < 600" id="srh2" v-model="search" append-icon="mdi-magnify" hint="至少輸入兩個字" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
+                        <v-text-field v-if="windowWidth < 600" id="srh2" v-model="preSearch" append-icon="mdi-magnify" hint="至少輸入兩個字" label="動畫名稱搜尋(中/英/日)" clearable clear-icon="mdi-close-circle" dense>
                          </v-text-field>
                         <v-checkbox v-if="windowWidth < 600" v-model="toRandom" label="排名亂數排序" dense color="red">
                         </v-checkbox>

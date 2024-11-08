@@ -219,6 +219,7 @@ let vue = new Vue({
         listenChange() {
             const {
                 preSearch,
+                search,
                 queryBtn,
                 year,
                 selYear,
@@ -233,6 +234,7 @@ let vue = new Vue({
             } = this
             return {
                 preSearch,
+                search,
                 queryBtn,
                 year,
                 selYear,
@@ -843,7 +845,7 @@ let vue = new Vue({
                 this.memory = 0;
             }
         },
-        clearSearch: () => {
+        clearSearch () {
             this.search = '';
             this.queryBtn = false;
         },
