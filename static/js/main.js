@@ -184,7 +184,6 @@ let vue = new Vue({
     computed: {
         listenChange() {
             const {
-                preSearch,
                 search,
                 queryBtn,
                 year,
@@ -199,7 +198,6 @@ let vue = new Vue({
                 cmpSel
             } = this
             return {
-                preSearch,
                 search,
                 queryBtn,
                 year,
@@ -315,22 +313,31 @@ let vue = new Vue({
                         // 11. 搜尋條件
                         if (this.search.trim()) {
                             const searchValue = this.search.trim().toUpperCase();
-                            const simpSearch = simp(searchValue);
-                            const tradSearch = trad(searchValue);
+                        
+                            // 判斷是否包含中文字元
+                            const isChinese = /[\u4e00-\u9fa5]/.test(searchValue);
+                        
+                            let simpSearch = "";
+                            let tradSearch = "";
+                        
+                            if (isChinese) {
+                                simpSearch = simp(searchValue);
+                                tradSearch = trad(searchValue);
+                            }
                         
                             const nameMatch = [
                                 item.MAL?.en_name, item.MAL?.jp_name, item.BGM?.cn_name,
                                 item.Gamer?.title, ...(item.BGM?.alias || [])
                             ].some(name => 
                                 name && (
-                                    name.toUpperCase().includes(searchValue) || 
-                                    name.includes(simpSearch) || 
-                                    name.includes(tradSearch)
+                                    name.toUpperCase().includes(searchValue) ||
+                                    (isChinese && (name.includes(simpSearch) || name.includes(tradSearch)))
                                 )
                             );
                         
                             if (!nameMatch) return false;
                         }
+                        
                         return true;
                     },
                     
@@ -780,7 +787,7 @@ let vue = new Vue({
     
         parseURLParams() {
             const urlParams = new URLSearchParams(window.location.search);
-            this.search = urlParams.get('name') || '';
+            this.preSearch = urlParams.get('name') || '';
             this.year = urlParams.get('year') || '';
         },
     
