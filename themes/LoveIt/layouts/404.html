@@ -10,11 +10,18 @@
 
 </head>
 <body>
- 原先的404公益網掛了<br>
- 有機會再來把這裡塞一些東西~~
+  原先的網站掛了，路徑大量失效，換地方重新架設，但變得網站URL區分大小寫了...<br>
+  五秒後自動返回部落格
   <div>
     <input type ="button" class="btn btn-warning" onclick="javascript:location.href='https://yuriever.com/'" value="回到部落格"></input>
   </div>
+
+  <script type="text/javascript">
+    // 設定5秒後自動跳轉
+    setTimeout(function() {
+      window.location.href = 'https://yuriever.com/';
+    }, 5000);
+  </script>
 </body>
 
 <style  type="text/css">
