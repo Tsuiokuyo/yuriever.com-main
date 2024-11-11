@@ -9,7 +9,7 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      # 檢出 `yuriever.com-main` 倉庫
+      # 檢出 `yuriever.com-master` 倉庫
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -17,11 +17,12 @@ jobs:
       - name: Check for changes in animeListTW
         id: check_changes
         run: |
-          if git diff --quiet HEAD~1 HEAD -- static/animeListTW; then  # 檢查最近的提交與當前提交的差異
-            echo "no changes"
+          git diff --quiet HEAD~1 HEAD -- static/animeListTW  # 檢查變更
+          if [ $? -eq 0 ]; then
+            echo "No changes detected"
             echo "changes=false" >> $GITHUB_ENV
           else
-            echo "changes detected"
+            echo "Changes detected"
             echo "changes=true" >> $GITHUB_ENV
           fi
 
@@ -33,12 +34,12 @@ jobs:
 
       # 只有 `animeListTW` 資料夾有變更時才推送
       - name: Push to animeListTW repo
-        if: env.changes == 'true'
+        if: env.changes == 'true'  # 只有當有變更時才執行此步驟
         run: |
           cd static/animeListTW
           git remote set-url origin https://github.com/Tsuiokuyo/animeListTW.git  # 設定正確的遠端 URL
-          git add .
-          git commit -m "auto sync code"
-          git push origin master  # 使用強制推送，確保更新推送到遠端
+          git add .  # 添加變更的檔案
+          git commit -m "auto sync code"  # 提交變更
+          git push origin master  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 內建的安全 Token
