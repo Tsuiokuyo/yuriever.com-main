@@ -612,8 +612,8 @@ let vue = new Vue({
     
         async loadRSSData() {
             const urls = [
-                { name: 'moelong', url: 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/main/rss_data/moelong.json' },
-                { name: 'gnn', url: 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/main/rss_data/gnn.json' }
+                { name: 'moelong', url: 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/master/rss_data/moelong.json' },
+                { name: 'gnn', url: 'https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/master/rss_data/gnn.json' }
             ];
             
             for (const { name, url } of urls) {
@@ -1211,10 +1211,10 @@ let vue = new Vue({
                         return 'https://' + item.banner;
                     }
                 } else {
-                    return 'animeListTW/image/noImage.webp'
+                    return 'image/noImage.webp'
                 }
             }
-            return 'animeListTW/image/noImage.webp'
+            return 'image/noImage.webp'
         },
         
         setBackgroundLazy(entries, observer, isIntersecting) {
