@@ -17,7 +17,8 @@ jobs:
       - name: Check for changes in animeListTW
         id: check_changes
         run: |
-          git diff --quiet HEAD~1 HEAD -- static/animeListTW  # 檢查變更
+          git fetch origin master  # 確保有遠端資料
+          git diff --quiet HEAD origin/master -- static/animeListTW  # 比較當前提交和遠端 master
           if [ $? -eq 0 ]; then
             echo "No changes detected"
             echo "changes=false" >> $GITHUB_ENV
@@ -40,6 +41,6 @@ jobs:
           git remote set-url origin https://github.com/Tsuiokuyo/animeListTW.git  # 設定正確的遠端 URL
           git add .  # 添加變更的檔案
           git commit -m "auto sync code"  # 提交變更
-          git push origin master  
+          git push origin master  # 推送變更
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 內建的安全 Token
