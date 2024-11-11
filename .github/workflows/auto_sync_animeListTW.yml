@@ -1,0 +1,45 @@
+name: auto_sync_animeListTW
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      # 檢出 `yuriever.com-main` 倉庫
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 檢查是否有 `static/animeListTW` 資料夾異動
+      - name: Check for changes in animeListTW
+        id: check_changes
+        run: |
+          if git diff --quiet HEAD^ HEAD -- static/animeListTW; then
+            echo "no changes"
+            echo "changes=false" >> $GITHUB_ENV
+          else
+            echo "changes detected"
+            echo "changes=true" >> $GITHUB_ENV
+          fi
+
+      # 設定 Git 用戶資訊
+      - name: Set up Git configuration
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      # 只有 animeListTW 資料夾有變更時才推送
+      - name: Push to animeListTW repo
+        if: env.changes == 'true'
+        run: |
+          cd static/animeListTW
+          git init
+          git remote add origin https://github.com/Tsuiokuyo/animeListTW.git
+          git add .
+          git commit -m "auto Sync Code"
+          git push -f origin master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
