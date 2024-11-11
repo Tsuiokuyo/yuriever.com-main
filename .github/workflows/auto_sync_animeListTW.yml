@@ -3,13 +3,13 @@ name: Sync animeListTW to Separate Repo
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      # 檢出 `yuriever.com-main` 倉庫
+      # 檢出 `yuriever.com` 倉庫
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -38,6 +38,6 @@ jobs:
           git remote set-url origin https://github.com/Tsuiokuyo/animeListTW.git  # 設定正確的遠端 URL
           git add .
           git commit -m "Update animeListTW"
-          git push  origin main  # 推送到遠端的 main 分支
+          git push  origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 內建的安全 Token
