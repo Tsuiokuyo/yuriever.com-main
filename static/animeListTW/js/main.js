@@ -588,6 +588,11 @@ let vue = new Vue({
                 const contentLength = +response.headers.get('Content-Length');
                 let loaded = 0;
                 const chunks = [];
+
+                if (contentLength) {
+                    this.loadingProgress = 0;
+                    this.fileSize = (contentLength / (1024 * 1024)).toFixed(2) + ' MB'; // 顯示文件大小
+                }
     
                 while (true) {
                     const { done, value } = await reader.read();
