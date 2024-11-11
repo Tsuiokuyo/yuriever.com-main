@@ -1,9 +1,9 @@
-name: auto_sync_animeListTW
+name: Sync animeListTW to Separate Repo
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   sync:
@@ -23,8 +23,7 @@ jobs:
           else
             echo "changes detected"
             echo "changes=true" >> $GITHUB_ENV
-          fi
-
+          
       # 設定 Git 用戶資訊
       - name: Set up Git configuration
         run: |
@@ -36,10 +35,9 @@ jobs:
         if: env.changes == 'true'
         run: |
           cd static/animeListTW
-          git init
-          git remote add origin https://github.com/Tsuiokuyo/animeListTW.git
+          git remote set-url origin https://github.com/Tsuiokuyo/animeListTW.git  # 設定正確的遠端 URL
           git add .
-          git commit -m "auto Sync Code"
-          git push -f origin master
+          git commit -m "Update animeListTW"
+          git push  origin main  # 推送到遠端的 main 分支
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 內建的安全 Token
