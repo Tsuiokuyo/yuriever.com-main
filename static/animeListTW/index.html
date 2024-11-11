@@ -679,6 +679,10 @@
                                     <span v-if="null != item.csfd">
                                         <a :href="'https://www.csfd.cz/film/' + item.csfd" title="csfd" target="_blank">CSFD</a>&nbsp;
                                     </span>
+                                    <span v-if="null != item.trakt">
+                                        <a :href="'https://trakt.tv/shows/' + item.trakt.id" title="trakt" target="_blank">Trakt</a>&nbsp;
+                                    </span>
+                                    <span ></span>
                                     <br /> 
                                     <span style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;<span
                                             v-if="null != item.MAL.premiered">({{ item.MAL.premiered }}<span
@@ -893,7 +897,7 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <td class="center pa-0" >
+                            <!-- <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="trakt" src="image/trakt.webp">
                                 </v-avatar><br />
@@ -902,7 +906,7 @@
                                 <span v-else>
                                         <v-chip>N/A</v-chip>
                                     </span>
-                            </td>
+                            </td> -->
                             <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="annict" src="image/annict.webp">
@@ -1035,10 +1039,10 @@
                             <span v-else>N/A</span>
                         </template>
                         <!--trakt -->
-                        <template v-slot:item.trakt="{ item }">
+                        <!-- <template v-slot:item.trakt="{ item }">
                             <span v-if="item.trakt">{{item.trakt.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
-                        </template>
+                        </template> -->
                             <!--annict -->
                             <template v-slot:item.annict="{ item }">
                             <span v-if="item.annict">{{item.annict.b_score| returnZero}}</span>

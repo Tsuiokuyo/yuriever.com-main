@@ -287,7 +287,7 @@ let vue = new Vue({
                                     comput(gScore, item.ANN, this.diff) ||
                                     comput(gScore, item.anisearch, this.diff) ||
                                     comput(gScore, item.notifyMoe, this.diff) ||
-                                    comput(gScore, item.trakt, this.diff) ||
+                                    // comput(gScore, item.trakt, this.diff) ||
                                     comput(gScore, item.livechart, this.diff)
                             } else {
                                 return false;
@@ -433,13 +433,13 @@ let vue = new Vue({
                     filterable: false,
                     width: '5%',
                 },
-                {
-                    text: 'trakt評分*',
-                    value: 'trakt',
-                    align: 'center',
-                    filterable: false,
-                    width: '5%',
-                },
+                // {
+                //     text: 'trakt評分*',
+                //     value: 'trakt',
+                //     align: 'center',
+                //     filterable: false,
+                //     width: '5%',
+                // },
                 {
                     text: 'annict評分*',
                     value: 'annict',
@@ -951,14 +951,14 @@ let vue = new Vue({
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'trakt':
-                            b = !!b.trakt ? b.trakt.b_score : 0;
-                            a = !!a.trakt ? a.trakt.b_score : 0;
-                            if (!isDescending[0]) {
-                                return b > a ? 1 : -1
-                            } else {
-                                return a > b ? 1 : -1
-                            }
+                        // case 'trakt':
+                        //     b = !!b.trakt ? b.trakt.b_score : 0;
+                        //     a = !!a.trakt ? a.trakt.b_score : 0;
+                        //     if (!isDescending[0]) {
+                        //         return b > a ? 1 : -1
+                        //     } else {
+                        //         return a > b ? 1 : -1
+                        //     }
                         case 'livechart':
                             b = !!b.livechart ? b.livechart.b_score : 0;
                             a = !!a.livechart ? a.livechart.b_score : 0;
