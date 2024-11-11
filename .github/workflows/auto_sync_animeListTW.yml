@@ -3,13 +3,13 @@ name: Sync animeListTW to Separate Repo
 on:
   push:
     branches:
-      - master
+      - master  # 當主分支有更新時觸發工作流
 
 jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      # 檢出 `yuriever.com` 倉庫
+      # 檢出 `yuriever.com-main` 倉庫
       - name: Checkout repository
         uses: actions/checkout@v3
 
@@ -17,27 +17,28 @@ jobs:
       - name: Check for changes in animeListTW
         id: check_changes
         run: |
-          if git diff --quiet HEAD^ HEAD -- static/animeListTW; then
+          if git diff --quiet HEAD~1 HEAD -- static/animeListTW; then  # 檢查最近的提交與當前提交的差異
             echo "no changes"
             echo "changes=false" >> $GITHUB_ENV
           else
             echo "changes detected"
             echo "changes=true" >> $GITHUB_ENV
-          
+          fi
+
       # 設定 Git 用戶資訊
       - name: Set up Git configuration
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      # 只有 animeListTW 資料夾有變更時才推送
+      # 只有 `animeListTW` 資料夾有變更時才推送
       - name: Push to animeListTW repo
         if: env.changes == 'true'
         run: |
           cd static/animeListTW
           git remote set-url origin https://github.com/Tsuiokuyo/animeListTW.git  # 設定正確的遠端 URL
           git add .
-          git commit -m "Update animeListTW"
-          git push  origin master
+          git commit -m "auto sync code"
+          git push origin master  # 使用強制推送，確保更新推送到遠端
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 內建的安全 Token
