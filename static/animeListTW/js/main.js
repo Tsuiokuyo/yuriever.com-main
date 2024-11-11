@@ -143,8 +143,8 @@ let vue = new Vue({
 
         // count: undefined,
         overlay: false,
-        leimuUrl: 'https://yuriever.com/image/leimuA.webp',
-        lamuUrl: 'https://yuriever.com/image/lamuA.webp',
+        leimuUrl: 'https://yuriever.com/animeListTW/image/leimuA.webp',
+        lamuUrl: 'https://yuriever.com/animeListTW/image/lamuA.webp',
         destroy: true,
         disabledBgImage: false,
         dialogYt: {},
@@ -583,7 +583,7 @@ let vue = new Vue({
     
         async loadCompressedData() {
             try {
-                const response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/test2min.msgpack.zst');
+                const response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/animeListTW/test2min.msgpack.zst');
                 const reader = response.body.getReader();
                 const contentLength = +response.headers.get('Content-Length');
                 let loaded = 0;
@@ -1181,16 +1181,16 @@ let vue = new Vue({
         },
         lamu(value) {
             if (value == 'A') {
-                return 'https://yuriever.com/image/lamuA.webp'
+                return 'https://yuriever.com/animeListTW/image/lamuA.webp'
             } else {
-                return 'https://yuriever.com/image/lamuB.webp'
+                return 'https://yuriever.com/animeListTW/image/lamuB.webp'
             }
         },
         leimu(value) {
             if (value == 'A') {
-                return 'https://yuriever.com/image/leimuA.webp'
+                return 'https://yuriever.com/animeListTW/image/leimuA.webp'
             } else {
-                return 'https://yuriever.com/image/leimuB.webp'
+                return 'https://yuriever.com/animeListTW/image/leimuB.webp'
             }
         },
         getBackground(item) {
@@ -1211,14 +1211,14 @@ let vue = new Vue({
                         return 'https://' + item.banner;
                     }
                 } else {
-                    return 'image/noImage.webp'
+                    return 'animeListTW/image/noImage.webp'
                 }
             }
-            return 'image/noImage.webp'
+            return 'animeListTW/image/noImage.webp'
         },
         
         setBackgroundLazy(entries, observer, isIntersecting) {
-            let bg = 'https://yuriever.com/image/background.webp'
+            let bg = 'https://yuriever.com/animeListTW/image/background.webp'
             let cdn = 'https://tsuiokuyo-9688.imgix.net/'
             let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
 
