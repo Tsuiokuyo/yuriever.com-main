@@ -239,7 +239,7 @@ let vue = new Vue({
                         if (this.disabledZero && item.score === 0) return false;
                     
                         // 3. 檢查 sortBy 項目是否為零
-                        if (this.sortBy !== 'rank' && (!item[this.sortBy] || item[this.sortBy].b_score === 0)) return false;
+                        if (this.sortBy !== 'rank' && (!item[this.sortBy] || item[this.sortBy].b_score <= 0.01)) return false;
                     
                         // 4. 檢查年份篩選條件
                         if (this.year && this.year > 1900) {
@@ -279,7 +279,7 @@ let vue = new Vue({
                                     return Math.abs(parseFloat(a) - parseFloat(b)) >= parseFloat(range)
                                 }
                                 let gScore = item.Gamer.b_score
-                                difference = Math.abs(parseFloat(gScore) - parseFloat(item.MAL.score > 0 ? item.MAL.score : false)) >= parseFloat(this.diff) ||
+                                difference = Math.abs(parseFloat(gScore) - parseFloat(item.MAL.b_score > 0 ? item.MAL.b_score : false)) >= parseFloat(this.diff) ||
                                     comput(gScore, item.BGM, this.diff) ||
                                     comput(gScore, item.Anikore, this.diff) ||
                                     comput(gScore, item.AniList, this.diff) ||
@@ -867,9 +867,9 @@ let vue = new Vue({
                         //     }
                         case 'MAL':
                             if (!isDescending[0]) {
-                                return b.MAL.score > a.MAL.score ? 1 : -1;
+                                return b.MAL.b_score > a.MAL.b_score ? 1 : -1;
                             } else {
-                                return a.MAL.score > b.MAL.score ? 1 : -1;
+                                return a.MAL.b_score > b.MAL.b_score ? 1 : -1;
                             }
                         case 'Gamer':
                             b = !!b.Gamer ? b.Gamer.b_score : 0;

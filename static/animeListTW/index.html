@@ -799,7 +799,7 @@
                                 <v-avatar size="32" rounded>
                                     <img alt="mal" src="image/mal.webp">
                                 </v-avatar><br />
-                                <rating v-if="item.MAL" :item="item.MAL" website="MAL" :b-score="item.MAL.score">
+                                <rating v-if="item.MAL" :item="item.MAL" website="MAL" :b-score="item.MAL.b_score">
                                 </rating>
                                 <span v-else>
                                         <v-chip>N/A</v-chip>
@@ -984,7 +984,7 @@
                         </template>
                             <!--MAL -->
                             <template v-slot:item.mal="{ item }">
-                            <span v-if="item.MAL">{{item.MAL.score| returnZero}}</span>
+                            <span v-if="item.MAL">{{item.MAL.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
                             <!--BGM -->
