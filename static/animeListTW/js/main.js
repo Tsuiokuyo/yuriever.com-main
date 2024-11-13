@@ -48,7 +48,7 @@ let vue = new Vue({
                 },
                 toAnime(page, id) {
                     const urlMap = {
-                        'Gamer': 'https://acg.gamer.com.tw/acgDetail.php?s=' + id,
+                        'gamer': 'https://acg.gamer.com.tw/acgDetail.php?s=' + id,
                         'mal': 'https://myanimelist.net/anime/' + id,
                         'anidb': 'https://anidb.net/anime/' + id,
                         'bgm': 'https://bangumi.tv/subject/' + id,
@@ -119,7 +119,7 @@ let vue = new Vue({
         sortDesc: false,
         sortBy: 'rank',
         sorts: [{ 'name': '加權評分', 'value': 'rank' },
-		{ 'name': '巴哈姆特', 'value': 'Gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
+		{ 'name': '巴哈姆特', 'value': 'gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
            { 'name': 'Bangumi', 'value': 'bgm' }, { 'name': 'anikore', 'value': 'anikore' },
            { 'name': 'anidb', 'value': 'anidb' }
            , { 'name': 'aniList', 'value': 'aniList' }, { 'name': 'animePlanetCom', 'value': 'animePlanetCom' }
@@ -273,13 +273,13 @@ let vue = new Vue({
                         // 6. 差異篩選條件
                         if (this.diff) {
                             let difference = true
-                            if (item.Gamer && item.Gamer.b_score > 0) {
+                            if (item.gamer && item.gamer.b_score > 0) {
                                 function comput(a, b, range) {
                                     if (b == null) return false;
                                     b = b.b_score > 0 ? b.b_score : false
                                     return Math.abs(parseFloat(a) - parseFloat(b)) >= parseFloat(range)
                                 }
-                                let gScore = item.Gamer.b_score
+                                let gScore = item.gamer.b_score
                                 difference = Math.abs(parseFloat(gScore) - parseFloat(item.mal.b_score > 0 ? item.mal.b_score : false)) >= parseFloat(this.diff) ||
                                     comput(gScore, item.bgm, this.diff) ||
                                     comput(gScore, item.anikore, this.diff) ||
@@ -328,7 +328,7 @@ let vue = new Vue({
                         
                             const nameMatch = [
                                 item.mal?.en_name, item.mal?.jp_name, item.bgm?.cn_name,
-                                item.Gamer?.title, ...(item.bgm?.alias || [])
+                                item.gamer?.title, ...(item.bgm?.alias || [])
                             ].some(name => 
                                 name && (
                                     name.toUpperCase().includes(searchValue) ||
@@ -872,9 +872,9 @@ let vue = new Vue({
                             } else {
                                 return a.mal.b_score > b.mal.b_score ? 1 : -1;
                             }
-                        case 'Gamer':
-                            b = !!b.Gamer ? b.Gamer.b_score : 0;
-                            a = !!a.Gamer ? a.Gamer.b_score : 0;
+                        case 'gamer':
+                            b = !!b.gamer ? b.gamer.b_score : 0;
+                            a = !!a.gamer ? a.gamer.b_score : 0;
                             if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
@@ -1000,7 +1000,7 @@ let vue = new Vue({
             this.randomTen = shuffled;
         },
         randomListTitle(item) {
-            return item.Gamer?.title || item.bgm?.cn_name || item.mal.jp_name || item.mal.title;
+            return item.gamer?.title || item.bgm?.cn_name || item.mal.jp_name || item.mal.title;
         },
         onlineList(item) {
             return Object.entries(item || {}).reduce((format, [key, value]) => {
@@ -1351,8 +1351,8 @@ let vue = new Vue({
                 let names = []
                 for (let item of anime) {
                     let voice = item.mal.voices.find(vo => vo.voice == event.voice)
-                    if (item.Gamer && item.Gamer.title) {
-                        names.push({ 'title': item.Gamer.title, 'img': voice.img != null ? voice.img : '' })
+                    if (item.gamer && item.gamer.title) {
+                        names.push({ 'title': item.gamer.title, 'img': voice.img != null ? voice.img : '' })
                     } else if (item.bgm && item.bgm.cn_name) {
                         names.push({ 'title': item.bgm.cn_name, 'img': voice.img != null ? voice.img : '' })
                     } else if (item.mal.jp_name) {
@@ -1428,7 +1428,7 @@ let vue = new Vue({
                     let filter = this.rawData.find(element => null != element.aniList && element.aniList.id == obj.anilist)
                     vo.jp_name = filter.mal.jp_name
                     vo.en_name = filter.mal.en_name
-                    vo.ch_name = null != filter.Gamer ? filter.Gamer.title : null != filter.bgm ? filter.bgm.hasOwnProperty('cn_name') ? filter.bgm.cn_name : null : null
+                    vo.ch_name = null != filter.gamer ? filter.gamer.title : null != filter.bgm ? filter.bgm.hasOwnProperty('cn_name') ? filter.bgm.cn_name : null : null
 
                     vo.hentai = false
                     if (filter.mal.genres.includes('Hentai')) {
