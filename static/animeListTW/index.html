@@ -824,147 +824,26 @@
                                 <span style="font-size:14px;">Bayesian</span><br />加權評分<br />
                                 <span style="font-size:35px;font-weight:bold">{{item.score != 0 ? Number(item.score).toFixed(2) :'不計分'}}</span>
                             </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="gamer" src="image/gamer.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.gamer" :item="item.gamer" website="gamer" :b-score="item.gamer.b_score">
-                                </rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
+                            <td
+                            v-for="(site, index) in ratingSites"
+                            :key="index"
+                            class="center pa-0"
+                            >
+                            <v-avatar size="32" rounded>
+                                <img :alt="site.name" :src="`image/${site.image}.webp`" />
+                            </v-avatar>
+                            <br />
+                            <rating
+                                v-if="item[site.key]"
+                                :item="item[site.key]"
+                                :website="site.key"
+                                :b-score="item[site.key].b_score"
+                            ></rating>
+                            <span v-else>
+                                <v-chip>N/A</v-chip>
+                            </span>
                             </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="mal" src="image/mal.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.mal" :item="item.mal" website="mal" :b-score="item.mal.b_score">
-                                </rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="bgm" src="image/bgm.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.bgm" :item="item.bgm" website="bgm" :b-score="item.bgm.b_score"></rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="anikore" src="image/anikore.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.anikore" :item="item.anikore" website="anikore" :b-score="item.anikore.b_score"></rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="aniList" src="image/anilist.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.aniList" :item="item.aniList" website="aniList" :b-score="item.aniList.b_score"></rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="apc" src="image/apc.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.animePlanetCom" :item="item.animePlanetCom" website="animePlanetCom" :b-score="item.animePlanetCom.b_score">
-                                </rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="ann" src="image/ann.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.ann" :item="item.ann" website="ann" :b-score="item.ann.b_score"></rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="anisearch" src="image/anisearch.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.anisearch" :item="item.anisearch" website="anisearch" :b-score="item.anisearch.b_score"></rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="kitsu" src="image/kitsu.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.kitsu" :item="item.kitsu" website="kitsu" :b-score="item.kitsu.b_score">
-                                </rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="notifymoe" src="image/notifymoe.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.notifyMoe" :item="item.notifyMoe" website="notifyMoe" :b-score="item.notifyMoe.b_score"></rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="livechart" src="image/livechart.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.livechart" :item="item.livechart" website="livechart" :b-score="item.livechart.b_score"></rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="anidb" src="image/anidb.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.anidb" :item="item.anidb" website="anidb" :b-score="item.anidb.b_score"></rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="shikimori" src="image/shikimori.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.shikimori" :item="item.shikimori" website="shikimori" :b-score="item.shikimori.b_score">
-                                </rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="annict" src="image/annict.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.annict" :item="item.annict" website="annict" :b-score="item.annict.b_score"></rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td class="center pa-0" >
-                                <v-avatar size="32" rounded>
-                                    <img alt="sakuhindb" src="image/sakuhindb.webp">
-                                </v-avatar><br />
-                                <rating v-if="item.sakuhindb" :item="item.sakuhindb" website="sakuhindb" :b-score="item.sakuhindb.b_score"></rating>
-                                <span v-else>
-                                        <v-chip>N/A</v-chip>
-                                    </span>
-                            </td>
-                            <td></td>
+                            <!-- <td></td> -->
                             <td v-show=false>
                                 <span v-text="getBackground(item)"></span>
                             </td>
@@ -1016,82 +895,18 @@
                             <template v-slot:item.score="{ item }">
                             <span style="font-size:30px;">{{item.score| returnZero}}</span>
                         </template>
-                            <!-- 巴哈-->
-                            <template v-slot:item.gamer="{ item }">
-                            <span v-if="item.gamer">{{item.gamer.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--mal -->
-                            <template v-slot:item.mal="{ item }">
-                            <span v-if="item.mal">{{item.mal.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--bgm -->
-                            <template v-slot:item.bgm="{ item }">
-                            <span v-if="item.bgm">{{item.bgm.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--ANIKORE -->
-                            <template v-slot:item.anikore="{ item }">
-                            <span v-if="item.anikore">{{item.anikore.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--ANILIST -->
-                            <template v-slot:item.anilist="{ item }">
-                            <span v-if="item.aniList">{{item.aniList.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--APC -->
-                            <template v-slot:item.animeplanetcom="{ item }">
-                            <span v-if="item.animePlanetCom">{{item.animePlanetCom.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--ann -->
-                            <template v-slot:item.ann="{ item }">
-                            <span v-if="item.ann">{{item.ann.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--ANISEARCH -->
-                            <template v-slot:item.anisearch="{ item }">
-                            <span v-if="item.anisearch">{{item.anisearch.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--KITSU -->
-                            <template v-slot:item.kitsu="{ item }">
-                            <span v-if="item.kitsu">{{item.kitsu.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--NOTIFYMOE -->
-                            <template v-slot:item.notifymoe="{ item }">
-                            <span v-if="item.notifyMoe">{{item.notifyMoe.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-
-                            <!--livechart -->
-                            <template v-slot:item.livechart="{ item }">
-                            <span v-if="item.livechart">{{item.livechart.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--anidb -->
-                            <template v-slot:item.anidb="{ item }">
-                            <span v-if="item.anidb">{{item.anidb.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                        <!--shikimori -->
-                        <template v-slot:item.shikimori="{ item }">
-                            <span v-if="item.shikimori">{{item.shikimori.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--annict -->
-                            <template v-slot:item.annict="{ item }">
-                            <span v-if="item.annict">{{item.annict.b_score| returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
-                            <!--sakuhindb -->
-                            <template v-slot:item.sakuhindb="{ item }">
-                            <span v-if="item.sakuhindb">{{item.sakuhindb.b_score | returnZero}}</span>
-                            <span v-else>N/A</span>
-                        </template>
+                        <template v-slot:item.gamer="{ item }">
+                            <div>
+                              <pre>{{ item.gamer | JSON.stringify }}</pre> <!-- Debug: 查看 gamer 物件 -->
+                              <span v-if="item.gamer && item.gamer.b_score !== undefined">
+                                {{ item.gamer.b_score | returnZero }}
+                              </span>
+                              <span v-else>N/A</span>
+                            </div>
+                          </template>
+                          
+                          
+                          
                         </v-data-table>
                         <br />
                         <v-pagination v-model="page" :length="pageCount" :total-visible="totalVis" @input="next">

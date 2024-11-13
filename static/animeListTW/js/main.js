@@ -141,6 +141,24 @@ let vue = new Vue({
             { value: 'Picture book', cht: '繪本' }
         ],
 
+        ratingSites: [
+            { key: 'gamer', name: 'gamer', image: 'gamer' },
+            { key: 'mal', name: 'mal', image: 'mal' },
+            { key: 'bgm', name: 'bgm', image: 'bgm' },
+            { key: 'shikimori', name: 'shikimori', image: 'shikimori' },
+            { key: 'aniList', name: 'aniList', image: 'anilist' },
+            { key: 'anidb', name: 'anidb', image: 'anidb' },
+            { key: 'anisearch', name: 'anisearch', image: 'anisearch' },
+            { key: 'kitsu', name: 'kitsu', image: 'kitsu' },
+            { key: 'animePlanetCom', name: 'apc', image: 'apc' },
+            { key: 'livechart', name: 'livechart', image: 'livechart' },
+            { key: 'ann', name: 'ann', image: 'ann' },
+            { key: 'anikore', name: 'anikore', image: 'anikore' },
+            { key: 'notifyMoe', name: 'notifymoe', image: 'notifymoe' },
+            { key: 'annict', name: 'annict', image: 'annict' },
+            { key: 'sakuhindb', name: 'sakuhindb', image: 'sakuhindb' },
+          ],
+
 
         // count: undefined,
         overlay: false,
@@ -824,10 +842,7 @@ let vue = new Vue({
             if (lazy) {
                 if (item.bgm && item.bgm.image) {
                     return cdn2 + "http://lain.bgm.tv/pic/cover/g/" + item.bgm.image + ".jpg" + "&output=webp&q=80"
-                } else { //FIXME 下一輪
-                    if (item.mal.image.length > 50) {
-                        return item.mal.image
-                    }
+                } else {
                     return "https://cdn.myanimelist.net/images/anime/" + item.mal.image.replace('.webp', '').replace('.jpg', '') + 't.webp'
                 }
             } else {
