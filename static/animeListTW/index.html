@@ -22,6 +22,16 @@
 	<script src="js/main.js" type="module"></script>
     <script defer src="js/snowstorm-min.js"></script>
 
+    <!-- Google tag (gtag.js) 分析 analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QCHS68JGBX"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QCHS68JGBX');
+    </script>
+
 </head>
 
 <body>
@@ -895,18 +905,82 @@
                             <template v-slot:item.score="{ item }">
                             <span style="font-size:30px;">{{item.score| returnZero}}</span>
                         </template>
-                        <template v-slot:item.gamer="{ item }">
-                            <div>
-                              <pre>{{ item.gamer | JSON.stringify }}</pre> <!-- Debug: 查看 gamer 物件 -->
-                              <span v-if="item.gamer && item.gamer.b_score !== undefined">
-                                {{ item.gamer.b_score | returnZero }}
-                              </span>
-                              <span v-else>N/A</span>
-                            </div>
-                          </template>
-                          
-                          
-                          
+                            <!-- 巴哈-->
+                            <template v-slot:item.gamer="{ item }">
+                            <span v-if="item.gamer">{{item.gamer.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--mal -->
+                            <template v-slot:item.mal="{ item }">
+                            <span v-if="item.mal">{{item.mal.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--bgm -->
+                            <template v-slot:item.bgm="{ item }">
+                            <span v-if="item.bgm">{{item.bgm.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--ANIKORE -->
+                            <template v-slot:item.anikore="{ item }">
+                            <span v-if="item.anikore">{{item.anikore.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--ANILIST -->
+                            <template v-slot:item.anilist="{ item }">
+                            <span v-if="item.aniList">{{item.aniList.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--APC -->
+                            <template v-slot:item.animeplanetcom="{ item }">
+                            <span v-if="item.animePlanetCom">{{item.animePlanetCom.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--ann -->
+                            <template v-slot:item.ann="{ item }">
+                            <span v-if="item.ann">{{item.ann.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--ANISEARCH -->
+                            <template v-slot:item.anisearch="{ item }">
+                            <span v-if="item.anisearch">{{item.anisearch.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--KITSU -->
+                            <template v-slot:item.kitsu="{ item }">
+                            <span v-if="item.kitsu">{{item.kitsu.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--NOTIFYMOE -->
+                            <template v-slot:item.notifymoe="{ item }">
+                            <span v-if="item.notifyMoe">{{item.notifyMoe.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+
+                            <!--livechart -->
+                            <template v-slot:item.livechart="{ item }">
+                            <span v-if="item.livechart">{{item.livechart.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--anidb -->
+                            <template v-slot:item.anidb="{ item }">
+                            <span v-if="item.anidb">{{item.anidb.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                        <!--shikimori -->
+                        <template v-slot:item.shikimori="{ item }">
+                            <span v-if="item.shikimori">{{item.shikimori.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--annict -->
+                            <template v-slot:item.annict="{ item }">
+                            <span v-if="item.annict">{{item.annict.b_score| returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
+                            <!--sakuhindb -->
+                            <template v-slot:item.sakuhindb="{ item }">
+                            <span v-if="item.sakuhindb">{{item.sakuhindb.b_score | returnZero}}</span>
+                            <span v-else>N/A</span>
+                        </template>
                         </v-data-table>
                         <br />
                         <v-pagination v-model="page" :length="pageCount" :total-visible="totalVis" @input="next">
