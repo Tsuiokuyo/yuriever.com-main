@@ -4,7 +4,7 @@
     <link rel="Shortcut Icon" type="image/x-icon" href="image/favicons.ico" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="description" content="動畫排名，根據評分網站分數，使用貝氏估計重新計算後排名">
+    <meta name="description" content="動畫排名，根據多國評分網站的分數，使用貝氏估計及標準化加權重新計算後排名">
 	<meta name="keywords" content="動畫,排名,排行,動畫評分,動漫評分統計, 動畫排行榜">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.min.css" integrity="sha512-/k658G6UsCvbkGRB3vPXpsPHgWeduJwiWGPCGS14IQw3xpr63AEMdA8nMYG2gmYkXitQxDTn6iiK/2fD4T87qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -93,6 +93,7 @@
 									2024/10/15，提高最低計算票數，並將分數加入權重，並分為各網站權重及Bayesian與標準化權重，因為票數基數差到10000倍以上。<br/>
 									2024/10/25，增加原創網路動畫(ONA)作品。
                                     2024/11/07，開始重構程式碼
+                                    2024/11/13，移除trakt，加入shikimori
                                     <br />
                                     <span>
                                     <br><br><br>
@@ -100,8 +101,8 @@
                                 <oi>
 									<li>動畫條目眾多，不過票數及分數沒有必要及時更新，因此更新時間不定。暫定存入快取的條目每隔15至45天更新一次。</li>
                                     <li>網址列帶參數功能:基本上沒啥用，就是帶了參數進來能直接查詢某作品，作品名稱或是年份，使用方法如下方<br>
-                                        　　https://yuriever.com/animeListTW?name=聖母在上<br>
-                                        　　https://yuriever.com/animeListTW?year=2004
+                                        　　https://yuriever.com/animeListTW/?name=聖母在上<br>
+                                        　　https://yuriever.com/animeListTW/?year=2004
                                     </li>
                                     <li><del>上方新聞條：RSS撈取ACGN的資訊，因為免費版有次數限制，所以從Fly.io、Firebase隨機擇一基於cors-anywhere撈取RSS資料。</del></li>
                                     <li>聲優的生日日曆表：就是聲優的生日日歷，會依照擔任過的主要角色次數變色，紫色則為當日壽星，點擊名字則顯示擔任過的角色及作品<br>
@@ -167,13 +168,13 @@
                                     <br /> 公式使用自https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation 
 									<br/>
 									<br>3.網站權重(調整中)
-									<br>'MAL': 0.5,
-									<br>'AniList': 0.7,
-									<br>'ANN': 1.2,
-									<br>'BGM': 1.0,
-									<br>'Anikore': 1.1,
+									<br>'mal': 0.5,
+									<br>'aniList': 0.7,
+									<br>'ann': 1.2,
+									<br>'bgm': 1.0,
+									<br>'anikore': 1.1,
 									<br>'Gamer': 1.0,
-									<br>'AnimePlanetCom': 0.9,
+									<br>'animePlanetCom': 0.9,
 									<br>'anisearch': 1.0,
 									<br>'kitsu': 0.8,
 									<br>'notifyMoe': 1.2,
@@ -242,7 +243,7 @@
 									<li>https://github.com/varoOP/shinkrodb</li>
                                     API部分
                                     <li>https://github.com/jikan-me/jikan-rest </li>
-                                    <li>https://github.com/AniList/ApiV2-GraphQL-Docs</li>
+                                    <li>https://github.com/aniList/ApiV2-GraphQL-Docs</li>
                                     <li>https://github.com/bangumi/api</li>
 									<li>https://github.com/bangumi/Archive</li>
                                     <li>https://github.com/trakt/api-help</li>
@@ -286,7 +287,7 @@
 
                         <v-sheet class="mx-auto" elevation="0" max-width="1800">
                             <v-slide-group class="pa-4" show-arrows>
-                                <v-slide-item v-for="item in randomTen" :key="item.MAL.id" v-slot="{ active, toggle }" class="bkColor">
+                                <v-slide-item v-for="item in randomTen" :key="item.mal.id" v-slot="{ active, toggle }" class="bkColor">
                                     <v-card class="ma-4" height="260" width="170" @click="search = randomListTitle(item),preSearch = randomListTitle(item),year = ''">
                                         <v-row class="fill-height" align="center" justify="center">
                                             <v-col class="shrink">
@@ -304,7 +305,7 @@
                         <span>含{{voiceCount}}位聲優及擔任角色</span>
                         <v-dialog v-model="dialogCal" width="1680" heigth="1920">
                             <template v-slot:activator="{ on, attrs }">
-                            <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on">
+                            <v-btn color="red lighten-2" dark v-bind="attrs" v-on="on" v-if="windowWidth >= 600">
                                 <v-icon>mdi-cake</v-icon>
                                 聲優的生日日曆表
                             </v-btn>
@@ -339,11 +340,19 @@
                                         <v-menu v-if="selectedEvent" v-model="voiceOpen" :close-on-content-click="false" :activator="selectedElement" offset-x>
                                             <v-card color="grey lighten-4" min-width="350px" flat height="500px">
                                                 <v-toolbar :color="selectedEvent.color" dark>
-                                                    <v-toolbar-title v-html="selectedEvent.name" style="color:black">
+                                                    <!-- <v-toolbar-title v-html="selectedEvent.name" style="color:black"> -->
+                                                    <v-toolbar-title style="color:black"> {{selectedEvent.name}} 
                                                     </v-toolbar-title>
                                                     <v-spacer></v-spacer>
                                                 </v-toolbar>
                                                 <v-card-text>
+                                                    <v-avatar 
+                                                    height="150" 
+                                                    width="120" 
+                                                    rounded
+                                                    >
+                                                    <img alt="voiceImg" :src="'https://cdn.myanimelist.net/images/voiceactors/' + selectedEvent.voiceImg">
+                                                    </v-avatar> 
                                                     <H4>擔任配音至少{{selectedEvent.isMain + selectedEvent.isSup}}次</H4>
                                                     <H3>其中擔任主要角色至少為{{selectedEvent.isMain}}次，作品如下表：</H3>
                                                     <h5>下表不一定有顯示全部主要角色，僅限於包含在本網頁列表</h5>
@@ -648,9 +657,9 @@
                                 <td style="font-size:15px;font-weight:bold;padding:0">
                                     <span v-if="null != item.Gamer">{{ item.Gamer.title }}
                                     </span> <br />
-                                    <span v-if="null != item.BGM">{{ item.BGM.cn_name }}</span> <br />
-                                    <span v-if="null != item.MAL">{{ item.MAL.jp_name }}</span> <br />
-                                    <span v-if="null != item.MAL">{{ item.MAL.en_name }}</span> <br />
+                                    <span v-if="null != item.bgm">{{ item.bgm.cn_name }}</span> <br />
+                                    <span v-if="null != item.mal">{{ item.mal.jp_name }}</span> <br />
+                                    <span v-if="null != item.mal">{{ item.mal.en_name }}</span> <br />
 
                                     <span v-if="null != item.official">
                                         <a :href="'https://' + item.official" target="_blank">動畫官網</a>&nbsp;
@@ -667,7 +676,7 @@
                                         <a :href="'https://www.imdb.com/title/' + item.imdb" title="IMDB" target="_blank">IMDB</a>&nbsp;
                                     </span>
                                     <span  v-if="null != item.tmdb">
-                                        <a :href="'https://www.themoviedb.org/movie/' + item.tmdb" title="TMDB" target="_blank" v-if="item.MAL.type == 'Movie'">TMDB</a>
+                                        <a :href="'https://www.themoviedb.org/movie/' + item.tmdb" title="TMDB" target="_blank" v-if="item.mal.type == 'Movie'">TMDB</a>
                                         <a :href="'https://www.themoviedb.org/tv/' + item.tmdb" title="TMDB" target="_blank" v-else>TMDB</a>
                                     </span>
                                      <span v-if="null != item.voiranime">
@@ -684,48 +693,48 @@
                                     </span>
                                     <span ></span>
                                     <br /> 
-                                    <span style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;<span
-                                            v-if="null != item.MAL.premiered">({{ item.MAL.premiered }}<span
-                                                v-if="null != item.MAL.season">{{item.MAL.season|seasonCht}}</span>)</span>
-                                        <span v-if="item.MAL.source">改編：{{ item.MAL.source | sourceToCht }}</span>
+                                    <span style="font-size:14px;color:#6c757d">{{ item.mal.type }}&nbsp;<span
+                                            v-if="null != item.mal.premiered">({{ item.mal.premiered }}<span
+                                                v-if="null != item.mal.season">{{item.mal.season|seasonCht}}</span>)</span>
+                                        <span v-if="item.mal.source">改編：{{ item.mal.source | sourceToCht }}</span>
                                         <span
-                                            v-if="item.MAL.episodes && item.MAL.type != 'Movie'">，{{ item.MAL.episodes }}話</span>
-                                        <span v-if="item.MAL.duration">(~{{ item.MAL.duration }}分鐘)</span>
+                                            v-if="item.mal.episodes && item.mal.type != 'Movie'">，{{ item.mal.episodes }}話</span>
+                                        <span v-if="item.mal.duration">(~{{ item.mal.duration }}分鐘)</span>
                                         <br />
                                         <template>
-                                            <v-menu offset-y open-on-hover rounded v-if="item.MAL.studios.length > 0">
+                                            <v-menu offset-y open-on-hover rounded v-if="item.mal.studios.length > 0">
                                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-btn small v-bind="attrs" v-on="on" color="transparent" light>
                                                         <span style="font-size:14px;">動畫公司</span>
                                                     </v-btn>
                                                 </template>
                             <v-list>
-                                <v-list-item v-for="(stu, index) in item.MAL.studios" :key="index">
+                                <v-list-item v-for="(stu, index) in item.mal.studios" :key="index">
                                     <v-list-item-title>{{ stu }}</v-list-item-title>
                                 </v-list-item>
                             </v-list>
                             </v-menu>
-                            <v-menu offset-y open-on-hover rounded v-if="item.MAL.genres.length > 0">
+                            <v-menu offset-y open-on-hover rounded v-if="item.mal.genres.length > 0">
                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-btn small v-bind="attrs" v-on="on" color="transparent" light>
                                                         <span style="font-size:14px;">作品類型</span>
                                                     </v-btn>
                                                 </template>
                                 <v-list>
-                                    <v-list-item v-for="(genre, index) in item.MAL.genres" :key="index">
+                                    <v-list-item v-for="(genre, index) in item.mal.genres" :key="index">
                                         <v-list-item-title>{{ genre | genreToCht}}
                                         </v-list-item-title>
                                     </v-list-item>
                                 </v-list>
                             </v-menu>
-                            <v-menu offset-y open-on-hover rounded v-if="null != item.MAL.voices && item.MAL.voices.length > 0">
+                            <v-menu offset-y open-on-hover rounded v-if="null != item.mal.voices && item.mal.voices.length > 0">
                                 <template v-slot:activator="{ on, attrs }">
                                                     <v-btn small v-bind="attrs" v-on="on" color="transparent" light>
                                                         <span style="font-size:14px;">主要聲優</span>
                                                     </v-btn>
                                                 </template>
                                 <v-list>
-                                    <v-list-item v-for="(item, index) in item.MAL.voices" :key="index">
+                                    <v-list-item v-for="(item, index) in item.mal.voices" :key="index">
                                         <v-list-item-title>{{ item.name }}</v-list-item-title>
                                     </v-list-item>
                                 </v-list>
@@ -754,27 +763,27 @@
                                 </v-menu>
                                 <span>
                                 </span>
-                                <span style="float: right;" v-if="item.MAL.trailer">
+                                <span style="float: right;" v-if="item.mal.trailer">
                                             <v-btn color="transparent" light
-                                                @click.stop="$set(dialogYt, item.MAL.id, true)">
+                                                @click.stop="$set(dialogYt, item.mal.id, true)">
                                                 <v-icon>mdi-youtube</v-icon>PV
                                             </v-btn>
-                                            <v-dialog v-model="dialogYt[item.MAL.id]" scrollable max-width="960"
-                                                :key="item.MAL.id" v-if="dialogYt[item.MAL.id]">
-                                                <iframe width="960" height="540" :src="getYoutube(item.MAL.trailer)"
+                                            <v-dialog v-model="dialogYt[item.mal.id]" scrollable max-width="960"
+                                                :key="item.mal.id" v-if="dialogYt[item.mal.id]">
+                                                <iframe width="960" height="540" :src="getYoutube(item.mal.trailer)"
                                                     title="YouTube video player" frameborder="0"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                     allowfullscreen></iframe>
                                             </v-dialog>
                                 </span>
-								<span style="float: right;" v-if="item.BGM && item.BGM.summary">
-									<v-btn color="transparent" light @click.stop="$set(dialogSummary, item.MAL.id, true)">
+								<span style="float: right;" v-if="item.bgm && item.bgm.summary">
+									<v-btn color="transparent" light @click.stop="$set(dialogSummary, item.mal.id, true)">
 										<v-icon>mdi-information-outline</v-icon>簡介
 									</v-btn>
-									<v-dialog v-model="dialogSummary[item.MAL.id]" scrollable max-width="960" :key="item.MAL.id" v-if="dialogSummary[item.MAL.id]">
+									<v-dialog v-model="dialogSummary[item.mal.id]" scrollable max-width="960" :key="item.mal.id" v-if="dialogSummary[item.mal.id]">
 										<v-card>
 											<v-card-title style="font-size: 24px;">動畫簡介</v-card-title>
-											<v-card-text style="font-size: 18px; white-space: pre-wrap; text-align: left;" v-html="item.BGM.summary.trim()"></v-card-text>
+											<v-card-text style="font-size: 18px; white-space: pre-wrap; text-align: left;" v-html="item.bgm.summary.trim()"></v-card-text>
 										</v-card>
 									</v-dialog>
 								</span>
@@ -799,7 +808,7 @@
                                 <v-avatar size="32" rounded>
                                     <img alt="mal" src="image/mal.webp">
                                 </v-avatar><br />
-                                <rating v-if="item.MAL" :item="item.MAL" website="MAL" :b-score="item.MAL.b_score">
+                                <rating v-if="item.mal" :item="item.mal" website="mal" :b-score="item.mal.b_score">
                                 </rating>
                                 <span v-else>
                                         <v-chip>N/A</v-chip>
@@ -809,7 +818,7 @@
                                 <v-avatar size="32" rounded>
                                     <img alt="bgm" src="image/bgm.webp">
                                 </v-avatar><br />
-                                <rating v-if="item.BGM" :item="item.BGM" website="BGM" :b-score="item.BGM.b_score"></rating>
+                                <rating v-if="item.bgm" :item="item.bgm" website="bgm" :b-score="item.bgm.b_score"></rating>
                                 <span v-else>
                                         <v-chip>N/A</v-chip>
                                     </span>
@@ -818,7 +827,7 @@
                                 <v-avatar size="32" rounded>
                                     <img alt="anikore" src="image/anikore.webp">
                                 </v-avatar><br />
-                                <rating v-if="item.Anikore" :item="item.Anikore" website="Anikore" :b-score="item.Anikore.b_score"></rating>
+                                <rating v-if="item.anikore" :item="item.anikore" website="anikore" :b-score="item.anikore.b_score"></rating>
                                 <span v-else>
                                         <v-chip>N/A</v-chip>
                                     </span>
@@ -827,7 +836,7 @@
                                 <v-avatar size="32" rounded>
                                     <img alt="aniList" src="image/anilist.webp">
                                 </v-avatar><br />
-                                <rating v-if="item.AniList" :item="item.AniList" website="AniList" :b-score="item.AniList.b_score"></rating>
+                                <rating v-if="item.aniList" :item="item.aniList" website="aniList" :b-score="item.aniList.b_score"></rating>
                                 <span v-else>
                                         <v-chip>N/A</v-chip>
                                     </span>
@@ -836,7 +845,7 @@
                                 <v-avatar size="32" rounded>
                                     <img alt="apc" src="image/apc.webp">
                                 </v-avatar><br />
-                                <rating v-if="item.AnimePlanetCom" :item="item.AnimePlanetCom" website="AnimePlanetCom" :b-score="item.AnimePlanetCom.b_score">
+                                <rating v-if="item.animePlanetCom" :item="item.animePlanetCom" website="animePlanetCom" :b-score="item.animePlanetCom.b_score">
                                 </rating>
                                 <span v-else>
                                         <v-chip>N/A</v-chip>
@@ -846,7 +855,7 @@
                                 <v-avatar size="32" rounded>
                                     <img alt="ann" src="image/ann.webp">
                                 </v-avatar><br />
-                                <rating v-if="item.ANN" :item="item.ANN" website="ANN" :b-score="item.ANN.b_score"></rating>
+                                <rating v-if="item.ann" :item="item.ann" website="ann" :b-score="item.ann.b_score"></rating>
                                 <span v-else>
                                         <v-chip>N/A</v-chip>
                                     </span>
@@ -897,16 +906,16 @@
                                         <v-chip>N/A</v-chip>
                                     </span>
                             </td>
-                            <!-- <td class="center pa-0" >
+                            <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
-                                    <img alt="trakt" src="image/trakt.webp">
+                                    <img alt="shikimori" src="image/shikimori.webp">
                                 </v-avatar><br />
-                                <rating v-if="item.trakt" :item="item.trakt" website="trakt" :b-score="item.trakt.b_score">
+                                <rating v-if="item.shikimori" :item="item.shikimori" website="shikimori" :b-score="item.shikimori.b_score">
                                 </rating>
                                 <span v-else>
                                         <v-chip>N/A</v-chip>
                                     </span>
-                            </td> -->
+                            </td>
                             <td class="center pa-0" >
                                 <v-avatar size="32" rounded>
                                     <img alt="annict" src="image/annict.webp">
@@ -964,12 +973,12 @@
                             <template v-slot:item.name="{ item }">
                             <span v-if="null != item.Gamer">{{ item.Gamer.title }}
                             </span> <br />
-                            <span v-if="null != item.BGM">{{ item.BGM.cn_name }}</span> <br />
-                            <span v-if="null != item.MAL">{{ item.MAL.jp_name }}</span> <br />
-                            <span v-if="null != item.MAL">{{ item.MAL.en_name }}</span> <br />
+                            <span v-if="null != item.bgm">{{ item.bgm.cn_name }}</span> <br />
+                            <span v-if="null != item.mal">{{ item.mal.jp_name }}</span> <br />
+                            <span v-if="null != item.mal">{{ item.mal.en_name }}</span> <br />
                             <v-divider></v-divider>
                             <span
-                                style="font-size:14px;color:#6c757d">{{ item.MAL.type }}&nbsp;({{ item.MAL.premiered }})</span><br />
+                                style="font-size:14px;color:#6c757d">{{ item.mal.type }}&nbsp;({{ item.mal.premiered }})</span><br />
                             <span :style="" style="font-size:20px;">綜合排名： </span>
                             <span style="font-size:30px;font-weight:bold;">{{item.rank}}
                             </span>
@@ -982,34 +991,34 @@
                             <span v-if="item.Gamer">{{item.Gamer.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
-                            <!--MAL -->
+                            <!--mal -->
                             <template v-slot:item.mal="{ item }">
-                            <span v-if="item.MAL">{{item.MAL.b_score| returnZero}}</span>
+                            <span v-if="item.mal">{{item.mal.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
-                            <!--BGM -->
+                            <!--bgm -->
                             <template v-slot:item.bgm="{ item }">
-                            <span v-if="item.BGM">{{item.BGM.b_score| returnZero}}</span>
+                            <span v-if="item.bgm">{{item.bgm.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
                             <!--ANIKORE -->
                             <template v-slot:item.anikore="{ item }">
-                            <span v-if="item.Anikore">{{item.Anikore.b_score| returnZero}}</span>
+                            <span v-if="item.anikore">{{item.anikore.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
                             <!--ANILIST -->
                             <template v-slot:item.anilist="{ item }">
-                            <span v-if="item.AniList">{{item.AniList.b_score| returnZero}}</span>
+                            <span v-if="item.aniList">{{item.aniList.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
                             <!--APC -->
                             <template v-slot:item.animeplanetcom="{ item }">
-                            <span v-if="item.AnimePlanetCom">{{item.AnimePlanetCom.b_score| returnZero}}</span>
+                            <span v-if="item.animePlanetCom">{{item.animePlanetCom.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
-                            <!--ANN -->
-                            <template v-slot:item.ANN="{ item }">
-                            <span v-if="item.ANN">{{item.ANN.b_score| returnZero}}</span>
+                            <!--ann -->
+                            <template v-slot:item.ann="{ item }">
+                            <span v-if="item.ann">{{item.ann.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
                             <!--ANISEARCH -->
@@ -1038,11 +1047,11 @@
                             <span v-if="item.anidb">{{item.anidb.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
                         </template>
-                        <!--trakt -->
-                        <!-- <template v-slot:item.trakt="{ item }">
-                            <span v-if="item.trakt">{{item.trakt.b_score| returnZero}}</span>
+                        <!--shikimori -->
+                        <template v-slot:item.shikimori="{ item }">
+                            <span v-if="item.shikimori">{{item.shikimori.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
-                        </template> -->
+                        </template>
                             <!--annict -->
                             <template v-slot:item.annict="{ item }">
                             <span v-if="item.annict">{{item.annict.b_score| returnZero}}</span>

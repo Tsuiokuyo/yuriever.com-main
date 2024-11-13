@@ -49,20 +49,21 @@ let vue = new Vue({
                 toAnime(page, id) {
                     const urlMap = {
                         'Gamer': 'https://acg.gamer.com.tw/acgDetail.php?s=' + id,
-                        'MAL': 'https://myanimelist.net/anime/' + id,
+                        'mal': 'https://myanimelist.net/anime/' + id,
                         'anidb': 'https://anidb.net/anime/' + id,
-                        'BGM': 'https://bangumi.tv/subject/' + id,
-                        'Anikore': 'https://www.anikore.jp/anime/' + id,
-                        'AniList': 'https://anilist.co/anime/' + id,
-                        'AnimePlanetCom': 'https://anime-planet.com/anime/' + id,
-                        'ANN': 'https://www.animenewsnetwork.com/encyclopedia/anime.php?id=' + id,
+                        'bgm': 'https://bangumi.tv/subject/' + id,
+                        'anikore': 'https://www.anikore.jp/anime/' + id,
+                        'aniList': 'https://anilist.co/anime/' + id,
+                        'animePlanetCom': 'https://anime-planet.com/anime/' + id,
+                        'ann': 'https://www.animenewsnetwork.com/encyclopedia/anime.php?id=' + id,
                         'anisearch': 'https://www.anisearch.com/anime/' + id,
                         'kitsu': 'https://kitsu.app/anime/' + id,
                         'notifyMoe': 'https://notify.moe/anime/' + id,
                         'trakt': 'https://trakt.tv/shows/' + id,
                         'livechart': 'https://livechart.me/anime/' + id,
                         'sakuhindb': 'https://sakuhindb.com/janime/' + id,
-                        'annict': 'https://annict.com/works/' + id
+                        'annict': 'https://annict.com/works/' + id,
+                        'shikimori': 'https://shikimori.one/animes/' + id
                     };
                 
                     const url = urlMap[page] || ''; // 如果找不到對應的 `page`，則返回空字符串
@@ -118,11 +119,11 @@ let vue = new Vue({
         sortDesc: false,
         sortBy: 'rank',
         sorts: [{ 'name': '加權評分', 'value': 'rank' },
-		{ 'name': '巴哈姆特', 'value': 'Gamer' }, { 'name': 'MyAnimeList', 'value': 'MAL' },
-           { 'name': 'Bangumi', 'value': 'BGM' }, { 'name': 'Anikore', 'value': 'Anikore' },
+		{ 'name': '巴哈姆特', 'value': 'Gamer' }, { 'name': 'MyAnimeList', 'value': 'mal' },
+           { 'name': 'Bangumi', 'value': 'bgm' }, { 'name': 'anikore', 'value': 'anikore' },
            { 'name': 'anidb', 'value': 'anidb' }
-           , { 'name': 'AniList', 'value': 'AniList' }, { 'name': 'AnimePlanetCom', 'value': 'AnimePlanetCom' }
-           , { 'name': 'AnimeNewsNetwork', 'value': 'ANN' }, { 'name': 'anisearch', 'value': 'anisearch' }
+           , { 'name': 'aniList', 'value': 'aniList' }, { 'name': 'animePlanetCom', 'value': 'animePlanetCom' }
+           , { 'name': 'AnimeNewsNetwork', 'value': 'ann' }, { 'name': 'anisearch', 'value': 'anisearch' }
            , { 'name': 'kitsu', 'value': 'kitsu' }, { 'name': 'notifyMoe', 'value': 'notifyMoe' }
            , { 'name': 'livechart', 'value': 'livechart' }
         ],
@@ -235,7 +236,7 @@ let vue = new Vue({
                         this.inputErr = '';
                     
                         // 2. 預先處理篩選條件，並使用高效返回以提高效能
-                        if (this.disabledNSFW && item.MAL.genres.includes('Hentai')) return false;
+                        if (this.disabledNSFW && item.mal.genres.includes('Hentai')) return false;
                         if (this.disabledZero && item.score === 0) return false;
                     
                         // 3. 檢查 sortBy 項目是否為零
@@ -243,7 +244,7 @@ let vue = new Vue({
                     
                         // 4. 檢查年份篩選條件
                         if (this.year && this.year > 1900) {
-                            const premiered = parseInt(item.MAL.premiered);
+                            const premiered = parseInt(item.mal.premiered);
                             const year = parseInt(this.year);
                             const year2 = parseInt(this.year2 > 99 ? this.year2 : 9999);
                             let bYear = false;
@@ -279,12 +280,12 @@ let vue = new Vue({
                                     return Math.abs(parseFloat(a) - parseFloat(b)) >= parseFloat(range)
                                 }
                                 let gScore = item.Gamer.b_score
-                                difference = Math.abs(parseFloat(gScore) - parseFloat(item.MAL.b_score > 0 ? item.MAL.b_score : false)) >= parseFloat(this.diff) ||
-                                    comput(gScore, item.BGM, this.diff) ||
-                                    comput(gScore, item.Anikore, this.diff) ||
-                                    comput(gScore, item.AniList, this.diff) ||
-                                    comput(gScore, item.AnimePlanetCom, this.diff) ||
-                                    comput(gScore, item.ANN, this.diff) ||
+                                difference = Math.abs(parseFloat(gScore) - parseFloat(item.mal.b_score > 0 ? item.mal.b_score : false)) >= parseFloat(this.diff) ||
+                                    comput(gScore, item.bgm, this.diff) ||
+                                    comput(gScore, item.anikore, this.diff) ||
+                                    comput(gScore, item.aniList, this.diff) ||
+                                    comput(gScore, item.animePlanetCom, this.diff) ||
+                                    comput(gScore, item.ann, this.diff) ||
                                     comput(gScore, item.anisearch, this.diff) ||
                                     comput(gScore, item.notifyMoe, this.diff) ||
                                     // comput(gScore, item.trakt, this.diff) ||
@@ -298,17 +299,17 @@ let vue = new Vue({
                         }
                     
                         // 7. 篩選 source 和 type 條件
-                        if (this.selSource !== 'ALL' && item.MAL.source !== this.selSource) return false;
-                        if (this.selType !== 'ALL' && item.MAL.type.toUpperCase() !== this.selType.toUpperCase()) return false;
+                        if (this.selSource !== 'ALL' && item.mal.source !== this.selSource) return false;
+                        if (this.selType !== 'ALL' && item.mal.type.toUpperCase() !== this.selType.toUpperCase()) return false;
                     
                         // 8. 在線觀看條件
                         if (this.onlineWatchSel.length && !this.onlineWatchSel.some(key => item.online[key])) return false;
                     
                         // 9. 檢查所選 genre
-                        if (this.genreSel.some(gen => !item.MAL.genres.includes(gen))) return false;
+                        if (this.genreSel.some(gen => !item.mal.genres.includes(gen))) return false;
                     
                         // 10. 檢查所選公司 (studios)
-                        if (this.cmpSel.length && !this.cmpSel.some(cmp => item.MAL.studios.includes(cmp))) return false;
+                        if (this.cmpSel.length && !this.cmpSel.some(cmp => item.mal.studios.includes(cmp))) return false;
                     
                         // 11. 搜尋條件
                         if (this.search.trim()) {
@@ -326,8 +327,8 @@ let vue = new Vue({
                             }
                         
                             const nameMatch = [
-                                item.MAL?.en_name, item.MAL?.jp_name, item.BGM?.cn_name,
-                                item.Gamer?.title, ...(item.BGM?.alias || [])
+                                item.mal?.en_name, item.mal?.jp_name, item.bgm?.cn_name,
+                                item.Gamer?.title, ...(item.bgm?.alias || [])
                             ].some(name => 
                                 name && (
                                     name.toUpperCase().includes(searchValue) ||
@@ -371,21 +372,21 @@ let vue = new Vue({
                     width: '5%',
                 },
                 {
-                    text: 'Anikore評分',
+                    text: 'anikore評分',
                     value: 'anikore',
                     align: 'center',
                     filterable: false,
                     width: '5%',
                 },
                 {
-                    text: 'AniList評分',
+                    text: 'aniList評分',
                     value: 'anilist',
                     align: 'center',
                     filterable: false,
                     width: '5%',
                 },
                 {
-                    text: 'AnimePlanetCom評分',
+                    text: 'animePlanetCom評分',
                     value: 'animeplanetcom',
                     align: 'center',
                     filterable: false,
@@ -523,11 +524,11 @@ let vue = new Vue({
             this.badges = {}; 
             let filters = this.$refs.tb.$children[0].filteredItems;  
             for (let item of filters) { 
-                for (let gen of item.MAL.genres) { 
+                for (let gen of item.mal.genres) { 
                     if (this.disabledZero) {
                         if (item.score > 0) {
                             if (this.disabledNSFW) {
-                                if (!item.MAL.genres.includes('Hentai')) {
+                                if (!item.mal.genres.includes('Hentai')) {
                                     this.badges[gen] = ++this.badges[gen] || 1;
                                 }
                             } else {
@@ -536,7 +537,7 @@ let vue = new Vue({
                         }
                     } else {
                         if (this.disabledNSFW) {
-                            if (!item.MAL.genres.includes('Hentai')) {
+                            if (!item.mal.genres.includes('Hentai')) {
                                 this.badges[gen] = ++this.badges[gen] || 1;
                             }
                         } else {
@@ -680,7 +681,6 @@ let vue = new Vue({
                     let bir = new Date(item.birth);
                     let todayBir = (now.getMonth() === bir.getMonth() && now.getDate() === bir.getDate());
                     bir = `${now.getFullYear()}-${bir.getMonth() + 1}-${bir.getDate()}`;
-                    
                     events.push({
                         name: item.name,
                         start: bir,
@@ -688,6 +688,7 @@ let vue = new Vue({
                         isMain: item.isMain,
                         isSup: item.isSup,
                         chId: item.chId,
+                        voiceImg : item.voiceImg,
                         color: this.setVoiceColor(item.isMain, item.isSup, todayBir),
                     });
                 }
@@ -714,7 +715,7 @@ let vue = new Vue({
             
             for (const item of this.rawData) {
                 this.initializeItem(item);
-                // if (this.disabledNSFW && item.MAL.genres.includes('Hentai')) continue;
+                // if (this.disabledNSFW && item.mal.genres.includes('Hentai')) continue;
                 
                 this.collectGenres(item, genres);
                 this.collectOnlineStudios(item, onlines, studios);
@@ -728,34 +729,34 @@ let vue = new Vue({
             item.myRank = '0';
             item.memo = '';
             item.seen = false;
-            if (item.MAL.type === "Movie" && item.MAL.duration < 3) item.MAL.duration *= 60;
-            if ('duration' in item.MAL && item.MAL.duration < 16 && item.MAL.type !== "Movie") this.assignCupGenre(item);
+            if (item.mal.type === "Movie" && item.mal.duration < 3) item.mal.duration *= 60;
+            if ('duration' in item.mal && item.mal.duration < 16 && item.mal.type !== "Movie") this.assignCupGenre(item);
         },
     
         collectGenres(item, genres) {
-            item.MAL.genres.forEach(gen => {
+            item.mal.genres.forEach(gen => {
                 if ((this.disabledZero && item.score > 0) || !this.disabledZero) {
-                    if (!this.disabledNSFW || !item.MAL.genres.includes('Hentai')) {
+                    if (!this.disabledNSFW || !item.mal.genres.includes('Hentai')) {
                         this.badges[gen] = ++this.badges[gen] || 1;
                     }
                 }
             });
-            genres.push(...item.MAL.genres);
+            genres.push(...item.mal.genres);
         },
     
         collectOnlineStudios(item, onlines, studios) {
             onlines.push(...Object.keys(item.online));
-            studios.push(...Object.values(item.MAL.studios));
+            studios.push(...Object.values(item.mal.studios));
         },
     
         collectBirths(item, births) {
-            if ('voices' in item.MAL && item.MAL.voices.length) {
-                births.push(...item.MAL.voices); 
+            if ('voices' in item.mal && item.mal.voices.length) {
+                births.push(...item.mal.voices); 
             }
         },
 
         assignCupGenre(item) {
-            item.MAL.genres.push('cup');
+            item.mal.genres.push('cup');
             this.badges['cup'] = ++this.badges['cup'] || 1;
         },
     
@@ -821,27 +822,27 @@ let vue = new Vue({
         setCover(item, lazy) {
             let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
             if (lazy) {
-                if (item.BGM && item.BGM.image) {
-                    return cdn2 + "http://lain.bgm.tv/pic/cover/g/" + item.BGM.image + ".jpg" + "&output=webp&q=80"
+                if (item.bgm && item.bgm.image) {
+                    return cdn2 + "http://lain.bgm.tv/pic/cover/g/" + item.bgm.image + ".jpg" + "&output=webp&q=80"
                 } else { //FIXME 下一輪
-                    if (item.MAL.image.length > 50) {
-                        return item.MAL.image
+                    if (item.mal.image.length > 50) {
+                        return item.mal.image
                     }
-                    return "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + 't.webp'
+                    return "https://cdn.myanimelist.net/images/anime/" + item.mal.image.replace('.webp', '').replace('.jpg', '') + 't.webp'
                 }
             } else {
-                if (item.BGM && item.BGM.image) {
-                    return cdn2 + "http://lain.bgm.tv/pic/cover/c/" + item.BGM.image + ".jpg" + "&output=webp&q=80"
+                if (item.bgm && item.bgm.image) {
+                    return cdn2 + "http://lain.bgm.tv/pic/cover/c/" + item.bgm.image + ".jpg" + "&output=webp&q=80"
                 } else { //FIXME 下一輪
-                    if (item.MAL.image.length > 50) {
-                        return item.MAL.image
+                    if (item.mal.image.length > 50) {
+                        return item.mal.image
                     }
-                    return "https://cdn.myanimelist.net/images/anime/" + item.MAL.image.replace('.webp', '').replace('.jpg', '') + '.webp'
+                    return "https://cdn.myanimelist.net/images/anime/" + item.mal.image.replace('.webp', '').replace('.jpg', '') + '.webp'
                 }
             }
         },
         toggleFullscreen(item) {
-            this.selectedImage = `https://cdn.myanimelist.net/images/anime/${item.MAL.image.replace('.webp', '')}l.webp`;
+            this.selectedImage = `https://cdn.myanimelist.net/images/anime/${item.mal.image.replace('.webp', '')}l.webp`;
         },
         customSort(items, index, isDescending) {
             if (this.toRandom) {
@@ -865,11 +866,11 @@ let vue = new Vue({
                         //     } else {
                         //         return a.score > b.score ? 1 : -1;
                         //     }
-                        case 'MAL':
+                        case 'mal':
                             if (!isDescending[0]) {
-                                return b.MAL.b_score > a.MAL.b_score ? 1 : -1;
+                                return b.mal.b_score > a.mal.b_score ? 1 : -1;
                             } else {
-                                return a.MAL.b_score > b.MAL.b_score ? 1 : -1;
+                                return a.mal.b_score > b.mal.b_score ? 1 : -1;
                             }
                         case 'Gamer':
                             b = !!b.Gamer ? b.Gamer.b_score : 0;
@@ -887,17 +888,17 @@ let vue = new Vue({
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'BGM':
-                            b = !!b.BGM ? b.BGM.b_score : 0;
-                            a = !!a.BGM ? a.BGM.b_score : 0;
+                        case 'bgm':
+                            b = !!b.bgm ? b.bgm.b_score : 0;
+                            a = !!a.bgm ? a.bgm.b_score : 0;
                             if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'Anikore':
-                            b = !!b.Anikore ? b.Anikore.b_score : 0;
-                            a = !!a.Anikore ? a.Anikore.b_score : 0;
+                        case 'anikore':
+                            b = !!b.anikore ? b.anikore.b_score : 0;
+                            a = !!a.anikore ? a.anikore.b_score : 0;
                             if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
@@ -911,25 +912,25 @@ let vue = new Vue({
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'AniList':
-                            b = !!b.AniList ? b.AniList.b_score : 0;
-                            a = !!a.AniList ? a.AniList.b_score : 0;
+                        case 'aniList':
+                            b = !!b.aniList ? b.aniList.b_score : 0;
+                            a = !!a.aniList ? a.aniList.b_score : 0;
                             if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'AnimePlanetCom':
-                            b = !!b.AnimePlanetCom ? b.AnimePlanetCom.b_score : 0;
-                            a = !!a.AnimePlanetCom ? a.AnimePlanetCom.b_score : 0;
+                        case 'animePlanetCom':
+                            b = !!b.animePlanetCom ? b.animePlanetCom.b_score : 0;
+                            a = !!a.animePlanetCom ? a.animePlanetCom.b_score : 0;
                             if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
                                 return a > b ? 1 : -1
                             }
-                        case 'ANN':
-                            b = !!b.ANN ? b.ANN.b_score : 0;
-                            a = !!a.ANN ? a.ANN.b_score : 0;
+                        case 'ann':
+                            b = !!b.ann ? b.ann.b_score : 0;
+                            a = !!a.ann ? a.ann.b_score : 0;
                             if (!isDescending[0]) {
                                 return b > a ? 1 : -1
                             } else {
@@ -992,14 +993,14 @@ let vue = new Vue({
         
             const shuffled = shuffleArray(this.rawData).slice(-10);
             
-            if (this.disabledNSFW && shuffled.some(item => item.MAL.genres.includes('Hentai'))) {
+            if (this.disabledNSFW && shuffled.some(item => item.mal.genres.includes('Hentai'))) {
                 return this.getRandomArray();
             }
             
             this.randomTen = shuffled;
         },
         randomListTitle(item) {
-            return item.Gamer?.title || item.BGM?.cn_name || item.MAL.jp_name || item.MAL.title;
+            return item.Gamer?.title || item.bgm?.cn_name || item.mal.jp_name || item.mal.title;
         },
         onlineList(item) {
             return Object.entries(item || {}).reduce((format, [key, value]) => {
@@ -1304,6 +1305,7 @@ let vue = new Vue({
                         isSup: item.isSup,
                         chId: item.chId,
                         // end: bir,
+                        voiceImg : item.voiceImg,
                         color: this.setVoiceColor(item.isMain, item.isSup, todayBir),
                     })
 
@@ -1338,8 +1340,8 @@ let vue = new Vue({
                 this.selectedEvent = event
                 let anime = []
                 anime = this.rawData.filter(item => {
-                    if (item.MAL.voices) {
-                        let data = item.MAL.voices.filter(vo => vo.voice == event.voice)
+                    if (item.mal.voices) {
+                        let data = item.mal.voices.filter(vo => vo.voice == event.voice)
                         if (data.length > 0)
                             return true
                     } else {
@@ -1348,15 +1350,15 @@ let vue = new Vue({
                 })
                 let names = []
                 for (let item of anime) {
-                    let voice = item.MAL.voices.find(vo => vo.voice == event.voice)
+                    let voice = item.mal.voices.find(vo => vo.voice == event.voice)
                     if (item.Gamer && item.Gamer.title) {
                         names.push({ 'title': item.Gamer.title, 'img': voice.img != null ? voice.img : '' })
-                    } else if (item.BGM && item.BGM.cn_name) {
-                        names.push({ 'title': item.BGM.cn_name, 'img': voice.img != null ? voice.img : '' })
-                    } else if (item.MAL.jp_name) {
-                        names.push({ 'title': item.MAL.jp_name, 'img': voice.img != null ? voice.img : '' })
+                    } else if (item.bgm && item.bgm.cn_name) {
+                        names.push({ 'title': item.bgm.cn_name, 'img': voice.img != null ? voice.img : '' })
+                    } else if (item.mal.jp_name) {
+                        names.push({ 'title': item.mal.jp_name, 'img': voice.img != null ? voice.img : '' })
                     } else {
-                        names.push({ 'title': item.MAL.titlee, 'img': voice.img != null ? voice.img : '' })
+                        names.push({ 'title': item.mal.titlee, 'img': voice.img != null ? voice.img : '' })
                     }
                 }
                 this.selectedEvent['details'] = names
@@ -1423,13 +1425,13 @@ let vue = new Vue({
 
                 for (let obj of resJson.result) {
                     let vo = {}
-                    let filter = this.rawData.find(element => null != element.AniList && element.AniList.id == obj.anilist)
-                    vo.jp_name = filter.MAL.jp_name
-                    vo.en_name = filter.MAL.en_name
-                    vo.ch_name = null != filter.Gamer ? filter.Gamer.title : null != filter.BGM ? filter.BGM.hasOwnProperty('cn_name') ? filter.BGM.cn_name : null : null
+                    let filter = this.rawData.find(element => null != element.aniList && element.aniList.id == obj.anilist)
+                    vo.jp_name = filter.mal.jp_name
+                    vo.en_name = filter.mal.en_name
+                    vo.ch_name = null != filter.Gamer ? filter.Gamer.title : null != filter.bgm ? filter.bgm.hasOwnProperty('cn_name') ? filter.bgm.cn_name : null : null
 
                     vo.hentai = false
-                    if (filter.MAL.genres.includes('Hentai')) {
+                    if (filter.mal.genres.includes('Hentai')) {
                         vo.hentai = true;
                     }
 
