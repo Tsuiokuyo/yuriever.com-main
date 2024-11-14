@@ -353,12 +353,14 @@
                                         :close-on-content-click="false" 
                                         :activator="selectedElement" 
                                         offset-x
+										@click="$refs.scrollableCard.scrollTop = 0"
                                       >
                                         <v-card 
                                           color="grey lighten-4" 
                                           min-width="350px" 
                                           flat 
                                           style="max-height: 80vh; overflow-y: auto;"
+										  ref="scrollableCard"
                                         >
                                           <v-toolbar :color="selectedEvent.color" dark>
                                             <v-toolbar-title style="color:black">{{ selectedEvent.name }}</v-toolbar-title>

@@ -707,6 +707,7 @@ let vue = new Vue({
                         isSup: item.isSup,
                         chId: item.chId,
                         voiceImg : item.voiceImg,
+						charEngName: item.charEngName,
                         color: this.setVoiceColor(item.isMain, item.isSup, todayBir),
                     });
                 }
@@ -1321,6 +1322,7 @@ let vue = new Vue({
                         chId: item.chId,
                         // end: bir,
                         voiceImg : item.voiceImg,
+						charEngName: item.charEngName,
                         color: this.setVoiceColor(item.isMain, item.isSup, todayBir),
                     })
 
