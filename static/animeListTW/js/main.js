@@ -628,7 +628,7 @@ let vue = new Vue({
     
         async loadCompressedData() {
             try {
-                const response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/animeListTW/test2min.msgpack.zst');
+                const response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/master/test2min.msgpack.zst');
                 const reader = response.body.getReader();
                 const contentLength = +response.headers.get('Content-Length');
                 let loaded = 0;
@@ -733,6 +733,7 @@ let vue = new Vue({
                         isSup: item.isSup,
                         chId: item.chId,
                         voiceImg : item.voiceImg,
+						charEngName: item.charEngName,
                         color: this.setVoiceColor(item.isMain, item.isSup, todayBir),
                     });
                 }
@@ -1347,6 +1348,7 @@ let vue = new Vue({
                         chId: item.chId,
                         // end: bir,
                         voiceImg : item.voiceImg,
+						charEngName: item.charEngName,
                         color: this.setVoiceColor(item.isMain, item.isSup, todayBir),
                     })
 
