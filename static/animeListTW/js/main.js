@@ -3,6 +3,7 @@
 import { genreMap } from './genreMap.js';
 import { simp, trad } from './simpAndTrad.js';
 
+
 // let OriginTitile = document.title;
 // let titleTime;
 // document.addEventListener("visibilitychange", function() {
@@ -16,6 +17,7 @@ import { simp, trad } from './simpAndTrad.js';
 //         }, 1500);
 //     }
 // });
+
 
 let vue = new Vue({
     el: '#app',
@@ -73,9 +75,33 @@ let vue = new Vue({
                 }
             }
         },
+        ScoreColumn : {
+            template: `
+                <div>
+                    <span v-if="score">{{ score | returnZero }}</span>
+                    <span v-else>N/A</span>
+                </div>
+            `,
+            props: {
+                score: {
+                    type: Object,
+                    default: null
+                }
+            },
+            filters: {
+                returnZero(value) {
+                    return value ? value : 0;
+                }
+            }
+        },
+
     },
     data: {
-
+        scoreSources: [
+            'gamer', 'mal', 'bgm', 'anikore', 'anilist', 'animeplanetcom',
+            'ann', 'anisearch', 'kitsu', 'notifymoe', 'livechart', 'anidb', 'shikimori',
+            'annict', 'sakuhindb'
+          ],
         rawData: [],
         randomTen: [],
         toRandom: false,
@@ -362,7 +388,7 @@ let vue = new Vue({
                     
                 },
                 {
-                    text: 'Bayesian總平均',
+                    text: 'Bayesian加權分數',
                     align: 'center',
                     value: 'score',
                     filterable: false,

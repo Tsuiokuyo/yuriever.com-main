@@ -905,11 +905,18 @@
                             <template v-slot:item.score="{ item }">
                             <span style="font-size:30px;">{{item.score| returnZero}}</span>
                         </template>
+                        <template v-for="(key, index) in scoreSources" :key="index">
+                            <template v-slot:[`item.${key}`]="{ item }">
+                              <ScoreColumn :score="item[key]" />
+                            </template>
+                          </template>
+
+
                             <!-- 巴哈-->
-                            <template v-slot:item.gamer="{ item }">
+                            <!-- <template v-slot:item.gamer="{ item }">
                             <span v-if="item.gamer">{{item.gamer.b_score| returnZero}}</span>
                             <span v-else>N/A</span>
-                        </template>
+                        </template> -->
                             <!--mal -->
                             <template v-slot:item.mal="{ item }">
                             <span v-if="item.mal">{{item.mal.b_score| returnZero}}</span>
