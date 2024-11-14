@@ -75,33 +75,8 @@ let vue = new Vue({
                 }
             }
         },
-        ScoreColumn : {
-            template: `
-                <div>
-                    <span v-if="score">{{ score | returnZero }}</span>
-                    <span v-else>N/A</span>
-                </div>
-            `,
-            props: {
-                score: {
-                    type: Object,
-                    default: null
-                }
-            },
-            filters: {
-                returnZero(value) {
-                    return value ? value : 0;
-                }
-            }
-        },
-
     },
     data: {
-        scoreSources: [
-            'gamer', 'mal', 'bgm', 'anikore', 'anilist', 'animeplanetcom',
-            'ann', 'anisearch', 'kitsu', 'notifymoe', 'livechart', 'anidb', 'shikimori',
-            'annict', 'sakuhindb'
-          ],
         rawData: [],
         randomTen: [],
         toRandom: false,
