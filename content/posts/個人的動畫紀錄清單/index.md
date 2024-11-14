@@ -43,7 +43,7 @@ https://yuriever.com/takeout.html
 
 現在倒是直接看[動畫榜單](https://yuriever.com/posts/a0e397c3/)了，搞這個太沒效率了... (這個也棄坑了QAQ)
 
-停止更新並刪除資料庫路徑 ~~https://yuriever.com/B/animeList/animeList~~
+停止更新並刪除資料庫路徑 ~~https://yuriever.com/b/animeList/animeList~~
 
 (2024-03-28)看來只能用懶人做法了...確實有些動畫看過就忘了，完全沒有留在記憶之中...
 

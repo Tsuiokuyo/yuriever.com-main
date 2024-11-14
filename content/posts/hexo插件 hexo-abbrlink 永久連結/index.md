@@ -18,22 +18,22 @@ date: 2018-12-29 12:00:00
 
 **hexo-uuid**
 
-`https://tsuiokuyo.netlify.com/posts/2f2dd790-1e71-11e6-95e1-ffc09ba0b003`
+`https://yuriever.com/posts/2f2dd790-1e71-11e6-95e1-ffc09ba0b003`
 
 
 
 **hexo-abbrlink**
 
 `crc16 & hex`
-`https://tsuiokuyo.netlify.com/posts/3ab2`
+`https://yuriever.com/posts/3ab2`
 
 `crc16 & dec`
-`https://tsuiokuyo.netlify.com/posts/12345.html`
+`https://yuriever.com/posts/12345.html`
 `crc32 & hex`
-`https://tsuiokuyo.netlify.com/posts/9a8b6c4d.html`
+`https://yuriever.com/posts/9a8b6c4d.html`
 
 `crc32 & dec`
-`https://tsuiokuyo.netlify.com/posts/1690090958.html`
+`https://yuriever.com/posts/1690090958.html`
 
 
 
@@ -81,7 +81,7 @@ abbrlink:
   rep: hex  
 ```
 
-`https://tsuiokuyo.netlify.com/3ab2`
+`https://yuriever.com/3ab2`
 
 當然，他也可以自定義格式
 
@@ -93,7 +93,7 @@ permalink: :author_name/:abbrlink
 
 網址會變成
 
-`https://tsuiokuyo.netlify.com/tsuiokuyo/3ab2`
+`https://yuriever.com/tsuiokuyo/3ab2`
 
 一切端看個人喜好。
 

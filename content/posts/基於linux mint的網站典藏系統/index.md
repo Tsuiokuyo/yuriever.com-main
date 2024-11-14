@@ -162,7 +162,7 @@ metadata.description
 # URLS HERE
 http://example.example/example
 改為要抓取的網址
-如http://tsuiokuyo.netlify.com
+如http://yuriever.com
 
 在下面的
 <bean id="metadata" class="org.archive.modules.CrawlMetadata" autowire="byName">

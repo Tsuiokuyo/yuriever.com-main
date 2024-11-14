@@ -28,7 +28,8 @@ site settings ->Change site name
 
 
 
-由於我沒有自己的domain所以不能使用自己的網址 只能使用tsuiokuyo.netlify.com，
+由於我沒有自己的domain所以不能使用自己的網址 只能使用yuriever.com，
+後來有了，因為netlify超量，被砍掉了
 
 再來是優化URLs、CSS、JS、Images等等。
 

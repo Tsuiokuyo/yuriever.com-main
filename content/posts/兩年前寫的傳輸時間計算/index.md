@@ -18,7 +18,7 @@ slug: ecade123
 
 老實說當時也只是隨便寫寫而已，後來懶得調整就爛尾了
 
-https://tsuiokuyo.netlify.app/b/calculator/transfertimecalculator
+https://yuriever.com/b/calculator/transfertimecalculator.html
 
 
 

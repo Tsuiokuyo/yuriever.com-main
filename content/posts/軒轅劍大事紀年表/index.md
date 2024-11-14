@@ -24,4 +24,4 @@ categories: [其他]
 
 
 
-https://tsuiokuyo.netlify.app/b/swd/swdtime
+https://yuriever.com/b/swd/swdtime.html

@@ -6,7 +6,7 @@ slug: f192
 date: 2019-02-21 10:00:00
 ---
 
-其實這也只是上一篇文章[使Hexo不渲染html檔](https://tsuiokuyo.netlify.com/posts/d644)的延伸而已
+其實這也只是上一篇文章[使Hexo不渲染html檔](https://yuriever.com/posts/d644)的延伸而已
 
 要新增一個hexo底下的html網頁，就我目前的知識，方法約有兩種
 
