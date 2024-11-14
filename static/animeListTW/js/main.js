@@ -602,7 +602,7 @@ let vue = new Vue({
     
         async loadCompressedData() {
             try {
-                const response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/yuriever.com-main/refs/heads/master/static/animeListTW/test2min.msgpack.zst');
+                const response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/master/test2min.msgpack.zst');
                 const reader = response.body.getReader();
                 const contentLength = +response.headers.get('Content-Length');
                 let loaded = 0;
