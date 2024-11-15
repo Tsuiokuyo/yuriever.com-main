@@ -725,6 +725,84 @@ let vue = new Vue({
 
             this.cmpList = this.processStudios(studios);
             this.onlineWatchs = [...new Set(onlines.sort())];
+
+            this.injectStructuredData();
+        },
+
+        injectStructuredData() {
+            // 建立結構化數據
+            const structuredData = {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "動畫排行榜單",
+                "description": "根據多個國家動畫評分網站的分數，使用貝氏估計及標準化加權重新計算後的動畫排名。",
+                "url": "https://yuriever.com/animeListTW/index.html",
+                "animeList": this.rawData.slice(0, 10).map(anime => {
+                    const totalVotes = this.rawData.reduce((acc, anime) => {
+                        return acc + (parseInt(anime.mal?.votes) || 0) +
+                                   (parseInt(anime.aniList?.votes) || 0) +
+                                   (parseInt(anime.bgm?.votes) || 0) +
+                                   (parseInt(anime.kitsu?.votes) || 0) +
+                                   (parseInt(anime.anisearch?.votes) || 0) +
+                                   (parseInt(anime.notifyMoe?.votes) || 0) +
+                                   (parseInt(anime.anidb?.votes) || 0) +
+                                   (parseInt(anime.animePlanetCom?.votes) || 0) +
+                                   (parseInt(anime.gamer?.votes) || 0) +
+                                   (parseInt(anime.livechart?.votes) || 0) +
+                                   (parseInt(anime.anikore?.votes) || 0) +
+                                   (parseInt(anime.ann?.votes) || 0) +
+                                   (parseInt(anime.shikimori?.votes) || 0);
+                    }, 0);     
+
+                    let itemType = "TVSeries"; 
+                    switch (anime.mal?.type) {
+                        case "TV":
+                            itemType = "TVSeries";  
+                            break;
+                        case "MOVIE":
+                            itemType = "Movie";  
+                            break;
+                        case "OVA":
+                        case "ONA":
+                            itemType = "VideoObject";  
+                            break;
+                    }
+
+                    return {
+                        "name": anime.gamer?.title || anime.mal?.jp_name || anime.mal?.title,
+                        "alternateName": [
+                            anime.mal?.en_name,
+                            anime.mal?.jp_name,
+                            anime.bgm?.cn_name
+                        ].filter(Boolean),
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": anime.score,
+                            "bestRating": 10,
+                            "ratingCount": totalVotes, 
+                            "itemReviewed": {
+                                "@type": itemType, 
+                                "name": anime.gamer?.title || anime.mal?.jp_name || anime.mal?.title,
+                                "url": anime.official || `https://myanimelist.net/anime/${anime.mal.id}`,
+                                "image": `https://cdn.myanimelist.net/images/anime/${anime.mal.image}`,
+                                "description": anime.bgm?.summary || ""
+                            }
+                        },
+                        "url": anime.official || `https://myanimelist.net/anime/${anime.mal.id}`,
+                        "image": `https://cdn.myanimelist.net/images/anime/${anime.mal.image}`,
+                        "description": anime.bgm?.summary || ""
+                    };
+                })
+            };
+            
+            
+            // 將結構化數據插入到 <head>
+            const script = document.createElement('script');
+            script.setAttribute('type', 'application/ld+json');
+            script.textContent = JSON.stringify(structuredData);
+            document.head.appendChild(script);
+        
+            console.log('Structured data injected:', structuredData);
         },
     
         processRawData() {
