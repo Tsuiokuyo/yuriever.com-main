@@ -7,6 +7,31 @@
     <meta name="description" content="動畫排名，根據多個國家動畫評分網站的分數，使用貝氏估計及標準化加權重新計算後的動畫排名">
 	<meta name="keywords" content="動畫, 動畫排行, 動畫評分, 動漫評分統計, 動畫排行榜, 動畫推薦, 動漫榜單, 最佳動畫, 熱門動畫, 動畫類型, 動畫分數">
 
+
+    <link rel="dns-prefetch" href="//raw.githubusercontent.com">
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <link rel="dns-prefetch" href="https://media.kitsu.app">
+    <link rel="preconnect" href="https://media.kitsu.app" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.anisearch.com">
+    <link rel="preconnect" href="https://cdn.anisearch.com" crossorigin>
+    <link rel="dns-prefetch" href="https://walter.trakt.tv">
+    <link rel="preconnect" href="https://walter.trakt.tv" crossorigin>
+    <link rel="dns-prefetch" href="https://wsrv.nl">
+    <link rel="preconnect" href="https://wsrv.nl" crossorigin>
+
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://www.youtube.com" crossorigin>
+    <!-- <link rel="dns-prefetch" href="https://lain.bgm.tv">
+    <link rel="preconnect" href="https://lain.bgm.tv" crossorigin> -->
+    <link rel="dns-prefetch" href="https://cdn.myanimelist.net">
+    <link rel="preconnect" href="https://cdn.myanimelist.net" crossorigin>
+
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.min.css" integrity="sha512-/k658G6UsCvbkGRB3vPXpsPHgWeduJwiWGPCGS14IQw3xpr63AEMdA8nMYG2gmYkXitQxDTn6iiK/2fD4T87qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.7.2/vuetify.min.css" integrity="sha512-jCVJeAE589mbKnqSn0nRG6BcJtPRULTekSz/s8EqMvhYXSWlQ6OPu0eYpG8qwhGTtItj14GGVrYq416094MW9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
@@ -19,9 +44,8 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/fzstd@0.1.1/umd/index.js"></script>
 
 
-    <link rel="dns-prefetch" href="//raw.githubusercontent.com">
-    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
-    
+
+
 	<script src="js/main.js" type="module"></script>
     <script defer src="js/snowstorm-min.js"></script>
 
@@ -502,6 +526,7 @@
                                     動畫公司篩選箱
                                 </span></v-expansion-panel-header>
                                 <v-expansion-panel-content color="yellow lighten-4"><br />
+                                    <div v-if="this.loadingProgress < 100">讀取中...</div>
                                     <v-chip-group v-model="cmpSel" column multiple>
                                         <v-chip v-for="(cmp, index) in cmpList" :key="index" filter :value="cmp" label>
                                             <span>{{cmp}}</span>
@@ -521,6 +546,7 @@
                                     線上看篩選箱
                                 </span></v-expansion-panel-header>
                                 <v-expansion-panel-content color="yellow lighten-4"><br />
+                                    <div v-if="this.loadingProgress < 100">讀取中...</div>
                                     <v-chip-group v-model="onlineWatchSel" column multiple>
                                         <v-chip v-for="(online, index) in onlineWatchs" :key="index" filter :value="online" dark>
                                             <span>{{online}}</span>
@@ -540,6 +566,7 @@
                                     類型篩選箱
                                 </span></v-expansion-panel-header>
                                 <v-expansion-panel-content color="yellow lighten-4"><br />
+                                    <div v-if="this.loadingProgress < 100">讀取中...</div>
                                     <v-chip-group v-model="genreSel" column multiple>
                                         <v-chip v-for="(genre, index) in genreList" :key="index" filter :value="genre" :disabled="!badges[genre]" dark    
                                         :class="{
@@ -554,6 +581,7 @@
                                     </v-chip-group>
                                     <v-btn @click="genreSel = []">
                                         <v-icon>mdi-restart alt</v-icon>重設類型</v-btn>
+                                        
                                 </v-expansion-panel-content>
                             </v-expansion-panel>
                         </v-expansion-panels>
@@ -668,8 +696,8 @@
                             <v-progress-linear 
                               :value="loadingProgress" 
                               color="blue" 
-                              height="20" 
-                              striped
+                              height="15" 
+                              striped 
                               :indeterminate="loadingProgress < 5"
                             >
                               <template v-slot:default>
@@ -681,8 +709,8 @@
                               讀取中，如果沒有異常，總共會有 14000筆以上
                             </div>
                           </div>
-                        <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...超過太久就重新整理，兩次都不行大概就是'暫時掛掉'，看我甚麼時候注意到" no-results-text="查無任何資料，可能是沒有收錄、名稱錯誤，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
-                            :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event"
+                        <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb"  no-results-text="查無任何資料，可能是沒有收錄、名稱錯誤，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
+                            :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " :page.sync="page" @page-count="pageCount = $event"
                             hide-default-footer>
 
                             <template v-slot:item="{item}">
