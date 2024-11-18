@@ -8,6 +8,31 @@
 	<meta name="keywords" content="動畫, 動畫排行, 動畫評分, 動漫評分統計, 動畫排行榜, 動畫推薦, 動漫榜單, 最佳動畫, 熱門動畫, 動畫類型, 動畫分數">
     <link rel="canonical" href="https://yuriever.com/animeListTW/index.html" />
 
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+    <link rel="dns-prefetch" href="//raw.githubusercontent.com">
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <link rel="dns-prefetch" href="https://media.kitsu.app">
+    <link rel="preconnect" href="https://media.kitsu.app" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.anisearch.com">
+    <link rel="preconnect" href="https://cdn.anisearch.com" crossorigin>
+    <link rel="dns-prefetch" href="https://walter.trakt.tv">
+    <link rel="preconnect" href="https://walter.trakt.tv" crossorigin>
+    <link rel="dns-prefetch" href="https://wsrv.nl">
+    <link rel="preconnect" href="https://wsrv.nl" crossorigin>
+
+    <link rel="dns-prefetch" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://www.youtube.com" crossorigin>
+    <!-- <link rel="dns-prefetch" href="https://lain.bgm.tv">
+    <link rel="preconnect" href="https://lain.bgm.tv" crossorigin> -->
+    <link rel="dns-prefetch" href="https://cdn.myanimelist.net">
+    <link rel="preconnect" href="https://cdn.myanimelist.net" crossorigin>
+
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.4.47/css/materialdesignicons.min.css" integrity="sha512-/k658G6UsCvbkGRB3vPXpsPHgWeduJwiWGPCGS14IQw3xpr63AEMdA8nMYG2gmYkXitQxDTn6iiK/2fD4T87qA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vuetify/2.7.2/vuetify.min.css" integrity="sha512-jCVJeAE589mbKnqSn0nRG6BcJtPRULTekSz/s8EqMvhYXSWlQ6OPu0eYpG8qwhGTtItj14GGVrYq416094MW9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
@@ -18,6 +43,8 @@
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/msgpack-lite/0.1.26/msgpack.min.js" integrity="sha512-harMiusNxs02ryf3eqc3iQalz2RSd0z38vzOyuFwvQyW046h2m+/47WiDmPW9soh/p71WQMRSkhSynEww3/bOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/fzstd@0.1.1/umd/index.js"></script>
+
+
 
 
 	<script src="js/main.js" type="module"></script>
@@ -75,7 +102,7 @@
                 </span>
                 </v-tabs>
                 <v-alert dismissible color="red lighten-2" border="left" elevation="3" colored-border icon="本站事項" dense class="bkColor">
-					<span>加入作品類型ONA(原創網路動畫)，大約2000筆，觀察中，另外，網頁程式碼重構中，如果哪裡壞了一直沒有好，就要等到我發現了。<span>
+					<span>加入作品類型ONA(原創網路動畫)，大約2000筆，觀察中，另外，程式碼重構中，如果哪裡壞了一直沒有好，就要等到我發現了。<span>
                 </v-alert>
 				
                 <v-alert dismissible color="#16A2B2" border="left" elevation="3" colored-border icon="GNN新聞" dense class="bkColor">
@@ -105,6 +132,7 @@
 									2024/10/25，增加原創網路動畫(ONA)作品。
                                     2024/11/07，開始重構程式碼
                                     2024/11/13，移除trakt，加入shikimori
+                                    2024/11/19，調整載入檔案邏輯
                                     <br />
                                     <span>
                                     <br><br><br>
@@ -500,6 +528,7 @@
                                     動畫公司篩選箱
                                 </span></v-expansion-panel-header>
                                 <v-expansion-panel-content color="yellow lighten-4"><br />
+                                    <div v-if="this.loadingProgress < 100">讀取中...</div>
                                     <v-chip-group v-model="cmpSel" column multiple>
                                         <v-chip v-for="(cmp, index) in cmpList" :key="index" filter :value="cmp" label>
                                             <span>{{cmp}}</span>
@@ -519,6 +548,7 @@
                                     線上看篩選箱
                                 </span></v-expansion-panel-header>
                                 <v-expansion-panel-content color="yellow lighten-4"><br />
+                                    <div v-if="this.loadingProgress < 100">讀取中...</div>
                                     <v-chip-group v-model="onlineWatchSel" column multiple>
                                         <v-chip v-for="(online, index) in onlineWatchs" :key="index" filter :value="online" dark>
                                             <span>{{online}}</span>
@@ -538,6 +568,7 @@
                                     類型篩選箱
                                 </span></v-expansion-panel-header>
                                 <v-expansion-panel-content color="yellow lighten-4"><br />
+                                    <div v-if="this.loadingProgress < 100">讀取中...</div>
                                     <v-chip-group v-model="genreSel" column multiple>
                                         <v-chip v-for="(genre, index) in genreList" :key="index" filter :value="genre" :disabled="!badges[genre]" dark    
                                         :class="{
@@ -552,6 +583,7 @@
                                     </v-chip-group>
                                     <v-btn @click="genreSel = []">
                                         <v-icon>mdi-restart alt</v-icon>重設類型</v-btn>
+                                        
                                 </v-expansion-panel-content>
                             </v-expansion-panel>
                         </v-expansion-panels>
@@ -659,32 +691,30 @@
                         <v-row>
                             <span style="float:right;">&emsp;總筆數:{{rawData.length}}，更新時間:2024年11月13日</span>
                         </v-row>
-                        <span v-if="windowWidth > 600"> 
-                        <br/>
-                        </span>
-                        <br/>
-                        <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...超過太久就重新整理，兩次都不行大概就是'暫時掛掉'，看我甚麼時候注意到" no-results-text="查無任何資料，可能是沒有收錄、名稱錯誤，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
-                            :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event"
-                            hide-default-footer>
-							<template v-slot:loading>
-							  <div>
-								<v-progress-linear
-								  :value="loadingProgress" 
-								  color="blue" 
-								  height="20" 
-								  striped 
-								  indeterminate
-								>
-								  <template v-slot:default>
-									<span style="font-size: 16px;">進度: {{ loadingProgress }}%</span>
-					
+                        <span v-if="windowWidth > 600"> <br/> </span>
 
-								  </template>
-								</v-progress-linear>
-								<div style="font-size: 16px;">{{ currentLoaded }}/{{ fileSize }} MB</div>
-								<div v-if="loadingProgress > 90" style="font-size: 16px;">解壓縮、運算中，可能會出現停止回應，但應該是不會超過10秒啦...超過太久就重新整理</div>
-							  </div>
-							</template>
+                        <br/>
+                        <div v-if="this.loadingProgress < 100">
+                            <v-progress-linear 
+                              :value="loadingProgress" 
+                              color="blue" 
+                              height="15" 
+                              striped 
+                              :indeterminate="loadingProgress < 5"
+                            >
+                              <template v-slot:default>
+                                <span style="font-size: 16px;">進度: {{ loadingProgress }}%</span>
+                              </template>
+                            </v-progress-linear>
+                            <div style="font-size: 16px;">已讀取: {{ currentLoaded }} / {{ fileSize }} MB</div>
+                            <div v-if="loadingProgress > 10" style="font-size: 16px;">
+                              讀取中，如果沒有異常，總共會有 14000筆以上
+                            </div>
+                          </div>
+                        <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb"  no-results-text="查無任何資料，可能是沒有收錄、名稱錯誤，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
+                            :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " :page.sync="page" @page-count="pageCount = $event"
+                            hide-default-footer>
+
                             <template v-slot:item="{item}">
                             <tr style="color:black" v-intersect="setBackgroundLazy" class="lazy" v-if="destroy">
                                 <td class="center pa-0" style="padding:0" width="200">

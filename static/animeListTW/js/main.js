@@ -86,7 +86,7 @@ let vue = new Vue({
 		loadingProgress: 0,
 		currentLoaded :0,
 		fileSize:0,
-        panel: [],
+        panel: [3],
         hug: '',
         snackbarHug: true,
         saveMsg: { 'state': false, 'text': '' },
@@ -163,8 +163,8 @@ let vue = new Vue({
 
         // count: undefined,
         overlay: false,
-        leimuUrl: 'https://yuriever.com/animeListTW/image/leimuA.webp',
-        lamuUrl: 'https://yuriever.com/animeListTW/image/lamuA.webp',
+        leimuUrl: 'image/leimuA.webp',
+        lamuUrl: 'image/lamuA.webp',
         destroy: true,
         disabledBgImage: false,
         dialogYt: {},
@@ -579,11 +579,12 @@ let vue = new Vue({
         await this.loadRSSData();
     
         this.$nextTick(() => {
+            // this.panel.push(3);
             this.initializeData();
             this.parseURLParams();
             this.randomizeData();
             this.detectBrowser();
-            this.panel.push(3);
+            
         });
     },
     async mounted() {
@@ -602,37 +603,98 @@ let vue = new Vue({
         },
     
         async loadCompressedData() {
-            try {
-                const response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/master/test2min.msgpack.zst');
-                const reader = response.body.getReader();
-                const contentLength = +response.headers.get('Content-Length');
-                let loaded = 0;
-                const chunks = [];
+            // try {
+            //     const response = await fetch('https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/master/test2min.msgpack.zst');
+            //     const reader = response.body.getReader();
+            //     const contentLength = +response.headers.get('Content-Length');
+            //     let loaded = 0;
+            //     const chunks = [];
 
-                if (contentLength) {
+            //     if (contentLength) {
+            //         this.loadingProgress = 0;
+            //         this.fileSize = (contentLength / (1024 * 1024)).toFixed(2) + ' MB'; // 顯示文件大小
+            //     }
+    
+            //     while (true) {
+            //         const { done, value } = await reader.read();
+            //         if (done) break;
+            //         chunks.push(value);
+            //         loaded += value.length;
+            //         if (contentLength) {
+            //             this.loadingProgress = Math.min((loaded / contentLength * 99).toFixed(2), 99);
+            //             this.currentLoaded = (loaded / (1024 * 1024)).toFixed(2);
+            //         }
+            //     }
+    
+            //     const zippedContent = new Uint8Array(chunks.reduce((acc, val) => acc.concat(Array.from(val)), []));
+            //     const decompressed = fzstd.decompress(zippedContent);
+            //     this.rawData = msgpack.decode(decompressed);
+            //     this.fileSize = contentLength ? (contentLength / (1024 * 1024)).toFixed(2) : (zippedContent.length / (1024 * 1024)).toFixed(2);
+    
+            // } catch (error) {
+            //     console.error("Error loading compressed data:", error);
+            // }
+                try {
+                    this.rawData = []; // 初始化資料容器
                     this.loadingProgress = 0;
-                    this.fileSize = (contentLength / (1024 * 1024)).toFixed(2) + ' MB'; // 顯示文件大小
-                }
-    
-                while (true) {
-                    const { done, value } = await reader.read();
-                    if (done) break;
-                    chunks.push(value);
-                    loaded += value.length;
-                    if (contentLength) {
-                        this.loadingProgress = Math.min((loaded / contentLength * 99).toFixed(2), 99);
-                        this.currentLoaded = (loaded / (1024 * 1024)).toFixed(2);
+                    this.fileSize = '0 MB';
+                    const totalChunks = 10;
+                    
+                    // 依次讀取 10 個 chunk
+                    for (let i = 1; i <= totalChunks; i++) {
+                        const chunkUrl = `https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/master/chunk_${i}.msgpack.zst`;
+                        
+                        const response = await fetch(chunkUrl);
+                        if (!response.ok) {
+                            console.error(`Failed to load chunk ${i}:`, response.statusText);
+                            continue; // 如果某一塊失敗，繼續處理下一塊
+                        }
+                        
+                        const reader = response.body.getReader();
+                        const contentLength = +response.headers.get('Content-Length');
+                        let loaded = 0;
+                        const chunks = [];
+            
+                        if (contentLength) {
+                            this.fileSize = (contentLength / (1024 * 1024)).toFixed(2) + ' MB';
+                        }
+                        
+                        while (true) {
+                            const { done, value } = await reader.read();
+                            if (done) break;
+                            chunks.push(value);
+                            loaded += value.length;
+                            if (contentLength) {
+                                // 針對單一 chunk 的讀取進度
+                                const chunkProgress = (loaded / contentLength) * 100;
+                                this.loadingProgress = Math.min(((i - 1) / totalChunks * 100) + (chunkProgress / totalChunks), 99).toFixed(2);
+                                this.currentLoaded = (loaded / (1024 * 1024)).toFixed(2);
+                            }
+                        }
+            
+                        const zippedContent = new Uint8Array(chunks.reduce((acc, val) => acc.concat(Array.from(val)), []));
+                        const decompressed = fzstd.decompress(zippedContent);
+                        const decodedData = msgpack.decode(decompressed);
+            
+                        this.rawData = this.rawData.concat(decodedData);
+                        
+                        // 更新總進度（每次讀取一個 chunk 就更新 10%）
+                        this.loadingProgress = ((i / totalChunks) * 100).toFixed(2);
+                        
+                        // console.log(`Chunk ${i} loaded and processed.`);
+                        if(i == 1){
+                            this.injectStructuredData();
+                        }
                     }
+                    
+                    // console.log("所有資料已讀取完成");
+                    this.loadingProgress = 100; // 讀取完成
+                } catch (error) {
+                    console.error("Error loading compressed data:", error);
+                } finally {
+                    this.isLoading = false;
                 }
-    
-                const zippedContent = new Uint8Array(chunks.reduce((acc, val) => acc.concat(Array.from(val)), []));
-                const decompressed = fzstd.decompress(zippedContent);
-                this.rawData = msgpack.decode(decompressed);
-                this.fileSize = contentLength ? (contentLength / (1024 * 1024)).toFixed(2) : (zippedContent.length / (1024 * 1024)).toFixed(2);
-    
-            } catch (error) {
-                console.error("Error loading compressed data:", error);
-            }
+            
         },
     
         async loadRSSData() {
@@ -681,18 +743,18 @@ let vue = new Vue({
             this.getRandomArray();
             let { onlines, studios, genres, births } = this.processRawData();
             
-            // 去重并计算 voiceCount
+            // 去重
             const set = new Set();
             const uniqueBirths = [];
             births.forEach(item => {
                 if (!set.has(item.voice)) {
                     set.add(item.voice);
-                    uniqueBirths.push(item);  // 去重后的出生数据
+                    uniqueBirths.push(item);  
                 }
             });
-            this.voiceCount = uniqueBirths.length;  // 更新去重后的人数
+            this.voiceCount = uniqueBirths.length; 
         
-            // 处理事件数据
+
             let events = [];
             let now = new Date();
             uniqueBirths.forEach(item => {
@@ -714,11 +776,9 @@ let vue = new Vue({
                 }
             });
         
-            // 排序事件，主要按 isMain 排序
             events.sort((a, b) => b.isMain - a.isMain);
             this.eventVoice = events;
         
-            // 处理 badges 和 genres
             this.badgesDef = this.badges;
             genres = [...new Set(genres.sort())];
             this.genreList = genres;
@@ -726,7 +786,7 @@ let vue = new Vue({
             this.cmpList = this.processStudios(studios);
             this.onlineWatchs = [...new Set(onlines.sort())];
 
-            this.injectStructuredData();
+            // this.injectStructuredData();
         },
 
         injectStructuredData() {
@@ -925,22 +985,22 @@ let vue = new Vue({
             return `color: ${parseFloat(i) > 0.9 ? 'red' : parseFloat(i) > 0.8 ? 'orange' : 'black'}`;
         },
         setCover(item, lazy) {
-            let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
+            // let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
             if (lazy) {
-                if (item.bgm && item.bgm.image) {
-                    return cdn2 + "http://lain.bgm.tv/pic/cover/g/" + item.bgm.image + ".jpg" + "&output=webp&q=80"
-                } else {
+                // if (item.bgm && item.bgm.image) {
+                //     return cdn2 + "https://lain.bgm.tv/pic/cover/g/" + item.bgm.image + ".jpg" + "&output=webp&q=80"
+                // } else {
                     return "https://cdn.myanimelist.net/images/anime/" + item.mal.image.replace('.webp', '').replace('.jpg', '') + 't.webp'
-                }
+                // }
             } else {
-                if (item.bgm && item.bgm.image) {
-                    return cdn2 + "http://lain.bgm.tv/pic/cover/c/" + item.bgm.image + ".jpg" + "&output=webp&q=80"
-                } else { //FIXME 下一輪
-                    if (item.mal.image.length > 50) {
-                        return item.mal.image
-                    }
+                // if (item.bgm && item.bgm.image) {
+                //     return cdn2 + "https://lain.bgm.tv/pic/cover/c/" + item.bgm.image + ".jpg" + "&output=webp&q=80"
+                // } else { //FIXME 下一輪
+                //     if (item.mal.image.length > 50) {
+                //         return item.mal.image
+                //     }
                     return "https://cdn.myanimelist.net/images/anime/" + item.mal.image.replace('.webp', '').replace('.jpg', '') + '.webp'
-                }
+                // }
             }
         },
         toggleFullscreen(item) {
@@ -1123,7 +1183,7 @@ let vue = new Vue({
                 'GUNDAM.INFO Youtube': 'https://www.youtube.com/' + id,
                 '木棉花(Muse) Youtube': 'https://www.youtube.com/' + id,
                 '動畫瘋': 'https://ani.gamer.com.tw/animeVideo.php?sn=' + id,
-                '中華電信MOD': 'http://mod.cht.com.tw/video/' + id,
+                '中華電信MOD': 'https://mod.cht.com.tw/video/' + id,
                 'CatchPlay+ TW': 'https://www.catchplay.com/' + id,
                 'Disney+': 'https://www.disneyplus.com/' + id,
                 'Google Play': 'https://play.google.com/store/' + id,
@@ -1218,7 +1278,7 @@ let vue = new Vue({
                 'ani-one asia': ['ani-one asia', 'https://www.youtube.com/' + id],
                 'yahoo': ['yahoo', 'https://tw.tv.yahoo.com/' + id],
                 'catchplay': ['catchplay', 'https://www.catchplay.com/' + id],
-                'cht': ['cht', 'http://mod.cht.com.tw/video/' + id],
+                'cht': ['cht', 'https://mod.cht.com.tw/video/' + id],
                 'iqiyi': ['iqiyi', 'https://www.iq.com/' + id],
                 'muse': ['muse', 'https://www.youtube.com/' + id],
                 'google': ['googleplay', 'https://play.google.com/store/' + id],
@@ -1289,16 +1349,16 @@ let vue = new Vue({
         },
         lamu(value) {
             if (value == 'A') {
-                return 'https://yuriever.com/animeListTW/image/lamuA.webp'
+                return 'image/lamuA.webp'
             } else {
-                return 'https://yuriever.com/animeListTW/image/lamuB.webp'
+                return 'image/lamuB.webp'
             }
         },
         leimu(value) {
             if (value == 'A') {
-                return 'https://yuriever.com/animeListTW/image/leimuA.webp'
+                return 'image/leimuA.webp'
             } else {
-                return 'https://yuriever.com/animeListTW/image/leimuB.webp'
+                return 'image/leimuB.webp'
             }
         },
         getBackground(item) {
@@ -1326,7 +1386,7 @@ let vue = new Vue({
         },
         
         setBackgroundLazy(entries, observer, isIntersecting) {
-            let bg = 'https://yuriever.com/animeListTW/image/background.webp'
+            let bg = 'image/background.webp'
             let cdn = 'https://tsuiokuyo-9688.imgix.net/'
             let cdn2 = 'https://wsrv.nl/?url=' //&output=webp&q=54
 
