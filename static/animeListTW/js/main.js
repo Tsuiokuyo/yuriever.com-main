@@ -682,6 +682,9 @@ let vue = new Vue({
                         this.loadingProgress = ((i / totalChunks) * 100).toFixed(2);
                         
                         // console.log(`Chunk ${i} loaded and processed.`);
+                        if(i == 1){
+                            this.injectStructuredData();
+                        }
                     }
                     
                     // console.log("所有資料已讀取完成");
@@ -783,7 +786,7 @@ let vue = new Vue({
             this.cmpList = this.processStudios(studios);
             this.onlineWatchs = [...new Set(onlines.sort())];
 
-            this.injectStructuredData();
+            // this.injectStructuredData();
         },
 
         injectStructuredData() {
