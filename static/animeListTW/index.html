@@ -19,6 +19,9 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/fzstd@0.1.1/umd/index.js"></script>
 
 
+    <link rel="dns-prefetch" href="//raw.githubusercontent.com">
+    <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+    
 	<script src="js/main.js" type="module"></script>
     <script defer src="js/snowstorm-min.js"></script>
 
@@ -658,32 +661,30 @@
                         <v-row>
                             <span style="float:right;">&emsp;總筆數:{{rawData.length}}，更新時間:2024年11月13日</span>
                         </v-row>
-                        <span v-if="windowWidth > 600"> 
+                        <span v-if="windowWidth > 600"> <br/> </span>
+
                         <br/>
-                        </span>
-                        <br/>
+                        <div v-if="this.loadingProgress < 100">
+                            <v-progress-linear 
+                              :value="loadingProgress" 
+                              color="blue" 
+                              height="20" 
+                              striped
+                              :indeterminate="loadingProgress < 5"
+                            >
+                              <template v-slot:default>
+                                <span style="font-size: 16px;">進度: {{ loadingProgress }}%</span>
+                              </template>
+                            </v-progress-linear>
+                            <div style="font-size: 16px;">已讀取: {{ currentLoaded }} / {{ fileSize }} MB</div>
+                            <div v-if="loadingProgress > 10" style="font-size: 16px;">
+                              讀取中，如果沒有異常，總共會有 14000筆以上
+                            </div>
+                          </div>
                         <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb" loading-text="讀取、解壓、運算中，應該是不會超過10秒啦...超過太久就重新整理，兩次都不行大概就是'暫時掛掉'，看我甚麼時候注意到" no-results-text="查無任何資料，可能是沒有收錄、名稱錯誤，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
                             :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " query="true" :loading="isLoading" :page.sync="page" @page-count="pageCount = $event"
                             hide-default-footer>
-							<template v-slot:loading>
-							  <div>
-								<v-progress-linear
-								  :value="loadingProgress" 
-								  color="blue" 
-								  height="20" 
-								  striped 
-								  indeterminate
-								>
-								  <template v-slot:default>
-									<span style="font-size: 16px;">進度: {{ loadingProgress }}%</span>
-					
 
-								  </template>
-								</v-progress-linear>
-								<div style="font-size: 16px;">{{ currentLoaded }}/{{ fileSize }} MB</div>
-								<div v-if="loadingProgress > 90" style="font-size: 16px;">解壓縮、運算中，可能會出現停止回應，但應該是不會超過10秒啦...超過太久就重新整理</div>
-							  </div>
-							</template>
                             <template v-slot:item="{item}">
                             <tr style="color:black" v-intersect="setBackgroundLazy" class="lazy" v-if="destroy">
                                 <td class="center pa-0" style="padding:0" width="200">
