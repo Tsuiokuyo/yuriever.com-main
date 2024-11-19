@@ -1,5 +1,7 @@
 User-agent: *
 
+Disallow: /animeListTW/js/main.js
+
 Disallow: /images/
 Disallow: /js/
 Disallow: /css/
