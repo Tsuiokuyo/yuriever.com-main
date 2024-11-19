@@ -638,7 +638,7 @@ let vue = new Vue({
                     this.rawData = []; // 初始化資料容器
                     this.loadingProgress = 0;
                     this.fileSize = '0 MB';
-                    const totalChunks = 10;
+                    const totalChunks = 5;
                     
                     // 依次讀取 10 個 chunk
                     for (let i = 1; i <= totalChunks; i++) {
