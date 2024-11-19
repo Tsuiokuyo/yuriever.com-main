@@ -682,9 +682,9 @@ let vue = new Vue({
                         this.loadingProgress = ((i / totalChunks) * 100).toFixed(2);
                         
                         // console.log(`Chunk ${i} loaded and processed.`);
-                        if(i == 1){
-                            this.injectStructuredData();
-                        }
+                        // if(i == 1){
+                        //     this.injectStructuredData();
+                        // }
                     }
                     
                     // console.log("所有資料已讀取完成");
@@ -786,91 +786,90 @@ let vue = new Vue({
             this.cmpList = this.processStudios(studios);
             this.onlineWatchs = [...new Set(onlines.sort())];
 
-            // this.injectStructuredData();
         },
 
-        injectStructuredData() {
+        // injectStructuredData() {
 
-            // 建立結構化數據
-            const structuredData = {
-                "@context": "https://schema.org",
-                "@type": "WebPage",
-                "name": "動畫排行榜單",
-                "description": "根據多國評分網站的分數，使用貝氏估計及標準化加權重新計算後的動畫排名。",
-                "url": "https://yuriever.com/animeListTW/index.html",
-                "mainEntity ": { 
-                    "@type": "ItemList",
-                    "itemListElement": this.rawData.slice(0, 10).map(anime => {
-                        const totalVotes =  (parseInt(anime.mal?.votes) || 0) +
-                                       (parseInt(anime.aniList?.votes) || 0) +
-                                       (parseInt(anime.bgm?.votes) || 0) +
-                                       (parseInt(anime.kitsu?.votes) || 0) +
-                                       (parseInt(anime.anisearch?.votes) || 0) +
-                                       (parseInt(anime.notifyMoe?.votes) || 0) +
-                                       (parseInt(anime.anidb?.votes) || 0) +
-                                       (parseInt(anime.animePlanetCom?.votes) || 0) +
-                                       (parseInt(anime.gamer?.votes) || 0) +
-                                       (parseInt(anime.livechart?.votes) || 0) +
-                                       (parseInt(anime.anikore?.votes) || 0) +
-                                       (parseInt(anime.ann?.votes) || 0) +
-                                       (parseInt(anime.shikimori?.votes) || 0)
+        //     // 建立結構化數據
+        //     const structuredData = {
+        //         "@context": "https://schema.org",
+        //         "@type": "WebPage",
+        //         "name": "動畫排行榜單",
+        //         "description": "根據多國評分網站的分數，使用貝氏估計及標準化加權重新計算後的動畫排名。",
+        //         "url": "https://yuriever.com/animeListTW/index.html",
+        //         "mainEntity ": { 
+        //             "@type": "ItemList",
+        //             "itemListElement": this.rawData.slice(0, 10).map(anime => {
+        //                 const totalVotes =  (parseInt(anime.mal?.votes) || 0) +
+        //                                (parseInt(anime.aniList?.votes) || 0) +
+        //                                (parseInt(anime.bgm?.votes) || 0) +
+        //                                (parseInt(anime.kitsu?.votes) || 0) +
+        //                                (parseInt(anime.anisearch?.votes) || 0) +
+        //                                (parseInt(anime.notifyMoe?.votes) || 0) +
+        //                                (parseInt(anime.anidb?.votes) || 0) +
+        //                                (parseInt(anime.animePlanetCom?.votes) || 0) +
+        //                                (parseInt(anime.gamer?.votes) || 0) +
+        //                                (parseInt(anime.livechart?.votes) || 0) +
+        //                                (parseInt(anime.anikore?.votes) || 0) +
+        //                                (parseInt(anime.ann?.votes) || 0) +
+        //                                (parseInt(anime.shikimori?.votes) || 0)
 
-                        let itemType = "TVSeries";  
-                        switch (anime.mal?.type.toUpperCase()) {
-                            case "TV":
-                                itemType = "TVSeries";  
-                                break;
-                            case "MOVIE":
-                                itemType = "Movie";  
-                                break;
-                            case "OVA":
-                            case "ONA":
-                                itemType = "VideoObject";  
-                                break;
-                        }
+        //                 let itemType = "TVSeries";  
+        //                 switch (anime.mal?.type.toUpperCase()) {
+        //                     case "TV":
+        //                         itemType = "TVSeries";  
+        //                         break;
+        //                     case "MOVIE":
+        //                         itemType = "Movie";  
+        //                         break;
+        //                     case "OVA":
+        //                     case "ONA":
+        //                         itemType = "VideoObject";  
+        //                         break;
+        //                 }
 
-                        const name = anime.gamer?.title || anime.mal?.jp_name || anime.mal?.title;
-                        const alternateNames = [
-                            anime.mal?.title,
-                            anime.mal?.jp_name,
-                            anime.bgm?.cn_name,
-                            anime.mal?.en_name
-                        ].filter(nameItem => nameItem && nameItem !== name);  // 排除与 name 重复的名称
+        //                 const name = anime.gamer?.title || anime.mal?.jp_name || anime.mal?.title;
+        //                 const alternateNames = [
+        //                     anime.mal?.title,
+        //                     anime.mal?.jp_name,
+        //                     anime.bgm?.cn_name,
+        //                     anime.mal?.en_name
+        //                 ].filter(nameItem => nameItem && nameItem !== name);  // 排除与 name 重复的名称
             
-                        return {
-                            "@type": itemType, 
-                            "name": name,
-                            "alternateName": alternateNames,
-                            "aggregateRating": {
-                                "@type": "AggregateRating",
-                                "ratingValue": anime.score,
-                                "bestRating": 10,
-                                "ratingCount": totalVotes, // 確保 totalVotes 是正確計算的
-                                "itemReviewed": {
-                                    "@type": itemType, // 動態選擇動畫的類型
-                                    "name": name,
-                                    "url": anime.official || `https://myanimelist.net/anime/${anime.mal.id}`,
-                                    "image": `https://cdn.myanimelist.net/images/anime/${anime.mal.image}`,
-                                    "description": anime.bgm?.summary || ""
-                                }
-                            },
-                            "url": anime.official || `https://myanimelist.net/anime/${anime.mal.id}`,
-                            "image": `https://cdn.myanimelist.net/images/anime/${anime.mal.image}`,
-                            "description": anime.bgm?.summary || ""
-                        };
-                    })
-                }
-            };
+        //                 return {
+        //                     "@type": itemType, 
+        //                     "name": name,
+        //                     "alternateName": alternateNames,
+        //                     "aggregateRating": {
+        //                         "@type": "AggregateRating",
+        //                         "ratingValue": anime.score,
+        //                         "bestRating": 10,
+        //                         "ratingCount": totalVotes, // 確保 totalVotes 是正確計算的
+        //                         "itemReviewed": {
+        //                             "@type": itemType, // 動態選擇動畫的類型
+        //                             "name": name,
+        //                             "url": anime.official || `https://myanimelist.net/anime/${anime.mal.id}`,
+        //                             "image": `https://cdn.myanimelist.net/images/anime/${anime.mal.image}`,
+        //                             "description": anime.bgm?.summary || ""
+        //                         }
+        //                     },
+        //                     "url": anime.official || `https://myanimelist.net/anime/${anime.mal.id}`,
+        //                     "image": `https://cdn.myanimelist.net/images/anime/${anime.mal.image}`,
+        //                     "description": anime.bgm?.summary || ""
+        //                 };
+        //             })
+        //         }
+        //     };
             
             
             
-            // 將結構化數據插入到 <head>
-            const script = document.createElement('script');
-            script.setAttribute('type', 'application/ld+json');
-            script.textContent = JSON.stringify(structuredData);
-            document.head.appendChild(script);
+        //     // 將結構化數據插入到 <head>
+        //     const script = document.createElement('script');
+        //     script.setAttribute('type', 'application/ld+json');
+        //     script.textContent = JSON.stringify(structuredData);
+        //     document.head.appendChild(script);
 
-        },
+        // },
     
         processRawData() {
             const onlines = [];
