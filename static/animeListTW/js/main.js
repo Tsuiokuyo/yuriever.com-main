@@ -1,7 +1,7 @@
 // 麵條式代碼，其實我也很無奈，功能不小心越玩越多
 // Vue.config.devtools = true;
-import { genreMap } from './genreMap.js';
-import { simp, trad } from './simpAndTrad.js';
+// import { genreMap } from './genreMap.js';
+// import { simp, trad } from './simpAndTrad.js';
 
 
 // let OriginTitile = document.title;

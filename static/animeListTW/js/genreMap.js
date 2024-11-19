@@ -1,4 +1,5 @@
-export const genreMap = new Map([
+// export const genreMap = new Map([
+const genreMap = new Map([
     ['cup',{ name: '泡麵番',color:'A'}],
     ['Action', { name: '動作', color: 'A' }],
     ['Adult Cast', { name: '成年人主角', color: 'A' }],
@@ -79,3 +80,5 @@ export const genreMap = new Map([
     
     ['Hentai', { name: '裏番(SFW)', color: 'D' }]
   ]);
+
+window.genreMap = genreMap;
