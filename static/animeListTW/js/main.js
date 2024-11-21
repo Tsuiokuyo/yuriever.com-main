@@ -453,13 +453,13 @@ let vue = new Vue({
                     filterable: false,
                     width: '5%',
                 },
-                // {
-                //     text: 'trakt評分*',
-                //     value: 'trakt',
-                //     align: 'center',
-                //     filterable: false,
-                //     width: '5%',
-                // },
+                {
+                    text: 'shikimori評分',
+                    value: 'shikimori',
+                    align: 'center',
+                    filterable: false,
+                    width: '5%',
+                },
                 {
                     text: 'annict評分*',
                     value: 'annict',
