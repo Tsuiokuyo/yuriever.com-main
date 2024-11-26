@@ -233,181 +233,115 @@
                 <v-container fluid>
                     <v-card v-if="tab == 'tab-2'" class="bkColor">
                         <div class="text-justify">
-                            <div>
-                                <div>
-                                    <!--
-                                    <template class="radius">
-                                    <v-card max-height="554" max-width="739" style="display:block; margin:auto;" raised
-                                        shaped>
-                                        <v-img max-height="554" max-width="739" contain src="image/345621.webp">
-                                        </v-img>
-                                    </v-card>
-                                </template>-->
-                                    <br />
-                                    <span class="text-decoration-line-through">
-                                    因為大概沒人看，這邊就不排版了...</span><br />
-                                    </h4>
+                            <section>
+                                <header>
                                     <h2>關於網站</h2>
-                                    <span>閒來無事做的純前端畫面，載入速度及搜尋功能可能有點慢，畢竟沒有後端而且沒有用資料庫，本想串Firebase，但50000筆的免費額度有點微妙。<br />
-                                    <br />
-									所有資料基於myanimelist ID為主<br />
-                                    <br /> 目前作業流程是分成三部分
-                                    <br /> 撈取各網站作品ID->各網站作品ID映射->依作品ID取分數、票數等 <br />
-                                    <br />
-                                    <p /> 如果覺得排名有問題請不要找我，因為這只是個野雞榜單。
-                                    <h3>作品篩選依據</h3>
-                                    至少要有四個分數來源網站才會放進來此處，里番則為兩個分數來源網站。
-                                    <p />
-                                    <p />
-                                    <h2>分數計算</h2>
-									<br> 1.各網站的作品投票數至少需要 50 票，低於 50 票則不計算分數(視情況未來會上升調整到100)。
-									<br> 2.至少有 4 個網站的作品計算出分數（裏番只需 2 個），才計算最終分數。
-									<br> 這只是大概說明，畢竟後續可能會調整，而且久久可能才改一次邏輯，有些計算錯誤的，可能臨時重改的邏輯的早就忘得差不多了...。
-									<br> 簡單的說是，拿各網站所有分數及票數來取得標準化分數、各作品投票資料取得Bayesian分數並根據各網站權重、票數後得出最終分數（前提是運算邏輯正確）。
-                                    <br />1.標準化邏輯
-									<br />首先計算混合在一起的所有分數的總體平均值 (μ) 和總體標準差 (σ)。接著，對於每個網站 i，計算該網站的平均值 (μi) 和標準差 (σi)。最後，來自網站 i 的分數將通過以下公式進行標準化處理：
-                                    <br /> (單標準 /總標準) * (分數 -單平均) + 總平均
-									<br> 
-									<br />2.Bayesian邏輯
-                                    <br />對於特定網站、無投票細節的網站其分數可能不計算或存在誤差。
-                                    <br /> 公式使用自https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation 
-									<br/>
-									<br>3.網站權重(調整中)
-									<br>'mal': 0.7,
-									<br>'aniList': 0.7,
-									<br>'ann': 1.2,
-									<br>'bgm': 0.9,
-									<br>'anikore': 1.1,
-									<br>'gamer': 0.8,
-									<br>'animePlanetCom': 0.9,
-									<br>'anisearch': 1.0,
-									<br>'kitsu': 0.8,
-									<br>'notifyMoe': 1.2,
-									<br>'livechart': 1.0,
-									<br>'shikimori': 1.0,
-									<br> 
-									<br>4.如果巴哈或bangumi票數 > 總票數的50% (測試中)
-									<br>則 網站的權重 * ( 0.5 / (票數 / 總票數))^3
-									<br>會有這條主因是，某些作品常出現極端值，而且投票人數又壓倒性的高，嚴重影響排名
-									<br>
-									<br>5.分數權重
-									<br>標準化分數 0.2  
-									<br>Bayesian分數 0.8
-									<br>
-									<br>6.最終分數
-									<br> 未來如有發現錯誤邏輯，都會再調整，因此就不解釋了，反正目前程式碼大概長這樣，
-									
-									<br><code>
-									# 設定一個門檻，比如該網站的票數超過總票數的 20% 時開始調整權重<br>
-										vote_threshold = 0.5<br>
-									# 根據票數比例動態調整權重主要是巴哈跟bangumi<br>
-									 if (site == "gamer" or site == "bgm") and total_site_votes > 0 and votes / total_site_votes > vote_threshold:<br>
-										# 如果該網站的票數佔總票數的比例過高，降低其權重<br>
-										adjustment_factor = vote_threshold / (votes / total_site_votes)<br>
-										weight *= adjustment_factor ** 3<br>
-									<br>
-									weighted_score_sum += Bayesian_score * votes * weight  # 加入加權分數<br>
-									total_votes += votes * weight  # 累加投票數，考慮權重<br>
-									<br>
-									# 計算最終的標準化分數<br>
-									final_normalized_score += normalized_score * weight<br>
-									total_weight += weight  # 累加權重<br>
-									<br>
-									# 最終的標準化分數除以總權重<br>
-									if total_weight > 0:<br>
-										final_normalized_score /= total_weight<br>
-									weighted_avg_score = weighted_score_sum / total_votes  # 計算加權平均分數<br>
-									final_score = (weighted_avg_score * w_b) + (final_normalized_score * w_adj)<br>
-									</code>
-									<br>
-                                </div>
-                                <p />
-                                <ol>
-                                    <li>anikore:重新計算分數，但沒找到投票分數細節</li>
-                                    <li>anilist:重新計算分數，且分數除10</li>
-                                    <li>animeNewsNetwork:無重新計算，網站已使用貝氏估計法</li>
-                                    <li>animePlanetCom:重新計算分數，且分數乘2，但沒找到投票分數細節</li>
-                                    <li>anisearch:重新計算分數</li>
-                                    <li>annict:重新計算分數，但不列入最終分數，因有四分制換算的問題</li>
-                                    <li>anidb:重新計算分數，但未使用投票細節</li>
-                                    <li>bangumi:重新計算分數</li>
-                                    <li>巴哈姆特:重新計算分數，且分數乘2</li>
-                                    <li>kitsu:重新計算分數，且分數除10</li>
-                                    <li>livechart:重新計算分數，但沒找到投票分數細節</li>
-                                    <li>myanimelist :無重新計算，網站已使用Bayesian</li>
-                                    <li>notifyMoe :重新計算分數，但沒找到投票分數細節</li>
-                                    <li><del>redditanimelist:重新計算分數，但未使用投票細節</del></li>
-                                    <li>sakuhindb:重新計算分數，但不列入最終分數，因有七分制換算的問題</li>
-                                    <li>trakt:重新計算分數，但不列入最終分數</li>
-									<li>shikimori:重新計算分數</li>
-                                </ol>
-                                <p />
-								                                    <span>
-                                    <br><br><br>
-                                    目前網頁功能說明:
-                                <oi>
-									<li>動畫條目眾多，不過票數及分數沒有必要及時更新，因此更新時間不定。暫定存入快取的條目每隔15至45天更新一次。</li>
-                                    <li>網址列帶參數功能:基本上沒啥用，就是帶了參數進來能直接查詢某作品，作品名稱或是年份，使用方法如下方<br>
-                                        　　https://yuriever.com/animeListTW/?name=聖母在上<br>
-                                        　　https://yuriever.com/animeListTW/?year=2004
-                                    </li>
-                                    <li><del>上方新聞條：RSS撈取ACGN的資訊。</del></li>
-                                    <li>聲優的生日日曆表：依照擔任過的主要角色次數變色，紫色則為當日壽星，點擊名字則顯示擔任過的角色及作品<br>
-                                    　　顏色代表次數:粉(150)>黃(100)>綠(80)>青(60)>藍(40)>紅(20)>灰(10)>白。</li>
-                                    <li>隨機作品：從資料中所有作品中隨機挑選10部，點擊則在下方篩選出該作品。</li>
-                                    <li>以場景截圖找動畫(以圖搜圖)：僅適用於動畫內有出現的畫面。</li>
-                                    <li>線上看篩選箱：當前正版官方線上看，不過因為各網站都有合約時間，我這邊不是及時撈取的，因此有時會失效，有時也會誤植。</li>
-                                    <li>類型篩選箱：基於myAnimeList的類型，但是是用網路翻譯的，如有翻譯不順或錯誤歡迎告知。</li>
-                                    <li>各種篩選：就是篩選，雖然有繁簡互轉，不過打錯名字你還是會查不出來，另外就是，<br>
-                                        　　目前內含700間以上動畫製作公司，雖然我想全部呈現出來，或是用多重下拉選單搞定，但是這個數量明顯都不行。
-                                    </li>
-                                    <li>(禁用)背景橫幅：目前所有橫幅都使用CDN及壓縮過，目前背景圖大概1KB~30KB左右，而此網頁圖片全部都是懶加載，看到作品條目才會開始讀取。</li>
-                                    <li>排除裏番：取消勾選才會看到裏番及篩選，不過都是修正過的圖，倒也不用擔心NSFW</li>
-                                    <li>登入功能：相關資訊如下(移除)</li>
-                                </oi>
-                                <br>
-                                    <del>2023/03/23 基於Firebase增加記錄功能，目前用於個人紀錄(評分、備註)，參考附圖，實際上我也不知道要塞甚麼。<br/>
-                                    至於登入的安全性，我只能說Firebase這東西是Google的資料庫，帳戶關連也是google寫的，基本上與我無關<br />
-                                    我這網頁完全只有前端的畫面操作，畢竟前端的程式碼在我github內都能看，<br />
-                                    另外，可能，可能會弄個紀錄匯出成文字檔或excel的功能，但也只是可能。</del>
-                                    <v-img max-height="500" max-width="700" alt="memo" contain src="image/memo.webp">
-                                    </v-img>
-                                    <br />
-                                    <p />
-
-                                    <br>
-									</span>
-                                <p />
+                                </header>
+                        
+                                <p>閒來無事做的純前端畫面，載入速度及搜尋功能可能有點慢，畢竟沒有後端而且沒有用資料庫，本想串Firebase，但50000筆的免費額度有點微妙。</p>
+                                <p>所有資料基於 myanimelist ID 為主。</p>
+                        
+                                <p>目前作業流程是分成三部分：</p>
+                                <ul>
+                                    <li>撈取各網站作品ID</li>
+                                    <li>各網站作品ID映射</li>
+                                    <li>依作品ID取分數、票數等</li>
+                                </ul>
+                        
+                                <p>如果覺得排名有問題請不要找我，因為這只是個野雞榜單。</p>
+                        
+                                <h3>作品篩選依據</h3>
+                                <p>至少要有四個分數來源網站才會放進來此處，里番則為兩個分數來源網站。</p>
+                        
+                                <h2>分數計算</h2>
+                                <p>1. 各網站的作品投票數至少需要 50 票，低於 50 票則不計算分數（視情況未來會上升調整到100）。</p>
+                                <p>2. 至少有 4 個網站的作品計算出分數（里番只需 2 個），才計算最終分數。</p>
+                                <p>這只是大概說明，畢竟後續可能會調整，而且久久可能才改一次邏輯，有些計算錯誤的，可能臨時重改的邏輯的早就忘得差不多了...</p>
+                                <p>簡單的說是，拿各網站所有分數及票數來取得標準化分數、各作品投票資料取得 Bayesian 分數並根據各網站權重、票數後得出最終分數（前提是運算邏輯正確）。</p>
+                        
+                                <h4>標準化邏輯</h4>
+                                <p>首先計算混合在一起的所有分數的總體平均值 (μ) 和總體標準差 (σ)。接著，對於每個網站 i，計算該網站的平均值 (μi) 和標準差 (σi)。最後，來自網站 i 的分數將通過以下公式進行標準化處理：</p>
+                                <pre>
+                                    (單標準 /總標準) * (分數 -單平均) + 總平均
+                                </pre>
+                        
+                                <h4>Bayesian邏輯</h4>
+                                <p>對於特定網站、無投票細節的網站其分數可能會不計算或者存在誤差。公式使用自 <a href="https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation" target="_blank">https://imagasaikou.cn/animeratingdb/wiki#bayesian-estimation</a></p>
+                        
+                                <h4>網站權重 (暫定)</h4>
+                                <ul>
+                                    <li>mal: 0.7</li>
+                                    <li>aniList: 0.7</li>
+                                    <li>ann: 1.2</li>
+                                    <li>bgm: 0.9</li>
+                                    <li>anikore: 1.1</li>
+                                    <li>gamer: 0.8</li>
+                                    <li>animePlanetCom: 0.9</li>
+                                    <li>anisearch: 1.0</li>
+                                    <li>kitsu: 0.8</li>
+                                    <li>notifyMoe: 1.2</li>
+                                    <li>livechart: 1.0</li>
+                                    <li>shikimori: 1.0</li>
+                                </ul>
+                        
+                                <h4>如果巴哈或bangumi票數 > 總票數的50% </h4>
+                                <p>則網站的權重 * (0.5 / (票數 / 總票數))^3。這條主因是各種極端值，以及某些原因，嚴重影響排名。</p>
+                        
+                                <h4>分數權重</h4>
+                                <ul>
+                                    <li>標準化分數 0.2</li>
+                                    <li>Bayesian分數 0.8</li>
+                                </ul>
+                        
+                                <h4>最終分數</h4>
+                                <p>未來如有發現錯誤邏輯，都會再調整，因此就不解釋了，反正目前程式碼大概長這樣：</p>
+                                <pre style="text-align: left; margin: 0; padding: 0;">
+                                    vote_threshold = 0.5
+                                    if (site == "gamer" or site == "bgm") and total_site_votes > 0 and votes / total_site_votes > vote_threshold:
+                                        adjustment_factor = vote_threshold / (votes / total_site_votes)
+                                        weight *= adjustment_factor ** 3
+                                
+                                    weighted_score_sum += Bayesian_score * votes * weight
+                                    total_votes += votes * weight
+                                    final_normalized_score += normalized_score * weight
+                                    total_weight += weight
+                                
+                                    if total_weight > 0:
+                                        final_normalized_score /= total_weight
+                                    weighted_avg_score = weighted_score_sum / total_votes
+                                    final_score = (weighted_avg_score * w_b) + (final_normalized_score * w_adj)
+                                </pre>
+                                
+                        
                                 <h2>感謝以下有使用或參考的網頁</h2>
                                 <ol>
-                                    <li>https://github.com/manami-project/anime-offline-database/</li>
-                                    <li>https://github.com/LovEveRv/anime-rating-db</li>
-                                    <li>https://github.com/soruly/burstlink</li>
-                                    <li>https://github.com/kawaiioverflow/arm</li>
-                                    <li>https://github.com/Fribb/anime-lists</li>
-									<li>https://github.com/varoOP/shinkrodb</li>
-                                    API部分
-                                    <li>https://github.com/jikan-me/jikan-rest </li>
-                                    <li>https://github.com/aniList/ApiV2-GraphQL-Docs</li>
-                                    <li>https://github.com/bangumi/api</li>
-									<li>https://github.com/bangumi/Archive</li>
-                                    <li>https://github.com/trakt/api-help</li>
-                                    <li>https://wiki.anidb.net/HTTP_API_Definition</li>
-                                    <li>https://www.animenewsnetwork.com/encyclopedia/api.php</li>
-                                    <li>https://developers.annict.com/docs/rest-api/v1</li>
-                                    <li>https://fanarttv.docs.apiary.io/</li>
-                                    <li>https://kitsu.docs.apiary.io/#</li>
-                                    <li>https://notify.moe/api</li>
-                                    <li>https://waifu.pics/</li>
-                                    <li>https://soruly.github.io/trace.moe-api/#/</li>
-                                 
+                                    <li><a href="https://github.com/manami-project/anime-offline-database/" target="_blank">anime-offline-database</a></li>
+                                    <li><a href="https://github.com/LovEveRv/anime-rating-db" target="_blank">anime-rating-db</a></li>
+                                    <li><a href="https://github.com/soruly/burstlink" target="_blank">burstlink</a></li>
+                                    <li><a href="https://github.com/kawaiioverflow/arm" target="_blank">arm</a></li>
+                                    <li><a href="https://github.com/Fribb/anime-lists" target="_blank">anime-lists</a></li>
+                                    <li><a href="https://github.com/varoOP/shinkrodb" target="_blank">shinkrodb</a></li>
+                                    <li>API部分
+                                        <ul>
+                                            <li><a href="https://github.com/jikan-me/jikan-rest" target="_blank">jikan API</a></li>
+                                            <li><a href="https://github.com/aniList/ApiV2-GraphQL-Docs" target="_blank">aniList API</a></li>
+                                            <li><a href="https://github.com/bangumi/api" target="_blank">bangumi API</a></li>
+                                            <li><a href="https://github.com/bangumi/Archive" target="_blank">bangumi/Archive</a></li>
+                                            <li><a href="https://github.com/trakt/api-help" target="_blank">trakt API</a></li>
+                                            <li><a href="https://wiki.anidb.net/HTTP_API_Definition" target="_blank">anidb API</a></li>
+                                            <li><a href="https://www.animenewsnetwork.com/encyclopedia/api.php" target="_blank">animenewsnetwork API</a></li>
+                                            <li><a href="https://developers.annict.com/docs/rest-api/v1" target="_blank">annict API</a></li>
+                                            <li><a href="https://fanarttv.docs.apiary.io/" target="_blank">fanarttv API</a></li>
+                                            <li><a href="https://kitsu.docs.apiary.io/#" target="_blank">kitsu API</a></li>
+                                            <li><a href="https://notify.moe/api" target="_blank">notify.moe API</a></li>
+                                            <li><a href="https://waifu.pics/" target="_blank">waifu.pics</a></li>
+                                            <li><a href="https://soruly.github.io/trace.moe-api/#/" target="_blank">trace.moe API</a></li>
+                                        </ul>
+                                    </li>
                                 </ol>
-                                <br />
-								有任何建議可至巴哈小屋回饋:https://home.gamer.com.tw/creationDetail.php?sn=6043608
-								或者直接來信
-                                <h3 style="text-align: center;"> Tsuiokuyo@gmail.com
-                                </h3>
-                            </div>
+                        
+                                <p>有任何建議可至巴哈小屋回饋: <a href="https://home.gamer.com.tw/creationDetail.php?sn=6043608" target="_blank">巴哈小屋</a></p>
+                            </section>
                         </div>
                     </v-card>
                     <v-card v-show="tab == 'tab-1'" class="bkColor">
@@ -793,7 +727,7 @@
                         </v-row>
                         <br />
                         <v-row>
-                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，更新時間:2024年11月21日</span>
+                            <span style="float:right;">&emsp;總筆數:{{rawData.length}}，更新時間:{{updateDate}}</span>
                         </v-row>
                         <span v-if="windowWidth > 600"> <br/> </span>
 

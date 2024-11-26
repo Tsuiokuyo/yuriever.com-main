@@ -78,6 +78,7 @@ let vue = new Vue({
     },
     data: {
         rawData: [],
+        updateDate:'',
         randomTen: [],
         toRandom: false,
 
@@ -640,9 +641,9 @@ let vue = new Vue({
                     this.fileSize = '0 MB';
                     const totalChunks = 5;
                     
-                    // 依次讀取 10 個 chunk
+                    // 依次讀取 5 個 chunk
                     for (let i = 1; i <= totalChunks; i++) {
-                        const chunkUrl = `https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/master/chunk_${i}.msgpack.zst`;
+                        const chunkUrl = `https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/test/refs/heads/master/chunk_${i}.msgpack.zst?v=1`;
                         
                         const response = await fetch(chunkUrl);
                         if (!response.ok) {
@@ -676,7 +677,15 @@ let vue = new Vue({
                         const decompressed = fzstd.decompress(zippedContent);
                         const decodedData = msgpack.decode(decompressed);
             
-                        this.rawData = this.rawData.concat(decodedData);
+                        if (i === 1) {
+                            // 如果是第一個 chunk，提取更新時間並保存
+                            const updateDate = decodedData.date;
+                            this.updateDate = `${updateDate.slice(0, 4)}年${updateDate.slice(4, 6)}月${updateDate.slice(6, 8)}日`;
+                            this.rawData = this.rawData.concat(decodedData.data);
+                        } else {
+                            // 如果不是第一個 chunk，直接追加資料
+                            this.rawData = this.rawData.concat(decodedData);
+                        }
                         
                         // 更新總進度（每次讀取一個 chunk 就更新 10%）
                         this.loadingProgress = ((i / totalChunks) * 100).toFixed(2);
@@ -710,7 +719,7 @@ let vue = new Vue({
                     this.setNewsData(name, data);
                 } catch (error) {
                     console.error(`Error loading RSS data for ${name}:`, error);
-                    this[name] = { title: `${name.toUpperCase()} RSS 本次撈取失敗，請無視。` };
+                    this[name] = { title: `${name.toUpperCase()} RSS 撈取失敗。` };
                 }
             }
         },
@@ -734,7 +743,7 @@ let vue = new Vue({
     
                 setTimeout(() => {
                     clearInterval(intervalId);
-                    this[name] = { title: '在此網站待了10分鐘以上，已停止新聞迴圈。' };
+                    this[name] = { title: '在此網站待了10分鐘以上，已停止RSS。' };
                 }, 600000);
             }
         },
@@ -787,89 +796,6 @@ let vue = new Vue({
             this.onlineWatchs = [...new Set(onlines.sort())];
 
         },
-
-        // injectStructuredData() {
-
-        //     // 建立結構化數據
-        //     const structuredData = {
-        //         "@context": "https://schema.org",
-        //         "@type": "WebPage",
-        //         "name": "動畫排行榜單",
-        //         "description": "根據多國評分網站的分數，使用貝氏估計及標準化加權重新計算後的動畫排名。",
-        //         "url": "https://yuriever.com/animeListTW/index.html",
-        //         "mainEntity ": { 
-        //             "@type": "ItemList",
-        //             "itemListElement": this.rawData.slice(0, 10).map(anime => {
-        //                 const totalVotes =  (parseInt(anime.mal?.votes) || 0) +
-        //                                (parseInt(anime.aniList?.votes) || 0) +
-        //                                (parseInt(anime.bgm?.votes) || 0) +
-        //                                (parseInt(anime.kitsu?.votes) || 0) +
-        //                                (parseInt(anime.anisearch?.votes) || 0) +
-        //                                (parseInt(anime.notifyMoe?.votes) || 0) +
-        //                                (parseInt(anime.anidb?.votes) || 0) +
-        //                                (parseInt(anime.animePlanetCom?.votes) || 0) +
-        //                                (parseInt(anime.gamer?.votes) || 0) +
-        //                                (parseInt(anime.livechart?.votes) || 0) +
-        //                                (parseInt(anime.anikore?.votes) || 0) +
-        //                                (parseInt(anime.ann?.votes) || 0) +
-        //                                (parseInt(anime.shikimori?.votes) || 0)
-
-        //                 let itemType = "TVSeries";  
-        //                 switch (anime.mal?.type.toUpperCase()) {
-        //                     case "TV":
-        //                         itemType = "TVSeries";  
-        //                         break;
-        //                     case "MOVIE":
-        //                         itemType = "Movie";  
-        //                         break;
-        //                     case "OVA":
-        //                     case "ONA":
-        //                         itemType = "VideoObject";  
-        //                         break;
-        //                 }
-
-        //                 const name = anime.gamer?.title || anime.mal?.jp_name || anime.mal?.title;
-        //                 const alternateNames = [
-        //                     anime.mal?.title,
-        //                     anime.mal?.jp_name,
-        //                     anime.bgm?.cn_name,
-        //                     anime.mal?.en_name
-        //                 ].filter(nameItem => nameItem && nameItem !== name);  // 排除与 name 重复的名称
-            
-        //                 return {
-        //                     "@type": itemType, 
-        //                     "name": name,
-        //                     "alternateName": alternateNames,
-        //                     "aggregateRating": {
-        //                         "@type": "AggregateRating",
-        //                         "ratingValue": anime.score,
-        //                         "bestRating": 10,
-        //                         "ratingCount": totalVotes, // 確保 totalVotes 是正確計算的
-        //                         "itemReviewed": {
-        //                             "@type": itemType, // 動態選擇動畫的類型
-        //                             "name": name,
-        //                             "url": anime.official || `https://myanimelist.net/anime/${anime.mal.id}`,
-        //                             "image": `https://cdn.myanimelist.net/images/anime/${anime.mal.image}`,
-        //                             "description": anime.bgm?.summary || ""
-        //                         }
-        //                     },
-        //                     "url": anime.official || `https://myanimelist.net/anime/${anime.mal.id}`,
-        //                     "image": `https://cdn.myanimelist.net/images/anime/${anime.mal.image}`,
-        //                     "description": anime.bgm?.summary || ""
-        //                 };
-        //             })
-        //         }
-        //     };
-            
-            
-            
-        //     // 將結構化數據插入到 <head>
-        //     const script = document.createElement('script');
-        //     script.setAttribute('type', 'application/ld+json');
-        //     script.textContent = JSON.stringify(structuredData);
-        //     document.head.appendChild(script);
-
-        // },
     
         processRawData() {
             const onlines = [];
