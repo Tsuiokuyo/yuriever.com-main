@@ -106,7 +106,7 @@
                 "url": "https://yuriever.com/animeListTW/index.html",
                 "mainEntity": {
                     "@type": "ItemList",
-                    "itemListElement": decodedData.slice(0, 10).map(anime => {
+                    "itemListElement": decodedData.data.slice(0, 10).map(anime => {
                         const totalVotes = (parseInt(anime.mal?.votes) || 0) +
                                            (parseInt(anime.aniList?.votes) || 0) +
                                            (parseInt(anime.bgm?.votes) || 0) +
@@ -750,7 +750,7 @@
                             </div>
                           </div>
                         <v-data-table show-select class="bkColor" :sort-by="sortBy" :sort-desc="sortDesc" v-if="windowWidth >= 600" hide-default-header loader-height="10" ref="tb"  no-results-text="查無任何資料，可能是沒有收錄、名稱錯誤，又或者是篩選條件沒有重設、勾選排除無計分動畫，請嘗試其他條件"
-                            :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " :page.sync="page" @page-count="pageCount = $event"
+                            no-data-text="完全無資料，這可能是我修改過格式了，請同時按下( ctrl F5 )來嘗試清除快取。" :custom-sort="customSort" item-key="rank" fixed-header :items="rawData" :headers="headers" :items-per-page.sync=itemsPerPage class="elevation-1 " :page.sync="page" @page-count="pageCount = $event"
                             hide-default-footer>
 
                             <template v-slot:item="{item}">
