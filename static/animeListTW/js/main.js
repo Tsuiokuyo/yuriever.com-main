@@ -643,7 +643,7 @@ let vue = new Vue({
                     
                     // 依次讀取 5 個 chunk
                     for (let i = 1; i <= totalChunks; i++) {
-                        const chunkUrl = `https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/test/refs/heads/master/chunk_${i}.msgpack.zst?v=1`;
+                        const chunkUrl = `https://raw.githubusercontent.com/Tsuiokuyo/animeListTW/refs/heads/master/chunk_${i}.msgpack.zst?v=1`;
                         
                         const response = await fetch(chunkUrl);
                         if (!response.ok) {
